@@ -1,0 +1,6 @@
+name: 'setup-cpany'
+description: 'Provide a description here'
+author: 'XLor'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

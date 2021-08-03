@@ -1,0 +1,16 @@
+{
+  "name": "@cpany/core",
+  "description": "CPany core package",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "XLor",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@cpany/types": "workspace:^1.0.0",
+    "axios": "^0.21.1"
+  }
+}

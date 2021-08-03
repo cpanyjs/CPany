@@ -1,0 +1,20 @@
+{
+  "name": "@cpany/app",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "localforage": "^1.9.0",
+    "vue": "^3.1.4"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^1.2.4",
+    "@vue/compiler-sfc": "^3.1.4",
+    "@vuedx/typecheck": "^0.7.4",
+    "@vuedx/typescript-plugin-vue": "^0.7.4",
+    "typescript": "^4.3.5",
+    "vite": "^2.4.1"
+  }
+}

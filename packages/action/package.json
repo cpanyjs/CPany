@@ -1,0 +1,16 @@
+{
+  "name": "@cpany/action",
+  "description": "CPany action package",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "XLor",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "package": "ncc build --source-map --license licenses.txt -o ../../dist"
+  },
+  "dependencies": {
+    "@actions/core": "^1.4.0",
+    "@cpany/core": "workspace:*"
+  }
+}
