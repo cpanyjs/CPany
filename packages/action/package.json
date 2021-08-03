@@ -11,6 +11,10 @@
   },
   "dependencies": {
     "@actions/core": "^1.4.0",
-    "@cpany/core": "workspace:*"
+    "@cpany/core": "workspace:*",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.2"
   }
 }
