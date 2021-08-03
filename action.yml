@@ -1,6 +1,11 @@
 name: 'setup-cpany'
 description: 'Provide a description here'
 author: 'XLor'
+inputs:
+  config:
+    required: false
+    description: 'CPany config file path'
+    default: 'cpany.yml'
 runs:
   using: 'node12'
   main: 'dist/index.js'
