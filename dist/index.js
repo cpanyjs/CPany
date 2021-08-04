@@ -9680,7 +9680,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(1614));
+const io_1 = __nccwpck_require__(7554);
 const fs_1 = __nccwpck_require__(5747);
+const path = __importStar(__nccwpck_require__(5622));
 const js_yaml_1 = __nccwpck_require__(6258);
 const core_1 = __nccwpck_require__(8780);
 const codeforces_1 = __nccwpck_require__(3948);
@@ -9692,14 +9694,24 @@ function getConfig(path) {
     });
 }
 function run() {
-    var _a;
+    var _a, _b;
     return __awaiter(this, void 0, void 0, function* () {
         const configPath = core.getInput('config');
         const config = yield getConfig(configPath);
         core.info(JSON.stringify(config, null, 2));
         const instance = core_1.createInstance({ plugins: [...codeforces_1.codeforcesPlugin()] });
         const files = [];
-        for (const user of (_a = config === null || config === void 0 ? void 0 : config.users) !== null && _a !== void 0 ? _a : []) {
+        for (const id of (_a = config === null || config === void 0 ? void 0 : config.static) !== null && _a !== void 0 ? _a : []) {
+            const result = yield instance.load(id);
+            if (result !== null) {
+                core.info(`Fetch ${id}`);
+                const { content } = result;
+                yield io_1.mkdirP(path.dirname(id));
+                fs_1.writeFileSync(id, content, 'utf8');
+                files.push(content);
+            }
+        }
+        for (const user of (_b = config === null || config === void 0 ? void 0 : config.users) !== null && _b !== void 0 ? _b : []) {
             for (const handle of user.handles) {
                 const result = yield instance.transform({
                     id: handle,

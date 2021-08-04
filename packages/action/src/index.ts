@@ -1,5 +1,7 @@
 import * as core from '@actions/core';
+import { mkdirP } from '@actions/io';
 import { readFileSync, writeFileSync } from 'fs';
+import * as path from 'path';
 import { load } from 'js-yaml';
 
 import { createInstance } from '@cpany/core';
@@ -19,6 +21,19 @@ async function run() {
   const instance = createInstance({ plugins: [...codeforcesPlugin()] });
 
   const files: string[] = [];
+
+  for (const id of config?.static ?? []) {
+    const result = await instance.load(id);
+    if (result !== null) {
+      core.info(`Fetch ${id}`);
+      const { content } = result;
+
+      await mkdirP(path.dirname(id));
+      writeFileSync(id, content, 'utf8');
+
+      files.push(content);
+    }
+  }
 
   for (const user of config?.users ?? []) {
     for (const handle of user.handles) {
