@@ -1,5 +1,5 @@
 import { join, dirname } from 'path';
-import { writeFile } from 'fs/promises';
+import { writeFileSync } from 'fs';
 
 import { mkdirP } from '@actions/io';
 import { exec } from '@actions/exec';
@@ -20,7 +20,7 @@ export async function createGitFileSystem(basePath: string) {
     const fullPath = join(basePath, path);
     files.push(fullPath);
     await mkdirP(dirname(fullPath));
-    await writeFile(fullPath, content, 'utf8');
+    writeFileSync(fullPath, content, 'utf8');
   };
 
   const push = async () => {

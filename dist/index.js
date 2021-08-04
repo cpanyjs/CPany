@@ -9662,7 +9662,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createGitFileSystem = void 0;
 const path_1 = __nccwpck_require__(5622);
-const promises_1 = __nccwpck_require__(9225);
+const fs_1 = __nccwpck_require__(5747);
 const io_1 = __nccwpck_require__(7554);
 const exec_1 = __nccwpck_require__(4308);
 function createGitFileSystem(basePath) {
@@ -9680,7 +9680,7 @@ function createGitFileSystem(basePath) {
             const fullPath = path_1.join(basePath, path);
             files.push(fullPath);
             yield io_1.mkdirP(path_1.dirname(fullPath));
-            yield promises_1.writeFile(fullPath, content, 'utf8');
+            fs_1.writeFileSync(fullPath, content, 'utf8');
         });
         const push = () => __awaiter(this, void 0, void 0, function* () {
             yield exec_1.exec('git', ['add', ...files]);
@@ -10009,14 +10009,6 @@ module.exports = require("events");
 
 "use strict";
 module.exports = require("fs");
-
-/***/ }),
-
-/***/ 9225:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("fs/promises");
 
 /***/ }),
 
