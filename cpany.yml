@@ -1,3 +1,6 @@
+static:
+  - codeforces/contest
+
 users:
   - name: XLor
     handles:
