@@ -9725,6 +9725,14 @@ function run() {
                 }
             }
         }
+        const username = process.env.GITHUB_ACTOR || 'Unknown';
+        yield exec_1.exec('git', ['config', '--global', 'user.name', username]);
+        yield exec_1.exec('git', [
+            'config',
+            '--global',
+            'user.email',
+            `${username}@users.noreply.github.com`
+        ]);
         yield exec_1.exec('git', ['add', ...files]);
         yield exec_1.exec('git', ['commit', '-m', `Automated commit`]);
         yield exec_1.exec('git', ['push']);

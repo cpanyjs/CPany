@@ -50,6 +50,14 @@ async function run() {
     }
   }
 
+  const username = process.env.GITHUB_ACTOR || 'Unknown';
+  await exec('git', ['config', '--global', 'user.name', username]);
+  await exec('git', [
+    'config',
+    '--global',
+    'user.email',
+    `${username}@users.noreply.github.com`
+  ]);
   await exec('git', ['add', ...files]);
   await exec('git', ['commit', '-m', `Automated commit`]);
   await exec('git', ['push']);
