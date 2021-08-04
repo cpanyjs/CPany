@@ -1,12 +1,10 @@
 import * as core from '@actions/core';
-import { mkdirP } from '@actions/io';
-import { readFileSync, writeFileSync } from 'fs';
-import * as path from 'path';
+import { readFileSync } from 'fs';
 import { load } from 'js-yaml';
 
 import { createInstance } from '@cpany/core';
 import { codeforcesPlugin } from '@cpany/codeforces';
-import { exec } from '@actions/exec';
+import { createGitFileSystem } from './fs';
 
 async function getConfig(path: string) {
   const content = readFileSync(path, 'utf8');
@@ -20,18 +18,14 @@ async function run() {
 
   const instance = createInstance({ plugins: [...codeforcesPlugin()] });
 
-  const files: string[] = [];
+  const fs = await createGitFileSystem('/');
 
   for (const id of config?.static ?? []) {
     const result = await instance.load(id);
     if (result !== null) {
       core.info(`Fetch ${id}`);
-      const { content } = result;
-
-      await mkdirP(path.dirname(id));
-      writeFileSync(id, content, 'utf8');
-
-      files.push(id);
+      const { key, content } = result;
+      await fs.add(key, content);
     }
   }
 
@@ -43,24 +37,13 @@ async function run() {
       });
       if (result !== null) {
         core.info(`Fetch codeforces/handle/${handle}`);
-        const { content } = result;
-        files.push(handle);
-        writeFileSync(handle, content, 'utf8');
+        const { key, content } = result;
+        await fs.add(key, content);
       }
     }
   }
 
-  const username = process.env.GITHUB_ACTOR || 'Unknown';
-  await exec('git', ['config', '--global', 'user.name', username]);
-  await exec('git', [
-    'config',
-    '--global',
-    'user.email',
-    `${username}@users.noreply.github.com`
-  ]);
-  await exec('git', ['add', ...files]);
-  await exec('git', ['commit', '-m', `Automated commit`]);
-  await exec('git', ['push']);
+  await fs.push();
 }
 
 run();

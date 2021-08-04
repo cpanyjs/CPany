@@ -19,7 +19,7 @@ export function codeforcesPlugin(
 }
 
 function contestList(api: AxiosInstance): ILoadPlugin {
-  const name = 'codeforces/contest';
+  const name = 'codeforces/contest.json';
   return {
     name,
     async load(id) {
@@ -35,11 +35,12 @@ function contestList(api: AxiosInstance): ILoadPlugin {
 
 function userInfoPlugin(api: AxiosInstance): ITransformPlugin {
   const name = 'codeforces/handle';
+  const gid = (id: string) => name + '/' + id + '.json';
   return {
     name,
     resolveKey({ id, type }) {
       if (type === name) {
-        return name + '/' + id;
+        return gid(id);
       }
     },
     async transform({ id, type }) {
@@ -54,7 +55,7 @@ function userInfoPlugin(api: AxiosInstance): ITransformPlugin {
           }
         });
         return {
-          key: name + '/' + id,
+          key: gid(id),
           content: JSON.stringify(data, null, 2)
         };
       }

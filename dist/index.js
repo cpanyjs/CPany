@@ -9645,6 +9645,59 @@ module.exports = {
 
 /***/ }),
 
+/***/ 7995:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.createGitFileSystem = void 0;
+const path_1 = __nccwpck_require__(5622);
+const promises_1 = __nccwpck_require__(9225);
+const io_1 = __nccwpck_require__(7554);
+const exec_1 = __nccwpck_require__(4308);
+function createGitFileSystem(basePath) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const username = process.env.GITHUB_ACTOR || 'Unknown';
+        yield exec_1.exec('git', ['config', '--global', 'user.name', username]);
+        yield exec_1.exec('git', [
+            'config',
+            '--global',
+            'user.email',
+            `${username}@users.noreply.github.com`
+        ]);
+        const files = [];
+        const add = (path, content) => __awaiter(this, void 0, void 0, function* () {
+            const fullPath = path_1.join(basePath, path);
+            files.push(fullPath);
+            yield io_1.mkdirP(path_1.dirname(fullPath));
+            yield promises_1.writeFile(fullPath, content, 'utf8');
+        });
+        const push = () => __awaiter(this, void 0, void 0, function* () {
+            yield exec_1.exec('git', ['add', ...files]);
+            yield exec_1.exec('git', ['commit', '-m', `Automated commit`]);
+            yield exec_1.exec('git', ['push']);
+        });
+        return {
+            add,
+            push
+        };
+    });
+}
+exports.createGitFileSystem = createGitFileSystem;
+
+
+/***/ }),
+
 /***/ 5406:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
@@ -9680,13 +9733,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(1614));
-const io_1 = __nccwpck_require__(7554);
 const fs_1 = __nccwpck_require__(5747);
-const path = __importStar(__nccwpck_require__(5622));
 const js_yaml_1 = __nccwpck_require__(6258);
 const core_1 = __nccwpck_require__(8780);
 const codeforces_1 = __nccwpck_require__(3948);
-const exec_1 = __nccwpck_require__(4308);
+const fs_2 = __nccwpck_require__(7995);
 function getConfig(path) {
     return __awaiter(this, void 0, void 0, function* () {
         const content = fs_1.readFileSync(path, 'utf8');
@@ -9700,15 +9751,13 @@ function run() {
         const config = yield getConfig(configPath);
         core.info(JSON.stringify(config, null, 2));
         const instance = core_1.createInstance({ plugins: [...codeforces_1.codeforcesPlugin()] });
-        const files = [];
+        const fs = yield fs_2.createGitFileSystem('/');
         for (const id of (_a = config === null || config === void 0 ? void 0 : config.static) !== null && _a !== void 0 ? _a : []) {
             const result = yield instance.load(id);
             if (result !== null) {
                 core.info(`Fetch ${id}`);
-                const { content } = result;
-                yield io_1.mkdirP(path.dirname(id));
-                fs_1.writeFileSync(id, content, 'utf8');
-                files.push(id);
+                const { key, content } = result;
+                yield fs.add(key, content);
             }
         }
         for (const user of (_b = config === null || config === void 0 ? void 0 : config.users) !== null && _b !== void 0 ? _b : []) {
@@ -9719,23 +9768,12 @@ function run() {
                 });
                 if (result !== null) {
                     core.info(`Fetch codeforces/handle/${handle}`);
-                    const { content } = result;
-                    files.push(handle);
-                    fs_1.writeFileSync(handle, content, 'utf8');
+                    const { key, content } = result;
+                    yield fs.add(key, content);
                 }
             }
         }
-        const username = process.env.GITHUB_ACTOR || 'Unknown';
-        yield exec_1.exec('git', ['config', '--global', 'user.name', username]);
-        yield exec_1.exec('git', [
-            'config',
-            '--global',
-            'user.email',
-            `${username}@users.noreply.github.com`
-        ]);
-        yield exec_1.exec('git', ['add', ...files]);
-        yield exec_1.exec('git', ['commit', '-m', `Automated commit`]);
-        yield exec_1.exec('git', ['push']);
+        yield fs.push();
     });
 }
 run();
@@ -9773,7 +9811,7 @@ function codeforcesPlugin(option = {}) {
 }
 exports.codeforcesPlugin = codeforcesPlugin;
 function contestList(api) {
-    const name = 'codeforces/contest';
+    const name = 'codeforces/contest.json';
     return {
         name,
         load(id) {
@@ -9788,11 +9826,12 @@ function contestList(api) {
 }
 function userInfoPlugin(api) {
     const name = 'codeforces/handle';
+    const gid = (id) => name + '/' + id + '.json';
     return {
         name,
         resolveKey({ id, type }) {
             if (type === name) {
-                return name + '/' + id;
+                return gid(id);
             }
         },
         transform({ id, type }) {
@@ -9804,7 +9843,7 @@ function userInfoPlugin(api) {
                         }
                     });
                     return {
-                        key: name + '/' + id,
+                        key: gid(id),
                         content: JSON.stringify(data, null, 2)
                     };
                 }
@@ -9970,6 +10009,14 @@ module.exports = require("events");
 
 "use strict";
 module.exports = require("fs");
+
+/***/ }),
+
+/***/ 9225:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("fs/promises");
 
 /***/ }),
 
