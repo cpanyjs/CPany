@@ -25,11 +25,17 @@ importers:
   packages/action:
     specifiers:
       '@actions/core': ^1.4.0
+      '@actions/exec': ^1.1.0
+      '@actions/io': ^1.1.1
+      '@cpany/codeforces': workspace:*
       '@cpany/core': workspace:*
       '@types/js-yaml': ^4.0.2
       js-yaml: ^4.1.0
     dependencies:
       '@actions/core': 1.4.0
+      '@actions/exec': 1.1.0
+      '@actions/io': 1.1.1
+      '@cpany/codeforces': link:../codeforces
       '@cpany/core': link:../core
       js-yaml: 4.1.0
     devDependencies:
@@ -59,8 +65,10 @@ importers:
   packages/codeforces:
     specifiers:
       '@cpany/core': workspace:*
+      axios: ^0.21.1
     dependencies:
       '@cpany/core': link:../core
+      axios: 0.21.1
 
   packages/core:
     specifiers:
@@ -72,6 +80,16 @@ packages:
 
   /@actions/core/1.4.0:
     resolution: {integrity: sha512-CGx2ilGq5i7zSLgiiGUtBCxhRRxibJYU6Fim0Q1Wg2aQL2LTnF27zbqZOrxfvFQ55eSBW0L8uVStgtKMpa0Qlg==}
+    dev: false
+
+  /@actions/exec/1.1.0:
+    resolution: {integrity: sha512-LImpN9AY0J1R1mEYJjVJfSZWU4zYOlEcwSTgPve1rFQqK5AwrEs6uWW5Rv70gbDIQIAUwI86z6B+9mPK4w9Sbg==}
+    dependencies:
+      '@actions/io': 1.1.1
+    dev: false
+
+  /@actions/io/1.1.1:
+    resolution: {integrity: sha512-Qi4JoKXjmE0O67wAOH6y0n26QXhMKMFo7GD/4IXNVcrtLjUlGjGuVys6pQgwF3ArfGTQu0XpqaNr0YhED2RaRA==}
     dev: false
 
   /@babel/code-frame/7.14.5:

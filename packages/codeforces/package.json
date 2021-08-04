@@ -10,6 +10,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@cpany/core": "workspace:*"
+    "@cpany/core": "workspace:*",
+    "axios": "^0.21.1"
   }
 }
