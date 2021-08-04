@@ -31,7 +31,7 @@ async function run() {
       await mkdirP(path.dirname(id));
       writeFileSync(id, content, 'utf8');
 
-      files.push(content);
+      files.push(id);
     }
   }
 

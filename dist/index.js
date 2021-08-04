@@ -9708,7 +9708,7 @@ function run() {
                 const { content } = result;
                 yield io_1.mkdirP(path.dirname(id));
                 fs_1.writeFileSync(id, content, 'utf8');
-                files.push(content);
+                files.push(id);
             }
         }
         for (const user of (_b = config === null || config === void 0 ? void 0 : config.users) !== null && _b !== void 0 ? _b : []) {
