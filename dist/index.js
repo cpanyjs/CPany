@@ -9726,6 +9726,7 @@ function run() {
             }
         }
         yield exec_1.exec('git', ['add', ...files]);
+        yield exec_1.exec('git', ['commit', '-m', `Automated commit`]);
         yield exec_1.exec('git', ['push']);
     });
 }
