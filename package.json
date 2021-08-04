@@ -16,8 +16,8 @@
   "scripts": {
     "dev": "pnpm -C packages/app run dev",
     "build": "pnpm run build --filter=@cpany/* && pnpm -C packages/action run package",
-    "build:types": "pnpm -C packages/types run build",
     "build:core": "pnpm -C packages/core run build",
+    "build:codeforces": "pnpm -C packages/codeforces run build",
     "build:action": "pnpm -C packages/action run build",
     "build:app": "pnpm -C packages/app run build",
     "format": "prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore"

@@ -4614,16 +4614,121 @@ run();
 
 /***/ }),
 
+/***/ 241:
+/***/ (function(__unused_webpack_module, exports) {
+
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.createInstance = void 0;
+function createInstance(option) {
+    var _a, _b, _c;
+    const logger = (_a = option === null || option === void 0 ? void 0 : option.logger) !== null && _a !== void 0 ? _a : console;
+    const plugins = (_b = option === null || option === void 0 ? void 0 : option.plugins) !== null && _b !== void 0 ? _b : [];
+    const context = (_c = option === null || option === void 0 ? void 0 : option.context) !== null && _c !== void 0 ? _c : {};
+    const isKeyInContext = (key) => {
+        return key in context;
+    };
+    const loadFromContext = (key) => {
+        return context[key];
+    };
+    const cacheToContext = (key, content) => {
+        context[key] = content;
+    };
+    const load = (key) => __awaiter(this, void 0, void 0, function* () {
+        if (isKeyInContext(key)) {
+            return { key, content: loadFromContext(key) };
+        }
+        for (const plugin of plugins) {
+            if ('load' in plugin) {
+                const result = yield plugin.load(key, context);
+                if (result !== undefined && result !== null) {
+                    if (typeof result === 'string') {
+                        cacheToContext(key, result);
+                        return { key, content: result };
+                    }
+                    else {
+                        cacheToContext(result.key, result.content);
+                        return result;
+                    }
+                }
+            }
+        }
+        return null;
+    });
+    const transform = (payload) => __awaiter(this, void 0, void 0, function* () {
+        for (const plugin of plugins) {
+            if ('transform' in plugin) {
+                const key = plugin.resolveKey(payload);
+                if (key === undefined || key === null)
+                    continue;
+                if (isKeyInContext(key)) {
+                    return {
+                        key,
+                        content: loadFromContext(key)
+                    };
+                }
+                const result = yield plugin.transform(payload, context);
+                if (result !== undefined && result !== null) {
+                    cacheToContext(result.key, result.content);
+                    return result;
+                }
+                else {
+                    logger.error(`[${plugin.name}] has resolved id "${key}", but failed transforming`);
+                }
+            }
+        }
+        return null;
+    });
+    return {
+        load,
+        transform
+    };
+}
+exports.createInstance = createInstance;
+
+
+/***/ }),
+
 /***/ 780:
-/***/ ((__unused_webpack_module, exports) => {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.hello = void 0;
+__exportStar(__nccwpck_require__(241), exports);
+__exportStar(__nccwpck_require__(414), exports);
 function hello() {
     console.log('hello');
 }
 exports.hello = hello;
+
+
+/***/ }),
+
+/***/ 414:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 
 /***/ }),

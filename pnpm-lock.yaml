@@ -56,6 +56,12 @@ importers:
       typescript: 4.3.5
       vite: 2.4.1
 
+  packages/codeforces:
+    specifiers:
+      '@cpany/core': workspace:^1.0.0
+    dependencies:
+      '@cpany/core': link:../core
+
   packages/core:
     specifiers:
       '@cpany/types': workspace:^1.0.0
