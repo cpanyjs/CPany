@@ -1,5 +1,5 @@
 static:
-  - codeforces/contest
+  - codeforces/contest.json
 
 users:
   - name: XLor
