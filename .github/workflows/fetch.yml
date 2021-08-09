@@ -2,6 +2,9 @@ name: 'Fetch data'
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - cpany
 
 jobs:
   fetch:
@@ -13,3 +16,5 @@ jobs:
           ref: dev
           path: ./main
       - uses: ./main
+        with:
+          skipClean: main
