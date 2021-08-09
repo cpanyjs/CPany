@@ -3,6 +3,10 @@ users:
     codeforces/handle:
       - XLor
       - XLorTree
+  miaojie:
+    codeforces/handle:
+      - miaojie
+      - ActorBlack
 
 static:
   - codeforces/contest.json
