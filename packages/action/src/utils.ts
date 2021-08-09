@@ -27,5 +27,5 @@ export async function* listDir(
 }
 
 export function now() {
-  return dayjs().tz('Asia/Shanghai').format('YYYY-MM-DD HH:mm');
+  return dayjs().tz('Asia/Shanghai');
 }

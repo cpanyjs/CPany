@@ -58,7 +58,7 @@ async function run() {
 
   const nowTime = now();
   await processReadme(nowTime);
-  await fs.push(nowTime);
+  await fs.push(nowTime.format('YYYY-MM-DD HH:mm'));
 }
 
 run();
