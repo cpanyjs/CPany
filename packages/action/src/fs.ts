@@ -1,5 +1,6 @@
 import { join, dirname } from 'path';
 import { writeFileSync } from 'fs';
+import dayjs from 'dayjs';
 
 import { mkdirP } from '@actions/io';
 import { exec } from '@actions/exec';
@@ -25,7 +26,11 @@ export async function createGitFileSystem(basePath: string) {
 
   const push = async () => {
     await exec('git', ['add', ...files]);
-    await exec('git', ['commit', '-m', `Automated commit`]);
+    await exec('git', [
+      'commit',
+      '-m',
+      `Fetch data on ${dayjs().format('YYYY-MM-DD HH:mm')}`
+    ]);
     await exec('git', ['push']);
   };
 
