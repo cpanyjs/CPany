@@ -9705,7 +9705,7 @@ function listDir(dir, skipList) {
         const dirents = yield __await(fs_1.promises.readdir(dir, { withFileTypes: true }));
         for (const dirent of dirents) {
             const id = path_1.join(dir, dirent.name);
-            if (id.startsWith('.') || skipList.has(id)) {
+            if (dirent.name.startsWith('.') || skipList.has(id)) {
                 continue;
             }
             if (dirent.isDirectory()) {
@@ -9730,7 +9730,7 @@ function createGitFileSystem(basePath) {
         ]);
         const files = [];
         try {
-            for (var _b = __asyncValues(listDir('.', new Set(['cpany.yml', 'README.md']))), _c; _c = yield _b.next(), !_c.done;) {
+            for (var _b = __asyncValues(listDir('.', new Set(['cpany.yml', 'README.md', 'main']))), _c; _c = yield _b.next(), !_c.done;) {
                 const file = _c.value;
                 yield fs_1.promises.unlink(file);
                 files.push(file);

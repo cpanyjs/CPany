@@ -12,7 +12,7 @@ async function* listDir(
   const dirents = await promises.readdir(dir, { withFileTypes: true });
   for (const dirent of dirents) {
     const id = join(dir, dirent.name);
-    if (id.startsWith('.') || skipList.has(id)) {
+    if (dirent.name.startsWith('.') || skipList.has(id)) {
       continue;
     }
     if (dirent.isDirectory()) {
@@ -35,7 +35,10 @@ export async function createGitFileSystem(basePath: string) {
 
   const files: string[] = [];
 
-  for await (const file of listDir('.', new Set(['cpany.yml', 'README.md']))) {
+  for await (const file of listDir(
+    '.',
+    new Set(['cpany.yml', 'README.md', 'main'])
+  )) {
     await promises.unlink(file);
     files.push(file);
   }
