@@ -9756,7 +9756,7 @@ function run() {
         for (const id of configStatic) {
             const result = yield instance.load(id);
             if (result !== null) {
-                core.info(`Fetch ${id}`);
+                core.info(`Fetched ${id}`);
                 const { key, content } = result;
                 yield fs.add(key, content);
             }
