@@ -1,9 +1,12 @@
 import { join, dirname } from 'path';
 import { writeFileSync, promises } from 'fs';
 import dayjs from 'dayjs';
+import timezone from 'dayjs/plugin/timezone';
 
 import { mkdirP } from '@actions/io';
 import { exec } from '@actions/exec';
+
+dayjs.extend(timezone);
 
 async function* listDir(
   dir: string,
@@ -55,7 +58,7 @@ export async function createGitFileSystem(
     await exec('git', [
       'commit',
       '-m',
-      `Fetch data on ${dayjs().format('YYYY-MM-DD HH:mm')}`
+      `Fetch data on ${dayjs().tz('Asia/Shanghai').format('YYYY-MM-DD HH:mm')}`
     ]);
     await exec('git', ['push']);
   };
