@@ -1,11 +1,13 @@
 import { join, dirname } from 'path';
 import { writeFileSync, promises } from 'fs';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
 import timezone from 'dayjs/plugin/timezone';
 
 import { mkdirP } from '@actions/io';
 import { exec } from '@actions/exec';
 
+dayjs.extend(utc);
 dayjs.extend(timezone);
 
 async function* listDir(
