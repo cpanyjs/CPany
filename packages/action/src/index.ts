@@ -16,9 +16,11 @@ async function getConfig(path: string) {
 }
 
 async function run() {
+  core.startGroup('Load CPany config');
   const configPath = core.getInput('config');
   const config = await getConfig(configPath);
   core.info(JSON.stringify(config, null, 2));
+  core.endGroup();
 
   const instance = createInstance({ plugins: [...codeforcesPlugin()] });
 
@@ -26,6 +28,8 @@ async function run() {
     './',
     new Set(['README.md', configPath, core.getInput('skipClean')])
   );
+
+  core.startGroup('Fetch data');
 
   const configStatic = config?.static ?? [];
   for (const id of configStatic) {
@@ -55,6 +59,8 @@ async function run() {
       }
     }
   }
+
+  core.endGroup();
 
   const nowTime = now();
   await processReadme(nowTime);
