@@ -1,12 +1,12 @@
-static:
-  - codeforces/contest.json
-
 users:
   XLor:
-    codeforces:
+    codeforces/handle:
       - XLor
       - XLorTree
   miaojie:
-    codeforces:
+    codeforces/handle:
       - miaojie
       - ActorBlack
+
+static:
+  - codeforces/contest.json
