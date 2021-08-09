@@ -9822,7 +9822,7 @@ function run() {
         const config = yield getConfig(configPath);
         core.info(JSON.stringify(config, null, 2));
         const instance = core_1.createInstance({ plugins: [...codeforces_1.codeforcesPlugin()] });
-        const fs = yield fs_2.createGitFileSystem('./', new Set(['README.md', configPath, core.getInput('main')]));
+        const fs = yield fs_2.createGitFileSystem('./', new Set(['README.md', configPath, core.getInput('skipClean')]));
         const configStatic = (_a = config === null || config === void 0 ? void 0 : config.static) !== null && _a !== void 0 ? _a : [];
         for (const id of configStatic) {
             const result = yield instance.load(id);

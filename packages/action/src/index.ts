@@ -22,7 +22,7 @@ async function run() {
 
   const fs = await createGitFileSystem(
     './',
-    new Set(['README.md', configPath, core.getInput('main')])
+    new Set(['README.md', configPath, core.getInput('skipClean')])
   );
 
   const configStatic = config?.static ?? [];

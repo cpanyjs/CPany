@@ -6,10 +6,10 @@ inputs:
     required: false
     description: 'CPany config file path'
     default: 'cpany.yml'
-  main:
+  skipClean:
     required: false
     description: 'CPany main folder path'
-    default: 'main'
+    default: ''
 runs:
   using: 'node12'
   main: 'dist/index.js'
