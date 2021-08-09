@@ -9727,7 +9727,7 @@ function createGitFileSystem(basePath, skipList = new Set()) {
             fs_1.writeFileSync(fullPath, content, 'utf8');
         });
         const push = (time) => __awaiter(this, void 0, void 0, function* () {
-            yield exec_1.exec('git', ['add', ...files]);
+            yield exec_1.exec('git', ['add', 'README.md', ...files]);
             yield exec_1.exec('git', ['commit', '-m', `Fetch data on ${time}`]);
             yield exec_1.exec('git', ['push']);
         });
