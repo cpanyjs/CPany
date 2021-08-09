@@ -10068,7 +10068,28 @@ function handleInfoPlugin(api) {
                                 handle: id
                             }
                         });
-                        return result;
+                        return result.map((submission) => {
+                            const url = submission.contestId >= 100001
+                                ? `http://codeforces.com/gym/${submission.contestId}/submission/${submission.id}`
+                                : `http://codeforces.com/contest/${submission.contestId}/submission/${submission.id}`;
+                            return {
+                                id: submission.id,
+                                contestId: submission.contestId,
+                                creationTimeSeconds: submission.creationTimeSeconds,
+                                relativeTimeSeconds: submission.relativeTimeSeconds,
+                                language: submission.programmingLanguage,
+                                verdict: submission.verdict,
+                                author: submission.author,
+                                problem: {
+                                    contestId: submission.problem.contestId,
+                                    index: submission.problem.index,
+                                    name: submission.problem.name,
+                                    rating: submission.problem.rating,
+                                    tags: submission.problem.tags
+                                },
+                                url
+                            };
+                        });
                     });
                     const data = yield fetchInfo();
                     data.codeforces.submissions = yield fetchSubmission();

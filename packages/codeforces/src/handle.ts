@@ -41,12 +41,34 @@ export function handleInfoPlugin(api: AxiosInstance): ITransformPlugin {
         const fetchSubmission = async () => {
           const {
             data: { result }
-          } = await api.get('user.status', {
+          } = await api.get<{ result: SubmissionDTO[] }>('user.status', {
             params: {
               handle: id
             }
           });
-          return result as SubmissionDTO[];
+          return result.map((submission: SubmissionDTO) => {
+            const url =
+              submission.contestId >= 100001
+                ? `http://codeforces.com/gym/${submission.contestId}/submission/${submission.id}`
+                : `http://codeforces.com/contest/${submission.contestId}/submission/${submission.id}`;
+            return {
+              id: submission.id,
+              contestId: submission.contestId,
+              creationTimeSeconds: submission.creationTimeSeconds,
+              relativeTimeSeconds: submission.relativeTimeSeconds,
+              language: submission.programmingLanguage,
+              verdict: submission.verdict,
+              author: submission.author,
+              problem: {
+                contestId: submission.problem.contestId,
+                index: submission.problem.index,
+                name: submission.problem.name,
+                rating: submission.problem.rating,
+                tags: submission.problem.tags
+              },
+              url
+            };
+          });
         };
 
         const data = await fetchInfo();
