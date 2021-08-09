@@ -2,6 +2,9 @@ name: 'Fetch data'
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - cpany
 
 jobs:
   fetch:
