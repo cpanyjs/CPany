@@ -10069,7 +10069,7 @@ function handleInfoPlugin(api) {
                             }
                         });
                         return result.map((submission) => {
-                            const url = submission.contestId >= 100001
+                            const submissionUrl = submission.contestId >= 100001
                                 ? `http://codeforces.com/gym/${submission.contestId}/submission/${submission.id}`
                                 : `http://codeforces.com/contest/${submission.contestId}/submission/${submission.id}`;
                             return {
@@ -10079,7 +10079,11 @@ function handleInfoPlugin(api) {
                                 relativeTimeSeconds: submission.relativeTimeSeconds,
                                 language: submission.programmingLanguage,
                                 verdict: submission.verdict,
-                                author: submission.author,
+                                author: {
+                                    members: submission.author.members.map(({ handle }) => handle),
+                                    participantType: submission.author.participantType,
+                                    teamName: submission.author.teamName
+                                },
                                 problem: {
                                     contestId: submission.problem.contestId,
                                     index: submission.problem.index,
@@ -10087,7 +10091,7 @@ function handleInfoPlugin(api) {
                                     rating: submission.problem.rating,
                                     tags: submission.problem.tags
                                 },
-                                url
+                                submissionUrl
                             };
                         });
                     });

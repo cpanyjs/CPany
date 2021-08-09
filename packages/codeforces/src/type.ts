@@ -51,8 +51,9 @@ export interface SubmissionDTO {
   relativeTimeSeconds: number;
   problem: ProblemDTO;
   author: {
-    members: string[];
+    members: Array<{ handle: string }>;
     participantType: ParticipantType;
+    teamName?: string;
   };
   programmingLanguage: string;
   verdict: Verdict;
