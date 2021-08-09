@@ -9700,7 +9700,7 @@ const fs_1 = __nccwpck_require__(5747);
 const dayjs_1 = __importDefault(__nccwpck_require__(3767));
 const io_1 = __nccwpck_require__(7554);
 const exec_1 = __nccwpck_require__(4308);
-function listDir(dir, skipList) {
+function listDir(dir, skipList = new Set()) {
     return __asyncGenerator(this, arguments, function* listDir_1() {
         const dirents = yield __await(fs_1.promises.readdir(dir, { withFileTypes: true }));
         for (const dirent of dirents) {
@@ -9717,7 +9717,7 @@ function listDir(dir, skipList) {
         }
     });
 }
-function createGitFileSystem(basePath) {
+function createGitFileSystem(basePath, skipList = new Set()) {
     var e_1, _a;
     return __awaiter(this, void 0, void 0, function* () {
         const username = process.env.GITHUB_ACTOR || 'Unknown';
@@ -9728,12 +9728,12 @@ function createGitFileSystem(basePath) {
             'user.email',
             `${username}@users.noreply.github.com`
         ]);
-        const files = [];
+        const files = new Set();
         try {
-            for (var _b = __asyncValues(listDir('.', new Set(['cpany.yml', 'README.md', 'main']))), _c; _c = yield _b.next(), !_c.done;) {
+            for (var _b = __asyncValues(listDir('.', skipList)), _c; _c = yield _b.next(), !_c.done;) {
                 const file = _c.value;
                 yield fs_1.promises.unlink(file);
-                files.push(file);
+                files.add(file);
             }
         }
         catch (e_1_1) { e_1 = { error: e_1_1 }; }
@@ -9745,12 +9745,12 @@ function createGitFileSystem(basePath) {
         }
         const add = (path, content) => __awaiter(this, void 0, void 0, function* () {
             const fullPath = path_1.join(basePath, path);
-            files.push(fullPath);
+            files.add(fullPath);
             yield io_1.mkdirP(path_1.dirname(fullPath));
             fs_1.writeFileSync(fullPath, content, 'utf8');
         });
         const push = () => __awaiter(this, void 0, void 0, function* () {
-            yield exec_1.exec('git', ['add', ...new Set(files)]);
+            yield exec_1.exec('git', ['add', ...files]);
             yield exec_1.exec('git', [
                 'commit',
                 '-m',
@@ -9822,7 +9822,7 @@ function run() {
         const config = yield getConfig(configPath);
         core.info(JSON.stringify(config, null, 2));
         const instance = core_1.createInstance({ plugins: [...codeforces_1.codeforcesPlugin()] });
-        const fs = yield fs_2.createGitFileSystem('./');
+        const fs = yield fs_2.createGitFileSystem('./', new Set(['README.md', configPath, core.getInput('main')]));
         const configStatic = (_a = config === null || config === void 0 ? void 0 : config.static) !== null && _a !== void 0 ? _a : [];
         for (const id of configStatic) {
             const result = yield instance.load(id);

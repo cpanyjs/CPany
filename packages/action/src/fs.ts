@@ -7,7 +7,7 @@ import { exec } from '@actions/exec';
 
 async function* listDir(
   dir: string,
-  skipList: Set<string>
+  skipList: Set<string> = new Set()
 ): AsyncGenerator<string> {
   const dirents = await promises.readdir(dir, { withFileTypes: true });
   for (const dirent of dirents) {
@@ -23,7 +23,10 @@ async function* listDir(
   }
 }
 
-export async function createGitFileSystem(basePath: string) {
+export async function createGitFileSystem(
+  basePath: string,
+  skipList: Set<string> = new Set()
+) {
   const username = process.env.GITHUB_ACTOR || 'Unknown';
   await exec('git', ['config', '--global', 'user.name', username]);
   await exec('git', [
@@ -33,25 +36,22 @@ export async function createGitFileSystem(basePath: string) {
     `${username}@users.noreply.github.com`
   ]);
 
-  const files: string[] = [];
+  const files: Set<string> = new Set();
 
-  for await (const file of listDir(
-    '.',
-    new Set(['cpany.yml', 'README.md', 'main'])
-  )) {
+  for await (const file of listDir('.', skipList)) {
     await promises.unlink(file);
-    files.push(file);
+    files.add(file);
   }
 
   const add = async (path: string, content: string) => {
     const fullPath = join(basePath, path);
-    files.push(fullPath);
+    files.add(fullPath);
     await mkdirP(dirname(fullPath));
     writeFileSync(fullPath, content, 'utf8');
   };
 
   const push = async () => {
-    await exec('git', ['add', ...new Set(files)]);
+    await exec('git', ['add', ...files]);
     await exec('git', [
       'commit',
       '-m',

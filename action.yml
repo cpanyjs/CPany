@@ -6,6 +6,10 @@ inputs:
     required: false
     description: 'CPany config file path'
     default: 'cpany.yml'
+  main:
+    required: false
+    description: 'CPany main folder path'
+    default: 'main'
 runs:
   using: 'node12'
   main: 'dist/index.js'

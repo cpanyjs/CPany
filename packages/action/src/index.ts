@@ -20,7 +20,10 @@ async function run() {
 
   const instance = createInstance({ plugins: [...codeforcesPlugin()] });
 
-  const fs = await createGitFileSystem('./');
+  const fs = await createGitFileSystem(
+    './',
+    new Set(['README.md', configPath, core.getInput('main')])
+  );
 
   const configStatic = config?.static ?? [];
   for (const id of configStatic) {
