@@ -1,3 +1,3 @@
-export function hello() {
-  console.log('hello');
-}
+export * from './cpany';
+
+export * from './plugin';

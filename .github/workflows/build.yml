@@ -2,6 +2,10 @@ name: 'build-test'
 on:
   pull_request:
   push:
+    branches:
+      - main
+      - dev
+      - 'releases/*'
 
 jobs:
   build:
@@ -21,4 +25,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./
+        with:
+          ref: cpany
+      - uses: actions/checkout@v2
+        with:
+          path: ./main
+      - uses: ./main
+        with:
+          skipClean: main

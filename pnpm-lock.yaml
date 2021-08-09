@@ -25,10 +25,23 @@ importers:
   packages/action:
     specifiers:
       '@actions/core': ^1.4.0
+      '@actions/exec': ^1.1.0
+      '@actions/io': ^1.1.1
+      '@cpany/codeforces': workspace:*
       '@cpany/core': workspace:*
+      '@types/js-yaml': ^4.0.2
+      dayjs: ^1.10.6
+      js-yaml: ^4.1.0
     dependencies:
       '@actions/core': 1.4.0
+      '@actions/exec': 1.1.0
+      '@actions/io': 1.1.1
+      '@cpany/codeforces': link:../codeforces
       '@cpany/core': link:../core
+      dayjs: 1.10.6
+      js-yaml: 4.1.0
+    devDependencies:
+      '@types/js-yaml': 4.0.2
 
   packages/app:
     specifiers:
@@ -51,21 +64,34 @@ importers:
       typescript: 4.3.5
       vite: 2.4.1
 
-  packages/core:
+  packages/codeforces:
     specifiers:
-      '@cpany/types': workspace:^1.0.0
+      '@cpany/core': workspace:*
       axios: ^0.21.1
     dependencies:
-      '@cpany/types': link:../types
+      '@cpany/core': link:../core
       axios: 0.21.1
 
-  packages/types:
-    specifiers: {}
+  packages/core:
+    specifiers:
+      axios: ^0.21.1
+    dependencies:
+      axios: 0.21.1
 
 packages:
 
   /@actions/core/1.4.0:
     resolution: {integrity: sha512-CGx2ilGq5i7zSLgiiGUtBCxhRRxibJYU6Fim0Q1Wg2aQL2LTnF27zbqZOrxfvFQ55eSBW0L8uVStgtKMpa0Qlg==}
+    dev: false
+
+  /@actions/exec/1.1.0:
+    resolution: {integrity: sha512-LImpN9AY0J1R1mEYJjVJfSZWU4zYOlEcwSTgPve1rFQqK5AwrEs6uWW5Rv70gbDIQIAUwI86z6B+9mPK4w9Sbg==}
+    dependencies:
+      '@actions/io': 1.1.1
+    dev: false
+
+  /@actions/io/1.1.1:
+    resolution: {integrity: sha512-Qi4JoKXjmE0O67wAOH6y0n26QXhMKMFo7GD/4IXNVcrtLjUlGjGuVys6pQgwF3ArfGTQu0XpqaNr0YhED2RaRA==}
     dev: false
 
   /@babel/code-frame/7.14.5:
@@ -333,6 +359,10 @@ packages:
     resolution: {integrity: sha512-LfZwXoGUDo0C3me81HXgkBg5CTQYb6xzEl+fNmbO4JdRiSKQ8A0GD1OBBvKAIsbCUgoyAty7m99GqqMQe784ew==}
     dev: true
 
+  /@types/js-yaml/4.0.2:
+    resolution: {integrity: sha512-KbeHS/Y4R+k+5sWXEYzAZKuB1yQlZtEghuhRxrVRLaqhtoG5+26JwQsa4HyS3AWX8v1Uwukma5HheduUDskasA==}
+    dev: true
+
   /@types/micromatch/4.0.2:
     resolution: {integrity: sha512-oqXqVb0ci19GtH0vOA/U2TmHTcRY9kuZl4mqUxe0QmJAlIW13kzhuK5pi1i9+ngav8FjpSb9FVS/GE00GLX1VA==}
     dependencies:
@@ -597,6 +627,10 @@ packages:
     resolution: {integrity: sha1-q8av7tzqUugJzcA3au0845Y10X8=}
     dev: true
 
+  /argparse/2.0.1:
+    resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
+    dev: false
+
   /astral-regex/2.0.0:
     resolution: {integrity: sha512-Z7tMw1ytTXt5jqMcOP+OQteU1VuNK9Y02uuJtKQ1Sv69jXQKKg5cibLwGJow8yzZP+eAc18EmLGPal0bp36rvQ==}
     engines: {node: '>=8'}
@@ -786,6 +820,10 @@ packages:
 
   /csstype/2.6.17:
     resolution: {integrity: sha512-u1wmTI1jJGzCJzWndZo8mk4wnPTZd1eOIYTYvuEyOQGfmDl3TrabCCfKnOC86FZwW/9djqTl933UF/cS425i9A==}
+    dev: false
+
+  /dayjs/1.10.6:
+    resolution: {integrity: sha512-AztC/IOW4L1Q41A86phW5Thhcrco3xuAA+YX/BLpLWWjRcTj5TOt/QImBLmCKlrF7u7k47arTnOyL6GnbG8Hvw==}
     dev: false
 
   /de-indent/1.0.2:
@@ -1129,6 +1167,13 @@ packages:
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
     dev: true
+
+  /js-yaml/4.1.0:
+    resolution: {integrity: sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==}
+    hasBin: true
+    dependencies:
+      argparse: 2.0.1
+    dev: false
 
   /jsesc/2.5.2:
     resolution: {integrity: sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==}

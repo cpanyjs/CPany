@@ -1,6 +1,6 @@
 {
-  "name": "@cpany/types",
-  "description": "CPany types package",
+  "name": "@cpany/codeforces",
+  "description": "CPany codeforces package",
   "version": "1.0.0",
   "license": "MIT",
   "author": "XLor",
@@ -8,5 +8,9 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc"
+  },
+  "dependencies": {
+    "@cpany/core": "workspace:*",
+    "axios": "^0.21.1"
   }
 }
