@@ -10,3 +10,4 @@ users:
 
 static:
   - codeforces/contest.json
+  - codeforces/gym-contest.json
