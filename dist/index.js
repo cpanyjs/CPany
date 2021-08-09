@@ -9818,6 +9818,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.gymContestListPlugin = exports.contestListPlugin = void 0;
+function transformContestInfo(contest) {
+    return {
+        id: contest.id,
+        name: contest.name,
+        contestUrl: `http://codeforces.com/contest/${contest.id}`,
+        standingsUrl: `http://codeforces.com/contest/${contest.id}/standings`,
+        type: contest.type,
+        phase: contest.phase,
+        startTimeSeconds: contest.startTimeSeconds,
+        durationSeconds: contest.durationSeconds
+    };
+}
+function transformGymContestInfo(contest) {
+    return {
+        id: contest.id,
+        name: contest.name,
+        contestUrl: `http://codeforces.com/gym/${contest.id}`,
+        standingsUrl: `http://codeforces.com/gym/${contest.id}/standings`,
+        type: contest.type,
+        phase: contest.phase,
+        startTimeSeconds: contest.startTimeSeconds,
+        durationSeconds: contest.durationSeconds
+    };
+}
 function contestListPlugin(api) {
     const name = 'codeforces/contest.json';
     return {
@@ -9826,7 +9850,7 @@ function contestListPlugin(api) {
             return __awaiter(this, void 0, void 0, function* () {
                 if (id === name) {
                     const { data: { result } } = yield api.get('contest.list');
-                    return JSON.stringify(result, null, 2);
+                    return JSON.stringify(result.map(transformContestInfo), null, 2);
                 }
             });
         }
@@ -9841,7 +9865,7 @@ function gymContestListPlugin(api) {
             return __awaiter(this, void 0, void 0, function* () {
                 if (id === name) {
                     const { data: { result } } = yield api.get('contest.list.gym');
-                    return JSON.stringify(result, null, 2);
+                    return JSON.stringify(result.map(transformGymContestInfo), null, 2);
                 }
             });
         }
