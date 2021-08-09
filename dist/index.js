@@ -9754,7 +9754,7 @@ function createGitFileSystem(basePath, skipList = new Set()) {
             yield exec_1.exec('git', [
                 'commit',
                 '-m',
-                `"Fetch data on ${dayjs_1.default().format('YYYY-MM-DD HH:mm')}"`
+                `Fetch data on ${dayjs_1.default().format('YYYY-MM-DD HH:mm')}`
             ]);
             yield exec_1.exec('git', ['push']);
         });
