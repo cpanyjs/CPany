@@ -15,16 +15,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1517,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 479,
-          "startTimeSeconds": 1619188500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1517,
@@ -38,7 +32,7 @@
             "two pointers"
           ]
         },
-        "url": "http://codeforces.com/contest/1517/submission/114037419"
+        "submissionUrl": "http://codeforces.com/contest/1517/submission/114037419"
       },
       {
         "id": 114014998,
@@ -48,16 +42,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "TIME_LIMIT_EXCEEDED",
         "author": {
-          "contestId": 1517,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 479,
-          "startTimeSeconds": 1619188500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1517,
@@ -70,7 +58,7 @@
             "shortest paths"
           ]
         },
-        "url": "http://codeforces.com/contest/1517/submission/114014998"
+        "submissionUrl": "http://codeforces.com/contest/1517/submission/114014998"
       },
       {
         "id": 114000919,
@@ -80,16 +68,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1517,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 479,
-          "startTimeSeconds": 1619188500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1517,
@@ -103,7 +85,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1517/submission/114000919"
+        "submissionUrl": "http://codeforces.com/contest/1517/submission/114000919"
       },
       {
         "id": 113995728,
@@ -113,16 +95,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1517,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 479,
-          "startTimeSeconds": 1619188500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1517,
@@ -135,7 +111,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1517/submission/113995728"
+        "submissionUrl": "http://codeforces.com/contest/1517/submission/113995728"
       },
       {
         "id": 113995491,
@@ -145,16 +121,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1517,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 479,
-          "startTimeSeconds": 1619188500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1517,
@@ -166,7 +136,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1517/submission/113995491"
+        "submissionUrl": "http://codeforces.com/contest/1517/submission/113995491"
       },
       {
         "id": 95231322,
@@ -176,15 +146,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1430,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1602407100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1430,
@@ -197,7 +162,7 @@
             "strings"
           ]
         },
-        "url": "http://codeforces.com/contest/1430/submission/95231322"
+        "submissionUrl": "http://codeforces.com/contest/1430/submission/95231322"
       },
       {
         "id": 95226050,
@@ -207,15 +172,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1430,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1602407100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1430,
@@ -229,7 +189,7 @@
             "two pointers"
           ]
         },
-        "url": "http://codeforces.com/contest/1430/submission/95226050"
+        "submissionUrl": "http://codeforces.com/contest/1430/submission/95226050"
       },
       {
         "id": 95216317,
@@ -239,15 +199,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1430,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1602407100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1430,
@@ -261,7 +216,7 @@
             "two pointers"
           ]
         },
-        "url": "http://codeforces.com/contest/1430/submission/95216317"
+        "submissionUrl": "http://codeforces.com/contest/1430/submission/95216317"
       },
       {
         "id": 95212900,
@@ -271,15 +226,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1430,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1602407100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1430,
@@ -293,7 +243,7 @@
             "two pointers"
           ]
         },
-        "url": "http://codeforces.com/contest/1430/submission/95212900"
+        "submissionUrl": "http://codeforces.com/contest/1430/submission/95212900"
       },
       {
         "id": 95207283,
@@ -303,15 +253,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1430,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1602407100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1430,
@@ -326,7 +271,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1430/submission/95207283"
+        "submissionUrl": "http://codeforces.com/contest/1430/submission/95207283"
       },
       {
         "id": 95204428,
@@ -336,15 +281,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1430,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1602407100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1430,
@@ -357,7 +297,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1430/submission/95204428"
+        "submissionUrl": "http://codeforces.com/contest/1430/submission/95204428"
       },
       {
         "id": 95199994,
@@ -367,15 +307,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1430,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1602407100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1430,
@@ -388,7 +323,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1430/submission/95199994"
+        "submissionUrl": "http://codeforces.com/contest/1430/submission/95199994"
       },
       {
         "id": 95198374,
@@ -398,15 +333,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1430,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1602407100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1430,
@@ -419,7 +349,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1430/submission/95198374"
+        "submissionUrl": "http://codeforces.com/contest/1430/submission/95198374"
       },
       {
         "id": 95195466,
@@ -429,15 +359,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1430,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1602407100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1430,
@@ -450,7 +375,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1430/submission/95195466"
+        "submissionUrl": "http://codeforces.com/contest/1430/submission/95195466"
       },
       {
         "id": 95143869,
@@ -460,16 +385,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1427,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 243,
-          "startTimeSeconds": 1602341400
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1427,
@@ -482,7 +401,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1427/submission/95143869"
+        "submissionUrl": "http://codeforces.com/contest/1427/submission/95143869"
       },
       {
         "id": 95140847,
@@ -492,16 +411,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "RUNTIME_ERROR",
         "author": {
-          "contestId": 1427,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 243,
-          "startTimeSeconds": 1602341400
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1427,
@@ -513,7 +426,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1427/submission/95140847"
+        "submissionUrl": "http://codeforces.com/contest/1427/submission/95140847"
       },
       {
         "id": 95139714,
@@ -523,16 +436,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "RUNTIME_ERROR",
         "author": {
-          "contestId": 1427,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 243,
-          "startTimeSeconds": 1602341400
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1427,
@@ -544,7 +451,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1427/submission/95139714"
+        "submissionUrl": "http://codeforces.com/contest/1427/submission/95139714"
       },
       {
         "id": 95139622,
@@ -554,16 +461,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1427,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 243,
-          "startTimeSeconds": 1602341400
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1427,
@@ -575,7 +476,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1427/submission/95139622"
+        "submissionUrl": "http://codeforces.com/contest/1427/submission/95139622"
       },
       {
         "id": 95131461,
@@ -585,16 +486,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1427,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 243,
-          "startTimeSeconds": 1602341400
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1427,
@@ -605,7 +500,7 @@
             "dp"
           ]
         },
-        "url": "http://codeforces.com/contest/1427/submission/95131461"
+        "submissionUrl": "http://codeforces.com/contest/1427/submission/95131461"
       },
       {
         "id": 95116677,
@@ -615,16 +510,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1427,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 243,
-          "startTimeSeconds": 1602341400
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1427,
@@ -637,7 +526,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1427/submission/95116677"
+        "submissionUrl": "http://codeforces.com/contest/1427/submission/95116677"
       },
       {
         "id": 95115248,
@@ -647,16 +536,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1427,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 243,
-          "startTimeSeconds": 1602341400
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1427,
@@ -669,7 +552,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1427/submission/95115248"
+        "submissionUrl": "http://codeforces.com/contest/1427/submission/95115248"
       },
       {
         "id": 95101031,
@@ -679,16 +562,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1427,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 243,
-          "startTimeSeconds": 1602341400
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1427,
@@ -700,7 +577,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1427/submission/95101031"
+        "submissionUrl": "http://codeforces.com/contest/1427/submission/95101031"
       },
       {
         "id": 95097260,
@@ -710,16 +587,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "RUNTIME_ERROR",
         "author": {
-          "contestId": 1427,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 243,
-          "startTimeSeconds": 1602341400
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1427,
@@ -731,7 +602,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1427/submission/95097260"
+        "submissionUrl": "http://codeforces.com/contest/1427/submission/95097260"
       },
       {
         "id": 94348335,
@@ -741,15 +612,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1408,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1601476500
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1408,
@@ -761,7 +627,7 @@
             "divide and conquer"
           ]
         },
-        "url": "http://codeforces.com/contest/1408/submission/94348335"
+        "submissionUrl": "http://codeforces.com/contest/1408/submission/94348335"
       },
       {
         "id": 94343187,
@@ -771,16 +637,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1408,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 286,
-          "startTimeSeconds": 1601476500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1408,
@@ -796,7 +656,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1408/submission/94343187"
+        "submissionUrl": "http://codeforces.com/contest/1408/submission/94343187"
       },
       {
         "id": 94327231,
@@ -806,16 +666,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1408,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 286,
-          "startTimeSeconds": 1601476500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1408,
@@ -832,7 +686,7 @@
             "two pointers"
           ]
         },
-        "url": "http://codeforces.com/contest/1408/submission/94327231"
+        "submissionUrl": "http://codeforces.com/contest/1408/submission/94327231"
       },
       {
         "id": 94325628,
@@ -842,16 +696,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1408,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 286,
-          "startTimeSeconds": 1601476500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1408,
@@ -868,7 +716,7 @@
             "two pointers"
           ]
         },
-        "url": "http://codeforces.com/contest/1408/submission/94325628"
+        "submissionUrl": "http://codeforces.com/contest/1408/submission/94325628"
       },
       {
         "id": 94320840,
@@ -878,16 +726,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1408,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 286,
-          "startTimeSeconds": 1601476500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1408,
@@ -900,7 +742,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1408/submission/94320840"
+        "submissionUrl": "http://codeforces.com/contest/1408/submission/94320840"
       },
       {
         "id": 94319901,
@@ -910,16 +752,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1408,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 286,
-          "startTimeSeconds": 1601476500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1408,
@@ -932,7 +768,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1408/submission/94319901"
+        "submissionUrl": "http://codeforces.com/contest/1408/submission/94319901"
       },
       {
         "id": 94315467,
@@ -942,16 +778,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1408,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 286,
-          "startTimeSeconds": 1601476500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1408,
@@ -966,7 +796,7 @@
             "two pointers"
           ]
         },
-        "url": "http://codeforces.com/contest/1408/submission/94315467"
+        "submissionUrl": "http://codeforces.com/contest/1408/submission/94315467"
       },
       {
         "id": 94300888,
@@ -976,16 +806,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1408,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 286,
-          "startTimeSeconds": 1601476500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1408,
@@ -996,7 +820,7 @@
             "constructive algorithms"
           ]
         },
-        "url": "http://codeforces.com/contest/1408/submission/94300888"
+        "submissionUrl": "http://codeforces.com/contest/1408/submission/94300888"
       },
       {
         "id": 86585052,
@@ -1006,16 +830,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1372,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 418,
-          "startTimeSeconds": 1594479900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1372,
@@ -1028,7 +846,7 @@
             "number theory"
           ]
         },
-        "url": "http://codeforces.com/contest/1372/submission/86585052"
+        "submissionUrl": "http://codeforces.com/contest/1372/submission/86585052"
       },
       {
         "id": 86583258,
@@ -1038,16 +856,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1372,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 418,
-          "startTimeSeconds": 1594479900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1372,
@@ -1061,7 +873,7 @@
             "greedy"
           ]
         },
-        "url": "http://codeforces.com/contest/1372/submission/86583258"
+        "submissionUrl": "http://codeforces.com/contest/1372/submission/86583258"
       },
       {
         "id": 86573654,
@@ -1071,16 +883,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1372,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 418,
-          "startTimeSeconds": 1594479900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1372,
@@ -1092,7 +898,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1372/submission/86573654"
+        "submissionUrl": "http://codeforces.com/contest/1372/submission/86573654"
       },
       {
         "id": 86565612,
@@ -1102,16 +908,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1372,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 418,
-          "startTimeSeconds": 1594479900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1372,
@@ -1125,7 +925,7 @@
             "greedy"
           ]
         },
-        "url": "http://codeforces.com/contest/1372/submission/86565612"
+        "submissionUrl": "http://codeforces.com/contest/1372/submission/86565612"
       },
       {
         "id": 86545258,
@@ -1135,16 +935,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1372,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 418,
-          "startTimeSeconds": 1594479900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1372,
@@ -1156,7 +950,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1372/submission/86545258"
+        "submissionUrl": "http://codeforces.com/contest/1372/submission/86545258"
       },
       {
         "id": 86535217,
@@ -1166,16 +960,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1372,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 418,
-          "startTimeSeconds": 1594479900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1372,
@@ -1188,7 +976,7 @@
             "number theory"
           ]
         },
-        "url": "http://codeforces.com/contest/1372/submission/86535217"
+        "submissionUrl": "http://codeforces.com/contest/1372/submission/86535217"
       },
       {
         "id": 86521597,
@@ -1198,16 +986,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1372,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 418,
-          "startTimeSeconds": 1594479900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1372,
@@ -1219,7 +1001,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1372/submission/86521597"
+        "submissionUrl": "http://codeforces.com/contest/1372/submission/86521597"
       },
       {
         "id": 86519944,
@@ -1229,16 +1011,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1372,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 418,
-          "startTimeSeconds": 1594479900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1372,
@@ -1250,7 +1026,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1372/submission/86519944"
+        "submissionUrl": "http://codeforces.com/contest/1372/submission/86519944"
       },
       {
         "id": 85993462,
@@ -1260,16 +1036,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1375,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 6,
-          "startTimeSeconds": 1593873900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1375,
@@ -1282,7 +1052,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1375/submission/85993462"
+        "submissionUrl": "http://codeforces.com/contest/1375/submission/85993462"
       },
       {
         "id": 85993146,
@@ -1292,16 +1062,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1375,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 6,
-          "startTimeSeconds": 1593873900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1375,
@@ -1314,7 +1078,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1375/submission/85993146"
+        "submissionUrl": "http://codeforces.com/contest/1375/submission/85993146"
       },
       {
         "id": 85986779,
@@ -1324,16 +1088,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1375,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 6,
-          "startTimeSeconds": 1593873900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1375,
@@ -1346,7 +1104,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1375/submission/85986779"
+        "submissionUrl": "http://codeforces.com/contest/1375/submission/85986779"
       },
       {
         "id": 85952017,
@@ -1356,16 +1114,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1375,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 6,
-          "startTimeSeconds": 1593873900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1375,
@@ -1377,7 +1129,7 @@
             "greedy"
           ]
         },
-        "url": "http://codeforces.com/contest/1375/submission/85952017"
+        "submissionUrl": "http://codeforces.com/contest/1375/submission/85952017"
       },
       {
         "id": 85949755,
@@ -1387,16 +1139,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1375,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 6,
-          "startTimeSeconds": 1593873900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1375,
@@ -1409,7 +1155,7 @@
             "greedy"
           ]
         },
-        "url": "http://codeforces.com/contest/1375/submission/85949755"
+        "submissionUrl": "http://codeforces.com/contest/1375/submission/85949755"
       },
       {
         "id": 85946246,
@@ -1419,16 +1165,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1375,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 6,
-          "startTimeSeconds": 1593873900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1375,
@@ -1441,7 +1181,7 @@
             "greedy"
           ]
         },
-        "url": "http://codeforces.com/contest/1375/submission/85946246"
+        "submissionUrl": "http://codeforces.com/contest/1375/submission/85946246"
       },
       {
         "id": 85932940,
@@ -1451,16 +1191,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1375,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 6,
-          "startTimeSeconds": 1593873900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1375,
@@ -1472,7 +1206,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1375/submission/85932940"
+        "submissionUrl": "http://codeforces.com/contest/1375/submission/85932940"
       },
       {
         "id": 84267648,
@@ -1482,15 +1216,10 @@
         "language": "GNU C++17 (64)",
         "verdict": "OK",
         "author": {
-          "contestId": 1368,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1592491500
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1368,
@@ -1505,7 +1234,7 @@
             "strings"
           ]
         },
-        "url": "http://codeforces.com/contest/1368/submission/84267648"
+        "submissionUrl": "http://codeforces.com/contest/1368/submission/84267648"
       },
       {
         "id": 84238450,
@@ -1515,16 +1244,10 @@
         "language": "GNU C++11",
         "verdict": "RUNTIME_ERROR",
         "author": {
-          "contestId": 1368,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 107,
-          "startTimeSeconds": 1592491500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1368,
@@ -1537,7 +1260,7 @@
             "greedy"
           ]
         },
-        "url": "http://codeforces.com/contest/1368/submission/84238450"
+        "submissionUrl": "http://codeforces.com/contest/1368/submission/84238450"
       },
       {
         "id": 84238175,
@@ -1547,16 +1270,10 @@
         "language": "GNU C++11",
         "verdict": "RUNTIME_ERROR",
         "author": {
-          "contestId": 1368,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 107,
-          "startTimeSeconds": 1592491500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1368,
@@ -1569,7 +1286,7 @@
             "greedy"
           ]
         },
-        "url": "http://codeforces.com/contest/1368/submission/84238175"
+        "submissionUrl": "http://codeforces.com/contest/1368/submission/84238175"
       },
       {
         "id": 84235206,
@@ -1579,16 +1296,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1368,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 107,
-          "startTimeSeconds": 1592491500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1368,
@@ -1601,7 +1312,7 @@
             "greedy"
           ]
         },
-        "url": "http://codeforces.com/contest/1368/submission/84235206"
+        "submissionUrl": "http://codeforces.com/contest/1368/submission/84235206"
       },
       {
         "id": 84216967,
@@ -1611,16 +1322,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1368,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 107,
-          "startTimeSeconds": 1592491500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1368,
@@ -1633,7 +1338,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1368/submission/84216967"
+        "submissionUrl": "http://codeforces.com/contest/1368/submission/84216967"
       },
       {
         "id": 84210347,
@@ -1643,16 +1348,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1368,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 107,
-          "startTimeSeconds": 1592491500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1368,
@@ -1663,7 +1362,7 @@
             "constructive algorithms"
           ]
         },
-        "url": "http://codeforces.com/contest/1368/submission/84210347"
+        "submissionUrl": "http://codeforces.com/contest/1368/submission/84210347"
       },
       {
         "id": 84207124,
@@ -1673,16 +1372,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1368,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 107,
-          "startTimeSeconds": 1592491500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1368,
@@ -1693,7 +1386,7 @@
             "constructive algorithms"
           ]
         },
-        "url": "http://codeforces.com/contest/1368/submission/84207124"
+        "submissionUrl": "http://codeforces.com/contest/1368/submission/84207124"
       },
       {
         "id": 84191216,
@@ -1703,16 +1396,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1368,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 107,
-          "startTimeSeconds": 1592491500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1368,
@@ -1727,7 +1414,7 @@
             "strings"
           ]
         },
-        "url": "http://codeforces.com/contest/1368/submission/84191216"
+        "submissionUrl": "http://codeforces.com/contest/1368/submission/84191216"
       },
       {
         "id": 84189459,
@@ -1737,16 +1424,10 @@
         "language": "GNU C++11",
         "verdict": "RUNTIME_ERROR",
         "author": {
-          "contestId": 1368,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 107,
-          "startTimeSeconds": 1592491500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1368,
@@ -1761,7 +1442,7 @@
             "strings"
           ]
         },
-        "url": "http://codeforces.com/contest/1368/submission/84189459"
+        "submissionUrl": "http://codeforces.com/contest/1368/submission/84189459"
       },
       {
         "id": 84181451,
@@ -1771,16 +1452,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1368,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 107,
-          "startTimeSeconds": 1592491500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1368,
@@ -1794,7 +1469,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1368/submission/84181451"
+        "submissionUrl": "http://codeforces.com/contest/1368/submission/84181451"
       },
       {
         "id": 76847785,
@@ -1804,16 +1479,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1336,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 16,
-          "startTimeSeconds": 1586961300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1336,
@@ -1828,7 +1497,7 @@
             "two pointers"
           ]
         },
-        "url": "http://codeforces.com/contest/1336/submission/76847785"
+        "submissionUrl": "http://codeforces.com/contest/1336/submission/76847785"
       },
       {
         "id": 76827538,
@@ -1838,16 +1507,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1336,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 16,
-          "startTimeSeconds": 1586961300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1336,
@@ -1862,7 +1525,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1336/submission/76827538"
+        "submissionUrl": "http://codeforces.com/contest/1336/submission/76827538"
       },
       {
         "id": 76406421,
@@ -1872,15 +1535,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1338,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1586700300
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1338,
@@ -1895,7 +1553,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1338/submission/76406421"
+        "submissionUrl": "http://codeforces.com/contest/1338/submission/76406421"
       },
       {
         "id": 76397164,
@@ -1905,16 +1563,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1338,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 33,
-          "startTimeSeconds": 1586700300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1338,
@@ -1929,7 +1581,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1338/submission/76397164"
+        "submissionUrl": "http://codeforces.com/contest/1338/submission/76397164"
       },
       {
         "id": 76395278,
@@ -1939,16 +1591,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1338,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 33,
-          "startTimeSeconds": 1586700300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1338,
@@ -1963,7 +1609,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1338/submission/76395278"
+        "submissionUrl": "http://codeforces.com/contest/1338/submission/76395278"
       },
       {
         "id": 76389983,
@@ -1973,16 +1619,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1338,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 33,
-          "startTimeSeconds": 1586700300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1338,
@@ -1997,7 +1637,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1338/submission/76389983"
+        "submissionUrl": "http://codeforces.com/contest/1338/submission/76389983"
       },
       {
         "id": 76367155,
@@ -2007,16 +1647,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1338,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 33,
-          "startTimeSeconds": 1586700300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1338,
@@ -2032,7 +1666,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1338/submission/76367155"
+        "submissionUrl": "http://codeforces.com/contest/1338/submission/76367155"
       },
       {
         "id": 76339384,
@@ -2042,16 +1676,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1338,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 33,
-          "startTimeSeconds": 1586700300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1338,
@@ -2063,7 +1691,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1338/submission/76339384"
+        "submissionUrl": "http://codeforces.com/contest/1338/submission/76339384"
       },
       {
         "id": 76338552,
@@ -2073,16 +1701,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1338,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 33,
-          "startTimeSeconds": 1586700300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1338,
@@ -2094,7 +1716,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1338/submission/76338552"
+        "submissionUrl": "http://codeforces.com/contest/1338/submission/76338552"
       },
       {
         "id": 66357037,
@@ -2104,16 +1726,10 @@
         "language": "GNU C++11",
         "verdict": "TIME_LIMIT_EXCEEDED",
         "author": {
-          "contestId": 1264,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 13,
-          "startTimeSeconds": 1575556500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1264,
@@ -2125,7 +1741,7 @@
             "probabilities"
           ]
         },
-        "url": "http://codeforces.com/contest/1264/submission/66357037"
+        "submissionUrl": "http://codeforces.com/contest/1264/submission/66357037"
       },
       {
         "id": 66324830,
@@ -2135,16 +1751,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1264,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 13,
-          "startTimeSeconds": 1575556500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1264,
@@ -2156,7 +1766,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1264/submission/66324830"
+        "submissionUrl": "http://codeforces.com/contest/1264/submission/66324830"
       },
       {
         "id": 65986358,
@@ -2166,16 +1776,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1263,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 152,
-          "startTimeSeconds": 1575038100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1263,
@@ -2187,7 +1791,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1263/submission/65986358"
+        "submissionUrl": "http://codeforces.com/contest/1263/submission/65986358"
       },
       {
         "id": 65984759,
@@ -2197,16 +1801,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1263,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 152,
-          "startTimeSeconds": 1575038100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1263,
@@ -2218,7 +1816,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1263/submission/65984759"
+        "submissionUrl": "http://codeforces.com/contest/1263/submission/65984759"
       },
       {
         "id": 65978608,
@@ -2228,16 +1826,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1263,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 152,
-          "startTimeSeconds": 1575038100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1263,
@@ -2251,7 +1843,7 @@
             "number theory"
           ]
         },
-        "url": "http://codeforces.com/contest/1263/submission/65978608"
+        "submissionUrl": "http://codeforces.com/contest/1263/submission/65978608"
       },
       {
         "id": 65975541,
@@ -2261,16 +1853,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1263,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 152,
-          "startTimeSeconds": 1575038100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1263,
@@ -2282,7 +1868,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1263/submission/65975541"
+        "submissionUrl": "http://codeforces.com/contest/1263/submission/65975541"
       },
       {
         "id": 65972416,
@@ -2292,16 +1878,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1263,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 152,
-          "startTimeSeconds": 1575038100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1263,
@@ -2312,7 +1892,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1263/submission/65972416"
+        "submissionUrl": "http://codeforces.com/contest/1263/submission/65972416"
       },
       {
         "id": 65969326,
@@ -2322,16 +1902,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1263,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 152,
-          "startTimeSeconds": 1575038100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1263,
@@ -2344,7 +1918,7 @@
             "graphs"
           ]
         },
-        "url": "http://codeforces.com/contest/1263/submission/65969326"
+        "submissionUrl": "http://codeforces.com/contest/1263/submission/65969326"
       },
       {
         "id": 65880374,
@@ -2354,15 +1928,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1260,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1574862600
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1260,
@@ -2374,7 +1943,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1260/submission/65880374"
+        "submissionUrl": "http://codeforces.com/contest/1260/submission/65880374"
       },
       {
         "id": 65880356,
@@ -2384,15 +1953,10 @@
         "language": "GNU C++11",
         "verdict": "RUNTIME_ERROR",
         "author": {
-          "contestId": 1260,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1574862600
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1260,
@@ -2404,7 +1968,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1260/submission/65880356"
+        "submissionUrl": "http://codeforces.com/contest/1260/submission/65880356"
       },
       {
         "id": 65880321,
@@ -2414,15 +1978,10 @@
         "language": "GNU C++11",
         "verdict": "RUNTIME_ERROR",
         "author": {
-          "contestId": 1260,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1574862600
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1260,
@@ -2434,7 +1993,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1260/submission/65880321"
+        "submissionUrl": "http://codeforces.com/contest/1260/submission/65880321"
       },
       {
         "id": 65880219,
@@ -2444,15 +2003,10 @@
         "language": "GNU C++11",
         "verdict": "MEMORY_LIMIT_EXCEEDED",
         "author": {
-          "contestId": 1260,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1574862600
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1260,
@@ -2464,7 +2018,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1260/submission/65880219"
+        "submissionUrl": "http://codeforces.com/contest/1260/submission/65880219"
       },
       {
         "id": 65880189,
@@ -2474,15 +2028,10 @@
         "language": "GNU C++11",
         "verdict": "RUNTIME_ERROR",
         "author": {
-          "contestId": 1260,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1574862600
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1260,
@@ -2494,7 +2043,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1260/submission/65880189"
+        "submissionUrl": "http://codeforces.com/contest/1260/submission/65880189"
       },
       {
         "id": 65879988,
@@ -2504,15 +2053,10 @@
         "language": "GNU C++11",
         "verdict": "RUNTIME_ERROR",
         "author": {
-          "contestId": 1260,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1574862600
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1260,
@@ -2524,7 +2068,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1260/submission/65879988"
+        "submissionUrl": "http://codeforces.com/contest/1260/submission/65879988"
       },
       {
         "id": 65872967,
@@ -2534,15 +2078,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1260,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1574862600
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1260,
@@ -2556,7 +2095,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1260/submission/65872967"
+        "submissionUrl": "http://codeforces.com/contest/1260/submission/65872967"
       },
       {
         "id": 65872220,
@@ -2566,15 +2105,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1260,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1574862600
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1260,
@@ -2588,7 +2122,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1260/submission/65872220"
+        "submissionUrl": "http://codeforces.com/contest/1260/submission/65872220"
       },
       {
         "id": 65871772,
@@ -2598,15 +2132,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1260,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1574862600
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1260,
@@ -2620,7 +2149,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1260/submission/65871772"
+        "submissionUrl": "http://codeforces.com/contest/1260/submission/65871772"
       },
       {
         "id": 65867463,
@@ -2630,15 +2159,10 @@
         "language": "GNU C++14",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1260,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1574862600
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1260,
@@ -2652,7 +2176,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1260/submission/65867463"
+        "submissionUrl": "http://codeforces.com/contest/1260/submission/65867463"
       },
       {
         "id": 65853674,
@@ -2662,15 +2186,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1260,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1574862600
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1260,
@@ -2684,7 +2203,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1260/submission/65853674"
+        "submissionUrl": "http://codeforces.com/contest/1260/submission/65853674"
       },
       {
         "id": 65852585,
@@ -2694,15 +2213,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1260,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1574862600
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1260,
@@ -2716,7 +2230,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1260/submission/65852585"
+        "submissionUrl": "http://codeforces.com/contest/1260/submission/65852585"
       },
       {
         "id": 65841358,
@@ -2726,15 +2240,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1260,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1574862600
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1260,
@@ -2747,7 +2256,7 @@
             "number theory"
           ]
         },
-        "url": "http://codeforces.com/contest/1260/submission/65841358"
+        "submissionUrl": "http://codeforces.com/contest/1260/submission/65841358"
       },
       {
         "id": 65836124,
@@ -2757,15 +2266,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1260,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1574862600
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1260,
@@ -2778,7 +2282,7 @@
             "number theory"
           ]
         },
-        "url": "http://codeforces.com/contest/1260/submission/65836124"
+        "submissionUrl": "http://codeforces.com/contest/1260/submission/65836124"
       },
       {
         "id": 65832309,
@@ -2788,15 +2292,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1260,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1574862600
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1260,
@@ -2808,7 +2307,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1260/submission/65832309"
+        "submissionUrl": "http://codeforces.com/contest/1260/submission/65832309"
       },
       {
         "id": 65830343,
@@ -2818,15 +2317,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1260,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1574862600
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1260,
@@ -2837,7 +2331,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1260/submission/65830343"
+        "submissionUrl": "http://codeforces.com/contest/1260/submission/65830343"
       },
       {
         "id": 62156997,
@@ -2847,15 +2341,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1238,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1570545300
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1238,
@@ -2869,7 +2358,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1238/submission/62156997"
+        "submissionUrl": "http://codeforces.com/contest/1238/submission/62156997"
       },
       {
         "id": 62156111,
@@ -2879,15 +2368,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1238,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1570545300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1238,
@@ -2901,7 +2385,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1238/submission/62156111"
+        "submissionUrl": "http://codeforces.com/contest/1238/submission/62156111"
       },
       {
         "id": 62155864,
@@ -2911,15 +2395,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1238,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1570545300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1238,
@@ -2933,7 +2412,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1238/submission/62155864"
+        "submissionUrl": "http://codeforces.com/contest/1238/submission/62155864"
       },
       {
         "id": 62150098,
@@ -2943,15 +2422,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1238,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1570545300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1238,
@@ -2964,7 +2438,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1238/submission/62150098"
+        "submissionUrl": "http://codeforces.com/contest/1238/submission/62150098"
       },
       {
         "id": 62148546,
@@ -2974,15 +2448,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1238,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1570545300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1238,
@@ -2996,7 +2465,7 @@
             "strings"
           ]
         },
-        "url": "http://codeforces.com/contest/1238/submission/62148546"
+        "submissionUrl": "http://codeforces.com/contest/1238/submission/62148546"
       },
       {
         "id": 62148443,
@@ -3006,15 +2475,10 @@
         "language": "GNU C++11",
         "verdict": "RUNTIME_ERROR",
         "author": {
-          "contestId": 1238,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1570545300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1238,
@@ -3028,7 +2492,7 @@
             "strings"
           ]
         },
-        "url": "http://codeforces.com/contest/1238/submission/62148443"
+        "submissionUrl": "http://codeforces.com/contest/1238/submission/62148443"
       },
       {
         "id": 62133428,
@@ -3038,15 +2502,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1238,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1570545300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1238,
@@ -3058,7 +2517,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1238/submission/62133428"
+        "submissionUrl": "http://codeforces.com/contest/1238/submission/62133428"
       },
       {
         "id": 62127729,
@@ -3068,15 +2527,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1238,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1570545300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1238,
@@ -3088,7 +2542,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1238/submission/62127729"
+        "submissionUrl": "http://codeforces.com/contest/1238/submission/62127729"
       },
       {
         "id": 62122411,
@@ -3098,15 +2552,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1238,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1570545300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1238,
@@ -3118,7 +2567,7 @@
             "number theory"
           ]
         },
-        "url": "http://codeforces.com/contest/1238/submission/62122411"
+        "submissionUrl": "http://codeforces.com/contest/1238/submission/62122411"
       },
       {
         "id": 55046659,
@@ -3128,16 +2577,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1174,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 171,
-          "startTimeSeconds": 1559570700
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1174,
@@ -3153,7 +2596,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1174/submission/55046659"
+        "submissionUrl": "http://codeforces.com/contest/1174/submission/55046659"
       },
       {
         "id": 55046303,
@@ -3163,16 +2606,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1174,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 171,
-          "startTimeSeconds": 1559570700
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1174,
@@ -3188,7 +2625,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1174/submission/55046303"
+        "submissionUrl": "http://codeforces.com/contest/1174/submission/55046303"
       },
       {
         "id": 55038165,
@@ -3198,16 +2635,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1174,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 171,
-          "startTimeSeconds": 1559570700
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1174,
@@ -3218,7 +2649,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1174/submission/55038165"
+        "submissionUrl": "http://codeforces.com/contest/1174/submission/55038165"
       },
       {
         "id": 55037513,
@@ -3228,16 +2659,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1174,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 171,
-          "startTimeSeconds": 1559570700
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1174,
@@ -3249,7 +2674,7 @@
             "constructive algorithms"
           ]
         },
-        "url": "http://codeforces.com/contest/1174/submission/55037513"
+        "submissionUrl": "http://codeforces.com/contest/1174/submission/55037513"
       },
       {
         "id": 55034596,
@@ -3259,16 +2684,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1174,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 171,
-          "startTimeSeconds": 1559570700
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1174,
@@ -3280,7 +2699,7 @@
             "number theory"
           ]
         },
-        "url": "http://codeforces.com/contest/1174/submission/55034596"
+        "submissionUrl": "http://codeforces.com/contest/1174/submission/55034596"
       },
       {
         "id": 55028569,
@@ -3290,16 +2709,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1174,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 171,
-          "startTimeSeconds": 1559570700
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1174,
@@ -3310,7 +2723,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1174/submission/55028569"
+        "submissionUrl": "http://codeforces.com/contest/1174/submission/55028569"
       },
       {
         "id": 55025436,
@@ -3320,16 +2733,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1174,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 171,
-          "startTimeSeconds": 1559570700
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1174,
@@ -3342,7 +2749,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1174/submission/55025436"
+        "submissionUrl": "http://codeforces.com/contest/1174/submission/55025436"
       },
       {
         "id": 50851233,
@@ -3352,15 +2759,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1132,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1551798300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1132,
@@ -3371,7 +2773,7 @@
             "dp"
           ]
         },
-        "url": "http://codeforces.com/contest/1132/submission/50851233"
+        "submissionUrl": "http://codeforces.com/contest/1132/submission/50851233"
       },
       {
         "id": 50842750,
@@ -3381,15 +2783,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1132,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1551798300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1132,
@@ -3400,7 +2797,7 @@
             "dp"
           ]
         },
-        "url": "http://codeforces.com/contest/1132/submission/50842750"
+        "submissionUrl": "http://codeforces.com/contest/1132/submission/50842750"
       },
       {
         "id": 50840620,
@@ -3410,15 +2807,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1132,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1551798300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1132,
@@ -3429,7 +2821,7 @@
             "brute force"
           ]
         },
-        "url": "http://codeforces.com/contest/1132/submission/50840620"
+        "submissionUrl": "http://codeforces.com/contest/1132/submission/50840620"
       },
       {
         "id": 50827999,
@@ -3439,15 +2831,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1132,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1551798300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1132,
@@ -3459,7 +2846,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1132/submission/50827999"
+        "submissionUrl": "http://codeforces.com/contest/1132/submission/50827999"
       },
       {
         "id": 50825588,
@@ -3469,15 +2856,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1132,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1551798300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1132,
@@ -3489,7 +2871,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1132/submission/50825588"
+        "submissionUrl": "http://codeforces.com/contest/1132/submission/50825588"
       },
       {
         "id": 50824857,
@@ -3499,15 +2881,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1132,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1551798300
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1132,
@@ -3519,7 +2896,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1132/submission/50824857"
+        "submissionUrl": "http://codeforces.com/contest/1132/submission/50824857"
       },
       {
         "id": 50720693,
@@ -3529,15 +2906,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1055,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1541860500
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1055,
@@ -3549,7 +2921,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1055/submission/50720693"
+        "submissionUrl": "http://codeforces.com/contest/1055/submission/50720693"
       },
       {
         "id": 50720662,
@@ -3559,15 +2931,10 @@
         "language": "GNU C++11",
         "verdict": "RUNTIME_ERROR",
         "author": {
-          "contestId": 1055,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1541860500
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1055,
@@ -3579,7 +2946,7 @@
             "trees"
           ]
         },
-        "url": "http://codeforces.com/contest/1055/submission/50720662"
+        "submissionUrl": "http://codeforces.com/contest/1055/submission/50720662"
       },
       {
         "id": 50126335,
@@ -3589,15 +2956,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1117,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1550504400
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1117,
@@ -3612,7 +2974,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1117/submission/50126335"
+        "submissionUrl": "http://codeforces.com/contest/1117/submission/50126335"
       },
       {
         "id": 50126145,
@@ -3622,15 +2984,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1117,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1550504400
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1117,
@@ -3645,7 +3002,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1117/submission/50126145"
+        "submissionUrl": "http://codeforces.com/contest/1117/submission/50126145"
       },
       {
         "id": 50119488,
@@ -3655,15 +3012,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1117,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1550504400
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1117,
@@ -3674,7 +3026,7 @@
             "binary search"
           ]
         },
-        "url": "http://codeforces.com/contest/1117/submission/50119488"
+        "submissionUrl": "http://codeforces.com/contest/1117/submission/50119488"
       },
       {
         "id": 50117471,
@@ -3684,15 +3036,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1117,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1550504400
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1117,
@@ -3703,7 +3050,7 @@
             "binary search"
           ]
         },
-        "url": "http://codeforces.com/contest/1117/submission/50117471"
+        "submissionUrl": "http://codeforces.com/contest/1117/submission/50117471"
       },
       {
         "id": 50109144,
@@ -3713,15 +3060,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1117,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1550504400
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1117,
@@ -3734,7 +3076,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1117/submission/50109144"
+        "submissionUrl": "http://codeforces.com/contest/1117/submission/50109144"
       },
       {
         "id": 50103897,
@@ -3744,15 +3086,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1117,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1550504400
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1117,
@@ -3764,7 +3101,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1117/submission/50103897"
+        "submissionUrl": "http://codeforces.com/contest/1117/submission/50103897"
       },
       {
         "id": 50043069,
@@ -3774,15 +3111,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1113,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1550334900
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1113,
@@ -3795,7 +3127,7 @@
             "strings"
           ]
         },
-        "url": "http://codeforces.com/contest/1113/submission/50043069"
+        "submissionUrl": "http://codeforces.com/contest/1113/submission/50043069"
       },
       {
         "id": 50042881,
@@ -3805,15 +3137,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1113,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1550334900
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1113,
@@ -3826,7 +3153,7 @@
             "strings"
           ]
         },
-        "url": "http://codeforces.com/contest/1113/submission/50042881"
+        "submissionUrl": "http://codeforces.com/contest/1113/submission/50042881"
       },
       {
         "id": 50042845,
@@ -3836,15 +3163,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1113,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1550334900
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1113,
@@ -3857,7 +3179,7 @@
             "strings"
           ]
         },
-        "url": "http://codeforces.com/contest/1113/submission/50042845"
+        "submissionUrl": "http://codeforces.com/contest/1113/submission/50042845"
       },
       {
         "id": 50021538,
@@ -3867,16 +3189,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1113,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 189,
-          "startTimeSeconds": 1550334900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1113,
@@ -3885,7 +3201,7 @@
           "rating": 1600,
           "tags": []
         },
-        "url": "http://codeforces.com/contest/1113/submission/50021538"
+        "submissionUrl": "http://codeforces.com/contest/1113/submission/50021538"
       },
       {
         "id": 50021416,
@@ -3895,16 +3211,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1113,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 189,
-          "startTimeSeconds": 1550334900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1113,
@@ -3913,7 +3223,7 @@
           "rating": 1600,
           "tags": []
         },
-        "url": "http://codeforces.com/contest/1113/submission/50021416"
+        "submissionUrl": "http://codeforces.com/contest/1113/submission/50021416"
       },
       {
         "id": 50012874,
@@ -3923,16 +3233,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1113,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 189,
-          "startTimeSeconds": 1550334900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1113,
@@ -3945,7 +3249,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1113/submission/50012874"
+        "submissionUrl": "http://codeforces.com/contest/1113/submission/50012874"
       },
       {
         "id": 50010174,
@@ -3955,16 +3259,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1113,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 189,
-          "startTimeSeconds": 1550334900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1113,
@@ -3976,7 +3274,7 @@
             "number theory"
           ]
         },
-        "url": "http://codeforces.com/contest/1113/submission/50010174"
+        "submissionUrl": "http://codeforces.com/contest/1113/submission/50010174"
       },
       {
         "id": 49999796,
@@ -3986,16 +3284,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1113,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 189,
-          "startTimeSeconds": 1550334900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1113,
@@ -4008,7 +3300,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1113/submission/49999796"
+        "submissionUrl": "http://codeforces.com/contest/1113/submission/49999796"
       },
       {
         "id": 49732824,
@@ -4018,16 +3310,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1114,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 59,
-          "startTimeSeconds": 1549807500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1114,
@@ -4041,7 +3327,7 @@
             "probabilities"
           ]
         },
-        "url": "http://codeforces.com/contest/1114/submission/49732824"
+        "submissionUrl": "http://codeforces.com/contest/1114/submission/49732824"
       },
       {
         "id": 49732431,
@@ -4051,16 +3337,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1114,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 59,
-          "startTimeSeconds": 1549807500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1114,
@@ -4074,7 +3354,7 @@
             "probabilities"
           ]
         },
-        "url": "http://codeforces.com/contest/1114/submission/49732431"
+        "submissionUrl": "http://codeforces.com/contest/1114/submission/49732431"
       },
       {
         "id": 49731687,
@@ -4084,16 +3364,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1114,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 59,
-          "startTimeSeconds": 1549807500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1114,
@@ -4107,7 +3381,7 @@
             "probabilities"
           ]
         },
-        "url": "http://codeforces.com/contest/1114/submission/49731687"
+        "submissionUrl": "http://codeforces.com/contest/1114/submission/49731687"
       },
       {
         "id": 49730453,
@@ -4117,16 +3391,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1114,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 59,
-          "startTimeSeconds": 1549807500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1114,
@@ -4140,7 +3408,7 @@
             "probabilities"
           ]
         },
-        "url": "http://codeforces.com/contest/1114/submission/49730453"
+        "submissionUrl": "http://codeforces.com/contest/1114/submission/49730453"
       },
       {
         "id": 49730324,
@@ -4150,16 +3418,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1114,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 59,
-          "startTimeSeconds": 1549807500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1114,
@@ -4173,7 +3435,7 @@
             "probabilities"
           ]
         },
-        "url": "http://codeforces.com/contest/1114/submission/49730324"
+        "submissionUrl": "http://codeforces.com/contest/1114/submission/49730324"
       },
       {
         "id": 49729609,
@@ -4183,16 +3445,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1114,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 59,
-          "startTimeSeconds": 1549807500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1114,
@@ -4206,7 +3462,7 @@
             "probabilities"
           ]
         },
-        "url": "http://codeforces.com/contest/1114/submission/49729609"
+        "submissionUrl": "http://codeforces.com/contest/1114/submission/49729609"
       },
       {
         "id": 49727120,
@@ -4216,16 +3472,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1114,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 59,
-          "startTimeSeconds": 1549807500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1114,
@@ -4239,7 +3489,7 @@
             "probabilities"
           ]
         },
-        "url": "http://codeforces.com/contest/1114/submission/49727120"
+        "submissionUrl": "http://codeforces.com/contest/1114/submission/49727120"
       },
       {
         "id": 49726351,
@@ -4249,16 +3499,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1114,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 59,
-          "startTimeSeconds": 1549807500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1114,
@@ -4272,7 +3516,7 @@
             "probabilities"
           ]
         },
-        "url": "http://codeforces.com/contest/1114/submission/49726351"
+        "submissionUrl": "http://codeforces.com/contest/1114/submission/49726351"
       },
       {
         "id": 49716411,
@@ -4282,16 +3526,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1114,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 59,
-          "startTimeSeconds": 1549807500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1114,
@@ -4302,7 +3540,7 @@
             "dp"
           ]
         },
-        "url": "http://codeforces.com/contest/1114/submission/49716411"
+        "submissionUrl": "http://codeforces.com/contest/1114/submission/49716411"
       },
       {
         "id": 49713978,
@@ -4312,16 +3550,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1114,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 59,
-          "startTimeSeconds": 1549807500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1114,
@@ -4332,7 +3564,7 @@
             "dp"
           ]
         },
-        "url": "http://codeforces.com/contest/1114/submission/49713978"
+        "submissionUrl": "http://codeforces.com/contest/1114/submission/49713978"
       },
       {
         "id": 49707917,
@@ -4342,16 +3574,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1114,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 59,
-          "startTimeSeconds": 1549807500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1114,
@@ -4365,7 +3591,7 @@
             "number theory"
           ]
         },
-        "url": "http://codeforces.com/contest/1114/submission/49707917"
+        "submissionUrl": "http://codeforces.com/contest/1114/submission/49707917"
       },
       {
         "id": 49707383,
@@ -4375,16 +3601,10 @@
         "language": "GNU C++11",
         "verdict": "COMPILATION_ERROR",
         "author": {
-          "contestId": 1114,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 59,
-          "startTimeSeconds": 1549807500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1114,
@@ -4398,7 +3618,7 @@
             "number theory"
           ]
         },
-        "url": "http://codeforces.com/contest/1114/submission/49707383"
+        "submissionUrl": "http://codeforces.com/contest/1114/submission/49707383"
       },
       {
         "id": 49706755,
@@ -4408,16 +3628,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1114,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 59,
-          "startTimeSeconds": 1549807500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1114,
@@ -4431,7 +3645,7 @@
             "number theory"
           ]
         },
-        "url": "http://codeforces.com/contest/1114/submission/49706755"
+        "submissionUrl": "http://codeforces.com/contest/1114/submission/49706755"
       },
       {
         "id": 49697356,
@@ -4441,16 +3655,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1114,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 59,
-          "startTimeSeconds": 1549807500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1114,
@@ -4463,7 +3671,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1114/submission/49697356"
+        "submissionUrl": "http://codeforces.com/contest/1114/submission/49697356"
       },
       {
         "id": 49422914,
@@ -4473,16 +3681,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1111,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 131,
-          "startTimeSeconds": 1549208100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1111,
@@ -4496,7 +3698,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1111/submission/49422914"
+        "submissionUrl": "http://codeforces.com/contest/1111/submission/49422914"
       },
       {
         "id": 49418518,
@@ -4506,16 +3708,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1111,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 131,
-          "startTimeSeconds": 1549208100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1111,
@@ -4529,7 +3725,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1111/submission/49418518"
+        "submissionUrl": "http://codeforces.com/contest/1111/submission/49418518"
       },
       {
         "id": 49415244,
@@ -4539,16 +3735,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1111,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 131,
-          "startTimeSeconds": 1549208100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1111,
@@ -4562,7 +3752,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1111/submission/49415244"
+        "submissionUrl": "http://codeforces.com/contest/1111/submission/49415244"
       },
       {
         "id": 49414748,
@@ -4572,16 +3762,10 @@
         "language": "GNU C++11",
         "verdict": "TIME_LIMIT_EXCEEDED",
         "author": {
-          "contestId": 1111,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 131,
-          "startTimeSeconds": 1549208100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1111,
@@ -4595,7 +3779,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1111/submission/49414748"
+        "submissionUrl": "http://codeforces.com/contest/1111/submission/49414748"
       },
       {
         "id": 49411181,
@@ -4605,16 +3789,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1111,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 131,
-          "startTimeSeconds": 1549208100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1111,
@@ -4627,7 +3805,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1111/submission/49411181"
+        "submissionUrl": "http://codeforces.com/contest/1111/submission/49411181"
       },
       {
         "id": 49404286,
@@ -4637,16 +3815,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1111,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 131,
-          "startTimeSeconds": 1549208100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1111,
@@ -4658,7 +3830,7 @@
             "strings"
           ]
         },
-        "url": "http://codeforces.com/contest/1111/submission/49404286"
+        "submissionUrl": "http://codeforces.com/contest/1111/submission/49404286"
       },
       {
         "id": 49274495,
@@ -4668,16 +3840,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1106,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 226,
-          "startTimeSeconds": 1548938100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1106,
@@ -4689,7 +3855,7 @@
             "dp"
           ]
         },
-        "url": "http://codeforces.com/contest/1106/submission/49274495"
+        "submissionUrl": "http://codeforces.com/contest/1106/submission/49274495"
       },
       {
         "id": 49259751,
@@ -4699,16 +3865,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1106,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 226,
-          "startTimeSeconds": 1548938100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1106,
@@ -4723,7 +3883,7 @@
             "shortest paths"
           ]
         },
-        "url": "http://codeforces.com/contest/1106/submission/49259751"
+        "submissionUrl": "http://codeforces.com/contest/1106/submission/49259751"
       },
       {
         "id": 49257805,
@@ -4733,16 +3893,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1106,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 226,
-          "startTimeSeconds": 1548938100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1106,
@@ -4756,7 +3910,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1106/submission/49257805"
+        "submissionUrl": "http://codeforces.com/contest/1106/submission/49257805"
       },
       {
         "id": 49255497,
@@ -4766,16 +3920,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1106,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 226,
-          "startTimeSeconds": 1548938100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1106,
@@ -4787,7 +3935,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1106/submission/49255497"
+        "submissionUrl": "http://codeforces.com/contest/1106/submission/49255497"
       },
       {
         "id": 49247496,
@@ -4797,16 +3945,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1106,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 226,
-          "startTimeSeconds": 1548938100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1106,
@@ -4817,7 +3959,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1106/submission/49247496"
+        "submissionUrl": "http://codeforces.com/contest/1106/submission/49247496"
       },
       {
         "id": 49246394,
@@ -4827,16 +3969,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1106,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 226,
-          "startTimeSeconds": 1548938100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1106,
@@ -4847,7 +3983,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1106/submission/49246394"
+        "submissionUrl": "http://codeforces.com/contest/1106/submission/49246394"
       },
       {
         "id": 48749271,
@@ -4857,16 +3993,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1104,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 69,
-          "startTimeSeconds": 1548167700
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1104,
@@ -4879,7 +4009,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1104/submission/48749271"
+        "submissionUrl": "http://codeforces.com/contest/1104/submission/48749271"
       },
       {
         "id": 48736684,
@@ -4889,16 +4019,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1104,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 69,
-          "startTimeSeconds": 1548167700
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1104,
@@ -4910,7 +4034,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1104/submission/48736684"
+        "submissionUrl": "http://codeforces.com/contest/1104/submission/48736684"
       },
       {
         "id": 48727912,
@@ -4920,16 +4044,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1104,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 69,
-          "startTimeSeconds": 1548167700
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1104,
@@ -4942,7 +4060,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1104/submission/48727912"
+        "submissionUrl": "http://codeforces.com/contest/1104/submission/48727912"
       },
       {
         "id": 48724499,
@@ -4952,16 +4070,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1104,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 69,
-          "startTimeSeconds": 1548167700
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1104,
@@ -4974,7 +4086,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1104/submission/48724499"
+        "submissionUrl": "http://codeforces.com/contest/1104/submission/48724499"
       },
       {
         "id": 48724172,
@@ -4984,16 +4096,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1104,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "room": 69,
-          "startTimeSeconds": 1548167700
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1104,
@@ -5006,7 +4112,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1104/submission/48724172"
+        "submissionUrl": "http://codeforces.com/contest/1104/submission/48724172"
       },
       {
         "id": 48146126,
@@ -5016,15 +4122,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1102,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1547044500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1102,
@@ -5036,7 +4137,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1102/submission/48146126"
+        "submissionUrl": "http://codeforces.com/contest/1102/submission/48146126"
       },
       {
         "id": 48144229,
@@ -5046,15 +4147,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1102,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1547044500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1102,
@@ -5066,7 +4162,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1102/submission/48144229"
+        "submissionUrl": "http://codeforces.com/contest/1102/submission/48144229"
       },
       {
         "id": 48143400,
@@ -5076,15 +4172,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1102,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1547044500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1102,
@@ -5096,7 +4187,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1102/submission/48143400"
+        "submissionUrl": "http://codeforces.com/contest/1102/submission/48143400"
       },
       {
         "id": 48138258,
@@ -5106,15 +4197,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1102,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1547044500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1102,
@@ -5126,7 +4212,7 @@
             "strings"
           ]
         },
-        "url": "http://codeforces.com/contest/1102/submission/48138258"
+        "submissionUrl": "http://codeforces.com/contest/1102/submission/48138258"
       },
       {
         "id": 48137699,
@@ -5136,15 +4222,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1102,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1547044500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1102,
@@ -5156,7 +4237,7 @@
             "strings"
           ]
         },
-        "url": "http://codeforces.com/contest/1102/submission/48137699"
+        "submissionUrl": "http://codeforces.com/contest/1102/submission/48137699"
       },
       {
         "id": 48134209,
@@ -5166,15 +4247,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1102,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1547044500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1102,
@@ -5185,7 +4261,7 @@
             "games"
           ]
         },
-        "url": "http://codeforces.com/contest/1102/submission/48134209"
+        "submissionUrl": "http://codeforces.com/contest/1102/submission/48134209"
       },
       {
         "id": 48132197,
@@ -5195,15 +4271,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1102,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1547044500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1102,
@@ -5214,7 +4285,7 @@
             "games"
           ]
         },
-        "url": "http://codeforces.com/contest/1102/submission/48132197"
+        "submissionUrl": "http://codeforces.com/contest/1102/submission/48132197"
       },
       {
         "id": 48127096,
@@ -5224,15 +4295,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1102,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1547044500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1102,
@@ -5244,7 +4310,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1102/submission/48127096"
+        "submissionUrl": "http://codeforces.com/contest/1102/submission/48127096"
       },
       {
         "id": 48126036,
@@ -5254,15 +4320,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1102,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1547044500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1102,
@@ -5274,7 +4335,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1102/submission/48126036"
+        "submissionUrl": "http://codeforces.com/contest/1102/submission/48126036"
       },
       {
         "id": 48120506,
@@ -5284,15 +4345,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1102,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1547044500
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1102,
@@ -5303,7 +4359,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1102/submission/48120506"
+        "submissionUrl": "http://codeforces.com/contest/1102/submission/48120506"
       },
       {
         "id": 45839421,
@@ -5313,15 +4369,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1077,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1542378900
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1077,
@@ -5332,7 +4383,7 @@
             "dp"
           ]
         },
-        "url": "http://codeforces.com/contest/1077/submission/45839421"
+        "submissionUrl": "http://codeforces.com/contest/1077/submission/45839421"
       },
       {
         "id": 45838504,
@@ -5342,15 +4393,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1077,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1542378900
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1077,
@@ -5361,7 +4407,7 @@
             "dp"
           ]
         },
-        "url": "http://codeforces.com/contest/1077/submission/45838504"
+        "submissionUrl": "http://codeforces.com/contest/1077/submission/45838504"
       },
       {
         "id": 45838280,
@@ -5371,15 +4417,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1077,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1542378900
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1077,
@@ -5390,7 +4431,7 @@
             "dp"
           ]
         },
-        "url": "http://codeforces.com/contest/1077/submission/45838280"
+        "submissionUrl": "http://codeforces.com/contest/1077/submission/45838280"
       },
       {
         "id": 45837611,
@@ -5400,15 +4441,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1077,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "PRACTICE",
-          "ghost": false,
-          "startTimeSeconds": 1542378900
+          "participantType": "PRACTICE"
         },
         "problem": {
           "contestId": 1077,
@@ -5419,7 +4455,7 @@
             "dp"
           ]
         },
-        "url": "http://codeforces.com/contest/1077/submission/45837611"
+        "submissionUrl": "http://codeforces.com/contest/1077/submission/45837611"
       },
       {
         "id": 45837344,
@@ -5429,15 +4465,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1077,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1542378900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1077,
@@ -5448,7 +4479,7 @@
             "dp"
           ]
         },
-        "url": "http://codeforces.com/contest/1077/submission/45837344"
+        "submissionUrl": "http://codeforces.com/contest/1077/submission/45837344"
       },
       {
         "id": 45836074,
@@ -5458,15 +4489,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1077,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1542378900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1077,
@@ -5477,7 +4503,7 @@
             "dp"
           ]
         },
-        "url": "http://codeforces.com/contest/1077/submission/45836074"
+        "submissionUrl": "http://codeforces.com/contest/1077/submission/45836074"
       },
       {
         "id": 45831400,
@@ -5487,15 +4513,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1077,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1542378900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1077,
@@ -5507,7 +4528,7 @@
             "sortings"
           ]
         },
-        "url": "http://codeforces.com/contest/1077/submission/45831400"
+        "submissionUrl": "http://codeforces.com/contest/1077/submission/45831400"
       },
       {
         "id": 45812068,
@@ -5517,15 +4538,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1077,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1542378900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1077,
@@ -5534,7 +4550,7 @@
           "rating": 1300,
           "tags": []
         },
-        "url": "http://codeforces.com/contest/1077/submission/45812068"
+        "submissionUrl": "http://codeforces.com/contest/1077/submission/45812068"
       },
       {
         "id": 45808533,
@@ -5544,15 +4560,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1077,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1542378900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1077,
@@ -5563,7 +4574,7 @@
             "greedy"
           ]
         },
-        "url": "http://codeforces.com/contest/1077/submission/45808533"
+        "submissionUrl": "http://codeforces.com/contest/1077/submission/45808533"
       },
       {
         "id": 45804289,
@@ -5573,15 +4584,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1077,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1542378900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1077,
@@ -5592,7 +4598,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1077/submission/45804289"
+        "submissionUrl": "http://codeforces.com/contest/1077/submission/45804289"
       },
       {
         "id": 44870137,
@@ -5602,15 +4608,10 @@
         "language": "GNU C++11",
         "verdict": "TIME_LIMIT_EXCEEDED",
         "author": {
-          "contestId": 1073,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1540478100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1073,
@@ -5624,7 +4625,7 @@
             "greedy"
           ]
         },
-        "url": "http://codeforces.com/contest/1073/submission/44870137"
+        "submissionUrl": "http://codeforces.com/contest/1073/submission/44870137"
       },
       {
         "id": 44861436,
@@ -5634,15 +4635,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1073,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1540478100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1073,
@@ -5654,7 +4650,7 @@
             "two pointers"
           ]
         },
-        "url": "http://codeforces.com/contest/1073/submission/44861436"
+        "submissionUrl": "http://codeforces.com/contest/1073/submission/44861436"
       },
       {
         "id": 44861037,
@@ -5664,15 +4660,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1073,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1540478100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1073,
@@ -5684,7 +4675,7 @@
             "two pointers"
           ]
         },
-        "url": "http://codeforces.com/contest/1073/submission/44861037"
+        "submissionUrl": "http://codeforces.com/contest/1073/submission/44861037"
       },
       {
         "id": 44860232,
@@ -5694,15 +4685,10 @@
         "language": "GNU C++11",
         "verdict": "WRONG_ANSWER",
         "author": {
-          "contestId": 1073,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1540478100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1073,
@@ -5714,7 +4700,7 @@
             "two pointers"
           ]
         },
-        "url": "http://codeforces.com/contest/1073/submission/44860232"
+        "submissionUrl": "http://codeforces.com/contest/1073/submission/44860232"
       },
       {
         "id": 44852923,
@@ -5724,15 +4710,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1073,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1540478100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1073,
@@ -5744,7 +4725,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1073/submission/44852923"
+        "submissionUrl": "http://codeforces.com/contest/1073/submission/44852923"
       },
       {
         "id": 44848196,
@@ -5754,15 +4735,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1073,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1540478100
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1073,
@@ -5774,7 +4750,7 @@
             "strings"
           ]
         },
-        "url": "http://codeforces.com/contest/1073/submission/44848196"
+        "submissionUrl": "http://codeforces.com/contest/1073/submission/44848196"
       },
       {
         "id": 44206364,
@@ -5784,15 +4760,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1066,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1539354900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1066,
@@ -5803,7 +4774,7 @@
             "implementation"
           ]
         },
-        "url": "http://codeforces.com/contest/1066/submission/44206364"
+        "submissionUrl": "http://codeforces.com/contest/1066/submission/44206364"
       },
       {
         "id": 44199002,
@@ -5813,15 +4784,10 @@
         "language": "GNU C++11",
         "verdict": "OK",
         "author": {
-          "contestId": 1066,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1539354900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1066,
@@ -5832,7 +4798,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1066/submission/44199002"
+        "submissionUrl": "http://codeforces.com/contest/1066/submission/44199002"
       },
       {
         "id": 44198284,
@@ -5842,15 +4808,10 @@
         "language": "GNU C11",
         "verdict": "COMPILATION_ERROR",
         "author": {
-          "contestId": 1066,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1539354900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1066,
@@ -5861,7 +4822,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1066/submission/44198284"
+        "submissionUrl": "http://codeforces.com/contest/1066/submission/44198284"
       },
       {
         "id": 44193733,
@@ -5871,15 +4832,10 @@
         "language": "GNU C11",
         "verdict": "COMPILATION_ERROR",
         "author": {
-          "contestId": 1066,
           "members": [
-            {
-              "handle": "XLorTree"
-            }
+            "XLorTree"
           ],
-          "participantType": "CONTESTANT",
-          "ghost": false,
-          "startTimeSeconds": 1539354900
+          "participantType": "CONTESTANT"
         },
         "problem": {
           "contestId": 1066,
@@ -5890,7 +4846,7 @@
             "math"
           ]
         },
-        "url": "http://codeforces.com/contest/1066/submission/44193733"
+        "submissionUrl": "http://codeforces.com/contest/1066/submission/44193733"
       }
     ]
   }
