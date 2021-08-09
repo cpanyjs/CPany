@@ -9855,7 +9855,7 @@ const fs_1 = __nccwpck_require__(5747);
 function processReadme(time) {
     return __awaiter(this, void 0, void 0, function* () {
         const content = yield fs_1.promises.readFile('README.md', 'utf8');
-        const newContent = content.replace(/<!-- START_SECTION: update_time -->([\s\S]*)<!-- END_SECTION: update_time -->/, `\n更新时间：[${time.format('YYYY-MM-DD HH:mm')}](https://www.timeanddate.com/worldclock/fixedtime.html?msg=Fetch+data&iso=${time.format('YYYYMMDDTHHmmss')}&p1=237)\n`);
+        const newContent = content.replace(/<!-- START_SECTION: update_time -->([\s\S]*)<!-- END_SECTION: update_time -->/, `<!-- START_SECTION: update_time -->\n更新时间：[${time.format('YYYY-MM-DD HH:mm')}](https://www.timeanddate.com/worldclock/fixedtime.html?msg=Fetch+data&iso=${time.format('YYYYMMDDTHHmmss')}&p1=237)\n<!-- END_SECTION: update_time -->`);
         yield fs_1.promises.writeFile('README.md', newContent, 'utf8');
     });
 }
