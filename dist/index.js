@@ -10044,11 +10044,34 @@ function handleInfoPlugin(api) {
         transform({ id, type }) {
             return __awaiter(this, void 0, void 0, function* () {
                 if (type === name) {
-                    const { data: { result: [data] } } = yield api.get('user.info', {
-                        params: {
-                            handles: id
-                        }
+                    const fetchInfo = () => __awaiter(this, void 0, void 0, function* () {
+                        const { data: { result: [data] } } = yield api.get('user.info', {
+                            params: {
+                                handles: id
+                            }
+                        });
+                        return {
+                            handle: data.handle,
+                            avatar: data.titlePhoto,
+                            codeforces: {
+                                rank: data.rank,
+                                rating: data.rating,
+                                maxRank: data.maxRank,
+                                maxRating: data.maxRating,
+                                submissions: []
+                            }
+                        };
                     });
+                    const fetchSubmission = () => __awaiter(this, void 0, void 0, function* () {
+                        const { data: { result } } = yield api.get('user.status', {
+                            params: {
+                                handle: id
+                            }
+                        });
+                        return result;
+                    });
+                    const data = yield fetchInfo();
+                    data.codeforces.submissions = yield fetchSubmission();
                     return {
                         key: gid(id),
                         content: JSON.stringify(data, null, 2)
