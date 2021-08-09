@@ -20,6 +20,16 @@
     "durationSeconds": 9000
   },
   {
+    "id": 1559,
+    "name": "Codeforces Round #738 (Div. 2)",
+    "contestUrl": "http://codeforces.com/contest/1559",
+    "standingsUrl": "http://codeforces.com/contest/1559/standings",
+    "type": "CF",
+    "phase": "BEFORE",
+    "startTimeSeconds": 1629038100,
+    "durationSeconds": 7200
+  },
+  {
     "id": 1557,
     "name": "Codeforces Round #737 (Div. 2)",
     "contestUrl": "http://codeforces.com/contest/1557",
