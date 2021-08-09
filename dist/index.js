@@ -9752,7 +9752,8 @@ function run() {
         core.info(JSON.stringify(config, null, 2));
         const instance = core_1.createInstance({ plugins: [...codeforces_1.codeforcesPlugin()] });
         const fs = yield fs_2.createGitFileSystem('./');
-        for (const id of (_a = config === null || config === void 0 ? void 0 : config.static) !== null && _a !== void 0 ? _a : []) {
+        const configStatic = (_a = config === null || config === void 0 ? void 0 : config.static) !== null && _a !== void 0 ? _a : [];
+        for (const id of configStatic) {
             const result = yield instance.load(id);
             if (result !== null) {
                 core.info(`Fetch ${id}`);
@@ -9760,16 +9761,21 @@ function run() {
                 yield fs.add(key, content);
             }
         }
-        for (const user of (_b = config === null || config === void 0 ? void 0 : config.users) !== null && _b !== void 0 ? _b : []) {
-            for (const handle of user.handles) {
-                const result = yield instance.transform({
-                    id: handle,
-                    type: 'codeforces/handle'
-                });
-                if (result !== null) {
-                    core.info(`Fetch codeforces/handle/${handle}`);
-                    const { key, content } = result;
-                    yield fs.add(key, content);
+        const configUser = (_b = config === null || config === void 0 ? void 0 : config.users) !== null && _b !== void 0 ? _b : {};
+        for (const userKey in configUser) {
+            const user = configUser[userKey];
+            for (const type in user) {
+                const handles = user[type];
+                for (const handle of handles) {
+                    const result = yield instance.transform({
+                        id: handle,
+                        type
+                    });
+                    if (result !== null) {
+                        core.info(`Fetched ${result.key}`);
+                        const { key, content } = result;
+                        yield fs.add(key, content);
+                    }
                 }
             }
         }

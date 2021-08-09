@@ -4,11 +4,13 @@ import { load } from 'js-yaml';
 
 import { createInstance } from '@cpany/core';
 import { codeforcesPlugin } from '@cpany/codeforces';
+
 import { createGitFileSystem } from './fs';
+import type { ICPanyConfig } from './type';
 
 async function getConfig(path: string) {
   const content = readFileSync(path, 'utf8');
-  return load(content) as any;
+  return load(content) as ICPanyConfig;
 }
 
 async function run() {
@@ -20,7 +22,8 @@ async function run() {
 
   const fs = await createGitFileSystem('./');
 
-  for (const id of config?.static ?? []) {
+  const configStatic = config?.static ?? [];
+  for (const id of configStatic) {
     const result = await instance.load(id);
     if (result !== null) {
       core.info(`Fetch ${id}`);
@@ -29,16 +32,21 @@ async function run() {
     }
   }
 
-  for (const user of config?.users ?? []) {
-    for (const handle of user.handles) {
-      const result = await instance.transform({
-        id: handle,
-        type: 'codeforces/handle'
-      });
-      if (result !== null) {
-        core.info(`Fetch codeforces/handle/${handle}`);
-        const { key, content } = result;
-        await fs.add(key, content);
+  const configUser = config?.users ?? {};
+  for (const userKey in configUser) {
+    const user = configUser[userKey];
+    for (const type in user) {
+      const handles = user[type];
+      for (const handle of handles) {
+        const result = await instance.transform({
+          id: handle,
+          type
+        });
+        if (result !== null) {
+          core.info(`Fetched ${result.key}`);
+          const { key, content } = result;
+          await fs.add(key, content);
+        }
       }
     }
   }
