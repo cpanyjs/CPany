@@ -1,9 +1,27 @@
 import { join, dirname } from 'path';
-import { writeFileSync } from 'fs';
+import { writeFileSync, promises } from 'fs';
 import dayjs from 'dayjs';
 
 import { mkdirP } from '@actions/io';
 import { exec } from '@actions/exec';
+
+async function* listDir(
+  dir: string,
+  skipList: Set<string>
+): AsyncGenerator<string> {
+  const dirents = await promises.readdir(dir, { withFileTypes: true });
+  for (const dirent of dirents) {
+    const id = join(dir, dirent.name);
+    if (id.startsWith('.') || skipList.has(id)) {
+      continue;
+    }
+    if (dirent.isDirectory()) {
+      yield* listDir(id, skipList);
+    } else {
+      yield id;
+    }
+  }
+}
 
 export async function createGitFileSystem(basePath: string) {
   const username = process.env.GITHUB_ACTOR || 'Unknown';
@@ -17,6 +35,11 @@ export async function createGitFileSystem(basePath: string) {
 
   const files: string[] = [];
 
+  for await (const file of listDir('.', new Set(['cpany.yml', 'README.md']))) {
+    await promises.unlink(file);
+    files.push(file);
+  }
+
   const add = async (path: string, content: string) => {
     const fullPath = join(basePath, path);
     files.push(fullPath);
@@ -25,7 +48,7 @@ export async function createGitFileSystem(basePath: string) {
   };
 
   const push = async () => {
-    await exec('git', ['add', ...files]);
+    await exec('git', ['add', ...new Set(files)]);
     await exec('git', [
       'commit',
       '-m',

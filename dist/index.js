@@ -9666,6 +9666,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __await = (this && this.__await) || function (v) { return this instanceof __await ? (this.v = v, this) : new __await(v); }
+var __asyncValues = (this && this.__asyncValues) || function (o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+};
+var __asyncDelegator = (this && this.__asyncDelegator) || function (o) {
+    var i, p;
+    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+};
+var __asyncGenerator = (this && this.__asyncGenerator) || function (thisArg, _arguments, generator) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var g = generator.apply(thisArg, _arguments || []), i, q = [];
+    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
+    function fulfill(value) { resume("next", value); }
+    function reject(value) { resume("throw", value); }
+    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -9676,7 +9700,25 @@ const fs_1 = __nccwpck_require__(5747);
 const dayjs_1 = __importDefault(__nccwpck_require__(3767));
 const io_1 = __nccwpck_require__(7554);
 const exec_1 = __nccwpck_require__(4308);
+function listDir(dir, skipList) {
+    return __asyncGenerator(this, arguments, function* listDir_1() {
+        const dirents = yield __await(fs_1.promises.readdir(dir, { withFileTypes: true }));
+        for (const dirent of dirents) {
+            const id = path_1.join(dir, dirent.name);
+            if (id.startsWith('.') || skipList.has(id)) {
+                continue;
+            }
+            if (dirent.isDirectory()) {
+                yield __await(yield* __asyncDelegator(__asyncValues(listDir(id, skipList))));
+            }
+            else {
+                yield yield __await(id);
+            }
+        }
+    });
+}
 function createGitFileSystem(basePath) {
+    var e_1, _a;
     return __awaiter(this, void 0, void 0, function* () {
         const username = process.env.GITHUB_ACTOR || 'Unknown';
         yield exec_1.exec('git', ['config', '--global', 'user.name', username]);
@@ -9687,6 +9729,20 @@ function createGitFileSystem(basePath) {
             `${username}@users.noreply.github.com`
         ]);
         const files = [];
+        try {
+            for (var _b = __asyncValues(listDir('.', new Set(['cpany.yml', 'README.md']))), _c; _c = yield _b.next(), !_c.done;) {
+                const file = _c.value;
+                yield fs_1.promises.unlink(file);
+                files.push(file);
+            }
+        }
+        catch (e_1_1) { e_1 = { error: e_1_1 }; }
+        finally {
+            try {
+                if (_c && !_c.done && (_a = _b.return)) yield _a.call(_b);
+            }
+            finally { if (e_1) throw e_1.error; }
+        }
         const add = (path, content) => __awaiter(this, void 0, void 0, function* () {
             const fullPath = path_1.join(basePath, path);
             files.push(fullPath);
@@ -9694,7 +9750,7 @@ function createGitFileSystem(basePath) {
             fs_1.writeFileSync(fullPath, content, 'utf8');
         });
         const push = () => __awaiter(this, void 0, void 0, function* () {
-            yield exec_1.exec('git', ['add', ...files]);
+            yield exec_1.exec('git', ['add', ...new Set(files)]);
             yield exec_1.exec('git', [
                 'commit',
                 '-m',
