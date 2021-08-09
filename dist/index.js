@@ -9680,7 +9680,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __await = (this && this.__await) || function (v) { return this instanceof __await ? (this.v = v, this) : new __await(v); }
 var __asyncValues = (this && this.__asyncValues) || function (o) {
     if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
     var m = o[Symbol.asyncIterator], i;
@@ -9688,53 +9687,13 @@ var __asyncValues = (this && this.__asyncValues) || function (o) {
     function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
     function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
 };
-var __asyncDelegator = (this && this.__asyncDelegator) || function (o) {
-    var i, p;
-    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
-    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
-};
-var __asyncGenerator = (this && this.__asyncGenerator) || function (thisArg, _arguments, generator) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var g = generator.apply(thisArg, _arguments || []), i, q = [];
-    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
-    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
-    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
-    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
-    function fulfill(value) { resume("next", value); }
-    function reject(value) { resume("throw", value); }
-    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createGitFileSystem = void 0;
 const path_1 = __nccwpck_require__(5622);
 const fs_1 = __nccwpck_require__(5747);
-const dayjs_1 = __importDefault(__nccwpck_require__(3767));
-const utc_1 = __importDefault(__nccwpck_require__(2909));
-const timezone_1 = __importDefault(__nccwpck_require__(3252));
 const io_1 = __nccwpck_require__(7554);
 const exec_1 = __nccwpck_require__(4308);
-dayjs_1.default.extend(utc_1.default);
-dayjs_1.default.extend(timezone_1.default);
-function listDir(dir, skipList = new Set()) {
-    return __asyncGenerator(this, arguments, function* listDir_1() {
-        const dirents = yield __await(fs_1.promises.readdir(dir, { withFileTypes: true }));
-        for (const dirent of dirents) {
-            const id = path_1.join(dir, dirent.name);
-            if (dirent.name.startsWith('.') || skipList.has(id)) {
-                continue;
-            }
-            if (dirent.isDirectory()) {
-                yield __await(yield* __asyncDelegator(__asyncValues(listDir(id, skipList))));
-            }
-            else {
-                yield yield __await(id);
-            }
-        }
-    });
-}
+const utils_1 = __nccwpck_require__(8319);
 function createGitFileSystem(basePath, skipList = new Set()) {
     var e_1, _a;
     return __awaiter(this, void 0, void 0, function* () {
@@ -9748,7 +9707,7 @@ function createGitFileSystem(basePath, skipList = new Set()) {
         ]);
         const files = new Set();
         try {
-            for (var _b = __asyncValues(listDir('.', skipList)), _c; _c = yield _b.next(), !_c.done;) {
+            for (var _b = __asyncValues(utils_1.listDir('.', skipList)), _c; _c = yield _b.next(), !_c.done;) {
                 const file = _c.value;
                 yield fs_1.promises.unlink(file);
                 files.add(file);
@@ -9767,13 +9726,9 @@ function createGitFileSystem(basePath, skipList = new Set()) {
             yield io_1.mkdirP(path_1.dirname(fullPath));
             fs_1.writeFileSync(fullPath, content, 'utf8');
         });
-        const push = () => __awaiter(this, void 0, void 0, function* () {
+        const push = (time) => __awaiter(this, void 0, void 0, function* () {
             yield exec_1.exec('git', ['add', ...files]);
-            yield exec_1.exec('git', [
-                'commit',
-                '-m',
-                `Fetch data on ${dayjs_1.default().tz('Asia/Shanghai').format('YYYY-MM-DD HH:mm')}`
-            ]);
+            yield exec_1.exec('git', ['commit', '-m', `Fetch data on ${time}`]);
             yield exec_1.exec('git', ['push']);
         });
         return {
@@ -9827,6 +9782,8 @@ const js_yaml_1 = __nccwpck_require__(6258);
 const core_1 = __nccwpck_require__(8780);
 const codeforces_1 = __nccwpck_require__(3948);
 const fs_2 = __nccwpck_require__(7995);
+const readme_1 = __nccwpck_require__(298);
+const utils_1 = __nccwpck_require__(8319);
 function getConfig(path) {
     return __awaiter(this, void 0, void 0, function* () {
         const content = fs_1.readFileSync(path, 'utf8');
@@ -9868,10 +9825,108 @@ function run() {
                 }
             }
         }
-        yield fs.push();
+        const nowTime = utils_1.now();
+        yield readme_1.processReadme(nowTime);
+        yield fs.push(nowTime);
     });
 }
 run();
+
+
+/***/ }),
+
+/***/ 298:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.processReadme = void 0;
+const fs_1 = __nccwpck_require__(5747);
+function processReadme(time) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const content = yield fs_1.promises.readFile('README.md', 'utf8');
+        const newContent = content.replace(/<!-- START_SECTION: update_time -->([\s\S]*)<!-- END_SECTION: update_time -->/, `\n更新时间：${time}\n`);
+        yield fs_1.promises.writeFile('README.md', newContent, 'utf8');
+    });
+}
+exports.processReadme = processReadme;
+
+
+/***/ }),
+
+/***/ 8319:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __await = (this && this.__await) || function (v) { return this instanceof __await ? (this.v = v, this) : new __await(v); }
+var __asyncValues = (this && this.__asyncValues) || function (o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+};
+var __asyncDelegator = (this && this.__asyncDelegator) || function (o) {
+    var i, p;
+    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+};
+var __asyncGenerator = (this && this.__asyncGenerator) || function (thisArg, _arguments, generator) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var g = generator.apply(thisArg, _arguments || []), i, q = [];
+    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
+    function fulfill(value) { resume("next", value); }
+    function reject(value) { resume("throw", value); }
+    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.now = exports.listDir = void 0;
+const path_1 = __nccwpck_require__(5622);
+const fs_1 = __nccwpck_require__(5747);
+const dayjs_1 = __importDefault(__nccwpck_require__(3767));
+const utc_1 = __importDefault(__nccwpck_require__(2909));
+const timezone_1 = __importDefault(__nccwpck_require__(3252));
+dayjs_1.default.extend(utc_1.default);
+dayjs_1.default.extend(timezone_1.default);
+function listDir(dir, skipList = new Set()) {
+    return __asyncGenerator(this, arguments, function* listDir_1() {
+        const dirents = yield __await(fs_1.promises.readdir(dir, { withFileTypes: true }));
+        for (const dirent of dirents) {
+            const id = path_1.join(dir, dirent.name);
+            if (dirent.name.startsWith('.') || skipList.has(id)) {
+                continue;
+            }
+            if (dirent.isDirectory()) {
+                yield __await(yield* __asyncDelegator(__asyncValues(listDir(id, skipList))));
+            }
+            else {
+                yield yield __await(id);
+            }
+        }
+    });
+}
+exports.listDir = listDir;
+function now() {
+    return dayjs_1.default().tz('Asia/Shanghai').format('YYYY-MM-DD HH:mm');
+}
+exports.now = now;
 
 
 /***/ }),

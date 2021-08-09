@@ -5,8 +5,10 @@ import { load } from 'js-yaml';
 import { createInstance } from '@cpany/core';
 import { codeforcesPlugin } from '@cpany/codeforces';
 
-import { createGitFileSystem } from './fs';
 import type { ICPanyConfig } from './type';
+import { createGitFileSystem } from './fs';
+import { processReadme } from './readme';
+import { now } from './utils';
 
 async function getConfig(path: string) {
   const content = readFileSync(path, 'utf8');
@@ -54,7 +56,9 @@ async function run() {
     }
   }
 
-  await fs.push();
+  const nowTime = now();
+  await processReadme(nowTime);
+  await fs.push(nowTime);
 }
 
 run();
