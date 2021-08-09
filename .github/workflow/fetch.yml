@@ -16,3 +16,5 @@ jobs:
           ref: dev
           path: ./main
       - uses: ./main
+        with:
+          skipClean: main
