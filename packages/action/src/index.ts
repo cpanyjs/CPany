@@ -38,6 +38,8 @@ async function run() {
       core.info(`Fetched ${id}`);
       const { key, content } = result;
       await fs.add(key, content);
+    } else {
+      core.error(`Fetch "${id}" fail`);
     }
   }
 
@@ -55,6 +57,8 @@ async function run() {
           core.info(`Fetched ${result.key}`);
           const { key, content } = result;
           await fs.add(key, content);
+        } else {
+          core.error(`Fetch (id: "${handle}", type: "${type}") fail`);
         }
       }
     }

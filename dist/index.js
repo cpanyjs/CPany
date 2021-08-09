@@ -9809,6 +9809,9 @@ function run() {
                 const { key, content } = result;
                 yield fs.add(key, content);
             }
+            else {
+                core.error(`Fetch "${id}" fail`);
+            }
         }
         const configUser = (_b = config === null || config === void 0 ? void 0 : config.users) !== null && _b !== void 0 ? _b : {};
         for (const userKey in configUser) {
@@ -9824,6 +9827,9 @@ function run() {
                         core.info(`Fetched ${result.key}`);
                         const { key, content } = result;
                         yield fs.add(key, content);
+                    }
+                    else {
+                        core.error(`Fetch (id: "${handle}", type: "${type}") fail`);
                     }
                 }
             }
