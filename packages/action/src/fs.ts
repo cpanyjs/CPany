@@ -55,7 +55,7 @@ export async function createGitFileSystem(
     await exec('git', [
       'commit',
       '-m',
-      `Fetch data on ${dayjs().format('YYYY-MM-DD HH:mm')}`
+      `"Fetch data on ${dayjs().format('YYYY-MM-DD HH:mm')}"`
     ]);
     await exec('git', ['push']);
   };
