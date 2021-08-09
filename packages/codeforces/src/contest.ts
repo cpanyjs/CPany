@@ -52,7 +52,7 @@ export function gymContestListPlugin(api: AxiosInstance): ILoadPlugin {
       if (id === name) {
         const {
           data: { result }
-        } = await api.get('contest.list.gym');
+        } = await api.get('contest.list', { params: { gym: true } });
         return JSON.stringify(result.map(transformGymContestInfo), null, 2);
       }
     }

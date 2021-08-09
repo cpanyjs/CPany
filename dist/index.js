@@ -9864,7 +9864,7 @@ function gymContestListPlugin(api) {
         load(id) {
             return __awaiter(this, void 0, void 0, function* () {
                 if (id === name) {
-                    const { data: { result } } = yield api.get('contest.list.gym');
+                    const { data: { result } } = yield api.get('contest.list', { params: { gym: true } });
                     return JSON.stringify(result.map(transformGymContestInfo), null, 2);
                 }
             });
