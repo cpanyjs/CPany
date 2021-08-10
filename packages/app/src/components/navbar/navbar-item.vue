@@ -1,10 +1,17 @@
 <template>
-  <a class="navbar-item">
+  <component :is="tag" class="navbar-item">
     <slot></slot>
-  </a>
+  </component>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps({
+  tag: {
+    type: String,
+    default: 'a'
+  }
+});
+</script>
 
 <style>
 a.navbar-item {

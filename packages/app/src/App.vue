@@ -1,18 +1,25 @@
 <template>
   <navbar>
     <template #brand>
-      <navbar-item class="font-bold text-lg">CPany</navbar-item>
+      <navbar-item
+        class="font-bold text-lg"
+        tag="router-link"
+        :to="{ name: 'Home' }"
+        >CPany</navbar-item
+      >
     </template>
     <template #start>
-      <navbar-item>成员</navbar-item>
-      <navbar-item>Codeforces</navbar-item>
+      <navbar-item tag="router-link" :to="{ name: 'About' }">成员</navbar-item>
+      <navbar-item tag="router-link" :to="{ name: 'Home' }"
+        >Codeforces</navbar-item
+      >
     </template>
     <template #end>
-      <navbar-item>设置</navbar-item>
+      <navbar-item tag="router-link" :to="{ name: 'About' }">关于</navbar-item>
     </template>
   </navbar>
   <div class="px-8 pt-4">
-    <div>Hello World</div>
+    <router-view></router-view>
   </div>
 </template>
 
