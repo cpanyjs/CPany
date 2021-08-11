@@ -42,6 +42,7 @@ async function run() {
   const configStatic = config?.static ?? [];
   for (const id of configStatic) {
     const result = await instance.load(id);
+
     if (result !== null) {
       core.info(`Fetched ${id}`);
       const { key, content } = result;
@@ -54,13 +55,18 @@ async function run() {
   const configUser = config?.users ?? {};
   for (const userKey in configUser) {
     const user = configUser[userKey];
+
     for (const type in user) {
-      const handles = user[type];
+      const rawHandles = user[type];
+      const handles =
+        typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
+
       for (const handle of handles) {
         const result = await instance.transform({
           id: handle,
           type
         });
+
         if (result !== null) {
           core.info(`Fetched ${result.key}`);
           const { key, content } = result;

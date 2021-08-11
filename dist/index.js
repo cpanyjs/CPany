@@ -9825,7 +9825,8 @@ function run() {
         for (const userKey in configUser) {
             const user = configUser[userKey];
             for (const type in user) {
-                const handles = user[type];
+                const rawHandles = user[type];
+                const handles = typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
                 for (const handle of handles) {
                     const result = yield instance.transform({
                         id: handle,
