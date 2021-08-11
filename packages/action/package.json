@@ -23,6 +23,7 @@
     "@actions/io": "^1.1.1",
     "@cpany/codeforces": "workspace:*",
     "@cpany/core": "workspace:*",
+    "@cpany/types": "workspace:*",
     "dayjs": "^1.10.6",
     "js-yaml": "^4.1.0"
   },

@@ -1,0 +1,20 @@
+{
+  "name": "@cpany/types",
+  "version": "0.0.0",
+  "description": "CPany types package",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yjl9903/CPany"
+  },
+  "license": "MIT",
+  "author": "XLor",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc"
+  }
+}

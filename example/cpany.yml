@@ -1,0 +1,11 @@
+users:
+  Solashiro:
+    codeforces/handle: Solashiro
+  czswez:
+    codeforces/handle: czswez
+  MojeDes:
+    codeforces/handle: MojeDes
+
+static:
+  - codeforces/contest.json
+  - codeforces/gym-contest.json

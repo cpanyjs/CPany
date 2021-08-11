@@ -2,10 +2,10 @@ import * as core from '@actions/core';
 import { readFileSync } from 'fs';
 import { load } from 'js-yaml';
 
+import type { ICPanyConfig } from '@cpany/types';
 import { createInstance } from '@cpany/core';
 import { codeforcesPlugin } from '@cpany/codeforces';
 
-import type { ICPanyConfig } from './type';
 import { createGitFileSystem } from './fs';
 import { processReadme } from './readme';
 import { now } from './utils';
