@@ -8,6 +8,7 @@ importers:
       '@vercel/ncc': ^0.29.0
       husky: 4.3.7
       lint-staged: ^11.0.0
+      pnpm: ^6.12.1
       prettier: ^2.3.2
       rimraf: ^3.0.2
       typescript: ^4.3.5
@@ -17,6 +18,7 @@ importers:
       '@vercel/ncc': 0.29.0
       husky: 4.3.7
       lint-staged: 11.0.0
+      pnpm: 6.12.1
       prettier: 2.3.2
       rimraf: 3.0.2
       typescript: 4.3.5
@@ -1583,6 +1585,12 @@ packages:
     resolution: {integrity: sha512-gQR3WpIgNIKwBMVLkpMUeR3e1/E1y42bqDQZfql+kDeXd8COYfM8PQA4X6y7a8u9Ua9FHmsrrmirW2vHs45hWg==}
     dependencies:
       semver-compare: 1.0.0
+    dev: true
+
+  /pnpm/6.12.1:
+    resolution: {integrity: sha512-p2fowre11u8/f6rw6n1zadtpNLQd2XNux40sUUdcVQqwryUG0YO7xveP96iRTBSWi+RdyCRlXnDgppyvb31d8g==}
+    engines: {node: '>=12.17'}
+    hasBin: true
     dev: true
 
   /postcss-modules-extract-imports/3.0.0_postcss@8.3.5:
