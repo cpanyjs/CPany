@@ -9,9 +9,14 @@
       >
     </template>
     <template #start>
-      <navbar-item tag="router-link" :to="{ name: 'About' }">成员</navbar-item>
-      <navbar-item tag="router-link" :to="{ name: 'Home' }"
+      <navbar-item tag="router-link" :to="{ name: 'Members' }"
+        >成员</navbar-item
+      >
+      <navbar-item tag="router-link" :to="{ name: 'Codeforces' }"
         >Codeforces</navbar-item
+      >
+      <navbar-item tag="router-link" :to="{ name: 'Contests' }"
+        >比赛</navbar-item
       >
     </template>
     <template #end>

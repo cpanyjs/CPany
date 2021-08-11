@@ -1,4 +1,4 @@
-<template>最近比赛</template>
+<template>所有比赛</template>
 
 <script setup lang="ts"></script>
 

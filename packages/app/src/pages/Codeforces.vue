@@ -1,4 +1,4 @@
-<template>最近比赛</template>
+<template>Codeforces</template>
 
 <script setup lang="ts"></script>
 
