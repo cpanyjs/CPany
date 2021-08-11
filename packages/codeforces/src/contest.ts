@@ -1,31 +1,34 @@
 import type { AxiosInstance } from 'axios';
 
 import type { ILoadPlugin } from '@cpany/core';
+import type { IContest } from '@cpany/types';
 import type { ContestDTO } from '@cpany/types/codeforces';
 
-function transformContestInfo(contest: ContestDTO) {
+import { codeforces } from './constant';
+
+function transformContestInfo(contest: ContestDTO): IContest {
   return {
-    id: contest.id,
+    type: codeforces + '/' + contest.type,
     name: contest.name,
-    contestUrl: `http://codeforces.com/contest/${contest.id}`,
-    standingsUrl: `http://codeforces.com/contest/${contest.id}/standings`,
-    type: contest.type,
+    startTime: contest.startTimeSeconds,
+    duration: contest.durationSeconds,
+    id: contest.id,
     phase: contest.phase,
-    startTimeSeconds: contest.startTimeSeconds,
-    durationSeconds: contest.durationSeconds
+    contestUrl: `https://codeforces.com/contest/${contest.id}`,
+    standingsUrl: `https://codeforces.com/contest/${contest.id}/standings`
   };
 }
 
-function transformGymContestInfo(contest: ContestDTO) {
+function transformGymContestInfo(contest: ContestDTO): IContest {
   return {
-    id: contest.id,
+    type: codeforces + '/' + contest.type,
     name: contest.name,
-    contestUrl: `http://codeforces.com/gym/${contest.id}`,
-    standingsUrl: `http://codeforces.com/gym/${contest.id}/standings`,
-    type: contest.type,
+    startTime: contest.startTimeSeconds,
+    duration: contest.durationSeconds,
+    id: contest.id,
     phase: contest.phase,
-    startTimeSeconds: contest.startTimeSeconds,
-    durationSeconds: contest.durationSeconds
+    contestUrl: `https://codeforces.com/gym/${contest.id}`,
+    standingsUrl: `https://codeforces.com/gym/${contest.id}/standings`
   };
 }
 

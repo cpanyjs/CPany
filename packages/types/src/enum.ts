@@ -17,3 +17,11 @@ export enum Verdict {
   TESTING = 'TESTING',
   REJECTED = 'REJECTED'
 }
+
+export enum ParticipantType {
+  CONTESTANT = 'CONTESTANT',
+  PRACTICE = 'PRACTICE',
+  VIRTUAL = 'VIRTUAL',
+  MANAGER = 'MANAGER',
+  OUT_OF_COMPETITION = 'OUT_OF_COMPETITION'
+}

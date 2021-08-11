@@ -9953,8 +9953,20 @@ exports.now = now;
 
 /***/ }),
 
+/***/ 4371:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.codeforces = void 0;
+exports.codeforces = 'codeforces';
+
+
+/***/ }),
+
 /***/ 4062:
-/***/ (function(__unused_webpack_module, exports) {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -9969,28 +9981,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.gymContestListPlugin = exports.contestListPlugin = void 0;
+const constant_1 = __nccwpck_require__(4371);
 function transformContestInfo(contest) {
     return {
-        id: contest.id,
+        type: constant_1.codeforces + '/' + contest.type,
         name: contest.name,
-        contestUrl: `http://codeforces.com/contest/${contest.id}`,
-        standingsUrl: `http://codeforces.com/contest/${contest.id}/standings`,
-        type: contest.type,
+        startTime: contest.startTimeSeconds,
+        duration: contest.durationSeconds,
+        id: contest.id,
         phase: contest.phase,
-        startTimeSeconds: contest.startTimeSeconds,
-        durationSeconds: contest.durationSeconds
+        contestUrl: `https://codeforces.com/contest/${contest.id}`,
+        standingsUrl: `https://codeforces.com/contest/${contest.id}/standings`
     };
 }
 function transformGymContestInfo(contest) {
     return {
-        id: contest.id,
+        type: constant_1.codeforces + '/' + contest.type,
         name: contest.name,
-        contestUrl: `http://codeforces.com/gym/${contest.id}`,
-        standingsUrl: `http://codeforces.com/gym/${contest.id}/standings`,
-        type: contest.type,
+        startTime: contest.startTimeSeconds,
+        duration: contest.durationSeconds,
+        id: contest.id,
         phase: contest.phase,
-        startTimeSeconds: contest.startTimeSeconds,
-        durationSeconds: contest.durationSeconds
+        contestUrl: `https://codeforces.com/gym/${contest.id}`,
+        standingsUrl: `https://codeforces.com/gym/${contest.id}/standings`
     };
 }
 function contestListPlugin(api) {
@@ -10028,7 +10041,7 @@ exports.gymContestListPlugin = gymContestListPlugin;
 /***/ }),
 
 /***/ 9906:
-/***/ (function(__unused_webpack_module, exports) {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -10043,6 +10056,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.handleInfoPlugin = void 0;
+const constant_1 = __nccwpck_require__(4371);
 function handleInfoPlugin(api) {
     const name = 'codeforces/handle';
     const gid = (id) => name + '/' + id + '.json';
@@ -10063,15 +10077,16 @@ function handleInfoPlugin(api) {
                             }
                         });
                         return {
+                            type: constant_1.codeforces,
                             handle: data.handle,
                             avatar: data.titlePhoto,
                             codeforces: {
                                 rank: data.rank,
                                 rating: data.rating,
                                 maxRank: data.maxRank,
-                                maxRating: data.maxRating,
-                                submissions: []
-                            }
+                                maxRating: data.maxRating
+                            },
+                            submissions: []
                         };
                     });
                     const fetchSubmission = () => __awaiter(this, void 0, void 0, function* () {
@@ -10081,14 +10096,15 @@ function handleInfoPlugin(api) {
                             }
                         });
                         return result.map((submission) => {
-                            const submissionUrl = submission.contestId >= 100001
-                                ? `http://codeforces.com/gym/${submission.contestId}/submission/${submission.id}`
-                                : `http://codeforces.com/contest/${submission.contestId}/submission/${submission.id}`;
+                            const prefix = (submission.contestId >= 100001
+                                ? 'https://codeforces.com/gym/'
+                                : 'https://codeforces.com/contest/') + submission.contestId;
+                            const submissionUrl = prefix + `/submission/${submission.id}`;
+                            const problemUrl = prefix + `/problem/${submission.problem.index}`;
                             return {
+                                type: constant_1.codeforces,
                                 id: submission.id,
-                                contestId: submission.contestId,
-                                creationTimeSeconds: submission.creationTimeSeconds,
-                                relativeTimeSeconds: submission.relativeTimeSeconds,
+                                creationTime: submission.creationTimeSeconds,
                                 language: submission.programmingLanguage,
                                 verdict: submission.verdict,
                                 author: {
@@ -10097,18 +10113,19 @@ function handleInfoPlugin(api) {
                                     teamName: submission.author.teamName
                                 },
                                 problem: {
-                                    contestId: submission.problem.contestId,
-                                    index: submission.problem.index,
+                                    type: constant_1.codeforces,
+                                    id: `${submission.problem.contestId}${submission.problem.index}`,
                                     name: submission.problem.name,
                                     rating: submission.problem.rating,
-                                    tags: submission.problem.tags
+                                    tags: submission.problem.tags,
+                                    problemUrl
                                 },
                                 submissionUrl
                             };
                         });
                     });
                     const data = yield fetchInfo();
-                    data.codeforces.submissions = yield fetchSubmission();
+                    data.submissions = yield fetchSubmission();
                     return {
                         key: gid(id),
                         content: JSON.stringify(data, null, 2)
@@ -10128,6 +10145,16 @@ exports.handleInfoPlugin = handleInfoPlugin;
 
 "use strict";
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -10136,6 +10163,7 @@ exports.codeforcesPlugin = void 0;
 const axios_1 = __importDefault(__nccwpck_require__(5186));
 const contest_1 = __nccwpck_require__(4062);
 const handle_1 = __nccwpck_require__(9906);
+__exportStar(__nccwpck_require__(4371), exports);
 function codeforcesPlugin(option = {}) {
     var _a, _b;
     const api = axios_1.default.create({
