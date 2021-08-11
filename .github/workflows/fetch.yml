@@ -14,8 +14,8 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: dev
-          path: ../action
-      - uses: ../action
+          path: ./.main
+      - uses: ./.main
         name: Fetch Data
         with:
           skipClean: main
