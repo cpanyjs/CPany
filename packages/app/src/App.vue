@@ -34,9 +34,21 @@ import { Navbar, NavbarItem } from './components/navbar';
     'Helvetica Neue', sans-serif;
   --font-family-mono: 'IBM Plex Mono', source-code-pro, Menlo, Monaco, Consolas,
     'Courier New', monospace;
+
+  --text-light-1: #2c3e50;
+  --text-light-2: #476582;
+  --text-light-3: #90a4b7;
 }
 
 html {
   font-family: var(--font-family-base);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-light-1);
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-light-1);
 }
 </style>
