@@ -1,7 +1,7 @@
 import type { AxiosInstance } from 'axios';
 
-import { ITransformPlugin } from '@cpany/core';
-import type { HandleDTO, SubmissionDTO } from './type';
+import type { ITransformPlugin } from '@cpany/core';
+import type { HandleDTO, SubmissionDTO } from '@cpany/types/codeforces';
 
 export function handleInfoPlugin(api: AxiosInstance): ITransformPlugin {
   const name = 'codeforces/handle';

@@ -1,7 +1,7 @@
 import type { AxiosInstance } from 'axios';
 
-import { ILoadPlugin } from '@cpany/core';
-import { ContestDTO } from './type';
+import type { ILoadPlugin } from '@cpany/core';
+import type { ContestDTO } from '@cpany/types/codeforces';
 
 function transformContestInfo(contest: ContestDTO) {
   return {

@@ -1,3 +1,5 @@
+export * from './enum';
+
 export interface ICPanyConfig {
   users?: Record<string, Record<string, string[] | string>>;
   contests?: string[];

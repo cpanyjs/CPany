@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@cpany/core": "workspace:*",
+    "@cpany/types": "workspace:^0.0.0",
     "axios": "^0.21.1"
   }
 }

@@ -98,9 +98,11 @@ importers:
   packages/codeforces:
     specifiers:
       '@cpany/core': workspace:*
+      '@cpany/types': workspace:^0.0.0
       axios: ^0.21.1
     dependencies:
       '@cpany/core': link:../core
+      '@cpany/types': link:../types
       axios: 0.21.1
 
   packages/core:

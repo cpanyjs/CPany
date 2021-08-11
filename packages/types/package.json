@@ -12,7 +12,9 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "codeforces.d.ts",
+    "index.d.ts"
   ],
   "scripts": {
     "build": "tsc"
