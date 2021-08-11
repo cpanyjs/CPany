@@ -11590,5 +11590,14 @@
     "type": "IOI",
     "phase": "FINISHED",
     "durationSeconds": 12600
+  },
+  {
+    "id": 103241,
+    "name": "Teamscode Summer 2021",
+    "contestUrl": "http://codeforces.com/gym/103241",
+    "standingsUrl": "http://codeforces.com/gym/103241/standings",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "durationSeconds": 10800
   }
 ]
