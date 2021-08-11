@@ -9791,14 +9791,17 @@ function getConfig(path) {
     });
 }
 function run() {
-    var _a, _b;
+    var _a, _b, _c;
     return __awaiter(this, void 0, void 0, function* () {
         core.startGroup('Load CPany config');
         const configPath = core.getInput('config');
         const config = yield getConfig(configPath);
         core.info(JSON.stringify(config, null, 2));
         core.endGroup();
-        const instance = core_1.createInstance({ plugins: [...codeforces_1.codeforcesPlugin()] });
+        const instance = core_1.createInstance({
+            plugins: [...codeforces_1.codeforcesPlugin()],
+            logger: core
+        });
         const fs = yield fs_2.createGitFileSystem('./', new Set([
             'README.md',
             'netlify.toml',
@@ -9806,11 +9809,11 @@ function run() {
             'LICENSE',
             'LICENCE',
             configPath,
-            core.getInput('skipClean')
+            ...((_a = config === null || config === void 0 ? void 0 : config.static) !== null && _a !== void 0 ? _a : [])
         ]));
         core.startGroup('Fetch data');
-        const configStatic = (_a = config === null || config === void 0 ? void 0 : config.static) !== null && _a !== void 0 ? _a : [];
-        for (const id of configStatic) {
+        const configFetch = (_b = config === null || config === void 0 ? void 0 : config.fetch) !== null && _b !== void 0 ? _b : [];
+        for (const id of configFetch) {
             const result = yield instance.load(id);
             if (result !== null) {
                 core.info(`Fetched ${id}`);
@@ -9821,7 +9824,7 @@ function run() {
                 core.error(`Fetch "${id}" fail`);
             }
         }
-        const configUser = (_b = config === null || config === void 0 ? void 0 : config.users) !== null && _b !== void 0 ? _b : {};
+        const configUser = (_c = config === null || config === void 0 ? void 0 : config.users) !== null && _c !== void 0 ? _c : {};
         for (const userKey in configUser) {
             const user = configUser[userKey];
             for (const type in user) {
@@ -10186,16 +10189,22 @@ function createInstance(option) {
         }
         for (const plugin of plugins) {
             if ('load' in plugin) {
-                const result = yield plugin.load(key, context);
-                if (result !== undefined && result !== null) {
-                    if (typeof result === 'string') {
-                        cacheToContext(key, result);
-                        return { key, content: result };
+                try {
+                    const result = yield plugin.load(key, context);
+                    if (result !== undefined && result !== null) {
+                        if (typeof result === 'string') {
+                            cacheToContext(key, result);
+                            return { key, content: result };
+                        }
+                        else {
+                            cacheToContext(result.key, result.content);
+                            return result;
+                        }
                     }
-                    else {
-                        cacheToContext(result.key, result.content);
-                        return result;
-                    }
+                }
+                catch (error) {
+                    logger.error(error);
+                    return null;
                 }
             }
         }
@@ -10213,13 +10222,19 @@ function createInstance(option) {
                         content: loadFromContext(key)
                     };
                 }
-                const result = yield plugin.transform(payload, context);
-                if (result !== undefined && result !== null) {
-                    cacheToContext(result.key, result.content);
-                    return result;
+                try {
+                    const result = yield plugin.transform(payload, context);
+                    if (result !== undefined && result !== null) {
+                        cacheToContext(result.key, result.content);
+                        return result;
+                    }
+                    else {
+                        logger.error(`[${plugin.name}] has resolved id "${key}", but failed transforming`);
+                    }
                 }
-                else {
-                    logger.error(`[${plugin.name}] has resolved id "${key}", but failed transforming`);
+                catch (error) {
+                    logger.error(error);
+                    return null;
                 }
             }
         }

@@ -1,6 +1,8 @@
 export interface ICPanyConfig {
-  static?: string[];
   users?: Record<string, Record<string, string[] | string>>;
+  contests?: string[];
+  fetch?: string[];
+  static?: string[];
 }
 
 export interface ICPanyUser {

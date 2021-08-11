@@ -22,7 +22,10 @@ async function run() {
   core.info(JSON.stringify(config, null, 2));
   core.endGroup();
 
-  const instance = createInstance({ plugins: [...codeforcesPlugin()] });
+  const instance = createInstance({
+    plugins: [...codeforcesPlugin()],
+    logger: core
+  });
 
   const fs = await createGitFileSystem(
     './',
@@ -33,14 +36,14 @@ async function run() {
       'LICENSE',
       'LICENCE',
       configPath,
-      core.getInput('skipClean')
+      ...(config?.static ?? [])
     ])
   );
 
   core.startGroup('Fetch data');
 
-  const configStatic = config?.static ?? [];
-  for (const id of configStatic) {
+  const configFetch = config?.fetch ?? [];
+  for (const id of configFetch) {
     const result = await instance.load(id);
 
     if (result !== null) {

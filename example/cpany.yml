@@ -6,6 +6,13 @@ users:
   MojeDes:
     codeforces/handle: MojeDes
 
-static:
+contests:
+  - codeforces/contest.json
+  - nowcoder-multi
+
+fetch:
   - codeforces/contest.json
   - codeforces/gym-contest.json
+
+static:
+  - nowcoder-multi
