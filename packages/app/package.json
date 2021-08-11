@@ -1,9 +1,16 @@
 {
   "name": "@cpany/app",
-  "version": "1.0.0",
+  "version": "0.0.0",
+  "description": "CPany web app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yjl9903/CPany"
+  },
+  "license": "MIT",
+  "author": "XLor",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "dev": "vite"
   },
   "dependencies": {
     "localforage": "^1.9.0",
