@@ -1,4 +1,4 @@
-name: 'Fetch data'
+name: Fetch data
 
 on:
   workflow_dispatch:
@@ -14,7 +14,8 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: dev
-          path: ./main
-      - uses: ./main
+          path: ../action
+      - uses: ../action
+        name: Fetch Data
         with:
           skipClean: main
