@@ -14,12 +14,13 @@
     ]
   },
   "scripts": {
-    "dev": "pnpm -C packages/app run dev",
-    "build": "pnpm run build --filter=@cpany/* && pnpm -C packages/action run package",
+    "dev": "node packages/cli/dist/cli.js dev --app packages/app",
+    "build": "pnpm run build --filter ./packages && pnpm -C packages/action run package",
     "build:core": "pnpm -C packages/core run build",
     "build:codeforces": "pnpm -C packages/codeforces run build",
     "build:action": "pnpm -C packages/action run build",
     "build:app": "pnpm -C packages/app run build",
+    "build:cli": "pnpm -C packages/cli run build",
     "format": "prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore"
   },
   "devDependencies": {
