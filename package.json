@@ -15,6 +15,7 @@
   },
   "scripts": {
     "dev": "node packages/cli/dist/cli.js dev --app packages/app",
+    "site": "node packages/cli/dist/cli.js build --app packages/app",
     "build": "pnpm run build --filter ./packages && pnpm -C packages/action run package",
     "build:core": "pnpm -C packages/core run build",
     "build:codeforces": "pnpm -C packages/codeforces run build",

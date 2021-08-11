@@ -1,0 +1,11 @@
+[build.environment]
+  NODE_VERSION = "14"
+
+[build]
+  publish = "site"
+  command = "npm run build && npm run site"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
