@@ -11,13 +11,23 @@
   },
   {
     "id": 1558,
-    "name": "Codeforces Round #739 (Div. 1 + Div. 2, based on VK Cup 2021 - Final (Engine))",
+    "name": "Codeforces Round #740 (Div. 1 + Div. 2, based on VK Cup 2021 - Final (Engine))",
     "contestUrl": "http://codeforces.com/contest/1558",
     "standingsUrl": "http://codeforces.com/contest/1558/standings",
     "type": "CF",
     "phase": "BEFORE",
     "startTimeSeconds": 1629815700,
     "durationSeconds": 9000
+  },
+  {
+    "id": 1560,
+    "name": "Codeforces Round #739 (Div. 3)",
+    "contestUrl": "http://codeforces.com/contest/1560",
+    "standingsUrl": "http://codeforces.com/contest/1560/standings",
+    "type": "ICPC",
+    "phase": "BEFORE",
+    "startTimeSeconds": 1629297300,
+    "durationSeconds": 7200
   },
   {
     "id": 1559,
