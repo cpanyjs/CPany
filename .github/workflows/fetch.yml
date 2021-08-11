@@ -17,5 +17,3 @@ jobs:
           path: ./.main
       - uses: ./.main
         name: Fetch Data
-        with:
-          skipClean: main
