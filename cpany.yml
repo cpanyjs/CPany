@@ -1,13 +1,10 @@
 users:
-  XLor:
-    codeforces/handle:
-      - XLor
-      - XLorTree
-  miaojie:
-    codeforces/handle:
-      - miaojie
-      - ActorBlack
-      - Blue_Little_Eight
+  Solashiro:
+    codeforces/handle: Solashiro
+  czswez:
+    codeforces/handle: czswez
+  MojeDes:
+    codeforces/handle: MojeDes
 
 static:
   - codeforces/contest.json
