@@ -1,4 +1,5 @@
-name: 'build-test'
+name: Build test
+
 on:
   pull_request:
   push:
@@ -17,8 +18,8 @@ jobs:
           version: 6.11.5
       - uses: actions/setup-node@v2
         with:
-          node-version: '14'
-          cache: 'pnpm'
+          node-version: 14
+          cache: pnpm
       - run: pnpm install
       - run: pnpm run build
   test:
@@ -29,7 +30,6 @@ jobs:
           ref: cpany
       - uses: actions/checkout@v2
         with:
-          path: ./main
-      - uses: ./main
-        with:
-          skipClean: main
+          path: ./.main
+      - uses: ./.main
+        name: Fetch Data
