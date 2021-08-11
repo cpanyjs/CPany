@@ -26,7 +26,15 @@ async function run() {
 
   const fs = await createGitFileSystem(
     './',
-    new Set(['README.md', configPath, core.getInput('skipClean')])
+    new Set([
+      'README.md',
+      'netlify.toml',
+      'package.json',
+      'LICENSE',
+      'LICENCE',
+      configPath,
+      core.getInput('skipClean')
+    ])
   );
 
   core.startGroup('Fetch data');

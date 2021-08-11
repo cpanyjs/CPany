@@ -9799,7 +9799,15 @@ function run() {
         core.info(JSON.stringify(config, null, 2));
         core.endGroup();
         const instance = core_1.createInstance({ plugins: [...codeforces_1.codeforcesPlugin()] });
-        const fs = yield fs_2.createGitFileSystem('./', new Set(['README.md', configPath, core.getInput('skipClean')]));
+        const fs = yield fs_2.createGitFileSystem('./', new Set([
+            'README.md',
+            'netlify.toml',
+            'package.json',
+            'LICENSE',
+            'LICENCE',
+            configPath,
+            core.getInput('skipClean')
+        ]));
         core.startGroup('Fetch data');
         const configStatic = (_a = config === null || config === void 0 ? void 0 : config.static) !== null && _a !== void 0 ? _a : [];
         for (const id of configStatic) {
