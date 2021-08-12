@@ -109,6 +109,7 @@ export async function createLoader({
       for (const member of standing.author.members) {
         const user = userMap.get(member);
         if (user !== null && user !== undefined) {
+          contest.participantNumber++;
           user.contests.push({
             author: standing.author,
             ...contest
