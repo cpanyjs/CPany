@@ -4,7 +4,7 @@ import path from 'path';
 import { readFileSync, existsSync } from 'fs';
 import { cac } from 'cac';
 import { createServer, build } from 'vite';
-import { createCPanyConfigPlugin, createCPanyRoutePlugin } from './plugin';
+import { createCPanyPlugin } from './plugin';
 
 interface ICliOption {
   app?: string;
@@ -30,10 +30,7 @@ cli
       server: {
         port: option.port
       },
-      plugins: [
-        createCPanyRoutePlugin(pluginOption),
-        createCPanyConfigPlugin(pluginOption)
-      ]
+      plugins: [await createCPanyPlugin(pluginOption)]
     });
 
     await server.listen();
@@ -54,10 +51,7 @@ cli
       build: {
         outDir: path.resolve(option.out)
       },
-      plugins: [
-        createCPanyRoutePlugin(pluginOption),
-        createCPanyConfigPlugin(pluginOption)
-      ]
+      plugins: [await createCPanyPlugin(pluginOption)]
     });
   });
 

@@ -1,14 +1,20 @@
 import type { Plugin } from 'vite';
 
 import path from 'path';
-import { readFileSync } from 'fs';
-import { load } from 'js-yaml';
 
-import type { ICPanyConfig, ICPanyUser } from '@cpany/types';
+import type { IContest, ICPanyUser } from '@cpany/types';
+import type { IPluginOption } from './types';
+import { createLoader } from './loader';
 
-interface IPluginOption {
-  appRootPath: string;
-  dataRootPath: string;
+export async function createCPanyPlugin(
+  option: IPluginOption
+): Promise<Plugin[]> {
+  const { users, contests } = await createLoader(option);
+
+  return [
+    createCPanyRoutePlugin(option),
+    createCPanyOverviewPlugin(users, contests, option)
+  ];
 }
 
 export function createCPanyRoutePlugin({ appRootPath }: IPluginOption): Plugin {
@@ -28,53 +34,30 @@ export function createCPanyRoutePlugin({ appRootPath }: IPluginOption): Plugin {
   };
 }
 
-export function createCPanyConfigPlugin({
-  appRootPath,
-  dataRootPath
-}: IPluginOption): Plugin {
-  const configPath = path
-    .join(appRootPath, 'src', 'cpany.ts')
+export function createCPanyOverviewPlugin(
+  users: ICPanyUser[],
+  contests: IContest[],
+  { appRootPath }: IPluginOption
+): Plugin {
+  const overviewPath = path
+    .join(appRootPath, 'src', 'overview.ts')
     .replace(/\\/g, '/');
 
-  const loadConfig = async () => {
-    const content = readFileSync(path.join(dataRootPath, 'cpany.yml'), 'utf8');
-    return load(content) as ICPanyConfig;
-  };
-
   return {
-    name: 'cpany:config',
+    name: 'cpany:overview',
     enforce: 'pre',
     async transform(code, id) {
-      if (id === configPath) {
+      if (id === overviewPath) {
         // transfrom cpany.ts
-        const config = await loadConfig();
+        const usersImports: string[] = users.map(
+          (user) => `users.push(${JSON.stringify(user, null, 2)});`
+        );
+        const contestsImports: string[] = contests.map(
+          (contest) => `contests.push(${JSON.stringify(contest, null, 2)});`
+        );
 
-        const userImports: string[] = [];
-        const configUser = config?.users ?? {};
-        for (const userName in configUser) {
-          const handles: ICPanyUser['handles'] = [];
-
-          for (const type in configUser[userName]) {
-            const rawHandles = configUser[userName][type];
-            const thisHandles =
-              typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
-            handles.push(
-              ...thisHandles.map((handle) => ({
-                handle,
-                type
-              }))
-            );
-          }
-
-          const user: ICPanyUser = {
-            name: userName,
-            handles
-          };
-          const stmt = `users.push(${JSON.stringify(user, null, 2)});`;
-          userImports.push(stmt);
-        }
-
-        code = code.replace('/* __users__ */', userImports.join('\n'));
+        code = code.replace('/* __users__ */', usersImports.join('\n'));
+        code = code.replace('/* __contests__ */', contestsImports.join('\n'));
 
         return code;
       }

@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { users } from '../cpany';
+import { users } from '../overview';
 </script>
 
 <style></style>

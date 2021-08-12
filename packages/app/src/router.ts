@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
+/* __imports__ */
+
 const routes = [
   {
     path: '/',
