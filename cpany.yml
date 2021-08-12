@@ -8,11 +8,11 @@ users:
 
 contests:
   - codeforces/contest.json
-  - nowcoder-multi
+  - nowcoder
 
 fetch:
   - codeforces/contest.json
   - codeforces/gym-contest.json
 
 static:
-  - nowcoder-multi
+  - nowcoder
