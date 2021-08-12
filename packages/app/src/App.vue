@@ -25,7 +25,12 @@
   </navbar>
 
   <div class="px-screen py-4 main-view">
-    <router-view></router-view>
+    <router-view v-slot="{ Component }">
+      <transition name="fade">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+    <Progress />
   </div>
 
   <footer class="px-2 py-6">
@@ -42,6 +47,7 @@
 
 <script setup lang="ts">
 import { Navbar, NavbarItem } from './components/navbar';
+import { Progress } from './components/progress';
 </script>
 
 <style>
@@ -83,5 +89,18 @@ a {
   .main-view {
     min-height: calc(100% - 10rem);
   }
+}
+
+.fade-enter-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+
+.fade-enter-active ~ #progress {
+  animation: loading-loop 1s;
+  animation-iteration-count: infinite;
 }
 </style>
