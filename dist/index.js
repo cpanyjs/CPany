@@ -10113,6 +10113,8 @@ function handleInfoPlugin(api) {
                                 author: {
                                     members: submission.author.members.map(({ handle }) => handle),
                                     participantType: submission.author.participantType,
+                                    participantTime: submission.creationTimeSeconds -
+                                        submission.relativeTimeSeconds,
                                     teamName: submission.author.teamName
                                 },
                                 problem: {

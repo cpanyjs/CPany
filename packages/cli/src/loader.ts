@@ -121,7 +121,7 @@ export async function createLoader({
   // Desc sort
   for (const user of users) {
     user.contests = user.contests.sort(
-      (lhs, rhs) => rhs.startTime - lhs.startTime
+      (lhs, rhs) => rhs.author.participantTime - lhs.author.participantTime
     );
   }
 
