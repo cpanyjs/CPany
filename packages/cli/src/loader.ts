@@ -2,12 +2,11 @@ import path from 'path';
 import { readFile, readdir } from 'fs/promises';
 import { load } from 'js-yaml';
 
-import {
+import type {
   IContest,
   ICPanyConfig,
   ICPanyUser,
   IHandle,
-  ParticipantType,
   RouteKey
 } from '@cpany/types';
 import type { IPluginOption } from './types';
@@ -46,10 +45,11 @@ export async function createLoader({
     );
   })();
 
-  const { findHandle, linkHandle, findUser } = createHandleSet(handles);
+  const { findHandle } = createHandleSet(handles);
   const { findCodeforces } = createCodeforcesSet(contests);
 
   const users: ICPanyUser[] = [];
+  const userMap: Map<string, ICPanyUser> = new Map();
   const configUser = config?.users ?? {};
   for (const userName in configUser) {
     const user: ICPanyUser = {
@@ -69,7 +69,6 @@ export async function createLoader({
 
         if (handle !== null) {
           user.handles.push(handle);
-          linkHandle(handle, user);
 
           // Dep: find codeforces contests
           if (handle.type.startsWith('codeforces')) {
@@ -101,19 +100,17 @@ export async function createLoader({
     }
 
     users.push(user);
+    userMap.set(user.name, user);
   }
 
+  // Use username to push contest
   for (const contest of contests) {
     for (const standing of contest.standings ?? []) {
       for (const member of standing.author.members) {
-        const user = findUser(contest.type, member);
-        if (user !== null) {
-          contest.participantNumber++;
+        const user = userMap.get(member);
+        if (user !== null && user !== undefined) {
           user.contests.push({
-            author: {
-              members: [],
-              participantType: ParticipantType.CONTESTANT
-            },
+            author: standing.author,
             ...contest
           });
         }
@@ -121,9 +118,9 @@ export async function createLoader({
     }
   }
 
-  // Remove duplicate contests and sort
+  // Desc sort
   for (const user of users) {
-    user.contests = [...new Set(user.contests)].sort(
+    user.contests = user.contests.sort(
       (lhs, rhs) => rhs.startTime - lhs.startTime
     );
   }
@@ -182,13 +179,12 @@ function genRouteKey<T extends IContest | IHandle>(
       } as RouteKey<T>);
     }
   }
-  return files;
+  // Desc sort
+  return files.sort(sortFn).reverse();
 }
 
 function createHandleSet(handles: RouteKey<IHandle>[]) {
   const mapByType: Map<string, Map<string, RouteKey<IHandle>>> = new Map();
-
-  const handleToUser: WeakMap<IHandle, ICPanyUser> = new WeakMap();
 
   for (const handle of handles) {
     if (mapByType.has(handle.type)) {
@@ -213,23 +209,8 @@ function createHandleSet(handles: RouteKey<IHandle>[]) {
     }
   };
 
-  const linkHandle = (handle: IHandle, user: ICPanyUser) => {
-    handleToUser.set(handle, user);
-  };
-
-  const findUser = (type: string, handle: string) => {
-    const item = findHandle(type, handle);
-    if (item !== null) {
-      return handleToUser.get(item) ?? null;
-    } else {
-      return null;
-    }
-  };
-
   return {
-    findHandle,
-    linkHandle,
-    findUser
+    findHandle
   };
 }
 
@@ -244,5 +225,6 @@ function createCodeforcesSet(contests: RouteKey<IContest>[]) {
   const findCodeforces = (id: number | string) => {
     return map.get(+id) ?? null;
   };
+
   return { findCodeforces };
 }
