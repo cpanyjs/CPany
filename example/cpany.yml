@@ -11,6 +11,7 @@ handles:
 
 contests:
   - codeforces/contest.json
+  - codeforces/gym-contest.json
   - nowcoder
 
 fetch:
