@@ -34,7 +34,7 @@ export function handleInfoPlugin(api: AxiosInstance): ITransformPlugin {
           });
 
           return {
-            type: codeforces,
+            type: name,
             handle: data.handle,
             avatar: data.titlePhoto,
             codeforces: {

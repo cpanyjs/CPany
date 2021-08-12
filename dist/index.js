@@ -10080,7 +10080,7 @@ function handleInfoPlugin(api) {
                             }
                         });
                         return {
-                            type: constant_1.codeforces,
+                            type: name,
                             handle: data.handle,
                             avatar: data.titlePhoto,
                             codeforces: {
