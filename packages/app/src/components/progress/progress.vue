@@ -1,7 +1,5 @@
 <template>
-  <transition name="fade" appear>
-    <div v-if="loading" id="progress"><b></b><i></i></div>
-  </transition>
+  <div v-if="loading" id="progress"><b></b><i></i></div>
 </template>
 
 <script setup lang="ts">
@@ -21,6 +19,9 @@ const loading = inject<Ref<boolean>>('loading');
 
   border-radius: 1px;
   background-color: #3ab9d4;
+
+  animation: loading-loop 1s;
+  animation-iteration-count: infinite;
 }
 
 @keyframes loading-loop {
@@ -30,11 +31,6 @@ const loading = inject<Ref<boolean>>('loading');
   100% {
     width: 101%;
   }
-}
-
-.fade-enter-active {
-  animation: loading-loop 1s;
-  animation-iteration-count: infinite;
 }
 
 #progress b,
