@@ -99,6 +99,11 @@ a {
   opacity: 0;
 }
 
+.fade-enter-from ~ #progress {
+  animation: loading-loop 1s;
+  animation-iteration-count: infinite;
+}
+
 .fade-enter-active ~ #progress {
   animation: loading-loop 1s;
   animation-iteration-count: infinite;
