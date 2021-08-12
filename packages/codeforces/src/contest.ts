@@ -7,8 +7,10 @@ import type { ContestDTO } from '@cpany/types/codeforces';
 import { codeforces } from './constant';
 
 function transformContestInfo(contest: ContestDTO): IContest {
+  const type = /Div/.test(contest.name) ? 'cf' : contest.type.toLowerCase();
+
   return {
-    type: codeforces + '/' + contest.type,
+    type: codeforces + '/' + type,
     name: contest.name,
     startTime: contest.startTimeSeconds,
     duration: contest.durationSeconds,
@@ -22,7 +24,7 @@ function transformContestInfo(contest: ContestDTO): IContest {
 
 function transformGymContestInfo(contest: ContestDTO): IContest {
   return {
-    type: codeforces + '/' + contest.type,
+    type: codeforces + '/' + contest.type.toLowerCase(),
     name: contest.name,
     startTime: contest.startTimeSeconds,
     duration: contest.durationSeconds,
