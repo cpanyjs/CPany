@@ -6,6 +6,9 @@ users:
   MojeDes:
     codeforces/handle: MojeDes
 
+handles:
+  - codeforces/handle
+
 contests:
   - codeforces/contest.json
   - nowcoder
