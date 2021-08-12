@@ -1,16 +1,25 @@
 {
   "name": "@cpany/codeforces",
+  "version": "0.0.0",
   "description": "CPany codeforces package",
-  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yjl9903/CPany"
+  },
   "license": "MIT",
   "author": "XLor",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "tsc"
   },
   "dependencies": {
     "@cpany/core": "workspace:*",
+    "@cpany/types": "workspace:^0.0.0",
     "axios": "^0.21.1"
   }
 }

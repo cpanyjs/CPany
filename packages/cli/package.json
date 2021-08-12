@@ -1,0 +1,34 @@
+{
+  "name": "@cpany/cli",
+  "version": "0.0.0",
+  "description": "CPany cli package",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yjl9903/CPany"
+  },
+  "license": "MIT",
+  "author": "XLor",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "bin": {
+    "cpany": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@cpany/app": "workspace:*",
+    "@cpany/types": "workspace:*",
+    "cac": "^6.7.3",
+    "js-yaml": "^4.1.0",
+    "vite": "^2.4.1"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.2",
+    "@types/node": "^16.4.13"
+  }
+}

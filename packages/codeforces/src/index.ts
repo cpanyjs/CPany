@@ -1,11 +1,12 @@
 import axios from 'axios';
 
-import { IPlugin } from '@cpany/core';
+import type { IPlugin } from '@cpany/core';
 
 import { contestListPlugin, gymContestListPlugin } from './contest';
 import { handleInfoPlugin } from './handle';
 
-interface ICodeforcesPluginOption {
+export * from './constant';
+export interface ICodeforcesPluginOption {
   baseUrl?: string;
   timeout?: number;
 }

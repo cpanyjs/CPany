@@ -1,10 +1,18 @@
 {
   "name": "@cpany/action",
+  "version": "0.0.0",
   "description": "CPany action package",
-  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yjl9903/CPany"
+  },
   "license": "MIT",
   "author": "XLor",
   "main": "dist/index.js",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
     "build": "tsc",
     "package": "ncc build --source-map --license licenses.txt -o ../../dist"
@@ -15,6 +23,7 @@
     "@actions/io": "^1.1.1",
     "@cpany/codeforces": "workspace:*",
     "@cpany/core": "workspace:*",
+    "@cpany/types": "workspace:*",
     "dayjs": "^1.10.6",
     "js-yaml": "^4.1.0"
   },

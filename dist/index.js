@@ -9791,18 +9791,29 @@ function getConfig(path) {
     });
 }
 function run() {
-    var _a, _b;
+    var _a, _b, _c;
     return __awaiter(this, void 0, void 0, function* () {
         core.startGroup('Load CPany config');
         const configPath = core.getInput('config');
         const config = yield getConfig(configPath);
         core.info(JSON.stringify(config, null, 2));
         core.endGroup();
-        const instance = core_1.createInstance({ plugins: [...codeforces_1.codeforcesPlugin()] });
-        const fs = yield fs_2.createGitFileSystem('./', new Set(['README.md', configPath, core.getInput('skipClean')]));
+        const instance = core_1.createInstance({
+            plugins: [...codeforces_1.codeforcesPlugin()],
+            logger: core
+        });
+        const fs = yield fs_2.createGitFileSystem('./', new Set([
+            'README.md',
+            'netlify.toml',
+            'package.json',
+            'LICENSE',
+            'LICENCE',
+            configPath,
+            ...((_a = config === null || config === void 0 ? void 0 : config.static) !== null && _a !== void 0 ? _a : [])
+        ]));
         core.startGroup('Fetch data');
-        const configStatic = (_a = config === null || config === void 0 ? void 0 : config.static) !== null && _a !== void 0 ? _a : [];
-        for (const id of configStatic) {
+        const configFetch = (_b = config === null || config === void 0 ? void 0 : config.fetch) !== null && _b !== void 0 ? _b : [];
+        for (const id of configFetch) {
             const result = yield instance.load(id);
             if (result !== null) {
                 core.info(`Fetched ${id}`);
@@ -9813,11 +9824,12 @@ function run() {
                 core.error(`Fetch "${id}" fail`);
             }
         }
-        const configUser = (_b = config === null || config === void 0 ? void 0 : config.users) !== null && _b !== void 0 ? _b : {};
+        const configUser = (_c = config === null || config === void 0 ? void 0 : config.users) !== null && _c !== void 0 ? _c : {};
         for (const userKey in configUser) {
             const user = configUser[userKey];
             for (const type in user) {
-                const handles = user[type];
+                const rawHandles = user[type];
+                const handles = typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
                 for (const handle of handles) {
                     const result = yield instance.transform({
                         id: handle,
@@ -9941,8 +9953,20 @@ exports.now = now;
 
 /***/ }),
 
+/***/ 4371:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.codeforces = void 0;
+exports.codeforces = 'codeforces';
+
+
+/***/ }),
+
 /***/ 4062:
-/***/ (function(__unused_webpack_module, exports) {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -9957,28 +9981,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.gymContestListPlugin = exports.contestListPlugin = void 0;
+const constant_1 = __nccwpck_require__(4371);
 function transformContestInfo(contest) {
     return {
-        id: contest.id,
+        type: constant_1.codeforces + '/' + contest.type,
         name: contest.name,
-        contestUrl: `http://codeforces.com/contest/${contest.id}`,
-        standingsUrl: `http://codeforces.com/contest/${contest.id}/standings`,
-        type: contest.type,
+        startTime: contest.startTimeSeconds,
+        duration: contest.durationSeconds,
+        id: contest.id,
         phase: contest.phase,
-        startTimeSeconds: contest.startTimeSeconds,
-        durationSeconds: contest.durationSeconds
+        contestUrl: `https://codeforces.com/contest/${contest.id}`,
+        standingsUrl: `https://codeforces.com/contest/${contest.id}/standings`
     };
 }
 function transformGymContestInfo(contest) {
     return {
-        id: contest.id,
+        type: constant_1.codeforces + '/' + contest.type,
         name: contest.name,
-        contestUrl: `http://codeforces.com/gym/${contest.id}`,
-        standingsUrl: `http://codeforces.com/gym/${contest.id}/standings`,
-        type: contest.type,
+        startTime: contest.startTimeSeconds,
+        duration: contest.durationSeconds,
+        id: contest.id,
         phase: contest.phase,
-        startTimeSeconds: contest.startTimeSeconds,
-        durationSeconds: contest.durationSeconds
+        contestUrl: `https://codeforces.com/gym/${contest.id}`,
+        standingsUrl: `https://codeforces.com/gym/${contest.id}/standings`
     };
 }
 function contestListPlugin(api) {
@@ -10016,7 +10041,7 @@ exports.gymContestListPlugin = gymContestListPlugin;
 /***/ }),
 
 /***/ 9906:
-/***/ (function(__unused_webpack_module, exports) {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -10031,6 +10056,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.handleInfoPlugin = void 0;
+const constant_1 = __nccwpck_require__(4371);
 function handleInfoPlugin(api) {
     const name = 'codeforces/handle';
     const gid = (id) => name + '/' + id + '.json';
@@ -10044,11 +10070,62 @@ function handleInfoPlugin(api) {
         transform({ id, type }) {
             return __awaiter(this, void 0, void 0, function* () {
                 if (type === name) {
-                    const { data: { result: [data] } } = yield api.get('user.info', {
-                        params: {
-                            handles: id
-                        }
+                    const fetchInfo = () => __awaiter(this, void 0, void 0, function* () {
+                        const { data: { result: [data] } } = yield api.get('user.info', {
+                            params: {
+                                handles: id
+                            }
+                        });
+                        return {
+                            type: constant_1.codeforces,
+                            handle: data.handle,
+                            avatar: data.titlePhoto,
+                            codeforces: {
+                                rank: data.rank,
+                                rating: data.rating,
+                                maxRank: data.maxRank,
+                                maxRating: data.maxRating
+                            },
+                            submissions: []
+                        };
                     });
+                    const fetchSubmission = () => __awaiter(this, void 0, void 0, function* () {
+                        const { data: { result } } = yield api.get('user.status', {
+                            params: {
+                                handle: id
+                            }
+                        });
+                        return result.map((submission) => {
+                            const prefix = (submission.contestId >= 100001
+                                ? 'https://codeforces.com/gym/'
+                                : 'https://codeforces.com/contest/') + submission.contestId;
+                            const submissionUrl = prefix + `/submission/${submission.id}`;
+                            const problemUrl = prefix + `/problem/${submission.problem.index}`;
+                            return {
+                                type: constant_1.codeforces,
+                                id: submission.id,
+                                creationTime: submission.creationTimeSeconds,
+                                language: submission.programmingLanguage,
+                                verdict: submission.verdict,
+                                author: {
+                                    members: submission.author.members.map(({ handle }) => handle),
+                                    participantType: submission.author.participantType,
+                                    teamName: submission.author.teamName
+                                },
+                                problem: {
+                                    type: constant_1.codeforces,
+                                    id: `${submission.problem.contestId}${submission.problem.index}`,
+                                    name: submission.problem.name,
+                                    rating: submission.problem.rating,
+                                    tags: submission.problem.tags,
+                                    problemUrl
+                                },
+                                submissionUrl
+                            };
+                        });
+                    });
+                    const data = yield fetchInfo();
+                    data.submissions = yield fetchSubmission();
                     return {
                         key: gid(id),
                         content: JSON.stringify(data, null, 2)
@@ -10068,6 +10145,16 @@ exports.handleInfoPlugin = handleInfoPlugin;
 
 "use strict";
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -10076,6 +10163,7 @@ exports.codeforcesPlugin = void 0;
 const axios_1 = __importDefault(__nccwpck_require__(5186));
 const contest_1 = __nccwpck_require__(4062);
 const handle_1 = __nccwpck_require__(9906);
+__exportStar(__nccwpck_require__(4371), exports);
 function codeforcesPlugin(option = {}) {
     var _a, _b;
     const api = axios_1.default.create({
@@ -10129,16 +10217,22 @@ function createInstance(option) {
         }
         for (const plugin of plugins) {
             if ('load' in plugin) {
-                const result = yield plugin.load(key, context);
-                if (result !== undefined && result !== null) {
-                    if (typeof result === 'string') {
-                        cacheToContext(key, result);
-                        return { key, content: result };
+                try {
+                    const result = yield plugin.load(key, context);
+                    if (result !== undefined && result !== null) {
+                        if (typeof result === 'string') {
+                            cacheToContext(key, result);
+                            return { key, content: result };
+                        }
+                        else {
+                            cacheToContext(result.key, result.content);
+                            return result;
+                        }
                     }
-                    else {
-                        cacheToContext(result.key, result.content);
-                        return result;
-                    }
+                }
+                catch (error) {
+                    logger.error(error);
+                    return null;
                 }
             }
         }
@@ -10156,13 +10250,19 @@ function createInstance(option) {
                         content: loadFromContext(key)
                     };
                 }
-                const result = yield plugin.transform(payload, context);
-                if (result !== undefined && result !== null) {
-                    cacheToContext(result.key, result.content);
-                    return result;
+                try {
+                    const result = yield plugin.transform(payload, context);
+                    if (result !== undefined && result !== null) {
+                        cacheToContext(result.key, result.content);
+                        return result;
+                    }
+                    else {
+                        logger.error(`[${plugin.name}] has resolved id "${key}", but failed transforming`);
+                    }
                 }
-                else {
-                    logger.error(`[${plugin.name}] has resolved id "${key}", but failed transforming`);
+                catch (error) {
+                    logger.error(error);
+                    return null;
                 }
             }
         }
@@ -10214,7 +10314,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"private":true,"husky":{"hooks":{"pre-commit":"lint-staged && pnpm run build && git add dist"}},"lint-staged":{"*.ts":["prettier --parser=typescript --write"],"*.vue":["prettier --parser=vue --write"]},"scripts":{"dev":"pnpm -C packages/app run dev","build":"pnpm run build --filter=@cpany/* && pnpm -C packages/action run package","build:core":"pnpm -C packages/core run build","build:codeforces":"pnpm -C packages/codeforces run build","build:action":"pnpm -C packages/action run build","build:app":"pnpm -C packages/app run build","format":"prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore"},"devDependencies":{"@types/node":"^16.0.1","@vercel/ncc":"^0.29.0","husky":"4.3.7","lint-staged":"^11.0.0","prettier":"^2.3.2","rimraf":"^3.0.2","typescript":"^4.3.5","vite":"^2.4.1"}}');
+module.exports = JSON.parse('{"private":true,"husky":{"hooks":{"pre-commit":"lint-staged && pnpm run build && git add dist"}},"lint-staged":{"*.ts":["prettier --parser=typescript --write"],"*.vue":["prettier --parser=vue --write"]},"scripts":{"dev":"node packages/cli/dist/cli.js dev --app packages/app --data example","site":"node packages/cli/dist/cli.js build --app packages/app --data example","build":"pnpm run build --filter ./packages && pnpm -C packages/action run package","build:core":"pnpm -C packages/core run build","build:codeforces":"pnpm -C packages/codeforces run build","build:action":"pnpm -C packages/action run build","build:app":"pnpm -C packages/app run build","build:cli":"pnpm -C packages/cli run build","format":"prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore"},"devDependencies":{"@types/node":"^16.0.1","@vercel/ncc":"^0.29.0","husky":"4.3.7","lint-staged":"^11.0.0","pnpm":"^6.12.1","prettier":"^2.3.2","rimraf":"^3.0.2","typescript":"^4.3.5","vite":"^2.4.1"}}');
 
 /***/ }),
 

@@ -40,15 +40,20 @@ export function createInstance(option: ICreateOptions): CPanyInstance {
 
     for (const plugin of plugins) {
       if ('load' in plugin) {
-        const result = await plugin.load(key, context);
-        if (result !== undefined && result !== null) {
-          if (typeof result === 'string') {
-            cacheToContext(key, result);
-            return { key, content: result };
-          } else {
-            cacheToContext(result.key, result.content);
-            return result;
+        try {
+          const result = await plugin.load(key, context);
+          if (result !== undefined && result !== null) {
+            if (typeof result === 'string') {
+              cacheToContext(key, result);
+              return { key, content: result };
+            } else {
+              cacheToContext(result.key, result.content);
+              return result;
+            }
           }
+        } catch (error) {
+          logger.error(error);
+          return null;
         }
       }
     }
@@ -67,14 +72,19 @@ export function createInstance(option: ICreateOptions): CPanyInstance {
           };
         }
 
-        const result = await plugin.transform(payload, context);
-        if (result !== undefined && result !== null) {
-          cacheToContext(result.key, result.content);
-          return result;
-        } else {
-          logger.error(
-            `[${plugin.name}] has resolved id "${key}", but failed transforming`
-          );
+        try {
+          const result = await plugin.transform(payload, context);
+          if (result !== undefined && result !== null) {
+            cacheToContext(result.key, result.content);
+            return result;
+          } else {
+            logger.error(
+              `[${plugin.name}] has resolved id "${key}", but failed transforming`
+            );
+          }
+        } catch (error) {
+          logger.error(error);
+          return null;
         }
       }
     }
