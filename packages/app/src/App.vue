@@ -23,9 +23,21 @@
       <navbar-item tag="router-link" :to="{ name: 'About' }">关于</navbar-item>
     </template>
   </navbar>
-  <div class="px-8 pt-4">
+
+  <div class="px-screen py-4 main-view">
     <router-view></router-view>
   </div>
+
+  <footer class="px-2 py-6">
+    <div class="text-center">
+      <p>
+        <a href="https://github.com/yjl9903/CPany/blob/master/LICENSE">MIT</a>
+        Licensed |
+        <a href="https://github.com/yjl9903/CPany/blob/master/LICENSE">CPany</a>
+        Copyright © 2021 <a href="https://xlor.cn">XLor</a>
+      </p>
+    </div>
+  </footer>
 </template>
 
 <script setup lang="ts">
@@ -43,6 +55,9 @@ import { Navbar, NavbarItem } from './components/navbar';
   --text-light-1: #2c3e50;
   --text-light-2: #476582;
   --text-light-3: #90a4b7;
+
+  --c-brand: #3273dc;
+  --c-brand-active: #3273dc;
 }
 
 html {
@@ -54,6 +69,19 @@ html {
 
 a {
   text-decoration: none;
-  color: var(--text-light-1);
+  color: var(--c-brand);
+}
+
+@screen lg {
+  html,
+  body,
+  #app {
+    height: 100%;
+    min-height: 100%;
+  }
+
+  .main-view {
+    min-height: calc(100% - 10rem);
+  }
 }
 </style>
