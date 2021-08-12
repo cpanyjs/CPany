@@ -1,4 +1,6 @@
 <template>
+  <Progress />
+
   <navbar>
     <template #brand>
       <navbar-item
@@ -25,12 +27,7 @@
   </navbar>
 
   <div class="px-screen py-4 main-view">
-    <router-view v-slot="{ Component }">
-      <transition name="fade">
-        <component :is="Component" />
-      </transition>
-    </router-view>
-    <Progress />
+    <router-view></router-view>
   </div>
 
   <footer class="px-2 py-6">
@@ -91,7 +88,7 @@ a {
   }
 }
 
-.fade-enter-active {
+/* .fade-enter-active {
   transition: opacity 0.5s ease;
 }
 
@@ -107,5 +104,5 @@ a {
 .fade-enter-active ~ #progress {
   animation: loading-loop 1s;
   animation-iteration-count: infinite;
-}
+} */
 </style>

@@ -1,6 +1,15 @@
 <template>
-  <div id="progress"><b></b><i></i></div>
+  <transition name="fade" appear>
+    <div v-if="loading" id="progress"><b></b><i></i></div>
+  </transition>
 </template>
+
+<script setup lang="ts">
+import { inject } from 'vue';
+import type { Ref } from 'vue';
+
+const loading = inject<Ref<boolean>>('loading');
+</script>
 
 <style>
 #progress {
@@ -21,6 +30,11 @@
   100% {
     width: 101%;
   }
+}
+
+.fade-enter-active {
+  animation: loading-loop 1s;
+  animation-iteration-count: infinite;
 }
 
 #progress b,
