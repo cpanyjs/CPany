@@ -9998,7 +9998,7 @@ function transformContestInfo(contest) {
 }
 function transformGymContestInfo(contest) {
     return {
-        type: constant_1.codeforces + '/' + contest.type.toLowerCase(),
+        type: constant_1.codeforces + '/gym/' + contest.type.toLowerCase(),
         name: contest.name,
         startTime: contest.startTimeSeconds,
         duration: contest.durationSeconds,

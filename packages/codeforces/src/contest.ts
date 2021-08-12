@@ -24,7 +24,7 @@ function transformContestInfo(contest: ContestDTO): IContest {
 
 function transformGymContestInfo(contest: ContestDTO): IContest {
   return {
-    type: codeforces + '/' + contest.type.toLowerCase(),
+    type: codeforces + '/gym/' + contest.type.toLowerCase(),
     name: contest.name,
     startTime: contest.startTimeSeconds,
     duration: contest.durationSeconds,
