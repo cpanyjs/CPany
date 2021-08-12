@@ -7,6 +7,7 @@ export interface IContest {
   name: string;
   startTime: number;
   duration: number;
+  participantNumber: number;
   id?: number | string;
   phase?: string;
   contestUrl?: string;
