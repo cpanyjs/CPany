@@ -1,4 +1,4 @@
-import type { IHandle } from './handle';
+import type { IAuthor, IHandle } from './handle';
 import type { IContest } from './contest';
 
 export * from './enum';
@@ -28,5 +28,5 @@ export interface ICPanyConfig {
 export interface ICPanyUser {
   name: string;
   handles: Array<IHandle>;
-  contests: Array<IContest>;
+  contests: Array<IContest & { author: IAuthor }>;
 }

@@ -2,11 +2,12 @@ import path from 'path';
 import { readFile, readdir } from 'fs/promises';
 import { load } from 'js-yaml';
 
-import type {
+import {
   IContest,
   ICPanyConfig,
   ICPanyUser,
   IHandle,
+  ParticipantType,
   RouteKey
 } from '@cpany/types';
 import type { IPluginOption } from './types';
@@ -84,7 +85,10 @@ export async function createLoader({
                   const contest = findCodeforces(contestId);
                   if (contest !== null) {
                     // Add field participantType
-                    user.contests.push(contest);
+                    user.contests.push({
+                      author: submission.author,
+                      ...contest
+                    });
                     contest.participantNumber++;
                     cfRoundSet.add(contestId);
                   }
@@ -102,11 +106,16 @@ export async function createLoader({
   for (const contest of contests) {
     for (const standing of contest.standings ?? []) {
       for (const member of standing.author.members) {
-        // TODO: find user
         const user = findUser(contest.type, member);
         if (user !== null) {
           contest.participantNumber++;
-          user.contests.push(contest);
+          user.contests.push({
+            author: {
+              members: [],
+              participantType: ParticipantType.CONTESTANT
+            },
+            ...contest
+          });
         }
       }
     }
