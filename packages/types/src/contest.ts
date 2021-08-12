@@ -1,3 +1,4 @@
+import { Verdict } from './enum';
 import type { IAuthor } from './handle';
 import type { IContestProblem } from './problem';
 
@@ -20,7 +21,9 @@ export interface IContestSubmission {
   creationTime: number;
   relativeTime: number;
   language: string;
-  problem: number;
+  problemIndex: number;
+  verdict: Verdict;
+  dirty: number;
   submissionUrl?: string;
 }
 
