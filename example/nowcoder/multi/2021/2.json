@@ -1,0 +1,3829 @@
+{
+  "type": "nowcoder",
+  "name": "2021牛客暑期多校训练营2",
+  "startTime": 1626667200,
+  "duration": 18000,
+  "id": 11253,
+  "participantNumber": 0,
+  "contestUrl": "https://ac.nowcoder.com/acm/contest/11253#question",
+  "standingsUrl": "https://ac.nowcoder.com/acm/contest/11253#rank",
+  "standings": [
+    {
+      "author": {
+        "members": [
+          "重生之我是菜狗"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 12,
+      "penalty": 91030,
+      "rank": 1,
+      "submissions": [
+        {
+          "id": 48199012,
+          "creationTime": 1626672832,
+          "relativeTime": 5632,
+          "problemIndex": 0,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199012"
+        },
+        {
+          "id": 48199303,
+          "creationTime": 1626673247,
+          "relativeTime": 6047,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199303"
+        },
+        {
+          "id": 48192990,
+          "creationTime": 1626667695,
+          "relativeTime": 495,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48192990"
+        },
+        {
+          "id": 48194982,
+          "creationTime": 1626668953,
+          "relativeTime": 1753,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194982"
+        },
+        {
+          "id": 48207444,
+          "creationTime": 1626683271,
+          "relativeTime": 16071,
+          "problemIndex": 4,
+          "verdict": "OK",
+          "dirty": 3,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48207444"
+        },
+        {
+          "id": 48196933,
+          "creationTime": 1626670461,
+          "relativeTime": 3261,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196933"
+        },
+        {
+          "id": 48194539,
+          "creationTime": 1626668713,
+          "relativeTime": 1513,
+          "problemIndex": 6,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194539"
+        },
+        {
+          "id": 48205274,
+          "creationTime": 1626680501,
+          "relativeTime": 13301,
+          "problemIndex": 7,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48205274"
+        },
+        {
+          "id": 48197764,
+          "creationTime": 1626671376,
+          "relativeTime": 4176,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197764"
+        },
+        {
+          "id": 48203527,
+          "creationTime": 1626678377,
+          "relativeTime": 11177,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 3,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48203527"
+        },
+        {
+          "id": 48195570,
+          "creationTime": 1626669315,
+          "relativeTime": 2115,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48195570"
+        },
+        {
+          "id": 48208402,
+          "creationTime": 1626684289,
+          "relativeTime": 17089,
+          "problemIndex": 11,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48208402"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "热心"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 10,
+      "penalty": 88872,
+      "rank": 2,
+      "submissions": [
+        {
+          "id": 48206930,
+          "creationTime": 1626682605,
+          "relativeTime": 15405,
+          "problemIndex": 0,
+          "verdict": "OK",
+          "dirty": 8,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48206930"
+        },
+        {
+          "id": 48197559,
+          "creationTime": 1626671117,
+          "relativeTime": 3917,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197559"
+        },
+        {
+          "id": 48193144,
+          "creationTime": 1626667897,
+          "relativeTime": 697,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193144"
+        },
+        {
+          "id": 48193848,
+          "creationTime": 1626668333,
+          "relativeTime": 1133,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193848"
+        },
+        {
+          "id": 48198884,
+          "creationTime": 1626672701,
+          "relativeTime": 5501,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198884"
+        },
+        {
+          "id": 48209210,
+          "creationTime": 1626684985,
+          "relativeTime": 17785,
+          "problemIndex": 6,
+          "verdict": "OK",
+          "dirty": 3,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48209210"
+        },
+        {
+          "id": 48200990,
+          "creationTime": 1626675266,
+          "relativeTime": 8066,
+          "problemIndex": 7,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200990"
+        },
+        {
+          "id": 48198679,
+          "creationTime": 1626672489,
+          "relativeTime": 5289,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198679"
+        },
+        {
+          "id": 48200408,
+          "creationTime": 1626674578,
+          "relativeTime": 7378,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 8,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200408"
+        },
+        {
+          "id": 48193443,
+          "creationTime": 1626668101,
+          "relativeTime": 901,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193443"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "lETHargy"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 9,
+      "penalty": 70329,
+      "rank": 3,
+      "submissions": [
+        {
+          "id": 48203830,
+          "creationTime": 1626678765,
+          "relativeTime": 11565,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48203830"
+        },
+        {
+          "id": 48194470,
+          "creationTime": 1626668676,
+          "relativeTime": 1476,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194470"
+        },
+        {
+          "id": 48194442,
+          "creationTime": 1626668658,
+          "relativeTime": 1458,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 2,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194442"
+        },
+        {
+          "id": 48198031,
+          "creationTime": 1626671688,
+          "relativeTime": 4488,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198031"
+        },
+        {
+          "id": 48201213,
+          "creationTime": 1626675529,
+          "relativeTime": 8329,
+          "problemIndex": 6,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48201213"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 7,
+          "verdict": "FAILED",
+          "dirty": 2
+        },
+        {
+          "id": 48198698,
+          "creationTime": 1626672517,
+          "relativeTime": 5317,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198698"
+        },
+        {
+          "id": 48204733,
+          "creationTime": 1626679834,
+          "relativeTime": 12634,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48204733"
+        },
+        {
+          "id": 48196675,
+          "creationTime": 1626670195,
+          "relativeTime": 2995,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196675"
+        },
+        {
+          "id": 48207443,
+          "creationTime": 1626683267,
+          "relativeTime": 16067,
+          "problemIndex": 11,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48207443"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "QWE_QWE"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 9,
+      "penalty": 99423,
+      "rank": 4,
+      "submissions": [
+        {
+          "id": 48205409,
+          "creationTime": 1626680665,
+          "relativeTime": 13465,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48205409"
+        },
+        {
+          "id": 48194102,
+          "creationTime": 1626668467,
+          "relativeTime": 1267,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194102"
+        },
+        {
+          "id": 48195157,
+          "creationTime": 1626669060,
+          "relativeTime": 1860,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48195157"
+        },
+        {
+          "id": 48202738,
+          "creationTime": 1626677430,
+          "relativeTime": 10230,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 2,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48202738"
+        },
+        {
+          "id": 48207562,
+          "creationTime": 1626683416,
+          "relativeTime": 16216,
+          "problemIndex": 7,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48207562"
+        },
+        {
+          "id": 48200483,
+          "creationTime": 1626674666,
+          "relativeTime": 7466,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200483"
+        },
+        {
+          "id": 48203238,
+          "creationTime": 1626678036,
+          "relativeTime": 10836,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 12,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48203238"
+        },
+        {
+          "id": 48197854,
+          "creationTime": 1626671475,
+          "relativeTime": 4275,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197854"
+        },
+        {
+          "id": 48208328,
+          "creationTime": 1626684208,
+          "relativeTime": 17008,
+          "problemIndex": 11,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48208328"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "球王粉丝后援团"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 8,
+      "penalty": 74842,
+      "rank": 5,
+      "submissions": [
+        {
+          "id": 48205822,
+          "creationTime": 1626681221,
+          "relativeTime": 14021,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48205822"
+        },
+        {
+          "id": 48196084,
+          "creationTime": 1626669698,
+          "relativeTime": 2498,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196084"
+        },
+        {
+          "id": 48194500,
+          "creationTime": 1626668691,
+          "relativeTime": 1491,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194500"
+        },
+        {
+          "id": 48207936,
+          "creationTime": 1626683815,
+          "relativeTime": 16615,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48207936"
+        },
+        {
+          "id": 48197388,
+          "creationTime": 1626670948,
+          "relativeTime": 3748,
+          "problemIndex": 6,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197388"
+        },
+        {
+          "id": 48199933,
+          "creationTime": 1626674033,
+          "relativeTime": 6833,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199933"
+        },
+        {
+          "id": 48208053,
+          "creationTime": 1626683930,
+          "relativeTime": 16730,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 7,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48208053"
+        },
+        {
+          "id": 48196979,
+          "creationTime": 1626670506,
+          "relativeTime": 3306,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196979"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "追光者"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 8,
+      "penalty": 79631,
+      "rank": 6,
+      "submissions": [
+        {
+          "id": 48200109,
+          "creationTime": 1626674244,
+          "relativeTime": 7044,
+          "problemIndex": 0,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200109"
+        },
+        {
+          "id": 48208171,
+          "creationTime": 1626684050,
+          "relativeTime": 16850,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 2,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48208171"
+        },
+        {
+          "id": 48193045,
+          "creationTime": 1626667798,
+          "relativeTime": 598,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193045"
+        },
+        {
+          "id": 48194057,
+          "creationTime": 1626668441,
+          "relativeTime": 1241,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194057"
+        },
+        {
+          "id": 48198112,
+          "creationTime": 1626671789,
+          "relativeTime": 4589,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198112"
+        },
+        {
+          "id": 48204294,
+          "creationTime": 1626679339,
+          "relativeTime": 12139,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48204294"
+        },
+        {
+          "id": 48209274,
+          "creationTime": 1626685020,
+          "relativeTime": 17820,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 6,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48209274"
+        },
+        {
+          "id": 48198394,
+          "creationTime": 1626672150,
+          "relativeTime": 4950,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198394"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "Cirtrus"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 8,
+      "penalty": 89979,
+      "rank": 7,
+      "submissions": [
+        {
+          "id": 48204518,
+          "creationTime": 1626679583,
+          "relativeTime": 12383,
+          "problemIndex": 0,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48204518"
+        },
+        {
+          "id": 48196169,
+          "creationTime": 1626669774,
+          "relativeTime": 2574,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196169"
+        },
+        {
+          "id": 48203938,
+          "creationTime": 1626678906,
+          "relativeTime": 11706,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48203938"
+        },
+        {
+          "id": 48204592,
+          "creationTime": 1626679677,
+          "relativeTime": 12477,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48204592"
+        },
+        {
+          "id": 48202935,
+          "creationTime": 1626677679,
+          "relativeTime": 10479,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48202935"
+        },
+        {
+          "id": 48207564,
+          "creationTime": 1626683418,
+          "relativeTime": 16218,
+          "problemIndex": 6,
+          "verdict": "OK",
+          "dirty": 6,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48207564"
+        },
+        {
+          "id": 48201237,
+          "creationTime": 1626675570,
+          "relativeTime": 8370,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48201237"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 9,
+          "verdict": "FAILED",
+          "dirty": 2
+        },
+        {
+          "id": 48199391,
+          "creationTime": 1626673372,
+          "relativeTime": 6172,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199391"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "SUSTech-1"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 7,
+      "penalty": 36396,
+      "rank": 8,
+      "submissions": [
+        {
+          "id": 48193134,
+          "creationTime": 1626667888,
+          "relativeTime": 688,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193134"
+        },
+        {
+          "id": 48193009,
+          "creationTime": 1626667740,
+          "relativeTime": 540,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193009"
+        },
+        {
+          "id": 48198375,
+          "creationTime": 1626672125,
+          "relativeTime": 4925,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198375"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 6,
+          "verdict": "FAILED",
+          "dirty": 3
+        },
+        {
+          "id": 48201666,
+          "creationTime": 1626676086,
+          "relativeTime": 8886,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48201666"
+        },
+        {
+          "id": 48204536,
+          "creationTime": 1626679609,
+          "relativeTime": 12409,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48204536"
+        },
+        {
+          "id": 48195779,
+          "creationTime": 1626669481,
+          "relativeTime": 2281,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48195779"
+        },
+        {
+          "id": 48198855,
+          "creationTime": 1626672667,
+          "relativeTime": 5467,
+          "problemIndex": 11,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198855"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "未命名3"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 7,
+      "penalty": 39983,
+      "rank": 9,
+      "submissions": [
+        {
+          "id": 48205177,
+          "creationTime": 1626680373,
+          "relativeTime": 13173,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48205177"
+        },
+        {
+          "id": 48193031,
+          "creationTime": 1626667779,
+          "relativeTime": 579,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193031"
+        },
+        {
+          "id": 48193174,
+          "creationTime": 1626667919,
+          "relativeTime": 719,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193174"
+        },
+        {
+          "id": 48197162,
+          "creationTime": 1626670706,
+          "relativeTime": 3506,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197162"
+        },
+        {
+          "id": 48197097,
+          "creationTime": 1626670630,
+          "relativeTime": 3430,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197097"
+        },
+        {
+          "id": 48196715,
+          "creationTime": 1626670237,
+          "relativeTime": 3037,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196715"
+        },
+        {
+          "id": 48205147,
+          "creationTime": 1626680339,
+          "relativeTime": 13139,
+          "problemIndex": 11,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48205147"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "SolitaryDream"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 7,
+      "penalty": 44870,
+      "rank": 10,
+      "submissions": [
+        {
+          "id": 48194528,
+          "creationTime": 1626668704,
+          "relativeTime": 1504,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194528"
+        },
+        {
+          "id": 48193746,
+          "creationTime": 1626668288,
+          "relativeTime": 1088,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193746"
+        },
+        {
+          "id": 48198692,
+          "creationTime": 1626672511,
+          "relativeTime": 5311,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198692"
+        },
+        {
+          "id": 48201600,
+          "creationTime": 1626676013,
+          "relativeTime": 8813,
+          "problemIndex": 6,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48201600"
+        },
+        {
+          "id": 48199323,
+          "creationTime": 1626673274,
+          "relativeTime": 6074,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199323"
+        },
+        {
+          "id": 48205233,
+          "creationTime": 1626680444,
+          "relativeTime": 13244,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 4,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48205233"
+        },
+        {
+          "id": 48196517,
+          "creationTime": 1626670036,
+          "relativeTime": 2836,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196517"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "HUSTteam9"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 7,
+      "penalty": 50194,
+      "rank": 11,
+      "submissions": [
+        {
+          "id": 48208017,
+          "creationTime": 1626683893,
+          "relativeTime": 16693,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48208017"
+        },
+        {
+          "id": 48193005,
+          "creationTime": 1626667736,
+          "relativeTime": 536,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193005"
+        },
+        {
+          "id": 48193562,
+          "creationTime": 1626668178,
+          "relativeTime": 978,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193562"
+        },
+        {
+          "id": 48196563,
+          "creationTime": 1626670084,
+          "relativeTime": 2884,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196563"
+        },
+        {
+          "id": 48200136,
+          "creationTime": 1626674270,
+          "relativeTime": 7070,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200136"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 9,
+          "verdict": "FAILED",
+          "dirty": 4
+        },
+        {
+          "id": 48198558,
+          "creationTime": 1626672368,
+          "relativeTime": 5168,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 3,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198558"
+        },
+        {
+          "id": 48202291,
+          "creationTime": 1626676865,
+          "relativeTime": 9665,
+          "problemIndex": 11,
+          "verdict": "OK",
+          "dirty": 3,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48202291"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "娱乐至上"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 7,
+      "penalty": 53196,
+      "rank": 12,
+      "submissions": [
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 1,
+          "verdict": "FAILED",
+          "dirty": 2
+        },
+        {
+          "id": 48192979,
+          "creationTime": 1626667670,
+          "relativeTime": 470,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48192979"
+        },
+        {
+          "id": 48193313,
+          "creationTime": 1626668013,
+          "relativeTime": 813,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193313"
+        },
+        {
+          "id": 48199619,
+          "creationTime": 1626673641,
+          "relativeTime": 6441,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199619"
+        },
+        {
+          "id": 48207545,
+          "creationTime": 1626683392,
+          "relativeTime": 16192,
+          "problemIndex": 6,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48207545"
+        },
+        {
+          "id": 48202043,
+          "creationTime": 1626676535,
+          "relativeTime": 9335,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48202043"
+        },
+        {
+          "id": 48204283,
+          "creationTime": 1626679330,
+          "relativeTime": 12130,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 3,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48204283"
+        },
+        {
+          "id": 48196698,
+          "creationTime": 1626670215,
+          "relativeTime": 3015,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196698"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "ddl战神"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 7,
+      "penalty": 54215,
+      "rank": 13,
+      "submissions": [
+        {
+          "id": 48205609,
+          "creationTime": 1626680920,
+          "relativeTime": 13720,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48205609"
+        },
+        {
+          "id": 48193002,
+          "creationTime": 1626667729,
+          "relativeTime": 529,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193002"
+        },
+        {
+          "id": 48194138,
+          "creationTime": 1626668492,
+          "relativeTime": 1292,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194138"
+        },
+        {
+          "id": 48199264,
+          "creationTime": 1626673195,
+          "relativeTime": 5995,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199264"
+        },
+        {
+          "id": 48205028,
+          "creationTime": 1626680197,
+          "relativeTime": 12997,
+          "problemIndex": 6,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48205028"
+        },
+        {
+          "id": 48200570,
+          "creationTime": 1626674781,
+          "relativeTime": 7581,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200570"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 9,
+          "verdict": "FAILED",
+          "dirty": 5
+        },
+        {
+          "id": 48198357,
+          "creationTime": 1626672101,
+          "relativeTime": 4901,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 3,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198357"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "c_Lin_tree"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 7,
+      "penalty": 58224,
+      "rank": 14,
+      "submissions": [
+        {
+          "id": 48206201,
+          "creationTime": 1626681676,
+          "relativeTime": 14476,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48206201"
+        },
+        {
+          "id": 48193145,
+          "creationTime": 1626667897,
+          "relativeTime": 697,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193145"
+        },
+        {
+          "id": 48194355,
+          "creationTime": 1626668609,
+          "relativeTime": 1409,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194355"
+        },
+        {
+          "id": 48203980,
+          "creationTime": 1626678961,
+          "relativeTime": 11761,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 3,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48203980"
+        },
+        {
+          "id": 48197805,
+          "creationTime": 1626671421,
+          "relativeTime": 4221,
+          "problemIndex": 6,
+          "verdict": "OK",
+          "dirty": 6,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197805"
+        },
+        {
+          "id": 48197784,
+          "creationTime": 1626671399,
+          "relativeTime": 4199,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197784"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 9,
+          "verdict": "FAILED",
+          "dirty": 17
+        },
+        {
+          "id": 48198175,
+          "creationTime": 1626671861,
+          "relativeTime": 4661,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 4,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198175"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 11,
+          "verdict": "FAILED",
+          "dirty": 1
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "peehs_moorhsum"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 24087,
+      "rank": 15,
+      "submissions": [
+        {
+          "id": 48201358,
+          "creationTime": 1626675728,
+          "relativeTime": 8528,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48201358"
+        },
+        {
+          "id": 48192958,
+          "creationTime": 1626667562,
+          "relativeTime": 362,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48192958"
+        },
+        {
+          "id": 48194019,
+          "creationTime": 1626668422,
+          "relativeTime": 1222,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194019"
+        },
+        {
+          "id": 48196854,
+          "creationTime": 1626670375,
+          "relativeTime": 3175,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196854"
+        },
+        {
+          "id": 48197698,
+          "creationTime": 1626671297,
+          "relativeTime": 4097,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197698"
+        },
+        {
+          "id": 48195239,
+          "creationTime": 1626669103,
+          "relativeTime": 1903,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 2,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48195239"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "HUSTteam_WSL"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 26756,
+      "rank": 16,
+      "submissions": [
+        {
+          "id": 48204013,
+          "creationTime": 1626679012,
+          "relativeTime": 11812,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48204013"
+        },
+        {
+          "id": 48193347,
+          "creationTime": 1626668033,
+          "relativeTime": 833,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193347"
+        },
+        {
+          "id": 48193996,
+          "creationTime": 1626668409,
+          "relativeTime": 1209,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193996"
+        },
+        {
+          "id": 48198862,
+          "creationTime": 1626672671,
+          "relativeTime": 5471,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198862"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 6,
+          "verdict": "FAILED",
+          "dirty": 1
+        },
+        {
+          "id": 48198246,
+          "creationTime": 1626671955,
+          "relativeTime": 4755,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198246"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 9,
+          "verdict": "FAILED",
+          "dirty": 6
+        },
+        {
+          "id": 48196308,
+          "creationTime": 1626669876,
+          "relativeTime": 2676,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196308"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "Fireworks"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 29409,
+      "rank": 17,
+      "submissions": [
+        {
+          "id": 48202358,
+          "creationTime": 1626676960,
+          "relativeTime": 9760,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48202358"
+        },
+        {
+          "id": 48193824,
+          "creationTime": 1626668323,
+          "relativeTime": 1123,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193824"
+        },
+        {
+          "id": 48193845,
+          "creationTime": 1626668332,
+          "relativeTime": 1132,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193845"
+        },
+        {
+          "id": 48198123,
+          "creationTime": 1626671804,
+          "relativeTime": 4604,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198123"
+        },
+        {
+          "id": 48200689,
+          "creationTime": 1626674920,
+          "relativeTime": 7720,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200689"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 9,
+          "verdict": "FAILED",
+          "dirty": 6
+        },
+        {
+          "id": 48197520,
+          "creationTime": 1626671070,
+          "relativeTime": 3870,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197520"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "KOMOREBI"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 30461,
+      "rank": 18,
+      "submissions": [
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 1,
+          "verdict": "FAILED",
+          "dirty": 1
+        },
+        {
+          "id": 48192964,
+          "creationTime": 1626667583,
+          "relativeTime": 383,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48192964"
+        },
+        {
+          "id": 48193286,
+          "creationTime": 1626667992,
+          "relativeTime": 792,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193286"
+        },
+        {
+          "id": 48197440,
+          "creationTime": 1626670999,
+          "relativeTime": 3799,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197440"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 6,
+          "verdict": "FAILED",
+          "dirty": 2
+        },
+        {
+          "id": 48198324,
+          "creationTime": 1626672055,
+          "relativeTime": 4855,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198324"
+        },
+        {
+          "id": 48207046,
+          "creationTime": 1626682785,
+          "relativeTime": 15585,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48207046"
+        },
+        {
+          "id": 48197501,
+          "creationTime": 1626671047,
+          "relativeTime": 3847,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197501"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "HITSZ-删库跑路"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 36374,
+      "rank": 19,
+      "submissions": [
+        {
+          "id": 48205730,
+          "creationTime": 1626681091,
+          "relativeTime": 13891,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48205730"
+        },
+        {
+          "id": 48193268,
+          "creationTime": 1626667980,
+          "relativeTime": 780,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193268"
+        },
+        {
+          "id": 48193604,
+          "creationTime": 1626668208,
+          "relativeTime": 1008,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193604"
+        },
+        {
+          "id": 48198581,
+          "creationTime": 1626672386,
+          "relativeTime": 5186,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198581"
+        },
+        {
+          "id": 48200375,
+          "creationTime": 1626674548,
+          "relativeTime": 7348,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200375"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 9,
+          "verdict": "FAILED",
+          "dirty": 2
+        },
+        {
+          "id": 48198081,
+          "creationTime": 1626671761,
+          "relativeTime": 4561,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 2,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198081"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "admax"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 37156,
+      "rank": 20,
+      "submissions": [
+        {
+          "id": 48208061,
+          "creationTime": 1626683936,
+          "relativeTime": 16736,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48208061"
+        },
+        {
+          "id": 48193183,
+          "creationTime": 1626667925,
+          "relativeTime": 725,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193183"
+        },
+        {
+          "id": 48194515,
+          "creationTime": 1626668700,
+          "relativeTime": 1500,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194515"
+        },
+        {
+          "id": 48199104,
+          "creationTime": 1626672978,
+          "relativeTime": 5778,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199104"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 6,
+          "verdict": "FAILED",
+          "dirty": 2
+        },
+        {
+          "id": 48202526,
+          "creationTime": 1626677158,
+          "relativeTime": 9958,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48202526"
+        },
+        {
+          "id": 48196045,
+          "creationTime": 1626669659,
+          "relativeTime": 2459,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196045"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "UESTC_Guest_WiFi"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 37346,
+      "rank": 21,
+      "submissions": [
+        {
+          "id": 48193195,
+          "creationTime": 1626667933,
+          "relativeTime": 733,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193195"
+        },
+        {
+          "id": 48194573,
+          "creationTime": 1626668730,
+          "relativeTime": 1530,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194573"
+        },
+        {
+          "id": 48199305,
+          "creationTime": 1626673249,
+          "relativeTime": 6049,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199305"
+        },
+        {
+          "id": 48198803,
+          "creationTime": 1626672614,
+          "relativeTime": 5414,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198803"
+        },
+        {
+          "id": 48205994,
+          "creationTime": 1626681442,
+          "relativeTime": 14242,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 6,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48205994"
+        },
+        {
+          "id": 48195643,
+          "creationTime": 1626669378,
+          "relativeTime": 2178,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48195643"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "三只蒟蒻_threekonjaks"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 40303,
+      "rank": 22,
+      "submissions": [
+        {
+          "id": 48204161,
+          "creationTime": 1626679177,
+          "relativeTime": 11977,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48204161"
+        },
+        {
+          "id": 48192955,
+          "creationTime": 1626667535,
+          "relativeTime": 335,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48192955"
+        },
+        {
+          "id": 48193426,
+          "creationTime": 1626668090,
+          "relativeTime": 890,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193426"
+        },
+        {
+          "id": 48200547,
+          "creationTime": 1626674750,
+          "relativeTime": 7550,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 3,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200547"
+        },
+        {
+          "id": 48202301,
+          "creationTime": 1626676878,
+          "relativeTime": 9678,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48202301"
+        },
+        {
+          "id": 48197521,
+          "creationTime": 1626671073,
+          "relativeTime": 3873,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197521"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 11,
+          "verdict": "FAILED",
+          "dirty": 2
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "gniwor"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 41232,
+      "rank": 23,
+      "submissions": [
+        {
+          "id": 48198447,
+          "creationTime": 1626672226,
+          "relativeTime": 5026,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 2,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198447"
+        },
+        {
+          "id": 48193041,
+          "creationTime": 1626667787,
+          "relativeTime": 587,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193041"
+        },
+        {
+          "id": 48203543,
+          "creationTime": 1626678391,
+          "relativeTime": 11191,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48203543"
+        },
+        {
+          "id": 48198070,
+          "creationTime": 1626671750,
+          "relativeTime": 4550,
+          "problemIndex": 6,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198070"
+        },
+        {
+          "id": 48200210,
+          "creationTime": 1626674354,
+          "relativeTime": 7154,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200210"
+        },
+        {
+          "id": 48200877,
+          "creationTime": 1626675124,
+          "relativeTime": 7924,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200877"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "此处应该有个队名"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 41815,
+      "rank": 24,
+      "submissions": [
+        {
+          "id": 48207093,
+          "creationTime": 1626682850,
+          "relativeTime": 15650,
+          "problemIndex": 1,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48207093"
+        },
+        {
+          "id": 48193460,
+          "creationTime": 1626668109,
+          "relativeTime": 909,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193460"
+        },
+        {
+          "id": 48194294,
+          "creationTime": 1626668572,
+          "relativeTime": 1372,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194294"
+        },
+        {
+          "id": 48198743,
+          "creationTime": 1626672560,
+          "relativeTime": 5360,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198743"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 6,
+          "verdict": "FAILED",
+          "dirty": 1
+        },
+        {
+          "id": 48200786,
+          "creationTime": 1626675029,
+          "relativeTime": 7829,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200786"
+        },
+        {
+          "id": 48200161,
+          "creationTime": 1626674295,
+          "relativeTime": 7095,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200161"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "@Lizeh说的都队"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 42318,
+      "rank": 25,
+      "submissions": [
+        {
+          "id": 48193571,
+          "creationTime": 1626668184,
+          "relativeTime": 984,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193571"
+        },
+        {
+          "id": 48194545,
+          "creationTime": 1626668718,
+          "relativeTime": 1518,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194545"
+        },
+        {
+          "id": 48200235,
+          "creationTime": 1626674382,
+          "relativeTime": 7182,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200235"
+        },
+        {
+          "id": 48202088,
+          "creationTime": 1626676597,
+          "relativeTime": 9397,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48202088"
+        },
+        {
+          "id": 48206445,
+          "creationTime": 1626681957,
+          "relativeTime": 14757,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 4,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48206445"
+        },
+        {
+          "id": 48196062,
+          "creationTime": 1626669680,
+          "relativeTime": 2480,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196062"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "又是困难的取名时间了"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 43378,
+      "rank": 26,
+      "submissions": [
+        {
+          "id": 48192977,
+          "creationTime": 1626667659,
+          "relativeTime": 459,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48192977"
+        },
+        {
+          "id": 48194056,
+          "creationTime": 1626668440,
+          "relativeTime": 1240,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194056"
+        },
+        {
+          "id": 48201743,
+          "creationTime": 1626676174,
+          "relativeTime": 8974,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48201743"
+        },
+        {
+          "id": 48199298,
+          "creationTime": 1626673236,
+          "relativeTime": 6036,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199298"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 9,
+          "verdict": "FAILED",
+          "dirty": 5
+        },
+        {
+          "id": 48197636,
+          "creationTime": 1626671210,
+          "relativeTime": 4010,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197636"
+        },
+        {
+          "id": 48207986,
+          "creationTime": 1626683859,
+          "relativeTime": 16659,
+          "problemIndex": 11,
+          "verdict": "OK",
+          "dirty": 3,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48207986"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "吾有一數。名之曰「嗶」。"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 45640,
+      "rank": 27,
+      "submissions": [
+        {
+          "id": 48193033,
+          "creationTime": 1626667782,
+          "relativeTime": 582,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193033"
+        },
+        {
+          "id": 48193433,
+          "creationTime": 1626668094,
+          "relativeTime": 894,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193433"
+        },
+        {
+          "id": 48200924,
+          "creationTime": 1626675186,
+          "relativeTime": 7986,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 3,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200924"
+        },
+        {
+          "id": 48208107,
+          "creationTime": 1626683989,
+          "relativeTime": 16789,
+          "problemIndex": 6,
+          "verdict": "OK",
+          "dirty": 2,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48208107"
+        },
+        {
+          "id": 48200036,
+          "creationTime": 1626674159,
+          "relativeTime": 6959,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200036"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 9,
+          "verdict": "FAILED",
+          "dirty": 13
+        },
+        {
+          "id": 48196512,
+          "creationTime": 1626670030,
+          "relativeTime": 2830,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 3,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196512"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "鸽屋咕"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 46606,
+      "rank": 28,
+      "submissions": [
+        {
+          "id": 48195476,
+          "creationTime": 1626669257,
+          "relativeTime": 2057,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48195476"
+        },
+        {
+          "id": 48193757,
+          "creationTime": 1626668291,
+          "relativeTime": 1091,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193757"
+        },
+        {
+          "id": 48198409,
+          "creationTime": 1626672177,
+          "relativeTime": 4977,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198409"
+        },
+        {
+          "id": 48200564,
+          "creationTime": 1626674770,
+          "relativeTime": 7570,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200564"
+        },
+        {
+          "id": 48207710,
+          "creationTime": 1626683576,
+          "relativeTime": 16376,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 3,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48207710"
+        },
+        {
+          "id": 48199370,
+          "creationTime": 1626673335,
+          "relativeTime": 6135,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 3,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199370"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "NTU-Epiphyllum"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 49170,
+      "rank": 29,
+      "submissions": [
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 1,
+          "verdict": "FAILED",
+          "dirty": 4
+        },
+        {
+          "id": 48195763,
+          "creationTime": 1626669470,
+          "relativeTime": 2270,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48195763"
+        },
+        {
+          "id": 48194984,
+          "creationTime": 1626668954,
+          "relativeTime": 1754,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194984"
+        },
+        {
+          "id": 48201853,
+          "creationTime": 1626676291,
+          "relativeTime": 9091,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48201853"
+        },
+        {
+          "id": 48205772,
+          "creationTime": 1626681147,
+          "relativeTime": 13947,
+          "problemIndex": 6,
+          "verdict": "OK",
+          "dirty": 6,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48205772"
+        },
+        {
+          "id": 48200944,
+          "creationTime": 1626675204,
+          "relativeTime": 8004,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200944"
+        },
+        {
+          "id": 48199051,
+          "creationTime": 1626672904,
+          "relativeTime": 5704,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199051"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "sugim48"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 49999,
+      "rank": 30,
+      "submissions": [
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 1,
+          "verdict": "FAILED",
+          "dirty": 1
+        },
+        {
+          "id": 48197374,
+          "creationTime": 1626670926,
+          "relativeTime": 3726,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197374"
+        },
+        {
+          "id": 48198245,
+          "creationTime": 1626671953,
+          "relativeTime": 4753,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198245"
+        },
+        {
+          "id": 48201921,
+          "creationTime": 1626676377,
+          "relativeTime": 9177,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48201921"
+        },
+        {
+          "id": 48200291,
+          "creationTime": 1626674454,
+          "relativeTime": 7254,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200291"
+        },
+        {
+          "id": 48206268,
+          "creationTime": 1626681764,
+          "relativeTime": 14564,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 3,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48206268"
+        },
+        {
+          "id": 48198058,
+          "creationTime": 1626671725,
+          "relativeTime": 4525,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198058"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "树状数组维护01背包"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 52618,
+      "rank": 31,
+      "submissions": [
+        {
+          "id": 48193034,
+          "creationTime": 1626667782,
+          "relativeTime": 582,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193034"
+        },
+        {
+          "id": 48193897,
+          "creationTime": 1626668355,
+          "relativeTime": 1155,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193897"
+        },
+        {
+          "id": 48200048,
+          "creationTime": 1626674171,
+          "relativeTime": 6971,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200048"
+        },
+        {
+          "id": 48201872,
+          "creationTime": 1626676313,
+          "relativeTime": 9113,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48201872"
+        },
+        {
+          "id": 48207865,
+          "creationTime": 1626683737,
+          "relativeTime": 16537,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 13,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48207865"
+        },
+        {
+          "id": 48196285,
+          "creationTime": 1626669860,
+          "relativeTime": 2660,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196285"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "Xverse"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 56559,
+      "rank": 32,
+      "submissions": [
+        {
+          "id": 48193024,
+          "creationTime": 1626667772,
+          "relativeTime": 572,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193024"
+        },
+        {
+          "id": 48193789,
+          "creationTime": 1626668306,
+          "relativeTime": 1106,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193789"
+        },
+        {
+          "id": 48202781,
+          "creationTime": 1626677497,
+          "relativeTime": 10297,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48202781"
+        },
+        {
+          "id": 48200995,
+          "creationTime": 1626675271,
+          "relativeTime": 8071,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200995"
+        },
+        {
+          "id": 48197207,
+          "creationTime": 1626670759,
+          "relativeTime": 3559,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197207"
+        },
+        {
+          "id": 48204669,
+          "creationTime": 1626679754,
+          "relativeTime": 12554,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 15,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48204669"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "编译&魔法"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 58772,
+      "rank": 33,
+      "submissions": [
+        {
+          "id": 48193037,
+          "creationTime": 1626667784,
+          "relativeTime": 584,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193037"
+        },
+        {
+          "id": 48193400,
+          "creationTime": 1626668069,
+          "relativeTime": 869,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193400"
+        },
+        {
+          "id": 48199548,
+          "creationTime": 1626673560,
+          "relativeTime": 6360,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 3,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199548"
+        },
+        {
+          "id": 48206093,
+          "creationTime": 1626681560,
+          "relativeTime": 14360,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48206093"
+        },
+        {
+          "id": 48207111,
+          "creationTime": 1626682869,
+          "relativeTime": 15669,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48207111"
+        },
+        {
+          "id": 48201707,
+          "creationTime": 1626676130,
+          "relativeTime": 8930,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 5,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48201707"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "不想努力了"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 60230,
+      "rank": 34,
+      "submissions": [
+        {
+          "id": 48193006,
+          "creationTime": 1626667738,
+          "relativeTime": 538,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193006"
+        },
+        {
+          "id": 48194021,
+          "creationTime": 1626668424,
+          "relativeTime": 1224,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194021"
+        },
+        {
+          "id": 48207650,
+          "creationTime": 1626683510,
+          "relativeTime": 16310,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48207650"
+        },
+        {
+          "id": 48201563,
+          "creationTime": 1626675964,
+          "relativeTime": 8764,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48201563"
+        },
+        {
+          "id": 48206680,
+          "creationTime": 1626682285,
+          "relativeTime": 15085,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 10,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48206680"
+        },
+        {
+          "id": 48199509,
+          "creationTime": 1626673509,
+          "relativeTime": 6309,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199509"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 11,
+          "verdict": "FAILED",
+          "dirty": 9
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "西部枢纽"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 60520,
+      "rank": 35,
+      "submissions": [
+        {
+          "id": 48196115,
+          "creationTime": 1626669727,
+          "relativeTime": 2527,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196115"
+        },
+        {
+          "id": 48196879,
+          "creationTime": 1626670403,
+          "relativeTime": 3203,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196879"
+        },
+        {
+          "id": 48204040,
+          "creationTime": 1626679048,
+          "relativeTime": 11848,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48204040"
+        },
+        {
+          "id": 48200816,
+          "creationTime": 1626675065,
+          "relativeTime": 7865,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200816"
+        },
+        {
+          "id": 48206100,
+          "creationTime": 1626681568,
+          "relativeTime": 14368,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 7,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48206100"
+        },
+        {
+          "id": 48203460,
+          "creationTime": 1626678309,
+          "relativeTime": 11109,
+          "problemIndex": 11,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48203460"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "GDUT_PiggyGogogo"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 61111,
+      "rank": 36,
+      "submissions": [
+        {
+          "id": 48195576,
+          "creationTime": 1626669319,
+          "relativeTime": 2119,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48195576"
+        },
+        {
+          "id": 48194898,
+          "creationTime": 1626668902,
+          "relativeTime": 1702,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194898"
+        },
+        {
+          "id": 48201301,
+          "creationTime": 1626675641,
+          "relativeTime": 8441,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 6,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48201301"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 6,
+          "verdict": "FAILED",
+          "dirty": 2
+        },
+        {
+          "id": 48200923,
+          "creationTime": 1626675185,
+          "relativeTime": 7985,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200923"
+        },
+        {
+          "id": 48208731,
+          "creationTime": 1626684609,
+          "relativeTime": 17409,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 10,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48208731"
+        },
+        {
+          "id": 48195145,
+          "creationTime": 1626669055,
+          "relativeTime": 1855,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48195145"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "我先放一盒卫生纸在这"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 63441,
+      "rank": 37,
+      "submissions": [
+        {
+          "id": 48193974,
+          "creationTime": 1626668399,
+          "relativeTime": 1199,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193974"
+        },
+        {
+          "id": 48193023,
+          "creationTime": 1626667770,
+          "relativeTime": 570,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193023"
+        },
+        {
+          "id": 48199402,
+          "creationTime": 1626673388,
+          "relativeTime": 6188,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 7,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199402"
+        },
+        {
+          "id": 48208189,
+          "creationTime": 1626684066,
+          "relativeTime": 16866,
+          "problemIndex": 6,
+          "verdict": "OK",
+          "dirty": 4,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48208189"
+        },
+        {
+          "id": 48206989,
+          "creationTime": 1626682699,
+          "relativeTime": 15499,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48206989"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 9,
+          "verdict": "FAILED",
+          "dirty": 11
+        },
+        {
+          "id": 48200521,
+          "creationTime": 1626674719,
+          "relativeTime": 7519,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 2,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200521"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "背着队友偷偷wa签到题"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 64560,
+      "rank": 38,
+      "submissions": [
+        {
+          "id": 48193815,
+          "creationTime": 1626668319,
+          "relativeTime": 1119,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 2,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193815"
+        },
+        {
+          "id": 48194944,
+          "creationTime": 1626668931,
+          "relativeTime": 1731,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194944"
+        },
+        {
+          "id": 48206473,
+          "creationTime": 1626681999,
+          "relativeTime": 14799,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48206473"
+        },
+        {
+          "id": 48206186,
+          "creationTime": 1626681658,
+          "relativeTime": 14458,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48206186"
+        },
+        {
+          "id": 48205895,
+          "creationTime": 1626681314,
+          "relativeTime": 14114,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 3,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48205895"
+        },
+        {
+          "id": 48200539,
+          "creationTime": 1626674739,
+          "relativeTime": 7539,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 2,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200539"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "明明是我先AC的"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 70770,
+      "rank": 39,
+      "submissions": [
+        {
+          "id": 48192952,
+          "creationTime": 1626667524,
+          "relativeTime": 324,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48192952"
+        },
+        {
+          "id": 48193061,
+          "creationTime": 1626667816,
+          "relativeTime": 616,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193061"
+        },
+        {
+          "id": 48203027,
+          "creationTime": 1626677765,
+          "relativeTime": 10565,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 2,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48203027"
+        },
+        {
+          "id": 48198157,
+          "creationTime": 1626671836,
+          "relativeTime": 4636,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198157"
+        },
+        {
+          "id": 48208585,
+          "creationTime": 1626684479,
+          "relativeTime": 17279,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 23,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48208585"
+        },
+        {
+          "id": 48200378,
+          "creationTime": 1626674550,
+          "relativeTime": 7350,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200378"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "妖怪被srk抓走了QAQ"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 6,
+      "penalty": 83856,
+      "rank": 40,
+      "submissions": [
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 1,
+          "verdict": "FAILED",
+          "dirty": 1
+        },
+        {
+          "id": 48193001,
+          "creationTime": 1626667728,
+          "relativeTime": 528,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193001"
+        },
+        {
+          "id": 48193288,
+          "creationTime": 1626667995,
+          "relativeTime": 795,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193288"
+        },
+        {
+          "id": 48202336,
+          "creationTime": 1626676926,
+          "relativeTime": 9726,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 6,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48202336"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 6,
+          "verdict": "FAILED",
+          "dirty": 2
+        },
+        {
+          "id": 48204033,
+          "creationTime": 1626679040,
+          "relativeTime": 11840,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48204033"
+        },
+        {
+          "id": 48206921,
+          "creationTime": 1626682592,
+          "relativeTime": 15392,
+          "problemIndex": 9,
+          "verdict": "OK",
+          "dirty": 26,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48206921"
+        },
+        {
+          "id": 48195918,
+          "creationTime": 1626669575,
+          "relativeTime": 2375,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 4,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48195918"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "经典经典经典"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 5,
+      "penalty": 20060,
+      "rank": 41,
+      "submissions": [
+        {
+          "id": 48193378,
+          "creationTime": 1626668056,
+          "relativeTime": 856,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193378"
+        },
+        {
+          "id": 48194188,
+          "creationTime": 1626668518,
+          "relativeTime": 1318,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194188"
+        },
+        {
+          "id": 48202673,
+          "creationTime": 1626677363,
+          "relativeTime": 10163,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48202673"
+        },
+        {
+          "id": 48197000,
+          "creationTime": 1626670531,
+          "relativeTime": 3331,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197000"
+        },
+        {
+          "id": 48197956,
+          "creationTime": 1626671592,
+          "relativeTime": 4392,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197956"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "游侠X"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 5,
+      "penalty": 20937,
+      "rank": 42,
+      "submissions": [
+        {
+          "id": 48192943,
+          "creationTime": 1626667472,
+          "relativeTime": 272,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48192943"
+        },
+        {
+          "id": 48194938,
+          "creationTime": 1626668929,
+          "relativeTime": 1729,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194938"
+        },
+        {
+          "id": 48200128,
+          "creationTime": 1626674265,
+          "relativeTime": 7065,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200128"
+        },
+        {
+          "id": 48202687,
+          "creationTime": 1626677378,
+          "relativeTime": 10178,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48202687"
+        },
+        {
+          "id": 48194876,
+          "creationTime": 1626668893,
+          "relativeTime": 1693,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194876"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "我完全不会.jpg"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 5,
+      "penalty": 21409,
+      "rank": 43,
+      "submissions": [
+        {
+          "id": 48193221,
+          "creationTime": 1626667951,
+          "relativeTime": 751,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193221"
+        },
+        {
+          "id": 48193071,
+          "creationTime": 1626667831,
+          "relativeTime": 631,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193071"
+        },
+        {
+          "id": 48197340,
+          "creationTime": 1626670895,
+          "relativeTime": 3695,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197340"
+        },
+        {
+          "id": 48201530,
+          "creationTime": 1626675914,
+          "relativeTime": 8714,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48201530"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 9,
+          "verdict": "FAILED",
+          "dirty": 2
+        },
+        {
+          "id": 48199600,
+          "creationTime": 1626673618,
+          "relativeTime": 6418,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199600"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 11,
+          "verdict": "FAILED",
+          "dirty": 1
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "SW2000"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 5,
+      "penalty": 21427,
+      "rank": 44,
+      "submissions": [
+        {
+          "id": 48193070,
+          "creationTime": 1626667831,
+          "relativeTime": 631,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193070"
+        },
+        {
+          "id": 48194680,
+          "creationTime": 1626668783,
+          "relativeTime": 1583,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194680"
+        },
+        {
+          "id": 48199849,
+          "creationTime": 1626673919,
+          "relativeTime": 6719,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199849"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 6,
+          "verdict": "FAILED",
+          "dirty": 3
+        },
+        {
+          "id": 48201643,
+          "creationTime": 1626676058,
+          "relativeTime": 8858,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48201643"
+        },
+        {
+          "id": 48197273,
+          "creationTime": 1626670836,
+          "relativeTime": 3636,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197273"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "摸鱼自动机"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 5,
+      "penalty": 21949,
+      "rank": 45,
+      "submissions": [
+        {
+          "id": 48192970,
+          "creationTime": 1626667633,
+          "relativeTime": 433,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48192970"
+        },
+        {
+          "id": 48193557,
+          "creationTime": 1626668174,
+          "relativeTime": 974,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193557"
+        },
+        {
+          "id": 48199222,
+          "creationTime": 1626673142,
+          "relativeTime": 5942,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 4,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199222"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 6,
+          "verdict": "FAILED",
+          "dirty": 3
+        },
+        {
+          "id": 48199344,
+          "creationTime": 1626673299,
+          "relativeTime": 6099,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48199344"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 9,
+          "verdict": "FAILED",
+          "dirty": 3
+        },
+        {
+          "id": 48197348,
+          "creationTime": 1626670901,
+          "relativeTime": 3701,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197348"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "起名苦手"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 5,
+      "penalty": 22623,
+      "rank": 46,
+      "submissions": [
+        {
+          "id": 48193329,
+          "creationTime": 1626668022,
+          "relativeTime": 822,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193329"
+        },
+        {
+          "id": 48194268,
+          "creationTime": 1626668557,
+          "relativeTime": 1357,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194268"
+        },
+        {
+          "id": 48201548,
+          "creationTime": 1626675947,
+          "relativeTime": 8747,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48201548"
+        },
+        {
+          "id": 48198791,
+          "creationTime": 1626672605,
+          "relativeTime": 5405,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198791"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 9,
+          "verdict": "FAILED",
+          "dirty": 4
+        },
+        {
+          "id": 48198502,
+          "creationTime": 1626672292,
+          "relativeTime": 5092,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198502"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "超级bug创作家"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 5,
+      "penalty": 22740,
+      "rank": 47,
+      "submissions": [
+        {
+          "id": 48193022,
+          "creationTime": 1626667766,
+          "relativeTime": 566,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193022"
+        },
+        {
+          "id": 48194320,
+          "creationTime": 1626668588,
+          "relativeTime": 1388,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48194320"
+        },
+        {
+          "id": 48200453,
+          "creationTime": 1626674634,
+          "relativeTime": 7434,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200453"
+        },
+        {
+          "id": 48200918,
+          "creationTime": 1626675180,
+          "relativeTime": 7980,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48200918"
+        },
+        {
+          "id": 48196653,
+          "creationTime": 1626670172,
+          "relativeTime": 2972,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196653"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "我不是说了码力要平均值吗？"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 5,
+      "penalty": 22969,
+      "rank": 48,
+      "submissions": [
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 1,
+          "verdict": "FAILED",
+          "dirty": 5
+        },
+        {
+          "id": 48193180,
+          "creationTime": 1626667922,
+          "relativeTime": 722,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193180"
+        },
+        {
+          "id": 48192968,
+          "creationTime": 1626667617,
+          "relativeTime": 417,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48192968"
+        },
+        {
+          "id": 48198937,
+          "creationTime": 1626672752,
+          "relativeTime": 5552,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198937"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 6,
+          "verdict": "FAILED",
+          "dirty": 2
+        },
+        {
+          "id": 48203565,
+          "creationTime": 1626678425,
+          "relativeTime": 11225,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48203565"
+        },
+        {
+          "id": 48196270,
+          "creationTime": 1626669853,
+          "relativeTime": 2653,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196270"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "UESTC_StarGhost"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 5,
+      "penalty": 23077,
+      "rank": 49,
+      "submissions": [
+        {
+          "id": 48193386,
+          "creationTime": 1626668061,
+          "relativeTime": 861,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193386"
+        },
+        {
+          "id": 48193015,
+          "creationTime": 1626667754,
+          "relativeTime": 554,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193015"
+        },
+        {
+          "id": 48198424,
+          "creationTime": 1626672195,
+          "relativeTime": 4995,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198424"
+        },
+        {
+          "id": 48202269,
+          "creationTime": 1626676836,
+          "relativeTime": 9636,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48202269"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 9,
+          "verdict": "FAILED",
+          "dirty": 3
+        },
+        {
+          "id": 48197098,
+          "creationTime": 1626670631,
+          "relativeTime": 3431,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 2,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48197098"
+        }
+      ]
+    },
+    {
+      "author": {
+        "members": [
+          "csfnb4"
+        ],
+        "participantType": "CONTESTANT"
+      },
+      "solved": 5,
+      "penalty": 23086,
+      "rank": 50,
+      "submissions": [
+        {
+          "id": 48193588,
+          "creationTime": 1626668198,
+          "relativeTime": 998,
+          "problemIndex": 2,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48193588"
+        },
+        {
+          "id": 48196093,
+          "creationTime": 1626669704,
+          "relativeTime": 2504,
+          "problemIndex": 3,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48196093"
+        },
+        {
+          "id": 48198432,
+          "creationTime": 1626672206,
+          "relativeTime": 5006,
+          "problemIndex": 5,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48198432"
+        },
+        {
+          "id": 48195648,
+          "creationTime": 1626669382,
+          "relativeTime": 2182,
+          "problemIndex": 8,
+          "verdict": "OK",
+          "dirty": 0,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48195648"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 9,
+          "verdict": "FAILED",
+          "dirty": 7
+        },
+        {
+          "id": 48201584,
+          "creationTime": 1626675996,
+          "relativeTime": 8796,
+          "problemIndex": 10,
+          "verdict": "OK",
+          "dirty": 1,
+          "submissionUrl": "https://ac.nowcoder.com/acm/contest/view-submission?submissionId=48201584"
+        },
+        {
+          "id": -1,
+          "creationTime": 1626667200,
+          "relativeTime": 0,
+          "problemIndex": 11,
+          "verdict": "FAILED",
+          "dirty": 2
+        }
+      ]
+    }
+  ]
+}
