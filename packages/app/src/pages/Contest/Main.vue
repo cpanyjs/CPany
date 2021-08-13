@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>所有比赛</h2>
-    <div>{{ contests.length }}</div>
+    <h2 class="mb-4">所有比赛</h2>
+    <div>共 {{ contests.length }} 场</div>
   </div>
 </template>
 
