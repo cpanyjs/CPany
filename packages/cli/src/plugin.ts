@@ -16,8 +16,8 @@ export async function createCPanyPlugin(
   return [
     createCPanyRoutePlugin(option),
     createCPanyOverviewPlugin(
-      createUsersOverview(3600 * 24 * 30),
-      createContestsOverview(10),
+      createUsersOverview(option.home.recent),
+      createContestsOverview(option.home.contests),
       option
     )
   ];

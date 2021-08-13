@@ -56,33 +56,6 @@ import { Progress } from './components/progress';
 </script>
 
 <style>
-:root {
-  --font-family-base: 'Inter', apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
-    'Helvetica Neue', sans-serif;
-  --font-family-mono: 'IBM Plex Mono', source-code-pro, Menlo, Monaco, Consolas,
-    'Courier New', monospace;
-
-  --text-light-1: #2c3e50;
-  --text-light-2: #476582;
-  --text-light-3: #90a4b7;
-
-  --c-brand: #3273dc;
-  --c-brand-active: #3273dc;
-}
-
-html {
-  font-family: var(--font-family-base);
-  font-size: 16px;
-  font-weight: 400;
-  color: var(--text-light-1);
-}
-
-a {
-  text-decoration: none;
-  color: var(--c-brand);
-}
-
 @screen md {
   html,
   body,
