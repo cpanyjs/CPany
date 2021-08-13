@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="mb-2">{{ contest.name }}</h2>
+    <h2 class="mb-4">{{ contest.name }}</h2>
     <div>
       <p>
         比赛时间：{{ toDate(contest.startTime).value }} 至

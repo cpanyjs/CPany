@@ -21,9 +21,6 @@
         >比赛</navbar-item
       >
     </template>
-    <template #end>
-      <navbar-item tag="router-link" :to="{ name: 'About' }">关于</navbar-item>
-    </template>
   </navbar>
 
   <div class="px-screen py-4 main-view">

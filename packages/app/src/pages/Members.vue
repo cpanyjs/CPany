@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2 class="mb-4">成员</h2>
     <div
       v-for="user in users"
       :key="user.name"
