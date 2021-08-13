@@ -1,5 +1,6 @@
 import type { IAuthor, IHandle } from './handle';
 import type { IContest } from './contest';
+import type { ISubmission } from './submission';
 
 export * from './enum';
 
@@ -25,8 +26,17 @@ export interface ICPanyConfig {
   static?: string[];
 }
 
-export interface ICPanyUser {
+export interface IUser {
   name: string;
-  handles: Array<IHandle>;
-  contests: Array<IContest & { author: IAuthor }>;
+  handles: Array<RouteKey<IHandle>>;
+  contests: Array<RouteKey<IContest> & { author: IAuthor }>;
+}
+
+export type IContestOverview = Omit<RouteKey<IContest>, 'standings'>;
+
+export interface IUserOverview {
+  name: string;
+  handles: Array<Omit<RouteKey<IHandle>, 'submissions'>>;
+  contests: Array<IContestOverview & { author: IAuthor }>;
+  submissions: Array<ISubmission>;
 }
