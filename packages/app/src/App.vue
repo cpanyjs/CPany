@@ -33,10 +33,14 @@
   <footer class="px-2 py-6">
     <div class="text-center">
       <p>
-        <a href="https://github.com/yjl9903/CPany/blob/master/LICENSE">MIT</a>
+        <a
+          href="https://github.com/yjl9903/CPany/blob/master/LICENSE"
+          target="_blank"
+          >MIT</a
+        >
         Licensed |
-        <a href="https://github.com/yjl9903/CPany">CPany</a>
-        Copyright © 2021 <a href="https://xlor.cn">XLor</a>
+        <a href="https://github.com/yjl9903/CPany" target="_blank">CPany</a>
+        Copyright © 2021 <a href="https://xlor.cn" target="_blank">XLor</a>
       </p>
     </div>
   </footer>
