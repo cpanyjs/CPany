@@ -13,6 +13,7 @@ import type {
   ISubmission
 } from '@cpany/types';
 import type { IPluginOption } from './types';
+import { slash } from './utils';
 
 export async function createLoader({
   dataRootPath,
@@ -36,8 +37,23 @@ export async function createLoader({
   const contests = await (async () => {
     const contests: IContest[] = [];
     for (const contestPath of config.contests ?? []) {
-      const fullPath = path.resolve(dataRootPath, contestPath);
+      const fullPath = slash(path.resolve(dataRootPath, contestPath));
+      const isStatic = (() => {
+        for (const staticPath of config.static ?? []) {
+          if (
+            fullPath.startsWith(slash(path.resolve(dataRootPath, staticPath)))
+          ) {
+            return true;
+          }
+        }
+        return false;
+      })();
+
       for await (const contest of listAllFiles<IContest>(fullPath)) {
+        if (isStatic) {
+          // Hack: skip type check from RouteKey<T>, mark for static routes
+          Reflect.set(contest, 'static', true);
+        }
         contests.push(contest);
       }
     }

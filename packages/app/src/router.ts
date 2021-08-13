@@ -16,7 +16,12 @@ const routes = [
   {
     path: '/contests',
     name: 'Contests',
-    component: () => import('./pages/Contests.vue')
+    component: () => import('./pages/Contest/Main.vue')
+  },
+  {
+    path: '/contest/codeforces/:id',
+    name: 'CodeforcesContestDetail',
+    component: () => import('./pages/Contest/Codeforces.vue')
   },
   {
     path: '/codeforces',
@@ -29,6 +34,8 @@ const routes = [
     component: () => import('./pages/About.vue')
   }
 ];
+
+/* __contests__ */
 
 export const router = createRouter({
   history: createWebHistory(),

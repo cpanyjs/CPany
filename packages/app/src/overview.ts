@@ -1,8 +1,8 @@
-import type { IContest, ICPanyUser } from '@cpany/types';
+import type { IContestOverview, IUserOverview } from '@cpany/types';
 
-const contests: IContest[] = [];
+const contests: IContestOverview[] = [];
 
-const users: ICPanyUser[] = [];
+const users: IUserOverview[] = [];
 
 /* __contests__ */
 

@@ -3,7 +3,7 @@ import { defineConfig } from 'windicss/helpers';
 export default defineConfig({
   shortcuts: {
     'px-screen': 'md:px-8 <md:px-4',
-    'box': 'rounded-md p-4 shadow-box'
+    box: 'rounded-md p-4 shadow-box'
   },
   theme: {
     boxShadow: {
