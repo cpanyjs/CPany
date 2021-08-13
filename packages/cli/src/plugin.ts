@@ -2,18 +2,24 @@ import type { Plugin } from 'vite';
 
 import path from 'path';
 
-import type { IContest, ICPanyUser } from '@cpany/types';
+import type { IContestOverview, IUserOverview } from '@cpany/types';
 import type { IPluginOption } from './types';
 import { createLoader } from './loader';
 
 export async function createCPanyPlugin(
   option: IPluginOption
 ): Promise<Plugin[]> {
-  const { users, contests } = await createLoader(option);
+  const { createUsersOverview, createContestsOverview } = await createLoader(
+    option
+  );
 
   return [
     createCPanyRoutePlugin(option),
-    createCPanyOverviewPlugin(users, contests, option)
+    createCPanyOverviewPlugin(
+      createUsersOverview(3600 * 24 * 30),
+      createContestsOverview(10),
+      option
+    )
   ];
 }
 
@@ -35,8 +41,8 @@ export function createCPanyRoutePlugin({ appRootPath }: IPluginOption): Plugin {
 }
 
 export function createCPanyOverviewPlugin(
-  users: ICPanyUser[],
-  contests: IContest[],
+  users: IUserOverview[],
+  contests: IContestOverview[],
   { appRootPath }: IPluginOption
 ): Plugin {
   const overviewPath = path

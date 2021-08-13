@@ -5,9 +5,12 @@ import { load } from 'js-yaml';
 import type {
   IContest,
   ICPanyConfig,
-  ICPanyUser,
+  IUser,
   IHandle,
-  RouteKey
+  IContestOverview,
+  IUserOverview,
+  RouteKey,
+  ISubmission
 } from '@cpany/types';
 import type { IPluginOption } from './types';
 
@@ -48,11 +51,11 @@ export async function createLoader({
   const { findHandle } = createHandleSet(handles);
   const { findCodeforces } = createCodeforcesSet(contests);
 
-  const users: ICPanyUser[] = [];
-  const userMap: Map<string, ICPanyUser> = new Map();
+  const users: IUser[] = [];
+  const userMap: Map<string, IUser> = new Map();
   const configUser = config?.users ?? {};
   for (const userName in configUser) {
-    const user: ICPanyUser = {
+    const user: IUser = {
       name: userName,
       handles: [],
       contests: []
@@ -126,13 +129,59 @@ export async function createLoader({
     );
   }
 
+  const createContestsOverview = <
+    T extends IContestOverview = IContestOverview
+  >(
+    _length?: number,
+    _contests = contests
+  ): T[] => {
+    const length = _length === undefined ? _contests.length : _length;
+    const overview: T[] = [];
+    for (let i = 0; i < length && i < _contests.length; i++) {
+      const contest = { ..._contests[i] } as T;
+      Reflect.deleteProperty(contest, 'standings');
+      overview.push(contest);
+    }
+    return overview;
+  };
+
+  const createUsersOverview = (recentTime: number) => {
+    const recentStartTime = new Date().getTime() / 1000 - recentTime;
+    const overview = (user: IUser): IUserOverview => {
+      const submissions: ISubmission[] = [];
+      for (const handle of user.handles) {
+        for (const sub of handle.submissions) {
+          if (sub.creationTime >= recentStartTime) {
+            submissions.push(sub);
+          }
+        }
+      }
+      return {
+        name: user.name,
+        contests: createContestsOverview<IUserOverview['contests'][number]>(
+          undefined,
+          user.contests
+        ),
+        handles: user.handles.map((rawHandle) => {
+          const handle = { ...rawHandle };
+          Reflect.deleteProperty(handle, 'submissions');
+          return handle;
+        }),
+        submissions
+      };
+    };
+    return users.map(overview);
+  };
+
   return {
     handles,
     // Dep: skip codeforces gym
     contests: contests.filter(
       (contest) => !contest.type.startsWith('codeforces/gym')
     ),
-    users
+    users,
+    createContestsOverview,
+    createUsersOverview
   };
 }
 
