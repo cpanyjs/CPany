@@ -83,7 +83,7 @@ a {
   color: var(--c-brand);
 }
 
-@screen lg {
+@screen md {
   html,
   body,
   #app {
