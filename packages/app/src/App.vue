@@ -35,7 +35,7 @@
       <p>
         <a href="https://github.com/yjl9903/CPany/blob/master/LICENSE">MIT</a>
         Licensed |
-        <a href="https://github.com/yjl9903/CPany/blob/master/LICENSE">CPany</a>
+        <a href="https://github.com/yjl9903/CPany">CPany</a>
         Copyright © 2021 <a href="https://xlor.cn">XLor</a>
       </p>
     </div>
