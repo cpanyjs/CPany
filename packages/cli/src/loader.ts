@@ -93,6 +93,11 @@ export async function createLoader({
                     });
                     contest.participantNumber++;
                     cfRoundSet.add(contestId);
+
+                    // Dep: codeforces fix gym startTime
+                    if (!contest.startTime) {
+                      contest.startTime = submission.author.participantTime;
+                    }
                   }
                 }
               }
@@ -129,11 +134,23 @@ export async function createLoader({
     );
   }
 
+  const contestSortFn = (lhs: IContest, rhs: IContest) =>
+    rhs.startTime - lhs.startTime;
+
+  // Dep: skip codeforces gym
+  const contestsFilterGym = contests
+    .filter(
+      (contest) =>
+        !contest.type.startsWith('codeforces/gym') ||
+        contest.participantNumber > 0
+    )
+    .sort(contestSortFn);
+
   const createContestsOverview = <
     T extends IContestOverview = IContestOverview
   >(
     _length?: number,
-    _contests = contests
+    _contests = contestsFilterGym
   ): T[] => {
     const length = _length === undefined ? _contests.length : _length;
     const overview: T[] = [];
@@ -175,10 +192,8 @@ export async function createLoader({
 
   return {
     handles,
-    // Dep: skip codeforces gym
-    contests: contests.filter(
-      (contest) => !contest.type.startsWith('codeforces/gym')
-    ),
+    allContests: contests.sort(contestSortFn),
+    contests: contestsFilterGym,
     users,
     createContestsOverview,
     createUsersOverview
