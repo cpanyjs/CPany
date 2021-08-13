@@ -236,10 +236,24 @@ function genRouteKey<T extends IContest | IHandle>(
   for (const [type, rawFiles] of mapByType.entries()) {
     const sorted = rawFiles.sort(sortFn);
     mapByType.set(type, sorted);
+
+    // Dep: try use T.id as key
+    const keys = sorted.map((contest) => {
+      if ('id' in contest && typeof contest.id === 'number') {
+        return contest.id;
+      } else {
+        return null;
+      }
+    });
+    const flag =
+      keys.every((key) => key !== null) && new Set(keys).size === keys.length;
+
+    const typeFirst = type.split('/')[0];
     for (let i = 0; i < sorted.length; i++) {
+      const key = flag ? keys[i] : i + 1;
       files.push({
-        key: i + 1,
-        path: `/${base}/${type}/${i + 1}`,
+        key,
+        path: `/${base}/${typeFirst}/${key}`,
         ...sorted[i]
       } as RouteKey<T>);
     }
