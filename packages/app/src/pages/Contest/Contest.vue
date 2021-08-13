@@ -1,7 +1,10 @@
 <template>
   <div>
     <h2 class="mb-4">{{ contest.name }}</h2>
-    <div>
+    <div
+      class="rounded border-8 border-green-100 pl-4 py-2 bg-light-200"
+      style="border-top: none; border-bottom: none; border-right: none"
+    >
       <p>
         比赛时间：{{ toDate(contest.startTime).value }} 至
         {{ toDate(contest.startTime + contest.duration).value }}
