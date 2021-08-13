@@ -6,8 +6,6 @@ import App from './App.vue';
 
 const loading = ref(false);
 
-// const sleep = (time: number) => new Promise(res => setTimeout(res, time))
-
 router.beforeEach(async () => {
   loading.value = true;
 });

@@ -1,5 +1,8 @@
 <template>
-  <div v-if="loading" id="progress"><b></b><i></i></div>
+  <div v-if="loading" id="progress">
+    <div></div>
+    <div></div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -10,50 +13,36 @@ const loading = inject<Ref<boolean>>('loading');
 </script>
 
 <style>
-#progress {
+#progress div {
   position: fixed;
   z-index: 1;
   top: 0;
-  left: -1%;
+  width: 20%;
   height: 3px;
 
   border-radius: 1px;
-  background-color: #3ab9d4;
+  background: linear-gradient(90deg, #3acbd4, #75ddcf);
 
   animation: loading-loop 1s;
+  animation-timing-function: linear;
   animation-iteration-count: infinite;
+}
+
+#progress div:first-child {
+  left: 0%;
+}
+
+#progress div:last-child {
+  left: -20%;
+  animation-delay: 0.8s;
 }
 
 @keyframes loading-loop {
   0% {
-    width: 0%;
+    transform: translateX(0%);
   }
   100% {
-    width: 101%;
+    transform: translateX(500%);
   }
-}
-
-#progress b,
-#progress i {
-  position: absolute;
-  top: 0;
-  height: 3px;
-
-  border-radius: 100%;
-  box-shadow: #777777 1px 0 6px 1px;
-}
-
-#progress b {
-  clip: rect(-6px, 22px, 14px, 10px);
-  opacity: 0.6;
-  width: 20px;
-  right: 0;
-}
-
-#progress i {
-  clip: rect(-6px, 90px, 14px, -6px);
-  opacity: 0.6;
-  width: 180px;
-  right: -80px;
 }
 </style>
