@@ -1,10 +1,17 @@
 <template>
   <div class="flex <lg:flex-col-reverse">
     <div class="lg:w-3/5 <lg:w-full">
-      <div class="box">
+      <div class="box divide-y">
         <h3 class="mb-2">最近比赛</h3>
-        <div v-for="contest in contests">
-          <span>{{ contest.name }}</span>
+        <div class="py-2">
+          <div v-for="contest in contests">
+            <router-link :to="contest.path">{{ contest.name }}</router-link>
+          </div>
+        </div>
+        <div class="text-right pt-2">
+          <router-link :to="{ name: 'Contests' }"
+            ><span class="font-bold">→</span> 更多比赛</router-link
+          >
         </div>
       </div>
     </div>
@@ -21,5 +28,3 @@
 <script setup lang="ts">
 import { contests } from '../overview';
 </script>
-
-<style></style>
