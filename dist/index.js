@@ -9983,11 +9983,13 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.gymContestListPlugin = exports.contestListPlugin = void 0;
 const constant_1 = __nccwpck_require__(4371);
 function transformContestInfo(contest) {
+    const type = /Div/.test(contest.name) ? 'cf' : contest.type.toLowerCase();
     return {
-        type: constant_1.codeforces + '/' + contest.type,
+        type: constant_1.codeforces + '/' + type,
         name: contest.name,
         startTime: contest.startTimeSeconds,
         duration: contest.durationSeconds,
+        participantNumber: 0,
         id: contest.id,
         phase: contest.phase,
         contestUrl: `https://codeforces.com/contest/${contest.id}`,
@@ -9996,10 +9998,11 @@ function transformContestInfo(contest) {
 }
 function transformGymContestInfo(contest) {
     return {
-        type: constant_1.codeforces + '/' + contest.type,
+        type: constant_1.codeforces + '/gym/' + contest.type.toLowerCase(),
         name: contest.name,
         startTime: contest.startTimeSeconds,
         duration: contest.durationSeconds,
+        participantNumber: 0,
         id: contest.id,
         phase: contest.phase,
         contestUrl: `https://codeforces.com/gym/${contest.id}`,
@@ -10077,7 +10080,7 @@ function handleInfoPlugin(api) {
                             }
                         });
                         return {
-                            type: constant_1.codeforces,
+                            type: name,
                             handle: data.handle,
                             avatar: data.titlePhoto,
                             codeforces: {
@@ -10110,6 +10113,8 @@ function handleInfoPlugin(api) {
                                 author: {
                                     members: submission.author.members.map(({ handle }) => handle),
                                     participantType: submission.author.participantType,
+                                    participantTime: submission.creationTimeSeconds -
+                                        submission.relativeTimeSeconds,
                                     teamName: submission.author.teamName
                                 },
                                 problem: {

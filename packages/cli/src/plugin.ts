@@ -1,84 +1,158 @@
 import type { Plugin } from 'vite';
 
 import path from 'path';
-import { readFileSync } from 'fs';
-import { load } from 'js-yaml';
 
-import type { ICPanyConfig, ICPanyUser } from '@cpany/types';
+import type {
+  IContestOverview,
+  IUserOverview,
+  IContest,
+  RouteKey
+} from '@cpany/types';
+import type { IPluginOption } from './types';
+import { createLoader } from './loader';
+import { slash } from './utils';
 
-interface IPluginOption {
-  appRootPath: string;
-  dataRootPath: string;
+export async function createCPanyPlugin(
+  option: IPluginOption
+): Promise<Plugin[]> {
+  const { contests, createUsersOverview, createContestsOverview } =
+    await createLoader(option);
+
+  const staticContests = contests.filter((contest) => contest.static);
+
+  return [
+    createCPanyOverviewPlugin(
+      createUsersOverview(option.home.recent),
+      createContestsOverview(option.home.contests),
+      option
+    ),
+    createCPanyRoutePlugin(staticContests, option),
+    createCPanyContestPagePlugin(staticContests, option),
+    createCPanyContestLoadPlugin(contests, option)
+  ];
 }
 
-export function createCPanyRoutePlugin({ appRootPath }: IPluginOption): Plugin {
-  const routerPath = path
-    .join(appRootPath, 'src', 'router.ts')
-    .replace(/\\/g, '/');
+export function createCPanyOverviewPlugin(
+  users: IUserOverview[],
+  contests: IContestOverview[],
+  { appRootPath }: IPluginOption
+): Plugin {
+  const overviewPath = slash(path.join(appRootPath, 'src', 'overview.ts'));
 
   return {
-    name: 'cpany:router',
+    name: 'cpany:overview',
     enforce: 'pre',
-    async transform(src, id) {
-      if (id === routerPath) {
-        // transform router.ts
+    async transform(code, id) {
+      if (id === overviewPath) {
+        // transfrom cpany.ts
+        const usersImports: string[] = users.map(
+          (user) => `users.push(${JSON.stringify(user, null, 2)});`
+        );
+        const contestsImports: string[] = contests.map(
+          (contest) => `contests.push(${JSON.stringify(contest, null, 2)});`
+        );
+
+        code = code.replace('/* __users__ */', usersImports.join('\n'));
+        code = code.replace('/* __contests__ */', contestsImports.join('\n'));
+
+        return code;
       }
       return null;
     }
   };
 }
 
-export function createCPanyConfigPlugin({
-  appRootPath,
-  dataRootPath
-}: IPluginOption): Plugin {
-  const configPath = path
-    .join(appRootPath, 'src', 'cpany.ts')
-    .replace(/\\/g, '/');
+function contestVirtualComponentPath(contestPath: string) {
+  return slash(path.join('@cpany', contestPath + '.vue'));
+}
 
-  const loadConfig = async () => {
-    const content = readFileSync(path.join(dataRootPath, 'cpany.yml'), 'utf8');
-    return load(content) as ICPanyConfig;
-  };
+export function createCPanyRoutePlugin(
+  contests: RouteKey<IContest>[],
+  { appRootPath }: IPluginOption
+): Plugin {
+  const routerPath = slash(path.join(appRootPath, 'src', 'router.ts'));
 
   return {
-    name: 'cpany:config',
+    name: 'cpany:router',
     enforce: 'pre',
     async transform(code, id) {
-      if (id === configPath) {
-        // transfrom cpany.ts
-        const config = await loadConfig();
+      if (id === routerPath) {
+        // transform router.ts
+        const virtualRoutes = contests.map((contest) => {
+          const path = contestVirtualComponentPath(contest.path);
+          return `{ path: \`${contest.path}\`, component: () => import(\`${path}\`) },`;
+        });
 
-        const userImports: string[] = [];
-        const configUser = config?.users ?? {};
-        for (const userName in configUser) {
-          const handles: ICPanyUser['handles'] = [];
-
-          for (const type in configUser[userName]) {
-            const rawHandles = configUser[userName][type];
-            const thisHandles =
-              typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
-            handles.push(
-              ...thisHandles.map((handle) => ({
-                handle,
-                type
-              }))
-            );
-          }
-
-          const user: ICPanyUser = {
-            name: userName,
-            handles
-          };
-          const stmt = `users.push(${JSON.stringify(user, null, 2)});`;
-          userImports.push(stmt);
-        }
-
-        code = code.replace('/* __users__ */', userImports.join('\n'));
+        code = code.replace(
+          '/* __contests__ */',
+          `routes.push(${virtualRoutes.join('\n')});`
+        );
 
         return code;
       }
       return null;
+    }
+  };
+}
+
+export function createCPanyContestPagePlugin(
+  contests: RouteKey<IContest>[],
+  { appRootPath }: IPluginOption
+): Plugin {
+  const componentPath = slash(
+    path.join(appRootPath, 'src', 'pages', 'Contest', 'Contest.vue')
+  );
+
+  const contestVirtualComponents = new Map(
+    contests.map((contest): [string, string] => {
+      const path = contestVirtualComponentPath(contest.path);
+      const component = [
+        '<template><page :contest="contest" /></template>',
+        '<script setup lang="ts">',
+        `import page from "${componentPath}"`,
+        `const contest = ${JSON.stringify(contest)};`,
+        '</script>'
+      ];
+      return [path, component.join('\n')];
+    })
+  );
+
+  return {
+    name: 'cpany:contest_page',
+    resolveId(id) {
+      if (contestVirtualComponents.has(id)) {
+        return id;
+      }
+    },
+    load(id) {
+      if (contestVirtualComponents.has(id)) {
+        return contestVirtualComponents.get(id)!;
+      }
+    }
+  };
+}
+
+export function createCPanyContestLoadPlugin(
+  contests: RouteKey<IContest>[],
+  { appRootPath }: IPluginOption
+): Plugin {
+  const contestsPath = slash(path.join(appRootPath, 'src', 'contests.ts'));
+
+  const contestPushes = contests.map(
+    (contest) => `${JSON.stringify(contest, null, 2)},`
+  );
+
+  return {
+    name: 'cpany:contest',
+    enforce: 'pre',
+    transform(code, id) {
+      if (id === contestsPath) {
+        code = code.replace(
+          '/* __contests__ */',
+          `contests.push(${contestPushes.join('\n')});`
+        );
+        return code;
+      }
     }
   };
 }

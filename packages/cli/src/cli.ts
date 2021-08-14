@@ -4,36 +4,51 @@ import path from 'path';
 import { readFileSync, existsSync } from 'fs';
 import { cac } from 'cac';
 import { createServer, build } from 'vite';
-import { createCPanyConfigPlugin, createCPanyRoutePlugin } from './plugin';
+
+import { createCPanyPlugin } from './plugin';
 
 interface ICliOption {
   app?: string;
   data: string;
   out: string;
   port: number;
+  homeContests: number;
+  homeRecent: number;
 }
 
-const cli = cac('cpany');
+const cli = cac('cpany')
+  .option('--app <app path>', 'App path')
+  .option('--data <data path>', 'Data path', { default: '.' })
+  .option('--home-contests <contests number>', 'Contests number in Home', {
+    default: 15
+  })
+  .option(
+    '--home-recent <recent time seconds>',
+    'Recent time seconds in Home',
+    { default: 3600 * 24 * 30 }
+  );
 
 cli
   .command('dev', 'Start CPany dev server')
-  .option('--app <app path>', 'App path')
-  .option('--data <data path>', 'Data path', { default: '.' })
   .option('--port <port>', 'port to listen to', { default: 3000 })
   .action(async (option: ICliOption) => {
     const appPath = path.resolve(option.app ?? findDefaultAppPath());
     const dataPath = path.resolve(option.data);
-    const pluginOption = { appRootPath: appPath, dataRootPath: dataPath };
+    const pluginOption = {
+      appRootPath: appPath,
+      dataRootPath: dataPath,
+      home: {
+        contests: option.homeContests,
+        recent: option.homeRecent
+      }
+    };
 
     const server = await createServer({
       root: appPath,
       server: {
         port: option.port
       },
-      plugins: [
-        createCPanyRoutePlugin(pluginOption),
-        createCPanyConfigPlugin(pluginOption)
-      ]
+      plugins: [await createCPanyPlugin(pluginOption)]
     });
 
     await server.listen();
@@ -41,23 +56,25 @@ cli
 
 cli
   .command('build', 'Build CPany site')
-  .option('--app <app path>', 'App path')
-  .option('--data <data path>', 'Data path', { default: '.' })
   .option('--out <output path>', 'Output path', { default: 'site' })
   .action(async (option) => {
     const appPath = path.resolve(option.app ?? findDefaultAppPath());
     const dataPath = path.resolve(option.data);
-    const pluginOption = { appRootPath: appPath, dataRootPath: dataPath };
+    const pluginOption = {
+      appRootPath: appPath,
+      dataRootPath: dataPath,
+      home: {
+        contests: option.homeContests,
+        recent: option.homeRecent
+      }
+    };
 
     await build({
       root: appPath,
       build: {
         outDir: path.resolve(option.out)
       },
-      plugins: [
-        createCPanyRoutePlugin(pluginOption),
-        createCPanyConfigPlugin(pluginOption)
-      ]
+      plugins: [await createCPanyPlugin(pluginOption)]
     });
   });
 
