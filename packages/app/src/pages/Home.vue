@@ -24,7 +24,7 @@
           <router-link
             :to="{ name: 'Contests' }"
             class="text-gray-400 font-thin hover:underline"
-            ><span class="font-bold">→</span> 更多比赛</router-link
+            >→ 更多比赛</router-link
           >
         </div>
       </div>
@@ -38,7 +38,7 @@
             <router-link
               :to="{ name: 'About' }"
               class="text-gray-400 font-thin hover:underline"
-              ><span class="font-bold">→</span> 更多</router-link
+              >→ 更多</router-link
             >
           </div>
         </div>
