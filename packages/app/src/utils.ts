@@ -1,12 +1,16 @@
 import { Ref, ref, unref } from 'vue';
 
+function alignNumber(value: number) {
+  return (value < 10 ? '0' : '') + value;
+}
+
 export function toDate(seconds: number | Ref<number>) {
   const date = new Date(unref(seconds) * 1000);
-  const prefix = `${date.getFullYear()}-${
+  const prefix = `${date.getFullYear()}-${alignNumber(
     date.getMonth() + 1
-  }-${date.getDate()} `;
-  const hours = (date.getHours() < 10 ? '0' : '') + date.getHours();
-  const minutes = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+  )}-${alignNumber(date.getDate())} `;
+  const hours = alignNumber(date.getHours());
+  const minutes = alignNumber(date.getMinutes());
   return ref(prefix + hours + ':' + minutes);
 }
 

@@ -20,7 +20,7 @@ const cli = cac('cpany')
   .option('--app <app path>', 'App path')
   .option('--data <data path>', 'Data path', { default: '.' })
   .option('--home-contests <contests number>', 'Contests number in Home', {
-    default: 20
+    default: 15
   })
   .option(
     '--home-recent <recent time seconds>',

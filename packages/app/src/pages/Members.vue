@@ -1,19 +1,6 @@
 <template>
   <div>
     <h2 class="mb-4">成员</h2>
-    <!-- <div
-      v-for="user in users"
-      :key="user.name"
-      class="p-2 border border-gray-300 rounded mb-2"
-    >
-      <p>{{ user.name }}</p>
-      <p>
-        <span>账号：</span>
-        <span v-for="handle in user.handles" :key="handle.handle">{{
-          handle.handle
-        }}</span>
-      </p>
-    </div> -->
     <c-table :data="users">
       <template #columns="{ index, row }">
         <c-table-column label="#" width="4em" align="center"
