@@ -12,5 +12,6 @@ export interface IHandle {
 export interface IAuthor {
   members: string[];
   participantType: ParticipantType;
+  participantTime: number;
   teamName?: string;
 }

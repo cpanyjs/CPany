@@ -34,7 +34,7 @@ export function handleInfoPlugin(api: AxiosInstance): ITransformPlugin {
           });
 
           return {
-            type: codeforces,
+            type: name,
             handle: data.handle,
             avatar: data.titlePhoto,
             codeforces: {
@@ -75,6 +75,9 @@ export function handleInfoPlugin(api: AxiosInstance): ITransformPlugin {
               author: {
                 members: submission.author.members.map(({ handle }) => handle),
                 participantType: submission.author.participantType,
+                participantTime:
+                  submission.creationTimeSeconds -
+                  submission.relativeTimeSeconds,
                 teamName: submission.author.teamName
               },
               problem: {
