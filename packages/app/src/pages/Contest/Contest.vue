@@ -26,17 +26,9 @@
       </p>
     </div>
     <div v-if="contest.standings" class="mt-4 box">
-      <!-- <div v-for="standing in contest.standings" class="my-1">
-        <span class="font-bold inline-block w-8 text-center select-none">{{
-          standing.rank
-        }}</span>
-        <span>{{
-          standing.author.teamName ?? standing.author.members[0]
-        }}</span>
-      </div> -->
       <c-table :data="contest.standings">
         <template #columns="{ row }">
-          <c-table-column label="Rank" align="center" width="4em">
+          <c-table-column label="#" align="center" width="4em">
             <span class="font-600">{{ row.rank }}</span>
           </c-table-column>
           <c-table-column label="名称">
@@ -44,7 +36,7 @@
               row.author.teamName ? row.author.teamName : row.author.members[0]
             }}</span>
           </c-table-column>
-          <c-table-column label="Solved" align="center" width="4em">
+          <c-table-column label="解决" align="center" width="4em">
             <span>{{ row.solved }}</span>
           </c-table-column>
           <c-table-column label="罚时" align="center" width="4em">
