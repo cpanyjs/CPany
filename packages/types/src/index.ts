@@ -17,6 +17,7 @@ export interface AppConfig {
   title: string;
   recentTime: number;
   recentContestsCount: number;
+  recentUserCount: number;
 }
 
 export interface ICPanyConfig {

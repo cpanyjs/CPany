@@ -12,7 +12,11 @@ import type {
 import type { IPluginOption } from './types';
 import { createLoader } from './loader';
 import { slash } from './utils';
-import { DefaultRecentContestsCount, DefaultRecentTime } from './constant';
+import {
+  DefaultRecentContestsCount,
+  DefaultRecentTime,
+  DefaultRecentUserCount
+} from './constant';
 
 export async function createCPanyPlugin(
   option: IPluginOption
@@ -65,6 +69,9 @@ export function createCPanyOverviewPlugin(
             `recentTime = ${config.app?.recentTime ?? DefaultRecentTime}`,
             `recentContestsCount = ${
               config.app?.recentContestsCount ?? DefaultRecentContestsCount
+            }`,
+            `recentUserCount = ${
+              config.app?.recentUserCount ?? DefaultRecentUserCount
             }`
           ].join('\n')
         );

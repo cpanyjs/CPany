@@ -3,7 +3,10 @@ import type { IContestOverview, IUserOverview } from '@cpany/types';
 let title = '';
 let recentTime = 30 * 24 * 3600;
 let recentContestsCount = 15;
+let recentUserCount = 5;
 /* __inject__ */
+
+const recentStartTime = new Date().getTime() / 1000 - recentTime;
 
 const contests: IContestOverview[] = [];
 
@@ -13,4 +16,12 @@ const users: IUserOverview[] = [];
 
 /* __users__ */
 
-export { contests, users, title, recentTime, recentContestsCount };
+export {
+  contests,
+  users,
+  title,
+  recentTime,
+  recentContestsCount,
+  recentUserCount,
+  recentStartTime
+};

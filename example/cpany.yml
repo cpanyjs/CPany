@@ -17,6 +17,7 @@ contests:
 app:
   recentTime: 2592000 # 1 month
   recentContestsCount: 15
+  recentUserCount: 5
 
 fetch:
   - codeforces/contest.json
