@@ -30,7 +30,9 @@ export default defineComponent({
             'py-2',
             'border-solid',
             'border-[#dbdbdb]',
-            column.props?.align === 'center'
+            column.props?.align === 'center' ||
+            column.props?.center === '' ||
+            column.props?.center === true
               ? 'text-center'
               : column.props?.align === 'right'
               ? 'text-right'
