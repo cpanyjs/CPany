@@ -14,6 +14,14 @@ export function toDate(seconds: number | Ref<number>) {
   return ref(prefix + hours + ':' + minutes);
 }
 
+export function toNumDuration(duration: number | Ref<number>) {
+  const seconds = unref(duration);
+  const hour = Math.floor(seconds / 3600);
+  const minute = Math.floor((seconds % 3600) / 60);
+  const second = Math.floor(seconds % 60);
+  return ref(`${hour}:${alignNumber(minute)}:${alignNumber(second)}`);
+}
+
 export function toDuration(duration: number | Ref<number>) {
   const seconds = unref(duration);
   const hour = Math.floor(seconds / 3600);

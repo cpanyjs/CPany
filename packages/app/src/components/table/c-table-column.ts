@@ -7,10 +7,14 @@ export default defineComponent({
     width: {
       type: [Number, String]
     },
-    align: String
+    align: String,
+    center: {
+      type: Boolean,
+      default: false
+    }
   },
   setup(props, { slots }) {
-    const { align } = toRefs(props);
+    const { align, center } = toRefs(props);
     const style = {
       borderWidth: '0 0 1px 0'
     };
@@ -19,7 +23,7 @@ export default defineComponent({
       'py-2',
       'border-solid',
       'border-[#dbdbdb]',
-      align.value === 'center'
+      align.value === 'center' || center.value
         ? 'text-center'
         : align.value === 'right'
         ? 'text-right'

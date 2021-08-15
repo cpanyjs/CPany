@@ -12,7 +12,7 @@ import { useRoute } from 'vue-router';
 import { ref, watch } from 'vue';
 
 import Page from './Contest.vue';
-import { findCodeforces } from '../../contests';
+import { findCodeforces } from '../../codeforces';
 
 const route = useRoute();
 
@@ -25,6 +25,8 @@ watch(
       const cf = findCodeforces(+newParams.id);
       if (cf !== null) {
         contest.value = cf;
+        // Dep: manual update document title
+        document.title = `${cf.name} - CPany`;
       }
     }
   },
