@@ -8,9 +8,12 @@
       </div>
       <div>
         <span>账号：</span>
-        <span v-for="handle in user.handles" :key="handle.handle">{{
-          handle.handle
-        }}</span>
+        <span
+          v-for="handle in user.handles"
+          :key="handle.handle"
+          class="ml-2"
+          >{{ handle.handle }}</span
+        >
       </div>
     </div>
 
