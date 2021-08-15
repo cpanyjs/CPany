@@ -1,5 +1,10 @@
 import type { IContestOverview, IUserOverview } from '@cpany/types';
 
+let title = '';
+let recentTime = 30 * 24 * 3600;
+let recentContestsCount = 15;
+/* __inject__ */
+
 const contests: IContestOverview[] = [];
 
 const users: IUserOverview[] = [];
@@ -8,4 +13,4 @@ const users: IUserOverview[] = [];
 
 /* __users__ */
 
-export { contests, users };
+export { contests, users, title, recentTime, recentContestsCount };

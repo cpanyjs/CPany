@@ -6,7 +6,8 @@ import type {
   IContestOverview,
   IUserOverview,
   IContest,
-  RouteKey
+  RouteKey,
+  ICPanyConfig
 } from '@cpany/types';
 import type { IPluginOption } from './types';
 import { createLoader } from './loader';
@@ -27,6 +28,7 @@ export async function createCPanyPlugin(
       createContestsOverview(
         config.app?.recentContestsCount ?? DefaultRecentContestsCount
       ),
+      config,
       option
     ),
     createCPanyRoutePlugin(staticContests, option),
@@ -38,6 +40,7 @@ export async function createCPanyPlugin(
 export function createCPanyOverviewPlugin(
   users: IUserOverview[],
   contests: IContestOverview[],
+  config: ICPanyConfig,
   { appRootPath }: IPluginOption
 ): Plugin {
   const overviewPath = slash(path.join(appRootPath, 'src', 'overview.ts'));
@@ -55,6 +58,16 @@ export function createCPanyOverviewPlugin(
           (contest) => `contests.push(${JSON.stringify(contest, null, 2)});`
         );
 
+        code = code.replace(
+          '/* __inject__ */',
+          [
+            `title = \`${config.app?.title ?? ''}\`;`,
+            `recentTime = ${config.app?.recentTime ?? DefaultRecentTime}`,
+            `recentContestsCount = ${
+              config.app?.recentContestsCount ?? DefaultRecentContestsCount
+            }`
+          ].join('\n')
+        );
         code = code.replace('/* __users__ */', usersImports.join('\n'));
         code = code.replace('/* __contests__ */', contestsImports.join('\n'));
 
