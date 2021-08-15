@@ -1,6 +1,6 @@
 {
   "name": "@cpany/cli",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "CPany cli package",
   "repository": {
     "type": "git",
@@ -10,22 +10,30 @@
   "author": "XLor",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "bin": {
+    "cpany": "dist/cli.js"
+  },
   "files": [
     "dist",
     "src"
   ],
-  "bin": {
-    "cpany": "dist/cli.js"
-  },
   "scripts": {
     "build": "tsc"
   },
   "dependencies": {
     "@cpany/app": "workspace:*",
     "@cpany/types": "workspace:*",
+    "@iconify/json": "^1.1.387",
+    "@vitejs/plugin-vue": "^1.2.4",
+    "@vue/compiler-sfc": "^3.1.4",
+    "@vuedx/typecheck": "^0.7.4",
+    "@vuedx/typescript-plugin-vue": "^0.7.4",
     "cac": "^6.7.3",
     "js-yaml": "^4.1.0",
-    "vite": "^2.4.1"
+    "vite": "^2.4.1",
+    "vite-plugin-icons": "^0.6.5",
+    "vite-plugin-windicss": "^1.2.7",
+    "windicss": "^3.1.7"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.2",
