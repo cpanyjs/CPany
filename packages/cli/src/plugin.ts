@@ -6,7 +6,8 @@ import type {
   IContestOverview,
   IUserOverview,
   IContest,
-  RouteKey
+  RouteKey,
+  IUser
 } from '@cpany/types';
 import type { IPluginOption } from './types';
 import { createLoader } from './loader';
@@ -19,6 +20,7 @@ export async function createCPanyPlugin(
   const {
     config,
     contests,
+    users,
     createUsersOverview,
     createContestsOverview,
     createOverview
@@ -35,8 +37,9 @@ export async function createCPanyPlugin(
       createOverview(),
       option
     ),
-    createCPanyRoutePlugin(staticContests, option),
+    createCPanyRoutePlugin(users, staticContests, option),
     createCPanyContestPagePlugin(staticContests, option),
+    createCPanyUserPagePlugin(users, option),
     createCPanyContestLoadPlugin(contests, option)
   ];
 }
@@ -82,7 +85,12 @@ function contestVirtualComponentPath(contestPath: string) {
   return slash(path.join('@cpany', contestPath + '.vue'));
 }
 
+function userVirtualComponentPath(username: string) {
+  return slash(path.join('@cpany', 'users', username + '.vue'));
+}
+
 export function createCPanyRoutePlugin(
+  users: IUser[],
   contests: RouteKey<IContest>[],
   { appRootPath }: IPluginOption
 ): Plugin {
@@ -98,6 +106,12 @@ export function createCPanyRoutePlugin(
           const path = contestVirtualComponentPath(contest.path);
           return `{ path: \`${contest.path}\`, component: () => import(\`${path}\`) },`;
         });
+        virtualRoutes.push(
+          ...users.map((user) => {
+            const path = userVirtualComponentPath(user.name);
+            return `{ path: \`/user/${user.name}\`, component: () => import(\`${path}\`) },`;
+          })
+        );
 
         code = code.replace(
           '/* __contests__ */',
@@ -143,6 +157,43 @@ export function createCPanyContestPagePlugin(
     load(id) {
       if (contestVirtualComponents.has(id)) {
         return contestVirtualComponents.get(id)!;
+      }
+    }
+  };
+}
+
+export function createCPanyUserPagePlugin(
+  users: IUser[],
+  { appRootPath }: IPluginOption
+): Plugin {
+  const componentPath = slash(
+    path.join(appRootPath, 'src', 'pages', 'User', 'User.vue')
+  );
+
+  const userVirtualComponents = new Map(
+    users.map((user): [string, string] => {
+      const path = userVirtualComponentPath(user.name);
+      const component = [
+        '<template><page :user="user" /></template>',
+        '<script setup lang="ts">',
+        `import page from "${componentPath}"`,
+        `const user = ${JSON.stringify(user)};`,
+        '</script>'
+      ];
+      return [path, component.join('\n')];
+    })
+  );
+
+  return {
+    name: 'cpany:user_page',
+    resolveId(id) {
+      if (userVirtualComponents.has(id)) {
+        return id;
+      }
+    },
+    load(id) {
+      if (userVirtualComponents.has(id)) {
+        return userVirtualComponents.get(id)!;
       }
     }
   };
