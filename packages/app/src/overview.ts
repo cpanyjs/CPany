@@ -6,6 +6,7 @@ let recentContestsCount = 15;
 let recentUserCount = 5;
 
 let allSubmissionCount = 0;
+let allOkSubmissionCount = 0;
 let allContestCount = 0;
 /* __inject__ */
 
@@ -28,5 +29,6 @@ export {
   recentUserCount,
   recentStartTime,
   allSubmissionCount,
+  allOkSubmissionCount,
   allContestCount
 };

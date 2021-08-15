@@ -6,23 +6,23 @@ import type {
   IContestOverview,
   IUserOverview,
   IContest,
-  RouteKey,
-  ICPanyConfig
+  RouteKey
 } from '@cpany/types';
 import type { IPluginOption } from './types';
 import { createLoader } from './loader';
 import { slash } from './utils';
-import {
-  DefaultRecentContestsCount,
-  DefaultRecentTime,
-  DefaultRecentUserCount
-} from './constant';
+import { DefaultRecentContestsCount, DefaultRecentTime } from './constant';
 
 export async function createCPanyPlugin(
   option: IPluginOption
 ): Promise<Plugin[]> {
-  const { config, contests, createUsersOverview, createContestsOverview } =
-    await createLoader(option);
+  const {
+    config,
+    contests,
+    createUsersOverview,
+    createContestsOverview,
+    createOverview
+  } = await createLoader(option);
 
   const staticContests = contests.filter((contest) => contest.inlinePage);
 
@@ -32,7 +32,7 @@ export async function createCPanyPlugin(
       createContestsOverview(
         config.app?.recentContestsCount ?? DefaultRecentContestsCount
       ),
-      config,
+      createOverview(),
       option
     ),
     createCPanyRoutePlugin(staticContests, option),
@@ -44,7 +44,7 @@ export async function createCPanyPlugin(
 export function createCPanyOverviewPlugin(
   users: IUserOverview[],
   contests: IContestOverview[],
-  config: ICPanyConfig,
+  overview: Map<string, string>,
   { appRootPath }: IPluginOption
 ): Plugin {
   const overviewPath = slash(path.join(appRootPath, 'src', 'overview.ts'));
@@ -62,27 +62,11 @@ export function createCPanyOverviewPlugin(
           (contest) => `contests.push(${JSON.stringify(contest, null, 2)});`
         );
 
-        const allSubCount = users.reduce((sum, user) => {
-          return sum + user.submissions.length;
-        }, 0);
-        const allContestCount = users.reduce((sum, user) => {
-          return sum + user.contests.length;
-        }, 0);
-
         code = code.replace(
           '/* __inject__ */',
-          [
-            `title = \`${config.app?.title ?? ''}\`;`,
-            `recentTime = ${config.app?.recentTime ?? DefaultRecentTime}`,
-            `recentContestsCount = ${
-              config.app?.recentContestsCount ?? DefaultRecentContestsCount
-            }`,
-            `recentUserCount = ${
-              config.app?.recentUserCount ?? DefaultRecentUserCount
-            }`,
-            `allSubmissionCount = ${allSubCount}`,
-            `allContestCount = ${allContestCount}`
-          ].join('\n')
+          [...overview.entries()]
+            .map(([key, value]) => `${key} = ${value};`)
+            .join('\n')
         );
         code = code.replace('/* __users__ */', usersImports.join('\n'));
         code = code.replace('/* __contests__ */', contestsImports.join('\n'));

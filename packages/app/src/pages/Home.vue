@@ -38,29 +38,27 @@
           </h3>
 
           <div class="py-4 flex justify-around">
-            <div>
-              <p class="text-gray-400 text-sm mb-1">用户数</p>
-              <p class="text-2xl flex items-center">
-                <icon-account />
-                <span class="ml-1">{{ users.length }}</span>
-              </p>
-            </div>
+            <c-stastic title="用户数">
+              <template #prefix><icon-account /></template>
+              <template #>{{ users.length }}</template>
+            </c-stastic>
 
-            <div class="ml-8">
-              <p class="text-gray-400 text-sm mb-1">提交数</p>
-              <p class="text-2xl flex items-center">
-                <icon-code />
-                <span class="ml-1">{{ allSubmissionCount }}</span>
-              </p>
-            </div>
+            <c-stastic title="比赛数">
+              <template #prefix><icon-cloud class="text-blue-400" /></template>
+              <template #>{{ allContestCount }}</template>
+            </c-stastic>
 
-            <div class="ml-8">
-              <p class="text-gray-400 text-sm mb-1">比赛数</p>
-              <p class="text-2xl flex items-center">
-                <icon-balloon />
-                <span class="ml-1">{{ allContestCount }}</span>
-              </p>
-            </div>
+            <c-stastic title="提交数">
+              <template #prefix
+                ><icon-lightbulb-on class="text-yellow-400"
+              /></template>
+              <template #>{{ allSubmissionCount }}</template>
+            </c-stastic>
+
+            <c-stastic title="正确提交">
+              <template #prefix><icon-balloon class="text-red-400" /></template>
+              <template #>{{ allOkSubmissionCount }}</template>
+            </c-stastic>
           </div>
 
           <div class="text-right pt-2">
@@ -130,8 +128,9 @@
 
 <script setup lang="ts">
 import IconAccount from 'virtual:vite-icons/mdi/account';
-import IconCode from 'virtual:vite-icons/mdi/file-code';
+import IconCloud from 'virtual:vite-icons/mdi/cloud-outline';
 import IconBalloon from 'virtual:vite-icons/mdi/balloon';
+import IconLightbulbOn from 'virtual:vite-icons/mdi/lightbulb-on-outline';
 
 import {
   contests,
@@ -141,10 +140,12 @@ import {
   recentUserCount,
   recentStartTime,
   allSubmissionCount,
-  allContestCount
+  allContestCount,
+  allOkSubmissionCount
 } from '../overview';
 import { toDate } from '../utils';
 import { CTable, CTableColumn } from '../components/table';
+import { CStastic } from '../components/stastic';
 
 const recent = ' ' + (recentTime / (24 * 3600)).toFixed(0) + ' 天';
 
