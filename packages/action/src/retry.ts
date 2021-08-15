@@ -35,7 +35,7 @@ export function createRetryContainer(maxRetry: number = 10) {
       tasks.splice(0);
       tasks.push(...newTasks);
       if (tasks.length > 0) {
-        await sleep(random.integer(10, 60));
+        await sleep(random.integer(2 * 1000, 5 * 1000));
       }
     }
   };

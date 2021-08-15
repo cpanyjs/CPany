@@ -10962,7 +10962,7 @@ function createRetryContainer(maxRetry = 10) {
             tasks.splice(0);
             tasks.push(...newTasks);
             if (tasks.length > 0) {
-                yield utils_1.sleep(random.integer(10, 60));
+                yield utils_1.sleep(random.integer(2 * 1000, 5 * 1000));
             }
         }
     });
@@ -11039,8 +11039,8 @@ function now() {
     return dayjs_1.default().tz('Asia/Shanghai');
 }
 exports.now = now;
-function sleep(second) {
-    return new Promise((res) => setTimeout(() => res(), second * 1000));
+function sleep(duration) {
+    return new Promise((res) => setTimeout(() => res(), duration));
 }
 exports.sleep = sleep;
 
