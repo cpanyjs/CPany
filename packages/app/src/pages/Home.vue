@@ -79,7 +79,7 @@
                 <span class="font-600">{{ index + 1 }}</span>
               </c-table-column>
               <c-table-column label="姓名">
-                <span>{{ row.name }}</span>
+                <user-link :name="row.name"></user-link>
               </c-table-column>
               <c-table-column label="提交数" width="6em" align="center">
                 <span>{{ row.submissions.length }}</span>
@@ -105,7 +105,7 @@
                 <span class="font-600">{{ index + 1 }}</span>
               </c-table-column>
               <c-table-column label="姓名">
-                <span>{{ row.name }}</span>
+                <user-link :name="row.name"></user-link>
               </c-table-column>
               <c-table-column label="比赛数" width="6em" align="center">
                 <span>{{ row.contestsLength }}</span>
@@ -146,6 +146,7 @@ import {
 import { toDate } from '../utils';
 import { CTable, CTableColumn } from '../components/table';
 import { CStastic } from '../components/stastic';
+import UserLink from '../components/user-link.vue';
 
 const recent = ' ' + (recentTime / (24 * 3600)).toFixed(0) + ' 天';
 
