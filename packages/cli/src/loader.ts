@@ -207,6 +207,7 @@ export async function createLoader({
   };
 
   return {
+    config,
     handles,
     allContests: contests.sort(contestSortFn),
     contests: contestsFilterGym,

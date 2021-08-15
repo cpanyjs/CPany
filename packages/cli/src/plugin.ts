@@ -11,19 +11,22 @@ import type {
 import type { IPluginOption } from './types';
 import { createLoader } from './loader';
 import { slash } from './utils';
+import { DefaultRecentContestsCount, DefaultRecentTime } from './constant';
 
 export async function createCPanyPlugin(
   option: IPluginOption
 ): Promise<Plugin[]> {
-  const { contests, createUsersOverview, createContestsOverview } =
+  const { config, contests, createUsersOverview, createContestsOverview } =
     await createLoader(option);
 
   const staticContests = contests.filter((contest) => contest.inlinePage);
 
   return [
     createCPanyOverviewPlugin(
-      createUsersOverview(option.home.recent),
-      createContestsOverview(option.home.contests),
+      createUsersOverview(config.app?.recentTime ?? DefaultRecentTime),
+      createContestsOverview(
+        config.app?.recentContestsCount ?? DefaultRecentContestsCount
+      ),
       option
     ),
     createCPanyRoutePlugin(staticContests, option),
