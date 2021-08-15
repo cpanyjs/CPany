@@ -51,7 +51,7 @@
         <div class="box mt-4 divide-y">
           <h3 class="mb-4">最近{{ recent }}用户提交数</h3>
 
-          <c-table :data="users">
+          <c-table :data="usersBySub">
             <template #columns="{ row, index }">
               <c-table-column label="#" width="2em" align="center">
                 <span class="font-600">{{ index + 1 }}</span>
@@ -73,6 +73,32 @@
             >
           </div>
         </div>
+
+        <div class="box mt-4 divide-y">
+          <h3 class="mb-4">最近{{ recent }}用户比赛数</h3>
+
+          <c-table :data="uestsByContest">
+            <template #columns="{ row, index }">
+              <c-table-column label="#" width="2em" align="center">
+                <span class="font-600">{{ index + 1 }}</span>
+              </c-table-column>
+              <c-table-column label="姓名">
+                <span>{{ row.name }}</span>
+              </c-table-column>
+              <c-table-column label="比赛数" width="6em" align="center">
+                <span>{{ row.contestsLength }}</span>
+              </c-table-column>
+            </template>
+          </c-table>
+
+          <div class="text-right pt-2">
+            <router-link
+              :to="{ name: 'Members' }"
+              class="text-gray-400 font-thin hover:underline"
+              >→ 更多</router-link
+            >
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -81,9 +107,30 @@
 <script setup lang="ts">
 import IconAccount from 'virtual:vite-icons/mdi/account';
 
-import { contests, users, recentTime, title } from '../overview';
+import {
+  contests,
+  users,
+  recentTime,
+  title,
+  recentUserCount,
+  recentStartTime
+} from '../overview';
 import { toDate } from '../utils';
 import { CTable, CTableColumn } from '../components/table';
 
 const recent = ' ' + (recentTime / (24 * 3600)).toFixed(0) + ' 天';
+
+const usersBySub = users
+  .sort((lhs, rhs) => rhs.submissions.length - lhs.submissions.length)
+  .slice(0, recentUserCount);
+
+const uestsByContest = users
+  .map((user) => {
+    const contestsLength = user.contests.filter(
+      ({ author }) => author.participantTime >= recentStartTime
+    ).length;
+    return { contestsLength, ...user };
+  })
+  .sort((lhs, rhs) => rhs.contestsLength - lhs.contestsLength)
+  .slice(0, recentUserCount);
 </script>
