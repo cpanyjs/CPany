@@ -9,6 +9,7 @@ import { codeforcesPlugin } from '@cpany/codeforces';
 import { createGitFileSystem } from './fs';
 import { processReadme } from './readme';
 import { now } from './utils';
+import { createRetryContainer } from './retry';
 
 async function getConfig(path: string) {
   const content = readFileSync(path, 'utf8');
@@ -59,6 +60,7 @@ async function run() {
     }
   }
 
+  const retry = createRetryContainer(+core.getInput('max-retry'));
   const configUser = config?.users ?? {};
   for (const userKey in configUser) {
     const user = configUser[userKey];
@@ -69,21 +71,28 @@ async function run() {
         typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
 
       for (const handle of handles) {
-        const result = await instance.transform({
-          id: handle,
-          type
-        });
+        const fn = async () => {
+          const result = await instance.transform({
+            id: handle,
+            type
+          });
 
-        if (result !== null) {
-          core.info(`Fetched ${result.key}`);
-          const { key, content } = result;
-          await fs.add(key, content);
-        } else {
-          core.error(`Fetch (id: "${handle}", type: "${type}") fail`);
-        }
+          if (result !== null) {
+            core.info(`Fetched ${result.key}`);
+            const { key, content } = result;
+            await fs.add(key, content);
+            return true;
+          } else {
+            core.error(`Fetch (id: "${handle}", type: "${type}") fail`);
+            return false;
+          }
+        };
+        retry.add(`(id: "${handle}", type: "${type}")`, fn);
       }
     }
   }
+
+  await retry.run();
 
   core.endGroup();
 

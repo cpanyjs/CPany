@@ -35,6 +35,7 @@ importers:
       '@types/js-yaml': ^4.0.2
       dayjs: ^1.10.6
       js-yaml: ^4.1.0
+      random-js: ^2.1.0
     dependencies:
       '@actions/core': 1.4.0
       '@actions/exec': 1.1.0
@@ -44,6 +45,7 @@ importers:
       '@cpany/types': link:../types
       dayjs: 1.10.6
       js-yaml: 4.1.0
+      random-js: 2.1.0
     devDependencies:
       '@types/js-yaml': 4.0.2
 
@@ -1597,6 +1599,10 @@ packages:
   /quick-lru/5.1.1:
     resolution: {integrity: sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==}
     engines: {node: '>=10'}
+
+  /random-js/2.1.0:
+    resolution: {integrity: sha512-CRUyWmnzmZBA7RZSVGq0xMqmgCyPPxbiKNLFA5ud7KenojVX2s7Gv+V7eB52beKTPGxWRnVZ7D/tCIgYJJ8vNQ==}
+    dev: false
 
   /require-directory/2.1.1:
     resolution: {integrity: sha1-jGStX9MNqxyXbiNE/+f3kqam30I=}

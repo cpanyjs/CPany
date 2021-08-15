@@ -25,7 +25,8 @@
     "@cpany/core": "workspace:*",
     "@cpany/types": "workspace:*",
     "dayjs": "^1.10.6",
-    "js-yaml": "^4.1.0"
+    "js-yaml": "^4.1.0",
+    "random-js": "^2.1.0"
   },
   "devDependencies": {
     "@types/js-yaml": "^4.0.2"

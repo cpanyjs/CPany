@@ -6,6 +6,10 @@ inputs:
     required: false
     description: 'CPany config file path'
     default: 'cpany.yml'
+  max-retry:
+    required: false
+    description: 'CPany max retry times'
+    default: 10
 runs:
   using: 'node12'
   main: 'dist/index.js'

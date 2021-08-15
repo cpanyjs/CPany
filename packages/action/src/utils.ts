@@ -29,3 +29,7 @@ export async function* listDir(
 export function now() {
   return dayjs().tz('Asia/Shanghai');
 }
+
+export function sleep(second: number): Promise<void> {
+  return new Promise((res) => setTimeout(() => res(), second * 1000));
+}
