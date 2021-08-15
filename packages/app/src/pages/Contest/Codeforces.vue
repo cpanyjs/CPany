@@ -25,6 +25,8 @@ watch(
       const cf = findCodeforces(+newParams.id);
       if (cf !== null) {
         contest.value = cf;
+        // Dep: manual update document title
+        document.title = `${cf.name} - CPany`;
       }
     }
   },
