@@ -16,7 +16,6 @@ export type RouteKey<T, K = number> = T & {
   type: string;
   key: K;
   path: string;
-  static?: boolean;
 };
 
 export interface ICPanyConfig {

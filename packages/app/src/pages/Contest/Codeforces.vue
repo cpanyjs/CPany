@@ -12,7 +12,7 @@ import { useRoute } from 'vue-router';
 import { ref, watch } from 'vue';
 
 import Page from './Contest.vue';
-import { findCodeforces } from '../../contests';
+import { findCodeforces } from '../../codeforces';
 
 const route = useRoute();
 

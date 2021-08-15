@@ -51,8 +51,8 @@ export async function createLoader({
 
       for await (const contest of listAllFiles<IContest>(fullPath)) {
         if (isStatic) {
-          // Hack: skip type check from RouteKey<T>, mark for static routes
-          Reflect.set(contest, 'static', true);
+          // Dep: inline static contest pages
+          contest.inlinePage = true;
         }
         contests.push(contest);
       }
