@@ -37,7 +37,31 @@
             <span v-if="title !== ''">{{ title }}&nbsp;</span>总览
           </h3>
 
-          <div class="py-2"></div>
+          <div class="py-4 flex justify-around">
+            <div>
+              <p class="text-gray-400 text-sm mb-1">用户数</p>
+              <p class="text-2xl flex items-center">
+                <icon-account />
+                <span class="ml-1">{{ users.length }}</span>
+              </p>
+            </div>
+
+            <div class="ml-8">
+              <p class="text-gray-400 text-sm mb-1">提交数</p>
+              <p class="text-2xl flex items-center">
+                <icon-code />
+                <span class="ml-1">{{ allSubmissionCount }}</span>
+              </p>
+            </div>
+
+            <div class="ml-8">
+              <p class="text-gray-400 text-sm mb-1">比赛数</p>
+              <p class="text-2xl flex items-center">
+                <icon-balloon />
+                <span class="ml-1">{{ allContestCount }}</span>
+              </p>
+            </div>
+          </div>
 
           <div class="text-right pt-2">
             <router-link
@@ -106,6 +130,8 @@
 
 <script setup lang="ts">
 import IconAccount from 'virtual:vite-icons/mdi/account';
+import IconCode from 'virtual:vite-icons/mdi/file-code';
+import IconBalloon from 'virtual:vite-icons/mdi/balloon';
 
 import {
   contests,
@@ -113,7 +139,9 @@ import {
   recentTime,
   title,
   recentUserCount,
-  recentStartTime
+  recentStartTime,
+  allSubmissionCount,
+  allContestCount
 } from '../overview';
 import { toDate } from '../utils';
 import { CTable, CTableColumn } from '../components/table';

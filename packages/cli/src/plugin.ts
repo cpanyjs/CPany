@@ -62,6 +62,13 @@ export function createCPanyOverviewPlugin(
           (contest) => `contests.push(${JSON.stringify(contest, null, 2)});`
         );
 
+        const allSubCount = users.reduce((sum, user) => {
+          return sum + user.submissions.length;
+        }, 0);
+        const allContestCount = users.reduce((sum, user) => {
+          return sum + user.contests.length;
+        }, 0);
+
         code = code.replace(
           '/* __inject__ */',
           [
@@ -72,7 +79,9 @@ export function createCPanyOverviewPlugin(
             }`,
             `recentUserCount = ${
               config.app?.recentUserCount ?? DefaultRecentUserCount
-            }`
+            }`,
+            `allSubmissionCount = ${allSubCount}`,
+            `allContestCount = ${allContestCount}`
           ].join('\n')
         );
         code = code.replace('/* __users__ */', usersImports.join('\n'));

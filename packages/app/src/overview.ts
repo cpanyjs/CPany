@@ -4,6 +4,9 @@ let title = '';
 let recentTime = 30 * 24 * 3600;
 let recentContestsCount = 15;
 let recentUserCount = 5;
+
+let allSubmissionCount = 0;
+let allContestCount = 0;
 /* __inject__ */
 
 const recentStartTime = new Date().getTime() / 1000 - recentTime;
@@ -23,5 +26,7 @@ export {
   recentTime,
   recentContestsCount,
   recentUserCount,
-  recentStartTime
+  recentStartTime,
+  allSubmissionCount,
+  allContestCount
 };
