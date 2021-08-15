@@ -1,5 +1,5 @@
-import { defineComponent, h, toRefs } from 'vue';
-// import CTableColumn from './c-table-column'
+import { defineComponent, h, toRefs, VNode } from 'vue';
+import CTableColumn from './c-table-column';
 
 export default defineComponent({
   name: 'CTable',
@@ -12,8 +12,11 @@ export default defineComponent({
   setup(props, { slots }) {
     const { data } = toRefs(props);
 
+    const filterColumn = (slots?: VNode[]) =>
+      slots ? slots.filter((slot) => slot.type === CTableColumn) : [];
+
     return () => {
-      const columns = slots.columns ? slots.columns({}) : [];
+      const columns = filterColumn(slots.columns ? slots.columns({}) : []);
 
       const renderHead = () =>
         columns.map((column) => {
@@ -42,7 +45,11 @@ export default defineComponent({
 
       const renderBody = (data: any[]) =>
         data.map((row, index) => {
-          return h('tr', {}, slots.columns && slots.columns({ row, index }));
+          return h(
+            'tr',
+            {},
+            slots.columns && filterColumn(slots.columns({ row, index }))
+          );
         });
 
       return h(
