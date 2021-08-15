@@ -10961,7 +10961,9 @@ function createRetryContainer(maxRetry = 10) {
             }
             tasks.splice(0);
             tasks.push(...newTasks);
-            yield utils_1.sleep(random.integer(10, 60));
+            if (tasks.length > 0) {
+                yield utils_1.sleep(random.integer(10, 60));
+            }
         }
     });
     return {
