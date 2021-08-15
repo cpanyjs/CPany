@@ -48,10 +48,7 @@ cli
       ],
       resolve: {
         alias: {
-          '@cpany/types': path.resolve(
-            __dirname,
-            '../node_modules/@cpany/types/src'
-          ),
+          '@cpany/types': findTypesPackagePath(),
           '@': path.resolve(appPath, 'src')
         }
       }
@@ -85,10 +82,7 @@ cli
       ],
       resolve: {
         alias: {
-          '@cpany/types': path.resolve(
-            __dirname,
-            '../node_modules/@cpany/types/src'
-          ),
+          '@cpany/types': findTypesPackagePath(),
           '@': path.resolve(appPath, 'src')
         }
       }
@@ -114,4 +108,17 @@ function findDefaultAppPath() {
     segment.pop();
   }
   throw new Error('Can not find default app in node_modules');
+}
+
+function findTypesPackagePath() {
+  const paths = [
+    path.resolve(__dirname, '../node_modules/@cpany/types/src'),
+    path.resolve(__dirname, '../../types/src')
+  ];
+  for (const path of paths) {
+    if (existsSync(path)) {
+      return path;
+    }
+  }
+  throw new Error('Can not find @cpany/types package in node_modules');
 }
