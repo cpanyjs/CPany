@@ -30,6 +30,6 @@ export function now() {
   return dayjs().tz('Asia/Shanghai');
 }
 
-export function sleep(second: number): Promise<void> {
-  return new Promise((res) => setTimeout(() => res(), second * 1000));
+export function sleep(duration: number): Promise<void> {
+  return new Promise((res) => setTimeout(() => res(), duration));
 }
