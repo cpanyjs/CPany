@@ -10948,9 +10948,15 @@ function createRetryContainer(maxRetry = 10) {
     const run = () => __awaiter(this, void 0, void 0, function* () {
         while (tasks.length > 0) {
             const newTasks = [];
+            let stop = false;
             for (const { id, fn, count } of tasks) {
+                if (stop) {
+                    newTasks.push({ id, fn, count });
+                    continue;
+                }
                 const ok = yield fn();
                 if (!ok) {
+                    stop = true;
                     if (count === maxRetry) {
                         core.error(`Task ${id} run fail`);
                     }

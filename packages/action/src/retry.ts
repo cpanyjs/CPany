@@ -22,9 +22,15 @@ export function createRetryContainer(maxRetry: number = 10) {
   const run = async () => {
     while (tasks.length > 0) {
       const newTasks: ITask[] = [];
+      let stop = false;
       for (const { id, fn, count } of tasks) {
+        if (stop) {
+          newTasks.push({ id, fn, count });
+          continue;
+        }
         const ok = await fn();
         if (!ok) {
+          stop = true;
           if (count === maxRetry) {
             core.error(`Task ${id} run fail`);
           } else {
