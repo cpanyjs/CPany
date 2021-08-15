@@ -8,7 +8,8 @@ export default defineConfig({
   plugins: [vue(), WindiCSS(), Icons()],
   resolve: {
     alias: {
-      '@cpany/types': resolve(__dirname, '../types/src')
+      '@cpany/types': resolve(__dirname, '../types/src'),
+      '@': resolve(__dirname, 'src')
     }
   }
 });

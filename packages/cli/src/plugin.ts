@@ -219,9 +219,11 @@ export function createCPanyContestLoadPlugin(
     enforce: 'pre',
     transform(code, id) {
       if (id === contestsPath) {
+        // Hack: sort splited contests
         code = code.replace(
           '/* __contests__ */',
-          `contests.push(${contestPushes.join('\n')});`
+          `contests.push(${contestPushes.join('\n')});\n` +
+            `contests.sort((lhs, rhs) => rhs.startTime - lhs.startTime);`
         );
         return code;
       } else if (id === codeforcesPath) {
