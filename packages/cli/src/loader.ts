@@ -1,5 +1,5 @@
 import path from 'path';
-import { readFile, readdir } from 'fs/promises';
+import { promises } from 'fs';
 import { load } from 'js-yaml';
 
 import {
@@ -26,7 +26,7 @@ export async function createLoader({
   configPath = 'cpany.yml'
 }: IPluginOption) {
   const config = load(
-    await readFile(path.join(dataRootPath, configPath), 'utf8')
+    await promises.readFile(path.join(dataRootPath, configPath), 'utf8')
   ) as ICPanyConfig;
 
   const handles = await (async () => {
@@ -277,7 +277,7 @@ export async function createLoader({
 
 async function* listAllFiles<T>(dir: string): AsyncGenerator<T> {
   if (dir.endsWith('.json')) {
-    const files: T | T[] = JSON.parse(await readFile(dir, 'utf8'));
+    const files: T | T[] = JSON.parse(await promises.readFile(dir, 'utf8'));
     if (Array.isArray(files)) {
       for (const contest of files) {
         yield contest;
@@ -286,7 +286,7 @@ async function* listAllFiles<T>(dir: string): AsyncGenerator<T> {
       yield files;
     }
   } else {
-    const dirents = await readdir(dir, { withFileTypes: true });
+    const dirents = await promises.readdir(dir, { withFileTypes: true });
     for (const dirent of dirents) {
       const id = path.join(dir, dirent.name);
       yield* listAllFiles(id);
