@@ -14,6 +14,7 @@ export interface IContest {
   standingsUrl?: string;
   problems?: IContestProblem[];
   standings?: IContestStanding[];
+  inlinePage?: boolean;
 }
 
 export interface IContestStanding {

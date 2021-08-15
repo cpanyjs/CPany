@@ -12,12 +12,13 @@ export * from './problem';
 
 export * from './contest';
 
-export type RouteKey<T, K = number> = T & {
-  type: string;
-  key: K;
-  path: string;
-  static?: boolean;
-};
+// Action/Cli config interface
+export interface AppConfig {
+  title: string;
+  recentTime: number;
+  recentContestsCount: number;
+  recentUserCount: number;
+}
 
 export interface ICPanyConfig {
   users?: Record<string, Record<string, string[] | string>>;
@@ -25,7 +26,15 @@ export interface ICPanyConfig {
   contests?: string[];
   fetch?: string[];
   static?: string[];
+
+  app?: Partial<AppConfig>;
 }
+
+export type RouteKey<T, K = number> = T & {
+  type: string;
+  key: K;
+  path: string;
+};
 
 export interface IUser {
   name: string;

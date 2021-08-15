@@ -1,16 +1,19 @@
 <template>
   <div>
     <h2 class="mb-4">成员</h2>
-    <c-table :data="users">
+    <c-table :data="extendUsers">
       <template #columns="{ index, row }">
         <c-table-column label="#" width="4em" align="center"
           ><span class="font-600">{{ index + 1 }}</span></c-table-column
         >
         <c-table-column label="姓名">
-          {{ row.name }}
+          <user-link :name="row.name"></user-link>
         </c-table-column>
+        <c-table-column label="正确提交" width="6em" align="center">{{
+          row.okCount
+        }}</c-table-column>
         <c-table-column label="提交总数" width="6em" align="center">{{
-          row.submissions.length
+          row.subCount
         }}</c-table-column>
         <c-table-column label="比赛场次" width="6em" align="center">{{
           row.contests.length
@@ -21,8 +24,22 @@
 </template>
 
 <script setup lang="ts">
-import { users } from '../overview';
+import { Verdict } from '@cpany/types';
+import { users } from '../users';
 import { CTable, CTableColumn } from '../components/table';
-</script>
+import UserLink from '../components/user-link.vue';
 
-<style></style>
+const extendUsers = users.map((user) => {
+  const subCount = user.handles.reduce(
+    (sum, handle) => sum + handle.submissions.length,
+    0
+  );
+  const okCount = user.handles.reduce(
+    (sum, handle) =>
+      sum +
+      handle.submissions.filter((sub) => sub.verdict === Verdict.OK).length,
+    0
+  );
+  return { subCount, okCount, ...user };
+});
+</script>

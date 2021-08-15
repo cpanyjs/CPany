@@ -2,7 +2,7 @@ import path from 'path';
 import { readFile, readdir } from 'fs/promises';
 import { load } from 'js-yaml';
 
-import type {
+import {
   IContest,
   ICPanyConfig,
   IUser,
@@ -10,10 +10,16 @@ import type {
   IContestOverview,
   IUserOverview,
   RouteKey,
-  ISubmission
+  ISubmission,
+  Verdict
 } from '@cpany/types';
 import type { IPluginOption } from './types';
 import { slash } from './utils';
+import {
+  DefaultRecentContestsCount,
+  DefaultRecentTime,
+  DefaultRecentUserCount
+} from './constant';
 
 export async function createLoader({
   dataRootPath,
@@ -51,8 +57,8 @@ export async function createLoader({
 
       for await (const contest of listAllFiles<IContest>(fullPath)) {
         if (isStatic) {
-          // Hack: skip type check from RouteKey<T>, mark for static routes
-          Reflect.set(contest, 'static', true);
+          // Dep: inline static contest pages
+          contest.inlinePage = true;
         }
         contests.push(contest);
       }
@@ -206,13 +212,66 @@ export async function createLoader({
     return users.map(overview);
   };
 
+  // Dep: app overview.ts
+  const createOverview = () => {
+    const overviewMap: Map<string, string> = new Map();
+    overviewMap.set('title', '`' + (config.app?.title ?? '') + '`');
+    overviewMap.set(
+      'recentTime',
+      '' + config.app?.recentTime ?? DefaultRecentTime
+    );
+    overviewMap.set(
+      'recentContestsCount',
+      '' + config.app?.recentContestsCount ?? DefaultRecentContestsCount
+    );
+    overviewMap.set(
+      'recentUserCount',
+      '' + config.app?.recentUserCount ?? DefaultRecentUserCount
+    );
+
+    const allSubmissionCount = users.reduce(
+      (sum, user) =>
+        sum +
+        user.handles.reduce(
+          (sum, handle) => sum + handle.submissions.length,
+          0
+        ),
+      0
+    );
+    overviewMap.set('allSubmissionCount', '' + allSubmissionCount);
+
+    const allOkSubmissionCount = users.reduce(
+      (sum, user) =>
+        sum +
+        user.handles.reduce(
+          (sum, handle) =>
+            sum +
+            handle.submissions.filter((sub) => sub.verdict === Verdict.OK)
+              .length,
+          0
+        ),
+      0
+    );
+    overviewMap.set('allOkSubmissionCount', '' + allOkSubmissionCount);
+
+    const allContestCount = users.reduce(
+      (sum, user) => sum + user.contests.length,
+      0
+    );
+    overviewMap.set('allContestCount', '' + allContestCount);
+
+    return overviewMap;
+  };
+
   return {
+    config,
     handles,
     allContests: contests.sort(contestSortFn),
     contests: contestsFilterGym,
     users,
     createContestsOverview,
-    createUsersOverview
+    createUsersOverview,
+    createOverview
   };
 }
 
