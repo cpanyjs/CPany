@@ -105,12 +105,12 @@ export function createCPanyRoutePlugin(
         // transform router.ts
         const virtualRoutes = contests.map((contest) => {
           const path = contestVirtualComponentPath(contest.path);
-          return `{ path: \`${contest.path}\`, component: () => import(\`${path}\`) },`;
+          return `{ path: \`${contest.path}\`, component: () => import(\`${path}\`), meta: { title: \`${contest.name} - CPany\` } },`;
         });
         virtualRoutes.push(
           ...users.map((user) => {
             const path = userVirtualComponentPath(user.name);
-            return `{ path: \`/user/${user.name}\`, component: () => import(\`${path}\`) },`;
+            return `{ path: \`/user/${user.name}\`, component: () => import(\`${path}\`), meta: { title: \`用户 ${user.name} - CPany\` } },`;
           })
         );
 
