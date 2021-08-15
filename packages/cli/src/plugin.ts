@@ -40,7 +40,8 @@ export async function createCPanyPlugin(
     createCPanyRoutePlugin(users, staticContests, option),
     createCPanyContestPagePlugin(staticContests, option),
     createCPanyUserPagePlugin(users, option),
-    createCPanyContestLoadPlugin(contests, option)
+    createCPanyContestLoadPlugin(contests, option),
+    createCPanyUserLoadPlugin(users, option)
   ];
 }
 
@@ -227,6 +228,29 @@ export function createCPanyContestLoadPlugin(
         code = code.replace(
           '/* __contests__ */',
           `contests.push(${codeforcesPushes.join('\n')});`
+        );
+        return code;
+      }
+    }
+  };
+}
+
+export function createCPanyUserLoadPlugin(
+  users: IUser[],
+  { appRootPath }: IPluginOption
+): Plugin {
+  const usersPath = slash(path.join(appRootPath, 'src', 'users.ts'));
+
+  const userPushes = users.map((user) => `${JSON.stringify(user, null, 2)},`);
+
+  return {
+    name: 'cpany:users',
+    enforce: 'pre',
+    transform(code, id) {
+      if (id === usersPath) {
+        code = code.replace(
+          '/* __users__ */',
+          `users.push(${userPushes.join('\n')});`
         );
         return code;
       }
