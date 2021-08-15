@@ -11,6 +11,31 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 125982565,
+      "creationTime": 1629041726,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1629038100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1559D1",
+        "name": "Mocha and Diana (Easy Version)",
+        "tags": [
+          "constructive algorithms",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1559/problem/D1"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1559/submission/125982565"
+    },
+    {
+      "type": "codeforces",
       "id": 125965932,
       "creationTime": 1629040288,
       "language": "GNU C++14",
@@ -26,7 +51,10 @@
         "type": "codeforces",
         "id": "1559C",
         "name": "Mocha and Hiking",
-        "tags": [],
+        "tags": [
+          "constructive algorithms",
+          "graphs"
+        ],
         "problemUrl": "https://codeforces.com/contest/1559/problem/C"
       },
       "submissionUrl": "https://codeforces.com/contest/1559/submission/125965932"
@@ -48,7 +76,9 @@
         "type": "codeforces",
         "id": "1559B",
         "name": "Mocha and Red and Blue",
-        "tags": [],
+        "tags": [
+          "greedy"
+        ],
         "problemUrl": "https://codeforces.com/contest/1559/problem/B"
       },
       "submissionUrl": "https://codeforces.com/contest/1559/submission/125947359"
