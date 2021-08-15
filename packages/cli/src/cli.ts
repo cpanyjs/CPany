@@ -18,15 +18,7 @@ interface ICliOption {
 
 const cli = cac('cpany')
   .option('--app <app path>', 'App path')
-  .option('--data <data path>', 'Data path', { default: '.' })
-  .option('--home-contests <contests number>', 'Contests number in Home', {
-    default: 15
-  })
-  .option(
-    '--home-recent <recent time seconds>',
-    'Recent time seconds in Home',
-    { default: 3600 * 24 * 30 }
-  );
+  .option('--data <data path>', 'Data path', { default: '.' });
 
 cli
   .command('dev', 'Start CPany dev server')
@@ -36,11 +28,7 @@ cli
     const dataPath = path.resolve(option.data);
     const pluginOption = {
       appRootPath: appPath,
-      dataRootPath: dataPath,
-      home: {
-        contests: option.homeContests,
-        recent: option.homeRecent
-      }
+      dataRootPath: dataPath
     };
 
     const server = await createServer({
@@ -62,11 +50,7 @@ cli
     const dataPath = path.resolve(option.data);
     const pluginOption = {
       appRootPath: appPath,
-      dataRootPath: dataPath,
-      home: {
-        contests: option.homeContests,
-        recent: option.homeRecent
-      }
+      dataRootPath: dataPath
     };
 
     await build({
