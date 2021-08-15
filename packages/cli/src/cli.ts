@@ -4,6 +4,9 @@ import path from 'path';
 import { readFileSync, existsSync } from 'fs';
 import { cac } from 'cac';
 import { createServer, build } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import WindiCSS from 'vite-plugin-windicss';
+import Icons from 'vite-plugin-icons';
 
 import { createCPanyPlugin } from './plugin';
 
@@ -32,11 +35,26 @@ cli
     };
 
     const server = await createServer({
+      configFile: false,
       root: appPath,
       server: {
         port: option.port
       },
-      plugins: [await createCPanyPlugin(pluginOption)]
+      plugins: [
+        vue(),
+        WindiCSS(),
+        Icons(),
+        await createCPanyPlugin(pluginOption)
+      ],
+      resolve: {
+        alias: {
+          '@cpany/types': path.resolve(
+            __dirname,
+            '../node_modules/@cpany/types/src'
+          ),
+          '@': path.resolve(appPath, 'src')
+        }
+      }
     });
 
     await server.listen();
@@ -54,11 +72,26 @@ cli
     };
 
     await build({
+      configFile: false,
       root: appPath,
       build: {
         outDir: path.resolve(option.out)
       },
-      plugins: [await createCPanyPlugin(pluginOption)]
+      plugins: [
+        vue(),
+        WindiCSS(),
+        Icons(),
+        await createCPanyPlugin(pluginOption)
+      ],
+      resolve: {
+        alias: {
+          '@cpany/types': path.resolve(
+            __dirname,
+            '../node_modules/@cpany/types/src'
+          ),
+          '@': path.resolve(appPath, 'src')
+        }
+      }
     });
   });
 

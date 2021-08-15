@@ -138,11 +138,16 @@ export function createCPanyContestPagePlugin(
     contests.map((contest): [string, string] => {
       const path = contestVirtualComponentPath(contest.path);
       const component = [
-        '<template><page :contest="contest" /></template>',
-        '<script setup lang="ts">',
+        `<template><page :contest="contest" /></template>`,
+        `<script>`,
         `import page from "${componentPath}"`,
-        `const contest = ${JSON.stringify(contest)};`,
-        '</script>'
+        `export default {`,
+        `  components: { page },`,
+        `  setup() {`,
+        `    return { contest: ${JSON.stringify(contest)} };`,
+        `  }`,
+        `}`,
+        `</script>`
       ];
       return [path, component.join('\n')];
     })
@@ -175,11 +180,16 @@ export function createCPanyUserPagePlugin(
     users.map((user): [string, string] => {
       const path = userVirtualComponentPath(user.name);
       const component = [
-        '<template><page :user="user" /></template>',
-        '<script setup lang="ts">',
+        `<template><page :user="user" /></template>`,
+        `<script>`,
         `import page from "${componentPath}"`,
-        `const user = ${JSON.stringify(user)};`,
-        '</script>'
+        `export default {`,
+        `  components: { page },`,
+        `  setup() {`,
+        `    return { user: ${JSON.stringify(user)} };`,
+        `  }`,
+        `}`,
+        `</script>`
       ];
       return [path, component.join('\n')];
     })
