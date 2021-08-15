@@ -18,7 +18,7 @@ export async function createCPanyPlugin(
   const { contests, createUsersOverview, createContestsOverview } =
     await createLoader(option);
 
-  const staticContests = contests.filter((contest) => contest.static);
+  const staticContests = contests.filter((contest) => contest.inlinePage);
 
   return [
     createCPanyOverviewPlugin(
@@ -137,10 +137,14 @@ export function createCPanyContestLoadPlugin(
   { appRootPath }: IPluginOption
 ): Plugin {
   const contestsPath = slash(path.join(appRootPath, 'src', 'contests.ts'));
+  const codeforcesPath = slash(path.join(appRootPath, 'src', 'codeforces.ts'));
 
-  const contestPushes = contests.map(
-    (contest) => `${JSON.stringify(contest, null, 2)},`
-  );
+  const contestPushes = contests
+    .filter((contest) => !contest.type.startsWith('codeforces'))
+    .map((contest) => `${JSON.stringify(contest, null, 2)},`);
+  const codeforcesPushes = contests
+    .filter((contest) => contest.type.startsWith('codeforces'))
+    .map((contest) => `${JSON.stringify(contest, null, 2)},`);
 
   return {
     name: 'cpany:contest',
@@ -150,6 +154,12 @@ export function createCPanyContestLoadPlugin(
         code = code.replace(
           '/* __contests__ */',
           `contests.push(${contestPushes.join('\n')});`
+        );
+        return code;
+      } else if (id === codeforcesPath) {
+        code = code.replace(
+          '/* __contests__ */',
+          `contests.push(${codeforcesPushes.join('\n')});`
         );
         return code;
       }
