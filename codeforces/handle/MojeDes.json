@@ -51,7 +51,8 @@
         "name": "Mocha and Hiking",
         "tags": [
           "constructive algorithms",
-          "graphs"
+          "graphs",
+          "sortings"
         ],
         "problemUrl": "https://codeforces.com/contest/1559/problem/C"
       },
@@ -62,6 +63,7 @@
       "id": 125947359,
       "creationTime": 1629039076,
       "language": "GNU C++14",
+      "verdict": "OK",
       "author": {
         "members": [
           "MojeDes"
@@ -74,6 +76,7 @@
         "id": "1559B",
         "name": "Mocha and Red and Blue",
         "tags": [
+          "dp",
           "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1559/problem/B"
@@ -97,7 +100,9 @@
         "type": "codeforces",
         "id": "1559A",
         "name": "Mocha and Math",
-        "tags": [],
+        "tags": [
+          "bitmasks"
+        ],
         "problemUrl": "https://codeforces.com/contest/1559/problem/A"
       },
       "submissionUrl": "https://codeforces.com/contest/1559/submission/125939277"
@@ -119,7 +124,9 @@
         "type": "codeforces",
         "id": "1559A",
         "name": "Mocha and Math",
-        "tags": [],
+        "tags": [
+          "bitmasks"
+        ],
         "problemUrl": "https://codeforces.com/contest/1559/problem/A"
       },
       "submissionUrl": "https://codeforces.com/contest/1559/submission/125936758"
