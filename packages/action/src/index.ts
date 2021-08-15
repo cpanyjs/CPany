@@ -33,8 +33,12 @@ async function run() {
       'README.md',
       'netlify.toml',
       'package.json',
+      'package-lock.json',
+      'pnpm-lock.yaml',
+      'yarn.lock',
       'LICENSE',
       'LICENCE',
+      'node_modules',
       configPath,
       ...(config?.static ?? [])
     ])
