@@ -14,6 +14,7 @@
       "id": 125982565,
       "creationTime": 1629041726,
       "language": "GNU C++14",
+      "verdict": "OK",
       "author": {
         "members": [
           "MojeDes"
@@ -27,6 +28,7 @@
         "name": "Mocha and Diana (Easy Version)",
         "tags": [
           "constructive algorithms",
+          "greedy",
           "trees"
         ],
         "problemUrl": "https://codeforces.com/contest/1559/problem/D1"
@@ -38,6 +40,7 @@
       "id": 125965932,
       "creationTime": 1629040288,
       "language": "GNU C++14",
+      "verdict": "OK",
       "author": {
         "members": [
           "MojeDes"
@@ -101,7 +104,8 @@
         "id": "1559A",
         "name": "Mocha and Math",
         "tags": [
-          "bitmasks"
+          "bitmasks",
+          "constructive algorithms"
         ],
         "problemUrl": "https://codeforces.com/contest/1559/problem/A"
       },
@@ -125,7 +129,8 @@
         "id": "1559A",
         "name": "Mocha and Math",
         "tags": [
-          "bitmasks"
+          "bitmasks",
+          "constructive algorithms"
         ],
         "problemUrl": "https://codeforces.com/contest/1559/problem/A"
       },
