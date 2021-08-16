@@ -45,7 +45,13 @@ export function contestListPlugin(api: AxiosInstance): ILoadPlugin {
         const {
           data: { result }
         } = await api.get('contest.list');
-        return JSON.stringify(result.map(transformContestInfo), null, 2);
+        return JSON.stringify(
+          result
+            .map(transformContestInfo)
+            .filter(({ phase }: IContest) => phase === 'FINISHED'),
+          null,
+          2
+        );
       }
     }
   };
@@ -60,7 +66,13 @@ export function gymContestListPlugin(api: AxiosInstance): ILoadPlugin {
         const {
           data: { result }
         } = await api.get('contest.list', { params: { gym: true } });
-        return JSON.stringify(result.map(transformGymContestInfo), null, 2);
+        return JSON.stringify(
+          result
+            .map(transformGymContestInfo)
+            .filter(({ phase }: IContest) => phase === 'FINISHED'),
+          null,
+          2
+        );
       }
     }
   };

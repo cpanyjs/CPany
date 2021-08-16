@@ -11117,7 +11117,9 @@ function contestListPlugin(api) {
             return __awaiter(this, void 0, void 0, function* () {
                 if (id === name) {
                     const { data: { result } } = yield api.get('contest.list');
-                    return JSON.stringify(result.map(transformContestInfo), null, 2);
+                    return JSON.stringify(result
+                        .map(transformContestInfo)
+                        .filter(({ phase }) => phase === 'FINISHED'), null, 2);
                 }
             });
         }
@@ -11132,7 +11134,9 @@ function gymContestListPlugin(api) {
             return __awaiter(this, void 0, void 0, function* () {
                 if (id === name) {
                     const { data: { result } } = yield api.get('contest.list', { params: { gym: true } });
-                    return JSON.stringify(result.map(transformGymContestInfo), null, 2);
+                    return JSON.stringify(result
+                        .map(transformGymContestInfo)
+                        .filter(({ phase }) => phase === 'FINISHED'), null, 2);
                 }
             });
         }
