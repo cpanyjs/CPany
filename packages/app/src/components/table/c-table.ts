@@ -64,7 +64,7 @@ export default defineComponent({
 
     const setSortField = (label: string) => {
       sortField.value = label;
-      sortOrder.value = defaultSort.value as 'asc' | 'desc';
+      sortOrder.value = defaultSortOrder.value as 'asc' | 'desc';
     };
     const filpSortOrder = () => {
       if (sortOrder.value === 'desc') sortOrder.value = 'asc';
