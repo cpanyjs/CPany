@@ -40,7 +40,10 @@ export default defineComponent({
       defaultSortOrder.value as 'asc' | 'desc'
     );
 
-    const setSortField = (label: string) => (sortField.value = label);
+    const setSortField = (label: string) => {
+      sortField.value = label;
+      sortOrder.value = defaultSort.value as 'asc' | 'desc';
+    };
     const filpSortOrder = () => {
       if (sortOrder.value === 'desc') sortOrder.value = 'asc';
       else sortOrder.value = 'desc';
