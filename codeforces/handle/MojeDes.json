@@ -4,7 +4,7 @@
   "avatar": "https://userpic.codeforces.org/829567/title/8d6f4c3cbe817bd8.jpg",
   "codeforces": {
     "rank": "expert",
-    "rating": 1870,
+    "rating": 1859,
     "maxRank": "expert",
     "maxRating": 1870
   },
@@ -30,6 +30,7 @@
           "brute force",
           "constructive algorithms",
           "dsu",
+          "graphs",
           "greedy",
           "trees"
         ],
