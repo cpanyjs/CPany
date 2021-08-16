@@ -1,9 +1,5 @@
 import type { IUser } from '@cpany/types';
 
-/* __imports__ */
+import rawUsers from './cpany/users.json';
 
-const users: IUser[] = [];
-
-/* __users__ */
-
-export { users };
+export const users: IUser[] = rawUsers;

@@ -1,10 +1,8 @@
 import type { IContest, RouteKey } from '@cpany/types';
-import { contests as cfContests } from './codeforces';
 
-/* __imports__ */
+import cfContests from './cpany/codeforces.json';
+import otherContests from './cpany/contests.json';
 
-const contests: RouteKey<IContest>[] = [...cfContests];
-
-/* __contests__ */
-
-export { contests };
+export const contests = (
+  [...cfContests, ...otherContests] as RouteKey<IContest>[]
+).sort((lhs, rhs) => rhs.startTime - lhs.startTime);
