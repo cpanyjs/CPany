@@ -1,6 +1,6 @@
 {
   "name": "@cpany/codeforces",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "CPany codeforces package",
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@cpany/core": "workspace:*",
-    "@cpany/types": "workspace:^0.0.0",
+    "@cpany/types": "workspace:*",
     "axios": "^0.21.1"
   }
 }

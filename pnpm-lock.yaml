@@ -122,7 +122,7 @@ importers:
   packages/codeforces:
     specifiers:
       '@cpany/core': workspace:*
-      '@cpany/types': workspace:^0.0.0
+      '@cpany/types': workspace:*
       axios: ^0.21.1
     dependencies:
       '@cpany/core': link:../core
