@@ -2,18 +2,50 @@
   <div v-if="user" class="divide-y">
     <h2 class="mb-2">{{ user.name }}</h2>
 
-    <div class="flex py-4">
-      <div v-if="avatar !== null" class="mr-4">
-        <img :src="avatar" :alt="`${user.name}'s avatar`" />
+    <div class="flex py-4 justify-between">
+      <div class="w-full">
+        <div class="info-box border-left flex">
+          <c-stastic title="比赛">
+            <template #prefix><icon-cloud class="text-blue-400" /></template>
+            <template #>{{ user.contests.length }}</template>
+          </c-stastic>
+
+          <c-stastic title="提交" class="md:ml-4 <md:ml-2">
+            <template #prefix
+              ><icon-lightbulb-on class="text-yellow-400"
+            /></template>
+            <template #>{{ submissions.length }}</template>
+          </c-stastic>
+
+          <c-stastic title="通过" class="md:ml-4 <md:ml-2">
+            <template #prefix><icon-balloon class="text-red-400" /></template>
+            <template #>{{
+              submissions.filter((sub) => sub.verdict === Verdict.OK).length
+            }}</template>
+          </c-stastic>
+        </div>
+
+        <div class="<md:mt-2 md:mt-4 grid grid-cols-1">
+          <div
+            v-for="(handle, index) in cfHandles"
+            :key="index"
+            class="box <md:(p-2 mb-2) md:mb-4"
+          >
+            <span class="font-600"
+              >{{ transformHandleType(handle.type) }}:
+            </span>
+            <cf-handle :handle="handle"></cf-handle>
+            <p>
+              <span class="font-600">Contest rating: </span>
+              <cf-handle :handle="handle">{{
+                handle.codeforces.rating
+              }}</cf-handle>
+            </p>
+          </div>
+        </div>
       </div>
-      <div>
-        <span>账号：</span>
-        <span
-          v-for="handle in user.handles"
-          :key="handle.handle"
-          class="ml-2"
-          >{{ handle.handle }}</span
-        >
+      <div v-if="avatar !== null" class="ml-4 max-w-1/3">
+        <img :src="avatar" :alt="`${user.name}'s avatar`" />
       </div>
     </div>
 
@@ -70,13 +102,20 @@
 </template>
 
 <script setup lang="ts">
-import type { IUser, ISubmission, IContest } from '@cpany/types';
+import type { RouteKey, IUser, ISubmission, IContest } from '@cpany/types';
+import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
 import { Verdict } from '@cpany/types';
 import { ref, toRefs } from 'vue';
 
 import IconCheck from 'virtual:vite-icons/mdi/check';
 import IconClose from 'virtual:vite-icons/mdi/close';
+import IconCloud from 'virtual:vite-icons/mdi/cloud-outline';
+import IconBalloon from 'virtual:vite-icons/mdi/balloon';
+import IconLightbulbOn from 'virtual:vite-icons/mdi/lightbulb-on-outline';
+
 import { CTable, CTableColumn } from '@/components/table';
+import { CfHandle } from '@/components/codeforces';
+import { CStastic } from '@/components/stastic';
 import { toDate } from '@/utils';
 
 const props = defineProps<{ user: IUser }>();
@@ -102,4 +141,11 @@ const submissions = ref<ISubmission[]>(
     .reverse()
 );
 const contests = ref<IContest[]>(user.value.contests);
+
+// Hack: all handle are cf
+const cfHandles = user.value.handles as RouteKey<IHandleWithCodeforces>[];
+
+const transformHandleType = (type: string) => {
+  return 'Codeforces';
+};
 </script>

@@ -69,6 +69,12 @@ a {
   color: var(--c-brand);
 }
 
+.border-left {
+  border-top: none;
+  border-bottom: none;
+  border-right: none
+}
+
 .table {
   border-spacing: 0;
 }

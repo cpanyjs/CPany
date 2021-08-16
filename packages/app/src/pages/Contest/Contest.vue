@@ -1,17 +1,7 @@
 <template>
   <div>
     <h2 class="mb-4">{{ contest.name }}</h2>
-    <div
-      class="
-        rounded
-        border-8 border-green-100
-        bg-light-200
-        md:(pl-4)
-        <md:(pl-2)
-        py-2
-      "
-      style="border-top: none; border-bottom: none; border-right: none"
-    >
+    <div class="info-box border-left">
       <p>
         比赛时间：{{ toDate(contest.startTime).value }} 至
         {{ toDate(contest.startTime + contest.duration).value }}
@@ -51,7 +41,7 @@
 <script setup lang="ts">
 import type { IContest } from '@cpany/types';
 
-import { CTable, CTableColumn } from '../../components/table';
+import { CTable, CTableColumn } from '@/components/table';
 import { toDate, toNumDuration, toDuration } from '../../utils';
 
 defineProps<{ contest: IContest }>();
