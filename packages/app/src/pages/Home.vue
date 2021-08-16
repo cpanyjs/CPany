@@ -37,7 +37,16 @@
             <span v-if="title !== ''">{{ title }}&nbsp;</span>总览
           </h3>
 
-          <div class="py-4 flex justify-around">
+          <div
+            class="
+              py-4
+              md:(flex
+              items-center
+              justify-around)
+              <md:(grid
+              grid-cols-2)
+            "
+          >
             <c-stastic title="用户数">
               <template #prefix><icon-account /></template>
               <template #>{{ users.length }}</template>
