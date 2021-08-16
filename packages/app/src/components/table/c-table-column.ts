@@ -12,18 +12,17 @@ export default defineComponent({
       type: Boolean,
       default: false
     },
-    sort: Function
+    sort: Function,
+    mobileHeaderClass: {
+      type: Array,
+      default: []
+    }
   },
   setup(props, { slots }) {
     const { align, center } = toRefs(props);
-    const style = {
-      borderWidth: '0 0 1px 0'
-    };
     const className = [
       'px-3',
       'py-2',
-      'border-solid',
-      'border-[#dbdbdb]',
       align.value === 'center' || center.value
         ? 'text-center'
         : align.value === 'right'
@@ -34,7 +33,6 @@ export default defineComponent({
       h(
         'td',
         {
-          style,
           class: className
         },
         slots.default && slots.default(props)

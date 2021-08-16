@@ -60,7 +60,7 @@
               toDate(row.author.participantTime).value
             }}</a>
           </c-table-column>
-          <c-table-column label="比赛">
+          <c-table-column label="比赛" :mobile-header-class="['min-w-8']">
             <router-link :to="row.path">{{ row.name }}</router-link>
           </c-table-column>
         </template>
