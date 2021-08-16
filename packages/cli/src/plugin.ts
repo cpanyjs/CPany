@@ -134,35 +134,63 @@ export function createCPanyContestPagePlugin(
     path.join(appRootPath, 'src', 'pages', 'Contest', 'Contest.vue')
   );
 
-  const contestVirtualComponents = new Map(
-    contests.map((contest): [string, string] => {
-      const path = contestVirtualComponentPath(contest.path);
-      const component = [
-        `<template><page :contest="contest" /></template>`,
-        `<script>`,
-        `import page from "${componentPath}"`,
-        `export default {`,
-        `  components: { page },`,
-        `  setup() {`,
-        `    return { contest: ${JSON.stringify(contest)} };`,
-        `  }`,
-        `}`,
-        `</script>`
-      ];
-      return [path, component.join('\n')];
-    })
-  );
+  // const contestVirtualComponents = new Map(
+  //   contests.map((contest): [string, string] => {
+  //     const path = contestVirtualComponentPath(contest.path);
+  //     const component = [
+  //       `<template><page :contest="contest" /></template>`,
+  //       `<script>`,
+  //       `import page from "${componentPath}"`,
+  //       `export default {`,
+  //       `  components: { page },`,
+  //       `  setup() {`,
+  //       `    return { contest: ${JSON.stringify(contest)} };`,
+  //       `  }`,
+  //       `}`,
+  //       `</script>`
+  //     ];
+  //     return [path, component.join('\n')];
+  //   })
+  // );
+
+  const findVirutalContest = (id: string): RouteKey<IContest> | null => {
+    for (const contest of contests) {
+      if (id === contestVirtualComponentPath(contest.path)) {
+        return contest;
+      }
+    }
+    return null;
+  };
 
   return {
     name: 'cpany:contest_page',
     resolveId(id) {
-      if (contestVirtualComponents.has(id)) {
+      // if (contestVirtualComponents.has(id)) {
+      //   return id;
+      // }
+      if (findVirutalContest(id)) {
         return id;
       }
     },
     load(id) {
-      if (contestVirtualComponents.has(id)) {
-        return contestVirtualComponents.get(id)!;
+      // if (contestVirtualComponents.has(id)) {
+      //   return contestVirtualComponents.get(id)!;
+      // }
+      const virtualContest = findVirutalContest(id);
+      if (virtualContest !== null) {
+        const component = [
+          `<template><page :contest="contest" /></template>`,
+          `<script>`,
+          `import page from "${componentPath}"`,
+          `export default {`,
+          `  components: { page },`,
+          `  setup() {`,
+          `    return { contest: ${JSON.stringify(virtualContest)} };`,
+          `  }`,
+          `}`,
+          `</script>`
+        ];
+        return component.join('\n');
       }
     }
   };
@@ -176,35 +204,63 @@ export function createCPanyUserPagePlugin(
     path.join(appRootPath, 'src', 'pages', 'User', 'User.vue')
   );
 
-  const userVirtualComponents = new Map(
-    users.map((user): [string, string] => {
-      const path = userVirtualComponentPath(user.name);
-      const component = [
-        `<template><page :user="user" /></template>`,
-        `<script>`,
-        `import page from "${componentPath}"`,
-        `export default {`,
-        `  components: { page },`,
-        `  setup() {`,
-        `    return { user: ${JSON.stringify(user)} };`,
-        `  }`,
-        `}`,
-        `</script>`
-      ];
-      return [path, component.join('\n')];
-    })
-  );
+  // const userVirtualComponents = new Map(
+  //   users.map((user): [string, string] => {
+  //     const path = userVirtualComponentPath(user.name);
+  //     const component = [
+  //       `<template><page :user="user" /></template>`,
+  //       `<script>`,
+  //       `import page from "${componentPath}"`,
+  //       `export default {`,
+  //       `  components: { page },`,
+  //       `  setup() {`,
+  //       `    return { user: ${JSON.stringify(user)} };`,
+  //       `  }`,
+  //       `}`,
+  //       `</script>`
+  //     ];
+  //     return [path, component.join('\n')];
+  //   })
+  // );
+
+  const findVirtualUser = (id: string): IUser | null => {
+    for (const user of users) {
+      if (id === userVirtualComponentPath(user.name)) {
+        return user;
+      }
+    }
+    return null;
+  };
 
   return {
     name: 'cpany:user_page',
     resolveId(id) {
-      if (userVirtualComponents.has(id)) {
+      // if (userVirtualComponents.has(id)) {
+      //   return id;
+      // }
+      if (findVirtualUser(id)) {
         return id;
       }
     },
     load(id) {
-      if (userVirtualComponents.has(id)) {
-        return userVirtualComponents.get(id)!;
+      // if (userVirtualComponents.has(id)) {
+      //   return userVirtualComponents.get(id)!;
+      // }
+      const virtualUser = findVirtualUser(id);
+      if (virtualUser !== null) {
+        const component = [
+          `<template><page :user="user" /></template>`,
+          `<script>`,
+          `import page from "${componentPath}"`,
+          `export default {`,
+          `  components: { page },`,
+          `  setup() {`,
+          `    return { user: ${JSON.stringify(virtualUser)} };`,
+          `  }`,
+          `}`,
+          `</script>`
+        ];
+        return component.join('\n');
       }
     }
   };
@@ -217,18 +273,15 @@ export function createCPanyContestLoadPlugin(
   const contestsPath = slash(path.join(appRootPath, 'src', 'contests.ts'));
   const codeforcesPath = slash(path.join(appRootPath, 'src', 'codeforces.ts'));
 
-  const contestPushes = contests
-    .filter((contest) => !contest.type.startsWith('codeforces'))
-    .map((contest) => `${JSON.stringify(contest, null, 2)},`);
-  const codeforcesPushes = contests
-    .filter((contest) => contest.type.startsWith('codeforces'))
-    .map((contest) => `${JSON.stringify(contest, null, 2)},`);
-
   return {
     name: 'cpany:contest',
     enforce: 'pre',
     transform(code, id) {
       if (id === contestsPath) {
+        const contestPushes = contests
+          .filter((contest) => !contest.type.startsWith('codeforces'))
+          .map((contest) => `${JSON.stringify(contest, null, 2)},`);
+
         // Hack: sort splited contests
         code = code.replace(
           '/* __contests__ */',
@@ -237,6 +290,10 @@ export function createCPanyContestLoadPlugin(
         );
         return code;
       } else if (id === codeforcesPath) {
+        const codeforcesPushes = contests
+          .filter((contest) => contest.type.startsWith('codeforces'))
+          .map((contest) => `${JSON.stringify(contest, null, 2)},`);
+
         code = code.replace(
           '/* __contests__ */',
           `contests.push(${codeforcesPushes.join('\n')});`
@@ -253,13 +310,15 @@ export function createCPanyUserLoadPlugin(
 ): Plugin {
   const usersPath = slash(path.join(appRootPath, 'src', 'users.ts'));
 
-  const userPushes = users.map((user) => `${JSON.stringify(user, null, 2)},`);
-
   return {
     name: 'cpany:users',
     enforce: 'pre',
     transform(code, id) {
       if (id === usersPath) {
+        const userPushes = users.map(
+          (user) => `${JSON.stringify(user, null, 2)},`
+        );
+
         code = code.replace(
           '/* __users__ */',
           `users.push(${userPushes.join('\n')});`
