@@ -35,8 +35,7 @@ import type { IContest } from '@cpany/types';
 import IconAccount from 'virtual:vite-icons/mdi/account';
 import { ref } from 'vue';
 
-// Hack: Do not use path alias for files need to transform
-import { contests } from '../../contests';
+import { contests } from '@/contests';
 import { CTable, CTableColumn } from '@/components/table';
 import { recentContestsCount } from '@/overview';
 import { toDate } from '@/utils';
