@@ -83,7 +83,32 @@ a {
   margin: 0;
 }
 
+.table tbody tr td {
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #dbdbdb;
+}
 .table tbody tr:last-child td {
+  border-bottom-width: 0px !important;
+}
+
+.mobile-table td {
+  display: block;
+}
+.mobile-table td.text-center,
+.mobile-table td.text-left,
+.mobile-table td.text-right {
+  text-align: right !important;
+}
+.mobile-table>div:last-child {
+  margin-bottom: 0;
+}
+.mobile-table .border {
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #dbdbdb;
+}
+.mobile-table .border:last-child {
   border-bottom-width: 0px !important;
 }
 

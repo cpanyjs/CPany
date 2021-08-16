@@ -2,16 +2,31 @@ import {
   defineComponent,
   h,
   ref,
+  Ref,
+  unref,
   computed,
   toRefs,
   VNode,
-  resolveComponent
+  resolveComponent,
+  onUnmounted
 } from 'vue';
 import IconDown from 'virtual:vite-icons/mdi/arrow-down';
 import IconUp from 'virtual:vite-icons/mdi/arrow-up';
 
 import CTableColumn from './c-table-column';
 import { isDef } from '@/utils';
+
+export function useIsMobile(mobileWidth: Ref<number> | number) {
+  const width = ref(window.innerWidth);
+  const isMobile = ref(width.value <= unref(mobileWidth));
+  const handler = () => {
+    width.value = window.innerWidth;
+    isMobile.value = width.value <= unref(mobileWidth);
+  };
+  const clean = () => window.removeEventListener('resize', handler);
+  window.addEventListener('resize', handler, { passive: true });
+  return { width, isMobile, clean };
+}
 
 export default defineComponent({
   name: 'CTable',
@@ -24,6 +39,10 @@ export default defineComponent({
       type: Array,
       default: []
     },
+    mobile: {
+      type: Number,
+      default: 768
+    },
     defaultSort: {
       type: String
     },
@@ -33,7 +52,10 @@ export default defineComponent({
     }
   },
   setup(props, { slots }) {
-    const { data, defaultSort, defaultSortOrder } = toRefs(props);
+    const { data, defaultSort, defaultSortOrder, mobile } = toRefs(props);
+
+    const { isMobile, clean } = useIsMobile(mobile);
+    onUnmounted(() => clean());
 
     const sortField = ref(defaultSort.value);
     const sortOrder = ref<'asc' | 'desc'>(
@@ -72,7 +94,7 @@ export default defineComponent({
       return sorted(data.value);
     });
 
-    return () => {
+    const renderDestop = () => {
       const renderHead = () =>
         columns.map((column) => {
           const hasSort = isDef(column.props?.sort);
@@ -158,5 +180,50 @@ export default defineComponent({
         ]
       );
     };
+
+    const renderMobile = () => {
+      const renderBody = () => {
+        return sortedData.value.map((row, index) => {
+          const columns = filterColumn(
+            slots.columns && slots.columns({ row, index, mobile: true })
+          );
+          return h(
+            'div',
+            { class: ['box', 'p-0', 'mb-4'] },
+            columns.map((column) => {
+              const customHeader =
+                (column.props && column.props['mobile-header-class']) ?? [];
+              return h(
+                'div',
+                {
+                  class: [
+                    'pl-3',
+                    'border',
+                    'flex',
+                    'flex-shrink',
+                    'justify-between',
+                    'justify-items-stretch'
+                  ]
+                },
+                [
+                  h(
+                    'div',
+                    {
+                      class: ['py-2', 'font-600', 'text-left', ...customHeader]
+                    },
+                    column.props?.label
+                  ),
+                  h(column, { class: ['block'] })
+                ]
+              );
+            })
+          );
+        });
+      };
+
+      return h('div', { class: ['mobile-table'] }, renderBody());
+    };
+
+    return () => (!isMobile.value ? renderDestop() : renderMobile());
   }
 });

@@ -1,12 +1,12 @@
 <template>
   <div class="flex <lg:flex-col-reverse">
     <div class="lg:w-3/5 <lg:w-full">
-      <div class="box divide-y">
+      <div class="box md:divide-y">
         <h3 class="mb-4">最近比赛</h3>
 
         <c-table :data="contests" class="pt-2">
           <template #columns="{ row }">
-            <c-table-column label="比赛">
+            <c-table-column label="比赛" :mobile-header-class="['min-w-8']">
               <router-link :to="row.path">{{ row.name }}</router-link>
             </c-table-column>
             <c-table-column label="时间" align="center" width="10em">
@@ -82,7 +82,7 @@
         <div class="box mt-4 divide-y">
           <h3 class="mb-4">最近{{ recent }}用户提交数</h3>
 
-          <c-table :data="usersBySub">
+          <c-table :data="usersBySub" :mobile="0">
             <template #columns="{ row, index }">
               <c-table-column label="#" width="2em" align="center">
                 <span class="font-600">{{ index + 1 }}</span>
@@ -108,7 +108,7 @@
         <div class="box mt-4 divide-y">
           <h3 class="mb-4">最近{{ recent }}用户比赛数</h3>
 
-          <c-table :data="uestsByContest">
+          <c-table :data="uestsByContest" :mobile="0">
             <template #columns="{ row, index }">
               <c-table-column label="#" width="2em" align="center">
                 <span class="font-600">{{ index + 1 }}</span>

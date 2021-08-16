@@ -7,7 +7,7 @@
         <c-table-column label="#" center>
           <span class="font-600">{{ index + 1 }}</span>
         </c-table-column>
-        <c-table-column label="比赛">
+        <c-table-column label="比赛" :mobile-header-class="['min-w-8']">
           <router-link :to="row.path">{{ row.name }}</router-link>
         </c-table-column>
         <c-table-column label="类型" center>
@@ -24,7 +24,7 @@
       </template>
     </c-table>
 
-    <div class="flex justify-center">
+    <div class="mt-4 flex justify-center">
       <c-button @click="displayMore" success>↓ 浏览更多</c-button>
     </div>
   </div>
