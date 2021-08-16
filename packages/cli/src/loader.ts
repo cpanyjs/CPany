@@ -156,17 +156,30 @@ export async function createLoader({
     );
   }
 
-  const contestSortFn = (lhs: IContest, rhs: IContest) =>
-    rhs.startTime - lhs.startTime;
+  const filterContestEmptyPrefix = (contests: RouteKey<IContest>[]) => {
+    const sorted = contests.sort(
+      (lhs: IContest, rhs: IContest) => lhs.startTime - rhs.startTime
+    );
+    let deleteCount = 0;
+    for (let i = 0; i < sorted.length; i++) {
+      if (sorted[i].participantNumber === 0) {
+        deleteCount++;
+      } else {
+        break;
+      }
+    }
+    sorted.splice(0, deleteCount);
+    return sorted.reverse();
+  };
 
-  // Dep: skip codeforces gym
-  const contestsFilterGym = contests
-    .filter(
+  // Dep: skip codeforces gym when gen overview
+  const contestsFilterGym = filterContestEmptyPrefix(
+    contests.filter(
       (contest) =>
         !contest.type.startsWith('codeforces/gym') ||
         contest.participantNumber > 0
     )
-    .sort(contestSortFn);
+  );
 
   const createContestsOverview = <
     T extends IContestOverview = IContestOverview
@@ -266,7 +279,7 @@ export async function createLoader({
   return {
     config,
     handles,
-    allContests: contests.sort(contestSortFn),
+    allContests: filterContestEmptyPrefix(contests),
     contests: contestsFilterGym,
     users,
     createContestsOverview,
