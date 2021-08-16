@@ -24,9 +24,9 @@ async function run() {
     json.version = version;
     await writeJSON(path, json, { spaces: 2 });
   }
-  await execa('git', ['add', '.']);
-  await execa('git', ['commit', '-m', `release: v${version}`]);
-  await execa('git', ['tag', '-a', `v${version}`, '-m', `release: v${version}`]);
+  await execa('git', ['add', '.'], { stdio: 'inherit' });
+  await execa('git', ['commit', '-m', `release: v${version}`], { stdio: 'inherit' });
+  await execa('git', ['tag', '-a', `v${version}`, '-m', `release: v${version}`], { stdio: 'inherit' });
 }
 
 run();
