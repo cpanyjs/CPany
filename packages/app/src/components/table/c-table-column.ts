@@ -11,7 +11,8 @@ export default defineComponent({
     center: {
       type: Boolean,
       default: false
-    }
+    },
+    sort: Function
   },
   setup(props, { slots }) {
     const { align, center } = toRefs(props);
