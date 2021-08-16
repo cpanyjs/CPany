@@ -40,8 +40,7 @@ export async function createCPanyPlugin(
     createCPanyRoutePlugin(users, staticContests, option),
     createCPanyContestPagePlugin(staticContests, option),
     createCPanyUserPagePlugin(users, option),
-    createCPanyContestLoadPlugin(contests, option),
-    createCPanyUserLoadPlugin(users, option)
+    createCPanyLoadPlugin(users, contests, option)
   ];
 }
 
@@ -216,7 +215,8 @@ export function createCPanyUserPagePlugin(
   };
 }
 
-export function createCPanyContestLoadPlugin(
+export function createCPanyLoadPlugin(
+  users: IUser[],
   contests: RouteKey<IContest>[],
   { appRootPath }: IPluginOption
 ): Plugin {
@@ -226,39 +226,23 @@ export function createCPanyContestLoadPlugin(
   const codeforcesPath = slash(
     path.join(appRootPath, 'src', 'cpany', 'codeforces.json')
   );
+  const usersPath = slash(path.join(appRootPath, 'src', 'cpany', 'users.json'));
 
   return {
-    name: 'cpany:contest',
+    name: 'cpany:load',
     enforce: 'pre',
     transform(code, id) {
       if (id === contestsPath) {
         const otherContests = contests.filter(
           (contest) => !contest.type.startsWith('codeforces')
         );
-
         return JSON.stringify(otherContests, null, 2);
       } else if (id === codeforcesPath) {
         const codeforcesContests = contests.filter((contest) =>
           contest.type.startsWith('codeforces')
         );
-
         return JSON.stringify(codeforcesContests, null, 2);
-      }
-    }
-  };
-}
-
-export function createCPanyUserLoadPlugin(
-  users: IUser[],
-  { appRootPath }: IPluginOption
-): Plugin {
-  const usersPath = slash(path.join(appRootPath, 'src', 'cpany', 'users.json'));
-
-  return {
-    name: 'cpany:users',
-    enforce: 'pre',
-    transform(code, id) {
-      if (id === usersPath) {
+      } else if (id === usersPath) {
         return JSON.stringify(users, null, 2);
       }
     }
