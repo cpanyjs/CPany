@@ -59,7 +59,7 @@ cli
 
 cli
   .command('build', 'Build CPany site')
-  .option('--out <output path>', 'Output path', { default: 'site' })
+  .option('--out <output path>', 'Output path', { default: 'dist' })
   .action(async (option) => {
     const appPath = path.resolve(option.app ?? findDefaultAppPath());
     const dataPath = path.resolve(option.data);
