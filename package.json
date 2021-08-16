@@ -23,7 +23,8 @@
     "build:app": "pnpm -C packages/app run build",
     "build:cli": "pnpm -C packages/cli run build",
     "format": "prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore",
-    "release": "node scripts/release.js"
+    "release": "node scripts/release.js",
+    "publish": "pnpm publish -r --access public"
   },
   "devDependencies": {
     "@types/node": "^16.0.1",
