@@ -21,5 +21,8 @@
     "@cpany/core": "workspace:*",
     "@cpany/types": "workspace:*",
     "axios": "^0.21.1"
+  },
+  "engines": {
+    "node": ">=12.0.0"
   }
 }
