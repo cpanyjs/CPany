@@ -10,6 +10,7 @@
 import type { IContest, RouteKey } from '@cpany/types';
 import { useRoute } from 'vue-router';
 import { ref, watch } from 'vue';
+import axios from 'axios';
 
 import Page from './Contest.vue';
 import { findCodeforces } from '../../codeforces';

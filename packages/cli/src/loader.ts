@@ -10,8 +10,8 @@ import {
   IContestOverview,
   IUserOverview,
   RouteKey,
-  ISubmission,
-  Verdict
+  Verdict,
+  IProblem
 } from '@cpany/types';
 import type { IPluginOption } from './types';
 import { slash } from './utils';
@@ -182,45 +182,73 @@ export async function createLoader({
     )
   );
 
-  const createContestsOverview = <
-    T extends IContestOverview = IContestOverview
-  >(
+  const createContestsOverview = (
     _length?: number,
     _contests = contestsFilterGym
-  ): T[] => {
+  ): IContestOverview[] => {
     const length = _length === undefined ? _contests.length : _length;
-    const overview: T[] = [];
+    const overview: IContestOverview[] = [];
     for (let i = 0; i < length && i < _contests.length; i++) {
-      const contest = { ..._contests[i] } as T;
+      const contest = { ..._contests[i] };
       Reflect.deleteProperty(contest, 'standings');
       overview.push(contest);
     }
     return overview;
   };
 
+  // recentTime = -1: get all sub
   const createUsersOverview = (recentTime: number) => {
-    const recentStartTime = new Date().getTime() / 1000 - recentTime;
+    const recentStartTime =
+      recentTime >= 0 ? new Date().getTime() / 1000 - recentTime : 0;
     const overview = (user: IUser): IUserOverview => {
-      const submissions: ISubmission[] = [];
+      const submissions: IUserOverview['submissions'] = [];
+
+      const solved: Map<string, typeof submissions[number]> = new Map();
+      const solve = (problem: IProblem, sub: typeof submissions[number]) => {
+        const id = `${problem.type}:${problem.id}`;
+        const pre = solved.get(id);
+        if (pre === undefined) {
+          solved.set(id, sub);
+        } else {
+          if (pre.t <= sub.t) {
+            // pre solve first
+            sub.v = -1;
+          } else {
+            // sub solve first
+            pre.v = -1;
+            solved.set(id, sub);
+          }
+        }
+      };
+
       for (const handle of user.handles) {
         for (const sub of handle.submissions) {
           if (sub.creationTime >= recentStartTime) {
-            submissions.push(sub);
+            const zipped = {
+              type: sub.type,
+              t: sub.creationTime,
+              v: sub.verdict === Verdict.OK ? 1 : 0
+            };
+            if (zipped.v === 1) {
+              solve(sub.problem, zipped);
+            }
+            submissions.push(zipped);
           }
         }
       }
+
       return {
         name: user.name,
-        contests: createContestsOverview<IUserOverview['contests'][number]>(
-          undefined,
-          user.contests
-        ),
+        contests: user.contests.map(({ type, author }) => ({
+          type,
+          t: author.participantTime
+        })),
         handles: user.handles.map((rawHandle) => {
           const handle = { ...rawHandle };
           Reflect.deleteProperty(handle, 'submissions');
           return handle;
         }),
-        submissions
+        submissions: submissions.sort((lhs, rhs) => lhs.t - rhs.t)
       };
     };
     return users.map(overview);

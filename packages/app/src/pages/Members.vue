@@ -3,7 +3,7 @@
     <h2 class="mb-4">成员</h2>
     <c-table
       :data="extendUsers"
-      default-sort="正确提交"
+      default-sort="最近通过"
       default-sort-order="desc"
     >
       <template #columns="{ index, row }">
@@ -13,6 +13,29 @@
         <c-table-column label="姓名">
           <user-link :name="row.name"></user-link>
         </c-table-column>
+
+        <c-table-column
+          label="最近通过"
+          width="8em"
+          align="right"
+          :sort="sortByRecentOk"
+          >{{ row.recentOkCount }}</c-table-column
+        >
+        <c-table-column
+          label="最近提交"
+          width="8em"
+          align="right"
+          :sort="sortByRecentSub"
+          >{{ row.recentSubCount }}</c-table-column
+        >
+        <c-table-column
+          label="最近比赛"
+          width="8em"
+          align="right"
+          :sort="sortByRecentContest"
+          >{{ row.recentContest }}</c-table-column
+        >
+
         <c-table-column
           label="正确提交"
           width="8em"
@@ -47,35 +70,58 @@
 </template>
 
 <script setup lang="ts">
-import { Verdict } from '@cpany/types';
+import type { IUserOverview } from '@cpany/types';
+import { ref, computed } from 'vue';
+
 import { users } from '../users';
 import { CTable, CTableColumn } from '../components/table';
 import UserLink from '../components/user-link.vue';
+import { recentStartTime as defaultRecentStartTime } from '../overview';
 
-const extendUsers = users.map((user) => {
-  const subCount = user.handles.reduce(
-    (sum, handle) => sum + handle.submissions.length,
-    0
-  );
-  const okCount = user.handles.reduce(
-    (sum, handle) =>
-      sum +
-      handle.submissions.filter((sub) => sub.verdict === Verdict.OK).length,
-    0
-  );
+const recentStartTime = ref(defaultRecentStartTime);
+
+const extendFn = (user: IUserOverview) => {
+  const subCount = user.submissions.length;
+  const okCount = user.submissions.filter(({ v }) => v !== 0).length;
   const okRate =
     (subCount !== 0 ? ((100 * okCount) / subCount).toFixed(1) : '0.0') + ' %';
-  return { subCount, okCount, okRate, ...user };
-});
+  const recentSubCount = user.submissions.filter(
+    ({ t }) => t >= recentStartTime.value
+  ).length;
+  const recentOkCount = user.submissions.filter(
+    ({ t, v }) => t >= recentStartTime.value && v !== 0
+  ).length;
+  const recentContest = user.contests.filter(
+    ({ t }) => t >= recentStartTime.value
+  ).length;
+  return {
+    subCount,
+    okCount,
+    okRate,
+    recentSubCount,
+    recentOkCount,
+    recentContest,
+    ...user
+  };
+};
 
-type ExtendUser = typeof extendUsers[number];
+const extendUsers = computed(() => users.map(extendFn));
+
+type ExtendUser = ReturnType<typeof extendFn>;
 
 const sortBySub = (lhs: ExtendUser, rhs: ExtendUser) =>
   lhs.subCount - rhs.subCount;
 const sortByOk = (lhs: ExtendUser, rhs: ExtendUser) =>
   lhs.okCount - rhs.okCount;
+const sortByRecentSub = (lhs: ExtendUser, rhs: ExtendUser) =>
+  lhs.recentSubCount - rhs.recentSubCount;
+const sortByRecentOk = (lhs: ExtendUser, rhs: ExtendUser) =>
+  lhs.recentOkCount - rhs.recentOkCount;
+
 const sortByOkRate = (lhs: ExtendUser, rhs: ExtendUser) =>
   Number.parseFloat(lhs.okRate) - Number.parseFloat(rhs.okRate);
 const sortByContest = (lhs: ExtendUser, rhs: ExtendUser) =>
   lhs.contests.length - rhs.contests.length;
+const sortByRecentContest = (lhs: ExtendUser, rhs: ExtendUser) =>
+  lhs.recentContest - rhs.recentContest;
 </script>
