@@ -13,16 +13,21 @@ import { Verdict } from '@cpany/types';
 import { useRoute } from 'vue-router';
 import { ref, watch } from 'vue';
 
-import Page from './Contest.vue';
+import { useGlobalLoading } from '@/components/progress';
 import { findCodeforces } from '@/codeforces';
 import { handles, findHandleUser } from '@/cfHandles';
 import { CodeforcesAPIBase } from '@/config';
+import Page from './Contest.vue';
 
 const route = useRoute();
 
 const contest = ref<RouteKey<IContest> | null>(null);
 
+const { start, end } = useGlobalLoading();
+
 const fetchStanding = async (contest: RouteKey<IContest>) => {
+  start();
+
   const url = new URL(CodeforcesAPIBase + 'contest.standings');
   url.searchParams.append('contestId', '' + contest.id!);
   url.searchParams.append('handles', handles.map(({ h }) => h).join(';'));
@@ -87,6 +92,8 @@ const fetchStanding = async (contest: RouteKey<IContest>) => {
         .filter((result: any) => result !== null)
     });
   }
+
+  end();
 };
 
 watch(
