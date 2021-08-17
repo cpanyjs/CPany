@@ -31,17 +31,30 @@
     </router-view>
   </div>
 
-  <footer class="px-2 py-6">
-    <div class="text-center">
+  <footer class="px-1 py-6">
+    <div class="text-center text-gray-400 font-mono">
+      <p>
+        <a
+          class="text-$text-light-1"
+          href="https://github.com/yjl9903/CPany"
+          target="_blank"
+          ><icon-github class="align-middle"></icon-github
+        ></a>
+        <a
+          :href="`https://github.com/yjl9903/CPany/tree/v${cliVersion}`"
+          target="_blank"
+        >
+          @cpany/cli: {{ cliVersion }}</a
+        >
+      </p>
       <p>
         <a
           href="https://github.com/yjl9903/CPany/blob/master/LICENSE"
           target="_blank"
           >MIT</a
         >
-        Licensed |
-        <a href="https://github.com/yjl9903/CPany" target="_blank">CPany</a>
-        Copyright © 2021 <a href="https://xlor.cn" target="_blank">XLor</a>
+        Licensed | Copyright © 2021
+        <a href="https://xlor.cn" target="_blank">XLor</a>
       </p>
     </div>
   </footer>
@@ -50,6 +63,9 @@
 <script setup lang="ts">
 import { Navbar, NavbarItem } from './components/navbar';
 import { Progress } from './components/progress';
+import IconGithub from 'virtual:vite-icons/mdi/github';
+
+const cliVersion = import.meta.env.VITE_CLI_VERSION;
 </script>
 
 <style>

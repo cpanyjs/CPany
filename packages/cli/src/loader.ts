@@ -23,6 +23,7 @@ import {
 
 export async function createLoader({
   dataRootPath,
+  cliVersion,
   configPath = 'cpany.yml'
 }: IPluginOption) {
   const config = load(
@@ -241,6 +242,7 @@ export async function createLoader({
       'recentUserCount',
       '' + config.app?.recentUserCount ?? DefaultRecentUserCount
     );
+    overviewMap.set('cliVersion', '`' + cliVersion + '`');
 
     const allSubmissionCount = users.reduce(
       (sum, user) =>

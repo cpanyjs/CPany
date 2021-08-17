@@ -10,13 +10,17 @@ import Icons from 'vite-plugin-icons';
 
 import { createCPanyPlugin } from './plugin';
 
+const version = JSON.parse(
+  readFileSync(path.resolve(__dirname, '../package.json'), 'utf-8')
+).version;
+
 interface ICliOption {
   app?: string;
+  host?: string;
   data: string;
   out: string;
   port: number;
-  homeContests: number;
-  homeRecent: number;
+  emptyOutDir: boolean;
 }
 
 const cli = cac('cpany')
@@ -25,21 +29,25 @@ const cli = cac('cpany')
 
 cli
   .command('dev', 'Start CPany dev server')
+  .option('--host [host]', 'specify hostname')
   .option('--port <port>', 'port to listen to', { default: 3000 })
   .action(async (option: ICliOption) => {
     const appPath = path.resolve(option.app ?? findDefaultAppPath());
     const dataPath = path.resolve(option.data);
     const pluginOption = {
       appRootPath: appPath,
-      dataRootPath: dataPath
+      dataRootPath: dataPath,
+      cliVersion: version
     };
 
     const server = await createServer({
       configFile: false,
       root: appPath,
       server: {
-        port: option.port
+        port: option.port,
+        host: option.host
       },
+      envDir: path.resolve(__dirname, '../'),
       plugins: [
         vue(),
         WindiCSS(),
@@ -58,22 +66,29 @@ cli
   });
 
 cli
-  .command('build', 'Build CPany site')
+  .command('', 'Build CPany site')
+  .alias('build')
+  .option('--emptyOutDir', "force empty outDir when it's outside of root", {
+    default: false
+  })
   .option('--out <output path>', 'Output path', { default: 'dist' })
   .action(async (option) => {
     const appPath = path.resolve(option.app ?? findDefaultAppPath());
     const dataPath = path.resolve(option.data);
     const pluginOption = {
       appRootPath: appPath,
-      dataRootPath: dataPath
+      dataRootPath: dataPath,
+      cliVersion: version
     };
 
     await build({
       configFile: false,
       root: appPath,
       build: {
-        outDir: path.resolve(option.out)
+        outDir: path.resolve(option.out),
+        emptyOutDir: option.emptyOutDir
       },
+      envDir: path.resolve(__dirname, '../'),
       plugins: [
         vue(),
         WindiCSS(),
@@ -91,10 +106,7 @@ cli
 
 cli.help();
 
-cli.version(
-  JSON.parse(readFileSync(path.resolve(__dirname, '../package.json'), 'utf-8'))
-    .version
-);
+cli.version(version);
 
 cli.parse();
 

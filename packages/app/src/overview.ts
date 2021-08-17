@@ -8,6 +8,7 @@ let recentUserCount = 5;
 let allSubmissionCount = 0;
 let allOkSubmissionCount = 0;
 let allContestCount = 0;
+let cliVersion = '0.0.0';
 /* __inject__ */
 
 const recentStartTime = new Date().getTime() / 1000 - recentTime;
@@ -30,5 +31,6 @@ export {
   recentStartTime,
   allSubmissionCount,
   allOkSubmissionCount,
-  allContestCount
+  allContestCount,
+  cliVersion
 };
