@@ -61,7 +61,6 @@ importers:
       '@vue/compiler-sfc': ^3.1.4
       '@vuedx/typecheck': ^0.7.4
       '@vuedx/typescript-plugin-vue': ^0.7.4
-      axios: ^0.21.1
       typescript: ^4.3.5
       vite: ^2.4.1
       vite-plugin-icons: ^0.6.5
@@ -71,7 +70,6 @@ importers:
       windicss: ^3.1.7
     dependencies:
       '@cpany/types': link:../types
-      axios: 0.21.1
       vue: 3.1.4
       vue-router: 4.0.11_vue@3.1.4
     devDependencies:
@@ -97,7 +95,6 @@ importers:
       '@vue/compiler-sfc': ^3.1.4
       '@vuedx/typecheck': ^0.7.4
       '@vuedx/typescript-plugin-vue': ^0.7.4
-      axios: ^0.21.1
       cac: ^6.7.3
       js-yaml: ^4.1.0
       vite: ^2.4.1
@@ -112,7 +109,6 @@ importers:
       '@vue/compiler-sfc': 3.1.4
       '@vuedx/typecheck': 0.7.4
       '@vuedx/typescript-plugin-vue': 0.7.4
-      axios: 0.21.1
       cac: 6.7.3
       js-yaml: 4.1.0
       vite: 2.4.1
@@ -134,10 +130,7 @@ importers:
       axios: 0.21.1
 
   packages/core:
-    specifiers:
-      axios: ^0.21.1
-    dependencies:
-      axios: 0.21.1
+    specifiers: {}
 
   packages/types:
     specifiers: {}
