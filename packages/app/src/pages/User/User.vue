@@ -124,7 +124,7 @@
 import type { RouteKey, IUser, ISubmission, IContest } from '@cpany/types';
 import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
 import { Verdict } from '@cpany/types';
-import { ref, toRefs } from 'vue';
+import { ref, toRefs, computed } from 'vue';
 
 import IconCheck from 'virtual:vite-icons/mdi/check';
 import IconClose from 'virtual:vite-icons/mdi/close';
@@ -140,17 +140,22 @@ import { toDate } from '@/utils';
 const props = defineProps<{ user: IUser }>();
 const { user } = toRefs(props);
 
-const avatar = ref<string | null>(null);
+const avatars = ref<string[]>([]);
 for (const handle of user.value.handles) {
   if (
     handle.avatar !== undefined &&
     handle.avatar !== null &&
     handle.avatar !== ''
   ) {
-    avatar.value = handle.avatar;
+    avatars.value.push(handle.avatar);
     break;
   }
 }
+const avatar = computed(() => {
+  if (avatars.value.length === 0) return '';
+  const id = Math.floor(Math.random() * avatars.value.length);
+  return avatars.value[id];
+});
 
 const submissions = ref<ISubmission[]>(
   ([] as ISubmission[])
@@ -162,7 +167,9 @@ const submissions = ref<ISubmission[]>(
 const contests = ref<IContest[]>(user.value.contests);
 
 // Hack: all handle are cf
-const cfHandles = user.value.handles as RouteKey<IHandleWithCodeforces>[];
+const cfHandles = (
+  user.value.handles as RouteKey<IHandleWithCodeforces>[]
+).sort((lhs, rhs) => lhs.codeforces.rating - rhs.codeforces.rating);
 
 const transformHandleType = (type: string) => {
   return 'Codeforces';
