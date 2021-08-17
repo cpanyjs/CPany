@@ -108,7 +108,7 @@
         <div class="box mt-4 divide-y">
           <h3 class="mb-4">最近{{ recent }}用户比赛数</h3>
 
-          <c-table :data="uestsByContest" :mobile="0">
+          <c-table :data="usersByContest" :mobile="0">
             <template #columns="{ row, index }">
               <c-table-column label="#" width="2em" align="center">
                 <span class="font-600">{{ index + 1 }}</span>
@@ -163,10 +163,10 @@ const usersBySub = users
   .sort((lhs, rhs) => rhs.submissions.length - lhs.submissions.length)
   .slice(0, recentUserCount);
 
-const uestsByContest = users
+const usersByContest = users
   .map((user) => {
     const contestsLength = user.contests.filter(
-      ({ author }) => author.participantTime >= recentStartTime
+      ({ t }) => t >= recentStartTime
     ).length;
     return { contestsLength, ...user };
   })

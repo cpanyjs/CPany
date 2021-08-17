@@ -1,6 +1,5 @@
 import type { IAuthor, IHandle } from './handle';
 import type { IContest } from './contest';
-import type { ISubmission } from './submission';
 
 export * from './enum';
 
@@ -47,6 +46,10 @@ export type IContestOverview = Omit<RouteKey<IContest>, 'standings'>;
 export interface IUserOverview {
   name: string;
   handles: Array<Omit<RouteKey<IHandle>, 'submissions'>>;
-  contests: Array<IContestOverview & { author: IAuthor }>;
-  submissions: Array<ISubmission>;
+
+  // t: short for participantTime
+  contests: Array<{ type: string; t: number }>;
+  // t: short for creationTime
+  // v: short for Verdict, v = 0 => wrong, v = 1 => ok, v = -1 => duplicate ok
+  submissions: Array<{ type: string; t: number; v: number }>;
 }

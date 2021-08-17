@@ -40,7 +40,7 @@ export async function createCPanyPlugin(
     createCPanyRoutePlugin(users, staticContests, option),
     createCPanyContestPagePlugin(staticContests, option),
     createCPanyUserPagePlugin(users, option),
-    createCPanyLoadPlugin(users, contests, option)
+    createCPanyLoadPlugin(createUsersOverview(-1), contests, option)
   ];
 }
 
@@ -260,7 +260,7 @@ export function createCPanyUserPagePlugin(
 }
 
 export function createCPanyLoadPlugin(
-  users: IUser[],
+  users: IUserOverview[],
   contests: RouteKey<IContest>[],
   { appRootPath }: IPluginOption
 ): Plugin {
