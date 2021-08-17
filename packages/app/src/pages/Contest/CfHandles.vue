@@ -2,13 +2,16 @@
   <template v-if="isDef(author.teamName)">
     <user-link :name="author.teamName"></user-link>
     <span class="space-left">
-      <cf-rating-color
+      <a
         v-for="(handle, index) in author.members"
+        :key="index"
         class="ml-2"
-        :key="handle"
-        :rating="findHandleRating(handle)"
-        >{{ handle }}</cf-rating-color
+        :href="`https://codeforces.com/profile/${handle}`"
       >
+        <cf-rating-color :rating="findHandleRating(handle)">{{
+          handle
+        }}</cf-rating-color>
+      </a>
     </span>
   </template>
   <span v-else>{{ author.members[0] }}</span>

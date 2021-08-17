@@ -14,11 +14,16 @@
           <user-link :name="row.name"></user-link>
         </c-table-column>
 
-        <c-table-column label="Handle"
-          ><cf-rating-color :rating="row.rating">{{
-            row.handle
-          }}</cf-rating-color></c-table-column
-        >
+        <c-table-column label="Handle">
+          <a
+            :href="`https://codeforces.com/profile/${row.handle}`"
+            target="_blank"
+          >
+            <cf-rating-color :rating="row.rating">
+              {{ row.handle }}
+            </cf-rating-color>
+          </a>
+        </c-table-column>
         <c-table-column label="Rating" :sort="sortByRating" align="right"
           ><cf-rating-color :rating="row.rating">{{
             row.rating
