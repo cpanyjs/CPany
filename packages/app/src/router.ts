@@ -31,6 +31,13 @@ const routes = [
     component: () => import('./pages/User/Empty.vue'),
     meta: {
       title: '错误 - CPany'
+    },
+    beforeEnter(to: any) {
+      // Hack: decode URI
+      const source = decodeURI(to.fullPath);
+      if (source !== to.fullPath) {
+        return source;
+      }
     }
   },
   {
