@@ -2,7 +2,7 @@
   <div v-if="user" class="divide-y">
     <h2 class="mb-2">{{ user.name }}</h2>
 
-    <div class="flex py-4 justify-between">
+    <div class="flex py-4 justify-between <md:(flex-col-reverse)">
       <div class="w-full">
         <div class="info-box border-left flex">
           <c-stastic title="比赛">
@@ -25,11 +25,21 @@
           </c-stastic>
         </div>
 
-        <div class="<md:mt-2 md:mt-4 grid grid-cols-1">
+        <div
+          class="
+            <md:mt-2
+            md:mt-4
+            grid
+            <md:(grid-cols-1
+            gap-2)
+            md:(grid-cols-2
+            gap-4)
+          "
+        >
           <div
             v-for="(handle, index) in cfHandles"
             :key="index"
-            class="box <md:(p-2 mb-2) md:mb-4"
+            class="box <md:(p-2)"
           >
             <span class="font-600"
               >{{ transformHandleType(handle.type) }}:
@@ -37,14 +47,23 @@
             <cf-handle :handle="handle"></cf-handle>
             <p>
               <span class="font-600">Contest rating: </span>
-              <cf-handle :handle="handle">{{
+              <cf-rating-color :rank="handle.codeforces.rank">{{
                 handle.codeforces.rating
-              }}</cf-handle>
+              }}</cf-rating-color>
+            </p>
+            <p>
+              <span class="font-600">Max rating: </span>
+              <cf-rating-color :rank="handle.codeforces.maxRank">{{
+                handle.codeforces.maxRating
+              }}</cf-rating-color>
             </p>
           </div>
         </div>
       </div>
-      <div v-if="avatar !== null" class="ml-4 max-w-1/3">
+      <div
+        v-if="avatar !== null"
+        class="md:(ml-4 max-w-1/3) <md:(mb-2 w-full flex justify-center)"
+      >
         <img :src="avatar" :alt="`${user.name}'s avatar`" />
       </div>
     </div>
@@ -114,7 +133,7 @@ import IconBalloon from 'virtual:vite-icons/mdi/balloon';
 import IconLightbulbOn from 'virtual:vite-icons/mdi/lightbulb-on-outline';
 
 import { CTable, CTableColumn } from '@/components/table';
-import { CfHandle } from '@/components/codeforces';
+import { CfHandle, CfRatingColor } from '@/components/codeforces';
 import { CStastic } from '@/components/stastic';
 import { toDate } from '@/utils';
 

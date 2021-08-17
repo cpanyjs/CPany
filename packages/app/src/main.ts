@@ -2,6 +2,7 @@ import { createApp, ref } from 'vue';
 import { router } from './router';
 
 import 'virtual:windi.css';
+import './assets/cf.css';
 import './assets/layout.css';
 
 import App from './App.vue';

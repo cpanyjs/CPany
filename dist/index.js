@@ -11186,6 +11186,7 @@ function handleInfoPlugin(api) {
                         return {
                             type: name,
                             handle: data.handle,
+                            handleUrl: `https://codeforces.com/profile/${data.handle}`,
                             avatar: data.titlePhoto,
                             codeforces: {
                                 rank: data.rank,

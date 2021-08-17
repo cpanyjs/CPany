@@ -26,6 +26,14 @@ const routes = [
     }
   },
   {
+    path: '/user/:id',
+    name: 'EmptyUser',
+    component: () => import('./pages/User/Empty.vue'),
+    meta: {
+      title: '错误 - CPany'
+    }
+  },
+  {
     path: '/contests',
     name: 'Contests',
     component: () => import('./pages/Contest/Main.vue'),

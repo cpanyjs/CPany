@@ -28,6 +28,13 @@
           >{{ row.subCount }}</c-table-column
         >
         <c-table-column
+          label="通过率"
+          width="8em"
+          align="right"
+          :sort="sortByOkRate"
+          >{{ row.okRate }}</c-table-column
+        >
+        <c-table-column
           label="比赛场次"
           width="8em"
           align="right"
@@ -56,7 +63,9 @@ const extendUsers = users.map((user) => {
       handle.submissions.filter((sub) => sub.verdict === Verdict.OK).length,
     0
   );
-  return { subCount, okCount, ...user };
+  const okRate =
+    (subCount !== 0 ? ((100 * okCount) / subCount).toFixed(1) : '0.0') + ' %';
+  return { subCount, okCount, okRate, ...user };
 });
 
 type ExtendUser = typeof extendUsers[number];
@@ -65,6 +74,8 @@ const sortBySub = (lhs: ExtendUser, rhs: ExtendUser) =>
   lhs.subCount - rhs.subCount;
 const sortByOk = (lhs: ExtendUser, rhs: ExtendUser) =>
   lhs.okCount - rhs.okCount;
+const sortByOkRate = (lhs: ExtendUser, rhs: ExtendUser) =>
+  Number.parseFloat(lhs.okRate) - Number.parseFloat(rhs.okRate);
 const sortByContest = (lhs: ExtendUser, rhs: ExtendUser) =>
   lhs.contests.length - rhs.contests.length;
 </script>
