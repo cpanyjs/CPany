@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="divide-y">
     <h2 class="mb-4">成员</h2>
     <c-table
       :data="extendUsers"
@@ -75,6 +75,11 @@
         >
       </template>
     </c-table>
+    <div class="mt-4 pt-4">
+      <span class="text-gray-400"
+        >最近开始于 {{ toDate(recentStartTime).value }}</span
+      >
+    </div>
   </div>
 </template>
 
