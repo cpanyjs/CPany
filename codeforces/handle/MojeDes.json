@@ -1,6 +1,7 @@
 {
   "type": "codeforces/handle",
   "handle": "MojeDes",
+  "handleUrl": "https://codeforces.com/profile/MojeDes",
   "avatar": "https://userpic.codeforces.org/829567/title/8d6f4c3cbe817bd8.jpg",
   "codeforces": {
     "rank": "expert",
@@ -57,6 +58,7 @@
         "name": "Mocha and Hiking",
         "tags": [
           "constructive algorithms",
+          "dfs and similar",
           "graphs"
         ],
         "problemUrl": "https://codeforces.com/contest/1559/problem/C"
@@ -107,7 +109,8 @@
         "name": "Mocha and Math",
         "tags": [
           "bitmasks",
-          "constructive algorithms"
+          "constructive algorithms",
+          "math"
         ],
         "problemUrl": "https://codeforces.com/contest/1559/problem/A"
       },
@@ -132,7 +135,8 @@
         "name": "Mocha and Math",
         "tags": [
           "bitmasks",
-          "constructive algorithms"
+          "constructive algorithms",
+          "math"
         ],
         "problemUrl": "https://codeforces.com/contest/1559/problem/A"
       },
