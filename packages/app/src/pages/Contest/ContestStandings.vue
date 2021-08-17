@@ -5,7 +5,7 @@
         <c-table-column label="#" align="center" width="4em">
           <span class="font-600">{{ row.rank }}</span>
         </c-table-column>
-        <c-table-column label="">
+        <c-table-column :label="isCfRound ? 'Handle' : ''">
           <team-name :author="row.author"></team-name>
         </c-table-column>
         <c-table-column label="解决" align="center" width="4em">
@@ -51,6 +51,8 @@ import StandingResult from './StandingResult.vue';
 
 const props = defineProps<{ contest: IContest }>();
 const { contest } = toRefs(props);
+
+const isCfRound = computed(() => contest.value.type.startsWith('codeforces'));
 
 const toStrIndex = (index: string | number) =>
   typeof index === 'string' ? index : String.fromCharCode(65 + index);

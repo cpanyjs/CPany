@@ -7,7 +7,8 @@ import type {
   IUserOverview,
   IContest,
   RouteKey,
-  IUser
+  IUser,
+  CodeforcesHandleList
 } from '@cpany/types';
 import type { IPluginOption } from './types';
 import { createLoader } from './loader';
@@ -271,6 +272,9 @@ export function createCPanyLoadPlugin(
     path.join(appRootPath, 'src', 'cpany', 'codeforces.json')
   );
   const usersPath = slash(path.join(appRootPath, 'src', 'cpany', 'users.json'));
+  const cfHandlesPath = slash(
+    path.join(appRootPath, 'src', 'cpany', 'cfHandles.json')
+  );
 
   return {
     name: 'cpany:load',
@@ -288,6 +292,13 @@ export function createCPanyLoadPlugin(
         return JSON.stringify(codeforcesContests, null, 2);
       } else if (id === usersPath) {
         return JSON.stringify(users, null, 2);
+      } else if (id === cfHandlesPath) {
+        const handles = ([] as CodeforcesHandleList).concat(
+          ...users.map(({ name, handles }) =>
+            handles.map((handle) => ({ n: name, h: handle.handle }))
+          )
+        );
+        return JSON.stringify(handles, null, 2);
       }
     }
   };

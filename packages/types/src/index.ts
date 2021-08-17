@@ -53,3 +53,5 @@ export interface IUserOverview {
   // v: short for Verdict, v = 0 => wrong, v = 1 => ok, v = -1 => duplicate ok
   submissions: Array<{ type: string; t: number; v: number }>;
 }
+
+export type CodeforcesHandleList = Array<{ n: string; h: string }>;
