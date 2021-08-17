@@ -31,6 +31,7 @@ const fetchStanding = async (contest: RouteKey<IContest>) => {
   const url = new URL(CodeforcesAPIBase + 'contest.standings');
   url.searchParams.append('contestId', '' + contest.id!);
   url.searchParams.append('handles', handles.map(({ h }) => h).join(';'));
+  url.searchParams.append('showUnofficial', 'true');
 
   const { result } = await (await fetch(url.toString())).json();
 
@@ -49,6 +50,8 @@ const fetchStanding = async (contest: RouteKey<IContest>) => {
       );
     }, 0);
 
+    const participantTime = row.party.participantTime ?? contest.startTime;
+
     contest.standings!.push({
       author: {
         members: row.party.members.map(
@@ -56,7 +59,7 @@ const fetchStanding = async (contest: RouteKey<IContest>) => {
         ),
         teamName:
           row.party.teamName ?? findHandleUser(row.party.members[0].handle),
-        participantTime: row.party.participantTime ?? contest.startTime,
+        participantTime,
         participantType: row.party.participantType
       },
       rank: row.rank,
@@ -69,8 +72,7 @@ const fetchStanding = async (contest: RouteKey<IContest>) => {
           if (result.points > 0) {
             return {
               id: -1,
-              creationTime:
-                result.bestSubmissionTimeSeconds + contest.startTime,
+              creationTime: result.bestSubmissionTimeSeconds + participantTime,
               relativeTime: result.bestSubmissionTimeSeconds,
               problemIndex: index,
               verdict: Verdict.OK,
@@ -79,8 +81,7 @@ const fetchStanding = async (contest: RouteKey<IContest>) => {
           } else if (result.rejectedAttemptCount > 0) {
             return {
               id: -1,
-              creationTime:
-                result.bestSubmissionTimeSeconds + contest.startTime,
+              creationTime: result.bestSubmissionTimeSeconds + participantTime,
               relativeTime: result.bestSubmissionTimeSeconds,
               problemIndex: index,
               dirty: result.rejectedAttemptCount
