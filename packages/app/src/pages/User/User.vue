@@ -4,7 +4,7 @@
 
     <div class="flex py-4 justify-between <md:(flex-col-reverse)">
       <div class="w-full">
-        <div class="info-box border-left flex">
+        <div class="info-box border-left pt-4 flex justify-around">
           <c-stastic title="比赛">
             <template #prefix><icon-cloud class="text-blue-400" /></template>
             <template #>{{ user.contests.length }}</template>
@@ -80,7 +80,7 @@
               toDate(row.creationTime).value
             }}</a>
           </c-table-column>
-          <c-table-column label="题目">
+          <c-table-column label="题目" :mobile-header-class="['min-w-8']">
             <a :href="row.problem.problemUrl" target="_blank">{{
               row.problem.id + ' ' + row.problem.name
             }}</a>

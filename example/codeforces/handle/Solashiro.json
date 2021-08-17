@@ -1,6 +1,7 @@
 {
   "type": "codeforces/handle",
   "handle": "Solashiro",
+  "handleUrl": "https://codeforces.com/profile/Solashiro",
   "avatar": "https://userpic.codeforces.org/653554/title/f8960437c7d05cf1.jpg",
   "codeforces": {
     "rank": "master",
@@ -9,6 +10,58 @@
     "maxRating": 2289
   },
   "submissions": [
+    {
+      "type": "codeforces",
+      "id": 125768608,
+      "creationTime": 1628864311,
+      "language": "GNU C++11",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -518619336
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1527B2",
+        "name": "Palindrome Game (hard version)",
+        "rating": 1900,
+        "tags": [
+          "constructive algorithms",
+          "games"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1527/problem/B2"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1527/submission/125768608"
+    },
+    {
+      "type": "codeforces",
+      "id": 125768581,
+      "creationTime": 1628864292,
+      "language": "GNU C++11",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -518619355
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1527B1",
+        "name": "Palindrome Game (easy version)",
+        "rating": 1200,
+        "tags": [
+          "constructive algorithms",
+          "games"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1527/problem/B1"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1527/submission/125768581"
+    },
     {
       "type": "codeforces",
       "id": 124347486,

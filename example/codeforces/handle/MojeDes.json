@@ -1,14 +1,147 @@
 {
   "type": "codeforces/handle",
   "handle": "MojeDes",
+  "handleUrl": "https://codeforces.com/profile/MojeDes",
   "avatar": "https://userpic.codeforces.org/829567/title/8d6f4c3cbe817bd8.jpg",
   "codeforces": {
     "rank": "expert",
-    "rating": 1870,
+    "rating": 1859,
     "maxRank": "expert",
     "maxRating": 1870
   },
   "submissions": [
+    {
+      "type": "codeforces",
+      "id": 125982565,
+      "creationTime": 1629041726,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1629038100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1559D1",
+        "name": "Mocha and Diana (Easy Version)",
+        "tags": [
+          "brute force",
+          "constructive algorithms",
+          "dsu",
+          "graphs",
+          "greedy",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1559/problem/D1"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1559/submission/125982565"
+    },
+    {
+      "type": "codeforces",
+      "id": 125965932,
+      "creationTime": 1629040288,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1629038100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1559C",
+        "name": "Mocha and Hiking",
+        "tags": [
+          "constructive algorithms",
+          "dfs and similar",
+          "graphs"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1559/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1559/submission/125965932"
+    },
+    {
+      "type": "codeforces",
+      "id": 125947359,
+      "creationTime": 1629039076,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1629038100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1559B",
+        "name": "Mocha and Red and Blue",
+        "tags": [
+          "dp",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1559/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1559/submission/125947359"
+    },
+    {
+      "type": "codeforces",
+      "id": 125939277,
+      "creationTime": 1629038496,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1629038100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1559A",
+        "name": "Mocha and Math",
+        "tags": [
+          "bitmasks",
+          "constructive algorithms",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1559/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1559/submission/125939277"
+    },
+    {
+      "type": "codeforces",
+      "id": 125936758,
+      "creationTime": 1629038337,
+      "language": "GNU C11",
+      "verdict": "COMPILATION_ERROR",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1629038100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1559A",
+        "name": "Mocha and Math",
+        "tags": [
+          "bitmasks",
+          "constructive algorithms",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1559/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1559/submission/125936758"
+    },
     {
       "type": "codeforces",
       "id": 124338888,

@@ -47,17 +47,17 @@
               grid-cols-2)
             "
           >
-            <c-stastic title="用户数">
+            <c-stastic title="用户">
               <template #prefix><icon-account /></template>
               <template #>{{ users.length }}</template>
             </c-stastic>
 
-            <c-stastic title="比赛数">
+            <c-stastic title="参与比赛">
               <template #prefix><icon-cloud class="text-blue-400" /></template>
               <template #>{{ allContestCount }}</template>
             </c-stastic>
 
-            <c-stastic title="提交数">
+            <c-stastic title="提交">
               <template #prefix
                 ><icon-lightbulb-on class="text-yellow-400"
               /></template>
