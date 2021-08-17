@@ -8,7 +8,8 @@ import {
   toRefs,
   VNode,
   resolveComponent,
-  onUnmounted
+  onUnmounted,
+  Fragment
 } from 'vue';
 import IconDown from 'virtual:vite-icons/mdi/arrow-down';
 import IconUp from 'virtual:vite-icons/mdi/arrow-up';
@@ -71,8 +72,26 @@ export default defineComponent({
       else sortOrder.value = 'desc';
     };
 
-    const filterColumn = (slots?: VNode[]) =>
-      slots ? slots.filter((slot) => slot.type === CTableColumn) : [];
+    const filterColumn = (slots?: VNode[]) => {
+      if (!slots) return [];
+      const columns: VNode[] = [];
+      for (const slot of slots) {
+        if (slot.type === Fragment && Array.isArray(slot.children)) {
+          for (const child of slot.children) {
+            if (
+              child !== null &&
+              typeof child === 'object' &&
+              !Array.isArray(child)
+            ) {
+              columns.push(child);
+            }
+          }
+        } else {
+          columns.push(slot);
+        }
+      }
+      return columns.filter((column) => column.type === CTableColumn);
+    };
 
     const columns = filterColumn(slots.columns ? slots.columns({}) : []);
 
@@ -209,7 +228,14 @@ export default defineComponent({
                   h(
                     'div',
                     {
-                      class: ['py-2', 'font-600', 'text-left', ...customHeader]
+                      class: [
+                        'py-2',
+                        'font-600',
+                        'text-left',
+                        'flex',
+                        'items-center',
+                        ...customHeader
+                      ]
                     },
                     column.props?.label
                   ),
