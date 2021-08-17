@@ -6,7 +6,8 @@
           <span class="font-600">{{ row.rank }}</span>
         </c-table-column>
         <c-table-column :label="isCfRound ? 'Handle' : ''">
-          <team-name :author="row.author"></team-name>
+          <team-name v-if="!isCfRound" :author="row.author"></team-name>
+          <cf-handles v-else :author="row.author"></cf-handles>
         </c-table-column>
         <c-table-column label="解决" align="center" width="4em">
           <span>{{ row.solved }}</span>
@@ -47,6 +48,7 @@ import { CTable, CTableColumn } from '@/components/table';
 import { isUndef, isDef, toNumDuration } from '@/utils';
 
 import TeamName from './TeamName.vue';
+import CfHandles from './CfHandles.vue';
 import StandingResult from './StandingResult.vue';
 
 const props = defineProps<{ contest: IContest }>();

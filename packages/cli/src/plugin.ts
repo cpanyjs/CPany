@@ -10,6 +10,7 @@ import type {
   IUser,
   CodeforcesHandleList
 } from '@cpany/types';
+import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
 import type { IPluginOption } from './types';
 import { createLoader } from './loader';
 import { slash } from './utils';
@@ -294,9 +295,23 @@ export function createCPanyLoadPlugin(
         return JSON.stringify(users, null, 2);
       } else if (id === cfHandlesPath) {
         const handles = ([] as CodeforcesHandleList).concat(
-          ...users.map(({ name, handles }) =>
-            handles.map((handle) => ({ n: name, h: handle.handle }))
-          )
+          ...users.map(({ name, handles }) => {
+            const cfHandles: CodeforcesHandleList = [];
+            for (const handle of handles) {
+              if (handle.type.startsWith('codeforces')) {
+                const cfHandle = handle as Omit<
+                  RouteKey<IHandleWithCodeforces>,
+                  'submissions'
+                >;
+                cfHandles.push({
+                  n: name,
+                  h: handle.handle,
+                  r: cfHandle.codeforces.rating
+                });
+              }
+            }
+            return cfHandles;
+          })
         );
         return JSON.stringify(handles, null, 2);
       }

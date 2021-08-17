@@ -16,8 +16,5 @@
   ],
   "scripts": {
     "build": "tsc"
-  },
-  "dependencies": {
-    "axios": "^0.21.1"
   }
 }

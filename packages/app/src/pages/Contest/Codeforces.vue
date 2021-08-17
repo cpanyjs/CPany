@@ -12,11 +12,10 @@ import { Verdict } from '@cpany/types';
 
 import { useRoute } from 'vue-router';
 import { ref, watch } from 'vue';
-import axios from 'axios';
 
 import Page from './Contest.vue';
 import { findCodeforces } from '@/codeforces';
-import { handles } from '@/cfHandles';
+import { handles, findHandleUser } from '@/cfHandles';
 import { CodeforcesAPIBase } from '@/config';
 
 const route = useRoute();
@@ -24,16 +23,11 @@ const route = useRoute();
 const contest = ref<RouteKey<IContest> | null>(null);
 
 const fetchStanding = async (contest: RouteKey<IContest>) => {
-  const api = axios.create({ baseURL: CodeforcesAPIBase });
+  const url = new URL(CodeforcesAPIBase + 'contest.standings');
+  url.searchParams.append('contestId', '' + contest.id!);
+  url.searchParams.append('handles', handles.map(({ h }) => h).join(';'));
 
-  const {
-    data: { result }
-  } = await api.get('contest.standings', {
-    params: {
-      contestId: contest.id,
-      handles: handles.map(({ h }) => h).join(';')
-    }
-  });
+  const { result } = await (await fetch(url.toString())).json();
 
   contest.problems = result.problems as IContestProblem[];
   for (const prob of result.problems) {
@@ -55,7 +49,8 @@ const fetchStanding = async (contest: RouteKey<IContest>) => {
         members: row.party.members.map(
           (handle: { handle: string }) => handle.handle
         ),
-        teamName: row.party.teamName,
+        teamName:
+          row.party.teamName ?? findHandleUser(row.party.members[0].handle),
         participantTime: row.party.participantTime ?? contest.startTime,
         participantType: row.party.participantType
       },
