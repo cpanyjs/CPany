@@ -169,7 +169,7 @@ const contests = ref<IContest[]>(user.value.contests);
 // Hack: all handle are cf
 const cfHandles = (
   user.value.handles as RouteKey<IHandleWithCodeforces>[]
-).sort((lhs, rhs) => lhs.codeforces.rating - rhs.codeforces.rating);
+).sort((lhs, rhs) => rhs.codeforces.rating - lhs.codeforces.rating);
 
 const transformHandleType = (type: string) => {
   return 'Codeforces';
