@@ -29,6 +29,13 @@
           >{{ row.recentSubCount }}</c-table-column
         >
         <c-table-column
+          label="最近比赛"
+          width="7em"
+          align="right"
+          :sort="sortByRecentContest"
+          >{{ row.recentContest }}</c-table-column
+        >
+        <c-table-column
           label="最新通过"
           width="10em"
           align="center"
@@ -36,13 +43,6 @@
           ><span v-if="row.lastSolveTime > 0">{{
             toDate(row.lastSolveTime).value
           }}</span></c-table-column
-        >
-        <c-table-column
-          label="最近比赛"
-          width="7em"
-          align="right"
-          :sort="sortByRecentContest"
-          >{{ row.recentContest }}</c-table-column
         >
 
         <c-table-column
