@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import type { IContest, IContestProblem, RouteKey } from '@cpany/types';
-import { Verdict } from '@cpany/types';
+import { Verdict, ParticipantType } from '@cpany/types';
 
 import { useRoute } from 'vue-router';
 import { ref, watch } from 'vue';
@@ -41,6 +41,14 @@ const fetchStanding = async (contest: RouteKey<IContest>) => {
   }
   contest.standings = [];
   for (const row of result.rows) {
+    // Skip practise
+    if (
+      row.party.participantType !== ParticipantType.CONTESTANT &&
+      row.party.participantType !== ParticipantType.VIRTUAL
+    ) {
+      continue;
+    }
+
     const penalty = row.problemResults.reduce((sum: number, result: any) => {
       if (result.points === 0) return sum;
       return (
