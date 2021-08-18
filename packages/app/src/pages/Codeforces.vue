@@ -38,6 +38,13 @@
           >{{ row.recentOkCount }}</c-table-column
         >
         <c-table-column
+          label="最近平均难度"
+          width="10em"
+          align="right"
+          :sort="sortByRecentOk"
+          >{{ row.recentAvgDiffcult }}</c-table-column
+        >
+        <c-table-column
           label="最近比赛"
           width="7em"
           align="right"
@@ -88,7 +95,7 @@ import { CTable, CTableColumn } from '../components/table';
 import UserLink from '../components/user-link.vue';
 import { CfRatingColor } from '../components/codeforces';
 import { recentStartTime as defaultRecentStartTime } from '../overview';
-import { toDate } from '../utils';
+import { toDate, isDef } from '../utils';
 
 const recentStartTime = ref(defaultRecentStartTime);
 
@@ -107,6 +114,18 @@ const extendFn = (user: IUserOverview) => {
   const recentContest = user.contests.filter(
     ({ type, t }) => t >= recentStartTime.value && isTypeCf(type)
   ).length;
+
+  const recentOkDiffcultSubs = submissions.filter(
+    ({ t, v, d }) => t >= recentStartTime.value && v === 1 && isDef(d)
+  );
+  const recentDiffcult = recentOkDiffcultSubs.reduce(
+    (sum, sub) => sum + (sub.d ?? 0),
+    0
+  );
+  const recentAvgDiffcult = Math.ceil(
+    recentOkCount > 0 ? recentDiffcult / recentOkDiffcultSubs.length : 0
+  );
+
   const solveSubs = submissions
     .filter(({ v }) => v === 1)
     .sort((lhs, rhs) => rhs.t - lhs.t);
@@ -130,6 +149,8 @@ const extendFn = (user: IUserOverview) => {
     recentSubCount,
     recentOkCount,
     recentContest,
+    recentDiffcult,
+    recentAvgDiffcult,
     lastSolveTime,
     rating,
     handle,
