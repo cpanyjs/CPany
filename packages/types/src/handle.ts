@@ -14,4 +14,5 @@ export interface IAuthor {
   participantType: ParticipantType;
   participantTime: number;
   teamName?: string;
+  teamUrl?: string;
 }
