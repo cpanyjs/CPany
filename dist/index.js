@@ -11106,14 +11106,6 @@ var fs_asyncValues = (undefined && undefined.__asyncValues) || function (o) {
 function createGitFileSystem(basePath, { disable = false, skipList = new Set() } = {}) {
     var e_1, _a;
     return __awaiter(this, void 0, void 0, function* () {
-        const username = process.env.GITHUB_ACTOR || 'Unknown';
-        yield (0,exec.exec)('git', ['config', '--global', 'user.name', username]);
-        yield (0,exec.exec)('git', [
-            'config',
-            '--global',
-            'user.email',
-            `${username}@users.noreply.github.com`
-        ]);
         const files = new Set();
         try {
             for (var _b = fs_asyncValues(listDir('.', skipList)), _c; _c = yield _b.next(), !_c.done;) {
@@ -11140,6 +11132,14 @@ function createGitFileSystem(basePath, { disable = false, skipList = new Set() }
         const push = (time) => __awaiter(this, void 0, void 0, function* () {
             if (disable)
                 return;
+            const username = process.env.GITHUB_ACTOR || 'Unknown';
+            yield (0,exec.exec)('git', ['config', '--local', 'user.name', username]);
+            yield (0,exec.exec)('git', [
+                'config',
+                '--local',
+                'user.email',
+                `${username}@users.noreply.github.com`
+            ]);
             yield (0,exec.exec)('git', [
                 'add',
                 (0,external_path_.resolve)(basePath, 'README.md'),

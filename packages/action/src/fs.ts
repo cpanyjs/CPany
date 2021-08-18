@@ -15,15 +15,6 @@ export async function createGitFileSystem(
   basePath: string,
   { disable = false, skipList = new Set() }: IGitFSOption = {}
 ) {
-  const username = process.env.GITHUB_ACTOR || 'Unknown';
-  await exec('git', ['config', '--global', 'user.name', username]);
-  await exec('git', [
-    'config',
-    '--global',
-    'user.email',
-    `${username}@users.noreply.github.com`
-  ]);
-
   const files: Set<string> = new Set();
 
   for await (const file of listDir('.', skipList)) {
@@ -41,6 +32,14 @@ export async function createGitFileSystem(
 
   const push = async (time: string) => {
     if (disable) return;
+    const username = process.env.GITHUB_ACTOR || 'Unknown';
+    await exec('git', ['config', '--local', 'user.name', username]);
+    await exec('git', [
+      'config',
+      '--local',
+      'user.email',
+      `${username}@users.noreply.github.com`
+    ]);
     await exec('git', [
       'add',
       resolve(basePath, 'README.md'),
