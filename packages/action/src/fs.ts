@@ -1,4 +1,4 @@
-import { join, dirname } from 'path';
+import { join, dirname, resolve } from 'path';
 import { writeFileSync, promises } from 'fs';
 
 import { mkdirP } from '@actions/io';
@@ -41,7 +41,12 @@ export async function createGitFileSystem(
 
   const push = async (time: string) => {
     if (disable) return;
-    await exec('git', ['add', 'README.md', '.env', ...files]);
+    await exec('git', [
+      'add',
+      resolve(basePath, 'README.md'),
+      resolve(basePath, '.env'),
+      ...files
+    ]);
     await exec('git', ['commit', '-m', `Fetch data on ${time}`]);
     await exec('git', ['push']);
   };

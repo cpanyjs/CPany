@@ -86,6 +86,7 @@ importers:
 
   packages/cli:
     specifiers:
+      '@cpany/action': workspace:*
       '@cpany/app': workspace:*
       '@cpany/types': workspace:*
       '@iconify/json': ^1.1.387
@@ -102,6 +103,7 @@ importers:
       vite-plugin-windicss: ^1.2.7
       windicss: ^3.1.7
     dependencies:
+      '@cpany/action': link:../action
       '@cpany/app': link:../app
       '@cpany/types': link:../types
       '@iconify/json': 1.1.387

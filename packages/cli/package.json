@@ -1,6 +1,6 @@
 {
   "name": "@cpany/cli",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "CPany cli package",
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "build": "tsc"
   },
   "dependencies": {
+    "@cpany/action": "workspace:*",
     "@cpany/app": "workspace:*",
     "@cpany/types": "workspace:*",
     "@iconify/json": "^1.1.387",

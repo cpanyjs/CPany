@@ -7153,6 +7153,8 @@ __nccwpck_require__.r(__webpack_exports__);
 var core = __nccwpck_require__(1614);
 // EXTERNAL MODULE: external "fs"
 var external_fs_ = __nccwpck_require__(5747);
+// EXTERNAL MODULE: external "path"
+var external_path_ = __nccwpck_require__(5622);
 ;// CONCATENATED MODULE: ../../node_modules/.pnpm/js-yaml@4.1.0/node_modules/js-yaml/dist/js-yaml.mjs
 
 /*! js-yaml 4.1.0 https://github.com/nodeca/js-yaml @license MIT */
@@ -11010,8 +11012,6 @@ var jsYaml = {
 var dist = __nccwpck_require__(8780);
 // EXTERNAL MODULE: ../codeforces/dist/index.js
 var codeforces_dist = __nccwpck_require__(3948);
-// EXTERNAL MODULE: external "path"
-var external_path_ = __nccwpck_require__(5622);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@actions+io@1.1.1/node_modules/@actions/io/lib/io.js
 var io = __nccwpck_require__(7554);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@actions+exec@1.1.0/node_modules/@actions/exec/lib/exec.js
@@ -11140,7 +11140,12 @@ function createGitFileSystem(basePath, { disable = false, skipList = new Set() }
         const push = (time) => __awaiter(this, void 0, void 0, function* () {
             if (disable)
                 return;
-            yield (0,exec.exec)('git', ['add', 'README.md', '.env', ...files]);
+            yield (0,exec.exec)('git', [
+                'add',
+                (0,external_path_.resolve)(basePath, 'README.md'),
+                (0,external_path_.resolve)(basePath, '.env'),
+                ...files
+            ]);
             yield (0,exec.exec)('git', ['commit', '-m', `Fetch data on ${time}`]);
             yield (0,exec.exec)('git', ['push']);
         });
@@ -11152,7 +11157,7 @@ function createGitFileSystem(basePath, { disable = false, skipList = new Set() }
 }
 
 ;// CONCATENATED MODULE: ./src/version.ts
-const ActionVersion = '0.0.20';
+const ActionVersion = '0.0.21';
 
 ;// CONCATENATED MODULE: ./src/report.ts
 var report_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -11166,26 +11171,38 @@ var report_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _a
 };
 
 
-function processReadme(time) {
+
+
+function processReadme(basePath, time) {
     return report_awaiter(this, void 0, void 0, function* () {
-        const content = yield external_fs_.promises.readFile('README.md', 'utf8');
+        const content = yield external_fs_.promises.readFile((0,external_path_.resolve)(basePath, 'README.md'), 'utf8');
         const newContent = content.replace(/<!-- START_SECTION: update_time -->([\s\S]*)<!-- END_SECTION: update_time -->/, `<!-- START_SECTION: update_time -->\n更新时间：[${time.format('YYYY-MM-DD HH:mm')}](https://www.timeanddate.com/worldclock/fixedtime.html?msg=Fetch+data&iso=${time.format('YYYYMMDDTHHmmss')}&p1=237)\n<!-- END_SECTION: update_time -->`);
         yield external_fs_.promises.writeFile('README.md', newContent, 'utf8');
     });
 }
-function processVersion(time) {
+function processVersion(basePath, time) {
     return report_awaiter(this, void 0, void 0, function* () {
         const content = [
             `ACTION_VERSION=${ActionVersion}`,
             `UPDATE_TIME=${time.unix()}`
         ];
-        yield external_fs_.promises.writeFile('.env', content.join('\n'));
+        yield external_fs_.promises.writeFile((0,external_path_.resolve)(basePath, '.env'), content.join('\n'));
     });
 }
-function processReport(time) {
+function processReport(basePath, time) {
     return report_awaiter(this, void 0, void 0, function* () {
-        yield processReadme(time);
-        yield processVersion(time);
+        try {
+            yield processReadme(basePath, time);
+        }
+        catch (error) {
+            core.error(error);
+        }
+        try {
+            yield processVersion(basePath, time);
+        }
+        catch (error) {
+            core.error(error);
+        }
     });
 }
 
@@ -11262,18 +11279,20 @@ var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _a
 
 
 
-function run({ configPath, maxRetry }) {
+
+function run({ basePath = './', disableGit, configPath, maxRetry }) {
     var _a, _b, _c;
     return action_awaiter(this, void 0, void 0, function* () {
         core.startGroup('Load CPany config');
-        const config = yield getConfig(configPath);
+        const config = yield getConfig((0,external_path_.resolve)(basePath, configPath));
         core.info(JSON.stringify(config, null, 2));
         core.endGroup();
         const instance = (0,dist.createInstance)({
             plugins: [...(0,codeforces_dist.codeforcesPlugin)()],
             logger: core
         });
-        const fs = yield createGitFileSystem('./', {
+        const fs = yield createGitFileSystem(basePath, {
+            disable: disableGit,
             skipList: new Set([
                 'README.md',
                 'netlify.toml',
@@ -11332,7 +11351,7 @@ function run({ configPath, maxRetry }) {
         yield retry.run();
         core.endGroup();
         const nowTime = now();
-        yield processReport(nowTime);
+        yield processReport(basePath, nowTime);
         yield fs.push(nowTime.format('YYYY-MM-DD HH:mm'));
     });
 }

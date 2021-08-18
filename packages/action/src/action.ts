@@ -1,5 +1,6 @@
 import * as core from '@actions/core';
 import { readFileSync } from 'fs';
+import { resolve } from 'path';
 import { load } from 'js-yaml';
 
 import type { ICPanyConfig } from '@cpany/types';
@@ -12,14 +13,20 @@ import { now } from './utils';
 import { createRetryContainer } from './retry';
 
 export interface IRunOption {
+  basePath?: string;
   disableGit?: boolean;
   configPath: string;
   maxRetry: number;
 }
 
-export async function run({ configPath, maxRetry }: IRunOption) {
+export async function run({
+  basePath = './',
+  disableGit,
+  configPath,
+  maxRetry
+}: IRunOption) {
   core.startGroup('Load CPany config');
-  const config = await getConfig(configPath);
+  const config = await getConfig(resolve(basePath, configPath));
   core.info(JSON.stringify(config, null, 2));
   core.endGroup();
 
@@ -28,7 +35,8 @@ export async function run({ configPath, maxRetry }: IRunOption) {
     logger: core
   });
 
-  const fs = await createGitFileSystem('./', {
+  const fs = await createGitFileSystem(basePath, {
+    disable: disableGit,
     skipList: new Set([
       'README.md',
       'netlify.toml',
@@ -96,7 +104,7 @@ export async function run({ configPath, maxRetry }: IRunOption) {
   core.endGroup();
 
   const nowTime = now();
-  await processReport(nowTime);
+  await processReport(basePath, nowTime);
   await fs.push(nowTime.format('YYYY-MM-DD HH:mm'));
 }
 
