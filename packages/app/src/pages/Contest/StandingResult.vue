@@ -1,7 +1,13 @@
 <template>
   <template v-if="result">
     <div v-if="result.verdict === Verdict.OK">
-      <div class="text-center font-bold text-green-500">
+      <div
+        :class="[
+          'text-center',
+          'font-bold',
+          !practice ? 'text-green-500' : 'text-blue-500'
+        ]"
+      >
         <span>+</span>
         <span v-if="result.dirty">{{ result.dirty }}</span>
       </div>
