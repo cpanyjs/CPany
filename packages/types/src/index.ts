@@ -51,7 +51,8 @@ export interface IUserOverview {
   contests: Array<{ type: string; t: number }>;
   // t: short for creationTime
   // v: short for Verdict, v = 0 => wrong, v = 1 => ok, v = -1 => duplicate ok
-  submissions: Array<{ type: string; t: number; v: number }>;
+  // d: difficult score
+  submissions: Array<{ type: string; t: number; v: number; d?: number }>;
 }
 
 export type CodeforcesHandleList = Array<{ n: string; h: string; r: number }>;

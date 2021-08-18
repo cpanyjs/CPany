@@ -1,6 +1,6 @@
 {
   "name": "@cpany/action",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "CPany action package",
   "repository": {
     "type": "git",

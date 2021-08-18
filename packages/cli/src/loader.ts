@@ -227,7 +227,8 @@ export async function createLoader({
             const zipped = {
               type: sub.type,
               t: sub.creationTime,
-              v: sub.verdict === Verdict.OK ? 1 : 0
+              v: sub.verdict === Verdict.OK ? 1 : 0,
+              d: sub.problem.rating
             };
             if (zipped.v === 1) {
               solve(sub.problem, zipped);
