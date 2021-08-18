@@ -1,12 +1,98 @@
 {
   "type": "nowcoder",
-  "name": "2021牛客暑期多校训练营2",
+  "name": "2021 牛客暑期多校训练营 2",
   "startTime": 1626667200,
   "duration": 18000,
   "participantNumber": 0,
   "id": 11253,
   "contestUrl": "https://ac.nowcoder.com/acm/contest/11253#question",
   "standingsUrl": "https://ac.nowcoder.com/acm/contest/11253#rank",
+  "problems": [
+    {
+      "type": "nowcoder",
+      "contestId": 11253,
+      "index": 0,
+      "name": "11253A",
+      "problemUrl": "https://ac.nowcoder.com/acm/contest/11253/A"
+    },
+    {
+      "type": "nowcoder",
+      "contestId": 11253,
+      "index": 1,
+      "name": "11253B",
+      "problemUrl": "https://ac.nowcoder.com/acm/contest/11253/B"
+    },
+    {
+      "type": "nowcoder",
+      "contestId": 11253,
+      "index": 2,
+      "name": "11253C",
+      "problemUrl": "https://ac.nowcoder.com/acm/contest/11253/C"
+    },
+    {
+      "type": "nowcoder",
+      "contestId": 11253,
+      "index": 3,
+      "name": "11253D",
+      "problemUrl": "https://ac.nowcoder.com/acm/contest/11253/D"
+    },
+    {
+      "type": "nowcoder",
+      "contestId": 11253,
+      "index": 4,
+      "name": "11253E",
+      "problemUrl": "https://ac.nowcoder.com/acm/contest/11253/E"
+    },
+    {
+      "type": "nowcoder",
+      "contestId": 11253,
+      "index": 5,
+      "name": "11253F",
+      "problemUrl": "https://ac.nowcoder.com/acm/contest/11253/F"
+    },
+    {
+      "type": "nowcoder",
+      "contestId": 11253,
+      "index": 6,
+      "name": "11253G",
+      "problemUrl": "https://ac.nowcoder.com/acm/contest/11253/G"
+    },
+    {
+      "type": "nowcoder",
+      "contestId": 11253,
+      "index": 7,
+      "name": "11253H",
+      "problemUrl": "https://ac.nowcoder.com/acm/contest/11253/H"
+    },
+    {
+      "type": "nowcoder",
+      "contestId": 11253,
+      "index": 8,
+      "name": "11253I",
+      "problemUrl": "https://ac.nowcoder.com/acm/contest/11253/I"
+    },
+    {
+      "type": "nowcoder",
+      "contestId": 11253,
+      "index": 9,
+      "name": "11253J",
+      "problemUrl": "https://ac.nowcoder.com/acm/contest/11253/J"
+    },
+    {
+      "type": "nowcoder",
+      "contestId": 11253,
+      "index": 10,
+      "name": "11253K",
+      "problemUrl": "https://ac.nowcoder.com/acm/contest/11253/K"
+    },
+    {
+      "type": "nowcoder",
+      "contestId": 11253,
+      "index": 11,
+      "name": "11253L",
+      "problemUrl": "https://ac.nowcoder.com/acm/contest/11253/L"
+    }
+  ],
   "standings": [
     {
       "author": {
