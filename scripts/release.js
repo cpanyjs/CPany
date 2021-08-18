@@ -26,7 +26,7 @@ async function run() {
   }
   
   await writeFile('./packages/cli/.env', `VITE_CLI_VERSION=${version}`);
-  await writeFile('./packages/action/src/version.ts', `export const version = '${version}';`);
+  await writeFile('./packages/action/src/version.ts', `export const ActionVersion = '${version}';`);
   
   await execa('git', ['add', '.'], { stdio: 'inherit' });
   await execa('git', ['commit', '-m', `release: v${version}`], { stdio: 'inherit' });
