@@ -11157,7 +11157,7 @@ function createGitFileSystem(basePath, { disable = false, skipList = new Set() }
 }
 
 ;// CONCATENATED MODULE: ./src/version.ts
-const ActionVersion = '0.0.22';
+const ActionVersion = '0.0.24';
 
 ;// CONCATENATED MODULE: ./src/report.ts
 var report_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
