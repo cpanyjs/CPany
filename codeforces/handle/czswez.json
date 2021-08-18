@@ -28,9 +28,7 @@
         "id": "1559D2",
         "name": "Mocha and Diana (Hard Version)",
         "tags": [
-          "2-sat",
           "brute force",
-          "chinese remainder theorem",
           "constructive algorithms",
           "data structures",
           "dfs and similar",
