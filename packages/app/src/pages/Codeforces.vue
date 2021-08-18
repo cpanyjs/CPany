@@ -41,7 +41,7 @@
           label="最近平均难度"
           width="10em"
           align="right"
-          :sort="sortByRecentOk"
+          :sort="sortByAvgDiffcult"
           >{{ row.recentAvgDiffcult }}</c-table-column
         >
         <c-table-column
@@ -123,7 +123,9 @@ const extendFn = (user: IUserOverview) => {
     0
   );
   const recentAvgDiffcult = Math.ceil(
-    recentOkCount > 0 ? recentDiffcult / recentOkDiffcultSubs.length : 0
+    recentOkDiffcultSubs.length > 0
+      ? recentDiffcult / recentOkDiffcultSubs.length
+      : 0
   );
 
   const solveSubs = submissions
@@ -168,6 +170,8 @@ const sortByOk = (lhs: ExtendUser, rhs: ExtendUser) =>
   lhs.okCount - rhs.okCount;
 const sortByRecentOk = (lhs: ExtendUser, rhs: ExtendUser) =>
   lhs.recentOkCount - rhs.recentOkCount;
+const sortByAvgDiffcult = (lhs: ExtendUser, rhs: ExtendUser) =>
+  lhs.recentAvgDiffcult - rhs.recentAvgDiffcult;
 
 const sortByContest = (lhs: ExtendUser, rhs: ExtendUser) =>
   lhs.contests.length - rhs.contests.length;
