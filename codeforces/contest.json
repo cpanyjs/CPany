@@ -1,6 +1,39 @@
 [
   {
     "type": "codeforces/cf",
+    "name": "Deltix Round, Summer 2021 (open for everyone, rated, Div. 1 + Div. 2)",
+    "startTime": 1630247700,
+    "duration": 8100,
+    "participantNumber": 0,
+    "id": 1556,
+    "phase": "BEFORE",
+    "contestUrl": "https://codeforces.com/contest/1556",
+    "standingsUrl": "https://codeforces.com/contest/1556/standings"
+  },
+  {
+    "type": "codeforces/cf",
+    "name": "Codeforces Round #740 (Div. 1 + Div. 2, based on VK Cup 2021 - Final (Engine))",
+    "startTime": 1629815700,
+    "duration": 9000,
+    "participantNumber": 0,
+    "id": 1558,
+    "phase": "BEFORE",
+    "contestUrl": "https://codeforces.com/contest/1558",
+    "standingsUrl": "https://codeforces.com/contest/1558/standings"
+  },
+  {
+    "type": "codeforces/cf",
+    "name": "Codeforces Round #739 (Div. 3)",
+    "startTime": 1629297300,
+    "duration": 8100,
+    "participantNumber": 0,
+    "id": 1560,
+    "phase": "CODING",
+    "contestUrl": "https://codeforces.com/contest/1560",
+    "standingsUrl": "https://codeforces.com/contest/1560/standings"
+  },
+  {
+    "type": "codeforces/cf",
     "name": "Codeforces Round #738 (Div. 2)",
     "startTime": 1629038100,
     "duration": 8100,
@@ -2682,6 +2715,28 @@
     "phase": "FINISHED",
     "contestUrl": "https://codeforces.com/contest/1304",
     "standingsUrl": "https://codeforces.com/contest/1304/standings"
+  },
+  {
+    "type": "codeforces/ioi",
+    "name": "VK Cup 2019-2020 - Отборочный раунд (Design)",
+    "startTime": 1581692400,
+    "duration": 799200,
+    "participantNumber": 0,
+    "id": 1308,
+    "phase": "PENDING_SYSTEM_TEST",
+    "contestUrl": "https://codeforces.com/contest/1308",
+    "standingsUrl": "https://codeforces.com/contest/1308/standings"
+  },
+  {
+    "type": "codeforces/ioi",
+    "name": "VK Cup 2019-2020 - Отборочный раунд (Mobile)",
+    "startTime": 1581692400,
+    "duration": 1404000,
+    "participantNumber": 0,
+    "id": 1309,
+    "phase": "PENDING_SYSTEM_TEST",
+    "contestUrl": "https://codeforces.com/contest/1309",
+    "standingsUrl": "https://codeforces.com/contest/1309/standings"
   },
   {
     "type": "codeforces/cf",
