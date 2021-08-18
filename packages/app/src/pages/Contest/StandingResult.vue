@@ -1,6 +1,10 @@
 <template>
   <template v-if="result">
-    <div v-if="result.verdict === Verdict.OK">
+    <div
+      v-if="result.verdict === Verdict.OK"
+      :class="submissionUrl !== '' && 'cursor-pointer'"
+      @click="handleClick"
+    >
       <div
         :class="[
           'text-center',
@@ -28,7 +32,19 @@
 import type { IContestSubmission } from '@cpany/types';
 import { Verdict } from '@cpany/types';
 
-defineProps<{ result?: IContestSubmission; practice?: boolean }>();
+import { toRefs, computed } from 'vue';
+
+const props =
+  defineProps<{ result?: IContestSubmission; practice?: boolean }>();
+
+const { result } = toRefs(props);
+const submissionUrl = computed(() => result?.value?.submissionUrl ?? '');
+
+const handleClick = () => {
+  if (submissionUrl.value !== '') {
+    window.open(submissionUrl.value, '_blank');
+  }
+};
 
 function toNumDuration(seconds: number) {
   function alignNumber(value: number) {
