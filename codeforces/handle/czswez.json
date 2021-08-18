@@ -28,6 +28,7 @@
         "id": "1559D2",
         "name": "Mocha and Diana (Hard Version)",
         "tags": [
+          "2-sat",
           "brute force",
           "constructive algorithms",
           "data structures",
@@ -35,7 +36,8 @@
           "dsu",
           "graphs",
           "greedy",
-          "trees"
+          "trees",
+          "two pointers"
         ],
         "problemUrl": "https://codeforces.com/contest/1559/problem/D2"
       },
