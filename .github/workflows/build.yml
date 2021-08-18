@@ -22,7 +22,12 @@ jobs:
           cache: pnpm
       - run: pnpm install
       - run: pnpm run build
-  test:
+      - run: pnpm run site
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./site
+  fetch:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
