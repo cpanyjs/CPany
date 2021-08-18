@@ -3,7 +3,8 @@
     <c-table :data="standings.standings" :mobile="1080">
       <template #columns="{ row }">
         <c-table-column label="#" align="center" width="4em">
-          <span class="font-600">{{ row.rank }}</span>
+          <span v-if="!isPractice(row)" class="font-600">{{ row.rank }}</span>
+          <span v-else class="font-600">-</span>
         </c-table-column>
         <c-table-column :label="isCfRound ? 'Handle' : ''">
           <team-name v-if="!isCfRound" :author="row.author"></team-name>
@@ -13,7 +14,9 @@
           <span>{{ row.solved }}</span>
         </c-table-column>
         <c-table-column label="罚时" align="center" width="4em">
-          <span>{{ toNumDuration(row.penalty).value }}</span>
+          <span v-if="!isPractice(row)">{{
+            toNumDuration(row.penalty).value
+          }}</span>
         </c-table-column>
 
         <c-table-column
@@ -31,7 +34,10 @@
             'bg-[#E0FFE4]'
           "
         >
-          <standing-result :result="row.result[index]"> </standing-result>
+          <standing-result
+            :result="row.result[index]"
+            :practice="isPractice(row)"
+          ></standing-result>
         </c-table-column>
       </template>
     </c-table>
@@ -39,8 +45,12 @@
 </template>
 
 <script setup lang="ts">
-import type { IContest, IContestSubmission } from '@cpany/types';
-import { Verdict } from '@cpany/types';
+import type {
+  IContest,
+  IContestStanding,
+  IContestSubmission
+} from '@cpany/types';
+import { Verdict, ParticipantType } from '@cpany/types';
 
 import { computed, toRefs } from 'vue';
 
@@ -55,6 +65,9 @@ const props = defineProps<{ contest: IContest }>();
 const { contest } = toRefs(props);
 
 const isCfRound = computed(() => contest.value.type.startsWith('codeforces'));
+
+const isPractice = (standing: IContestStanding) =>
+  standing.author.participantType === ParticipantType.PRACTICE;
 
 const toStrIndex = (index: string | number) =>
   typeof index === 'string' ? index : String.fromCharCode(65 + index);
@@ -83,13 +96,15 @@ const standings = computed(() => {
   const firstBlood: Array<IContestSubmission | undefined> = Array(
     contest.value.problems?.length
   );
+
   for (const standing of contest.value.standings) {
     const result: Array<IContestSubmission | undefined> = Array(
       contest.value.problems?.length
     );
     for (const sub of standing.submissions) {
       const index = sub.problemIndex;
-      if (sub.verdict === Verdict.OK) {
+
+      if (sub.verdict === Verdict.OK && !isPractice(standing)) {
         if (isUndef(firstBlood[index])) {
           firstBlood[index] = sub;
         } else {

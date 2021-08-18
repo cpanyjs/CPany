@@ -5,7 +5,7 @@
         <span>+</span>
         <span v-if="result.dirty">{{ result.dirty }}</span>
       </div>
-      <div class="text-sm text-gray-400">
+      <div v-if="!practice" class="text-sm text-gray-400">
         <span>{{ toNumDuration(result.relativeTime) }}</span>
       </div>
     </div>
@@ -22,7 +22,7 @@
 import type { IContestSubmission } from '@cpany/types';
 import { Verdict } from '@cpany/types';
 
-defineProps<{ result?: IContestSubmission }>();
+defineProps<{ result?: IContestSubmission; practice?: boolean }>();
 
 function toNumDuration(seconds: number) {
   function alignNumber(value: number) {

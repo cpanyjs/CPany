@@ -44,7 +44,8 @@ const fetchStanding = async (contest: RouteKey<IContest>) => {
     // Skip practise
     if (
       row.party.participantType !== ParticipantType.CONTESTANT &&
-      row.party.participantType !== ParticipantType.VIRTUAL
+      row.party.participantType !== ParticipantType.VIRTUAL &&
+      row.party.participantType !== ParticipantType.PRACTICE
     ) {
       continue;
     }
@@ -77,11 +78,14 @@ const fetchStanding = async (contest: RouteKey<IContest>) => {
       penalty,
       submissions: row.problemResults
         .map((result: any, index: number) => {
+          const creationTime =
+            result.bestSubmissionTimeSeconds + participantTime;
+          const relativeTime = result.bestSubmissionTimeSeconds;
           if (result.points > 0) {
             return {
               id: -1,
-              creationTime: result.bestSubmissionTimeSeconds + participantTime,
-              relativeTime: result.bestSubmissionTimeSeconds,
+              creationTime,
+              relativeTime,
               problemIndex: index,
               verdict: Verdict.OK,
               dirty: result.rejectedAttemptCount
@@ -89,8 +93,8 @@ const fetchStanding = async (contest: RouteKey<IContest>) => {
           } else if (result.rejectedAttemptCount > 0) {
             return {
               id: -1,
-              creationTime: result.bestSubmissionTimeSeconds + participantTime,
-              relativeTime: result.bestSubmissionTimeSeconds,
+              creationTime,
+              relativeTime,
               problemIndex: index,
               dirty: result.rejectedAttemptCount
             };
