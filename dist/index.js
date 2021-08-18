@@ -11140,7 +11140,7 @@ function createGitFileSystem(basePath, { disable = false, skipList = new Set() }
         const push = (time) => __awaiter(this, void 0, void 0, function* () {
             if (disable)
                 return;
-            yield (0,exec.exec)('git', ['add', 'README.md', ...files]);
+            yield (0,exec.exec)('git', ['add', 'README.md', '.env', ...files]);
             yield (0,exec.exec)('git', ['commit', '-m', `Fetch data on ${time}`]);
             yield (0,exec.exec)('git', ['push']);
         });
@@ -11151,8 +11151,11 @@ function createGitFileSystem(basePath, { disable = false, skipList = new Set() }
     });
 }
 
-;// CONCATENATED MODULE: ./src/readme.ts
-var readme_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+;// CONCATENATED MODULE: ./src/version.ts
+const ActionVersion = 'v0.0.19';
+
+;// CONCATENATED MODULE: ./src/report.ts
+var report_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -11162,11 +11165,27 @@ var readme_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _a
     });
 };
 
+
 function processReadme(time) {
-    return readme_awaiter(this, void 0, void 0, function* () {
+    return report_awaiter(this, void 0, void 0, function* () {
         const content = yield external_fs_.promises.readFile('README.md', 'utf8');
         const newContent = content.replace(/<!-- START_SECTION: update_time -->([\s\S]*)<!-- END_SECTION: update_time -->/, `<!-- START_SECTION: update_time -->\n更新时间：[${time.format('YYYY-MM-DD HH:mm')}](https://www.timeanddate.com/worldclock/fixedtime.html?msg=Fetch+data&iso=${time.format('YYYYMMDDTHHmmss')}&p1=237)\n<!-- END_SECTION: update_time -->`);
         yield external_fs_.promises.writeFile('README.md', newContent, 'utf8');
+    });
+}
+function processVersion(time) {
+    return report_awaiter(this, void 0, void 0, function* () {
+        const content = [
+            `ACTION_VERSION=${ActionVersion}`,
+            `UPDATE_TIME=${time.unix()}`
+        ];
+        yield external_fs_.promises.writeFile('.env', content.join('\n'));
+    });
+}
+function processReport(time) {
+    return report_awaiter(this, void 0, void 0, function* () {
+        yield processReadme(time);
+        yield processVersion(time);
     });
 }
 
@@ -11313,7 +11332,7 @@ function run({ configPath, maxRetry }) {
         yield retry.run();
         core.endGroup();
         const nowTime = now();
-        yield processReadme(nowTime);
+        yield processReport(nowTime);
         yield fs.push(nowTime.format('YYYY-MM-DD HH:mm'));
     });
 }

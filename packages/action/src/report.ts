@@ -1,5 +1,6 @@
 import { promises } from 'fs';
 import type { Dayjs } from 'dayjs';
+import { ActionVersion } from './version';
 
 export async function processReadme(time: Dayjs) {
   const content = await promises.readFile('README.md', 'utf8');
@@ -14,4 +15,17 @@ export async function processReadme(time: Dayjs) {
   );
 
   await promises.writeFile('README.md', newContent, 'utf8');
+}
+
+export async function processVersion(time: Dayjs) {
+  const content = [
+    `ACTION_VERSION=${ActionVersion}`,
+    `UPDATE_TIME=${time.unix()}`
+  ];
+  await promises.writeFile('.env', content.join('\n'));
+}
+
+export async function processReport(time: Dayjs) {
+  await processReadme(time);
+  await processVersion(time);
 }
