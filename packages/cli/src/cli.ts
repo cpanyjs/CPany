@@ -8,6 +8,7 @@ import vue from '@vitejs/plugin-vue';
 import WindiCSS from 'vite-plugin-windicss';
 import Icons from 'vite-plugin-icons';
 
+import { run as runAction } from '@cpany/action';
 import { createCPanyPlugin } from './plugin';
 
 const version = JSON.parse(
@@ -26,6 +27,45 @@ interface ICliOption {
 const cli = cac('cpany')
   .option('--app <app path>', 'App path')
   .option('--data <data path>', 'Data path', { default: '.' });
+
+cli
+  .command('', 'Build CPany site')
+  .alias('build')
+  .option('--emptyOutDir', "force empty outDir when it's outside of root", {
+    default: false
+  })
+  .option('--out <output path>', 'Output path', { default: 'dist' })
+  .action(async (option) => {
+    const appPath = path.resolve(option.app ?? findDefaultAppPath());
+    const dataPath = path.resolve(option.data);
+    const pluginOption = {
+      appRootPath: appPath,
+      dataRootPath: dataPath,
+      cliVersion: version
+    };
+
+    await build({
+      configFile: false,
+      root: appPath,
+      build: {
+        outDir: path.resolve(option.out),
+        emptyOutDir: option.emptyOutDir
+      },
+      envDir: path.resolve(__dirname, '../'),
+      plugins: [
+        vue(),
+        WindiCSS(),
+        Icons(),
+        await createCPanyPlugin(pluginOption)
+      ],
+      resolve: {
+        alias: {
+          '@cpany/types': findTypesPackagePath(),
+          '@': path.resolve(appPath, 'src')
+        }
+      }
+    });
+  });
 
 cli
   .command('dev', 'Start CPany dev server')
@@ -66,41 +106,14 @@ cli
   });
 
 cli
-  .command('', 'Build CPany site')
-  .alias('build')
-  .option('--emptyOutDir', "force empty outDir when it's outside of root", {
-    default: false
-  })
-  .option('--out <output path>', 'Output path', { default: 'dist' })
-  .action(async (option) => {
-    const appPath = path.resolve(option.app ?? findDefaultAppPath());
-    const dataPath = path.resolve(option.data);
-    const pluginOption = {
-      appRootPath: appPath,
-      dataRootPath: dataPath,
-      cliVersion: version
-    };
-
-    await build({
-      configFile: false,
-      root: appPath,
-      build: {
-        outDir: path.resolve(option.out),
-        emptyOutDir: option.emptyOutDir
-      },
-      envDir: path.resolve(__dirname, '../'),
-      plugins: [
-        vue(),
-        WindiCSS(),
-        Icons(),
-        await createCPanyPlugin(pluginOption)
-      ],
-      resolve: {
-        alias: {
-          '@cpany/types': findTypesPackagePath(),
-          '@': path.resolve(appPath, 'src')
-        }
-      }
+  .command('action <basePath>', 'Run @cpany/action locally')
+  .option('--max-retry <number>', 'CPany max retry times', { default: 10 })
+  .action(async (basePath: string, { maxRetry }) => {
+    await runAction({
+      basePath,
+      disableGit: true,
+      configPath: 'cpany.yml',
+      maxRetry
     });
   });
 

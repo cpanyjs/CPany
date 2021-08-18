@@ -1,4 +1,4 @@
 import type { Dayjs } from 'dayjs';
-export declare function processReadme(time: Dayjs): Promise<void>;
-export declare function processVersion(time: Dayjs): Promise<void>;
-export declare function processReport(time: Dayjs): Promise<void>;
+export declare function processReadme(basePath: string, time: Dayjs): Promise<void>;
+export declare function processVersion(basePath: string, time: Dayjs): Promise<void>;
+export declare function processReport(basePath: string, time: Dayjs): Promise<void>;
