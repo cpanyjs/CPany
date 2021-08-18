@@ -35,8 +35,6 @@ export async function createEnvLoader({ dataRootPath }: IPluginOption) {
           .split('=')
           .map((s) => s.trim())
           .filter((s) => s !== '');
-        console.log(key, value);
-
         envMap.set(key, value);
       }
     } catch (error) {
