@@ -1,6 +1,6 @@
 {
   "name": "@cpany/cli",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "CPany cli package",
   "repository": {
     "type": "git",
