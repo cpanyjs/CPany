@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "package": "ncc build --source-map --license licenses.txt -o ../../dist"
+    "package": "ncc build ./src/cli.ts --source-map --license licenses.txt -o ../../dist"
   },
   "dependencies": {
     "@actions/core": "^1.4.0",
