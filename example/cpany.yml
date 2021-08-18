@@ -11,13 +11,7 @@ handles:
 
 contests:
   - codeforces/contest.json
-  - codeforces/gym-contest.json
   - nowcoder
-
-app:
-  recentTime: 2592000 # 1 month
-  recentContestsCount: 15
-  recentUserCount: 5
 
 fetch:
   - codeforces/contest.json
