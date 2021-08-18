@@ -6,9 +6,14 @@ import { exec } from '@actions/exec';
 
 import { listDir } from './utils';
 
+interface IGitFSOption {
+  disable?: boolean;
+  skipList?: Set<string>;
+}
+
 export async function createGitFileSystem(
   basePath: string,
-  skipList: Set<string> = new Set()
+  { disable = false, skipList = new Set() }: IGitFSOption = {}
 ) {
   const username = process.env.GITHUB_ACTOR || 'Unknown';
   await exec('git', ['config', '--global', 'user.name', username]);
@@ -22,8 +27,9 @@ export async function createGitFileSystem(
   const files: Set<string> = new Set();
 
   for await (const file of listDir('.', skipList)) {
-    await promises.unlink(file);
     files.add(file);
+    if (disable) continue;
+    await promises.unlink(file);
   }
 
   const add = async (path: string, content: string) => {
@@ -34,6 +40,7 @@ export async function createGitFileSystem(
   };
 
   const push = async (time: string) => {
+    if (disable) return;
     await exec('git', ['add', 'README.md', ...files]);
     await exec('git', ['commit', '-m', `Fetch data on ${time}`]);
     await exec('git', ['push']);
