@@ -1,0 +1,1 @@
+import{e,j as r,o as a,b as s,w as t,k as o,t as n}from"./vendor.cdf14165.js";var p=e({props:{name:{type:String,required:!0}},setup:e=>(p,u)=>{const m=r("router-link");return a(),s(m,{to:`/user/${e.name}`},{default:t((()=>[o(n(e.name),1)])),_:1},8,["to"])}});export{p as _};
