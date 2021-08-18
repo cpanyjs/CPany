@@ -86,8 +86,6 @@ const cliVersion = import.meta.env.VITE_CLI_VERSION!;
 const actionVersion = import.meta.env.VITE_ACTION_VERSION!;
 
 const updateTime = import.meta.env.VITE_UPDATE_TIME!;
-
-console.log(import.meta.env);
 </script>
 
 <style>
