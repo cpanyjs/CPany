@@ -7,7 +7,7 @@ import { createInstance } from '@cpany/core';
 import { codeforcesPlugin } from '@cpany/codeforces';
 
 import { createGitFileSystem } from './fs';
-import { processReadme } from './readme';
+import { processReport } from './report';
 import { now } from './utils';
 import { createRetryContainer } from './retry';
 
@@ -96,7 +96,7 @@ export async function run({ configPath, maxRetry }: IRunOption) {
   core.endGroup();
 
   const nowTime = now();
-  await processReadme(nowTime);
+  await processReport(nowTime);
   await fs.push(nowTime.format('YYYY-MM-DD HH:mm'));
 }
 

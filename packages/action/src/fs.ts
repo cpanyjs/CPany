@@ -41,7 +41,7 @@ export async function createGitFileSystem(
 
   const push = async (time: string) => {
     if (disable) return;
-    await exec('git', ['add', 'README.md', ...files]);
+    await exec('git', ['add', 'README.md', '.env', ...files]);
     await exec('git', ['commit', '-m', `Fetch data on ${time}`]);
     await exec('git', ['push']);
   };
