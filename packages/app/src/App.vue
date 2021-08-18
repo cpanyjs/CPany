@@ -52,7 +52,7 @@
           >
           <a
             class="block text-left"
-            :href="`https://github.com/marketplace/actions/setup-cpany?version=v${actionVersion}`"
+            :href="`https://github.com/marketplace/actions/fetch-cpany?version=v${actionVersion}`"
             target="_blank"
           >
             @cpany/action: {{ actionVersion }}</a
