@@ -1,5 +1,5 @@
-name: 'setup-cpany'
-description: 'Provide a description here'
+name: 'cpany'
+description: 'Competitive Programming Statistic Site Generator'
 author: 'XLor'
 inputs:
   config:
