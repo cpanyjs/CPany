@@ -21,6 +21,39 @@ import {
   DefaultRecentUserCount
 } from './constant';
 
+export async function createEnvLoader({ dataRootPath }: IPluginOption) {
+  const envMap: Map<string, string> = new Map();
+  const load = async () => {
+    try {
+      const content = (
+        await promises.readFile(path.join(dataRootPath, '.env'), 'utf8')
+      ).split('\n');
+      for (const _line of content) {
+        const line = _line.trim();
+        if (line === '') continue;
+        const [key, value] = line
+          .split('=')
+          .map((s) => s.trim())
+          .filter((s) => s !== '');
+        console.log(key, value);
+
+        envMap.set(key, value);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  await load();
+  const ActionVersion = envMap.get('ACTION_VERSION') ?? 'Unknown';
+  const UpdateTime = envMap.get('UPDATE_TIME') ?? '';
+  process.env.VITE_ACTION_VERSION = ActionVersion;
+  process.env.VITE_UPDATE_TIME = UpdateTime;
+  return {
+    ActionVersion,
+    UpdateTime
+  };
+}
+
 export async function createLoader({
   dataRootPath,
   cliVersion,

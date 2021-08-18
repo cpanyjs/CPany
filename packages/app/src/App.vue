@@ -33,21 +33,36 @@
 
   <footer class="px-1 py-6">
     <div class="text-center text-gray-400 font-mono">
-      <p>
-        <a
-          class="text-$text-light-1"
-          href="https://github.com/yjl9903/CPany"
-          target="_blank"
-          ><icon-github class="align-middle"></icon-github
-        ></a>
-        <a
-          :href="`https://github.com/yjl9903/CPany/tree/v${cliVersion}`"
-          target="_blank"
-        >
-          @cpany/cli: {{ cliVersion }}</a
-        >
+      <div class="flex items-center justify-center my-2">
+        <div class="mr-2">
+          <a
+            class="text-$text-light-1"
+            href="https://github.com/yjl9903/CPany"
+            target="_blank"
+            ><icon-github class="align-middle"></icon-github
+          ></a>
+        </div>
+        <div>
+          <a
+            class="block text-left"
+            :href="`https://github.com/yjl9903/CPany/tree/v${cliVersion}`"
+            target="_blank"
+          >
+            @cpany/cli: {{ cliVersion }}</a
+          >
+          <a
+            class="block text-left"
+            :href="`https://github.com/marketplace/actions/setup-cpany?version=v${actionVersion}`"
+            target="_blank"
+          >
+            @cpany/action: {{ actionVersion }}</a
+          >
+        </div>
+      </div>
+      <p v-if="updateTime !== ''">
+        <span>更新时间: {{ toDate(+updateTime).value }}</span>
       </p>
-      <p>
+      <p class="mt-2">
         <a
           href="https://github.com/yjl9903/CPany/blob/master/LICENSE"
           target="_blank"
@@ -61,11 +76,18 @@
 </template>
 
 <script setup lang="ts">
+import IconGithub from 'virtual:vite-icons/mdi/github';
 import { Navbar, NavbarItem } from './components/navbar';
 import { Progress } from './components/progress';
-import IconGithub from 'virtual:vite-icons/mdi/github';
+import { toDate } from './utils';
 
-const cliVersion = import.meta.env.VITE_CLI_VERSION;
+const cliVersion = import.meta.env.VITE_CLI_VERSION!;
+
+const actionVersion = import.meta.env.VITE_ACTION_VERSION!;
+
+const updateTime = import.meta.env.VITE_UPDATE_TIME!;
+
+console.log(import.meta.env);
 </script>
 
 <style>

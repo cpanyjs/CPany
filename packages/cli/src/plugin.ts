@@ -12,13 +12,15 @@ import type {
 } from '@cpany/types';
 import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
 import type { IPluginOption } from './types';
-import { createLoader } from './loader';
+import { createEnvLoader, createLoader } from './loader';
 import { slash } from './utils';
 import { DefaultRecentContestsCount, DefaultRecentTime } from './constant';
 
 export async function createCPanyPlugin(
   option: IPluginOption
 ): Promise<Plugin[]> {
+  createEnvLoader(option);
+
   const {
     config,
     contests,

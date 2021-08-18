@@ -35,7 +35,8 @@
           "dsu",
           "graphs",
           "greedy",
-          "trees"
+          "trees",
+          "two pointers"
         ],
         "problemUrl": "https://codeforces.com/contest/1559/problem/D2"
       },
