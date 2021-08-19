@@ -12,7 +12,7 @@ You can use Github Pages, Netlify, etc. to deploy generated static site.
 
 ### Netlify Deploy
 
-The template repository has provided Netlify `netlify.toml`, so you can just add your repository to Netlify without any configuration.
+The template repository has provided config file `netlify.toml`, so you can just add your repository to Netlify without any configuration.
 
 ### Github Pages Deploy
 
