@@ -70,9 +70,20 @@
 
     <div class="py-4">
       <h3 class="my-4 text-center">所有提交</h3>
-      <c-table :data="submissions" :page-size="10" :mobile-page-size="3">
+      <c-table
+        :data="submissions"
+        default-sort="序号"
+        default-sort-order="desc"
+        :page-size="10"
+        :mobile-page-size="3"
+      >
         <template #columns="{ row }">
-          <c-table-column class="font-600" label="#" center>
+          <c-table-column
+            class="font-600"
+            label="序号"
+            center
+            :sort="sortByIndex"
+          >
             <span>{{ row.index }}</span>
           </c-table-column>
           <c-table-column label="时间" center>
@@ -84,6 +95,13 @@
             <a :href="row.problem.problemUrl" target="_blank">{{
               row.problem.id + ' ' + row.problem.name
             }}</a>
+          </c-table-column>
+          <c-table-column
+            label="难度"
+            align="right"
+            :sort="sortByProblemRating"
+          >
+            <span>{{ row.problem.rating }}</span>
           </c-table-column>
           <c-table-column label="语言" center>
             <span>{{ row.language }}</span>
@@ -101,9 +119,9 @@
 
     <div>
       <h3 class="my-4 text-center">所有比赛</h3>
-      <c-table :data="contests" :page-size="5">
+      <c-table :data="contests" :page-size="10" :mobile-page-size="5">
         <template #columns="{ row, index }">
-          <c-table-column class="font-600" label="#" width="4em" center>
+          <c-table-column class="font-600" label="序号" width="4em" center>
             <span>{{ index + 1 }}</span>
           </c-table-column>
           <c-table-column label="时间" center>
@@ -167,6 +185,14 @@ const submissions = ref<ISubmission[]>(
     .reverse()
 );
 const contests = ref<IContest[]>(user.value.contests);
+
+const sortByIndex = (lhs: { index: number }, rhs: { index: number }) =>
+  lhs.index - rhs.index;
+const sortByProblemRating = (lhs: ISubmission, rhs: ISubmission) => {
+  const lval = lhs.problem.rating ?? 0;
+  const rval = rhs.problem.rating ?? 0;
+  return lval - rval;
+};
 
 // Hack: all handle are cf
 const cfHandles = (
