@@ -68,9 +68,17 @@
       </div>
     </div>
 
-    <div class="py-4">
-      <h3 class="my-4 text-center">所有提交</h3>
+    <div>
+      <h3 class="my-4 px-2 flex justify-between">
+        <div class="text-transparent"><icon-down></icon-down></div>
+        <div>所有提交</div>
+        <div @click="flipSub">
+          <icon-down v-if="!subState" class="hover-icon"></icon-down>
+          <icon-up v-else class="hover-icon"></icon-up>
+        </div>
+      </h3>
       <c-table
+        v-if="subState"
         :data="submissions"
         default-sort="序号"
         default-sort-order="desc"
@@ -118,8 +126,20 @@
     </div>
 
     <div>
-      <h3 class="my-4 text-center">所有比赛</h3>
-      <c-table :data="contests" :page-size="10" :mobile-page-size="5">
+      <h3 class="my-4 px-2 flex justify-between">
+        <div class="text-transparent"><icon-down></icon-down></div>
+        <div>所有比赛</div>
+        <div @click="flipContest">
+          <icon-down v-if="!contestState" class="hover-icon"></icon-down>
+          <icon-up v-else class="hover-icon"></icon-up>
+        </div>
+      </h3>
+      <c-table
+        v-if="contestState"
+        :data="contests"
+        :page-size="10"
+        :mobile-page-size="5"
+      >
         <template #columns="{ row, index }">
           <c-table-column class="font-600" label="序号" width="4em" center>
             <span>{{ index + 1 }}</span>
@@ -154,6 +174,8 @@ import IconClose from 'virtual:vite-icons/mdi/close';
 import IconCloud from 'virtual:vite-icons/mdi/cloud-outline';
 import IconBalloon from 'virtual:vite-icons/mdi/balloon';
 import IconLightbulbOn from 'virtual:vite-icons/mdi/lightbulb-on-outline';
+import IconUp from 'virtual:vite-icons/mdi/chevron-up';
+import IconDown from 'virtual:vite-icons/mdi/chevron-down';
 
 import { CTable, CTableColumn } from '@/components/table';
 import { CfHandle, CfRatingColor } from '@/components/codeforces';
@@ -162,6 +184,9 @@ import { toDate, displayContestType } from '@/utils';
 
 const props = defineProps<{ user: IUser }>();
 const { user } = toRefs(props);
+
+const { state: subState, flip: flipSub } = useHover();
+const { state: contestState, flip: flipContest } = useHover();
 
 const avatars = ref<string[]>([]);
 for (const handle of user.value.handles) {
@@ -205,4 +230,19 @@ const cfHandles = (
 const transformHandleType = (type: string) => {
   return 'Codeforces';
 };
+
+// hover
+function useHover() {
+  const state = ref(true);
+  const open = () => (state.value = true);
+  const close = () => (state.value = false);
+  const flip = () => (state.value = !state.value);
+  return { state, open, close, flip };
+}
 </script>
+
+<style>
+.hover-icon {
+  @apply text-2xl rounded-full cursor-pointer hover:bg-light-700;
+}
+</style>
