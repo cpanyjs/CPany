@@ -4,7 +4,8 @@ export default defineConfig({
   shortcuts: {
     'px-screen': 'md:px-8 <md:px-4',
     box: 'rounded-md p-4 shadow-box',
-    'info-box': 'rounded border-8 border-green-100 bg-light-200 md:(pl-4) <md:(pl-2) py-2'
+    'info-box':
+      'rounded border-8 border-green-100 bg-light-200 md:(pl-4) <md:(pl-2) py-2'
   },
   theme: {
     boxShadow: {

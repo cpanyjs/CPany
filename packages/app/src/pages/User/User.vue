@@ -70,7 +70,7 @@
 
     <div class="py-4">
       <h3 class="my-4 text-center">所有提交</h3>
-      <c-table :data="submissions.slice(0, 20)">
+      <c-table :data="submissions" :page-size="10" :mobile-page-size="5">
         <template #columns="{ row }">
           <c-table-column class="font-600" label="#" center>
             <span>{{ row.index }}</span>
@@ -101,9 +101,9 @@
 
     <div>
       <h3 class="my-4 text-center">所有比赛</h3>
-      <c-table :data="contests">
+      <c-table :data="contests" :page-size="5">
         <template #columns="{ row, index }">
-          <c-table-column class="font-600" label="#" center>
+          <c-table-column class="font-600" label="#" width="4em" center>
             <span>{{ index + 1 }}</span>
           </c-table-column>
           <c-table-column label="时间" center>
@@ -117,6 +117,8 @@
         </template>
       </c-table>
     </div>
+
+    <div class="mt-4"></div>
   </div>
 </template>
 

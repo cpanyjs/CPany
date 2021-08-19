@@ -2,8 +2,6 @@ import {
   defineComponent,
   h,
   ref,
-  Ref,
-  unref,
   computed,
   toRefs,
   VNode,
@@ -14,26 +12,17 @@ import {
 import IconDown from 'virtual:vite-icons/mdi/arrow-down';
 import IconUp from 'virtual:vite-icons/mdi/arrow-up';
 
-import CTableColumn from './c-table-column';
 import { isDef } from '@/utils';
-
-export function useIsMobile(mobileWidth: Ref<number> | number) {
-  const width = ref(window.innerWidth);
-  const isMobile = ref(width.value <= unref(mobileWidth));
-  const handler = () => {
-    width.value = window.innerWidth;
-    isMobile.value = width.value <= unref(mobileWidth);
-  };
-  const clean = () => window.removeEventListener('resize', handler);
-  window.addEventListener('resize', handler, { passive: true });
-  return { width, isMobile, clean };
-}
+import { useIsMobile, usePagination } from './utils';
+import CTableColumn from './c-table-column';
+import CTablePage from './c-table-page.vue';
 
 export default defineComponent({
   name: 'CTable',
   components: {
     IconDown,
-    IconUp
+    IconUp,
+    CTablePage
   },
   props: {
     data: {
@@ -50,13 +39,32 @@ export default defineComponent({
     defaultSortOrder: {
       type: String,
       default: 'asc'
+    },
+    pageSize: {
+      type: Number
+    },
+    mobilePageSize: {
+      type: Number
     }
   },
   setup(props, { slots }) {
-    const { data, defaultSort, defaultSortOrder, mobile } = toRefs(props);
+    const {
+      data,
+      defaultSort,
+      defaultSortOrder,
+      mobile,
+      pageSize,
+      mobilePageSize
+    } = toRefs(props);
 
     const { isMobile, clean } = useIsMobile(mobile);
     onUnmounted(() => clean());
+
+    const isPagination = computed(() => isDef(pageSize.value));
+    const { current, pageLength, L, R, nextPage, prePage } = usePagination(
+      !isMobile.value ? pageSize.value : mobilePageSize.value ?? pageSize.value,
+      data
+    );
 
     const sortField = ref(defaultSort.value);
     const sortOrder = ref<'asc' | 'desc'>(
@@ -110,7 +118,7 @@ export default defineComponent({
           return data;
         }
       };
-      return sorted(data.value);
+      return sorted(data.value).slice(L.value, R.value);
     });
 
     const renderDestop = () => {
@@ -183,28 +191,45 @@ export default defineComponent({
           return h(
             'tr',
             {},
-            slots.columns && filterColumn(slots.columns({ row, index }))
+            slots.columns &&
+              filterColumn(slots.columns({ row, index: index + L.value }))
           );
         });
 
-      return h(
-        'table',
-        {
-          class: ['table', 'w-full', 'border-separate', 'table-auto', 'rounded']
-        },
-        [
-          h('thead', {}, h('tr', {}, renderHead())),
-          h('tbody', {}, renderBody(sortedData.value)),
-          h('tfoot', {}, [])
-        ]
-      );
+      return h('div', {}, [
+        h(
+          'table',
+          {
+            class: [
+              'table',
+              'w-full',
+              'border-separate',
+              'table-auto',
+              'rounded'
+            ]
+          },
+          [
+            h('thead', {}, h('tr', {}, renderHead())),
+            h('tbody', {}, renderBody(sortedData.value))
+          ]
+        ),
+        isPagination.value &&
+          h(resolveComponent('c-table-page'), {
+            current: current.value,
+            first: 0,
+            last: pageLength.value,
+            nextPage,
+            prePage
+          })
+      ]);
     };
 
     const renderMobile = () => {
       const renderBody = () => {
         return sortedData.value.map((row, index) => {
           const columns = filterColumn(
-            slots.columns && slots.columns({ row, index, mobile: true })
+            slots.columns &&
+              slots.columns({ row, index: index + L.value, mobile: true })
           );
           return h(
             'div',
@@ -247,7 +272,16 @@ export default defineComponent({
         });
       };
 
-      return h('div', { class: ['mobile-table'] }, renderBody());
+      return h('div', { class: ['mobile-table'] }, [
+        renderBody(),
+        h(resolveComponent('c-table-page'), {
+          current: current.value,
+          first: 0,
+          last: pageLength.value,
+          nextPage,
+          prePage
+        })
+      ]);
     };
 
     return () => (!isMobile.value ? renderDestop() : renderMobile());
