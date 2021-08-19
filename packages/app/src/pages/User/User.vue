@@ -240,9 +240,3 @@ function useHover() {
   return { state, open, close, flip };
 }
 </script>
-
-<style>
-.hover-icon {
-  @apply text-2xl rounded-full cursor-pointer hover:bg-light-700;
-}
-</style>
