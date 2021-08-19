@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { toRefs } from 'vue';
+import { toRefs, computed } from 'vue';
 
 const props = defineProps<{
   disable?: boolean;
@@ -29,17 +29,19 @@ const props = defineProps<{
 
 const { primary, info, success, warning, danger } = toRefs(props);
 
-const colorClass = primary?.value
-  ? 'is-primary'
-  : info?.value
-  ? 'is-info'
-  : success?.value
-  ? 'is-success'
-  : warning?.value
-  ? 'is-warning'
-  : danger?.value
-  ? 'is-danger'
-  : undefined;
+const colorClass = computed(() =>
+  primary?.value
+    ? 'is-primary'
+    : info?.value
+    ? 'is-info'
+    : success?.value
+    ? 'is-success'
+    : warning?.value
+    ? 'is-warning'
+    : danger?.value
+    ? 'is-danger'
+    : undefined
+);
 </script>
 
 <style>

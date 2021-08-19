@@ -70,7 +70,7 @@
 
     <div class="py-4">
       <h3 class="my-4 text-center">所有提交</h3>
-      <c-table :data="submissions" :page-size="10" :mobile-page-size="5">
+      <c-table :data="submissions" :page-size="10" :mobile-page-size="3">
         <template #columns="{ row }">
           <c-table-column class="font-600" label="#" center>
             <span>{{ row.index }}</span>

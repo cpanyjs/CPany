@@ -61,10 +61,13 @@ export default defineComponent({
     onUnmounted(() => clean());
 
     const isPagination = computed(() => isDef(pageSize.value));
-    const { current, pageLength, L, R, nextPage, prePage } = usePagination(
-      !isMobile.value ? pageSize.value : mobilePageSize.value ?? pageSize.value,
-      data
-    );
+    const { current, pageLength, L, R, nextPage, prePage, goPage } =
+      usePagination(
+        !isMobile.value
+          ? pageSize.value
+          : mobilePageSize.value ?? pageSize.value,
+        data
+      );
 
     const sortField = ref(defaultSort.value);
     const sortOrder = ref<'asc' | 'desc'>(
@@ -118,8 +121,22 @@ export default defineComponent({
           return data;
         }
       };
-      return sorted(data.value).slice(L.value, R.value);
+      return sorted(data.value);
     });
+
+    const slicedData = computed(() => sortedData.value.slice(L.value, R.value));
+
+    const renderPage = () =>
+      h(resolveComponent('c-table-page'), {
+        current: current.value,
+        first: 0,
+        last: pageLength.value,
+        nextPage,
+        prePage,
+        goPage,
+        pageView: !isMobile.value ? 5 : 3,
+        isMobile: isMobile.value
+      });
 
     const renderDestop = () => {
       const renderHead = () =>
@@ -210,23 +227,16 @@ export default defineComponent({
           },
           [
             h('thead', {}, h('tr', {}, renderHead())),
-            h('tbody', {}, renderBody(sortedData.value))
+            h('tbody', {}, renderBody(slicedData.value))
           ]
         ),
-        isPagination.value &&
-          h(resolveComponent('c-table-page'), {
-            current: current.value,
-            first: 0,
-            last: pageLength.value,
-            nextPage,
-            prePage
-          })
+        isPagination.value && renderPage()
       ]);
     };
 
     const renderMobile = () => {
       const renderBody = () => {
-        return sortedData.value.map((row, index) => {
+        return slicedData.value.map((row, index) => {
           const columns = filterColumn(
             slots.columns &&
               slots.columns({ row, index: index + L.value, mobile: true })
@@ -274,13 +284,7 @@ export default defineComponent({
 
       return h('div', { class: ['mobile-table'] }, [
         renderBody(),
-        h(resolveComponent('c-table-page'), {
-          current: current.value,
-          first: 0,
-          last: pageLength.value,
-          nextPage,
-          prePage
-        })
+        isPagination.value && renderPage()
       ]);
     };
 

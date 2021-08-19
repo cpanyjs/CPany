@@ -50,6 +50,16 @@ export function usePagination(
     }
   };
 
+  const goPage = (_page: MaybeRef<number>) => {
+    const page = unref(_page);
+    if (0 <= page && page < pageLength.value) {
+      const length = unref(data).length;
+      current.value = page;
+      L.value = current.value * pageSize;
+      R.value = Math.min(length, L.value + pageSize);
+    }
+  };
+
   return {
     current,
     pageLength,
@@ -58,6 +68,7 @@ export function usePagination(
     hasNextPage,
     nextPage,
     hasPrePage,
-    prePage
+    prePage,
+    goPage
   };
 }
