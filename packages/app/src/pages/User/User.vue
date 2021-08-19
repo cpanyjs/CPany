@@ -90,6 +90,7 @@
             class="font-600"
             label="序号"
             center
+            width="5em"
             :sort="sortByIndex"
           >
             <span>{{ row.index }}</span>
@@ -114,7 +115,7 @@
           <c-table-column label="语言" center>
             <span>{{ row.language }}</span>
           </c-table-column>
-          <c-table-column label="结果" center>
+          <c-table-column label="结果" width="4em" center>
             <icon-check
               v-if="row.verdict === Verdict.OK"
               class="text-green-400"
