@@ -132,6 +132,9 @@
           <c-table-column label="比赛" :mobile-header-class="['min-w-8']">
             <router-link :to="row.path">{{ row.name }}</router-link>
           </c-table-column>
+          <c-table-column label="类型" center>
+            <span>{{ displayContestType(row) }}</span>
+          </c-table-column>
         </template>
       </c-table>
     </div>
@@ -155,7 +158,7 @@ import IconLightbulbOn from 'virtual:vite-icons/mdi/lightbulb-on-outline';
 import { CTable, CTableColumn } from '@/components/table';
 import { CfHandle, CfRatingColor } from '@/components/codeforces';
 import { CStastic } from '@/components/stastic';
-import { toDate } from '@/utils';
+import { toDate, displayContestType } from '@/utils';
 
 const props = defineProps<{ user: IUser }>();
 const { user } = toRefs(props);

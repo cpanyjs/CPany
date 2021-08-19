@@ -1,4 +1,5 @@
 import { Ref, ref, unref } from 'vue';
+import type { IContest } from '@cpany/types';
 
 export function isUndef<T>(
   object: T | undefined | null
@@ -45,3 +46,19 @@ export function toDuration(duration: number | Ref<number>) {
     ].join(' ')
   );
 }
+
+export const displayContestType = (contest: IContest) => {
+  if (contest.type.startsWith('codeforces')) {
+    if (/Round/.test(contest.name) || /Div/.test(contest.name)) {
+      return 'Codeforces Round';
+    } else if (/gym/.test(contest.type)) {
+      return 'Codeforces Gym';
+    } else {
+      return 'Codeforces';
+    }
+  } else if (contest.type === 'nowcoder') {
+    return '牛客竞赛';
+  } else {
+    return contest.type;
+  }
+};
