@@ -4,7 +4,7 @@
 
 ## Getting Started
 
-Use CPany template [@yjl9903/CPany-Template](https://github.com/yjl9903/CPany-Template/settings) to create your own repository for data storage.
+Use CPany template [@yjl9903/CPany-Template](https://github.com/yjl9903/CPany-Template) to create your own repository for data storage.
 
 Update config file `cpany.yml`, and push to Github. Then, Github Actions will automatically fetch data and push to this repository.
 
