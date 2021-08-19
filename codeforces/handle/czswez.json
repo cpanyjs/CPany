@@ -27,6 +27,7 @@
         "type": "codeforces",
         "id": "1559D2",
         "name": "Mocha and Diana (Hard Version)",
+        "rating": 2500,
         "tags": [
           "brute force",
           "constructive algorithms",

@@ -27,6 +27,7 @@
         "type": "codeforces",
         "id": "1559D1",
         "name": "Mocha and Diana (Easy Version)",
+        "rating": 1400,
         "tags": [
           "brute force",
           "constructive algorithms",
@@ -56,6 +57,7 @@
         "type": "codeforces",
         "id": "1559C",
         "name": "Mocha and Hiking",
+        "rating": 1200,
         "tags": [
           "constructive algorithms",
           "graphs"
@@ -81,6 +83,7 @@
         "type": "codeforces",
         "id": "1559B",
         "name": "Mocha and Red and Blue",
+        "rating": 900,
         "tags": [
           "dp",
           "greedy"
@@ -106,6 +109,7 @@
         "type": "codeforces",
         "id": "1559A",
         "name": "Mocha and Math",
+        "rating": 900,
         "tags": [
           "bitmasks",
           "constructive algorithms",
@@ -132,6 +136,7 @@
         "type": "codeforces",
         "id": "1559A",
         "name": "Mocha and Math",
+        "rating": 900,
         "tags": [
           "bitmasks",
           "constructive algorithms",
