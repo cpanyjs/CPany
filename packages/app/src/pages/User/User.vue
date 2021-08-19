@@ -69,12 +69,47 @@
     </div>
 
     <div class="mb-4">
-      <h3 class="my-4 px-2 flex justify-between">
+      <h3 class="my-4 px-2 flex justify-between items-center">
+        <div class="text-transparent"><icon-down></icon-down></div>
+        <div>训练日历</div>
+        <div
+          @click="flipHeatmap"
+          class="
+            p-1
+            flex
+            items-center
+            rounded-full
+            cursor-pointer
+            hover:bg-light-700
+          "
+        >
+          <icon-down
+            v-if="!heatmapState"
+            class="text-2xl inline-block"
+          ></icon-down>
+          <icon-up v-else class="text-2xl inline-block"></icon-up>
+        </div>
+      </h3>
+      <heat-map v-if="heatmapState" :getColor="handleHeatMapColor"></heat-map>
+    </div>
+
+    <div class="mb-4">
+      <h3 class="my-4 px-2 flex justify-between items-center">
         <div class="text-transparent"><icon-down></icon-down></div>
         <div>所有提交</div>
-        <div @click="flipSub">
-          <icon-down v-if="!subState" class="hover-icon"></icon-down>
-          <icon-up v-else class="hover-icon"></icon-up>
+        <div
+          @click="flipSub"
+          class="
+            p-1
+            flex
+            items-center
+            rounded-full
+            cursor-pointer
+            hover:bg-light-700
+          "
+        >
+          <icon-down v-if="!subState" class="text-2xl inline-block"></icon-down>
+          <icon-up v-else class="text-2xl inline-block"></icon-up>
         </div>
       </h3>
       <c-table
@@ -127,12 +162,25 @@
     </div>
 
     <div>
-      <h3 class="my-4 px-2 flex justify-between">
+      <h3 class="my-4 px-2 flex items-center justify-between">
         <div class="text-transparent"><icon-down></icon-down></div>
         <div>所有比赛</div>
-        <div @click="flipContest">
-          <icon-down v-if="!contestState" class="hover-icon"></icon-down>
-          <icon-up v-else class="hover-icon"></icon-up>
+        <div
+          @click="flipContest"
+          class="
+            p-1
+            flex
+            items-center
+            rounded-full
+            cursor-pointer
+            hover:bg-light-700
+          "
+        >
+          <icon-down
+            v-if="!contestState"
+            class="text-2xl inline-block"
+          ></icon-down>
+          <icon-up v-else class="text-2xl inline-block"></icon-up>
         </div>
       </h3>
       <c-table
@@ -181,11 +229,13 @@ import IconDown from 'virtual:vite-icons/mdi/chevron-down';
 import { CTable, CTableColumn } from '@/components/table';
 import { CfHandle, CfRatingColor } from '@/components/codeforces';
 import { CStastic } from '@/components/stastic';
+import { HeatMap, parseHeatMapDate } from '@/components/heatmap';
 import { toDate, displayContestType } from '@/utils';
 
 const props = defineProps<{ user: IUser }>();
 const { user } = toRefs(props);
 
+const { state: heatmapState, flip: flipHeatmap } = useHover();
 const { state: subState, flip: flipSub } = useHover();
 const { state: contestState, flip: flipContest } = useHover();
 
@@ -221,6 +271,22 @@ const sortByProblemRating = (lhs: ISubmission, rhs: ISubmission) => {
   const lval = lhs.problem.rating ?? 0;
   const rval = rhs.problem.rating ?? 0;
   return lval - rval;
+};
+
+// For calendar heatmap
+const heatmapMap: Map<string, number> = new Map();
+const solvedSet: Set<string> = new Set();
+submissions.value.forEach((sub) => {
+  const pid = `${sub.type}/${sub.problem.id}`;
+  if (sub.verdict === Verdict.OK && !solvedSet.has(pid)) {
+    solvedSet.add(pid);
+    const date = parseHeatMapDate(new Date(sub.creationTime * 1000));
+    heatmapMap.set(date, (heatmapMap.get(date) ?? 0) + 1);
+  }
+});
+const handleHeatMapColor = (day: string) => {
+  const count = heatmapMap.get(day) ?? 0;
+  return count;
 };
 
 // Hack: all handle are cf

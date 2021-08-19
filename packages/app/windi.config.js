@@ -6,8 +6,6 @@ export default defineConfig({
     box: 'rounded-md p-4 shadow-box',
     'info-box':
       'rounded border-8 border-green-100 bg-light-200 md:(pl-4) <md:(pl-2) py-2',
-    'hover-icon':
-      'text-2xl rounded-full cursor-pointer hover:bg-light-700'
   },
   theme: {
     boxShadow: {
