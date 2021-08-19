@@ -39,14 +39,32 @@
       >
         <span>{{ index + first }}</span>
       </c-button>
-      <span class="ml-2 inline-flex justify-center items-center py-2 md:px-2"
+      <span
+        class="
+          select-none
+          ml-2
+          inline-flex
+          justify-center
+          items-center
+          py-2
+          md:px-2
+        "
         >...</span
       >
       <c-button class="ml-2" @click="goPage(last - 1)">{{ last }}</c-button>
     </template>
     <template v-else-if="last - current <= pageView">
       <c-button class="ml-2" @click="goPage(first)">{{ first + 1 }}</c-button>
-      <span class="ml-2 inline-flex justify-center items-center py-2 md:px-2"
+      <span
+        class="
+          select-none
+          ml-2
+          inline-flex
+          justify-center
+          items-center
+          py-2
+          md:px-2
+        "
         >...</span
       >
       <c-button
@@ -61,7 +79,16 @@
     </template>
     <template v-else>
       <c-button class="ml-2" @click="goPage(first)">{{ first + 1 }}</c-button>
-      <span class="ml-2 inline-flex justify-center items-center py-2 md:px-2"
+      <span
+        class="
+          select-none
+          ml-2
+          inline-flex
+          justify-center
+          items-center
+          py-2
+          md:px-2
+        "
         >...</span
       >
       <c-button
@@ -73,7 +100,16 @@
       >
         <span>{{ current - Math.floor(pageView / 2) + index }}</span>
       </c-button>
-      <span class="ml-2 inline-flex justify-center items-center py-2 md:px-2"
+      <span
+        class="
+          select-none
+          ml-2
+          inline-flex
+          justify-center
+          items-center
+          py-2
+          md:px-2
+        "
         >...</span
       >
       <c-button class="ml-2" @click="goPage(last - 1)">{{ last }}</c-button>
