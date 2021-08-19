@@ -7,7 +7,9 @@ import {
   VNode,
   resolveComponent,
   onUnmounted,
-  Fragment
+  Fragment,
+  watchEffect,
+  watch
 } from 'vue';
 import IconDown from 'virtual:vite-icons/mdi/arrow-down';
 import IconUp from 'virtual:vite-icons/mdi/arrow-up';
@@ -60,14 +62,13 @@ export default defineComponent({
     const { isMobile, clean } = useIsMobile(mobile);
     onUnmounted(() => clean());
 
-    const isPagination = computed(() => isDef(pageSize.value));
+    const realPageSize = computed(() =>
+      !isMobile.value ? pageSize.value : mobilePageSize.value ?? pageSize.value
+    );
+
+    const isPagination = computed(() => isDef(realPageSize.value));
     const { current, pageLength, L, R, nextPage, prePage, goPage } =
-      usePagination(
-        !isMobile.value
-          ? pageSize.value
-          : mobilePageSize.value ?? pageSize.value,
-        data
-      );
+      usePagination(realPageSize, data);
 
     const sortField = ref(defaultSort.value);
     const sortOrder = ref<'asc' | 'desc'>(
@@ -131,6 +132,7 @@ export default defineComponent({
         current: current.value,
         first: 0,
         last: pageLength.value,
+        pageSize: realPageSize.value,
         nextPage,
         prePage,
         goPage,

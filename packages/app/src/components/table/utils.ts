@@ -1,5 +1,4 @@
 import { ref, computed, Ref, unref } from 'vue';
-import { isDef } from '@/utils';
 
 type MaybeRef<T> = Ref<T> | T;
 
@@ -16,47 +15,43 @@ export function useIsMobile(mobileWidth: MaybeRef<number>) {
 }
 
 export function usePagination(
-  _pageSize: MaybeRef<number | undefined>,
+  _pageSize: Ref<number | undefined>,
   data: MaybeRef<any[]>
 ) {
-  const pageSize = Math.max(1, unref(_pageSize) ?? unref(data).length);
+  const dataLength = computed(() => unref(data).length);
+  const pageSize = computed(() =>
+    Math.max(1, unref(_pageSize) ?? dataLength.value)
+  );
 
-  const pageLength = computed(() => Math.ceil(unref(data).length / pageSize));
+  const pageLength = computed(() =>
+    Math.ceil(dataLength.value / pageSize.value)
+  );
   const current = ref(0);
-  const L = ref(current.value * pageSize);
-  const R = ref(Math.min(unref(data).length, L.value + pageSize));
+  const L = computed(() => current.value * pageSize.value);
+  const R = computed(() =>
+    Math.min(dataLength.value, L.value + pageSize.value)
+  );
 
   const hasNextPage = computed(
-    () => current.value + 1 < pageLength.value && R.value < unref(data).length
+    () => current.value + 1 < pageLength.value && R.value < dataLength.value
   );
   const nextPage = () => {
     if (hasNextPage.value) {
-      const length = unref(data).length;
-      const pageSize = unref(_pageSize) ?? length;
       current.value += 1;
-      L.value = current.value * pageSize;
-      R.value = Math.min(length, L.value + pageSize);
     }
   };
 
   const hasPrePage = computed(() => current.value > 0 && L.value > 0);
   const prePage = () => {
     if (hasPrePage.value) {
-      const length = unref(data).length;
-      const pageSize = unref(_pageSize) ?? length;
       current.value -= 1;
-      L.value = current.value * pageSize;
-      R.value = Math.min(length, L.value + pageSize);
     }
   };
 
   const goPage = (_page: MaybeRef<number>) => {
     const page = unref(_page);
     if (0 <= page && page < pageLength.value) {
-      const length = unref(data).length;
       current.value = page;
-      L.value = current.value * pageSize;
-      R.value = Math.min(length, L.value + pageSize);
     }
   };
 

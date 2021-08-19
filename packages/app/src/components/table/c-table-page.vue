@@ -101,6 +101,7 @@ const props = defineProps<{
   current: number;
   first: number;
   last: number;
+  pageSize: number;
   nextPage: () => void;
   prePage: () => void;
   goPage: (page: number) => void;
