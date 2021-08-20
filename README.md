@@ -1,6 +1,6 @@
 # 🥖 CPany - Competitive Programming Statistic
 
-[![version](https://img.shields.io/npm/v/@cpany/cli?color=rgb%2850%2C203%2C86%29&label=cpany)](https://www.npmjs.com/package/@cpany/cli) [![build-test](https://github.com/yjl9903/CPany/actions/workflows/build.yml/badge.svg)](https://github.com/yjl9903/CPany/actions/workflows/build.yml) [![Netlify Status](https://api.netlify.com/api/v1/badges/e97aeec0-42f4-4117-a6af-55a48ece9011/deploy-status)](https://app.netlify.com/sites/cpany/deploys)
+[![version](https://img.shields.io/npm/v/@cpany/cli?color=rgb%2850%2C203%2C86%29&label=cpany)](https://www.npmjs.com/package/@cpany/cli) [![Demo](https://img.shields.io/badge/Netlify-Demo-brightgreen)](https://cpany.netlify.app/) [![build-test](https://github.com/yjl9903/CPany/actions/workflows/build.yml/badge.svg)](https://github.com/yjl9903/CPany/actions/workflows/build.yml)
 
 ![Screen shot](./screenshot.jpeg)
 
@@ -41,6 +41,44 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+```
+
+### Run locally
+
+Install [Node.js >= 14](https://nodejs.org/).
+
+Run one of the following commands to install [@cpany/cli](https://www.npmjs.com/package/@cpany/cli) globally.
+
+```bash
+# npm
+npm i -g @cpany/cli
+
+# yarn
+yarn global add @cpany/cli
+```
+
+Create an empty foler, and create `cpany.yml` in this new folder.
+
+```bash
+# prepare folder
+mkdir cpany-data
+cd cpany-data
+echo "users:" > cpany.yml
+echo "  tourist:" >> cpany.yml
+echo "    codeforces/handle: tourist" >> cpany.yml
+```
+
+Fetch data, and start your static site.
+
+```base
+# fetch data
+cpany action ./
+
+# Start dev server
+cpany dev
+
+# Build static site
+cpany build
 ```
 
 ## License
