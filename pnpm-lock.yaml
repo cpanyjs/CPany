@@ -61,6 +61,7 @@ importers:
       '@vue/compiler-sfc': ^3.1.4
       '@vuedx/typecheck': ^0.7.4
       '@vuedx/typescript-plugin-vue': ^0.7.4
+      tippy.js: ^6.3.1
       typescript: ^4.3.5
       vite: ^2.4.1
       vite-plugin-icons: ^0.6.5
@@ -70,6 +71,7 @@ importers:
       windicss: ^3.1.7
     dependencies:
       '@cpany/types': link:../types
+      tippy.js: 6.3.1
       vue: 3.1.4
       vue-router: 4.0.11_vue@3.1.4
     devDependencies:
@@ -329,6 +331,10 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.11.1
+
+  /@popperjs/core/2.9.3:
+    resolution: {integrity: sha512-xDu17cEfh7Kid/d95kB6tZsLOmSWKCZKtprnhVepjsSaCij+lM3mItSJDuuHDMbCWTh8Ejmebwb+KONcCJ0eXQ==}
+    dev: false
 
   /@sentry/core/5.30.0:
     resolution: {integrity: sha512-TmfrII8w1PQZSZgPpUESqjB+jC6MvZJZdLtE/0hZ+SrnKhW3x5WlYLvTXZpcWePYBku7rl2wn1RZu6uT0qCTeg==}
@@ -1810,6 +1816,12 @@ packages:
   /through/2.3.8:
     resolution: {integrity: sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=}
     dev: true
+
+  /tippy.js/6.3.1:
+    resolution: {integrity: sha512-JnFncCq+rF1dTURupoJ4yPie5Cof978inW6/4S6kmWV7LL9YOSEVMifED3KdrVPEG+Z/TFH2CDNJcQEfaeuQww==}
+    dependencies:
+      '@popperjs/core': 2.9.3
+    dev: false
 
   /to-fast-properties/2.0.0:
     resolution: {integrity: sha1-3F5pjL0HkmW8c+A3doGk5Og/YW4=}

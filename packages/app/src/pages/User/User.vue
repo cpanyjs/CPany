@@ -90,7 +90,11 @@
           <icon-up v-else class="text-2xl inline-block"></icon-up>
         </div>
       </h3>
-      <heat-map v-if="heatmapState" :getColor="handleHeatMapColor"></heat-map>
+      <heat-map
+        v-if="heatmapState"
+        :getColor="handleHeatMapColor"
+        :getTooltip="handleHeatMapTooltip"
+      ></heat-map>
     </div>
 
     <div class="mb-4">
@@ -287,6 +291,10 @@ submissions.value.forEach((sub) => {
 const handleHeatMapColor = (day: string) => {
   const count = heatmapMap.get(day) ?? 0;
   return count;
+};
+const handleHeatMapTooltip = (day: string) => {
+  const count = heatmapMap.get(day) ?? 0;
+  return `在 ${day} ${count ? `有 ${count} 次` : '没有'}正确通过`;
 };
 
 // Hack: all handle are cf

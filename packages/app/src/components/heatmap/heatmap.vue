@@ -48,6 +48,7 @@
             "
             @click="getDate(week, day)"
             :style="{ backgroundColor: getDayColor(week, day) }"
+            :ref="(el) => el && items.push({ el, date: getDate(week, day) })"
           ></div>
         </div>
       </div>
@@ -57,10 +58,16 @@
 
 <script setup lang="ts">
 import { ref, computed, toRefs, onMounted } from 'vue';
+import tippy from 'tippy.js';
 import { parseHeatMapDate } from './utils';
+import { isDef } from '@/utils';
 
 const props =
-  defineProps<{ colors?: string[]; getColor: (day: string) => number }>();
+  defineProps<{
+    colors?: string[];
+    getColor: (day: string) => number;
+    getTooltip: (day: string) => string;
+  }>();
 
 const DefaultColors = [
   'rgb(235,237,240)',
@@ -69,12 +76,14 @@ const DefaultColors = [
   'rgb(48,161,78)',
   'rgb(33,110,57)'
 ];
-const { colors: _colors, getColor } = toRefs(props);
+const { colors: _colors, getColor, getTooltip } = toRefs(props);
 const colors = computed(() => _colors?.value ?? DefaultColors);
 
 const dayInWeek = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
 
 const container = ref<HTMLElement | null>(null);
+const items = ref<Array<{ el: any; date: Date }>>([]);
+
 const unitValue = computed(() => {
   if (container.value === null) {
     return 16;
@@ -98,6 +107,13 @@ onMounted(() => {
   const el = container.value!;
   if (el.scrollLeft !== el.scrollWidth) {
     el.scrollTo(el.scrollWidth, 0);
+  }
+  if (isDef(getTooltip.value)) {
+    for (const item of items.value) {
+      const date = parseHeatMapDate(item.date);
+      const content = getTooltip.value(date);
+      tippy(item.el, { content });
+    }
   }
 });
 
