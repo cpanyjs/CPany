@@ -245,7 +245,7 @@ export default defineComponent({
           );
           return h(
             'div',
-            { class: ['box', 'p-0', 'mb-4'] },
+            { class: ['box', 'p-0', 'my-4'] },
             columns.map((column) => {
               const customHeader =
                 (column.props && column.props['mobile-header-class']) ?? [];

@@ -1,7 +1,7 @@
 <template>
   <div class="flex <lg:flex-col-reverse">
     <div class="lg:w-3/5 <lg:w-full">
-      <div class="box md:divide-y">
+      <div class="box divide-y">
         <h3 class="mb-4">最近比赛</h3>
 
         <c-table :data="contests" class="pt-2">
@@ -20,7 +20,7 @@
           </template>
         </c-table>
 
-        <div class="text-right pt-2">
+        <div class="text-right <md:mt-4 pt-2">
           <router-link
             :to="{ name: 'Contests' }"
             class="text-gray-400 font-thin hover:underline"
