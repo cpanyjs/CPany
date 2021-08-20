@@ -19,7 +19,7 @@
     </div>
     <div
       ref="container"
-      class="mb-4 w-full text-left whitespace-nowrap overflow-x-auto"
+      class="mb-4 w-full text-left whitespace-nowrap pb-[4px] overflow-x-auto"
     >
       <div
         v-for="week in 53"
