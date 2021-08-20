@@ -6,7 +6,7 @@
         class="absolute flex items-center"
         :style="{
           height: unit,
-          top: (unitValue + 4) * day + 4 + 'px',
+          top: (unitValue + 4) * day + 2 + 'px',
           right: '4px'
         }"
       >
@@ -19,7 +19,7 @@
     </div>
     <div
       ref="container"
-      class="mb-4 w-full text-left whitespace-nowrap overflow-auto"
+      class="mb-4 w-full text-left whitespace-nowrap overflow-x-auto"
     >
       <div
         v-for="week in 53"
