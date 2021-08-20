@@ -70,7 +70,7 @@ echo "    codeforces/handle: tourist" >> cpany.yml
 
 Fetch data, and start your static site.
 
-```base
+```bash
 # fetch data
 cpany action ./
 

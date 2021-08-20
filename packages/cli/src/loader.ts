@@ -292,15 +292,15 @@ export async function createLoader({
     overviewMap.set('title', '`' + (config.app?.title ?? '') + '`');
     overviewMap.set(
       'recentTime',
-      '' + config.app?.recentTime ?? DefaultRecentTime
+      String(config.app?.recentTime ?? DefaultRecentTime)
     );
     overviewMap.set(
       'recentContestsCount',
-      '' + config.app?.recentContestsCount ?? DefaultRecentContestsCount
+      String(config.app?.recentContestsCount ?? DefaultRecentContestsCount)
     );
     overviewMap.set(
       'recentUserCount',
-      '' + config.app?.recentUserCount ?? DefaultRecentUserCount
+      String(config.app?.recentUserCount ?? DefaultRecentUserCount)
     );
     overviewMap.set('cliVersion', '`' + cliVersion + '`');
 
@@ -313,7 +313,7 @@ export async function createLoader({
         ),
       0
     );
-    overviewMap.set('allSubmissionCount', '' + allSubmissionCount);
+    overviewMap.set('allSubmissionCount', String(allSubmissionCount));
 
     const allOkSubmissionCount = users.reduce(
       (sum, user) =>
@@ -327,13 +327,13 @@ export async function createLoader({
         ),
       0
     );
-    overviewMap.set('allOkSubmissionCount', '' + allOkSubmissionCount);
+    overviewMap.set('allOkSubmissionCount', String(allOkSubmissionCount));
 
     const allContestCount = users.reduce(
       (sum, user) => sum + user.contests.length,
       0
     );
-    overviewMap.set('allContestCount', '' + allContestCount);
+    overviewMap.set('allContestCount', String(allContestCount));
 
     return overviewMap;
   };
