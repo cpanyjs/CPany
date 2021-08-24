@@ -12835,5 +12835,16 @@
     "phase": "FINISHED",
     "contestUrl": "https://codeforces.com/gym/103241",
     "standingsUrl": "https://codeforces.com/gym/103241/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "2021, XIII Donald Knuth Annual Programming Contest by ESCOM-IPN",
+    "startTime": 1628884800,
+    "duration": 10800,
+    "participantNumber": 0,
+    "id": 103256,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103256",
+    "standingsUrl": "https://codeforces.com/gym/103256/standings"
   }
 ]
