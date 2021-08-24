@@ -109,12 +109,12 @@ a {
 .mobile-table>div:last-child {
   margin-bottom: 0;
 }
-.mobile-table .border {
+.mobile-table div.border {
   border-width: 0 0 1px 0;
   border-style: solid;
   border-color: #dbdbdb;
 }
-.mobile-table .border:last-child {
+.mobile-table div.border:last-child {
   border-bottom-width: 0px !important;
 }
 

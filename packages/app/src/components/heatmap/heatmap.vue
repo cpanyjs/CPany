@@ -62,12 +62,11 @@ import tippy from 'tippy.js';
 import { parseHeatMapDate } from './utils';
 import { isDef } from '@/utils';
 
-const props =
-  defineProps<{
-    colors?: string[];
-    getColor: (day: string) => number;
-    getTooltip: (day: string) => string;
-  }>();
+const props = defineProps<{
+  colors?: string[];
+  getColor: (day: string) => number;
+  getTooltip: (day: string) => string;
+}>();
 
 const DefaultColors = [
   'rgb(235,237,240)',

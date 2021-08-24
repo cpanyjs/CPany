@@ -7,9 +7,7 @@ import {
   VNode,
   resolveComponent,
   onUnmounted,
-  Fragment,
-  watchEffect,
-  watch
+  Fragment
 } from 'vue';
 import IconDown from 'virtual:vite-icons/mdi/arrow-down';
 import IconUp from 'virtual:vite-icons/mdi/arrow-up';
@@ -18,13 +16,15 @@ import { isDef } from '@/utils';
 import { useIsMobile, usePagination } from './utils';
 import CTableColumn from './c-table-column';
 import CTablePage from './c-table-page.vue';
+import { CSelect } from '../select';
 
 export default defineComponent({
   name: 'CTable',
   components: {
     IconDown,
     IconUp,
-    CTablePage
+    CTablePage,
+    CSelect
   },
   props: {
     data: {
@@ -237,6 +237,53 @@ export default defineComponent({
     };
 
     const renderMobile = () => {
+      const renderSortHeader = () => {
+        const options = columns
+          .map((column) => {
+            if (isDef(column.props?.sort)) {
+              const label = column.props?.label ?? '';
+              return h(
+                'option',
+                {
+                  value: label
+                },
+                [label]
+              );
+            } else {
+              return null;
+            }
+          })
+          .filter((option) => isDef(option));
+
+        return (
+          options.length > 0 &&
+          h('div', { class: ['my-4', 'flex', 'justify-between'] }, [
+            h(
+              resolveComponent('c-select'),
+              {
+                class: ['w-full', 'mr-2'],
+                onChange(ev: any) {
+                  const field = ev.target?.value;
+                  if (isDef(field)) {
+                    setSortField(field);
+                  }
+                }
+              },
+              options
+            ),
+            h(
+              resolveComponent('c-button'),
+              { info: true, onClick: filpSortOrder },
+              [
+                sortOrder.value === 'desc'
+                  ? h(resolveComponent('icon-down'), {})
+                  : h(resolveComponent('icon-up'), {})
+              ]
+            )
+          ])
+        );
+      };
+
       const renderBody = () => {
         return slicedData.value.map((row, index) => {
           const columns = filterColumn(
@@ -285,6 +332,7 @@ export default defineComponent({
       };
 
       return h('div', { class: ['mobile-table'] }, [
+        renderSortHeader(),
         renderBody(),
         isPagination.value && renderPage()
       ]);
