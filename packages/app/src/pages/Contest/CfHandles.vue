@@ -7,6 +7,7 @@
         :key="index"
         class="ml-2"
         :href="`https://codeforces.com/profile/${handle}`"
+        target="_blank"
       >
         <cf-rating-color :rating="findHandleRating(handle)">{{
           handle
