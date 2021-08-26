@@ -1,0 +1,1669 @@
+{
+  "type": "hdu/handle",
+  "handle": "c2014chh",
+  "hdu": {
+    "rank": 65751
+  },
+  "handleUrl": "https://acm.hdu.edu.cn/userstatus.php?user=c2014chh",
+  "submissions": [
+    {
+      "type": "hdu",
+      "id": 36587738,
+      "creationTime": 1629378898,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1629378898
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7079,
+        "name": "Pty loves lines",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7079"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36587738"
+    },
+    {
+      "type": "hdu",
+      "id": 36587716,
+      "creationTime": 1629378744,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1629378744
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7079,
+        "name": "Pty loves lines",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7079"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36587716"
+    },
+    {
+      "type": "hdu",
+      "id": 36578867,
+      "creationTime": 1629278035,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1629278035
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7068,
+        "name": "Dota2 Pro Circuit",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7068"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36578867"
+    },
+    {
+      "type": "hdu",
+      "id": 36576704,
+      "creationTime": 1629271010,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1629271010
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7073,
+        "name": "Integers Have Friends 2.0",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7073"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36576704"
+    },
+    {
+      "type": "hdu",
+      "id": 36576662,
+      "creationTime": 1629270873,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1629270873
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7073,
+        "name": "Integers Have Friends 2.0",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7073"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36576662"
+    },
+    {
+      "type": "hdu",
+      "id": 36576487,
+      "creationTime": 1629270154,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1629270154
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7073,
+        "name": "Integers Have Friends 2.0",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7073"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36576487"
+    },
+    {
+      "type": "hdu",
+      "id": 36576470,
+      "creationTime": 1629270088,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1629270088
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7073,
+        "name": "Integers Have Friends 2.0",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7073"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36576470"
+    },
+    {
+      "type": "hdu",
+      "id": 36516277,
+      "creationTime": 1628664494,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628664494
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7051,
+        "name": "Smzzl with Greedy Snake",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7051"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36516277"
+    },
+    {
+      "type": "hdu",
+      "id": 36516199,
+      "creationTime": 1628664246,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628664246
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7051,
+        "name": "Smzzl with Greedy Snake",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7051"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36516199"
+    },
+    {
+      "type": "hdu",
+      "id": 36516171,
+      "creationTime": 1628664156,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628664156
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7051,
+        "name": "Smzzl with Greedy Snake",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7051"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36516171"
+    },
+    {
+      "type": "hdu",
+      "id": 36509830,
+      "creationTime": 1628599778,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628599778
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7049,
+        "name": "Link with Grenade",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7049"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36509830"
+    },
+    {
+      "type": "hdu",
+      "id": 36509799,
+      "creationTime": 1628599672,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628599672
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7053,
+        "name": "Smzzl with Tropical Taste",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7053"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36509799"
+    },
+    {
+      "type": "hdu",
+      "id": 36509789,
+      "creationTime": 1628599646,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628599646
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7050,
+        "name": "Link with Limit",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7050"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36509789"
+    },
+    {
+      "type": "hdu",
+      "id": 36509783,
+      "creationTime": 1628599626,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628599626
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7047,
+        "name": "Link with Balls",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7047"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36509783"
+    },
+    {
+      "type": "hdu",
+      "id": 36509699,
+      "creationTime": 1628599333,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628599333
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7046,
+        "name": "Fall with Trees",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7046"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36509699"
+    },
+    {
+      "type": "hdu",
+      "id": 36509686,
+      "creationTime": 1628599282,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628599282
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7046,
+        "name": "Fall with Trees",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7046"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36509686"
+    },
+    {
+      "type": "hdu",
+      "id": 36509158,
+      "creationTime": 1628597094,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628597094
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7055,
+        "name": "Yiwen with Sqc",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7055"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36509158"
+    },
+    {
+      "type": "hdu",
+      "id": 36478749,
+      "creationTime": 1628250866,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628250866
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7028,
+        "name": "Decomposition",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7028"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36478749"
+    },
+    {
+      "type": "hdu",
+      "id": 36478746,
+      "creationTime": 1628250851,
+      "language": "G++",
+      "verdict": "FAILED",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628250851
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7030,
+        "name": "The Struggle",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7030"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36478746"
+    },
+    {
+      "type": "hdu",
+      "id": 36478533,
+      "creationTime": 1628250080,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628250080
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7029,
+        "name": "Median",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7029"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36478533"
+    },
+    {
+      "type": "hdu",
+      "id": 36478527,
+      "creationTime": 1628250054,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628250054
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7029,
+        "name": "Median",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7029"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36478527"
+    },
+    {
+      "type": "hdu",
+      "id": 36478424,
+      "creationTime": 1628249632,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628249632
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7029,
+        "name": "Median",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7029"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36478424"
+    },
+    {
+      "type": "hdu",
+      "id": 36478400,
+      "creationTime": 1628249486,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628249486
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7029,
+        "name": "Median",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7029"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36478400"
+    },
+    {
+      "type": "hdu",
+      "id": 36478376,
+      "creationTime": 1628249327,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628249327
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7029,
+        "name": "Median",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7029"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36478376"
+    },
+    {
+      "type": "hdu",
+      "id": 36477129,
+      "creationTime": 1628242222,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1628242222
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7025,
+        "name": "Yes, Prime Minister",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7025"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36477129"
+    },
+    {
+      "type": "hdu",
+      "id": 36407743,
+      "creationTime": 1627654585,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1627654585
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6982,
+        "name": "Road Discount",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6982"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36407743"
+    },
+    {
+      "type": "hdu",
+      "id": 36403524,
+      "creationTime": 1627633516,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1627633516
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6987,
+        "name": "Cycle Binary",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6987"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36403524"
+    },
+    {
+      "type": "hdu",
+      "id": 36393492,
+      "creationTime": 1627560077,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1627560077
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6993,
+        "name": "License Plate Recognition",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6993"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36393492"
+    },
+    {
+      "type": "hdu",
+      "id": 36393362,
+      "creationTime": 1627559559,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1627559559
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6993,
+        "name": "License Plate Recognition",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6993"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36393362"
+    },
+    {
+      "type": "hdu",
+      "id": 36393328,
+      "creationTime": 1627559385,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1627559385
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6993,
+        "name": "License Plate Recognition",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6993"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36393328"
+    },
+    {
+      "type": "hdu",
+      "id": 36393021,
+      "creationTime": 1627558283,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1627558283
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6986,
+        "name": "Kanade Loves Maze Designing",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6986"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36393021"
+    },
+    {
+      "type": "hdu",
+      "id": 36392773,
+      "creationTime": 1627557203,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1627557203
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6985,
+        "name": "Calculus",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6985"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36392773"
+    },
+    {
+      "type": "hdu",
+      "id": 36380779,
+      "creationTime": 1627465657,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1627465657
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6975,
+        "name": "Forgiving Matching",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6975"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36380779"
+    },
+    {
+      "type": "hdu",
+      "id": 36333511,
+      "creationTime": 1627041254,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1627041254
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6969,
+        "name": "I love triples",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6969"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36333511"
+    },
+    {
+      "type": "hdu",
+      "id": 36333502,
+      "creationTime": 1627041218,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1627041218
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6969,
+        "name": "I love triples",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6969"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36333502"
+    },
+    {
+      "type": "hdu",
+      "id": 36332694,
+      "creationTime": 1627037712,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1627037712
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6969,
+        "name": "I love triples",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6969"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36332694"
+    },
+    {
+      "type": "hdu",
+      "id": 36320135,
+      "creationTime": 1626959387,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1626959387
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6971,
+        "name": "I love max and multiply",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6971"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36320135"
+    },
+    {
+      "type": "hdu",
+      "id": 36319793,
+      "creationTime": 1626958358,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1626958358
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6971,
+        "name": "I love max and multiply",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6971"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36319793"
+    },
+    {
+      "type": "hdu",
+      "id": 36319762,
+      "creationTime": 1626958274,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1626958274
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6971,
+        "name": "I love max and multiply",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6971"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36319762"
+    },
+    {
+      "type": "hdu",
+      "id": 36319740,
+      "creationTime": 1626958239,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1626958239
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6971,
+        "name": "I love max and multiply",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6971"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36319740"
+    },
+    {
+      "type": "hdu",
+      "id": 36319723,
+      "creationTime": 1626958203,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1626958203
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6971,
+        "name": "I love max and multiply",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6971"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36319723"
+    },
+    {
+      "type": "hdu",
+      "id": 36319466,
+      "creationTime": 1626957532,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1626957532
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6971,
+        "name": "I love max and multiply",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6971"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36319466"
+    },
+    {
+      "type": "hdu",
+      "id": 36304755,
+      "creationTime": 1626869621,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1626869621
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6960,
+        "name": "Necklace of Beads",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6960"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36304755"
+    },
+    {
+      "type": "hdu",
+      "id": 36288223,
+      "creationTime": 1626787388,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1626787388
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6957,
+        "name": "Maximal submatrix",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6957"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36288223"
+    },
+    {
+      "type": "hdu",
+      "id": 36288170,
+      "creationTime": 1626787246,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1626787246
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6957,
+        "name": "Maximal submatrix",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6957"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36288170"
+    },
+    {
+      "type": "hdu",
+      "id": 36288134,
+      "creationTime": 1626787115,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1626787115
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6957,
+        "name": "Maximal submatrix",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6957"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36288134"
+    },
+    {
+      "type": "hdu",
+      "id": 36287317,
+      "creationTime": 1626785035,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1626785035
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6955,
+        "name": "Xor sum",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6955"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36287317"
+    },
+    {
+      "type": "hdu",
+      "id": 36287293,
+      "creationTime": 1626784966,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1626784966
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6955,
+        "name": "Xor sum",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6955"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36287293"
+    },
+    {
+      "type": "hdu",
+      "id": 36287150,
+      "creationTime": 1626784671,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1626784671
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6955,
+        "name": "Xor sum",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6955"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36287150"
+    },
+    {
+      "type": "hdu",
+      "id": 36287129,
+      "creationTime": 1626784612,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1626784612
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6955,
+        "name": "Xor sum",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6955"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36287129"
+    },
+    {
+      "type": "hdu",
+      "id": 36286946,
+      "creationTime": 1626784244,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1626784244
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6955,
+        "name": "Xor sum",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6955"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36286946"
+    },
+    {
+      "type": "hdu",
+      "id": 36286931,
+      "creationTime": 1626784216,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1626784216
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6955,
+        "name": "Xor sum",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6955"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36286931"
+    },
+    {
+      "type": "hdu",
+      "id": 36286710,
+      "creationTime": 1626783795,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1626783795
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6955,
+        "name": "Xor sum",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6955"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36286710"
+    },
+    {
+      "type": "hdu",
+      "id": 35938168,
+      "creationTime": 1620136373,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1620136373
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 2993,
+        "name": "MAX Average Problem",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=2993"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35938168"
+    },
+    {
+      "type": "hdu",
+      "id": 35938081,
+      "creationTime": 1620135790,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1620135790
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 2993,
+        "name": "MAX Average Problem",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=2993"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35938081"
+    },
+    {
+      "type": "hdu",
+      "id": 35938075,
+      "creationTime": 1620135746,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1620135746
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 2993,
+        "name": "MAX Average Problem",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=2993"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35938075"
+    },
+    {
+      "type": "hdu",
+      "id": 35938027,
+      "creationTime": 1620135418,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1620135418
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 2993,
+        "name": "MAX Average Problem",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=2993"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35938027"
+    },
+    {
+      "type": "hdu",
+      "id": 35938021,
+      "creationTime": 1620135382,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1620135382
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 2993,
+        "name": "MAX Average Problem",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=2993"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35938021"
+    },
+    {
+      "type": "hdu",
+      "id": 35937990,
+      "creationTime": 1620135198,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1620135198
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 2993,
+        "name": "MAX Average Problem",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=2993"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35937990"
+    },
+    {
+      "type": "hdu",
+      "id": 35937960,
+      "creationTime": 1620135016,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1620135016
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 2993,
+        "name": "MAX Average Problem",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=2993"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35937960"
+    },
+    {
+      "type": "hdu",
+      "id": 35294577,
+      "creationTime": 1612494395,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1612494395
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 5828,
+        "name": "Rikka with Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=5828"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35294577"
+    },
+    {
+      "type": "hdu",
+      "id": 35294359,
+      "creationTime": 1612492623,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1612492623
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 5828,
+        "name": "Rikka with Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=5828"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35294359"
+    },
+    {
+      "type": "hdu",
+      "id": 35294233,
+      "creationTime": 1612491565,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1612491565
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 5828,
+        "name": "Rikka with Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=5828"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35294233"
+    },
+    {
+      "type": "hdu",
+      "id": 35255879,
+      "creationTime": 1612085152,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1612085152
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 5828,
+        "name": "Rikka with Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=5828"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35255879"
+    },
+    {
+      "type": "hdu",
+      "id": 35255673,
+      "creationTime": 1612084311,
+      "language": "G++",
+      "verdict": "FAILED",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1612084311
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 5828,
+        "name": "Rikka with Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=5828"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35255673"
+    },
+    {
+      "type": "hdu",
+      "id": 35255624,
+      "creationTime": 1612084076,
+      "language": "G++",
+      "verdict": "FAILED",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1612084076
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 5828,
+        "name": "Rikka with Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=5828"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35255624"
+    },
+    {
+      "type": "hdu",
+      "id": 35255557,
+      "creationTime": 1612083787,
+      "language": "G++",
+      "verdict": "FAILED",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1612083787
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 5828,
+        "name": "Rikka with Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=5828"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35255557"
+    },
+    {
+      "type": "hdu",
+      "id": 35255395,
+      "creationTime": 1612083160,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1612083160
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 5828,
+        "name": "Rikka with Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=5828"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35255395"
+    },
+    {
+      "type": "hdu",
+      "id": 35255356,
+      "creationTime": 1612083037,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1612083037
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 5828,
+        "name": "Rikka with Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=5828"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35255356"
+    },
+    {
+      "type": "hdu",
+      "id": 35255318,
+      "creationTime": 1612082817,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1612082817
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 5828,
+        "name": "Rikka with Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=5828"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35255318"
+    },
+    {
+      "type": "hdu",
+      "id": 35222876,
+      "creationTime": 1611759411,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1611759411
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6656,
+        "name": "Kejin Player",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6656"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35222876"
+    },
+    {
+      "type": "hdu",
+      "id": 35222870,
+      "creationTime": 1611759381,
+      "language": "G++",
+      "verdict": "FAILED",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1611759381
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6656,
+        "name": "Kejin Player",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6656"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35222870"
+    },
+    {
+      "type": "hdu",
+      "id": 35160556,
+      "creationTime": 1611244882,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1611244882
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 2010,
+        "name": "水仙花数",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=2010"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35160556"
+    },
+    {
+      "type": "hdu",
+      "id": 35160546,
+      "creationTime": 1611244801,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1611244801
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 2010,
+        "name": "水仙花数",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=2010"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35160546"
+    },
+    {
+      "type": "hdu",
+      "id": 35160541,
+      "creationTime": 1611244757,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1611244757
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 2010,
+        "name": "水仙花数",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=2010"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35160541"
+    },
+    {
+      "type": "hdu",
+      "id": 35160532,
+      "creationTime": 1611244658,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1611244658
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 2010,
+        "name": "水仙花数",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=2010"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=35160532"
+    },
+    {
+      "type": "hdu",
+      "id": 34346350,
+      "creationTime": 1604114825,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1604114825
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 1358,
+        "name": "Period",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=1358"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=34346350"
+    },
+    {
+      "type": "hdu",
+      "id": 34346281,
+      "creationTime": 1604114569,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1604114569
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 1358,
+        "name": "Period",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=1358"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=34346281"
+    },
+    {
+      "type": "hdu",
+      "id": 34346220,
+      "creationTime": 1604114366,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1604114366
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 1358,
+        "name": "Period",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=1358"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=34346220"
+    }
+  ]
+}

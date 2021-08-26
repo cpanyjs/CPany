@@ -3,11 +3,13 @@ users:
     codeforces/handle: Solashiro
   czswez:
     codeforces/handle: czswez
+    hdu/handle: c2014chh
   MojeDes:
     codeforces/handle: MojeDes
 
 handles:
   - codeforces/handle
+  - hdu/handle
 
 contests:
   - codeforces/contest.json
