@@ -1,8 +1,11 @@
 import type { IPlugin } from '@cpany/core';
 import type { IHandleWithHdu } from '@cpany/types/hdu';
 import { ISubmission, ParticipantType, Verdict } from '@cpany/types';
+
 import axios from 'axios';
 import { parse } from 'node-html-parser';
+
+import { getProblem } from './problems';
 
 export function createHduHandlePlugin(): IPlugin {
   const name = 'hdu/handle';
@@ -85,12 +88,7 @@ export async function fetchSubmissions(handle: string): Promise<ISubmission[]> {
           participantType: ParticipantType.PRACTICE,
           participantTime: time
         },
-        problem: {
-          type: 'hdu',
-          id: pid,
-          name: `${pid}`,
-          problemUrl: `https://acm.hdu.edu.cn/showproblem.php?pid=${pid}`
-        },
+        problem: await getProblem(pid),
         submissionUrl: `https://acm.hdu.edu.cn/viewcode.php?rid=${id}`
       });
 
