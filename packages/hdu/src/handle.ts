@@ -116,6 +116,12 @@ export async function fetchSubmissions(
   let curId: number | undefined = undefined;
   while (true) {
     const oldLen = subs.length;
+    console.log(
+      `${handle.handle} has loaded ${
+        oldLen + handle.submissions.length
+      } submissions`
+    );
+
     curId = await fetch(curId);
     if (subs.length === oldLen) break;
   }
