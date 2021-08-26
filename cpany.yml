@@ -10,6 +10,7 @@ users:
 
 handles:
   - codeforces/handle
+  - hdu/handle
 
 contests:
   - codeforces/contest.json
