@@ -33,7 +33,7 @@ export async function fetchHandle(handle: string): Promise<IHandleWithHdu> {
     data
   );
   return {
-    type: 'hdu',
+    type: 'hdu/handle',
     handle,
     hdu: {
       rank: rank !== null && typeof rank[1] === 'string' ? +rank[1] : undefined

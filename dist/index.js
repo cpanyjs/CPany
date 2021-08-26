@@ -6978,7 +6978,7 @@ function fetchHandle(handle) {
         const { data } = yield axios_1.default.get(`https://acm.hdu.edu.cn/userstatus.php?user=${handle}`);
         const rank = /<tr><td>Rank<\/td><td align=center>(\d+)<\/td><\/tr>/.exec(data);
         return {
-            type: 'hdu',
+            type: 'hdu/handle',
             handle,
             hdu: {
                 rank: rank !== null && typeof rank[1] === 'string' ? +rank[1] : undefined

@@ -37,26 +37,11 @@
           "
         >
           <div
-            v-for="(handle, index) in cfHandles"
+            v-for="(handle, index) in user.handles"
             :key="index"
             class="box <md:(p-2)"
           >
-            <span class="font-600"
-              >{{ transformHandleType(handle.type) }}:
-            </span>
-            <cf-handle :handle="handle"></cf-handle>
-            <p>
-              <span class="font-600">Contest rating: </span>
-              <cf-rating-color :rank="handle.codeforces.rank">{{
-                handle.codeforces.rating
-              }}</cf-rating-color>
-            </p>
-            <p>
-              <span class="font-600">Max rating: </span>
-              <cf-rating-color :rank="handle.codeforces.maxRank">{{
-                handle.codeforces.maxRating
-              }}</cf-rating-color>
-            </p>
+            <handle-card :handle="handle"></handle-card>
           </div>
         </div>
       </div>
@@ -217,8 +202,7 @@
 </template>
 
 <script setup lang="ts">
-import type { RouteKey, IUser, ISubmission, IContest } from '@cpany/types';
-import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
+import type { IUser, ISubmission, IContest } from '@cpany/types';
 import { Verdict } from '@cpany/types';
 import { ref, toRefs, computed } from 'vue';
 
@@ -231,10 +215,11 @@ import IconUp from 'virtual:vite-icons/mdi/chevron-up';
 import IconDown from 'virtual:vite-icons/mdi/chevron-down';
 
 import { CTable, CTableColumn } from '@/components/table';
-import { CfHandle, CfRatingColor } from '@/components/codeforces';
 import { CStastic } from '@/components/stastic';
 import { HeatMap, parseHeatMapDate } from '@/components/heatmap';
 import { toDate, displayContestType } from '@/utils';
+
+import HandleCard from './HandleCard.vue';
 
 const props = defineProps<{ user: IUser }>();
 const { user } = toRefs(props);
@@ -295,15 +280,6 @@ const handleHeatMapColor = (day: string) => {
 const handleHeatMapTooltip = (day: string) => {
   const count = heatmapMap.get(day) ?? 0;
   return `在 ${day} ${count ? `有 ${count} 次` : '没有'}正确通过`;
-};
-
-// Hack: all handle are cf
-const cfHandles = (
-  user.value.handles as RouteKey<IHandleWithCodeforces>[]
-).sort((lhs, rhs) => rhs.codeforces.rating - lhs.codeforces.rating);
-
-const transformHandleType = (type: string) => {
-  return 'Codeforces';
 };
 
 // hover
