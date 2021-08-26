@@ -119,10 +119,13 @@
           >
             <span>{{ row.index }}</span>
           </c-table-column>
-          <c-table-column label="时间" center>
+          <c-table-column label="时间" center width="10em">
             <a :href="row.submissionUrl" target="_blank">{{
               toDate(row.creationTime).value
             }}</a>
+          </c-table-column>
+          <c-table-column label="类型" center width="4em">
+            <span>{{ uppercase(row.type) }}</span>
           </c-table-column>
           <c-table-column label="题目" :mobile-header-class="['min-w-8']">
             <a :href="row.problem.problemUrl" target="_blank">{{
@@ -182,7 +185,7 @@
           <c-table-column class="font-600" label="序号" width="4em" center>
             <span>{{ index + 1 }}</span>
           </c-table-column>
-          <c-table-column label="时间" center>
+          <c-table-column label="时间" center width="10em">
             <a :href="row.contestUrl">{{
               toDate(row.author.participantTime).value
             }}</a>
@@ -281,6 +284,9 @@ const handleHeatMapTooltip = (day: string) => {
   const count = heatmapMap.get(day) ?? 0;
   return `在 ${day} ${count ? `有 ${count} 次` : '没有'}正确通过`;
 };
+
+const uppercase = (type: string) =>
+  type.charAt(0).toUpperCase() + type.slice(1);
 
 // hover
 function useHover() {
