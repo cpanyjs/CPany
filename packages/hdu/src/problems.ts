@@ -6,6 +6,10 @@ import iconv from 'iconv-lite';
 
 const problems = new Map<number, IProblem>();
 
+export function addToCache(pid: number, problem: IProblem) {
+  problems.set(pid, problem);
+}
+
 export async function getProblem(pid: number): Promise<IProblem> {
   if (problems.has(pid)) return problems.get(pid)!;
   const data = await axios

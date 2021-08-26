@@ -32,7 +32,10 @@ export async function run({
   core.endGroup();
 
   const instance = createInstance({
-    plugins: [...codeforcesPlugin(), ...hduPlugin()],
+    plugins: [
+      ...codeforcesPlugin(),
+      ...(await hduPlugin({ basePath, ...config }))
+    ],
     logger: core
   });
 

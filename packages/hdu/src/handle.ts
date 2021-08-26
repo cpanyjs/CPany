@@ -5,7 +5,16 @@ import { ISubmission, ParticipantType, Verdict } from '@cpany/types';
 import axios from 'axios';
 import { parse } from 'node-html-parser';
 
-import { getProblem } from './problems';
+import { getProblem, addToCache as addToProblemCache } from './problems';
+
+const handles = new Map<string, IHandleWithHdu>();
+
+export function addToCache(handle: IHandleWithHdu) {
+  handles.set(handle.handle, handle);
+  for (const sub of handle.submissions) {
+    addToProblemCache(sub.problem.id as number, sub.problem);
+  }
+}
 
 export function createHduHandlePlugin(): IPlugin {
   const name = 'hdu/handle';
@@ -20,7 +29,7 @@ export function createHduHandlePlugin(): IPlugin {
     async transform({ id, type }) {
       if (type === name) {
         const handle = await fetchHandle(id);
-        handle.submissions = await fetchSubmissions(id);
+        handle.submissions = await fetchSubmissions(handle);
         return {
           key: gid(id),
           content: JSON.stringify(handle, null, 2)
@@ -32,6 +41,7 @@ export function createHduHandlePlugin(): IPlugin {
 }
 
 export async function fetchHandle(handle: string): Promise<IHandleWithHdu> {
+  if (handles.has(handle)) return handles.get(handle)!;
   const { data } = await axios.get(
     `https://acm.hdu.edu.cn/userstatus.php?user=${handle}`
   );
@@ -49,13 +59,17 @@ export async function fetchHandle(handle: string): Promise<IHandleWithHdu> {
   };
 }
 
-export async function fetchSubmissions(handle: string): Promise<ISubmission[]> {
+export async function fetchSubmissions(
+  handle: IHandleWithHdu
+): Promise<ISubmission[]> {
+  const latestSubId =
+    handle.submissions.length > 0 ? handle.submissions[0].id : -1;
   const subs: ISubmission[] = [];
   const fetch = async (first?: number) => {
     let minId = first ?? Number.MAX_VALUE;
 
     const { data } = await axios.get(`https://acm.hdu.edu.cn/status.php`, {
-      params: { user: handle, first }
+      params: { user: handle.handle, first }
     });
 
     const root = parse(data);
@@ -71,6 +85,7 @@ export async function fetchSubmissions(handle: string): Promise<ISubmission[]> {
       const verdict = node.childNodes[2].childNodes[0].innerText;
       // skip waiting
       if (
+        id <= latestSubId ||
         verdict === 'Queuing' ||
         verdict === 'Compiling' ||
         verdict === 'Running'
@@ -84,7 +99,7 @@ export async function fetchSubmissions(handle: string): Promise<ISubmission[]> {
         language,
         verdict: parseVerdict(verdict),
         author: {
-          members: [handle],
+          members: [handle.handle],
           participantType: ParticipantType.PRACTICE,
           participantTime: time
         },
@@ -105,7 +120,7 @@ export async function fetchSubmissions(handle: string): Promise<ISubmission[]> {
     if (subs.length === oldLen) break;
   }
 
-  return subs;
+  return [...subs, ...handle.submissions];
 }
 
 function parseVerdict(verdict: string) {

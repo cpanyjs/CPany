@@ -16011,11 +16011,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.fetchSubmissions = exports.fetchHandle = exports.createHduHandlePlugin = void 0;
+exports.fetchSubmissions = exports.fetchHandle = exports.createHduHandlePlugin = exports.addToCache = void 0;
 const types_1 = __nccwpck_require__(7584);
 const axios_1 = __importDefault(__nccwpck_require__(5186));
 const node_html_parser_1 = __nccwpck_require__(5738);
 const problems_1 = __nccwpck_require__(9604);
+const handles = new Map();
+function addToCache(handle) {
+    handles.set(handle.handle, handle);
+    for (const sub of handle.submissions) {
+        problems_1.addToCache(sub.problem.id, sub.problem);
+    }
+}
+exports.addToCache = addToCache;
 function createHduHandlePlugin() {
     const name = 'hdu/handle';
     const gid = (id) => name + '/' + id + '.json';
@@ -16030,7 +16038,7 @@ function createHduHandlePlugin() {
             return __awaiter(this, void 0, void 0, function* () {
                 if (type === name) {
                     const handle = yield fetchHandle(id);
-                    handle.submissions = yield fetchSubmissions(id);
+                    handle.submissions = yield fetchSubmissions(handle);
                     return {
                         key: gid(id),
                         content: JSON.stringify(handle, null, 2)
@@ -16044,6 +16052,8 @@ function createHduHandlePlugin() {
 exports.createHduHandlePlugin = createHduHandlePlugin;
 function fetchHandle(handle) {
     return __awaiter(this, void 0, void 0, function* () {
+        if (handles.has(handle))
+            return handles.get(handle);
         const { data } = yield axios_1.default.get(`https://acm.hdu.edu.cn/userstatus.php?user=${handle}`);
         const rank = /<tr><td>Rank<\/td><td align=center>(\d+)<\/td><\/tr>/.exec(data);
         return {
@@ -16060,11 +16070,12 @@ function fetchHandle(handle) {
 exports.fetchHandle = fetchHandle;
 function fetchSubmissions(handle) {
     return __awaiter(this, void 0, void 0, function* () {
+        const latestSubId = handle.submissions.length > 0 ? handle.submissions[0].id : -1;
         const subs = [];
         const fetch = (first) => __awaiter(this, void 0, void 0, function* () {
             let minId = first !== null && first !== void 0 ? first : Number.MAX_VALUE;
             const { data } = yield axios_1.default.get(`https://acm.hdu.edu.cn/status.php`, {
-                params: { user: handle, first }
+                params: { user: handle.handle, first }
             });
             const root = node_html_parser_1.parse(data);
             const items = root
@@ -16077,7 +16088,8 @@ function fetchSubmissions(handle) {
                 const pid = +node.childNodes[3].childNodes[0].innerText;
                 const verdict = node.childNodes[2].childNodes[0].innerText;
                 // skip waiting
-                if (verdict === 'Queuing' ||
+                if (id <= latestSubId ||
+                    verdict === 'Queuing' ||
                     verdict === 'Compiling' ||
                     verdict === 'Running')
                     continue;
@@ -16088,7 +16100,7 @@ function fetchSubmissions(handle) {
                     language,
                     verdict: parseVerdict(verdict),
                     author: {
-                        members: [handle],
+                        members: [handle.handle],
                         participantType: types_1.ParticipantType.PRACTICE,
                         participantTime: time
                     },
@@ -16106,7 +16118,7 @@ function fetchSubmissions(handle) {
             if (subs.length === oldLen)
                 break;
         }
-        return subs;
+        return [...subs, ...handle.submissions];
     });
 }
 exports.fetchSubmissions = fetchSubmissions;
@@ -16134,18 +16146,102 @@ function parseVerdict(verdict) {
 /***/ }),
 
 /***/ 8808:
-/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
-var __webpack_unused_export__;
 
-__webpack_unused_export__ = ({ value: true });
-exports.f = void 0;
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __asyncValues = (this && this.__asyncValues) || function (o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+};
+var __await = (this && this.__await) || function (v) { return this instanceof __await ? (this.v = v, this) : new __await(v); }
+var __asyncDelegator = (this && this.__asyncDelegator) || function (o) {
+    var i, p;
+    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
+    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
+};
+var __asyncGenerator = (this && this.__asyncGenerator) || function (thisArg, _arguments, generator) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var g = generator.apply(thisArg, _arguments || []), i, q = [];
+    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
+    function fulfill(value) { resume("next", value); }
+    function reject(value) { resume("throw", value); }
+    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.hduPlugin = void 0;
+const path_1 = __importDefault(__nccwpck_require__(5622));
+const fs_1 = __nccwpck_require__(5747);
 const handle_1 = __nccwpck_require__(6616);
-function hduPlugin(option = {}) {
-    return [handle_1.createHduHandlePlugin()];
+function hduPlugin(config) {
+    var e_1, _a;
+    var _b;
+    return __awaiter(this, void 0, void 0, function* () {
+        for (const handlePath of (_b = config.handles) !== null && _b !== void 0 ? _b : []) {
+            const fullPath = path_1.default.resolve(config.basePath, handlePath);
+            try {
+                try {
+                    for (var _c = (e_1 = void 0, __asyncValues(listAllFiles(fullPath))), _d; _d = yield _c.next(), !_d.done;) {
+                        const handle = _d.value;
+                        if (handle.type.startsWith('hdu')) {
+                            handle_1.addToCache(handle);
+                        }
+                    }
+                }
+                catch (e_1_1) { e_1 = { error: e_1_1 }; }
+                finally {
+                    try {
+                        if (_d && !_d.done && (_a = _c.return)) yield _a.call(_c);
+                    }
+                    finally { if (e_1) throw e_1.error; }
+                }
+            }
+            catch (error) { }
+        }
+        return [handle_1.createHduHandlePlugin()];
+    });
 }
-exports.f = hduPlugin;
+exports.hduPlugin = hduPlugin;
+function listAllFiles(dir) {
+    return __asyncGenerator(this, arguments, function* listAllFiles_1() {
+        if (dir.endsWith('.json')) {
+            const files = JSON.parse(yield __await(fs_1.promises.readFile(dir, 'utf8')));
+            if (Array.isArray(files)) {
+                for (const contest of files) {
+                    yield yield __await(contest);
+                }
+            }
+            else {
+                yield yield __await(files);
+            }
+        }
+        else {
+            const dirents = yield __await(fs_1.promises.readdir(dir, { withFileTypes: true }));
+            for (const dirent of dirents) {
+                const id = path_1.default.join(dir, dirent.name);
+                yield __await(yield* __asyncDelegator(__asyncValues(listAllFiles(id))));
+            }
+        }
+    });
+}
 
 
 /***/ }),
@@ -16168,11 +16264,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getProblem = void 0;
+exports.getProblem = exports.addToCache = void 0;
 const axios_1 = __importDefault(__nccwpck_require__(5186));
 const node_html_parser_1 = __nccwpck_require__(5738);
 const iconv_lite_1 = __importDefault(__nccwpck_require__(1430));
 const problems = new Map();
+function addToCache(pid, problem) {
+    problems.set(pid, problem);
+}
+exports.addToCache = addToCache;
 function getProblem(pid) {
     return __awaiter(this, void 0, void 0, function* () {
         if (problems.has(pid))
@@ -20784,7 +20884,10 @@ function run({ basePath = './', disableGit, configPath, maxRetry }) {
         core.info(JSON.stringify(config, null, 2));
         core.endGroup();
         const instance = (0,dist.createInstance)({
-            plugins: [...(0,codeforces_dist.codeforcesPlugin)(), ...(0,hdu_dist/* hduPlugin */.f)()],
+            plugins: [
+                ...(0,codeforces_dist.codeforcesPlugin)(),
+                ...(yield (0,hdu_dist.hduPlugin)(Object.assign({ basePath }, config)))
+            ],
             logger: core
         });
         const fs = yield createGitFileSystem(basePath, {
