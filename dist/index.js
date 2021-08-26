@@ -16114,11 +16114,11 @@ function fetchSubmissions(handle) {
         let curId = undefined;
         while (true) {
             const oldLen = subs.length;
-            console.log(`${handle.handle} has loaded ${oldLen + handle.submissions.length} submissions`);
             curId = yield fetch(curId);
             if (subs.length === oldLen)
                 break;
         }
+        console.log(`Hdu handle ${handle.handle} has fetched ${subs.length} new submissions`);
         return [...subs, ...handle.submissions];
     });
 }
