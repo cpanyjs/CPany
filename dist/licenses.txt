@@ -40,6 +40,9 @@ MIT
 @cpany/core
 MIT
 
+@cpany/hdu
+MIT
+
 @vercel/ncc
 MIT
 Copyright 2018 ZEIT, Inc.

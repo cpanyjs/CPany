@@ -6928,6 +6928,88 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 /***/ }),
 
+/***/ 6616:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.fetchHandle = exports.createHduHandlePlugin = void 0;
+const axios_1 = __importDefault(__nccwpck_require__(5186));
+function createHduHandlePlugin() {
+    const name = 'hdu/handle';
+    const gid = (id) => name + '/' + id + '.json';
+    return {
+        name,
+        resolveKey({ id, type }) {
+            if (type === name) {
+                return gid(id);
+            }
+        },
+        transform({ id, type }) {
+            return __awaiter(this, void 0, void 0, function* () {
+                if (type === name) {
+                    const handle = yield fetchHandle(id);
+                    return {
+                        key: gid(id),
+                        content: JSON.stringify(handle, null, 2)
+                    };
+                }
+                return null;
+            });
+        }
+    };
+}
+exports.createHduHandlePlugin = createHduHandlePlugin;
+function fetchHandle(handle) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const { data } = yield axios_1.default.get(`https://acm.hdu.edu.cn/userstatus.php?user=${handle}`);
+        const rank = /<tr><td>Rank<\/td><td align=center>(\d+)<\/td><\/tr>/.exec(data);
+        return {
+            type: 'hdu',
+            handle,
+            hdu: {
+                rank: rank !== null && typeof rank[1] === 'string' ? +rank[1] : undefined
+            },
+            handleUrl: `https://acm.hdu.edu.cn/userstatus.php?user=${handle}`,
+            submissions: []
+        };
+    });
+}
+exports.fetchHandle = fetchHandle;
+
+
+/***/ }),
+
+/***/ 8808:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+var __webpack_unused_export__;
+
+__webpack_unused_export__ = ({ value: true });
+exports.f = void 0;
+const handle_1 = __nccwpck_require__(6616);
+function hduPlugin(option = {}) {
+    return [handle_1.createHduHandlePlugin()];
+}
+exports.f = hduPlugin;
+
+
+/***/ }),
+
 /***/ 8524:
 /***/ ((module) => {
 
@@ -11012,6 +11094,8 @@ var jsYaml = {
 var dist = __nccwpck_require__(8780);
 // EXTERNAL MODULE: ../codeforces/dist/index.js
 var codeforces_dist = __nccwpck_require__(3948);
+// EXTERNAL MODULE: ../hdu/dist/index.js
+var hdu_dist = __nccwpck_require__(8808);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@actions+io@1.1.1/node_modules/@actions/io/lib/io.js
 var io = __nccwpck_require__(7554);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@actions+exec@1.1.0/node_modules/@actions/exec/lib/exec.js
@@ -11280,6 +11364,7 @@ var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _a
 
 
 
+
 function run({ basePath = './', disableGit, configPath, maxRetry }) {
     var _a, _b, _c;
     return action_awaiter(this, void 0, void 0, function* () {
@@ -11288,7 +11373,7 @@ function run({ basePath = './', disableGit, configPath, maxRetry }) {
         core.info(JSON.stringify(config, null, 2));
         core.endGroup();
         const instance = (0,dist.createInstance)({
-            plugins: [...(0,codeforces_dist.codeforcesPlugin)()],
+            plugins: [...(0,codeforces_dist.codeforcesPlugin)(), ...(0,hdu_dist/* hduPlugin */.f)()],
             logger: core
         });
         const fs = yield createGitFileSystem(basePath, {

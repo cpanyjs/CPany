@@ -6,6 +6,7 @@ import { load } from 'js-yaml';
 import type { ICPanyConfig } from '@cpany/types';
 import { createInstance } from '@cpany/core';
 import { codeforcesPlugin } from '@cpany/codeforces';
+import { hduPlugin } from '@cpany/hdu';
 
 import { createGitFileSystem } from './fs';
 import { processReport } from './report';
@@ -31,7 +32,7 @@ export async function run({
   core.endGroup();
 
   const instance = createInstance({
-    plugins: [...codeforcesPlugin()],
+    plugins: [...codeforcesPlugin(), ...hduPlugin()],
     logger: core
   });
 
