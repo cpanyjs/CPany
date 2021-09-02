@@ -21032,7 +21032,7 @@ function getConfig(path) {
 var _a;
 
 
-const plugins = (_a = core.getInput('plugins')) === null || _a === void 0 ? void 0 : _a.split(',').map((plugin) => plugin.trim()).filter((plugin) => plugin !== undefined && plugin !== null && plugin !== '');
+const plugins = (_a = core.getInput('plugins')) === null || _a === void 0 ? void 0 : _a.split(',').map((plugin) => plugin.trim().toLowerCase()).filter((plugin) => plugin !== undefined && plugin !== null && plugin !== '');
 run({
     disableGit: false,
     configPath: core.getInput('config'),

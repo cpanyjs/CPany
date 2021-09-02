@@ -5,7 +5,7 @@ import { run } from './action';
 const plugins = core
   .getInput('plugins')
   ?.split(',')
-  .map((plugin) => plugin.trim())
+  .map((plugin) => plugin.trim().toLowerCase())
   .filter((plugin) => plugin !== undefined && plugin !== null && plugin !== '');
 
 run({

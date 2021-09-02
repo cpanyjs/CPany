@@ -24,6 +24,11 @@ interface ICliOption {
   emptyOutDir: boolean;
 }
 
+interface ICliActionOption {
+  maxRetry: number;
+  plugins: string;
+}
+
 const cli = cac('cpany')
   .option('--app <app path>', 'App path')
   .option('--data <data path>', 'Data path', { default: '.' });
@@ -108,14 +113,28 @@ cli
 cli
   .command('action <basePath>', 'Run @cpany/action locally')
   .option('--max-retry <number>', 'CPany max retry times', { default: 10 })
-  .action(async (basePath: string, { maxRetry }) => {
-    await runAction({
-      basePath,
-      disableGit: true,
-      configPath: 'cpany.yml',
-      maxRetry
-    });
-  });
+  .option('--plugins <string>', 'CPany plugins', { default: 'codeforces,hdu' })
+  .action(
+    async (
+      basePath: string,
+      { maxRetry, plugins: _plugins }: ICliActionOption
+    ) => {
+      const plugins = _plugins
+        .split(',')
+        .map((plugin) => plugin.trim().toLowerCase())
+        .filter(
+          (plugin) => plugin !== undefined && plugin !== null && plugin !== ''
+        );
+
+      await runAction({
+        basePath,
+        disableGit: true,
+        configPath: 'cpany.yml',
+        maxRetry,
+        plugins
+      });
+    }
+  );
 
 cli.help();
 
