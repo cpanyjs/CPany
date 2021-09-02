@@ -93,7 +93,7 @@ importers:
       '@cpany/action': workspace:*
       '@cpany/app': workspace:*
       '@cpany/types': workspace:*
-      '@cpany/utils': workspace:^0.0.29
+      '@cpany/utils': workspace:*
       '@iconify/json': ^1.1.387
       '@types/js-yaml': ^4.0.2
       '@types/node': ^16.4.13
@@ -144,7 +144,7 @@ importers:
     specifiers:
       '@cpany/core': workspace:*
       '@cpany/types': workspace:*
-      '@cpany/utils': workspace:^0.0.29
+      '@cpany/utils': workspace:*
       axios: ^0.21.1
       iconv-lite: ^0.6.3
       node-html-parser: ^4.1.3
@@ -167,6 +167,9 @@ importers:
       axios: 0.21.1
 
   packages/types:
+    specifiers: {}
+
+  packages/utils:
     specifiers: {}
 
 packages:
@@ -470,7 +473,7 @@ packages:
     peerDependencies:
       '@vue/compiler-sfc': ^3.0.8
     dependencies:
-      '@vue/compiler-sfc': 3.1.4
+      '@vue/compiler-sfc': 3.1.4_vue@3.1.4
 
   /@vue/compiler-core/3.1.4:
     resolution: {integrity: sha512-TnUz+1z0y74O/A4YKAbzsdUfamyHV73MihrEfvettWpm9bQKVoZd1nEmR1cGN9LsXWlwAvVQBetBlWdOjmQO5Q==}
@@ -1982,7 +1985,7 @@ packages:
     dependencies:
       '@iconify/json': 1.1.387
       '@iconify/json-tools': 1.0.10
-      '@vue/compiler-sfc': 3.1.4
+      '@vue/compiler-sfc': 3.1.4_vue@3.1.4
       vue-template-es2015-compiler: 1.9.1
 
   /vite-plugin-windicss/1.2.7_vite@2.4.1:

@@ -15883,7 +15883,8 @@ exports.createInstance = void 0;
 function createInstance(option) {
     var _a, _b, _c;
     const logger = (_a = option === null || option === void 0 ? void 0 : option.logger) !== null && _a !== void 0 ? _a : console;
-    const plugins = (_b = option === null || option === void 0 ? void 0 : option.plugins) !== null && _b !== void 0 ? _b : [];
+    const plugins = ((_b = option === null || option === void 0 ? void 0 : option.plugins) !== null && _b !== void 0 ? _b : []).flat()
+        .filter(plugin => plugin !== undefined && plugin !== null);
     const context = (_c = option === null || option === void 0 ? void 0 : option.context) !== null && _c !== void 0 ? _c : {};
     const isKeyInContext = (key) => {
         return key in context;
@@ -20938,7 +20939,7 @@ var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _a
 
 
 
-function run({ basePath = './', disableGit, configPath, maxRetry }) {
+function run({ basePath = './', plugins = ['codeforces', 'hdu'], disableGit, configPath, maxRetry }) {
     var _a, _b, _c;
     return action_awaiter(this, void 0, void 0, function* () {
         core.startGroup('Load CPany config');
@@ -20947,8 +20948,8 @@ function run({ basePath = './', disableGit, configPath, maxRetry }) {
         core.endGroup();
         const instance = (0,dist.createInstance)({
             plugins: [
-                ...(0,codeforces_dist.codeforcesPlugin)(),
-                ...(yield (0,hdu_dist.hduPlugin)(Object.assign({ basePath }, config)))
+                (0,codeforces_dist.codeforcesPlugin)(),
+                yield (0,hdu_dist.hduPlugin)(Object.assign({ basePath }, config))
             ],
             logger: core
         });
