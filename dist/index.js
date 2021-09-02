@@ -15888,7 +15888,7 @@ function createInstance(option) {
         .flat()
         .filter((plugin) => plugin !== undefined && plugin !== null);
     const context = (_c = option === null || option === void 0 ? void 0 : option.context) !== null && _c !== void 0 ? _c : {};
-    const instance = { logger, context };
+    const instance = { logger, context, config: option.config };
     const isKeyInContext = (key) => {
         return key in context;
     };
@@ -20998,7 +20998,8 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
                     ? yield (0,hdu_dist.hduPlugin)(Object.assign({ basePath }, config))
                     : undefined
             ],
-            logger: logger ? core : undefined
+            logger: logger ? core : undefined,
+            config
         });
         const fs = yield createGitFileSystem(basePath, {
             disable: disableGit,

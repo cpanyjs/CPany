@@ -1,10 +1,16 @@
-import type { IPlugin, LoadResult, ITransformPayload } from './plugin';
+import type {
+  IPlugin,
+  LoadResult,
+  ITransformPayload,
+  IInstance
+} from './plugin';
 import { IContext, ILogger, createDefaultLogger } from './utils';
 
-export interface ICreateOptions {
+export interface ICreateOptions<T = any> {
   plugins?: Array<IPlugin | IPlugin[] | null | undefined>;
   context?: IContext;
   logger?: ILogger;
+  config: T;
 }
 
 export interface CPanyInstance {
@@ -14,7 +20,7 @@ export interface CPanyInstance {
   ) => Promise<LoadResult | null>;
 }
 
-export function createInstance(option: ICreateOptions): CPanyInstance {
+export function createInstance<T>(option: ICreateOptions<T>): CPanyInstance {
   const logger: ILogger = option?.logger ?? createDefaultLogger();
 
   const plugins = (option?.plugins ?? [])
@@ -22,7 +28,7 @@ export function createInstance(option: ICreateOptions): CPanyInstance {
     .filter((plugin) => plugin !== undefined && plugin !== null) as IPlugin[];
 
   const context = option?.context ?? {};
-  const instance = { logger, context };
+  const instance: IInstance<T> = { logger, context, config: option.config };
 
   const isKeyInContext = (key: string) => {
     return key in context;
@@ -44,7 +50,7 @@ export function createInstance(option: ICreateOptions): CPanyInstance {
     for (const plugin of plugins) {
       if ('load' in plugin) {
         try {
-          const result = await plugin.load(key, instance);
+          const result = await plugin.load<T>(key, instance);
           if (result !== undefined && result !== null) {
             if (typeof result === 'string') {
               cacheToContext(key, result);
@@ -76,7 +82,7 @@ export function createInstance(option: ICreateOptions): CPanyInstance {
         }
 
         try {
-          const result = await plugin.transform(payload, instance);
+          const result = await plugin.transform<any>(payload, instance);
           if (result !== undefined && result !== null) {
             cacheToContext(result.key, result.content);
             return result;

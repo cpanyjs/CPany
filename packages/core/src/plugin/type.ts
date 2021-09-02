@@ -1,8 +1,9 @@
 import type { IContext, ILogger } from '../utils';
 
-interface IInstance {
+export interface IInstance<T> {
   logger: ILogger;
   context: IContext;
+  config: T;
 }
 
 export interface LoadResult {
@@ -17,9 +18,9 @@ export interface ITransformPayload {
 
 export interface ILoadPlugin {
   name: string;
-  load: (
+  load: <U>(
     id: string,
-    instance: IInstance
+    instance: IInstance<U>
   ) => Promise<LoadResult | string | null | undefined>;
 }
 
@@ -28,9 +29,9 @@ export interface ITransformPlugin<
 > {
   name: string;
   resolveKey: (payload: T) => string | null | undefined;
-  transform: (
+  transform: <U>(
     payload: T,
-    instance: IInstance
+    instance: IInstance<U>
   ) => Promise<LoadResult | null | undefined>;
 }
 

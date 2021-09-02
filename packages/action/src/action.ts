@@ -43,7 +43,8 @@ export async function run({
         ? await hduPlugin({ basePath, ...config })
         : undefined
     ],
-    logger: logger ? core : undefined
+    logger: logger ? core : undefined,
+    config
   });
 
   const fs = await createGitFileSystem(basePath, {

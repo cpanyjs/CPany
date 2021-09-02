@@ -1,4 +1,5 @@
 export type {
+  IInstance,
   LoadResult,
   IPlugin,
   ILoadPlugin,
