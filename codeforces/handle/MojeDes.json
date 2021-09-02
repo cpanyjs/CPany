@@ -12,6 +12,32 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 127703590,
+      "creationTime": 1630594942,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516888705
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "8E",
+        "name": "Beads",
+        "rating": 2600,
+        "tags": [
+          "dp",
+          "graphs"
+        ],
+        "problemUrl": "https://codeforces.com/contest/8/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/8/submission/127703590"
+    },
+    {
+      "type": "codeforces",
       "id": 127617511,
       "creationTime": 1630507014,
       "language": "GNU C++14",
