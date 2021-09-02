@@ -6,6 +6,10 @@ inputs:
     required: false
     description: 'CPany config file path'
     default: 'cpany.yml'
+  plugins:
+    required: false
+    description: 'CPany plugins'
+    default: 'codeforces,hdu'
   max-retry:
     required: false
     description: 'CPany max retry times'
