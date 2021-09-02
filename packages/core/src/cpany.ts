@@ -2,7 +2,7 @@ import type { IPlugin, LoadResult, ITransformPayload } from './plugin';
 import type { IContext, ILogger } from './utils';
 
 export interface ICreateOptions {
-  plugins?: IPlugin[];
+  plugins?: Array<IPlugin | IPlugin[] | null | undefined>;
   context?: IContext;
   logger?: ILogger;
 }
@@ -17,7 +17,9 @@ export interface CPanyInstance {
 export function createInstance(option: ICreateOptions): CPanyInstance {
   const logger = option?.logger ?? console;
 
-  const plugins = option?.plugins ?? [];
+  const plugins = (option?.plugins ?? [])
+    .flat()
+    .filter((plugin) => plugin !== undefined && plugin !== null) as IPlugin[];
 
   const context = option?.context ?? {};
 

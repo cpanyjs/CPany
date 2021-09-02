@@ -15883,8 +15883,9 @@ exports.createInstance = void 0;
 function createInstance(option) {
     var _a, _b, _c;
     const logger = (_a = option === null || option === void 0 ? void 0 : option.logger) !== null && _a !== void 0 ? _a : console;
-    const plugins = ((_b = option === null || option === void 0 ? void 0 : option.plugins) !== null && _b !== void 0 ? _b : []).flat()
-        .filter(plugin => plugin !== undefined && plugin !== null);
+    const plugins = ((_b = option === null || option === void 0 ? void 0 : option.plugins) !== null && _b !== void 0 ? _b : [])
+        .flat()
+        .filter((plugin) => plugin !== undefined && plugin !== null);
     const context = (_c = option === null || option === void 0 ? void 0 : option.context) !== null && _c !== void 0 ? _c : {};
     const isKeyInContext = (key) => {
         return key in context;
@@ -20946,10 +20947,13 @@ function run({ basePath = './', plugins = ['codeforces', 'hdu'], disableGit, con
         const config = yield getConfig((0,external_path_.resolve)(basePath, configPath));
         core.info(JSON.stringify(config, null, 2));
         core.endGroup();
+        const usedPluginSet = new Set(plugins);
         const instance = (0,dist.createInstance)({
             plugins: [
-                (0,codeforces_dist.codeforcesPlugin)(),
-                yield (0,hdu_dist.hduPlugin)(Object.assign({ basePath }, config))
+                usedPluginSet.has('codeforces') ? (0,codeforces_dist.codeforcesPlugin)() : undefined,
+                usedPluginSet.has('hdu')
+                    ? yield (0,hdu_dist.hduPlugin)(Object.assign({ basePath }, config))
+                    : undefined
             ],
             logger: core
         });

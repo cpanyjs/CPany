@@ -18,10 +18,12 @@ export interface IRunOption {
   disableGit?: boolean;
   configPath: string;
   maxRetry: number;
+  plugins?: string[];
 }
 
 export async function run({
   basePath = './',
+  plugins = ['codeforces', 'hdu'],
   disableGit,
   configPath,
   maxRetry
@@ -31,10 +33,13 @@ export async function run({
   core.info(JSON.stringify(config, null, 2));
   core.endGroup();
 
+  const usedPluginSet = new Set(plugins);
   const instance = createInstance({
     plugins: [
-      ...codeforcesPlugin(),
-      ...(await hduPlugin({ basePath, ...config }))
+      usedPluginSet.has('codeforces') ? codeforcesPlugin() : undefined,
+      usedPluginSet.has('hdu')
+        ? await hduPlugin({ basePath, ...config })
+        : undefined
     ],
     logger: core
   });
