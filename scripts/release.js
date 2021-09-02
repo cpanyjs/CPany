@@ -7,6 +7,9 @@ const packages = [
   './packages/app',
   './packages/cli',
   './packages/codeforces',
+  './packages/hdu',
+  './packages/luogu',
+  './packages/utils',
   './packages/core',
   './packages/types'
 ];
