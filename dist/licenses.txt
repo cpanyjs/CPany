@@ -46,6 +46,9 @@ MIT
 @cpany/types
 MIT
 
+@cpany/utils
+MIT
+
 @vercel/ncc
 MIT
 Copyright 2018 ZEIT, Inc.

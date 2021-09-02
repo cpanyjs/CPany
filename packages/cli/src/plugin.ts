@@ -11,9 +11,10 @@ import type {
   CodeforcesHandleList
 } from '@cpany/types';
 import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
+import { slash } from '@cpany/utils';
+
 import type { IPluginOption } from './types';
 import { createEnvLoader, createLoader } from './loader';
-import { slash } from './utils';
 import { DefaultRecentContestsCount, DefaultRecentTime } from './constant';
 
 export async function createCPanyPlugin(

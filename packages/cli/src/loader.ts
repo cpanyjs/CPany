@@ -13,8 +13,9 @@ import {
   Verdict,
   IProblem
 } from '@cpany/types';
+import { listAllFiles, slash } from '@cpany/utils';
+
 import type { IPluginOption } from './types';
-import { slash } from './utils';
 import {
   DefaultRecentContestsCount,
   DefaultRecentTime,
@@ -348,25 +349,6 @@ export async function createLoader({
     createUsersOverview,
     createOverview
   };
-}
-
-async function* listAllFiles<T>(dir: string): AsyncGenerator<T> {
-  if (dir.endsWith('.json')) {
-    const files: T | T[] = JSON.parse(await promises.readFile(dir, 'utf8'));
-    if (Array.isArray(files)) {
-      for (const contest of files) {
-        yield contest;
-      }
-    } else {
-      yield files;
-    }
-  } else {
-    const dirents = await promises.readdir(dir, { withFileTypes: true });
-    for (const dirent of dirents) {
-      const id = path.join(dir, dirent.name);
-      yield* listAllFiles(id);
-    }
-  }
 }
 
 function genRouteKey<T extends IContest | IHandle>(

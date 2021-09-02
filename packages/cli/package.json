@@ -25,6 +25,7 @@
     "@cpany/action": "workspace:*",
     "@cpany/app": "workspace:*",
     "@cpany/types": "workspace:*",
+    "@cpany/utils": "workspace:*",
     "@iconify/json": "^1.1.387",
     "@vitejs/plugin-vue": "^1.2.4",
     "@vue/compiler-sfc": "^3.1.4",
