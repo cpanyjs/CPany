@@ -9586,7 +9586,7 @@
   },
   {
     "type": "codeforces/gym/ioi",
-    "name": "2018-2019, XV Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха",
+    "name": "XV Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха",
     "duration": 18000,
     "participantNumber": 0,
     "id": 102112,
@@ -12846,5 +12846,55 @@
     "phase": "FINISHED",
     "contestUrl": "https://codeforces.com/gym/103256",
     "standingsUrl": "https://codeforces.com/gym/103256/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "2020-2021 Winter Petrozavodsk Camp, Day 5: Almost Retired Dandelion Contest (XXI Opencup, Grand Prix of Nizhny Novgorod)",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103260,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103260",
+    "standingsUrl": "https://codeforces.com/gym/103260/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "2019-2020 Winter Petrozavodsk Camp, Day 8: Almost Algorithmic Contest",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103261,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103261",
+    "standingsUrl": "https://codeforces.com/gym/103261/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "XVII Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103262,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103262",
+    "standingsUrl": "https://codeforces.com/gym/103262/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "XVI Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103264,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103264",
+    "standingsUrl": "https://codeforces.com/gym/103264/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "XIV Нижегородская городская олимпиада школьников по информатике им. В. Д. Лелюха",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103265,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103265",
+    "standingsUrl": "https://codeforces.com/gym/103265/standings"
   }
 ]

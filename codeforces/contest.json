@@ -1,6 +1,28 @@
 [
   {
     "type": "codeforces/cf",
+    "name": "Deltix Round, Summer 2021 (open for everyone, rated, Div. 1 + Div. 2)",
+    "startTime": 1630247700,
+    "duration": 9000,
+    "participantNumber": 0,
+    "id": 1556,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/contest/1556",
+    "standingsUrl": "https://codeforces.com/contest/1556/standings"
+  },
+  {
+    "type": "codeforces/cf",
+    "name": "Codeforces Round #741 (Div. 2)",
+    "startTime": 1629988500,
+    "duration": 8100,
+    "participantNumber": 0,
+    "id": 1562,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/contest/1562",
+    "standingsUrl": "https://codeforces.com/contest/1562/standings"
+  },
+  {
+    "type": "codeforces/cf",
     "name": "Codeforces Round #740 (Div. 1, based on VK Cup 2021 - Final (Engine))",
     "startTime": 1629815700,
     "duration": 9000,

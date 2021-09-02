@@ -8,6 +8,426 @@
   "submissions": [
     {
       "type": "hdu",
+      "id": 36650217,
+      "creationTime": 1630255377,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630255377
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7107,
+        "name": "GCD on Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7107"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36650217"
+    },
+    {
+      "type": "hdu",
+      "id": 36650208,
+      "creationTime": 1630255314,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630255314
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7107,
+        "name": "GCD on Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7107"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36650208"
+    },
+    {
+      "type": "hdu",
+      "id": 36650204,
+      "creationTime": 1630255288,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630255288
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7107,
+        "name": "GCD on Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7107"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36650204"
+    },
+    {
+      "type": "hdu",
+      "id": 36650153,
+      "creationTime": 1630254995,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630254995
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7107,
+        "name": "GCD on Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7107"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36650153"
+    },
+    {
+      "type": "hdu",
+      "id": 36649974,
+      "creationTime": 1630253809,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630253809
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7107,
+        "name": "GCD on Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7107"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36649974"
+    },
+    {
+      "type": "hdu",
+      "id": 36649954,
+      "creationTime": 1630253675,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630253675
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7107,
+        "name": "GCD on Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7107"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36649954"
+    },
+    {
+      "type": "hdu",
+      "id": 36649914,
+      "creationTime": 1630253428,
+      "language": "G++",
+      "verdict": "RUNTIME_ERROR",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630253428
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7107,
+        "name": "GCD on Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7107"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36649914"
+    },
+    {
+      "type": "hdu",
+      "id": 36642449,
+      "creationTime": 1630177992,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630177992
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7111,
+        "name": "Remove",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7111"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36642449"
+    },
+    {
+      "type": "hdu",
+      "id": 36642328,
+      "creationTime": 1630177486,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630177486
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7105,
+        "name": "Power Sum",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7105"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36642328"
+    },
+    {
+      "type": "hdu",
+      "id": 36642279,
+      "creationTime": 1630177299,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630177299
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7105,
+        "name": "Power Sum",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7105"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36642279"
+    },
+    {
+      "type": "hdu",
+      "id": 36642227,
+      "creationTime": 1630177086,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630177086
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7105,
+        "name": "Power Sum",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7105"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36642227"
+    },
+    {
+      "type": "hdu",
+      "id": 36642213,
+      "creationTime": 1630177045,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630177045
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7105,
+        "name": "Power Sum",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7105"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36642213"
+    },
+    {
+      "type": "hdu",
+      "id": 36642203,
+      "creationTime": 1630177005,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630177005
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7105,
+        "name": "Power Sum",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7105"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36642203"
+    },
+    {
+      "type": "hdu",
+      "id": 36642161,
+      "creationTime": 1630176868,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630176868
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7105,
+        "name": "Power Sum",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7105"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36642161"
+    },
+    {
+      "type": "hdu",
+      "id": 36641329,
+      "creationTime": 1630172743,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630172743
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7110,
+        "name": "Shooting Bricks",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7110"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36641329"
+    },
+    {
+      "type": "hdu",
+      "id": 36641324,
+      "creationTime": 1630172713,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630172713
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7108,
+        "name": "Command Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7108"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36641324"
+    },
+    {
+      "type": "hdu",
+      "id": 36641320,
+      "creationTime": 1630172687,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630172687
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7106,
+        "name": "Function",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7106"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36641320"
+    },
+    {
+      "type": "hdu",
+      "id": 36641312,
+      "creationTime": 1630172642,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630172642
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7105,
+        "name": "Power Sum",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7105"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36641312"
+    },
+    {
+      "type": "hdu",
+      "id": 36641308,
+      "creationTime": 1630172609,
+      "language": "G++",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630172609
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7105,
+        "name": "Power Sum",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7105"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36641308"
+    },
+    {
+      "type": "hdu",
+      "id": 36641301,
+      "creationTime": 1630172570,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Rescuring"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1630172570
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 7101,
+        "name": "Time-division Multiplexing",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=7101"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36641301"
+    },
+    {
+      "type": "hdu",
       "id": 36599532,
       "creationTime": 1629533651,
       "language": "G++",
