@@ -35,7 +35,7 @@ importers:
       '@actions/io': ^1.1.1
       '@cpany/codeforces': workspace:*
       '@cpany/core': workspace:*
-      '@cpany/hdu': workspace:^0.0.29
+      '@cpany/hdu': workspace:*
       '@cpany/types': workspace:*
       '@types/js-yaml': ^4.0.2
       dayjs: ^1.10.6
