@@ -1,4 +1,4 @@
-import type { IPlugin } from '@cpany/core';
+import type { IPlugin, ILogger } from '@cpany/core';
 import type { IHandleWithHdu } from '@cpany/types/hdu';
 import { ISubmission, ParticipantType, Verdict } from '@cpany/types';
 
@@ -26,10 +26,10 @@ export function createHduHandlePlugin(): IPlugin {
         return gid(id);
       }
     },
-    async transform({ id, type }) {
+    async transform({ id, type }, { logger }) {
       if (type === name) {
-        const handle = await fetchHandle(id);
-        handle.submissions = await fetchSubmissions(handle);
+        const handle = await fetchHandle(id, logger);
+        handle.submissions = await fetchSubmissions(handle, logger);
         return {
           key: gid(id),
           content: JSON.stringify(handle, null, 2)
@@ -40,8 +40,14 @@ export function createHduHandlePlugin(): IPlugin {
   };
 }
 
-export async function fetchHandle(handle: string): Promise<IHandleWithHdu> {
+export async function fetchHandle(
+  handle: string,
+  logger: ILogger
+): Promise<IHandleWithHdu> {
   if (handles.has(handle)) return handles.get(handle)!;
+
+  logger.info(`Start fetching Hdu handle: ${handle}`);
+
   const { data } = await axios.get(
     `https://acm.hdu.edu.cn/userstatus.php?user=${handle}`
   );
@@ -60,7 +66,8 @@ export async function fetchHandle(handle: string): Promise<IHandleWithHdu> {
 }
 
 export async function fetchSubmissions(
-  handle: IHandleWithHdu
+  handle: IHandleWithHdu,
+  logger: ILogger
 ): Promise<ISubmission[]> {
   const latestSubId =
     handle.submissions.length > 0 ? handle.submissions[0].id : -1;
@@ -119,7 +126,8 @@ export async function fetchSubmissions(
     curId = await fetch(curId);
     if (subs.length === oldLen) break;
   }
-  console.log(
+
+  logger.info(
     `Hdu handle ${handle.handle} has fetched ${subs.length} new submissions`
   );
 

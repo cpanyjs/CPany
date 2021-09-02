@@ -14,17 +14,19 @@ import { now } from './utils';
 import { createRetryContainer } from './retry';
 
 export interface IRunOption {
+  logger?: boolean;
   basePath?: string;
   disableGit?: boolean;
+  plugins?: string[];
   configPath: string;
   maxRetry: number;
-  plugins?: string[];
 }
 
 export async function run({
+  logger = true,
   basePath = './',
-  plugins = ['codeforces', 'hdu'],
   disableGit,
+  plugins = ['codeforces', 'hdu'],
   configPath,
   maxRetry
 }: IRunOption) {
@@ -41,7 +43,7 @@ export async function run({
         ? await hduPlugin({ basePath, ...config })
         : undefined
     ],
-    logger: core
+    logger: logger ? core : undefined
   });
 
   const fs = await createGitFileSystem(basePath, {

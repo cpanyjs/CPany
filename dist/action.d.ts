@@ -1,8 +1,9 @@
 export interface IRunOption {
+    logger?: boolean;
     basePath?: string;
     disableGit?: boolean;
+    plugins?: string[];
     configPath: string;
     maxRetry: number;
-    plugins?: string[];
 }
-export declare function run({ basePath, plugins, disableGit, configPath, maxRetry }: IRunOption): Promise<void>;
+export declare function run({ logger, basePath, disableGit, plugins, configPath, maxRetry }: IRunOption): Promise<void>;

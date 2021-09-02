@@ -15865,7 +15865,7 @@ exports.codeforcesPlugin = codeforcesPlugin;
 /***/ }),
 
 /***/ 8241:
-/***/ (function(__unused_webpack_module, exports) {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -15880,13 +15880,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createInstance = void 0;
+const utils_1 = __nccwpck_require__(2498);
 function createInstance(option) {
     var _a, _b, _c;
-    const logger = (_a = option === null || option === void 0 ? void 0 : option.logger) !== null && _a !== void 0 ? _a : console;
+    const logger = (_a = option === null || option === void 0 ? void 0 : option.logger) !== null && _a !== void 0 ? _a : utils_1.createDefaultLogger();
     const plugins = ((_b = option === null || option === void 0 ? void 0 : option.plugins) !== null && _b !== void 0 ? _b : [])
         .flat()
         .filter((plugin) => plugin !== undefined && plugin !== null);
     const context = (_c = option === null || option === void 0 ? void 0 : option.context) !== null && _c !== void 0 ? _c : {};
+    const instance = { logger, context };
     const isKeyInContext = (key) => {
         return key in context;
     };
@@ -15903,7 +15905,7 @@ function createInstance(option) {
         for (const plugin of plugins) {
             if ('load' in plugin) {
                 try {
-                    const result = yield plugin.load(key, context);
+                    const result = yield plugin.load(key, instance);
                     if (result !== undefined && result !== null) {
                         if (typeof result === 'string') {
                             cacheToContext(key, result);
@@ -15936,7 +15938,7 @@ function createInstance(option) {
                     };
                 }
                 try {
-                    const result = yield plugin.transform(payload, context);
+                    const result = yield plugin.transform(payload, instance);
                     if (result !== undefined && result !== null) {
                         cacheToContext(result.key, result.content);
                         return result;
@@ -15979,8 +15981,11 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.createDefaultLogger = void 0;
 __exportStar(__nccwpck_require__(8241), exports);
 __exportStar(__nccwpck_require__(7414), exports);
+var utils_1 = __nccwpck_require__(2498);
+Object.defineProperty(exports, "createDefaultLogger", ({ enumerable: true, get: function () { return utils_1.createDefaultLogger; } }));
 
 
 /***/ }),
@@ -15991,6 +15996,43 @@ __exportStar(__nccwpck_require__(7414), exports);
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 2498:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.createDefaultLogger = void 0;
+function createDefaultLogger() {
+    let prefixCount = 0;
+    const prefix = () => '  '.repeat(prefixCount);
+    return {
+        debug(message) {
+            console.debug(prefix() + message);
+        },
+        info(message) {
+            console.info(prefix() + message);
+        },
+        warning(message) {
+            console.warn(prefix() + message);
+        },
+        error(message) {
+            console.error(message);
+        },
+        startGroup(name) {
+            console.log(`${prefix()}Start group ${name}:`);
+            prefixCount++;
+        },
+        endGroup() {
+            prefixCount--;
+        }
+    };
+}
+exports.createDefaultLogger = createDefaultLogger;
 
 
 /***/ }),
@@ -16036,11 +16078,11 @@ function createHduHandlePlugin() {
                 return gid(id);
             }
         },
-        transform({ id, type }) {
+        transform({ id, type }, { logger }) {
             return __awaiter(this, void 0, void 0, function* () {
                 if (type === name) {
-                    const handle = yield fetchHandle(id);
-                    handle.submissions = yield fetchSubmissions(handle);
+                    const handle = yield fetchHandle(id, logger);
+                    handle.submissions = yield fetchSubmissions(handle, logger);
                     return {
                         key: gid(id),
                         content: JSON.stringify(handle, null, 2)
@@ -16052,10 +16094,11 @@ function createHduHandlePlugin() {
     };
 }
 exports.createHduHandlePlugin = createHduHandlePlugin;
-function fetchHandle(handle) {
+function fetchHandle(handle, logger) {
     return __awaiter(this, void 0, void 0, function* () {
         if (handles.has(handle))
             return handles.get(handle);
+        logger.info(`Start fetching Hdu handle: ${handle}`);
         const { data } = yield axios_1.default.get(`https://acm.hdu.edu.cn/userstatus.php?user=${handle}`);
         const rank = /<tr><td>Rank<\/td><td align=center>(\d+)<\/td><\/tr>/.exec(data);
         return {
@@ -16070,7 +16113,7 @@ function fetchHandle(handle) {
     });
 }
 exports.fetchHandle = fetchHandle;
-function fetchSubmissions(handle) {
+function fetchSubmissions(handle, logger) {
     return __awaiter(this, void 0, void 0, function* () {
         const latestSubId = handle.submissions.length > 0 ? handle.submissions[0].id : -1;
         const subs = [];
@@ -16120,7 +16163,7 @@ function fetchSubmissions(handle) {
             if (subs.length === oldLen)
                 break;
         }
-        console.log(`Hdu handle ${handle.handle} has fetched ${subs.length} new submissions`);
+        logger.info(`Hdu handle ${handle.handle} has fetched ${subs.length} new submissions`);
         return [...subs, ...handle.submissions];
     });
 }
@@ -20940,7 +20983,7 @@ var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _a
 
 
 
-function run({ basePath = './', plugins = ['codeforces', 'hdu'], disableGit, configPath, maxRetry }) {
+function run({ logger = true, basePath = './', disableGit, plugins = ['codeforces', 'hdu'], configPath, maxRetry }) {
     var _a, _b, _c;
     return action_awaiter(this, void 0, void 0, function* () {
         core.startGroup('Load CPany config');
@@ -20955,7 +20998,7 @@ function run({ basePath = './', plugins = ['codeforces', 'hdu'], disableGit, con
                     ? yield (0,hdu_dist.hduPlugin)(Object.assign({ basePath }, config))
                     : undefined
             ],
-            logger: core
+            logger: logger ? core : undefined
         });
         const fs = yield createGitFileSystem(basePath, {
             disable: disableGit,

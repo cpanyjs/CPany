@@ -127,6 +127,7 @@ cli
         );
 
       await runAction({
+        logger: false,
         basePath,
         disableGit: true,
         configPath: 'cpany.yml',

@@ -1,5 +1,5 @@
 import type { IPlugin, LoadResult, ITransformPayload } from './plugin';
-import type { IContext, ILogger } from './utils';
+import { IContext, ILogger, createDefaultLogger } from './utils';
 
 export interface ICreateOptions {
   plugins?: Array<IPlugin | IPlugin[] | null | undefined>;
@@ -15,13 +15,14 @@ export interface CPanyInstance {
 }
 
 export function createInstance(option: ICreateOptions): CPanyInstance {
-  const logger = option?.logger ?? console;
+  const logger: ILogger = option?.logger ?? createDefaultLogger();
 
   const plugins = (option?.plugins ?? [])
     .flat()
     .filter((plugin) => plugin !== undefined && plugin !== null) as IPlugin[];
 
   const context = option?.context ?? {};
+  const instance = { logger, context };
 
   const isKeyInContext = (key: string) => {
     return key in context;
@@ -43,7 +44,7 @@ export function createInstance(option: ICreateOptions): CPanyInstance {
     for (const plugin of plugins) {
       if ('load' in plugin) {
         try {
-          const result = await plugin.load(key, context);
+          const result = await plugin.load(key, instance);
           if (result !== undefined && result !== null) {
             if (typeof result === 'string') {
               cacheToContext(key, result);
@@ -75,7 +76,7 @@ export function createInstance(option: ICreateOptions): CPanyInstance {
         }
 
         try {
-          const result = await plugin.transform(payload, context);
+          const result = await plugin.transform(payload, instance);
           if (result !== undefined && result !== null) {
             cacheToContext(result.key, result.content);
             return result;
