@@ -58,6 +58,8 @@ export const displayContestType = (contest: IContest) => {
     }
   } else if (contest.type === 'nowcoder') {
     return '牛客竞赛';
+  } else if (contest.type === 'hdu') {
+    return 'HDu';
   } else {
     return contest.type;
   }
