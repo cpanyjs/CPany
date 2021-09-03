@@ -12,6 +12,31 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 127742432,
+      "creationTime": 1630649857,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516833790
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "10C",
+        "name": "Digital Root",
+        "rating": 2000,
+        "tags": [
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/10/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/10/submission/127742432"
+    },
+    {
+      "type": "codeforces",
       "id": 127703590,
       "creationTime": 1630594942,
       "language": "GNU C++14",
