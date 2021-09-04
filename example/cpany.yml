@@ -4,9 +4,9 @@ users:
     hdu/handle: Rescuring
   czswez:
     codeforces/handle: czswez
-  #   hdu/handle: c2014chh
-  # MojeDes:
-  #   codeforces/handle: MojeDes
+    hdu/handle: c2014chh
+  MojeDes:
+    codeforces/handle: MojeDes
 
 handles:
   - codeforces/handle
@@ -23,8 +23,8 @@ app:
   recentUserCount: 5
 
 fetch:
-  # - codeforces/contest.json
-  # - codeforces/gym-contest.json
+  - codeforces/contest.json
+  - codeforces/gym-contest.json
 
 static:
   - nowcoder
