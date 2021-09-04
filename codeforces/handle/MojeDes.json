@@ -12,6 +12,620 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 127829479,
+      "creationTime": 1630748998,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104J",
+        "name": "Similar Triangles",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/J"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127829479"
+    },
+    {
+      "type": "codeforces",
+      "id": 127828337,
+      "creationTime": 1630748205,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104J",
+        "name": "Similar Triangles",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/J"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127828337"
+    },
+    {
+      "type": "codeforces",
+      "id": 127827215,
+      "creationTime": 1630747370,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104J",
+        "name": "Similar Triangles",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/J"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127827215"
+    },
+    {
+      "type": "codeforces",
+      "id": 127826396,
+      "creationTime": 1630746759,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104J",
+        "name": "Similar Triangles",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/J"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127826396"
+    },
+    {
+      "type": "codeforces",
+      "id": 127825066,
+      "creationTime": 1630745643,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104J",
+        "name": "Similar Triangles",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/J"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127825066"
+    },
+    {
+      "type": "codeforces",
+      "id": 127819240,
+      "creationTime": 1630739433,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104D",
+        "name": "Fragmentation merging",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127819240"
+    },
+    {
+      "type": "codeforces",
+      "id": 127817984,
+      "creationTime": 1630737869,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104I",
+        "name": "Sequence",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/I"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127817984"
+    },
+    {
+      "type": "codeforces",
+      "id": 127816470,
+      "creationTime": 1630736274,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104A",
+        "name": "CRC Test",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127816470"
+    },
+    {
+      "type": "codeforces",
+      "id": 127813873,
+      "creationTime": 1630733509,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104F",
+        "name": "Battery",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127813873"
+    },
+    {
+      "type": "codeforces",
+      "id": 127813839,
+      "creationTime": 1630733475,
+      "language": "GNU C++17",
+      "verdict": "RUNTIME_ERROR",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104F",
+        "name": "Battery",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127813839"
+    },
+    {
+      "type": "codeforces",
+      "id": 127808057,
+      "creationTime": 1630725413,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516758234
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "13D",
+        "name": "Triangles",
+        "rating": 2600,
+        "tags": [
+          "dp",
+          "geometry"
+        ],
+        "problemUrl": "https://codeforces.com/contest/13/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/13/submission/127808057"
+    },
+    {
+      "type": "codeforces",
+      "id": 127776210,
+      "creationTime": 1630680741,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516802906
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "13B",
+        "name": "Letter A",
+        "rating": 2000,
+        "tags": [
+          "geometry",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/13/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/13/submission/127776210"
+    },
+    {
+      "type": "codeforces",
+      "id": 127775722,
+      "creationTime": 1630680370,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516803277
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "13B",
+        "name": "Letter A",
+        "rating": 2000,
+        "tags": [
+          "geometry",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/13/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/13/submission/127775722"
+    },
+    {
+      "type": "codeforces",
+      "id": 127775552,
+      "creationTime": 1630680228,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516803419
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "13B",
+        "name": "Letter A",
+        "rating": 2000,
+        "tags": [
+          "geometry",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/13/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/13/submission/127775552"
+    },
+    {
+      "type": "codeforces",
+      "id": 127774514,
+      "creationTime": 1630679431,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516804216
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "13B",
+        "name": "Letter A",
+        "rating": 2000,
+        "tags": [
+          "geometry",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/13/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/13/submission/127774514"
+    },
+    {
+      "type": "codeforces",
+      "id": 127774443,
+      "creationTime": 1630679381,
+      "language": "GNU C++14",
+      "verdict": "COMPILATION_ERROR",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516804266
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "13B",
+        "name": "Letter A",
+        "rating": 2000,
+        "tags": [
+          "geometry",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/13/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/13/submission/127774443"
+    },
+    {
+      "type": "codeforces",
+      "id": 127774338,
+      "creationTime": 1630679301,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516804346
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "13B",
+        "name": "Letter A",
+        "rating": 2000,
+        "tags": [
+          "geometry",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/13/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/13/submission/127774338"
+    },
+    {
+      "type": "codeforces",
+      "id": 127774273,
+      "creationTime": 1630679248,
+      "language": "GNU C++14",
+      "verdict": "COMPILATION_ERROR",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516804399
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "13B",
+        "name": "Letter A",
+        "rating": 2000,
+        "tags": [
+          "geometry",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/13/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/13/submission/127774273"
+    },
+    {
+      "type": "codeforces",
+      "id": 127773927,
+      "creationTime": 1630678931,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516804716
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "13B",
+        "name": "Letter A",
+        "rating": 2000,
+        "tags": [
+          "geometry",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/13/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/13/submission/127773927"
+    },
+    {
+      "type": "codeforces",
+      "id": 127773495,
+      "creationTime": 1630678600,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516805047
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "13B",
+        "name": "Letter A",
+        "rating": 2000,
+        "tags": [
+          "geometry",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/13/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/13/submission/127773495"
+    },
+    {
+      "type": "codeforces",
+      "id": 127773127,
+      "creationTime": 1630678307,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516805340
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "13B",
+        "name": "Letter A",
+        "rating": 2000,
+        "tags": [
+          "geometry",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/13/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/13/submission/127773127"
+    },
+    {
+      "type": "codeforces",
+      "id": 127772748,
+      "creationTime": 1630678012,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516805635
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "13B",
+        "name": "Letter A",
+        "rating": 2000,
+        "tags": [
+          "geometry",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/13/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/13/submission/127772748"
+    },
+    {
+      "type": "codeforces",
+      "id": 127771267,
+      "creationTime": 1630676894,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516806753
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "13B",
+        "name": "Letter A",
+        "rating": 2000,
+        "tags": [
+          "geometry",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/13/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/13/submission/127771267"
+    },
+    {
+      "type": "codeforces",
+      "id": 127771069,
+      "creationTime": 1630676741,
+      "language": "GNU C++14",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516806906
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "13B",
+        "name": "Letter A",
+        "rating": 2000,
+        "tags": [
+          "geometry",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/13/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/13/submission/127771069"
+    },
+    {
+      "type": "codeforces",
       "id": 127742432,
       "creationTime": 1630649857,
       "language": "GNU C++14",

@@ -5,11 +5,261 @@
   "avatar": "https://userpic.codeforces.org/653554/title/f8960437c7d05cf1.jpg",
   "codeforces": {
     "rank": "international master",
-    "rating": 2300,
+    "rating": 2301,
     "maxRank": "international master",
-    "maxRating": 2300
+    "maxRating": 2301
   },
   "submissions": [
+    {
+      "type": "codeforces",
+      "id": 127829479,
+      "creationTime": 1630748998,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104J",
+        "name": "Similar Triangles",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/J"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127829479"
+    },
+    {
+      "type": "codeforces",
+      "id": 127828337,
+      "creationTime": 1630748205,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104J",
+        "name": "Similar Triangles",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/J"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127828337"
+    },
+    {
+      "type": "codeforces",
+      "id": 127827215,
+      "creationTime": 1630747370,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104J",
+        "name": "Similar Triangles",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/J"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127827215"
+    },
+    {
+      "type": "codeforces",
+      "id": 127826396,
+      "creationTime": 1630746759,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104J",
+        "name": "Similar Triangles",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/J"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127826396"
+    },
+    {
+      "type": "codeforces",
+      "id": 127825066,
+      "creationTime": 1630745643,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104J",
+        "name": "Similar Triangles",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/J"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127825066"
+    },
+    {
+      "type": "codeforces",
+      "id": 127819240,
+      "creationTime": 1630739433,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104D",
+        "name": "Fragmentation merging",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127819240"
+    },
+    {
+      "type": "codeforces",
+      "id": 127817984,
+      "creationTime": 1630737869,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104I",
+        "name": "Sequence",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/I"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127817984"
+    },
+    {
+      "type": "codeforces",
+      "id": 127816470,
+      "creationTime": 1630736274,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104A",
+        "name": "CRC Test",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127816470"
+    },
+    {
+      "type": "codeforces",
+      "id": 127813873,
+      "creationTime": 1630733509,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104F",
+        "name": "Battery",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127813873"
+    },
+    {
+      "type": "codeforces",
+      "id": 127813839,
+      "creationTime": 1630733475,
+      "language": "GNU C++17",
+      "verdict": "RUNTIME_ERROR",
+      "author": {
+        "members": [
+          "czswez",
+          "MojeDes",
+          "Solashiro"
+        ],
+        "participantType": "VIRTUAL",
+        "participantTime": 1630732200,
+        "teamName": "Kitty wants to remake"
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103104F",
+        "name": "Battery",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103104/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103104/submission/127813839"
+    },
     {
       "type": "codeforces",
       "id": 127423306,
