@@ -18,26 +18,3 @@
     </select>
   </div>
 </template>
-
-<script setup lang="ts"></script>
-
-<style>
-.select::after {
-  z-index: 10;
-  right: 1rem;
-  border: 3px solid var(--c-brand);
-  border-radius: 2px;
-  border-right: 0;
-  border-top: 0;
-  content: ' ';
-  display: block;
-  height: 0.625em;
-  margin-top: -0.4375em;
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  transform: rotate(-45deg);
-  transform-origin: center;
-  width: 0.625em;
-}
-</style>
