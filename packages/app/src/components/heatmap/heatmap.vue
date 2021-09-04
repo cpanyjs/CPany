@@ -1,8 +1,9 @@
 <template>
-  <div class="flex justify-center">
+  <div class="flex justify-center select-none">
     <div class="relative" :style="{ width: 2 * unitValue + 'px' }">
       <div
         v-for="day in 7"
+        :key="day"
         class="absolute flex items-center"
         :style="{
           height: unit,
@@ -23,6 +24,7 @@
     >
       <div
         v-for="week in 53"
+        :key="week"
         class="inline-grid grid-rows-7 gap-[4px] ml-[4px]"
         :style="{ width: unit }"
       >
@@ -36,7 +38,7 @@
             >{{ displayMonth(week) ?? '一' }}</span
           >
         </div>
-        <div v-for="day in 7" :style="{ height: unit }">
+        <div v-for="day in 7" :key="day" :style="{ height: unit }">
           <div
             v-if="week < 53 || day <= now.getDay()"
             class="
