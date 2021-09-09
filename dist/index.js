@@ -15938,6 +15938,12 @@ function createInstance(option) {
     const plugins = ((_b = option === null || option === void 0 ? void 0 : option.plugins) !== null && _b !== void 0 ? _b : [])
         .flat()
         .filter((plugin) => plugin !== undefined && plugin !== null);
+    const loggerPrefixLength = ['instance']
+        .concat(plugins.map((plugin) => plugin.name))
+        .reduce((len, name) => Math.max(len, name.length), 0);
+    const prefix = (name = 'instance') => {
+        return '[ ' + name + ' '.repeat(loggerPrefixLength - name.length) + ' ]';
+    };
     const context = (_c = option === null || option === void 0 ? void 0 : option.context) !== null && _c !== void 0 ? _c : {};
     const instance = { logger, context, config: option.config };
     const isKeyInContext = (key) => {
@@ -15953,11 +15959,13 @@ function createInstance(option) {
         if (isKeyInContext(key)) {
             return { key, content: loadFromContext(key) };
         }
+        logger.info(`${prefix()} Fetch: ${key}`);
         for (const plugin of plugins) {
             if ('load' in plugin) {
                 try {
                     const result = yield plugin.load(key, instance);
                     if (result !== undefined && result !== null) {
+                        logger.info(`${prefix(plugin.name)} Ok   : ${key}`);
                         if (typeof result === 'string') {
                             cacheToContext(key, result);
                             return { key, content: result };
@@ -15969,14 +15977,16 @@ function createInstance(option) {
                     }
                 }
                 catch (error) {
-                    logger.error(error);
+                    logger.error(`${prefix(plugin.name)} Error: Fetch "${key}" fail`);
                     return null;
                 }
             }
         }
-        return null;
+        logger.warning(`${prefix()} Error: No matching plugins for ${key}`);
+        return undefined;
     });
     const transform = (payload) => __awaiter(this, void 0, void 0, function* () {
+        logger.info(`${prefix()} Fetch: (id: ${payload.id}, type: ${payload.type})`);
         for (const plugin of plugins) {
             if ('transform' in plugin) {
                 const key = plugin.resolveKey(payload);
@@ -15991,20 +16001,22 @@ function createInstance(option) {
                 try {
                     const result = yield plugin.transform(payload, instance);
                     if (result !== undefined && result !== null) {
+                        logger.info(`${prefix(plugin.name)} Ok   : ${result.key}`);
                         cacheToContext(result.key, result.content);
                         return result;
                     }
                     else {
-                        logger.error(`[${plugin.name}] has resolved id "${key}", but failed transforming`);
+                        logger.error(`[${plugin.name}] Error: has resolved id "${key}", but failed transforming`);
                     }
                 }
                 catch (error) {
-                    logger.error(error);
+                    logger.error(`${prefix(plugin.name)} Error: Fetch (id: ${payload.id}, type: ${payload.type}) fail`);
                     return null;
                 }
             }
         }
-        return null;
+        logger.warning(`${prefix()} Error: No matching plugins for (id: ${payload.id}, type: ${payload.type})`);
+        return undefined;
     });
     return {
         logger,
@@ -16074,7 +16086,7 @@ function createDefaultLogger() {
             console.warn(prefix() + message);
         },
         error(message) {
-            console.error(message);
+            console.error(prefix() + message);
         },
         startGroup(name) {
             console.log(`${prefix()}Start group ${name}:`);
@@ -21070,7 +21082,7 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
         instance.logger.startGroup('Clean cache');
         for (const plugin of usedPluginSet) {
             const rawFiles = yield instance.load(plugin + '/clean');
-            if (rawFiles !== null) {
+            if (!!rawFiles) {
                 const files = JSON.parse(rawFiles.content);
                 for (const file of files) {
                     yield fs.rm(file);
@@ -21083,13 +21095,9 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
         const configFetch = (_a = config === null || config === void 0 ? void 0 : config.fetch) !== null && _a !== void 0 ? _a : [];
         for (const id of configFetch) {
             const result = yield instance.load(id);
-            if (result !== null) {
-                instance.logger.info(`Fetched: ${id}`);
+            if (!!result) {
                 const { key, content } = result;
                 yield fs.add(key, content);
-            }
-            else {
-                instance.logger.error(`Fetch "${id}" fail`);
             }
         }
         const retry = createRetryContainer(maxRetry);
@@ -21105,15 +21113,18 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
                             id: handle,
                             type
                         });
-                        if (result !== null) {
-                            instance.logger.info(`Fetched: ${result.key}`);
+                        if (!!result) {
                             const { key, content } = result;
                             yield fs.add(key, content);
                             return true;
                         }
-                        else {
-                            instance.logger.error(`Fetch (id: "${handle}", type: "${type}") fail`);
+                        else if (result === null) {
+                            // fetch fail
                             return false;
+                        }
+                        else {
+                            // no matching plugin
+                            return true;
                         }
                     });
                     retry.add(`(id: "${handle}", type: "${type}")`, fn);

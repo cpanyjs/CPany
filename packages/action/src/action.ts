@@ -58,7 +58,7 @@ export async function run({
   instance.logger.startGroup('Clean cache');
   for (const plugin of usedPluginSet) {
     const rawFiles = await instance.load(plugin + '/clean');
-    if (rawFiles !== null) {
+    if (!!rawFiles) {
       const files: string[] = JSON.parse(rawFiles.content);
       for (const file of files) {
         await fs.rm(file);
@@ -74,12 +74,9 @@ export async function run({
   for (const id of configFetch) {
     const result = await instance.load(id);
 
-    if (result !== null) {
-      instance.logger.info(`Fetched: ${id}`);
+    if (!!result) {
       const { key, content } = result;
       await fs.add(key, content);
-    } else {
-      instance.logger.error(`Fetch "${id}" fail`);
     }
   }
 
@@ -100,16 +97,16 @@ export async function run({
             type
           });
 
-          if (result !== null) {
-            instance.logger.info(`Fetched: ${result.key}`);
+          if (!!result) {
             const { key, content } = result;
             await fs.add(key, content);
             return true;
-          } else {
-            instance.logger.error(
-              `Fetch (id: "${handle}", type: "${type}") fail`
-            );
+          } else if (result === null) {
+            // fetch fail
             return false;
+          } else {
+            // no matching plugin
+            return true;
           }
         };
         retry.add(`(id: "${handle}", type: "${type}")`, fn);

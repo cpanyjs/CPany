@@ -27,7 +27,7 @@ export function createDefaultLogger(): ILogger {
       console.warn(prefix() + message);
     },
     error(message) {
-      console.error(message);
+      console.error(prefix() + message);
     },
     startGroup(name) {
       console.log(`${prefix()}Start group ${name}:`);
