@@ -15,22 +15,27 @@ export function createDefaultLogger(): ILogger {
   let prefixCount = 0;
 
   const prefix = () => '  '.repeat(prefixCount);
+  const addPrefix = (message: string) =>
+    message
+      .split('\n')
+      .map((message) => prefix() + message)
+      .join('\n');
 
   return {
     debug(message) {
-      console.debug(prefix() + message);
+      console.debug(addPrefix(message));
     },
     info(message) {
-      console.info(prefix() + message);
+      console.info(addPrefix(message));
     },
     warning(message) {
-      console.warn(prefix() + message);
+      console.warn(addPrefix(message));
     },
     error(message) {
-      console.error(prefix() + message);
+      console.error(addPrefix(message));
     },
     startGroup(name) {
-      console.log(`${prefix()}Start group ${name}:`);
+      console.log(`${prefix()}Start Group ${name}:`);
       prefixCount++;
     },
     endGroup() {

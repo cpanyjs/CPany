@@ -140,7 +140,7 @@ export function createInstance<T>(option: ICreateOptions<T>): CPanyInstance {
   };
 
   return {
-    logger: instanceLogger,
+    logger: createPrefixLogger(prefix('action'), logger),
     context,
     load,
     transform
