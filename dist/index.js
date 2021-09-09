@@ -15944,6 +15944,7 @@ function createInstance(option) {
     const prefix = (name = 'instance') => {
         return '[ ' + name + ' '.repeat(loggerPrefixLength - name.length) + ' ]';
     };
+    const instanceLogger = utils_1.createPrefixLogger(prefix(), logger);
     const context = (_c = option === null || option === void 0 ? void 0 : option.context) !== null && _c !== void 0 ? _c : {};
     const instance = { logger, context, config: option.config };
     const isKeyInContext = (key) => {
@@ -15959,13 +15960,14 @@ function createInstance(option) {
         if (isKeyInContext(key)) {
             return { key, content: loadFromContext(key) };
         }
-        logger.info(`${prefix()} Fetch: ${key}`);
+        instanceLogger.info(`Fetch: ${key}`);
         for (const plugin of plugins) {
             if ('load' in plugin) {
+                const pluginLogger = utils_1.createPrefixLogger(prefix(plugin.name), logger);
                 try {
-                    const result = yield plugin.load(key, instance);
+                    const result = yield plugin.load(key, Object.assign(Object.assign({}, instance), { logger: pluginLogger }));
                     if (result !== undefined && result !== null) {
-                        logger.info(`${prefix(plugin.name)} Ok   : ${key}`);
+                        pluginLogger.info(`Ok   : ${key}`);
                         if (typeof result === 'string') {
                             cacheToContext(key, result);
                             return { key, content: result };
@@ -15977,16 +15979,16 @@ function createInstance(option) {
                     }
                 }
                 catch (error) {
-                    logger.error(`${prefix(plugin.name)} Error: Fetch "${key}" fail`);
+                    pluginLogger.error(`Error: Fetch "${key}" fail`);
                     return null;
                 }
             }
         }
-        logger.warning(`${prefix()} Error: No matching plugins for ${key}`);
+        instanceLogger.warning(`Error: No matching plugins for ${key}`);
         return undefined;
     });
     const transform = (payload) => __awaiter(this, void 0, void 0, function* () {
-        logger.info(`${prefix()} Fetch: (id: ${payload.id}, type: ${payload.type})`);
+        instanceLogger.info(`Fetch: (id: ${payload.id}, type: ${payload.type})`);
         for (const plugin of plugins) {
             if ('transform' in plugin) {
                 const key = plugin.resolveKey(payload);
@@ -15998,28 +16000,29 @@ function createInstance(option) {
                         content: loadFromContext(key)
                     };
                 }
+                const pluginLogger = utils_1.createPrefixLogger(prefix(plugin.name), logger);
                 try {
-                    const result = yield plugin.transform(payload, instance);
+                    const result = yield plugin.transform(payload, Object.assign(Object.assign({}, instance), { logger: pluginLogger }));
                     if (result !== undefined && result !== null) {
-                        logger.info(`${prefix(plugin.name)} Ok   : ${result.key}`);
+                        pluginLogger.info(`Ok   : ${result.key}`);
                         cacheToContext(result.key, result.content);
                         return result;
                     }
                     else {
-                        logger.error(`[${plugin.name}] Error: has resolved id "${key}", but failed transforming`);
+                        pluginLogger.error(`Error: has resolved id "${key}", but failed transforming`);
                     }
                 }
                 catch (error) {
-                    logger.error(`${prefix(plugin.name)} Error: Fetch (id: ${payload.id}, type: ${payload.type}) fail`);
+                    pluginLogger.error(`Error: Fetch (id: ${payload.id}, type: ${payload.type}) fail`);
                     return null;
                 }
             }
         }
-        logger.warning(`${prefix()} Error: No matching plugins for (id: ${payload.id}, type: ${payload.type})`);
+        instanceLogger.warning(`Error: No matching plugins for (id: ${payload.id}, type: ${payload.type})`);
         return undefined;
     });
     return {
-        logger,
+        logger: instanceLogger,
         context,
         load,
         transform
@@ -16071,7 +16074,7 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.createDefaultLogger = void 0;
+exports.createPrefixLogger = exports.createDefaultLogger = void 0;
 function createDefaultLogger() {
     let prefixCount = 0;
     const prefix = () => '  '.repeat(prefixCount);
@@ -16099,6 +16102,29 @@ function createDefaultLogger() {
     };
 }
 exports.createDefaultLogger = createDefaultLogger;
+function createPrefixLogger(prefix, logger) {
+    return {
+        debug(message) {
+            return logger.debug(prefix + ' ' + message);
+        },
+        info(message) {
+            return logger.info(prefix + ' ' + message);
+        },
+        warning(message) {
+            return logger.warning(prefix + ' ' + message);
+        },
+        error(message) {
+            return logger.error(prefix + ' ' + message);
+        },
+        startGroup(name) {
+            return logger.startGroup(name);
+        },
+        endGroup() {
+            return logger.endGroup();
+        }
+    };
+}
+exports.createPrefixLogger = createPrefixLogger;
 
 
 /***/ }),

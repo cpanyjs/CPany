@@ -39,3 +39,26 @@ export function createDefaultLogger(): ILogger {
     }
   };
 }
+
+export function createPrefixLogger(prefix: string, logger: ILogger): ILogger {
+  return {
+    debug(message) {
+      return logger.debug(prefix + ' ' + message);
+    },
+    info(message) {
+      return logger.info(prefix + ' ' + message);
+    },
+    warning(message) {
+      return logger.warning(prefix + ' ' + message);
+    },
+    error(message) {
+      return logger.error(prefix + ' ' + message);
+    },
+    startGroup(name) {
+      return logger.startGroup(name);
+    },
+    endGroup() {
+      return logger.endGroup();
+    }
+  };
+}

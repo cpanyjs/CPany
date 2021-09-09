@@ -4,7 +4,12 @@ import type {
   ITransformPayload,
   IInstance
 } from './plugin';
-import { IContext, ILogger, createDefaultLogger } from './utils';
+import {
+  IContext,
+  ILogger,
+  createDefaultLogger,
+  createPrefixLogger
+} from './utils';
 
 export interface ICreateOptions<T = any> {
   plugins?: Array<IPlugin | IPlugin[] | null | undefined>;
@@ -35,6 +40,7 @@ export function createInstance<T>(option: ICreateOptions<T>): CPanyInstance {
   const prefix = (name: string = 'instance') => {
     return '[ ' + name + ' '.repeat(loggerPrefixLength - name.length) + ' ]';
   };
+  const instanceLogger = createPrefixLogger(prefix(), logger);
 
   const context = option?.context ?? {};
   const instance: IInstance<T> = { logger, context, config: option.config };
@@ -56,14 +62,18 @@ export function createInstance<T>(option: ICreateOptions<T>): CPanyInstance {
       return { key, content: loadFromContext(key) };
     }
 
-    logger.info(`${prefix()} Fetch: ${key}`);
+    instanceLogger.info(`Fetch: ${key}`);
 
     for (const plugin of plugins) {
       if ('load' in plugin) {
+        const pluginLogger = createPrefixLogger(prefix(plugin.name), logger);
         try {
-          const result = await plugin.load<T>(key, instance);
+          const result = await plugin.load<T>(key, {
+            ...instance,
+            logger: pluginLogger
+          });
           if (result !== undefined && result !== null) {
-            logger.info(`${prefix(plugin.name)} Ok   : ${key}`);
+            pluginLogger.info(`Ok   : ${key}`);
             if (typeof result === 'string') {
               cacheToContext(key, result);
               return { key, content: result };
@@ -73,21 +83,19 @@ export function createInstance<T>(option: ICreateOptions<T>): CPanyInstance {
             }
           }
         } catch (error) {
-          logger.error(`${prefix(plugin.name)} Error: Fetch "${key}" fail`);
+          pluginLogger.error(`Error: Fetch "${key}" fail`);
           return null;
         }
       }
     }
 
-    logger.warning(`${prefix()} Error: No matching plugins for ${key}`);
+    instanceLogger.warning(`Error: No matching plugins for ${key}`);
 
     return undefined;
   };
 
   const transform = async <T extends ITransformPayload>(payload: T) => {
-    logger.info(
-      `${prefix()} Fetch: (id: ${payload.id}, type: ${payload.type})`
-    );
+    instanceLogger.info(`Fetch: (id: ${payload.id}, type: ${payload.type})`);
 
     for (const plugin of plugins) {
       if ('transform' in plugin) {
@@ -100,39 +108,39 @@ export function createInstance<T>(option: ICreateOptions<T>): CPanyInstance {
           };
         }
 
+        const pluginLogger = createPrefixLogger(prefix(plugin.name), logger);
         try {
-          const result = await plugin.transform<any>(payload, instance);
+          const result = await plugin.transform<any>(payload, {
+            ...instance,
+            logger: pluginLogger
+          });
           if (result !== undefined && result !== null) {
-            logger.info(`${prefix(plugin.name)} Ok   : ${result.key}`);
+            pluginLogger.info(`Ok   : ${result.key}`);
             cacheToContext(result.key, result.content);
             return result;
           } else {
-            logger.error(
-              `[${plugin.name}] Error: has resolved id "${key}", but failed transforming`
+            pluginLogger.error(
+              `Error: has resolved id "${key}", but failed transforming`
             );
           }
         } catch (error) {
-          logger.error(
-            `${prefix(plugin.name)} Error: Fetch (id: ${payload.id}, type: ${
-              payload.type
-            }) fail`
+          pluginLogger.error(
+            `Error: Fetch (id: ${payload.id}, type: ${payload.type}) fail`
           );
           return null;
         }
       }
     }
 
-    logger.warning(
-      `${prefix()} Error: No matching plugins for (id: ${payload.id}, type: ${
-        payload.type
-      })`
+    instanceLogger.warning(
+      `Error: No matching plugins for (id: ${payload.id}, type: ${payload.type})`
     );
 
     return undefined;
   };
 
   return {
-    logger,
+    logger: instanceLogger,
     context,
     load,
     transform
