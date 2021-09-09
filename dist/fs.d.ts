@@ -1,9 +1,9 @@
 interface IGitFSOption {
     disable?: boolean;
-    skipList?: Set<string>;
 }
-export declare function createGitFileSystem(basePath: string, { disable, skipList }?: IGitFSOption): Promise<{
+export declare function createGitFileSystem(basePath: string, { disable }?: IGitFSOption): Promise<{
     add: (path: string, content: string) => Promise<void>;
+    rm: (path: string) => Promise<void>;
     push: (time: string) => Promise<void>;
 }>;
 export {};

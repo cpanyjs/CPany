@@ -15838,16 +15838,34 @@ var __createBinding = (this && this.__createBinding) || (Object.create ? (functi
 var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __asyncValues = (this && this.__asyncValues) || function (o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.codeforcesPlugin = void 0;
 const axios_1 = __importDefault(__nccwpck_require__(5186));
+const path_1 = __importDefault(__nccwpck_require__(5622));
+const utils_1 = __nccwpck_require__(3124);
 const contest_1 = __nccwpck_require__(4062);
 const handle_1 = __nccwpck_require__(9906);
 __exportStar(__nccwpck_require__(4371), exports);
-function codeforcesPlugin(option = {}) {
+function codeforcesPlugin(option) {
     var _a, _b;
     const api = axios_1.default.create({
         baseURL: (_a = option.baseUrl) !== null && _a !== void 0 ? _a : 'https://codeforces.com/api/',
@@ -15856,10 +15874,43 @@ function codeforcesPlugin(option = {}) {
     return [
         contest_1.contestListPlugin(api),
         contest_1.gymContestListPlugin(api),
-        handle_1.handleInfoPlugin(api)
+        handle_1.handleInfoPlugin(api),
+        codeforcesCleanPlugin(option.basePath)
     ];
 }
 exports.codeforcesPlugin = codeforcesPlugin;
+function codeforcesCleanPlugin(basePath) {
+    return {
+        name: 'codeforces/clean',
+        load(id) {
+            var e_1, _a;
+            return __awaiter(this, void 0, void 0, function* () {
+                if (id === 'codeforces/clean') {
+                    const fullPath = path_1.default.resolve(basePath, 'codeforces/handle');
+                    const rmFiles = [];
+                    try {
+                        try {
+                            for (var _b = __asyncValues(utils_1.listFiles(fullPath)), _c; _c = yield _b.next(), !_c.done;) {
+                                const file = _c.value;
+                                rmFiles.push(file);
+                            }
+                        }
+                        catch (e_1_1) { e_1 = { error: e_1_1 }; }
+                        finally {
+                            try {
+                                if (_c && !_c.done && (_a = _b.return)) yield _a.call(_b);
+                            }
+                            finally { if (e_1) throw e_1.error; }
+                        }
+                    }
+                    catch (error) { }
+                    return JSON.stringify(rmFiles);
+                }
+                return null;
+            });
+        }
+    };
+}
 
 
 /***/ }),
@@ -15956,6 +16007,8 @@ function createInstance(option) {
         return null;
     });
     return {
+        logger,
+        context,
         load,
         transform
     };
@@ -16028,6 +16081,7 @@ function createDefaultLogger() {
             prefixCount++;
         },
         endGroup() {
+            console.log('');
             prefixCount--;
         }
     };
@@ -16228,7 +16282,7 @@ function hduPlugin(config) {
             const fullPath = path_1.default.resolve(config.basePath, handlePath);
             try {
                 try {
-                    for (var _c = (e_1 = void 0, __asyncValues(utils_1.listAllFiles(fullPath))), _d; _d = yield _c.next(), !_d.done;) {
+                    for (var _c = (e_1 = void 0, __asyncValues(utils_1.listJsonFiles(fullPath))), _d; _d = yield _c.next(), !_d.done;) {
                         const handle = _d.value;
                         if (handle.type.startsWith('hdu')) {
                             handle_1.addToCache(handle);
@@ -16445,12 +16499,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.listAllFiles = void 0;
+exports.listFiles = exports.listJsonFiles = void 0;
 const fs_1 = __nccwpck_require__(5747);
 const path_1 = __importDefault(__nccwpck_require__(5622));
-function listAllFiles(dir, suffix = '.json') {
-    return __asyncGenerator(this, arguments, function* listAllFiles_1() {
-        if (dir.endsWith(suffix)) {
+function listJsonFiles(dir) {
+    return __asyncGenerator(this, arguments, function* listJsonFiles_1() {
+        if (dir.endsWith('.json')) {
             const files = JSON.parse(yield __await(fs_1.promises.readFile(dir, 'utf8')));
             if (Array.isArray(files)) {
                 for (const contest of files) {
@@ -16465,12 +16519,30 @@ function listAllFiles(dir, suffix = '.json') {
             const dirents = yield __await(fs_1.promises.readdir(dir, { withFileTypes: true }));
             for (const dirent of dirents) {
                 const id = path_1.default.join(dir, dirent.name);
-                yield __await(yield* __asyncDelegator(__asyncValues(listAllFiles(id))));
+                yield __await(yield* __asyncDelegator(__asyncValues(listJsonFiles(id))));
             }
         }
     });
 }
-exports.listAllFiles = listAllFiles;
+exports.listJsonFiles = listJsonFiles;
+function listFiles(dir, skipList = new Set()) {
+    return __asyncGenerator(this, arguments, function* listFiles_1() {
+        const dirents = yield __await(fs_1.promises.readdir(dir, { withFileTypes: true }));
+        for (const dirent of dirents) {
+            const id = path_1.default.join(dir, dirent.name);
+            if (dirent.name.startsWith('.') || skipList.has(id)) {
+                continue;
+            }
+            if (dirent.isDirectory()) {
+                yield __await(yield* __asyncDelegator(__asyncValues(listFiles(id, skipList))));
+            }
+            else {
+                yield yield __await(id);
+            }
+        }
+    });
+}
+exports.listFiles = listFiles;
 
 
 /***/ }),
@@ -20718,6 +20790,119 @@ var hdu_dist = __nccwpck_require__(8808);
 var io = __nccwpck_require__(7554);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@actions+exec@1.1.0/node_modules/@actions/exec/lib/exec.js
 var exec = __nccwpck_require__(4308);
+;// CONCATENATED MODULE: ./src/fs.ts
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+function createGitFileSystem(basePath, { disable = false } = {}) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const files = new Set();
+        const rm = (path) => __awaiter(this, void 0, void 0, function* () {
+            if (disable)
+                return;
+            const fullPath = (0,external_path_.resolve)(basePath, path);
+            files.add(path);
+            (0,external_fs_.unlinkSync)(fullPath);
+        });
+        const add = (path, content) => __awaiter(this, void 0, void 0, function* () {
+            const fullPath = (0,external_path_.join)(basePath, path);
+            files.add(fullPath);
+            yield (0,io.mkdirP)((0,external_path_.dirname)(fullPath));
+            (0,external_fs_.writeFileSync)(fullPath, content, 'utf8');
+        });
+        const push = (time) => __awaiter(this, void 0, void 0, function* () {
+            if (disable)
+                return;
+            const username = process.env.GITHUB_ACTOR || 'Unknown';
+            yield (0,exec.exec)('git', ['config', '--local', 'user.name', username]);
+            yield (0,exec.exec)('git', [
+                'config',
+                '--local',
+                'user.email',
+                `${username}@users.noreply.github.com`
+            ]);
+            yield (0,exec.exec)('git', [
+                'add',
+                (0,external_path_.resolve)(basePath, 'README.md'),
+                (0,external_path_.resolve)(basePath, '.env'),
+                ...files
+            ]);
+            yield (0,exec.exec)('git', ['commit', '-m', `Fetch data on ${time}`]);
+            yield (0,exec.exec)('git', ['push']);
+        });
+        return {
+            add,
+            rm,
+            push
+        };
+    });
+}
+
+;// CONCATENATED MODULE: ./src/version.ts
+const ActionVersion = '0.0.32';
+
+;// CONCATENATED MODULE: ./src/report.ts
+var report_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+function processReadme(basePath, time) {
+    return report_awaiter(this, void 0, void 0, function* () {
+        const content = yield external_fs_.promises.readFile((0,external_path_.resolve)(basePath, 'README.md'), 'utf8');
+        const newContent = content.replace(/<!-- START_SECTION: update_time -->([\s\S]*)<!-- END_SECTION: update_time -->/, `<!-- START_SECTION: update_time -->\n更新时间：[${time.format('YYYY-MM-DD HH:mm')}](https://www.timeanddate.com/worldclock/fixedtime.html?msg=Fetch+data&iso=${time.format('YYYYMMDDTHHmmss')}&p1=237)\n<!-- END_SECTION: update_time -->`);
+        yield external_fs_.promises.writeFile('README.md', newContent, 'utf8');
+    });
+}
+function processVersion(basePath, time) {
+    return report_awaiter(this, void 0, void 0, function* () {
+        const content = [
+            `ACTION_VERSION=${ActionVersion}`,
+            `UPDATE_TIME=${time.unix()}`
+        ];
+        yield external_fs_.promises.writeFile((0,external_path_.resolve)(basePath, '.env'), content.join('\n'));
+    });
+}
+function processReport(basePath, time) {
+    return report_awaiter(this, void 0, void 0, function* () {
+        let firstError = null;
+        try {
+            yield processReadme(basePath, time);
+        }
+        catch (error) {
+            firstError = error;
+        }
+        try {
+            yield processVersion(basePath, time);
+        }
+        catch (error) {
+            if (!firstError) {
+                firstError = error;
+            }
+        }
+        if (!!firstError) {
+            throw firstError;
+        }
+    });
+}
+
 // EXTERNAL MODULE: ../../node_modules/.pnpm/dayjs@1.10.6/node_modules/dayjs/dayjs.min.js
 var dayjs_min = __nccwpck_require__(3767);
 var dayjs_min_default = /*#__PURE__*/__nccwpck_require__.n(dayjs_min);
@@ -20761,9 +20946,9 @@ dayjs_min_default().extend((utc_default()));
 dayjs_min_default().extend((timezone_default()));
 function listDir(dir, skipList = new Set()) {
     return __asyncGenerator(this, arguments, function* listDir_1() {
-        const dirents = yield __await(external_fs_.promises.readdir(dir, { withFileTypes: true }));
+        const dirents = yield __await(promises.readdir(dir, { withFileTypes: true }));
         for (const dirent of dirents) {
-            const id = (0,external_path_.join)(dir, dirent.name);
+            const id = join(dir, dirent.name);
             if (dirent.name.startsWith('.') || skipList.has(id)) {
                 continue;
             }
@@ -20781,131 +20966,6 @@ function now() {
 }
 function sleep(duration) {
     return new Promise((res) => setTimeout(() => res(), duration));
-}
-
-;// CONCATENATED MODULE: ./src/fs.ts
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var fs_asyncValues = (undefined && undefined.__asyncValues) || function (o) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var m = o[Symbol.asyncIterator], i;
-    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
-    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
-    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
-};
-
-
-
-
-
-function createGitFileSystem(basePath, { disable = false, skipList = new Set() } = {}) {
-    var e_1, _a;
-    return __awaiter(this, void 0, void 0, function* () {
-        const files = new Set();
-        try {
-            for (var _b = fs_asyncValues(listDir('.', skipList)), _c; _c = yield _b.next(), !_c.done;) {
-                const file = _c.value;
-                files.add(file);
-                if (disable)
-                    continue;
-                yield external_fs_.promises.unlink(file);
-            }
-        }
-        catch (e_1_1) { e_1 = { error: e_1_1 }; }
-        finally {
-            try {
-                if (_c && !_c.done && (_a = _b.return)) yield _a.call(_b);
-            }
-            finally { if (e_1) throw e_1.error; }
-        }
-        const add = (path, content) => __awaiter(this, void 0, void 0, function* () {
-            const fullPath = (0,external_path_.join)(basePath, path);
-            files.add(fullPath);
-            yield (0,io.mkdirP)((0,external_path_.dirname)(fullPath));
-            (0,external_fs_.writeFileSync)(fullPath, content, 'utf8');
-        });
-        const push = (time) => __awaiter(this, void 0, void 0, function* () {
-            if (disable)
-                return;
-            const username = process.env.GITHUB_ACTOR || 'Unknown';
-            yield (0,exec.exec)('git', ['config', '--local', 'user.name', username]);
-            yield (0,exec.exec)('git', [
-                'config',
-                '--local',
-                'user.email',
-                `${username}@users.noreply.github.com`
-            ]);
-            yield (0,exec.exec)('git', [
-                'add',
-                (0,external_path_.resolve)(basePath, 'README.md'),
-                (0,external_path_.resolve)(basePath, '.env'),
-                ...files
-            ]);
-            yield (0,exec.exec)('git', ['commit', '-m', `Fetch data on ${time}`]);
-            yield (0,exec.exec)('git', ['push']);
-        });
-        return {
-            add,
-            push
-        };
-    });
-}
-
-;// CONCATENATED MODULE: ./src/version.ts
-const ActionVersion = '0.0.32';
-
-;// CONCATENATED MODULE: ./src/report.ts
-var report_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-
-
-
-
-function processReadme(basePath, time) {
-    return report_awaiter(this, void 0, void 0, function* () {
-        const content = yield external_fs_.promises.readFile((0,external_path_.resolve)(basePath, 'README.md'), 'utf8');
-        const newContent = content.replace(/<!-- START_SECTION: update_time -->([\s\S]*)<!-- END_SECTION: update_time -->/, `<!-- START_SECTION: update_time -->\n更新时间：[${time.format('YYYY-MM-DD HH:mm')}](https://www.timeanddate.com/worldclock/fixedtime.html?msg=Fetch+data&iso=${time.format('YYYYMMDDTHHmmss')}&p1=237)\n<!-- END_SECTION: update_time -->`);
-        yield external_fs_.promises.writeFile('README.md', newContent, 'utf8');
-    });
-}
-function processVersion(basePath, time) {
-    return report_awaiter(this, void 0, void 0, function* () {
-        const content = [
-            `ACTION_VERSION=${ActionVersion}`,
-            `UPDATE_TIME=${time.unix()}`
-        ];
-        yield external_fs_.promises.writeFile((0,external_path_.resolve)(basePath, '.env'), content.join('\n'));
-    });
-}
-function processReport(basePath, time) {
-    return report_awaiter(this, void 0, void 0, function* () {
-        try {
-            yield processReadme(basePath, time);
-        }
-        catch (error) {
-            core.error(error);
-        }
-        try {
-            yield processVersion(basePath, time);
-        }
-        catch (error) {
-            core.error(error);
-        }
-    });
 }
 
 // EXTERNAL MODULE: ../../node_modules/.pnpm/random-js@2.1.0/node_modules/random-js/dist/random-js.umd.js
@@ -20984,16 +21044,15 @@ var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _a
 
 
 function run({ logger = true, basePath = './', disableGit, plugins = ['codeforces', 'hdu'], configPath, maxRetry }) {
-    var _a, _b, _c;
+    var _a, _b;
     return action_awaiter(this, void 0, void 0, function* () {
-        core.startGroup('Load CPany config');
-        const config = yield getConfig((0,external_path_.resolve)(basePath, configPath));
-        core.info(JSON.stringify(config, null, 2));
-        core.endGroup();
         const usedPluginSet = new Set(plugins);
+        const config = yield getConfig((0,external_path_.resolve)(basePath, configPath));
         const instance = (0,dist.createInstance)({
             plugins: [
-                usedPluginSet.has('codeforces') ? (0,codeforces_dist.codeforcesPlugin)() : undefined,
+                usedPluginSet.has('codeforces')
+                    ? (0,codeforces_dist.codeforcesPlugin)(Object.assign({ basePath }, config))
+                    : undefined,
                 usedPluginSet.has('hdu')
                     ? yield (0,hdu_dist.hduPlugin)(Object.assign({ basePath }, config))
                     : undefined
@@ -21002,36 +21061,39 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
             config
         });
         const fs = yield createGitFileSystem(basePath, {
-            disable: disableGit,
-            skipList: new Set([
-                'README.md',
-                'netlify.toml',
-                'package.json',
-                'package-lock.json',
-                'pnpm-lock.yaml',
-                'yarn.lock',
-                'LICENSE',
-                'LICENCE',
-                'node_modules',
-                configPath,
-                ...((_a = config === null || config === void 0 ? void 0 : config.static) !== null && _a !== void 0 ? _a : [])
-            ])
+            disable: disableGit
         });
-        core.startGroup('Fetch data');
-        const configFetch = (_b = config === null || config === void 0 ? void 0 : config.fetch) !== null && _b !== void 0 ? _b : [];
+        instance.logger.startGroup('Load CPany config');
+        instance.logger.info(JSON.stringify(config, null, 2));
+        instance.logger.endGroup();
+        // clean cache
+        instance.logger.startGroup('Clean cache');
+        for (const plugin of usedPluginSet) {
+            const rawFiles = yield instance.load(plugin + '/clean');
+            if (rawFiles !== null) {
+                const files = JSON.parse(rawFiles.content);
+                for (const file of files) {
+                    yield fs.rm(file);
+                    instance.logger.info(`Remove: ${file}`);
+                }
+            }
+        }
+        instance.logger.endGroup();
+        instance.logger.startGroup('Fetch data');
+        const configFetch = (_a = config === null || config === void 0 ? void 0 : config.fetch) !== null && _a !== void 0 ? _a : [];
         for (const id of configFetch) {
             const result = yield instance.load(id);
             if (result !== null) {
-                core.info(`Fetched ${id}`);
+                instance.logger.info(`Fetched: ${id}`);
                 const { key, content } = result;
                 yield fs.add(key, content);
             }
             else {
-                core.error(`Fetch "${id}" fail`);
+                instance.logger.error(`Fetch "${id}" fail`);
             }
         }
         const retry = createRetryContainer(maxRetry);
-        const configUser = (_c = config === null || config === void 0 ? void 0 : config.users) !== null && _c !== void 0 ? _c : {};
+        const configUser = (_b = config === null || config === void 0 ? void 0 : config.users) !== null && _b !== void 0 ? _b : {};
         for (const userKey in configUser) {
             const user = configUser[userKey];
             for (const type in user) {
@@ -21044,13 +21106,13 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
                             type
                         });
                         if (result !== null) {
-                            core.info(`Fetched ${result.key}`);
+                            instance.logger.info(`Fetched: ${result.key}`);
                             const { key, content } = result;
                             yield fs.add(key, content);
                             return true;
                         }
                         else {
-                            core.error(`Fetch (id: "${handle}", type: "${type}") fail`);
+                            instance.logger.error(`Fetch (id: "${handle}", type: "${type}") fail`);
                             return false;
                         }
                     });
@@ -21059,9 +21121,14 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
             }
         }
         yield retry.run();
-        core.endGroup();
+        instance.logger.endGroup();
         const nowTime = now();
-        yield processReport(basePath, nowTime);
+        try {
+            yield processReport(basePath, nowTime);
+        }
+        catch (error) {
+            instance.logger.error(error);
+        }
         yield fs.push(nowTime.format('YYYY-MM-DD HH:mm'));
     });
 }

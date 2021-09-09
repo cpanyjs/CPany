@@ -30,15 +30,14 @@ export async function run({
   configPath,
   maxRetry
 }: IRunOption) {
-  core.startGroup('Load CPany config');
-  const config = await getConfig(resolve(basePath, configPath));
-  core.info(JSON.stringify(config, null, 2));
-  core.endGroup();
-
   const usedPluginSet = new Set(plugins);
+  const config = await getConfig(resolve(basePath, configPath));
+
   const instance = createInstance({
     plugins: [
-      usedPluginSet.has('codeforces') ? codeforcesPlugin() : undefined,
+      usedPluginSet.has('codeforces')
+        ? codeforcesPlugin({ basePath, ...config })
+        : undefined,
       usedPluginSet.has('hdu')
         ? await hduPlugin({ basePath, ...config })
         : undefined
@@ -48,34 +47,39 @@ export async function run({
   });
 
   const fs = await createGitFileSystem(basePath, {
-    disable: disableGit,
-    skipList: new Set([
-      'README.md',
-      'netlify.toml',
-      'package.json',
-      'package-lock.json',
-      'pnpm-lock.yaml',
-      'yarn.lock',
-      'LICENSE',
-      'LICENCE',
-      'node_modules',
-      configPath,
-      ...(config?.static ?? [])
-    ])
+    disable: disableGit
   });
 
-  core.startGroup('Fetch data');
+  instance.logger.startGroup('Load CPany config');
+  instance.logger.info(JSON.stringify(config, null, 2));
+  instance.logger.endGroup();
+
+  // clean cache
+  instance.logger.startGroup('Clean cache');
+  for (const plugin of usedPluginSet) {
+    const rawFiles = await instance.load(plugin + '/clean');
+    if (rawFiles !== null) {
+      const files: string[] = JSON.parse(rawFiles.content);
+      for (const file of files) {
+        await fs.rm(file);
+        instance.logger.info(`Remove: ${file}`);
+      }
+    }
+  }
+  instance.logger.endGroup();
+
+  instance.logger.startGroup('Fetch data');
 
   const configFetch = config?.fetch ?? [];
   for (const id of configFetch) {
     const result = await instance.load(id);
 
     if (result !== null) {
-      core.info(`Fetched ${id}`);
+      instance.logger.info(`Fetched: ${id}`);
       const { key, content } = result;
       await fs.add(key, content);
     } else {
-      core.error(`Fetch "${id}" fail`);
+      instance.logger.error(`Fetch "${id}" fail`);
     }
   }
 
@@ -97,12 +101,14 @@ export async function run({
           });
 
           if (result !== null) {
-            core.info(`Fetched ${result.key}`);
+            instance.logger.info(`Fetched: ${result.key}`);
             const { key, content } = result;
             await fs.add(key, content);
             return true;
           } else {
-            core.error(`Fetch (id: "${handle}", type: "${type}") fail`);
+            instance.logger.error(
+              `Fetch (id: "${handle}", type: "${type}") fail`
+            );
             return false;
           }
         };
@@ -113,10 +119,14 @@ export async function run({
 
   await retry.run();
 
-  core.endGroup();
+  instance.logger.endGroup();
 
   const nowTime = now();
-  await processReport(basePath, nowTime);
+  try {
+    await processReport(basePath, nowTime);
+  } catch (error) {
+    instance.logger.error(error as string);
+  }
   await fs.push(nowTime.format('YYYY-MM-DD HH:mm'));
 }
 

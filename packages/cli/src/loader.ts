@@ -13,7 +13,7 @@ import {
   Verdict,
   IProblem
 } from '@cpany/types';
-import { listAllFiles, slash } from '@cpany/utils';
+import { listJsonFiles, slash } from '@cpany/utils';
 
 import type { IPluginOption } from './types';
 import {
@@ -39,7 +39,7 @@ export async function createEnvLoader({ dataRootPath }: IPluginOption) {
         envMap.set(key, value);
       }
     } catch (error) {
-      console.log(error.message);
+      console.log((error as any).message);
     }
   };
   await load();
@@ -66,7 +66,7 @@ export async function createLoader({
     const handles: IHandle[] = [];
     for (const handlePath of config.handles ?? []) {
       const fullPath = path.resolve(dataRootPath, handlePath);
-      for await (const handle of listAllFiles<IHandle>(fullPath)) {
+      for await (const handle of listJsonFiles<IHandle>(fullPath)) {
         handles.push(handle);
       }
     }
@@ -88,7 +88,7 @@ export async function createLoader({
         return false;
       })();
 
-      for await (const contest of listAllFiles<IContest>(fullPath)) {
+      for await (const contest of listJsonFiles<IContest>(fullPath)) {
         if (isStatic) {
           // Dep: inline static contest pages
           contest.inlinePage = true;

@@ -1,11 +1,8 @@
 import { promises } from 'fs';
 import path from 'path';
 
-export async function* listAllFiles<T>(
-  dir: string,
-  suffix = '.json'
-): AsyncGenerator<T> {
-  if (dir.endsWith(suffix)) {
+export async function* listJsonFiles<T>(dir: string): AsyncGenerator<T> {
+  if (dir.endsWith('.json')) {
     const files: T | T[] = JSON.parse(await promises.readFile(dir, 'utf8'));
     if (Array.isArray(files)) {
       for (const contest of files) {
@@ -18,7 +15,25 @@ export async function* listAllFiles<T>(
     const dirents = await promises.readdir(dir, { withFileTypes: true });
     for (const dirent of dirents) {
       const id = path.join(dir, dirent.name);
-      yield* listAllFiles(id);
+      yield* listJsonFiles(id);
+    }
+  }
+}
+
+export async function* listFiles(
+  dir: string,
+  skipList: Set<string> = new Set()
+): AsyncGenerator<string> {
+  const dirents = await promises.readdir(dir, { withFileTypes: true });
+  for (const dirent of dirents) {
+    const id = path.join(dir, dirent.name);
+    if (dirent.name.startsWith('.') || skipList.has(id)) {
+      continue;
+    }
+    if (dirent.isDirectory()) {
+      yield* listFiles(id, skipList);
+    } else {
+      yield id;
     }
   }
 }

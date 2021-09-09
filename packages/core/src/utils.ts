@@ -34,6 +34,7 @@ export function createDefaultLogger(): ILogger {
       prefixCount++;
     },
     endGroup() {
+      console.log('');
       prefixCount--;
     }
   };

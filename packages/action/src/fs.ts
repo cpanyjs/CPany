@@ -1,27 +1,25 @@
 import { join, dirname, resolve } from 'path';
-import { writeFileSync, promises } from 'fs';
+import { writeFileSync, unlinkSync } from 'fs';
 
 import { mkdirP } from '@actions/io';
 import { exec } from '@actions/exec';
 
-import { listDir } from './utils';
-
 interface IGitFSOption {
   disable?: boolean;
-  skipList?: Set<string>;
 }
 
 export async function createGitFileSystem(
   basePath: string,
-  { disable = false, skipList = new Set() }: IGitFSOption = {}
+  { disable = false }: IGitFSOption = {}
 ) {
   const files: Set<string> = new Set();
 
-  for await (const file of listDir('.', skipList)) {
-    files.add(file);
-    if (disable) continue;
-    await promises.unlink(file);
-  }
+  const rm = async (path: string) => {
+    if (disable) return;
+    const fullPath = resolve(basePath, path);
+    files.add(path);
+    unlinkSync(fullPath);
+  };
 
   const add = async (path: string, content: string) => {
     const fullPath = join(basePath, path);
@@ -52,6 +50,7 @@ export async function createGitFileSystem(
 
   return {
     add,
+    rm,
     push
   };
 }

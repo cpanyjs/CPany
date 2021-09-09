@@ -1,7 +1,7 @@
 import type { IPlugin } from '@cpany/core';
 import type { ICPanyConfig } from '@cpany/types';
 import type { IHandleWithHdu } from '@cpany/types/hdu';
-import { listAllFiles } from '@cpany/utils';
+import { listJsonFiles } from '@cpany/utils';
 
 import path from 'path';
 
@@ -13,7 +13,7 @@ export async function hduPlugin(
   for (const handlePath of config.handles ?? []) {
     const fullPath = path.resolve(config.basePath, handlePath);
     try {
-      for await (const handle of listAllFiles<IHandleWithHdu>(fullPath)) {
+      for await (const handle of listJsonFiles<IHandleWithHdu>(fullPath)) {
         if (handle.type.startsWith('hdu')) {
           addToCache(handle);
         }

@@ -14,6 +14,8 @@ export interface ICreateOptions<T = any> {
 }
 
 export interface CPanyInstance {
+  logger: ILogger;
+  context: IContext;
   load: (key: string) => Promise<LoadResult | null>;
   transform: <T extends ITransformPayload>(
     payload: T
@@ -61,7 +63,7 @@ export function createInstance<T>(option: ICreateOptions<T>): CPanyInstance {
             }
           }
         } catch (error) {
-          logger.error(error);
+          logger.error(error as string);
           return null;
         }
       }
@@ -92,7 +94,7 @@ export function createInstance<T>(option: ICreateOptions<T>): CPanyInstance {
             );
           }
         } catch (error) {
-          logger.error(error);
+          logger.error(error as string);
           return null;
         }
       }
@@ -101,6 +103,8 @@ export function createInstance<T>(option: ICreateOptions<T>): CPanyInstance {
   };
 
   return {
+    logger,
+    context,
     load,
     transform
   };

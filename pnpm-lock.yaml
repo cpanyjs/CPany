@@ -131,10 +131,12 @@ importers:
     specifiers:
       '@cpany/core': workspace:*
       '@cpany/types': workspace:*
+      '@cpany/utils': workspace:^0.0.32
       axios: ^0.21.1
     dependencies:
       '@cpany/core': link:../core
       '@cpany/types': link:../types
+      '@cpany/utils': link:../utils
       axios: 0.21.1
 
   packages/core:

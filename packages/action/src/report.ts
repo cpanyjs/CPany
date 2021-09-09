@@ -1,7 +1,6 @@
 import { promises } from 'fs';
 import { resolve } from 'path';
 import type { Dayjs } from 'dayjs';
-import * as core from '@actions/core';
 
 import { ActionVersion } from './version';
 
@@ -32,14 +31,20 @@ export async function processVersion(basePath: string, time: Dayjs) {
 }
 
 export async function processReport(basePath: string, time: Dayjs) {
+  let firstError: any | null = null;
   try {
     await processReadme(basePath, time);
   } catch (error) {
-    core.error(error);
+    firstError = error;
   }
   try {
     await processVersion(basePath, time);
   } catch (error) {
-    core.error(error);
+    if (!firstError) {
+      firstError = error;
+    }
+  }
+  if (!!firstError) {
+    throw firstError;
   }
 }
