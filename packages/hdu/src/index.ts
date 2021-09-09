@@ -21,5 +21,16 @@ export async function hduPlugin(
     } catch (error) {}
   }
 
-  return [createHduHandlePlugin()];
+  return [
+    createHduHandlePlugin(),
+    {
+      name: 'hdu/clean',
+      async load(id) {
+        if (id === 'hdu/clean') {
+          return '[]';
+        }
+        return null;
+      }
+    }
+  ];
 }

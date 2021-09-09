@@ -16341,7 +16341,20 @@ function hduPlugin(config) {
             }
             catch (error) { }
         }
-        return [handle_1.createHduHandlePlugin()];
+        return [
+            handle_1.createHduHandlePlugin(),
+            {
+                name: 'hdu/clean',
+                load(id) {
+                    return __awaiter(this, void 0, void 0, function* () {
+                        if (id === 'hdu/clean') {
+                            return '[]';
+                        }
+                        return null;
+                    });
+                }
+            }
+        ];
     });
 }
 exports.hduPlugin = hduPlugin;
