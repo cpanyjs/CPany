@@ -12,6 +12,163 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 128051053,
+      "creationTime": 1630936331,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516547316
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1567C",
+        "name": "Carrying Conundrum",
+        "rating": 1600,
+        "tags": [
+          "bitmasks",
+          "combinatorics",
+          "dp"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1567/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1567/submission/128051053"
+    },
+    {
+      "type": "codeforces",
+      "id": 128048400,
+      "creationTime": 1630934679,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516548968
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1567B",
+        "name": "MEXor Mixup",
+        "rating": 1000,
+        "tags": [
+          "bitmasks",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1567/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1567/submission/128048400"
+    },
+    {
+      "type": "codeforces",
+      "id": 128048223,
+      "creationTime": 1630934564,
+      "language": "GNU C++17 (64)",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516549083
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1567B",
+        "name": "MEXor Mixup",
+        "rating": 1000,
+        "tags": [
+          "bitmasks",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1567/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1567/submission/128048223"
+    },
+    {
+      "type": "codeforces",
+      "id": 128047278,
+      "creationTime": 1630933941,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516549706
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1567A",
+        "name": "Domino Disaster",
+        "rating": 800,
+        "tags": [
+          "implementation",
+          "strings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1567/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1567/submission/128047278"
+    },
+    {
+      "type": "codeforces",
+      "id": 128047037,
+      "creationTime": 1630933800,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516549847
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1567A",
+        "name": "Domino Disaster",
+        "rating": 800,
+        "tags": [
+          "implementation",
+          "strings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1567/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1567/submission/128047037"
+    },
+    {
+      "type": "codeforces",
+      "id": 128046778,
+      "creationTime": 1630933651,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516549996
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1567A",
+        "name": "Domino Disaster",
+        "rating": 800,
+        "tags": [
+          "implementation",
+          "strings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1567/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1567/submission/128046778"
+    },
+    {
+      "type": "codeforces",
       "id": 127829479,
       "creationTime": 1630748998,
       "language": "GNU C++14",

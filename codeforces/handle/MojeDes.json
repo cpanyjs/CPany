@@ -5,11 +5,454 @@
   "avatar": "https://userpic.codeforces.org/829567/title/6a76b2fd62e54be3.jpg",
   "codeforces": {
     "rank": "expert",
-    "rating": 1860,
+    "rating": 1725,
     "maxRank": "expert",
     "maxRating": 1870
   },
   "submissions": [
+    {
+      "type": "codeforces",
+      "id": 128263965,
+      "creationTime": 1631116577,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1631111700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1569C",
+        "name": "Jury Meeting",
+        "tags": [
+          "combinatorics",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1569/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1569/submission/128263965"
+    },
+    {
+      "type": "codeforces",
+      "id": 128259326,
+      "creationTime": 1631115900,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1631111700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1569C",
+        "name": "Jury Meeting",
+        "tags": [
+          "combinatorics",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1569/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1569/submission/128259326"
+    },
+    {
+      "type": "codeforces",
+      "id": 128254404,
+      "creationTime": 1631115215,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1631111700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1569C",
+        "name": "Jury Meeting",
+        "tags": [
+          "combinatorics",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1569/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1569/submission/128254404"
+    },
+    {
+      "type": "codeforces",
+      "id": 128252183,
+      "creationTime": 1631114938,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1631111700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1569C",
+        "name": "Jury Meeting",
+        "tags": [
+          "combinatorics",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1569/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1569/submission/128252183"
+    },
+    {
+      "type": "codeforces",
+      "id": 128250115,
+      "creationTime": 1631114705,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1631111700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1569C",
+        "name": "Jury Meeting",
+        "tags": [
+          "combinatorics",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1569/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1569/submission/128250115"
+    },
+    {
+      "type": "codeforces",
+      "id": 128229091,
+      "creationTime": 1631112694,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1631111700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1569B",
+        "name": "Chess Tournament",
+        "tags": [
+          "constructive algorithms"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1569/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1569/submission/128229091"
+    },
+    {
+      "type": "codeforces",
+      "id": 128214704,
+      "creationTime": 1631111900,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1631111700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1569A",
+        "name": "Balanced Substring",
+        "tags": [
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1569/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1569/submission/128214704"
+    },
+    {
+      "type": "codeforces",
+      "id": 128004121,
+      "creationTime": 1630892343,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516591304
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "15C",
+        "name": "Industrial Nim",
+        "rating": 2000,
+        "tags": [
+          "games"
+        ],
+        "problemUrl": "https://codeforces.com/contest/15/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/15/submission/128004121"
+    },
+    {
+      "type": "codeforces",
+      "id": 128000148,
+      "creationTime": 1630883879,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516599768
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1567C",
+        "name": "Carrying Conundrum",
+        "rating": 1600,
+        "tags": [
+          "bitmasks",
+          "combinatorics",
+          "dp"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1567/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1567/submission/128000148"
+    },
+    {
+      "type": "codeforces",
+      "id": 127981251,
+      "creationTime": 1630859568,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1630852500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1567C",
+        "name": "Carrying Conundrum",
+        "rating": 1600,
+        "tags": [
+          "bitmasks",
+          "combinatorics",
+          "dp"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1567/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1567/submission/127981251"
+    },
+    {
+      "type": "codeforces",
+      "id": 127980247,
+      "creationTime": 1630859411,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1630852500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1567C",
+        "name": "Carrying Conundrum",
+        "rating": 1600,
+        "tags": [
+          "bitmasks",
+          "combinatorics",
+          "dp"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1567/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1567/submission/127980247"
+    },
+    {
+      "type": "codeforces",
+      "id": 127978061,
+      "creationTime": 1630858985,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1630852500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1567C",
+        "name": "Carrying Conundrum",
+        "rating": 1600,
+        "tags": [
+          "bitmasks",
+          "combinatorics",
+          "dp"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1567/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1567/submission/127978061"
+    },
+    {
+      "type": "codeforces",
+      "id": 127938103,
+      "creationTime": 1630853361,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1630852500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1567A",
+        "name": "Domino Disaster",
+        "rating": 800,
+        "tags": [
+          "implementation",
+          "strings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1567/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1567/submission/127938103"
+    },
+    {
+      "type": "codeforces",
+      "id": 127933964,
+      "creationTime": 1630853113,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1630852500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1567B",
+        "name": "MEXor Mixup",
+        "rating": 1000,
+        "tags": [
+          "bitmasks",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1567/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1567/submission/127933964"
+    },
+    {
+      "type": "codeforces",
+      "id": 127898356,
+      "creationTime": 1630831023,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516652624
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "14E",
+        "name": "Camels",
+        "rating": 1900,
+        "tags": [
+          "dp"
+        ],
+        "problemUrl": "https://codeforces.com/contest/14/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/14/submission/127898356"
+    },
+    {
+      "type": "codeforces",
+      "id": 127854211,
+      "creationTime": 1630769968,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516713679
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "14D",
+        "name": "Two Paths",
+        "rating": 1900,
+        "tags": [
+          "dfs and similar",
+          "dp",
+          "graphs",
+          "shortest paths",
+          "trees",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/14/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/14/submission/127854211"
+    },
+    {
+      "type": "codeforces",
+      "id": 127852939,
+      "creationTime": 1630768883,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -516714764
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "14D",
+        "name": "Two Paths",
+        "rating": 1900,
+        "tags": [
+          "dfs and similar",
+          "dp",
+          "graphs",
+          "shortest paths",
+          "trees",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/14/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/14/submission/127852939"
+    },
     {
       "type": "codeforces",
       "id": 127829479,
