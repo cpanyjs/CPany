@@ -42,7 +42,7 @@ export async function luoguPlugin(
     baseURL: 'https://www.luogu.com.cn/',
     headers: {
       'x-luogu-type': 'content-only',
-      setCookie: `_uid=${cookie.uid}; __client_id=${cookie.clientId}`
+      Cookie: `_uid=${cookie.uid}; __client_id=${cookie.clientId}`
     }
   });
 

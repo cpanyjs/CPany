@@ -100,3 +100,20 @@ export interface UserData {
 }
 
 export type UserDataDto = DataResponse<UserData>;
+
+export interface RecordBase {
+  time: number | null;
+  memory: number | null;
+  problem: ProblemSummary;
+  contest: ContestSummary | null;
+  sourceCodeLength: number;
+  submitTime: number;
+  language: number;
+  user?: UserSummary;
+  id: number;
+  status: number;
+  enableO2: boolean;
+  score: number;
+}
+
+export type RecordListDto = DataResponse<{ records: { result: RecordBase[] } }>;

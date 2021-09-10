@@ -60,6 +60,8 @@ export const displayContestType = (contest: IContest) => {
     return '牛客竞赛';
   } else if (contest.type === 'hdu') {
     return 'HDu';
+  } else if (contest.type === 'lugou') {
+    return '洛谷';
   } else {
     return contest.type;
   }

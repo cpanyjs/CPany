@@ -16418,7 +16418,7 @@ exports.getProblem = getProblem;
 /***/ }),
 
 /***/ 5854:
-/***/ (function(__unused_webpack_module, exports) {
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
 
@@ -16433,6 +16433,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createLuoguHandlePlugin = void 0;
+const types_1 = __nccwpck_require__(7584);
 function createLuoguHandlePlugin(api) {
     const name = 'luogu/handle';
     const gid = (id) => name + '/' + id + '.json';
@@ -16444,10 +16445,16 @@ function createLuoguHandlePlugin(api) {
             }
             return null;
         },
-        transform({ id, type }) {
+        transform({ id, type }, { logger }) {
             return __awaiter(this, void 0, void 0, function* () {
                 if (type === name) {
                     const user = yield fetchUser(api, id);
+                    try {
+                        user.submissions = yield fetchSubmissions(api, id);
+                    }
+                    catch (error) {
+                        logger.error(error.message);
+                    }
                     return { key: gid(id), content: JSON.stringify(user, null, 2) };
                 }
                 return null;
@@ -16470,6 +16477,79 @@ function fetchUser(api, id) {
             }
         };
     });
+}
+function fetchSubmissions(api, id) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const { data } = yield api.get('/record/list', {
+            params: { user: id }
+        });
+        const subs = data.currentData.records.result;
+        console.log(subs);
+        return subs
+            .filter((sub) => sub.problem.type !== 'CF')
+            .filter((sub) => sub.status !== 0)
+            .map((sub) => {
+            return {
+                type: 'luogu',
+                id: sub.id,
+                creationTime: sub.submitTime,
+                language: parseLanguage(sub.language),
+                verdict: parseVerdict(sub.status),
+                author: {
+                    members: [String(id)],
+                    participantTime: sub.submitTime,
+                    participantType: types_1.ParticipantType.PRACTICE
+                },
+                problem: {
+                    type: 'luogu/' + sub.problem.type,
+                    id: sub.problem.pid,
+                    name: sub.problem.title,
+                    rating: sub.problem.difficulty,
+                    problemUrl: `https://www.luogu.com.cn/problem/${sub.problem.pid}`
+                },
+                submissionUrl: `https://www.luogu.com.cn/record/${sub.id}`
+            };
+        });
+    });
+}
+function parseVerdict(status) {
+    if (status === 12)
+        return types_1.Verdict.OK;
+    else if (status === 14)
+        return types_1.Verdict.WRONG_ANSWER;
+    else if (status === 2)
+        return types_1.Verdict.COMPILATION_ERROR;
+    return types_1.Verdict.FAILED;
+}
+function parseLanguage(id) {
+    const list = [
+        '',
+        'Pascal',
+        'C',
+        'C++ 98',
+        'C++ 11',
+        'Python 2',
+        'Python 3',
+        'Java',
+        'Node.js LTS',
+        'C++ 14',
+        'C++ 17',
+        'Ruby',
+        'Go',
+        'Rust',
+        'PHP',
+        'C# Mono',
+        'Visual Basic Mono',
+        'Haskell',
+        'Kotlin/native',
+        'Kotlin/JVM',
+        'Scala',
+        'Perl',
+        'PyPy 2',
+        'PyPy 3',
+        '文言'
+    ];
+    return id < list.length ? list[id] : 'Unknown';
 }
 
 
@@ -16548,7 +16628,7 @@ function luoguPlugin(config) {
             baseURL: 'https://www.luogu.com.cn/',
             headers: {
                 'x-luogu-type': 'content-only',
-                setCookie: `_uid=${cookie.uid}; __client_id=${cookie.clientId}`
+                Cookie: `_uid=${cookie.uid}; __client_id=${cookie.clientId}`
             }
         });
         return [
