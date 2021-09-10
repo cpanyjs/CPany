@@ -31,7 +31,7 @@ jobs:
         with:
           node-version: 14
       - name: Fetch data
-        uses: yjl9903/CPany@v0.0.26
+        uses: yjl9903/CPany@v0.0.34
       - run: npm install
       - run: npm run build
       - name: Deploy
