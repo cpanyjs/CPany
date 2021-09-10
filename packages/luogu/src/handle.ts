@@ -29,7 +29,12 @@ export function createLuoguHandlePlugin(api: AxiosInstance): IPlugin {
       if (type === name) {
         const user = await fetchUser(api, id);
         try {
-          user.submissions = await fetchSubmissions(api, id, logger);
+          user.submissions = await fetchSubmissions(
+            api,
+            user.luogu.name,
+            id,
+            logger
+          );
         } catch (error) {
           logger.error(
             `Error: fail to fetch submissions of Luogu handle ${id}`
@@ -62,6 +67,7 @@ async function fetchUser(
 
 async function fetchSubmissions(
   api: AxiosInstance,
+  name: string,
   id: string,
   logger: ILogger
 ): Promise<ISubmission[]> {
@@ -112,7 +118,7 @@ async function fetchSubmissions(
     if (isEnd || curSubs.length === 0) break;
 
     logger.info(
-      `Page ${page}: Luogu handle ${id} has fetched ${
+      `Page ${page}: Luogu handle (name: ${name}, id: ${id}) has fetched ${
         subs.length - oldLen
       } new submissions`
     );

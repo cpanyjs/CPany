@@ -16455,7 +16455,7 @@ function createLuoguHandlePlugin(api) {
                 if (type === name) {
                     const user = yield fetchUser(api, id);
                     try {
-                        user.submissions = yield fetchSubmissions(api, id, logger);
+                        user.submissions = yield fetchSubmissions(api, user.luogu.name, id, logger);
                     }
                     catch (error) {
                         logger.error(`Error: fail to fetch submissions of Luogu handle ${id}`);
@@ -16484,7 +16484,7 @@ function fetchUser(api, id) {
         };
     });
 }
-function fetchSubmissions(api, id, logger) {
+function fetchSubmissions(api, name, id, logger) {
     var _a;
     return __awaiter(this, void 0, void 0, function* () {
         const preSubs = (_a = cache.get(id)) !== null && _a !== void 0 ? _a : [];
@@ -16530,7 +16530,7 @@ function fetchSubmissions(api, id, logger) {
             }
             if (isEnd || curSubs.length === 0)
                 break;
-            logger.info(`Page ${page}: Luogu handle ${id} has fetched ${subs.length - oldLen} new submissions`);
+            logger.info(`Page ${page}: Luogu handle (name: ${name}, id: ${id}) has fetched ${subs.length - oldLen} new submissions`);
             page = page + 1;
         }
         return [...subs, ...preSubs];
