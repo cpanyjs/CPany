@@ -1,5 +1,5 @@
 import { Ref, ref, unref } from 'vue';
-import type { IContest } from '@cpany/types';
+import type { IContest, IProblem } from '@cpany/types';
 
 export function isUndef<T>(
   object: T | undefined | null
@@ -64,5 +64,20 @@ export const displayContestType = (contest: IContest) => {
     return '洛谷';
   } else {
     return contest.type;
+  }
+};
+
+export const displayProblemType = (problem: IProblem) => {
+  if (problem.type.startsWith('codeforces')) {
+    return 'Codeforces';
+  } else if (problem.type.startsWith('nowcoder')) {
+    return '牛客竞赛';
+  } else if (problem.type.startsWith('hdu')) {
+    return 'HDu';
+  } else if (problem.type.startsWith('luogu')) {
+    return '洛谷';
+  } else {
+    const type = problem.type;
+    return type.charAt(0).toUpperCase() + type.slice(1);
   }
 };

@@ -125,7 +125,7 @@
             }}</a>
           </c-table-column>
           <c-table-column label="类型" center width="4em">
-            <span>{{ uppercase(row.type) }}</span>
+            <span>{{ displayProblemType(row) }}</span>
           </c-table-column>
           <c-table-column label="题目" :mobile-header-class="['min-w-8']">
             <a :href="row.problem.problemUrl" target="_blank">{{
@@ -220,7 +220,7 @@ import IconDown from 'virtual:vite-icons/mdi/chevron-down';
 import { CTable, CTableColumn } from '@/components/table';
 import { CStastic } from '@/components/stastic';
 import { HeatMap, parseHeatMapDate } from '@/components/heatmap';
-import { toDate, displayContestType } from '@/utils';
+import { toDate, displayContestType, displayProblemType } from '@/utils';
 
 import HandleCard from './HandleCard.vue';
 
@@ -284,9 +284,6 @@ const handleHeatMapTooltip = (day: string) => {
   const count = heatmapMap.get(day) ?? 0;
   return `在 ${day} ${count ? `有 ${count} 次` : '没有'}正确通过`;
 };
-
-const uppercase = (type: string) =>
-  type.charAt(0).toUpperCase() + type.slice(1);
 
 // hover
 function useHover() {

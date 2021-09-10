@@ -27,6 +27,16 @@
       <span class="font-600">洛谷: </span>
       <a :href="handle.handleUrl" target="_blank">{{ luogu.luogu.name }}</a>
     </p>
+    <p>
+      <span class="font-600">提交: </span>
+      <span>{{ luogu.submissions.length }}</span>
+    </p>
+    <p>
+      <span class="font-600">通过: </span>
+      <span>{{
+        luogu.submissions.filter(({ verdict }) => verdict === Verdict.OK).length
+      }}</span>
+    </p>
   </template>
   <template v-else>
     <p>
