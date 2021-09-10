@@ -16433,7 +16433,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createLuoguHandlePlugin = void 0;
-function createLuoguHandlePlugin() {
+function createLuoguHandlePlugin(api) {
     const name = 'luogu/handle';
     const gid = (id) => name + '/' + id + '.json';
     return {
@@ -16446,12 +16446,31 @@ function createLuoguHandlePlugin() {
         },
         transform({ id, type }) {
             return __awaiter(this, void 0, void 0, function* () {
+                if (type === name) {
+                    const user = yield fetchUser(api, id);
+                    return { key: gid(id), content: JSON.stringify(user, null, 2) };
+                }
                 return null;
             });
         }
     };
 }
 exports.createLuoguHandlePlugin = createLuoguHandlePlugin;
+function fetchUser(api, id) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const { data } = yield api.get('/user/' + id);
+        return {
+            type: 'luogu/handle',
+            handle: id,
+            submissions: [],
+            avatar: `https://cdn.luogu.com.cn/upload/usericon/${id}.png`,
+            handleUrl: `https://www.luogu.com.cn/user/${id}`,
+            luogu: {
+                name: data.currentData.user.name
+            }
+        };
+    });
+}
 
 
 /***/ }),
@@ -16485,10 +16504,25 @@ exports.luoguPlugin = void 0;
 const utils_1 = __nccwpck_require__(3124);
 const path_1 = __importDefault(__nccwpck_require__(5622));
 const handle_1 = __nccwpck_require__(5854);
+const axios_1 = __importDefault(__nccwpck_require__(5186));
+function loadCookie() {
+    const clientId = process.env.CLIENT_ID;
+    const uid = process.env.UID;
+    if (!clientId) {
+        console.error('Please set env variable CLIENT_ID!');
+        process.exit(1);
+    }
+    if (!uid) {
+        console.error('Please set env variable UID!');
+        process.exit(1);
+    }
+    return { clientId, uid };
+}
 function luoguPlugin(config) {
     var e_1, _a;
     var _b;
     return __awaiter(this, void 0, void 0, function* () {
+        const cookie = loadCookie();
         for (const handlePath of (_b = config.handles) !== null && _b !== void 0 ? _b : []) {
             const fullPath = path_1.default.resolve(config.basePath, handlePath);
             try {
@@ -16510,8 +16544,15 @@ function luoguPlugin(config) {
             }
             catch (error) { }
         }
+        const api = axios_1.default.create({
+            baseURL: 'https://www.luogu.com.cn/',
+            headers: {
+                'x-luogu-type': 'content-only',
+                setCookie: `_uid=${cookie.uid}; __client_id=${cookie.clientId}`
+            }
+        });
         return [
-            handle_1.createLuoguHandlePlugin(),
+            handle_1.createLuoguHandlePlugin(api),
             {
                 name: 'luogu/clean',
                 load(id) {

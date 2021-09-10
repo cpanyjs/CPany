@@ -22,6 +22,12 @@
       }}</span>
     </p>
   </template>
+  <template v-else-if="luogu">
+    <p>
+      <span class="font-600">洛谷: </span>
+      <a :href="handle.handleUrl" target="_blank">{{ luogu.luogu.name }}</a>
+    </p>
+  </template>
   <template v-else>
     <p>
       <span class="font-600">{{ handle.type.split('/')[0] }}: </span>
@@ -34,6 +40,7 @@
 import type { IHandle } from '@cpany/types';
 import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
 import type { IHandleWithHdu } from '@cpany/types/hdu';
+import type { IHandleWithLuogu } from '@cpany/types/luogu';
 import { Verdict } from '@cpany/types';
 
 import { toRefs, computed } from 'vue';
@@ -53,6 +60,14 @@ const codeforces = computed(() => {
 const hdu = computed(() => {
   if (handle.value.type.startsWith('hdu')) {
     return handle.value as IHandleWithHdu;
+  } else {
+    return null;
+  }
+});
+
+const luogu = computed(() => {
+  if (handle.value.type.startsWith('luogu')) {
+    return handle.value as IHandleWithLuogu;
   } else {
     return null;
   }
