@@ -66,8 +66,7 @@ async function fetchSubmissions(
   logger: ILogger
 ): Promise<ISubmission[]> {
   const preSubs: ISubmission[] = cache.get(id) ?? [];
-  const maxId =
-    preSubs.length > 0 ? preSubs[preSubs.length - 1].id : Number.MIN_VALUE;
+  const maxId = preSubs.length > 0 ? preSubs[0].id : 0;
   const subs: ISubmission[] = [];
 
   let page = 1;

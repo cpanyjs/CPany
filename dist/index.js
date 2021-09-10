@@ -16488,7 +16488,7 @@ function fetchSubmissions(api, id, logger) {
     var _a;
     return __awaiter(this, void 0, void 0, function* () {
         const preSubs = (_a = cache.get(id)) !== null && _a !== void 0 ? _a : [];
-        const maxId = preSubs.length > 0 ? preSubs[preSubs.length - 1].id : Number.MIN_VALUE;
+        const maxId = preSubs.length > 0 ? preSubs[0].id : 0;
         const subs = [];
         let page = 1;
         while (true) {
