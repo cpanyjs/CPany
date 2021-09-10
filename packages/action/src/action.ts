@@ -7,6 +7,7 @@ import type { ICPanyConfig } from '@cpany/types';
 import { createInstance } from '@cpany/core';
 import { codeforcesPlugin } from '@cpany/codeforces';
 import { hduPlugin } from '@cpany/hdu';
+import { luoguPlugin } from '@cpany/luogu';
 
 import { createGitFileSystem } from './fs';
 import { processReport } from './report';
@@ -40,6 +41,9 @@ export async function run({
         : undefined,
       usedPluginSet.has('hdu')
         ? await hduPlugin({ basePath, ...config })
+        : undefined,
+      usedPluginSet.has('luogu')
+        ? await luoguPlugin({ basePath, ...config })
         : undefined
     ],
     logger: logger ? core : undefined,

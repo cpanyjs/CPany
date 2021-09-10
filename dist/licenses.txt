@@ -43,6 +43,9 @@ MIT
 @cpany/hdu
 MIT
 
+@cpany/luogu
+MIT
+
 @cpany/types
 MIT
 

@@ -16417,6 +16417,120 @@ exports.getProblem = getProblem;
 
 /***/ }),
 
+/***/ 5854:
+/***/ (function(__unused_webpack_module, exports) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.createLuoguHandlePlugin = void 0;
+function createLuoguHandlePlugin() {
+    const name = 'luogu/handle';
+    const gid = (id) => name + '/' + id + '.json';
+    return {
+        name,
+        resolveKey({ id, type }) {
+            if (type === name) {
+                return gid(id);
+            }
+            return null;
+        },
+        transform({ id, type }) {
+            return __awaiter(this, void 0, void 0, function* () {
+                return null;
+            });
+        }
+    };
+}
+exports.createLuoguHandlePlugin = createLuoguHandlePlugin;
+
+
+/***/ }),
+
+/***/ 3267:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __asyncValues = (this && this.__asyncValues) || function (o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.luoguPlugin = void 0;
+const utils_1 = __nccwpck_require__(3124);
+const path_1 = __importDefault(__nccwpck_require__(5622));
+const handle_1 = __nccwpck_require__(5854);
+function luoguPlugin(config) {
+    var e_1, _a;
+    var _b;
+    return __awaiter(this, void 0, void 0, function* () {
+        for (const handlePath of (_b = config.handles) !== null && _b !== void 0 ? _b : []) {
+            const fullPath = path_1.default.resolve(config.basePath, handlePath);
+            try {
+                try {
+                    for (var _c = (e_1 = void 0, __asyncValues(utils_1.listJsonFiles(fullPath))), _d; _d = yield _c.next(), !_d.done;) {
+                        const handle = _d.value;
+                        if (handle.type.startsWith('luogu')) {
+                            // addToCache(handle);
+                        }
+                    }
+                }
+                catch (e_1_1) { e_1 = { error: e_1_1 }; }
+                finally {
+                    try {
+                        if (_d && !_d.done && (_a = _c.return)) yield _a.call(_c);
+                    }
+                    finally { if (e_1) throw e_1.error; }
+                }
+            }
+            catch (error) { }
+        }
+        return [
+            handle_1.createLuoguHandlePlugin(),
+            {
+                name: 'luogu/clean',
+                load(id) {
+                    return __awaiter(this, void 0, void 0, function* () {
+                        if (id === 'luogu/clean') {
+                            return '[]';
+                        }
+                        return null;
+                    });
+                }
+            }
+        ];
+    });
+}
+exports.luoguPlugin = luoguPlugin;
+
+
+/***/ }),
+
 /***/ 7232:
 /***/ ((__unused_webpack_module, exports) => {
 
@@ -20841,6 +20955,8 @@ var dist = __nccwpck_require__(8780);
 var codeforces_dist = __nccwpck_require__(3948);
 // EXTERNAL MODULE: ../hdu/dist/index.js
 var hdu_dist = __nccwpck_require__(8808);
+// EXTERNAL MODULE: ../luogu/dist/index.js
+var luogu_dist = __nccwpck_require__(3267);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@actions+io@1.1.1/node_modules/@actions/io/lib/io.js
 var io = __nccwpck_require__(7554);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@actions+exec@1.1.0/node_modules/@actions/exec/lib/exec.js
@@ -21098,6 +21214,7 @@ var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _a
 
 
 
+
 function run({ logger = true, basePath = './', disableGit, plugins = ['codeforces', 'hdu'], configPath, maxRetry }) {
     var _a, _b;
     return action_awaiter(this, void 0, void 0, function* () {
@@ -21110,6 +21227,9 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
                     : undefined,
                 usedPluginSet.has('hdu')
                     ? yield (0,hdu_dist.hduPlugin)(Object.assign({ basePath }, config))
+                    : undefined,
+                usedPluginSet.has('luogu')
+                    ? yield (0,luogu_dist.luoguPlugin)(Object.assign({ basePath }, config))
                     : undefined
             ],
             logger: logger ? core : undefined,

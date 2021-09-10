@@ -20,7 +20,7 @@
   "dependencies": {
     "@cpany/core": "workspace:*",
     "@cpany/types": "workspace:*",
-    "@cpany/utils": "workspace:^0.0.32",
+    "@cpany/utils": "workspace:*",
     "axios": "^0.21.1"
   },
   "engines": {
