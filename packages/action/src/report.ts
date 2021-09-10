@@ -5,10 +5,9 @@ import type { Dayjs } from 'dayjs';
 import { ActionVersion } from './version';
 
 export async function processReadme(basePath: string, time: Dayjs) {
-  const content = await promises.readFile(
-    resolve(basePath, 'README.md'),
-    'utf8'
-  );
+  const fullPath = resolve(basePath, 'README.md');
+
+  const content = await promises.readFile(fullPath, 'utf8');
 
   const newContent = content.replace(
     /<!-- START_SECTION: update_time -->([\s\S]*)<!-- END_SECTION: update_time -->/,
@@ -19,7 +18,7 @@ export async function processReadme(basePath: string, time: Dayjs) {
     )}&p1=237)\n<!-- END_SECTION: update_time -->`
   );
 
-  await promises.writeFile('README.md', newContent, 'utf8');
+  await promises.writeFile(fullPath, newContent, 'utf8');
 }
 
 export async function processVersion(basePath: string, time: Dayjs) {
