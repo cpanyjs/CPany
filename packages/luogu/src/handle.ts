@@ -1,5 +1,5 @@
-import { IPlugin } from '@cpany/core';
-import { ISubmission, Verdict, ParticipantType } from '@cpany/types';
+import { IPlugin, ILogger } from '@cpany/core';
+import { IHandle, ISubmission, Verdict, ParticipantType } from '@cpany/types';
 import type {
   IHandleWithLuogu,
   UserDataDto,
@@ -7,6 +7,12 @@ import type {
 } from '@cpany/types/luogu';
 
 import { AxiosInstance } from 'axios';
+
+const cache = new Map<string, ISubmission[]>();
+
+export function addToCache(handle: IHandle) {
+  cache.set(handle.handle, handle.submissions);
+}
 
 export function createLuoguHandlePlugin(api: AxiosInstance): IPlugin {
   const name = 'luogu/handle';
@@ -23,8 +29,11 @@ export function createLuoguHandlePlugin(api: AxiosInstance): IPlugin {
       if (type === name) {
         const user = await fetchUser(api, id);
         try {
-          user.submissions = await fetchSubmissions(api, id);
+          user.submissions = await fetchSubmissions(api, id, logger);
         } catch (error) {
+          logger.error(
+            `Error: fail to fetch submissions of Luogu handle ${id}`
+          );
           logger.error((error as any).message);
         }
         return { key: gid(id), content: JSON.stringify(user, null, 2) };
@@ -53,23 +62,37 @@ async function fetchUser(
 
 async function fetchSubmissions(
   api: AxiosInstance,
-  id: string
+  id: string,
+  logger: ILogger
 ): Promise<ISubmission[]> {
-  const { data } = await api.get<RecordListDto>('/record/list', {
-    params: { user: id }
-  });
-  const subs = data.currentData.records.result;
-  console.log(subs);
+  const preSubs: ISubmission[] = cache.get(id) ?? [];
+  const maxId =
+    preSubs.length > 0 ? preSubs[preSubs.length - 1].id : Number.MIN_VALUE;
+  const subs: ISubmission[] = [];
 
-  return subs
-    .filter((sub) => sub.problem.type !== 'CF')
-    .filter((sub) => sub.status !== 0)
-    .map((sub) => {
-      return {
+  let page = 1;
+  while (true) {
+    let isEnd = false;
+    const oldLen = subs.length;
+
+    const { data } = await api.get<RecordListDto>('/record/list', {
+      params: { user: id, page }
+    });
+    const curSubs = data.currentData.records.result;
+
+    for (const sub of curSubs) {
+      if (sub.id <= maxId) {
+        isEnd = true;
+        break;
+      }
+      if (sub.status === 0) continue;
+      if (sub.problem.type === 'CF') continue;
+
+      subs.push({
         type: 'luogu',
         id: sub.id,
         creationTime: sub.submitTime,
-        language: parseLanguage(sub.language),
+        language: parseLanguage(sub.problem.type, sub.language),
         verdict: parseVerdict(sub.status),
         author: {
           members: [String(id)],
@@ -84,8 +107,21 @@ async function fetchSubmissions(
           problemUrl: `https://www.luogu.com.cn/problem/${sub.problem.pid}`
         },
         submissionUrl: `https://www.luogu.com.cn/record/${sub.id}`
-      };
-    });
+      });
+    }
+
+    if (isEnd || curSubs.length === 0) break;
+
+    logger.info(
+      `Page ${page}: Luogu handle ${id} has fetched ${
+        subs.length - oldLen
+      } new submissions`
+    );
+
+    page = page + 1;
+  }
+
+  return [...subs, ...preSubs];
 }
 
 function parseVerdict(status: number) {
@@ -95,7 +131,7 @@ function parseVerdict(status: number) {
   return Verdict.FAILED;
 }
 
-function parseLanguage(id: number) {
+function parseLanguage(type: string, id: number) {
   const list = [
     '',
     'Pascal',

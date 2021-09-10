@@ -5,7 +5,7 @@ import { listJsonFiles } from '@cpany/utils';
 import path from 'path';
 
 import type { ICookie } from './type';
-import { createLuoguHandlePlugin } from './handle';
+import { addToCache, createLuoguHandlePlugin } from './handle';
 import axios from 'axios';
 
 function loadCookie(): ICookie {
@@ -32,7 +32,7 @@ export async function luoguPlugin(
     try {
       for await (const handle of listJsonFiles<IHandle>(fullPath)) {
         if (handle.type.startsWith('luogu')) {
-          // addToCache(handle);
+          addToCache(handle);
         }
       }
     } catch (error) {}

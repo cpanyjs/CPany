@@ -16432,8 +16432,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.createLuoguHandlePlugin = void 0;
+exports.createLuoguHandlePlugin = exports.addToCache = void 0;
 const types_1 = __nccwpck_require__(7584);
+const cache = new Map();
+function addToCache(handle) {
+    cache.set(handle.handle, handle.submissions);
+}
+exports.addToCache = addToCache;
 function createLuoguHandlePlugin(api) {
     const name = 'luogu/handle';
     const gid = (id) => name + '/' + id + '.json';
@@ -16450,9 +16455,10 @@ function createLuoguHandlePlugin(api) {
                 if (type === name) {
                     const user = yield fetchUser(api, id);
                     try {
-                        user.submissions = yield fetchSubmissions(api, id);
+                        user.submissions = yield fetchSubmissions(api, id, logger);
                     }
                     catch (error) {
+                        logger.error(`Error: fail to fetch submissions of Luogu handle ${id}`);
                         logger.error(error.message);
                     }
                     return { key: gid(id), content: JSON.stringify(user, null, 2) };
@@ -16478,38 +16484,56 @@ function fetchUser(api, id) {
         };
     });
 }
-function fetchSubmissions(api, id) {
+function fetchSubmissions(api, id, logger) {
+    var _a;
     return __awaiter(this, void 0, void 0, function* () {
-        const { data } = yield api.get('/record/list', {
-            params: { user: id }
-        });
-        const subs = data.currentData.records.result;
-        console.log(subs);
-        return subs
-            .filter((sub) => sub.problem.type !== 'CF')
-            .filter((sub) => sub.status !== 0)
-            .map((sub) => {
-            return {
-                type: 'luogu',
-                id: sub.id,
-                creationTime: sub.submitTime,
-                language: parseLanguage(sub.language),
-                verdict: parseVerdict(sub.status),
-                author: {
-                    members: [String(id)],
-                    participantTime: sub.submitTime,
-                    participantType: types_1.ParticipantType.PRACTICE
-                },
-                problem: {
-                    type: 'luogu/' + sub.problem.type,
-                    id: sub.problem.pid,
-                    name: sub.problem.title,
-                    rating: sub.problem.difficulty,
-                    problemUrl: `https://www.luogu.com.cn/problem/${sub.problem.pid}`
-                },
-                submissionUrl: `https://www.luogu.com.cn/record/${sub.id}`
-            };
-        });
+        const preSubs = (_a = cache.get(id)) !== null && _a !== void 0 ? _a : [];
+        const maxId = preSubs.length > 0 ? preSubs[preSubs.length - 1].id : Number.MIN_VALUE;
+        const subs = [];
+        let page = 1;
+        while (true) {
+            let isEnd = false;
+            const oldLen = subs.length;
+            const { data } = yield api.get('/record/list', {
+                params: { user: id, page }
+            });
+            const curSubs = data.currentData.records.result;
+            for (const sub of curSubs) {
+                if (sub.id <= maxId) {
+                    isEnd = true;
+                    break;
+                }
+                if (sub.status === 0)
+                    continue;
+                if (sub.problem.type === 'CF')
+                    continue;
+                subs.push({
+                    type: 'luogu',
+                    id: sub.id,
+                    creationTime: sub.submitTime,
+                    language: parseLanguage(sub.problem.type, sub.language),
+                    verdict: parseVerdict(sub.status),
+                    author: {
+                        members: [String(id)],
+                        participantTime: sub.submitTime,
+                        participantType: types_1.ParticipantType.PRACTICE
+                    },
+                    problem: {
+                        type: 'luogu/' + sub.problem.type,
+                        id: sub.problem.pid,
+                        name: sub.problem.title,
+                        rating: sub.problem.difficulty,
+                        problemUrl: `https://www.luogu.com.cn/problem/${sub.problem.pid}`
+                    },
+                    submissionUrl: `https://www.luogu.com.cn/record/${sub.id}`
+                });
+            }
+            if (isEnd || curSubs.length === 0)
+                break;
+            logger.info(`Page ${page}: Luogu handle ${id} has fetched ${subs.length - oldLen} new submissions`);
+            page = page + 1;
+        }
+        return [...subs, ...preSubs];
     });
 }
 function parseVerdict(status) {
@@ -16521,7 +16545,7 @@ function parseVerdict(status) {
         return types_1.Verdict.COMPILATION_ERROR;
     return types_1.Verdict.FAILED;
 }
-function parseLanguage(id) {
+function parseLanguage(type, id) {
     const list = [
         '',
         'Pascal',
@@ -16610,7 +16634,7 @@ function luoguPlugin(config) {
                     for (var _c = (e_1 = void 0, __asyncValues(utils_1.listJsonFiles(fullPath))), _d; _d = yield _c.next(), !_d.done;) {
                         const handle = _d.value;
                         if (handle.type.startsWith('luogu')) {
-                            // addToCache(handle);
+                            handle_1.addToCache(handle);
                         }
                     }
                 }
