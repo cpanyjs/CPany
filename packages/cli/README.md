@@ -2,6 +2,8 @@
 
 [![version](https://img.shields.io/npm/v/@cpany/cli?color=rgb%2850%2C203%2C86%29&label=cpany)](https://www.npmjs.com/package/@cpany/cli) [![Demo](https://img.shields.io/badge/Netlify-Demo-brightgreen)](https://cpany.netlify.app/) [![build-test](https://github.com/yjl9903/CPany/actions/workflows/build.yml/badge.svg)](https://github.com/yjl9903/CPany/actions/workflows/build.yml)
 
+![Screen shot](./screenshot.jpeg)
+
 ## Getting Started
 
 Use CPany template [@yjl9903/CPany-Template](https://github.com/yjl9903/CPany-Template) to create your own repository for data storage.
@@ -31,7 +33,7 @@ jobs:
         with:
           node-version: 14
       - name: Fetch data
-        uses: yjl9903/CPany@v0.0.34
+        uses: yjl9903/CPany@v0.0.35
       - run: npm install
       - run: npm run build
       - name: Deploy
