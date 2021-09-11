@@ -61,16 +61,16 @@
         <div>
           <div>
             <div class="inline-block">
-              <span class="font-bold">通过:</span>
+              <span class="font-bold">通过: </span>
               <span>{{ heatmapComment.okCount }}</span>
             </div>
             <div class="inline-block ml-4">
-              <span class="font-bold">提交:</span>
+              <span class="font-bold">提交: </span>
               <span>{{ heatmapComment.subCount }}</span>
             </div>
           </div>
           <div>
-            <span class="font-bold <md:block">统计时间:</span>
+            <span class="font-bold <md:block">统计时间: </span>
             <span>{{ heatmapComment.time }}</span>
           </div>
         </div>
