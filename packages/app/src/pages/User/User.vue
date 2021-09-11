@@ -17,7 +17,7 @@
             <template #>{{ submissions.length }}</template>
           </c-stastic>
 
-          <c-stastic title="通过" class="md:ml-4 <md:ml-2">
+          <c-stastic title="解决" class="md:ml-4 <md:ml-2">
             <template #prefix><icon-balloon class="text-red-400" /></template>
             <template #>{{ solvedSet.size }}</template>
           </c-stastic>
