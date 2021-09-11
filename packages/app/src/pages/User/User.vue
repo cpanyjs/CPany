@@ -19,9 +19,7 @@
 
           <c-stastic title="通过" class="md:ml-4 <md:ml-2">
             <template #prefix><icon-balloon class="text-red-400" /></template>
-            <template #>{{
-              submissions.filter((sub) => sub.verdict === Verdict.OK).length
-            }}</template>
+            <template #>{{ solvedSet.size }}</template>
           </c-stastic>
         </div>
 
@@ -53,11 +51,37 @@
       </div>
     </div>
 
-    <Hover title="训练日历" class="mb-4">
+    <Hover :title="heatmapTitle" class="mb-4">
       <heat-map
+        :now="heatmapNow"
         :getColor="handleHeatMapColor"
         :getTooltip="handleHeatMapTooltip"
       ></heat-map>
+      <div class="flex justify-between items-center md:px-4">
+        <div>
+          <div>
+            <div class="inline-block">
+              <span class="font-bold">通过:</span>
+              <span>{{ heatmapComment.okCount }}</span>
+            </div>
+            <div class="inline-block ml-4">
+              <span class="font-bold">提交:</span>
+              <span>{{ heatmapComment.subCount }}</span>
+            </div>
+          </div>
+          <div>
+            <span class="font-bold <md:block">统计时间:</span>
+            <span>{{ heatmapComment.time }}</span>
+          </div>
+        </div>
+
+        <c-select class="inline-block w-28" @change="handleSelectHeatmapYear">
+          <option value="latest">最新</option>
+          <option v-for="year in heatmapYearList" :value="year">
+            {{ year }} 年
+          </option>
+        </c-select>
+      </div>
     </Hover>
 
     <Hover title="所有提交" class="mb-4">
@@ -151,6 +175,7 @@ import IconLightbulbOn from 'virtual:vite-icons/mdi/lightbulb-on-outline';
 import { CTable, CTableColumn } from '@/components/table';
 import { CStastic } from '@/components/stastic';
 import { HeatMap, parseHeatMapDate } from '@/components/heatmap';
+import { CSelect } from '@/components/select';
 import { toDate, displayContestType, displayProblemType } from '@/utils';
 
 import Hover from './Hover.vue';
@@ -204,6 +229,12 @@ submissions.value.forEach((sub) => {
     heatmapMap.set(date, (heatmapMap.get(date) ?? 0) + 1);
   }
 });
+const heatmapYearList = [
+  ...new Set([...heatmapMap.keys()].map((date) => date.slice(0, 4)))
+]
+  .sort()
+  .reverse();
+
 const handleHeatMapColor = (day: string) => {
   const count = heatmapMap.get(day) ?? 0;
   return count;
@@ -211,5 +242,51 @@ const handleHeatMapColor = (day: string) => {
 const handleHeatMapTooltip = (day: string) => {
   const count = heatmapMap.get(day) ?? 0;
   return `在 ${day} ${count ? `有 ${count} 次` : '没有'}正确通过`;
+};
+
+const getHeatmapComment = (year?: string) => {
+  const now = year ? new Date(year + '-12-31 23:59:59') : new Date();
+  const lastYear = new Date(now.getTime() - 365 * 24 * 3600 * 1000);
+  const start = new Date(
+    lastYear.getTime() - (lastYear.getDay() - 1) * 24 * 3600 * 1000
+  );
+  const time = `${parseHeatMapDate(start)} ~ ${parseHeatMapDate(now)}`;
+
+  const subCount = submissions.value.filter(
+    (sub) =>
+      start.getTime() / 1000 <= sub.creationTime &&
+      sub.creationTime <= now.getTime() / 1000
+  ).length;
+
+  const okCount = [...heatmapMap.entries()].reduce((sum, [date, count]) => {
+    const dateTime = new Date(date);
+    if (
+      start.getTime() <= dateTime.getTime() &&
+      dateTime.getTime() <= now.getTime()
+    ) {
+      return sum + count;
+    } else {
+      return sum;
+    }
+  }, 0);
+
+  return { time, okCount, subCount };
+};
+
+const heatmapNow = ref(new Date());
+const heatmapTitle = ref('训练日历');
+const heatmapComment = ref(getHeatmapComment());
+
+const handleSelectHeatmapYear = (ev: any) => {
+  const year = ev.target?.value;
+  if (year === 'latest') {
+    heatmapNow.value = new Date();
+    heatmapTitle.value = '训练日历';
+    heatmapComment.value = getHeatmapComment();
+  } else {
+    heatmapNow.value = new Date(year + '-12-31 23:59:59');
+    heatmapTitle.value = year + ' 年训练日历';
+    heatmapComment.value = getHeatmapComment(year);
+  }
 };
 </script>

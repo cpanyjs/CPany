@@ -50,7 +50,7 @@
             "
             @click="getDate(week, day)"
             :style="{ backgroundColor: getDayColor(week, day) }"
-            :ref="(el) => el && items.push({ el, date: getDate(week, day) })"
+            :ref="(el) => el && items.push({ el, week, day })"
           ></div>
         </div>
       </div>
@@ -59,12 +59,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, toRefs, onMounted } from 'vue';
+import { ref, unref, computed, toRefs, onMounted, watch } from 'vue';
 import tippy from 'tippy.js';
-import { parseHeatMapDate } from './utils';
+
 import { isDef } from '@/utils';
 
+import { parseHeatMapDate } from './utils';
+
 const props = defineProps<{
+  now?: Date;
   colors?: string[];
   getColor: (day: string) => number;
   getTooltip: (day: string) => string;
@@ -77,13 +80,13 @@ const DefaultColors = [
   'rgb(48,161,78)',
   'rgb(33,110,57)'
 ];
-const { colors: _colors, getColor, getTooltip } = toRefs(props);
+const { now: _now, colors: _colors, getColor, getTooltip } = toRefs(props);
 const colors = computed(() => _colors?.value ?? DefaultColors);
 
 const dayInWeek = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
 
 const container = ref<HTMLElement | null>(null);
-const items = ref<Array<{ el: any; date: Date }>>([]);
+const items = ref<Array<{ el: any; week: number; day: number }>>([]);
 
 const unitValue = computed(() => {
   if (container.value === null) {
@@ -103,6 +106,7 @@ const fontScale = computed(() => {
     return `scale(${Math.min(1.0, (unit - 4) / 12)})`;
   }
 });
+
 onMounted(() => {
   // auto scroll to right
   const el = container.value!;
@@ -111,23 +115,39 @@ onMounted(() => {
   }
   if (isDef(getTooltip.value)) {
     for (const item of items.value) {
-      const date = parseHeatMapDate(item.date);
+      const date = parseHeatMapDate(getDate.value(item.week, item.day));
       const content = getTooltip.value(date);
       tippy(item.el, { content });
     }
   }
 });
 
-const now = new Date();
+const now = computed(() => {
+  return unref(_now) ?? new Date();
+});
 
-const getDate = (week: number, day: number) => {
-  const duration = 52 * 7 + now.getDay() - ((week - 1) * 7 + day);
-  const clicked = new Date(now.getTime() - duration * 1000 * 3600 * 24);
+watch(now, () => {
+  if (isDef(getTooltip.value)) {
+    for (const item of items.value) {
+      const date = parseHeatMapDate(getDate.value(item.week, item.day));
+      const content = getTooltip.value(date);
+      if ('_tippy' in item.el) {
+        item.el._tippy.setContent(content);
+      } else {
+        tippy(item.el, { content });
+      }
+    }
+  }
+});
+
+const getDate = computed(() => (week: number, day: number) => {
+  const duration = 52 * 7 + now.value.getDay() - ((week - 1) * 7 + day);
+  const clicked = new Date(now.value.getTime() - duration * 1000 * 3600 * 24);
   return clicked;
-};
+});
 
-const displayMonth = (week: number) => {
-  const lastDay = getDate(week, 7);
+const displayMonth = computed(() => (week: number) => {
+  const lastDay = getDate.value(week, 7);
   if (lastDay.getDate() <= 7) {
     return [
       '一月',
@@ -146,14 +166,14 @@ const displayMonth = (week: number) => {
   } else {
     return null;
   }
-};
+});
 
-const getDayColor = (week: number, day: number) => {
-  const date = parseHeatMapDate(getDate(week, day));
+const getDayColor = computed(() => (week: number, day: number) => {
+  const date = parseHeatMapDate(getDate.value(week, day));
   const color = Math.max(
     0,
     Math.min(colors.value.length - 1, getColor.value(date) ?? 0)
   );
   return colors.value[color];
-};
+});
 </script>
