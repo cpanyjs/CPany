@@ -53,56 +53,15 @@
       </div>
     </div>
 
-    <div class="mb-4">
-      <h3 class="my-4 px-2 flex justify-between items-center">
-        <div class="text-transparent"><icon-down></icon-down></div>
-        <div>训练日历</div>
-        <div
-          @click="flipHeatmap"
-          class="
-            p-1
-            flex
-            items-center
-            rounded-full
-            cursor-pointer
-            hover:bg-light-700
-          "
-        >
-          <icon-down
-            v-if="!heatmapState"
-            class="text-2xl inline-block"
-          ></icon-down>
-          <icon-up v-else class="text-2xl inline-block"></icon-up>
-        </div>
-      </h3>
+    <Hover title="训练日历" class="mb-4">
       <heat-map
-        v-if="heatmapState"
         :getColor="handleHeatMapColor"
         :getTooltip="handleHeatMapTooltip"
       ></heat-map>
-    </div>
+    </Hover>
 
-    <div class="mb-4">
-      <h3 class="my-4 px-2 flex justify-between items-center">
-        <div class="text-transparent"><icon-down></icon-down></div>
-        <div>所有提交</div>
-        <div
-          @click="flipSub"
-          class="
-            p-1
-            flex
-            items-center
-            rounded-full
-            cursor-pointer
-            hover:bg-light-700
-          "
-        >
-          <icon-down v-if="!subState" class="text-2xl inline-block"></icon-down>
-          <icon-up v-else class="text-2xl inline-block"></icon-up>
-        </div>
-      </h3>
+    <Hover title="所有提交" class="mb-4">
       <c-table
-        v-if="subState"
         :data="submissions"
         default-sort="序号"
         default-sort-order="desc"
@@ -151,36 +110,10 @@
           </c-table-column>
         </template>
       </c-table>
-    </div>
+    </Hover>
 
-    <div>
-      <h3 class="my-4 px-2 flex items-center justify-between">
-        <div class="text-transparent"><icon-down></icon-down></div>
-        <div>所有比赛</div>
-        <div
-          @click="flipContest"
-          class="
-            p-1
-            flex
-            items-center
-            rounded-full
-            cursor-pointer
-            hover:bg-light-700
-          "
-        >
-          <icon-down
-            v-if="!contestState"
-            class="text-2xl inline-block"
-          ></icon-down>
-          <icon-up v-else class="text-2xl inline-block"></icon-up>
-        </div>
-      </h3>
-      <c-table
-        v-if="contestState"
-        :data="contests"
-        :page-size="10"
-        :mobile-page-size="5"
-      >
+    <Hover title="所有比赛">
+      <c-table :data="contests" :page-size="10" :mobile-page-size="5">
         <template #columns="{ row, index }">
           <c-table-column class="font-600" label="序号" width="4em" center>
             <span>{{ index + 1 }}</span>
@@ -198,7 +131,7 @@
           </c-table-column>
         </template>
       </c-table>
-    </div>
+    </Hover>
 
     <div class="mt-4"></div>
   </div>
@@ -214,22 +147,17 @@ import IconClose from 'virtual:vite-icons/mdi/close';
 import IconCloud from 'virtual:vite-icons/mdi/cloud-outline';
 import IconBalloon from 'virtual:vite-icons/mdi/balloon';
 import IconLightbulbOn from 'virtual:vite-icons/mdi/lightbulb-on-outline';
-import IconUp from 'virtual:vite-icons/mdi/chevron-up';
-import IconDown from 'virtual:vite-icons/mdi/chevron-down';
 
 import { CTable, CTableColumn } from '@/components/table';
 import { CStastic } from '@/components/stastic';
 import { HeatMap, parseHeatMapDate } from '@/components/heatmap';
 import { toDate, displayContestType, displayProblemType } from '@/utils';
 
+import Hover from './Hover.vue';
 import HandleCard from './HandleCard.vue';
 
 const props = defineProps<{ user: IUser }>();
 const { user } = toRefs(props);
-
-const { state: heatmapState, flip: flipHeatmap } = useHover();
-const { state: subState, flip: flipSub } = useHover();
-const { state: contestState, flip: flipContest } = useHover();
 
 const avatars = ref<string[]>([]);
 for (const handle of user.value.handles) {
@@ -284,13 +212,4 @@ const handleHeatMapTooltip = (day: string) => {
   const count = heatmapMap.get(day) ?? 0;
   return `在 ${day} ${count ? `有 ${count} 次` : '没有'}正确通过`;
 };
-
-// hover
-function useHover() {
-  const state = ref(true);
-  const open = () => (state.value = true);
-  const close = () => (state.value = false);
-  const flip = () => (state.value = !state.value);
-  return { state, open, close, flip };
-}
 </script>
