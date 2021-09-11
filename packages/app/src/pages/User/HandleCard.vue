@@ -4,7 +4,7 @@
   </template>
   <template v-else-if="hdu">
     <p>
-      <span class="font-600">Hdu: </span>
+      <span class="font-600">HDu: </span>
       <a :href="handle.handleUrl" target="_blank">{{ handle.handle }}</a>
     </p>
     <p>
