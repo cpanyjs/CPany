@@ -1,8 +1,9 @@
 import type { IContest, RouteKey } from '@cpany/types';
+import { load } from '@cpany/compress/load';
 
 import cfContests from './cpany/codeforces.json';
 
-export const contests: RouteKey<IContest>[] = cfContests;
+export const contests = load<RouteKey<IContest>[]>(cfContests);
 
 const cfMap: Map<number, RouteKey<IContest>> = new Map();
 for (const contest of contests) {

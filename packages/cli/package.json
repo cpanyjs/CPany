@@ -24,6 +24,7 @@
   "dependencies": {
     "@cpany/action": "workspace:*",
     "@cpany/app": "workspace:*",
+    "@cpany/compress": "workspace:*",
     "@cpany/types": "workspace:*",
     "@cpany/utils": "workspace:*",
     "@iconify/json": "^1.1.387",

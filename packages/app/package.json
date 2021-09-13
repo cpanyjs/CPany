@@ -13,6 +13,7 @@
     "dev": "vite"
   },
   "dependencies": {
+    "@cpany/compress": "workspace:*",
     "@cpany/types": "workspace:*",
     "tippy.js": "^6.3.1",
     "vue": "^3.1.4",

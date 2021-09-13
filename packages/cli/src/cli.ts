@@ -7,6 +7,7 @@ import { createServer, build } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import WindiCSS from 'vite-plugin-windicss';
 import Icons from 'vite-plugin-icons';
+import Compress from '@cpany/compress';
 
 import { run as runAction } from '@cpany/action';
 import { createCPanyPlugin } from './plugin';
@@ -61,7 +62,8 @@ cli
         vue(),
         WindiCSS(),
         Icons(),
-        await createCPanyPlugin(pluginOption)
+        await createCPanyPlugin(pluginOption),
+        Compress()
       ],
       resolve: {
         alias: {
@@ -97,7 +99,8 @@ cli
         vue(),
         WindiCSS(),
         Icons(),
-        await createCPanyPlugin(pluginOption)
+        await createCPanyPlugin(pluginOption),
+        Compress()
       ],
       resolve: {
         alias: {

@@ -176,12 +176,13 @@ export function createCPanyContestPagePlugin(
         const component = [
           `<template><page :contest="contest" /></template>`,
           `<script>`,
+          `import { load } from '@cpany/compress/load';`,
           `import page from "${componentPath}"`,
           `import contest from "${virtualContestJson(virtualContest.path)}"`,
           `export default {`,
           `  components: { page },`,
           `  setup() {`,
-          `    return { contest };`,
+          `    return { contest: load(contest) };`,
           `  }`,
           `}`,
           `</script>`
@@ -243,12 +244,13 @@ export function createCPanyUserPagePlugin(
         const component = [
           `<template><page :user="user" /></template>`,
           `<script>`,
+          `import { load } from '@cpany/compress/load';`,
           `import page from "${componentPath}"`,
           `import user from "${virtualUserJson(virtualUser.name)}"`,
           `export default {`,
           `  components: { page },`,
           `  setup() {`,
-          `    return { user };`,
+          `    return { user: load(user) };`,
           `  }`,
           `}`,
           `</script>`

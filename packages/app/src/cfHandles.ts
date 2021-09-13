@@ -1,7 +1,9 @@
 import type { CodeforcesHandleList } from '@cpany/types';
+import { load } from '@cpany/compress/load';
+
 import rawHandles from './cpany/cfHandles.json';
 
-export const handles = rawHandles as CodeforcesHandleList;
+export const handles = load<CodeforcesHandleList>(rawHandles);
 
 const handleUser = new Map<string, string>(
   handles.map((handle) => [handle.h, handle.n])
