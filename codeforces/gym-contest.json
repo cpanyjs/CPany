@@ -12939,5 +12939,15 @@
     "phase": "FINISHED",
     "contestUrl": "https://codeforces.com/gym/103274",
     "standingsUrl": "https://codeforces.com/gym/103274/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "IQ PFO 2021",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103286,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103286",
+    "standingsUrl": "https://codeforces.com/gym/103286/standings"
   }
 ]
