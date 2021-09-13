@@ -24,6 +24,7 @@ const color = computed(() => {
   if (rt < 1900) return 'expert';
   if (rt < 2100) return 'candidate-master';
   if (rt < 2400) return 'master';
-  return 'master';
+  if (rt < 3000) return 'grandmaster';
+  return 'legendary-grandmaster';
 });
 </script>

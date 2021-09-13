@@ -1,27 +1,40 @@
 .cf-handle {
+  display: inline-block;
   color: black;
   font-weight: bold;
 }
+
+.cf-handle.legendary-grandmaster::first-letter {
+  color: black !important;
+}
+
+.cf-handle.legendary-grandmaster,
 .cf-handle.international-grandmaster,
 .cf-handle.grandmaster {
   color: #ff0000 !important;
 }
+
 .cf-handle.international-master,
 .cf-handle.master {
   color: #ff8c00 !important;
 }
+
 .cf-handle.candidate-master {
   color: #aa00aa !important;
 }
+
 .cf-handle.expert {
   color: #0000ff !important;
 }
+
 .cf-handle.specialist {
   color: #03a89e !important;
 }
+
 .cf-handle.pupil {
   color: #008000 !important;
 }
+
 .cf-handle.newbie {
   color: gray !important;
 }
