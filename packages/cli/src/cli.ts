@@ -63,7 +63,7 @@ cli
         WindiCSS(),
         Icons(),
         await createCPanyPlugin(pluginOption),
-        Compress()
+        Compress({ enable: true })
       ],
       resolve: {
         alias: {
@@ -100,7 +100,7 @@ cli
         WindiCSS(),
         Icons(),
         await createCPanyPlugin(pluginOption),
-        Compress()
+        Compress({ enable: false })
       ],
       resolve: {
         alias: {
