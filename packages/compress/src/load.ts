@@ -4,12 +4,10 @@ export function load<T>(_compressed: any): T {
   const compressed = _compressed as ICompressed;
 
   const keyMap = new Map<string, string>(
-    (compressed.keyMaps ?? []).map((pair) => pair.reverse() as [string, string])
+    (compressed.keyMaps ?? []).map(([key, value]) => [value, key])
   );
   const stringMap = new Map<string, string>(
-    (compressed.stringMaps ?? []).map(
-      (pair) => pair.reverse() as [string, string]
-    )
+    (compressed.stringMaps ?? []).map(([key, value]) => [value, key])
   );
 
   return walkTransKey(compressed.data, keyMap, stringMap);
@@ -31,8 +29,8 @@ function walkTransKey(
   if (type === 'string') return stringMap.get(obj) ?? obj;
   if (Array.isArray(obj)) {
     const newArr: any[] = [];
-    for (const key in obj) {
-      newArr.push(walkTransKey(obj[key], keyMap, stringMap));
+    for (const item of obj) {
+      newArr.push(walkTransKey(item, keyMap, stringMap));
     }
     return newArr;
   } else {
