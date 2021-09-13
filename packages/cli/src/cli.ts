@@ -70,6 +70,10 @@ cli
           '@cpany/types': findTypesPackagePath(),
           '@': path.resolve(appPath, 'src')
         }
+      },
+      json: {
+        namedExports: false,
+        stringify: true
       }
     });
   });
