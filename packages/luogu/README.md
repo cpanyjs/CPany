@@ -1,5 +1,7 @@
 # @cpany/luogu
 
+[![version](https://img.shields.io/npm/v/@cpany/luogu?color=rgb%2850%2C203%2C86%29&label=cpany)](https://www.npmjs.com/package/@cpany/luogu)
+
 Luogu plugin for [CPany](https://github.com/yjl9903/CPany).
 
 ## License
