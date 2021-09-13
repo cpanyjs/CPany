@@ -11,7 +11,8 @@ const packages = [
   './packages/luogu',
   './packages/utils',
   './packages/core',
-  './packages/types'
+  './packages/types',
+  './packages/compress',
 ];
 
 async function run() {
