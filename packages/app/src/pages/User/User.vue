@@ -245,7 +245,7 @@ const handleHeatMapTooltip = (day: string) => {
 };
 
 const getHeatmapComment = (year?: string) => {
-  const now = year ? new Date(year + '-12-31 23:59:59') : new Date();
+  const now = year ? new Date(+year, 11, 31, 23, 59, 59) : new Date();
   const lastYear = new Date(now.getTime() - 365 * 24 * 3600 * 1000);
   const start = new Date(
     lastYear.getTime() - (lastYear.getDay() - 1) * 24 * 3600 * 1000
@@ -284,7 +284,7 @@ const handleSelectHeatmapYear = (ev: any) => {
     heatmapTitle.value = '训练日历';
     heatmapComment.value = getHeatmapComment();
   } else {
-    heatmapNow.value = new Date(year + '-12-31 23:59:59');
+    heatmapNow.value = new Date(+year, 11, 31, 23, 59, 59);
     heatmapTitle.value = year + ' 年训练日历';
     heatmapComment.value = getHeatmapComment(year);
   }
