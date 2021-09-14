@@ -1,1 +1,1 @@
-export const ActionVersion = '0.0.38';
+export const ActionVersion = '0.0.39';
