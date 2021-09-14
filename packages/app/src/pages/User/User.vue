@@ -259,7 +259,11 @@ const getHeatmapComment = (year?: string) => {
   ).length;
 
   const okCount = [...heatmapMap.entries()].reduce((sum, [date, count]) => {
-    const dateTime = new Date(date);
+    const result = /(\d+)-(\d+)-(\d+)/.exec(date);
+    const dateTime =
+      result !== null
+        ? new Date(+result[1], +result[2] - 1, +result[3])
+        : new Date(date);
     if (
       start.getTime() <= dateTime.getTime() &&
       dateTime.getTime() <= now.getTime()
