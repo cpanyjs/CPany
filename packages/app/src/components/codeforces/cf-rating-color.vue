@@ -8,8 +8,9 @@
 import { computed, toRefs } from 'vue';
 import { isDef } from '@/utils';
 
-const props = defineProps<{ rating?: number; rank?: string }>();
-const { rating, rank } = toRefs(props);
+const props =
+  defineProps<{ rating?: number; rank?: string; disableLegendary?: boolean }>();
+const { rating, rank, disableLegendary } = toRefs(props);
 
 const color = computed(() => {
   const rk = rank?.value;
@@ -25,6 +26,6 @@ const color = computed(() => {
   if (rt < 2100) return 'candidate-master';
   if (rt < 2400) return 'master';
   if (rt < 3000) return 'grandmaster';
-  return 'legendary-grandmaster';
+  return disableLegendary?.value ? 'grandmaster' : 'legendary-grandmaster';
 });
 </script>

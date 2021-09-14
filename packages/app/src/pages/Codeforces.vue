@@ -25,7 +25,7 @@
           </a>
         </c-table-column>
         <c-table-column label="Rating" :sort="sortByRating" align="right"
-          ><cf-rating-color :rating="row.rating">{{
+          ><cf-rating-color :rating="row.rating" disable-legendary>{{
             row.rating
           }}</cf-rating-color></c-table-column
         >

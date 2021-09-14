@@ -3,13 +3,13 @@
   <cf-handle :handle="handle"></cf-handle>
   <p>
     <span class="font-600">Contest rating: </span>
-    <cf-rating-color :rank="handle.codeforces.rank">{{
+    <cf-rating-color :rating="handle.codeforces.rating" disable-legendary>{{
       handle.codeforces.rating
     }}</cf-rating-color>
   </p>
   <p>
     <span class="font-600">Max rating: </span>
-    <cf-rating-color :rank="handle.codeforces.maxRank">{{
+    <cf-rating-color :rating="handle.codeforces.maxRating" disable-legendary>{{
       handle.codeforces.maxRating
     }}</cf-rating-color>
   </p>
