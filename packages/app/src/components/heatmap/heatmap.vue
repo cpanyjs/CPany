@@ -40,7 +40,7 @@
         </div>
         <div v-for="day in 7" :key="day" :style="{ height: unit }">
           <div
-            v-if="week < 53 || day <= now.getDay()"
+            v-show="week < 53 || day <= getDay(now)"
             class="
               w-full
               h-full
@@ -50,7 +50,7 @@
             "
             @click="getDate(week, day)"
             :style="{ backgroundColor: getDayColor(week, day) }"
-            :ref="(el) => el && items.push({ el, week, day })"
+            :ref="(el) => el && (items[week * 7 + day] = { el, week, day })"
           ></div>
         </div>
       </div>
@@ -65,6 +65,8 @@ import tippy from 'tippy.js';
 import { isDef } from '@/utils';
 
 import { parseHeatMapDate } from './utils';
+
+const getDay = (date: Date) => date.getDay() || 7;
 
 const props = defineProps<{
   now?: Date;
@@ -86,7 +88,9 @@ const colors = computed(() => _colors?.value ?? DefaultColors);
 const dayInWeek = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
 
 const container = ref<HTMLElement | null>(null);
-const items = ref<Array<{ el: any; week: number; day: number }>>([]);
+const items = ref<Array<{ el: any; week: number; day: number }>>(
+  Array(53 * 7).fill(null)
+);
 
 const unitValue = computed(() => {
   if (container.value === null) {
@@ -115,6 +119,7 @@ onMounted(() => {
   }
   if (isDef(getTooltip.value)) {
     for (const item of items.value) {
+      if (!item) continue;
       const date = parseHeatMapDate(getDate.value(item.week, item.day));
       const content = getTooltip.value(date);
       tippy(item.el, { content });
@@ -129,6 +134,7 @@ const now = computed(() => {
 watch(now, () => {
   if (isDef(getTooltip.value)) {
     for (const item of items.value) {
+      if (!item) continue;
       const date = parseHeatMapDate(getDate.value(item.week, item.day));
       const content = getTooltip.value(date);
       if ('_tippy' in item.el) {
@@ -141,14 +147,14 @@ watch(now, () => {
 });
 
 const getDate = computed(() => (week: number, day: number) => {
-  const duration = 52 * 7 + now.value.getDay() - ((week - 1) * 7 + day);
-  const clicked = new Date(now.value.getTime() - duration * 1000 * 3600 * 24);
-  return clicked;
+  const offset = getDay(now.value) + 52 * 7 - ((week - 1) * 7 + day);
+  const date = new Date(now.value.getTime() - offset * 1000 * 3600 * 24);
+  return date;
 });
 
 const displayMonth = computed(() => (week: number) => {
   const lastDay = getDate.value(week, 7);
-  if (lastDay.getDate() <= 7) {
+  if (lastDay.getDate() <= 7 && lastDay.getTime() <= now.value.getTime()) {
     return [
       '一月',
       '二月',
