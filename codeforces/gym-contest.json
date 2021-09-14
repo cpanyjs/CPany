@@ -12942,7 +12942,8 @@
   },
   {
     "type": "codeforces/gym/icpc",
-    "name": "IQ PFO 2021",
+    "name": "2021 VI IQ PFO",
+    "startTime": 1631340000,
     "duration": 18000,
     "participantNumber": 0,
     "id": 103286,
