@@ -12,6 +12,664 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 128830513,
+      "creationTime": 1631631888,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515851759
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128830513"
+    },
+    {
+      "type": "codeforces",
+      "id": 128829247,
+      "creationTime": 1631631064,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515852583
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128829247"
+    },
+    {
+      "type": "codeforces",
+      "id": 128829111,
+      "creationTime": 1631630968,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515852679
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128829111"
+    },
+    {
+      "type": "codeforces",
+      "id": 128829082,
+      "creationTime": 1631630946,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515852701
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128829082"
+    },
+    {
+      "type": "codeforces",
+      "id": 128829044,
+      "creationTime": 1631630921,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515852726
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128829044"
+    },
+    {
+      "type": "codeforces",
+      "id": 128828808,
+      "creationTime": 1631630748,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515852899
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128828808"
+    },
+    {
+      "type": "codeforces",
+      "id": 128828424,
+      "creationTime": 1631630482,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515853165
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128828424"
+    },
+    {
+      "type": "codeforces",
+      "id": 128824721,
+      "creationTime": 1631628031,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515855616
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128824721"
+    },
+    {
+      "type": "codeforces",
+      "id": 128823108,
+      "creationTime": 1631627019,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515856628
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128823108"
+    },
+    {
+      "type": "codeforces",
+      "id": 128822956,
+      "creationTime": 1631626934,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515856713
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128822956"
+    },
+    {
+      "type": "codeforces",
+      "id": 128822923,
+      "creationTime": 1631626914,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515856733
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128822923"
+    },
+    {
+      "type": "codeforces",
+      "id": 128821396,
+      "creationTime": 1631625962,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515857685
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128821396"
+    },
+    {
+      "type": "codeforces",
+      "id": 128821193,
+      "creationTime": 1631625824,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515857823
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128821193"
+    },
+    {
+      "type": "codeforces",
+      "id": 128820607,
+      "creationTime": 1631625420,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515858227
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128820607"
+    },
+    {
+      "type": "codeforces",
+      "id": 128820020,
+      "creationTime": 1631625029,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515858618
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128820020"
+    },
+    {
+      "type": "codeforces",
+      "id": 128819907,
+      "creationTime": 1631624945,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515858702
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128819907"
+    },
+    {
+      "type": "codeforces",
+      "id": 128819162,
+      "creationTime": 1631624384,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515859263
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128819162"
+    },
+    {
+      "type": "codeforces",
+      "id": 128819017,
+      "creationTime": 1631624269,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515859378
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128819017"
+    },
+    {
+      "type": "codeforces",
+      "id": 128812954,
+      "creationTime": 1631619816,
+      "language": "GNU C++17",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515863831
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128812954"
+    },
+    {
+      "type": "codeforces",
+      "id": 128812807,
+      "creationTime": 1631619705,
+      "language": "GNU C++17",
+      "verdict": "RUNTIME_ERROR",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515863942
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128812807"
+    },
+    {
+      "type": "codeforces",
+      "id": 128811895,
+      "creationTime": 1631619066,
+      "language": "GNU C++17",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515864581
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566G",
+        "name": "Four Vertices",
+        "tags": [
+          "constructive algorithms",
+          "data structures",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128811895"
+    },
+    {
+      "type": "codeforces",
+      "id": 128793822,
+      "creationTime": 1631604646,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515879001
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1566F",
+        "name": "Points Movement",
+        "tags": [
+          "binary search",
+          "data structures",
+          "dp",
+          "implementation",
+          "sortings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1566/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1566/submission/128793822"
+    },
+    {
+      "type": "codeforces",
       "id": 128696905,
       "creationTime": 1631512096,
       "language": "GNU C++17",
@@ -31,6 +689,7 @@
           "binary search",
           "data structures",
           "dp",
+          "implementation",
           "sortings"
         ],
         "problemUrl": "https://codeforces.com/contest/1566/problem/F"
@@ -58,6 +717,7 @@
           "binary search",
           "data structures",
           "dp",
+          "implementation",
           "sortings"
         ],
         "problemUrl": "https://codeforces.com/contest/1566/problem/F"
@@ -85,6 +745,7 @@
           "binary search",
           "data structures",
           "dp",
+          "implementation",
           "sortings"
         ],
         "problemUrl": "https://codeforces.com/contest/1566/problem/F"
@@ -300,6 +961,7 @@
         "id": "1566A",
         "name": "Median Maximization",
         "tags": [
+          "binary search",
           "greedy",
           "math"
         ],

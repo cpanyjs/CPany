@@ -192,6 +192,7 @@
         "id": "1566A",
         "name": "Median Maximization",
         "tags": [
+          "binary search",
           "greedy",
           "math"
         ],
