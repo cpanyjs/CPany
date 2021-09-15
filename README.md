@@ -10,7 +10,7 @@ Use CPany template [@yjl9903/CPany-Template](https://github.com/yjl9903/CPany-Te
 
 Update config file `cpany.yml`, and push the changes to Github. Then, Github Actions will automatically fetch data and push to your repository.
 
-You can use Github Pages, Netlify, etc. to deploy generated static site.
+You can use Netlify, Vercel, Github Pages, etc. to deploy generated static site.
 
 ### Netlify Deploy
 
