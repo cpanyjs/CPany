@@ -14,34 +14,41 @@ You can use Github Pages, Netlify, etc. to deploy generated static site.
 
 ### Netlify Deploy
 
-The template repository has provided config file `netlify.toml`, so you can just add your repository to Netlify without any configuration.
+The template repository has provided Netlify config file `netlify.toml` with the following content.
+
+```toml
+[build.environment]
+  NODE_VERSION = "14"
+
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+```
+
+Then you can just create a new CPany site with your repository on Netlify.
+
+### Vercel Deploy
+
+The template repository has provided Vercel config file `Vercel.json` with the following content.
+
+```json
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
+```
+
+Then you can just create a new CPany site with your repository on Vercel.
 
 ### Github Pages Deploy
 
-You can use this action [peaceiris/actions-gh-pages](https://github.com/marketplace/actions/github-pages-action) to deploy your site.
-
-Update the action configuration on `.github/workflows/update.yml`:
-
-```yml
-jobs:
-  update:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup node
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
-      - name: Fetch data
-        uses: yjl9903/CPany@v0.0.39
-      - run: npm install
-      - run: npm run build
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-```
+The template repository has also provided a workflow `gh-pages.yml`, which will automatically push the generated static site to the branch `gh-pages`. You can just enable Github Pages in the Settings of your repository.
 
 ### Run locally
 
