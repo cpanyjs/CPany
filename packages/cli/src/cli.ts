@@ -21,7 +21,7 @@ interface ICliOption {
   data: string;
 
   // build
-  out: string;
+  outDir: string;
   emptyOutDir: boolean;
 
   // dev
@@ -60,7 +60,7 @@ cli
       configFile: false,
       root: appPath,
       build: {
-        outDir: path.resolve(option.out),
+        outDir: path.resolve(option.outDir),
         emptyOutDir: option.emptyOutDir,
         chunkSizeWarningLimit: 1024
       },
