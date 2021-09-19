@@ -19,6 +19,7 @@ const version = JSON.parse(
 interface ICliOption {
   app?: string;
   host?: string;
+  force: boolean;
   data: string;
   out: string;
   port: number;
@@ -82,6 +83,9 @@ cli
   .command('dev', 'Start CPany dev server')
   .option('--host [host]', 'specify hostname')
   .option('--port <port>', 'port to listen to', { default: 3000 })
+  .option('--force', 'force the optimizer to ignore the cache and re-bundle', {
+    default: false
+  })
   .action(async (option: ICliOption) => {
     const appPath = path.resolve(option.app ?? findDefaultAppPath());
     const dataPath = path.resolve(option.data);
@@ -96,7 +100,8 @@ cli
       root: appPath,
       server: {
         port: option.port,
-        host: option.host
+        host: option.host,
+        force: option.force
       },
       envDir: path.resolve(__dirname, '../'),
       plugins: [
