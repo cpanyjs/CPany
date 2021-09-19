@@ -18,12 +18,17 @@ const version = JSON.parse(
 
 interface ICliOption {
   app?: string;
-  host?: string;
-  force: boolean;
   data: string;
+
+  // build
   out: string;
-  port: number;
   emptyOutDir: boolean;
+
+  // dev
+  host?: string;
+  port: number;
+  force: boolean;
+  open: boolean;
 }
 
 interface ICliActionOption {
@@ -41,7 +46,7 @@ cli
   .option('--emptyOutDir', "force empty outDir when it's outside of root", {
     default: false
   })
-  .option('--out <output path>', 'Output path', { default: 'dist' })
+  .option('--outDir <dir>', 'output directory', { default: 'dist' })
   .action(async (option) => {
     const appPath = path.resolve(option.app ?? findDefaultAppPath());
     const dataPath = path.resolve(option.data);
@@ -83,6 +88,7 @@ cli
   .command('dev', 'Start CPany dev server')
   .option('--host [host]', 'specify hostname')
   .option('--port <port>', 'port to listen to', { default: 3000 })
+  .option('--open', 'open browser on startup', { default: false })
   .option('--force', 'force the optimizer to ignore the cache and re-bundle', {
     default: false
   })
@@ -101,7 +107,8 @@ cli
       server: {
         port: option.port,
         host: option.host,
-        force: option.force
+        force: option.force,
+        open: option.open
       },
       envDir: path.resolve(__dirname, '../'),
       plugins: [
