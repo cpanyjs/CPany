@@ -21165,7 +21165,7 @@ function createGitFileSystem(basePath, { disable = false } = {}) {
 }
 
 ;// CONCATENATED MODULE: ./src/version.ts
-const ActionVersion = '0.0.40';
+const ActionVersion = '0.0.41';
 
 ;// CONCATENATED MODULE: ./src/report.ts
 var report_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
