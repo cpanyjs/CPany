@@ -61,7 +61,8 @@ cli
       root: appPath,
       build: {
         outDir: path.resolve(option.out),
-        emptyOutDir: option.emptyOutDir
+        emptyOutDir: option.emptyOutDir,
+        chunkSizeWarningLimit: 1024
       },
       envDir: path.resolve(__dirname, '../'),
       plugins: [
