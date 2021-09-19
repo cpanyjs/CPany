@@ -1,1 +1,1 @@
-export * from './dist/load';
+export * from './dist/load.mjs';
