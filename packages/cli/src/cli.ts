@@ -37,8 +37,8 @@ interface ICliActionOption {
 }
 
 const cli = cac('cpany')
-  .option('--app <app path>', 'App path')
-  .option('--data <data path>', 'Data path', { default: '.' });
+  .option('--app <dir>', 'app directory')
+  .option('--data <dir>', 'data directory', { default: '.' });
 
 cli
   .command('', 'Build CPany site')
