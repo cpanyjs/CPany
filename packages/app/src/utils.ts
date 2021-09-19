@@ -62,6 +62,8 @@ export const displayContestType = (contest: IContest) => {
     return 'HDu';
   } else if (contest.type === 'lugou') {
     return '洛谷';
+  } else if (contest.type === 'pintia') {
+    return '拼题A';
   } else {
     return contest.type;
   }
