@@ -13,7 +13,7 @@
   "files": [
     "dist",
     "src",
-    "load.js",
+    "load.mjs",
     "load.d.ts",
     "index.d.ts"
   ],
