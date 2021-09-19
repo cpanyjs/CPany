@@ -8,6 +8,27 @@
   "submissions": [
     {
       "type": "hdu",
+      "id": 36759891,
+      "creationTime": 1631889065,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1631889065
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 6959,
+        "name": "zoto",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=6959"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36759891"
+    },
+    {
+      "type": "hdu",
       "id": 36673565,
       "creationTime": 1630595985,
       "language": "G++",

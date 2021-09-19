@@ -27,11 +27,13 @@
         "type": "codeforces",
         "id": "1566E",
         "name": "Buds Re-hanging",
+        "rating": 2000,
         "tags": [
           "constructive algorithms",
           "dfs and similar",
           "dp",
           "greedy",
+          "math",
           "trees"
         ],
         "problemUrl": "https://codeforces.com/contest/1566/problem/E"
@@ -55,6 +57,7 @@
         "type": "codeforces",
         "id": "1566D2",
         "name": "Seating Arrangements (hard version) ",
+        "rating": 1600,
         "tags": [
           "data structures",
           "greedy",
@@ -83,6 +86,7 @@
         "type": "codeforces",
         "id": "1566D2",
         "name": "Seating Arrangements (hard version) ",
+        "rating": 1600,
         "tags": [
           "data structures",
           "greedy",
@@ -111,6 +115,7 @@
         "type": "codeforces",
         "id": "1566D1",
         "name": "Seating Arrangements (easy version) ",
+        "rating": 1100,
         "tags": [
           "data structures",
           "greedy",
@@ -137,6 +142,7 @@
         "type": "codeforces",
         "id": "1566C",
         "name": "MAX-MEX Cut",
+        "rating": 1000,
         "tags": [
           "bitmasks",
           "constructive algorithms",
@@ -164,6 +170,7 @@
         "type": "codeforces",
         "id": "1566B",
         "name": "MIN-MEX Cut",
+        "rating": 800,
         "tags": [
           "bitmasks",
           "constructive algorithms",
@@ -191,6 +198,7 @@
         "type": "codeforces",
         "id": "1566A",
         "name": "Median Maximization",
+        "rating": 800,
         "tags": [
           "binary search",
           "greedy",
@@ -799,6 +807,7 @@
         "type": "codeforces",
         "id": "1569C",
         "name": "Jury Meeting",
+        "rating": 1500,
         "tags": [
           "combinatorics",
           "math"
@@ -824,6 +833,7 @@
         "type": "codeforces",
         "id": "1569C",
         "name": "Jury Meeting",
+        "rating": 1500,
         "tags": [
           "combinatorics",
           "math"
@@ -849,6 +859,7 @@
         "type": "codeforces",
         "id": "1569C",
         "name": "Jury Meeting",
+        "rating": 1500,
         "tags": [
           "combinatorics",
           "math"
@@ -874,6 +885,7 @@
         "type": "codeforces",
         "id": "1569C",
         "name": "Jury Meeting",
+        "rating": 1500,
         "tags": [
           "combinatorics",
           "math"
@@ -899,6 +911,7 @@
         "type": "codeforces",
         "id": "1569C",
         "name": "Jury Meeting",
+        "rating": 1500,
         "tags": [
           "combinatorics",
           "math"
@@ -924,6 +937,7 @@
         "type": "codeforces",
         "id": "1569B",
         "name": "Chess Tournament",
+        "rating": 1000,
         "tags": [
           "constructive algorithms"
         ],
@@ -948,6 +962,7 @@
         "type": "codeforces",
         "id": "1569A",
         "name": "Balanced Substring",
+        "rating": 800,
         "tags": [
           "implementation"
         ],

@@ -5,11 +5,96 @@
   "avatar": "https://userpic.codeforces.org/653554/title/f8960437c7d05cf1.jpg",
   "codeforces": {
     "rank": "international master",
-    "rating": 2330,
+    "rating": 2331,
     "maxRank": "international master",
-    "maxRating": 2330
+    "maxRating": 2331
   },
   "submissions": [
+    {
+      "type": "codeforces",
+      "id": 129193392,
+      "creationTime": 1631978897,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1631975700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572A",
+        "name": "Book",
+        "rating": 1800,
+        "tags": [
+          "binary search",
+          "data structures",
+          "dp",
+          "graphs",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129193392"
+    },
+    {
+      "type": "codeforces",
+      "id": 129192934,
+      "creationTime": 1631978788,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1631975700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572B",
+        "name": "Xor of 3",
+        "rating": 2500,
+        "tags": [
+          "brute force",
+          "constructive algorithms",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129192934"
+    },
+    {
+      "type": "codeforces",
+      "id": 129182044,
+      "creationTime": 1631977046,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1631975700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572A",
+        "name": "Book",
+        "rating": 1800,
+        "tags": [
+          "binary search",
+          "data structures",
+          "dp",
+          "graphs",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129182044"
+    },
     {
       "type": "codeforces",
       "id": 128830513,
@@ -27,10 +112,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -57,10 +142,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -87,10 +172,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -117,10 +202,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -147,10 +232,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -177,10 +262,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -207,10 +292,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -237,10 +322,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -267,10 +352,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -297,10 +382,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -327,10 +412,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -357,10 +442,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -387,10 +472,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -417,10 +502,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -447,10 +532,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -477,10 +562,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -507,10 +592,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -537,10 +622,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -567,10 +652,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -597,10 +682,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -627,10 +712,10 @@
         "type": "codeforces",
         "id": "1566G",
         "name": "Four Vertices",
+        "rating": 3100,
         "tags": [
           "constructive algorithms",
           "data structures",
-          "divide and conquer",
           "graphs",
           "greedy",
           "implementation",
@@ -657,10 +742,11 @@
         "type": "codeforces",
         "id": "1566F",
         "name": "Points Movement",
+        "rating": 2600,
         "tags": [
-          "binary search",
           "data structures",
           "dp",
+          "greedy",
           "implementation",
           "sortings"
         ],
@@ -685,10 +771,11 @@
         "type": "codeforces",
         "id": "1566F",
         "name": "Points Movement",
+        "rating": 2600,
         "tags": [
-          "binary search",
           "data structures",
           "dp",
+          "greedy",
           "implementation",
           "sortings"
         ],
@@ -713,10 +800,11 @@
         "type": "codeforces",
         "id": "1566F",
         "name": "Points Movement",
+        "rating": 2600,
         "tags": [
-          "binary search",
           "data structures",
           "dp",
+          "greedy",
           "implementation",
           "sortings"
         ],
@@ -741,10 +829,11 @@
         "type": "codeforces",
         "id": "1566F",
         "name": "Points Movement",
+        "rating": 2600,
         "tags": [
-          "binary search",
           "data structures",
           "dp",
+          "greedy",
           "implementation",
           "sortings"
         ],
@@ -769,11 +858,13 @@
         "type": "codeforces",
         "id": "1566E",
         "name": "Buds Re-hanging",
+        "rating": 2000,
         "tags": [
           "constructive algorithms",
           "dfs and similar",
           "dp",
           "greedy",
+          "math",
           "trees"
         ],
         "problemUrl": "https://codeforces.com/contest/1566/problem/E"
@@ -797,6 +888,7 @@
         "type": "codeforces",
         "id": "1566D2",
         "name": "Seating Arrangements (hard version) ",
+        "rating": 1600,
         "tags": [
           "data structures",
           "greedy",
@@ -825,6 +917,7 @@
         "type": "codeforces",
         "id": "1566D2",
         "name": "Seating Arrangements (hard version) ",
+        "rating": 1600,
         "tags": [
           "data structures",
           "greedy",
@@ -853,6 +946,7 @@
         "type": "codeforces",
         "id": "1566D1",
         "name": "Seating Arrangements (easy version) ",
+        "rating": 1100,
         "tags": [
           "data structures",
           "greedy",
@@ -879,6 +973,7 @@
         "type": "codeforces",
         "id": "1566C",
         "name": "MAX-MEX Cut",
+        "rating": 1000,
         "tags": [
           "bitmasks",
           "constructive algorithms",
@@ -906,6 +1001,7 @@
         "type": "codeforces",
         "id": "1566C",
         "name": "MAX-MEX Cut",
+        "rating": 1000,
         "tags": [
           "bitmasks",
           "constructive algorithms",
@@ -933,6 +1029,7 @@
         "type": "codeforces",
         "id": "1566B",
         "name": "MIN-MEX Cut",
+        "rating": 800,
         "tags": [
           "bitmasks",
           "constructive algorithms",
@@ -960,6 +1057,7 @@
         "type": "codeforces",
         "id": "1566A",
         "name": "Median Maximization",
+        "rating": 800,
         "tags": [
           "binary search",
           "greedy",

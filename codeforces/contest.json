@@ -1,6 +1,28 @@
 [
   {
     "type": "codeforces/cf",
+    "name": "Codeforces Round #743 (Div. 1)",
+    "startTime": 1631975700,
+    "duration": 7200,
+    "participantNumber": 0,
+    "id": 1572,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/contest/1572",
+    "standingsUrl": "https://codeforces.com/contest/1572/standings"
+  },
+  {
+    "type": "codeforces/cf",
+    "name": "Codeforces Round #743 (Div. 2)",
+    "startTime": 1631975700,
+    "duration": 7200,
+    "participantNumber": 0,
+    "id": 1573,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/contest/1573",
+    "standingsUrl": "https://codeforces.com/contest/1573/standings"
+  },
+  {
+    "type": "codeforces/cf",
     "name": "Codeforces Global Round 16",
     "startTime": 1631457300,
     "duration": 9000,
