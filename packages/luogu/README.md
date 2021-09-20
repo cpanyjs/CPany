@@ -4,6 +4,12 @@
 
 Luogu plugin for [CPany](https://github.com/yjl9903/CPany).
 
+## Usage
+
+Before usage, you should login [洛谷](https://www.luogu.com.cn/) manually, and get the cookie `_uid` and `__client_id` to set the corresponding environment variables `UID` and `CLIENT_ID`.
+
+If you are using the template repository [CPany-Template](https://github.com/yjl9903/CPany-Template), you should update secrets `LUOGU_UID` and `LUOGU_CLIENT_ID` in the settings of repository before running luogu action.
+
 ## License
 
 MIT License © 2021 [XLor](https://github.com/yjl9903)
