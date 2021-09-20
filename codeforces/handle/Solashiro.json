@@ -12,6 +12,33 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 129268135,
+      "creationTime": 1632059164,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515424483
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572B",
+        "name": "Xor of 3",
+        "rating": 2500,
+        "tags": [
+          "brute force",
+          "constructive algorithms",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129268135"
+    },
+    {
+      "type": "codeforces",
       "id": 129193392,
       "creationTime": 1631978897,
       "language": "GNU C++17",
@@ -864,7 +891,6 @@
           "dfs and similar",
           "dp",
           "greedy",
-          "math",
           "trees"
         ],
         "problemUrl": "https://codeforces.com/contest/1566/problem/E"
