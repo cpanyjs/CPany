@@ -17,10 +17,7 @@
     "dev": "node packages/cli/dist/cli.js dev --app packages/app --data example",
     "site": "node packages/cli/dist/cli.js build --app packages/app --data example --outDir site",
     "build": "pnpm run build --filter ./packages && pnpm -C packages/action run package",
-    "build:core": "pnpm -C packages/core run build",
-    "build:codeforces": "pnpm -C packages/codeforces run build",
     "build:action": "pnpm -C packages/action run build",
-    "build:app": "pnpm -C packages/app run build",
     "build:cli": "pnpm -C packages/cli run build",
     "format": "prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore",
     "release": "node scripts/release.js",
@@ -36,7 +33,6 @@
     "pnpm": "^6.12.1",
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
-    "typescript": "^4.3.5",
-    "vite": "^2.4.1"
+    "typescript": "^4.3.5"
   }
 }

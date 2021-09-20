@@ -4,12 +4,16 @@ import path from 'path';
 import { readFileSync, existsSync } from 'fs';
 import { cac } from 'cac';
 import { createServer, build } from 'vite';
+
 import vue from '@vitejs/plugin-vue';
 import WindiCSS from 'vite-plugin-windicss';
-import Icons from 'vite-plugin-icons';
-import Compress from '@cpany/compress';
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
+import Components from 'unplugin-vue-components/vite';
 
+import Compress from '@cpany/compress';
 import { run as runAction } from '@cpany/action';
+
 import { createCPanyPlugin } from './plugin';
 
 const version = JSON.parse(
@@ -69,6 +73,9 @@ cli
         vue(),
         WindiCSS(),
         Icons(),
+        Components({
+          resolvers: IconsResolver()
+        }),
         await createCPanyPlugin(pluginOption),
         Compress({ enable: true })
       ],
@@ -116,6 +123,9 @@ cli
         vue(),
         WindiCSS(),
         Icons(),
+        Components({
+          resolvers: IconsResolver()
+        }),
         await createCPanyPlugin(pluginOption),
         Compress({ enable: false })
       ],

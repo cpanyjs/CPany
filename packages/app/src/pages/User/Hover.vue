@@ -27,8 +27,8 @@
 <script setup lang="ts">
 import type { Ref } from 'vue';
 import { ref, toRefs, unref } from 'vue';
-import IconUp from 'virtual:vite-icons/mdi/chevron-up';
-import IconDown from 'virtual:vite-icons/mdi/chevron-down';
+import IconUp from '~icons/mdi/chevron-up';
+import IconDown from '~icons/mdi/chevron-down';
 
 const props = defineProps<{ title?: string; hide?: boolean }>();
 const { title, hide } = toRefs(props);

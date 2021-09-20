@@ -31,8 +31,9 @@
 </template>
 
 <script setup lang="ts">
-import IconAccount from 'virtual:vite-icons/mdi/account';
 import { ref } from 'vue';
+
+import IconAccount from '~icons/mdi/account';
 
 import { contests } from '@/contests';
 import { CTable, CTableColumn } from '@/components/table';

@@ -76,7 +76,7 @@
 </template>
 
 <script setup lang="ts">
-import IconGithub from 'virtual:vite-icons/mdi/github';
+import IconGithub from '~icons/mdi/github';
 import { Navbar, NavbarItem } from './components/navbar';
 import { Progress } from './components/progress';
 import { toDate } from './utils';

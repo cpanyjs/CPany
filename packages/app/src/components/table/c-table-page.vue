@@ -128,8 +128,9 @@
 
 <script setup lang="ts">
 import { toRefs, computed } from 'vue';
-import IconLeft from 'virtual:vite-icons/mdi/chevron-left';
-import IconRight from 'virtual:vite-icons/mdi/chevron-right';
+
+import IconLeft from '~icons/mdi/chevron-left';
+import IconRight from '~icons/mdi/chevron-right';
 
 const props = defineProps<{
   isMobile?: boolean;

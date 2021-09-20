@@ -9,8 +9,8 @@ import {
   onUnmounted,
   Fragment
 } from 'vue';
-import IconDown from 'virtual:vite-icons/mdi/arrow-down';
-import IconUp from 'virtual:vite-icons/mdi/arrow-up';
+import IconDown from '~icons/mdi/arrow-down';
+import IconUp from '~icons/mdi/arrow-up';
 
 import { isDef } from '@/utils';
 import { useIsMobile, usePagination } from './utils';

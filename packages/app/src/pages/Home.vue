@@ -136,10 +136,10 @@
 </template>
 
 <script setup lang="ts">
-import IconAccount from 'virtual:vite-icons/mdi/account';
-import IconCloud from 'virtual:vite-icons/mdi/cloud-outline';
-import IconBalloon from 'virtual:vite-icons/mdi/balloon';
-import IconLightbulbOn from 'virtual:vite-icons/mdi/lightbulb-on-outline';
+import IconAccount from '~icons/mdi/account';
+import IconCloud from '~icons/mdi/cloud-outline';
+import IconBalloon from '~icons/mdi/balloon';
+import IconLightbulbOn from '~icons/mdi/lightbulb-on-outline';
 
 import {
   contests,

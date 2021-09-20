@@ -166,11 +166,11 @@ import type { IUser, ISubmission, IContest } from '@cpany/types';
 import { Verdict } from '@cpany/types';
 import { ref, toRefs, computed } from 'vue';
 
-import IconCheck from 'virtual:vite-icons/mdi/check';
-import IconClose from 'virtual:vite-icons/mdi/close';
-import IconCloud from 'virtual:vite-icons/mdi/cloud-outline';
-import IconBalloon from 'virtual:vite-icons/mdi/balloon';
-import IconLightbulbOn from 'virtual:vite-icons/mdi/lightbulb-on-outline';
+import IconCheck from '~icons/mdi/check';
+import IconClose from '~icons/mdi/close';
+import IconCloud from '~icons/mdi/cloud-outline';
+import IconBalloon from '~icons/mdi/balloon';
+import IconLightbulbOn from '~icons/mdi/lightbulb-on-outline';
 
 import { CTable, CTableColumn } from '@/components/table';
 import { CStastic } from '@/components/stastic';
