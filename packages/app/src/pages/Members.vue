@@ -3,6 +3,7 @@
     <h2 class="mb-4">成员</h2>
     <c-table
       :data="extendUsers"
+      cache="members"
       default-sort="最近通过"
       default-sort-order="desc"
     >

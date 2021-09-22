@@ -18,6 +18,13 @@ import CTableColumn from './c-table-column';
 import CTablePage from './c-table-page.vue';
 import { CSelect } from '../select';
 
+interface ISortCache {
+  field?: string;
+  order: 'asc' | 'desc';
+}
+
+const sortCache = new Map<string, ISortCache>();
+
 export default defineComponent({
   name: 'CTable',
   components: {
@@ -27,6 +34,9 @@ export default defineComponent({
     CSelect
   },
   props: {
+    cache: {
+      type: String
+    },
     data: {
       type: Array,
       default: []
@@ -70,18 +80,33 @@ export default defineComponent({
     const { current, pageLength, L, R, nextPage, prePage, goPage } =
       usePagination(realPageSize, data);
 
-    const sortField = ref(defaultSort.value);
+    const cache = !!props.cache ? sortCache.get(props.cache) : undefined;
+
+    // sort
+    const sortField = ref(cache?.field ?? defaultSort.value);
     const sortOrder = ref<'asc' | 'desc'>(
-      defaultSortOrder.value as 'asc' | 'desc'
+      cache?.order ?? (defaultSortOrder.value as 'asc' | 'desc')
     );
+
+    const updateSortCache = () => {
+      if (!!props.cache) {
+        sortCache.set(props.cache, {
+          field: sortField.value,
+          order: sortOrder.value
+        });
+      }
+    };
+    updateSortCache();
 
     const setSortField = (label: string) => {
       sortField.value = label;
       sortOrder.value = defaultSortOrder.value as 'asc' | 'desc';
+      updateSortCache();
     };
     const filpSortOrder = () => {
       if (sortOrder.value === 'desc') sortOrder.value = 'asc';
       else sortOrder.value = 'desc';
+      updateSortCache();
     };
 
     const filterColumn = (slots?: VNode[]) => {
