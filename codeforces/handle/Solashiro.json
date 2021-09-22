@@ -12,6 +12,282 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 129358015,
+      "creationTime": 1632149737,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515333910
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572C",
+        "name": "Paint",
+        "rating": 2700,
+        "tags": [
+          "dp",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129358015"
+    },
+    {
+      "type": "codeforces",
+      "id": 129355610,
+      "creationTime": 1632149564,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515334083
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572C",
+        "name": "Paint",
+        "rating": 2700,
+        "tags": [
+          "dp",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129355610"
+    },
+    {
+      "type": "codeforces",
+      "id": 129311354,
+      "creationTime": 1632123170,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515360477
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572B",
+        "name": "Xor of 3",
+        "rating": 2500,
+        "tags": [
+          "brute force",
+          "constructive algorithms",
+          "greedy",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129311354"
+    },
+    {
+      "type": "codeforces",
+      "id": 129311305,
+      "creationTime": 1632123129,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515360518
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572B",
+        "name": "Xor of 3",
+        "rating": 2500,
+        "tags": [
+          "brute force",
+          "constructive algorithms",
+          "greedy",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129311305"
+    },
+    {
+      "type": "codeforces",
+      "id": 129310109,
+      "creationTime": 1632122112,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515361535
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572B",
+        "name": "Xor of 3",
+        "rating": 2500,
+        "tags": [
+          "brute force",
+          "constructive algorithms",
+          "greedy",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129310109"
+    },
+    {
+      "type": "codeforces",
+      "id": 129309957,
+      "creationTime": 1632121992,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515361655
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572B",
+        "name": "Xor of 3",
+        "rating": 2500,
+        "tags": [
+          "brute force",
+          "constructive algorithms",
+          "greedy",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129309957"
+    },
+    {
+      "type": "codeforces",
+      "id": 129309811,
+      "creationTime": 1632121868,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515361779
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572B",
+        "name": "Xor of 3",
+        "rating": 2500,
+        "tags": [
+          "brute force",
+          "constructive algorithms",
+          "greedy",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129309811"
+    },
+    {
+      "type": "codeforces",
+      "id": 129309516,
+      "creationTime": 1632121619,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515362028
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572B",
+        "name": "Xor of 3",
+        "rating": 2500,
+        "tags": [
+          "brute force",
+          "constructive algorithms",
+          "greedy",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129309516"
+    },
+    {
+      "type": "codeforces",
+      "id": 129309428,
+      "creationTime": 1632121536,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515362111
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572B",
+        "name": "Xor of 3",
+        "rating": 2500,
+        "tags": [
+          "brute force",
+          "constructive algorithms",
+          "greedy",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129309428"
+    },
+    {
+      "type": "codeforces",
+      "id": 129309380,
+      "creationTime": 1632121493,
+      "language": "GNU C++17",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Solashiro"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515362154
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572B",
+        "name": "Xor of 3",
+        "rating": 2500,
+        "tags": [
+          "brute force",
+          "constructive algorithms",
+          "greedy",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129309380"
+    },
+    {
+      "type": "codeforces",
       "id": 129268135,
       "creationTime": 1632059164,
       "language": "GNU C++17",
@@ -31,7 +307,8 @@
         "tags": [
           "brute force",
           "constructive algorithms",
-          "greedy"
+          "greedy",
+          "two pointers"
         ],
         "problemUrl": "https://codeforces.com/contest/1572/problem/B"
       },
@@ -57,10 +334,12 @@
         "rating": 1800,
         "tags": [
           "binary search",
+          "brute force",
           "data structures",
           "dp",
           "graphs",
-          "implementation"
+          "implementation",
+          "sortings"
         ],
         "problemUrl": "https://codeforces.com/contest/1572/problem/A"
       },
@@ -87,7 +366,8 @@
         "tags": [
           "brute force",
           "constructive algorithms",
-          "greedy"
+          "greedy",
+          "two pointers"
         ],
         "problemUrl": "https://codeforces.com/contest/1572/problem/B"
       },
@@ -113,10 +393,12 @@
         "rating": 1800,
         "tags": [
           "binary search",
+          "brute force",
           "data structures",
           "dp",
           "graphs",
-          "implementation"
+          "implementation",
+          "sortings"
         ],
         "problemUrl": "https://codeforces.com/contest/1572/problem/A"
       },

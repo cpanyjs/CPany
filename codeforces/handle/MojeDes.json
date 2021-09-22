@@ -5,11 +5,507 @@
   "avatar": "https://userpic.codeforces.org/829567/title/6a76b2fd62e54be3.jpg",
   "codeforces": {
     "rank": "expert",
-    "rating": 1809,
+    "rating": 1831,
     "maxRank": "expert",
     "maxRating": 1870
   },
   "submissions": [
+    {
+      "type": "codeforces",
+      "id": 129490580,
+      "creationTime": 1632225181,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515258466
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1574D",
+        "name": "The Strongest Build",
+        "rating": 2000,
+        "tags": [
+          "brute force",
+          "data structures",
+          "dfs and similar",
+          "graphs",
+          "greedy",
+          "hashing",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1574/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1574/submission/129490580"
+    },
+    {
+      "type": "codeforces",
+      "id": 129489650,
+      "creationTime": 1632224489,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515259158
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1574D",
+        "name": "The Strongest Build",
+        "rating": 2000,
+        "tags": [
+          "brute force",
+          "data structures",
+          "dfs and similar",
+          "graphs",
+          "greedy",
+          "hashing",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1574/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1574/submission/129489650"
+    },
+    {
+      "type": "codeforces",
+      "id": 129447664,
+      "creationTime": 1632188251,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515295396
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1574D",
+        "name": "The Strongest Build",
+        "rating": 2000,
+        "tags": [
+          "brute force",
+          "data structures",
+          "dfs and similar",
+          "graphs",
+          "greedy",
+          "hashing",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1574/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1574/submission/129447664"
+    },
+    {
+      "type": "codeforces",
+      "id": 129447403,
+      "creationTime": 1632187802,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515295845
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1574D",
+        "name": "The Strongest Build",
+        "rating": 2000,
+        "tags": [
+          "brute force",
+          "data structures",
+          "dfs and similar",
+          "graphs",
+          "greedy",
+          "hashing",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1574/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1574/submission/129447403"
+    },
+    {
+      "type": "codeforces",
+      "id": 129447217,
+      "creationTime": 1632187437,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515296210
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1574D",
+        "name": "The Strongest Build",
+        "rating": 2000,
+        "tags": [
+          "brute force",
+          "data structures",
+          "dfs and similar",
+          "graphs",
+          "greedy",
+          "hashing",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1574/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1574/submission/129447217"
+    },
+    {
+      "type": "codeforces",
+      "id": 129447036,
+      "creationTime": 1632187106,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515296541
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1574D",
+        "name": "The Strongest Build",
+        "rating": 2000,
+        "tags": [
+          "brute force",
+          "data structures",
+          "dfs and similar",
+          "graphs",
+          "greedy",
+          "hashing",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1574/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1574/submission/129447036"
+    },
+    {
+      "type": "codeforces",
+      "id": 129446908,
+      "creationTime": 1632186851,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515296796
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1574D",
+        "name": "The Strongest Build",
+        "rating": 2000,
+        "tags": [
+          "brute force",
+          "data structures",
+          "dfs and similar",
+          "graphs",
+          "greedy",
+          "hashing",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1574/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1574/submission/129446908"
+    },
+    {
+      "type": "codeforces",
+      "id": 129446878,
+      "creationTime": 1632186805,
+      "language": "GNU C++14",
+      "verdict": "COMPILATION_ERROR",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515296842
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1574D",
+        "name": "The Strongest Build",
+        "rating": 2000,
+        "tags": [
+          "brute force",
+          "data structures",
+          "dfs and similar",
+          "graphs",
+          "greedy",
+          "hashing",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1574/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1574/submission/129446878"
+    },
+    {
+      "type": "codeforces",
+      "id": 129446694,
+      "creationTime": 1632186444,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515297203
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1574D",
+        "name": "The Strongest Build",
+        "rating": 2000,
+        "tags": [
+          "brute force",
+          "data structures",
+          "dfs and similar",
+          "graphs",
+          "greedy",
+          "hashing",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1574/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1574/submission/129446694"
+    },
+    {
+      "type": "codeforces",
+      "id": 129446583,
+      "creationTime": 1632186214,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515297433
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1574D",
+        "name": "The Strongest Build",
+        "rating": 2000,
+        "tags": [
+          "brute force",
+          "data structures",
+          "dfs and similar",
+          "graphs",
+          "greedy",
+          "hashing",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1574/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1574/submission/129446583"
+    },
+    {
+      "type": "codeforces",
+      "id": 129362424,
+      "creationTime": 1632150081,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1632148500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1574C",
+        "name": "Slay the Dragon",
+        "rating": 1300,
+        "tags": [
+          "binary search",
+          "greedy",
+          "sortings",
+          "ternary search"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1574/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1574/submission/129362424"
+    },
+    {
+      "type": "codeforces",
+      "id": 129350327,
+      "creationTime": 1632149202,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1632148500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1574B",
+        "name": "Combinatorics Homework",
+        "rating": 1100,
+        "tags": [
+          "combinatorics",
+          "greedy",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1574/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1574/submission/129350327"
+    },
+    {
+      "type": "codeforces",
+      "id": 129343511,
+      "creationTime": 1632148759,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1632148500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1574A",
+        "name": "Regular Bracket Sequences",
+        "rating": 800,
+        "tags": [
+          "constructive algorithms"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1574/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1574/submission/129343511"
+    },
+    {
+      "type": "codeforces",
+      "id": 129329922,
+      "creationTime": 1632139611,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515344036
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "15E",
+        "name": "Triangles",
+        "rating": 2600,
+        "tags": [
+          "combinatorics",
+          "dp"
+        ],
+        "problemUrl": "https://codeforces.com/contest/15/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/15/submission/129329922"
+    },
+    {
+      "type": "codeforces",
+      "id": 129328978,
+      "creationTime": 1632138833,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515344814
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "15E",
+        "name": "Triangles",
+        "rating": 2600,
+        "tags": [
+          "combinatorics",
+          "dp"
+        ],
+        "problemUrl": "https://codeforces.com/contest/15/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/15/submission/129328978"
+    },
+    {
+      "type": "codeforces",
+      "id": 129323145,
+      "creationTime": 1632133698,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515349949
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "15D",
+        "name": "Map",
+        "rating": 2500,
+        "tags": [
+          "data structures",
+          "implementation",
+          "sortings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/15/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/15/submission/129323145"
+    },
+    {
+      "type": "codeforces",
+      "id": 129323039,
+      "creationTime": 1632133591,
+      "language": "GNU C++14",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -515350056
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "15D",
+        "name": "Map",
+        "rating": 2500,
+        "tags": [
+          "data structures",
+          "implementation",
+          "sortings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/15/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/15/submission/129323039"
+    },
     {
       "type": "codeforces",
       "id": 128657977,
