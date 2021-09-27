@@ -64,8 +64,11 @@ export const displayContestType = (contest: IContest) => {
     return '洛谷';
   } else if (contest.type === 'pintia') {
     return '拼题A';
+  } else if (contest.type === 'atcoder') {
+    return 'AtCoder';
   } else {
-    return contest.type;
+    const type = contest.type;
+    return type.charAt(0).toUpperCase() + type.slice(1);
   }
 };
 
