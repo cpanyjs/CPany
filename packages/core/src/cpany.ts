@@ -11,14 +11,12 @@ import type {
 
 import { IContext, ILogger, createDefaultLogger, createPrefixLogger } from './utils';
 
-export interface ICreateOptions<T = any> {
+export interface ICreateOptions {
   plugins?: Array<IPlugin | IPlugin[] | null | undefined>;
 
   context?: IContext;
 
   logger?: ILogger;
-
-  config: T;
 }
 
 export interface CPanyInstance {
@@ -33,7 +31,7 @@ export interface CPanyInstance {
   transform: <T extends ITransformPayload>(payload: T) => Promise<LoadResult | null | undefined>;
 }
 
-export function createInstance<T>(option: ICreateOptions<T>): CPanyInstance {
+export function createInstance(option: ICreateOptions): CPanyInstance {
   const baseLogger: ILogger = option?.logger ?? createDefaultLogger();
 
   const { createLogger, cleanPlugins, loadPlugins, transformPlugins } = classifyPlugins(
@@ -44,7 +42,7 @@ export function createInstance<T>(option: ICreateOptions<T>): CPanyInstance {
   const instanceLogger = createLogger('instance');
 
   const context = option?.context ?? {};
-  const instance: IInstance<T> = { logger: instanceLogger, context, config: option.config };
+  const instance: IInstance = { logger: instanceLogger, context };
 
   const isKeyInContext = (key: string) => {
     return key in context;
@@ -78,7 +76,7 @@ export function createInstance<T>(option: ICreateOptions<T>): CPanyInstance {
       const pluginLogger = plugin.logger!;
 
       try {
-        const result = await plugin.load<T>(key, {
+        const result = await plugin.load(key, {
           ...instance,
           logger: pluginLogger
         });
@@ -119,7 +117,7 @@ export function createInstance<T>(option: ICreateOptions<T>): CPanyInstance {
       const pluginLogger = plugin.logger!;
 
       try {
-        const result = await plugin.transform<any>(payload, {
+        const result = await plugin.transform(payload, {
           ...instance,
           logger: pluginLogger
         });

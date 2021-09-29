@@ -15930,7 +15930,7 @@ function createInstance(option) {
     const { createLogger, cleanPlugins, loadPlugins, transformPlugins } = classifyPlugins(baseLogger, option.plugins);
     const instanceLogger = createLogger('instance');
     const context = (_b = option === null || option === void 0 ? void 0 : option.context) !== null && _b !== void 0 ? _b : {};
-    const instance = { logger: instanceLogger, context, config: option.config };
+    const instance = { logger: instanceLogger, context };
     const isKeyInContext = (key) => {
         return key in context;
     };
@@ -21294,8 +21294,7 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
                 usedPluginSet.has('hdu') ? yield (0,hdu_dist.hduPlugin)(Object.assign({ basePath }, config)) : undefined,
                 usedPluginSet.has('luogu') ? yield (0,luogu_dist.luoguPlugin)(Object.assign({ basePath }, config)) : undefined
             ],
-            logger: logger ? core : undefined,
-            config
+            logger: logger ? core : undefined
         });
         const fs = yield createGitFileSystem(basePath, {
             disable: disableGit

@@ -40,8 +40,7 @@ export async function run({
       usedPluginSet.has('hdu') ? await hduPlugin({ basePath, ...config }) : undefined,
       usedPluginSet.has('luogu') ? await luoguPlugin({ basePath, ...config }) : undefined
     ],
-    logger: logger ? core : undefined,
-    config
+    logger: logger ? core : undefined
   });
 
   const fs = await createGitFileSystem(basePath, {
