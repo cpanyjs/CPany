@@ -117,7 +117,7 @@ export async function fetchSubmissions(
     if (subs.length === oldLen) break;
   }
 
-  logger.info(`Hdu handle ${handle.handle} has fetched ${subs.length} new submissions`);
+  logger.info(`Fetch: Hdu handle ${handle.handle} has fetched ${subs.length} new submissions`);
 
   return [...subs, ...handle.submissions];
 }
