@@ -9,9 +9,7 @@
         :href="`https://codeforces.com/profile/${handle}`"
         target="_blank"
       >
-        <cf-rating-color :rating="findHandleRating(handle)">{{
-          handle
-        }}</cf-rating-color>
+        <cf-rating-color :rating="findHandleRating(handle)">{{ handle }}</cf-rating-color>
       </a>
     </span>
   </template>

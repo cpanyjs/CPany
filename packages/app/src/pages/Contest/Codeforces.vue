@@ -53,9 +53,7 @@ const fetchStanding = async (contest: RouteKey<IContest>) => {
     const penalty = row.problemResults.reduce((sum: number, result: any) => {
       if (result.points === 0) return sum;
       return (
-        sum +
-        (result.bestSubmissionTimeSeconds ?? 0) +
-        20 * (result.rejectedAttemptCount ?? 0)
+        sum + (result.bestSubmissionTimeSeconds ?? 0) + 20 * (result.rejectedAttemptCount ?? 0)
       );
     }, 0);
 
@@ -63,23 +61,17 @@ const fetchStanding = async (contest: RouteKey<IContest>) => {
 
     contest.standings!.push({
       author: {
-        members: row.party.members.map(
-          (handle: { handle: string }) => handle.handle
-        ),
-        teamName:
-          row.party.teamName ?? findHandleUser(row.party.members[0].handle),
+        members: row.party.members.map((handle: { handle: string }) => handle.handle),
+        teamName: row.party.teamName ?? findHandleUser(row.party.members[0].handle),
         participantTime,
         participantType: row.party.participantType
       },
       rank: row.rank,
-      solved: row.problemResults.filter(
-        (result: { points: number }) => result.points > 0
-      ).length,
+      solved: row.problemResults.filter((result: { points: number }) => result.points > 0).length,
       penalty,
       submissions: row.problemResults
         .map((result: any, index: number) => {
-          const creationTime =
-            result.bestSubmissionTimeSeconds + participantTime;
+          const creationTime = result.bestSubmissionTimeSeconds + participantTime;
           const relativeTime = result.bestSubmissionTimeSeconds;
           if (result.points > 0) {
             return {

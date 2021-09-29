@@ -11,9 +11,7 @@
           </c-stastic>
 
           <c-stastic title="提交" class="md:ml-4 <md:ml-2">
-            <template #prefix
-              ><icon-lightbulb-on class="text-yellow-400"
-            /></template>
+            <template #prefix><icon-lightbulb-on class="text-yellow-400" /></template>
             <template #>{{ submissions.length }}</template>
           </c-stastic>
 
@@ -23,30 +21,13 @@
           </c-stastic>
         </div>
 
-        <div
-          class="
-            <md:mt-2
-            md:mt-4
-            grid
-            <md:(grid-cols-1
-            gap-2)
-            md:(grid-cols-2
-            gap-4)
-          "
-        >
-          <div
-            v-for="(handle, index) in user.handles"
-            :key="index"
-            class="box <md:(p-2)"
-          >
+        <div class="<md:mt-2 md:mt-4 grid <md:(grid-cols-1 gap-2) md:(grid-cols-2 gap-4)">
+          <div v-for="(handle, index) in user.handles" :key="index" class="box <md:(p-2)">
             <handle-card :handle="handle"></handle-card>
           </div>
         </div>
       </div>
-      <div
-        v-if="avatar !== null"
-        class="md:(ml-4 max-w-1/3) <md:(mb-2 w-full flex justify-center)"
-      >
+      <div v-if="avatar !== null" class="md:(ml-4 max-w-1/3) <md:(mb-2 w-full flex justify-center)">
         <img :src="avatar" :alt="`${user.name}'s avatar`" />
       </div>
     </div>
@@ -77,9 +58,7 @@
 
         <c-select class="inline-block w-28" @change="handleSelectHeatmapYear">
           <option value="latest">最新</option>
-          <option v-for="year in heatmapYearList" :value="year">
-            {{ year }} 年
-          </option>
+          <option v-for="year in heatmapYearList" :value="year">{{ year }} 年</option>
         </c-select>
       </div>
     </Hover>
@@ -93,19 +72,11 @@
         :mobile-page-size="3"
       >
         <template #columns="{ row }">
-          <c-table-column
-            class="font-600"
-            label="序号"
-            center
-            width="5em"
-            :sort="sortByIndex"
-          >
+          <c-table-column class="font-600" label="序号" center width="5em" :sort="sortByIndex">
             <span>{{ row.index }}</span>
           </c-table-column>
           <c-table-column label="时间" center width="10em">
-            <a :href="row.submissionUrl" target="_blank">{{
-              toDate(row.creationTime).value
-            }}</a>
+            <a :href="row.submissionUrl" target="_blank">{{ toDate(row.creationTime).value }}</a>
           </c-table-column>
           <c-table-column label="类型" center width="4em">
             <span>{{ displayProblemType(row) }}</span>
@@ -115,21 +86,14 @@
               row.problem.id + ' ' + row.problem.name
             }}</a>
           </c-table-column>
-          <c-table-column
-            label="难度"
-            align="right"
-            :sort="sortByProblemRating"
-          >
+          <c-table-column label="难度" align="right" :sort="sortByProblemRating">
             <span>{{ row.problem.rating }}</span>
           </c-table-column>
           <c-table-column label="语言" center>
             <span>{{ row.language }}</span>
           </c-table-column>
           <c-table-column label="结果" width="4em" center>
-            <icon-check
-              v-if="row.verdict === Verdict.OK"
-              class="text-green-400"
-            ></icon-check>
+            <icon-check v-if="row.verdict === Verdict.OK" class="text-green-400"></icon-check>
             <icon-close v-else class="text-red-400"></icon-close>
           </c-table-column>
         </template>
@@ -143,9 +107,7 @@
             <span>{{ index + 1 }}</span>
           </c-table-column>
           <c-table-column label="时间" center width="10em">
-            <a :href="row.contestUrl">{{
-              toDate(row.author.participantTime).value
-            }}</a>
+            <a :href="row.contestUrl">{{ toDate(row.author.participantTime).value }}</a>
           </c-table-column>
           <c-table-column label="比赛" :mobile-header-class="['min-w-8']">
             <router-link :to="row.path">{{ row.name }}</router-link>
@@ -186,11 +148,7 @@ const { user } = toRefs(props);
 
 const avatars = ref<string[]>([]);
 for (const handle of user.value.handles) {
-  if (
-    handle.avatar !== undefined &&
-    handle.avatar !== null &&
-    handle.avatar !== ''
-  ) {
+  if (handle.avatar !== undefined && handle.avatar !== null && handle.avatar !== '') {
     avatars.value.push(handle.avatar);
     break;
   }
@@ -210,8 +168,7 @@ const submissions = ref<ISubmission[]>(
 );
 const contests = ref<IContest[]>(user.value.contests);
 
-const sortByIndex = (lhs: { index: number }, rhs: { index: number }) =>
-  lhs.index - rhs.index;
+const sortByIndex = (lhs: { index: number }, rhs: { index: number }) => lhs.index - rhs.index;
 const sortByProblemRating = (lhs: ISubmission, rhs: ISubmission) => {
   const lval = lhs.problem.rating ?? 0;
   const rval = rhs.problem.rating ?? 0;
@@ -229,9 +186,7 @@ submissions.value.forEach((sub) => {
     heatmapMap.set(date, (heatmapMap.get(date) ?? 0) + 1);
   }
 });
-const heatmapYearList = [
-  ...new Set([...heatmapMap.keys()].map((date) => date.slice(0, 4)))
-]
+const heatmapYearList = [...new Set([...heatmapMap.keys()].map((date) => date.slice(0, 4)))]
   .sort()
   .reverse();
 
@@ -247,27 +202,18 @@ const handleHeatMapTooltip = (day: string) => {
 const getHeatmapComment = (year?: string) => {
   const now = year ? new Date(+year, 11, 31, 23, 59, 59) : new Date();
   const lastYear = new Date(now.getTime() - 365 * 24 * 3600 * 1000);
-  const start = new Date(
-    lastYear.getTime() - (lastYear.getDay() - 1) * 24 * 3600 * 1000
-  );
+  const start = new Date(lastYear.getTime() - (lastYear.getDay() - 1) * 24 * 3600 * 1000);
   const time = `${parseHeatMapDate(start)} ~ ${parseHeatMapDate(now)}`;
 
   const subCount = submissions.value.filter(
-    (sub) =>
-      start.getTime() / 1000 <= sub.creationTime &&
-      sub.creationTime <= now.getTime() / 1000
+    (sub) => start.getTime() / 1000 <= sub.creationTime && sub.creationTime <= now.getTime() / 1000
   ).length;
 
   const okCount = [...heatmapMap.entries()].reduce((sum, [date, count]) => {
     const result = /(\d+)-(\d+)-(\d+)/.exec(date);
     const dateTime =
-      result !== null
-        ? new Date(+result[1], +result[2] - 1, +result[3])
-        : new Date(date);
-    if (
-      start.getTime() <= dateTime.getTime() &&
-      dateTime.getTime() <= now.getTime()
-    ) {
+      result !== null ? new Date(+result[1], +result[2] - 1, +result[3]) : new Date(date);
+    if (start.getTime() <= dateTime.getTime() && dateTime.getTime() <= now.getTime()) {
       return sum + count;
     } else {
       return sum;

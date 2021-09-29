@@ -2,11 +2,7 @@ import type { AxiosInstance } from 'axios';
 
 import type { ITransformPlugin } from '@cpany/core';
 import type { ISubmission } from '@cpany/types';
-import type {
-  HandleDTO,
-  SubmissionDTO,
-  IHandleWithCodeforces
-} from '@cpany/types/codeforces';
+import type { HandleDTO, SubmissionDTO, IHandleWithCodeforces } from '@cpany/types/codeforces';
 
 import { codeforces } from './constant';
 
@@ -76,9 +72,7 @@ export function handleInfoPlugin(api: AxiosInstance): ITransformPlugin {
               author: {
                 members: submission.author.members.map(({ handle }) => handle),
                 participantType: submission.author.participantType,
-                participantTime:
-                  submission.creationTimeSeconds -
-                  submission.relativeTimeSeconds,
+                participantTime: submission.creationTimeSeconds - submission.relativeTimeSeconds,
                 teamName: submission.author.teamName
               },
               problem: {

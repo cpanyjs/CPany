@@ -14,9 +14,7 @@
           <span>{{ row.solved }}</span>
         </c-table-column>
         <c-table-column label="罚时" align="center" width="4em">
-          <span v-if="!isPractice(row)">{{
-            toNumDuration(row.penalty).value
-          }}</span>
+          <span v-if="!isPractice(row)">{{ toNumDuration(row.penalty).value }}</span>
         </c-table-column>
 
         <c-table-column
@@ -45,11 +43,7 @@
 </template>
 
 <script setup lang="ts">
-import type {
-  IContest,
-  IContestStanding,
-  IContestSubmission
-} from '@cpany/types';
+import type { IContest, IContestStanding, IContestSubmission } from '@cpany/types';
 import { Verdict, ParticipantType } from '@cpany/types';
 
 import { computed, toRefs } from 'vue';
@@ -75,14 +69,8 @@ const toStrIndex = (index: string | number) =>
 const problems = computed(() => {
   return (
     contest.value.problems?.sort((lhs, rhs) => {
-      const lval =
-        typeof lhs.index === 'string'
-          ? lhs.index.charCodeAt(0) - 65
-          : lhs.index;
-      const rval =
-        typeof rhs.index === 'string'
-          ? rhs.index.charCodeAt(0) - 65
-          : rhs.index;
+      const lval = typeof lhs.index === 'string' ? lhs.index.charCodeAt(0) - 65 : lhs.index;
+      const rval = typeof rhs.index === 'string' ? rhs.index.charCodeAt(0) - 65 : rhs.index;
       return lval - rval;
     }) ?? []
   );
@@ -90,17 +78,12 @@ const problems = computed(() => {
 
 const standings = computed(() => {
   if (isUndef(contest.value.problems)) return { standings: [], firstBlood: [] };
-  if (isUndef(contest.value.standings))
-    return { standings: [], firstBlood: [] };
+  if (isUndef(contest.value.standings)) return { standings: [], firstBlood: [] };
 
-  const firstBlood: Array<IContestSubmission | undefined> = Array(
-    contest.value.problems?.length
-  );
+  const firstBlood: Array<IContestSubmission | undefined> = Array(contest.value.problems?.length);
 
   for (const standing of contest.value.standings) {
-    const result: Array<IContestSubmission | undefined> = Array(
-      contest.value.problems?.length
-    );
+    const result: Array<IContestSubmission | undefined> = Array(contest.value.problems?.length);
     for (const sub of standing.submissions) {
       const index = sub.problemIndex;
 

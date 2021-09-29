@@ -14,23 +14,14 @@ export function useIsMobile(mobileWidth: MaybeRef<number>) {
   return { width, isMobile, clean };
 }
 
-export function usePagination(
-  _pageSize: Ref<number | undefined>,
-  data: MaybeRef<any[]>
-) {
+export function usePagination(_pageSize: Ref<number | undefined>, data: MaybeRef<any[]>) {
   const dataLength = computed(() => unref(data).length);
-  const pageSize = computed(() =>
-    Math.max(1, unref(_pageSize) ?? dataLength.value)
-  );
+  const pageSize = computed(() => Math.max(1, unref(_pageSize) ?? dataLength.value));
 
-  const pageLength = computed(() =>
-    Math.ceil(dataLength.value / pageSize.value)
-  );
+  const pageLength = computed(() => Math.ceil(dataLength.value / pageSize.value));
   const current = ref(0);
   const L = computed(() => current.value * pageSize.value);
-  const R = computed(() =>
-    Math.min(dataLength.value, L.value + pageSize.value)
-  );
+  const R = computed(() => Math.min(dataLength.value, L.value + pageSize.value));
 
   const hasNextPage = computed(
     () => current.value + 1 < pageLength.value && R.value < dataLength.value

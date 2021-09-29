@@ -32,18 +32,8 @@ export async function createGitFileSystem(
     if (disable) return;
     const username = process.env.GITHUB_ACTOR || 'Unknown';
     await exec('git', ['config', '--local', 'user.name', username]);
-    await exec('git', [
-      'config',
-      '--local',
-      'user.email',
-      `${username}@users.noreply.github.com`
-    ]);
-    await exec('git', [
-      'add',
-      resolve(basePath, 'README.md'),
-      resolve(basePath, '.env'),
-      ...files
-    ]);
+    await exec('git', ['config', '--local', 'user.email', `${username}@users.noreply.github.com`]);
+    await exec('git', ['add', resolve(basePath, 'README.md'), resolve(basePath, '.env'), ...files]);
     await exec('git', ['commit', '-m', `Fetch data on ${time}`]);
     await exec('git', ['push']);
   };

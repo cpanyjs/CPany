@@ -8,8 +8,7 @@
 import { computed, toRefs } from 'vue';
 import { isDef } from '@/utils';
 
-const props =
-  defineProps<{ rating?: number; rank?: string; disableLegendary?: boolean }>();
+const props = defineProps<{ rating?: number; rank?: string; disableLegendary?: boolean }>();
 const { rating, rank, disableLegendary } = toRefs(props);
 
 const color = computed(() => {

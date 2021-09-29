@@ -40,20 +40,13 @@ export function createHduHandlePlugin(): IPlugin {
   };
 }
 
-export async function fetchHandle(
-  handle: string,
-  logger: ILogger
-): Promise<IHandleWithHdu> {
+export async function fetchHandle(handle: string, logger: ILogger): Promise<IHandleWithHdu> {
   if (handles.has(handle)) return handles.get(handle)!;
 
   logger.info(`Start fetching Hdu handle: ${handle}`);
 
-  const { data } = await axios.get(
-    `https://acm.hdu.edu.cn/userstatus.php?user=${handle}`
-  );
-  const rank = /<tr><td>Rank<\/td><td align=center>(\d+)<\/td><\/tr>/.exec(
-    data
-  );
+  const { data } = await axios.get(`https://acm.hdu.edu.cn/userstatus.php?user=${handle}`);
+  const rank = /<tr><td>Rank<\/td><td align=center>(\d+)<\/td><\/tr>/.exec(data);
   return {
     type: 'hdu/handle',
     handle,
@@ -69,8 +62,7 @@ export async function fetchSubmissions(
   handle: IHandleWithHdu,
   logger: ILogger
 ): Promise<ISubmission[]> {
-  const latestSubId =
-    handle.submissions.length > 0 ? handle.submissions[0].id : -1;
+  const latestSubId = handle.submissions.length > 0 ? handle.submissions[0].id : -1;
   const subs: ISubmission[] = [];
   const fetch = async (first?: number) => {
     let minId = first ?? Number.MAX_VALUE;
@@ -80,9 +72,7 @@ export async function fetchSubmissions(
     });
 
     const root = parse(data);
-    const items = root
-      .querySelectorAll('tr[align]')
-      .filter((node) => node.childNodes.length === 9);
+    const items = root.querySelectorAll('tr[align]').filter((node) => node.childNodes.length === 9);
     for (const node of items) {
       const id = +node.childNodes[0].innerText;
       const language = node.childNodes[7].innerText;
@@ -127,9 +117,7 @@ export async function fetchSubmissions(
     if (subs.length === oldLen) break;
   }
 
-  logger.info(
-    `Hdu handle ${handle.handle} has fetched ${subs.length} new submissions`
-  );
+  logger.info(`Hdu handle ${handle.handle} has fetched ${subs.length} new submissions`);
 
   return [...subs, ...handle.submissions];
 }

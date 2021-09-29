@@ -3,23 +3,14 @@
 
   <navbar>
     <template #brand>
-      <navbar-item
-        class="font-bold text-lg"
-        tag="router-link"
-        :to="{ name: 'Home' }"
+      <navbar-item class="font-bold text-lg" tag="router-link" :to="{ name: 'Home' }"
         >CPany</navbar-item
       >
     </template>
     <template #start>
-      <navbar-item tag="router-link" :to="{ name: 'Members' }"
-        >成员</navbar-item
-      >
-      <navbar-item tag="router-link" :to="{ name: 'Codeforces' }"
-        >Codeforces</navbar-item
-      >
-      <navbar-item tag="router-link" :to="{ name: 'Contests' }"
-        >比赛</navbar-item
-      >
+      <navbar-item tag="router-link" :to="{ name: 'Members' }">成员</navbar-item>
+      <navbar-item tag="router-link" :to="{ name: 'Codeforces' }">Codeforces</navbar-item>
+      <navbar-item tag="router-link" :to="{ name: 'Contests' }">比赛</navbar-item>
     </template>
   </navbar>
 
@@ -35,10 +26,7 @@
     <div class="text-center text-gray-400 font-mono">
       <div class="flex items-center justify-center my-2">
         <div class="mr-2">
-          <a
-            class="text-$text-light-1"
-            href="https://github.com/yjl9903/CPany"
-            target="_blank"
+          <a class="text-$text-light-1" href="https://github.com/yjl9903/CPany" target="_blank"
             ><icon-github class="align-middle"></icon-github
           ></a>
         </div>
@@ -63,11 +51,7 @@
         <span>更新时间: {{ toDate(+updateTime).value }}</span>
       </p>
       <p class="mt-2">
-        <a
-          href="https://github.com/yjl9903/CPany/blob/master/LICENSE"
-          target="_blank"
-          >MIT</a
-        >
+        <a href="https://github.com/yjl9903/CPany/blob/master/LICENSE" target="_blank">MIT</a>
         Licensed | Copyright © 2021
         <a href="https://xlor.cn" target="_blank">XLor</a>
       </p>

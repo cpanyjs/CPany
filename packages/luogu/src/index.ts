@@ -22,9 +22,7 @@ function loadCookie(): ICookie {
   return { clientId, uid };
 }
 
-export async function luoguPlugin(
-  config: ICPanyConfig & { basePath: string }
-): Promise<IPlugin[]> {
+export async function luoguPlugin(config: ICPanyConfig & { basePath: string }): Promise<IPlugin[]> {
   const cookie = loadCookie();
 
   for (const handlePath of config.handles ?? []) {

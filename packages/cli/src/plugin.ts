@@ -17,28 +17,18 @@ import type { IPluginOption } from './types';
 import { createEnvLoader, createLoader } from './loader';
 import { DefaultRecentContestsCount, DefaultRecentTime } from './constant';
 
-export async function createCPanyPlugin(
-  option: IPluginOption
-): Promise<Plugin[]> {
+export async function createCPanyPlugin(option: IPluginOption): Promise<Plugin[]> {
   createEnvLoader(option);
 
-  const {
-    config,
-    contests,
-    users,
-    createUsersOverview,
-    createContestsOverview,
-    createOverview
-  } = await createLoader(option);
+  const { config, contests, users, createUsersOverview, createContestsOverview, createOverview } =
+    await createLoader(option);
 
   const staticContests = contests.filter((contest) => contest.inlinePage);
 
   return [
     createCPanyOverviewPlugin(
       createUsersOverview(config.app?.recentTime ?? DefaultRecentTime),
-      createContestsOverview(
-        config.app?.recentContestsCount ?? DefaultRecentContestsCount
-      ),
+      createContestsOverview(config.app?.recentContestsCount ?? DefaultRecentContestsCount),
       createOverview(),
       option
     ),
@@ -72,9 +62,7 @@ export function createCPanyOverviewPlugin(
 
         code = code.replace(
           '/* __inject__ */',
-          [...overview.entries()]
-            .map(([key, value]) => `${key} = ${value};`)
-            .join('\n')
+          [...overview.entries()].map(([key, value]) => `${key} = ${value};`).join('\n')
         );
         code = code.replace('/* __users__ */', usersImports.join('\n'));
         code = code.replace('/* __contests__ */', contestsImports.join('\n'));
@@ -118,10 +106,7 @@ export function createCPanyRoutePlugin(
           })
         );
 
-        code = code.replace(
-          '/* __contests__ */',
-          `routes.push(${virtualRoutes.join('\n')});`
-        );
+        code = code.replace('/* __contests__ */', `routes.push(${virtualRoutes.join('\n')});`);
 
         return code;
       }
@@ -134,9 +119,7 @@ export function createCPanyContestPagePlugin(
   contests: RouteKey<IContest>[],
   { appRootPath }: IPluginOption
 ): Plugin {
-  const componentPath = slash(
-    path.join(appRootPath, 'src', 'pages', 'Contest', 'Contest.vue')
-  );
+  const componentPath = slash(path.join(appRootPath, 'src', 'pages', 'Contest', 'Contest.vue'));
 
   const virtualContestJson = (contestPath: string) =>
     slash(path.join('@cpany', contestPath + '.json'));
@@ -198,13 +181,8 @@ export function createCPanyContestPagePlugin(
   };
 }
 
-export function createCPanyUserPagePlugin(
-  users: IUser[],
-  { appRootPath }: IPluginOption
-): Plugin {
-  const componentPath = slash(
-    path.join(appRootPath, 'src', 'pages', 'User', 'User.vue')
-  );
+export function createCPanyUserPagePlugin(users: IUser[], { appRootPath }: IPluginOption): Plugin {
+  const componentPath = slash(path.join(appRootPath, 'src', 'pages', 'User', 'User.vue'));
 
   const virtualUserJson = (username: string) =>
     slash(path.join('@cpany', 'users', username + '.json'));
@@ -271,25 +249,17 @@ export function createCPanyLoadPlugin(
   contests: RouteKey<IContest>[],
   { appRootPath }: IPluginOption
 ): Plugin {
-  const contestsPath = slash(
-    path.join(appRootPath, 'src', 'cpany', 'contests.json')
-  );
-  const codeforcesPath = slash(
-    path.join(appRootPath, 'src', 'cpany', 'codeforces.json')
-  );
+  const contestsPath = slash(path.join(appRootPath, 'src', 'cpany', 'contests.json'));
+  const codeforcesPath = slash(path.join(appRootPath, 'src', 'cpany', 'codeforces.json'));
   const usersPath = slash(path.join(appRootPath, 'src', 'cpany', 'users.json'));
-  const cfHandlesPath = slash(
-    path.join(appRootPath, 'src', 'cpany', 'cfHandles.json')
-  );
+  const cfHandlesPath = slash(path.join(appRootPath, 'src', 'cpany', 'cfHandles.json'));
 
   return {
     name: 'cpany:load',
     enforce: 'pre',
     transform(code, id) {
       if (id === contestsPath) {
-        const otherContests = contests.filter(
-          (contest) => !contest.type.startsWith('codeforces')
-        );
+        const otherContests = contests.filter((contest) => !contest.type.startsWith('codeforces'));
         return JSON.stringify(otherContests, null, 2);
       } else if (id === codeforcesPath) {
         const codeforcesContests = contests.filter((contest) =>
@@ -304,10 +274,7 @@ export function createCPanyLoadPlugin(
             const cfHandles: CodeforcesHandleList = [];
             for (const handle of handles) {
               if (handle.type.startsWith('codeforces')) {
-                const cfHandle = handle as Omit<
-                  RouteKey<IHandleWithCodeforces>,
-                  'submissions'
-                >;
+                const cfHandle = handle as Omit<RouteKey<IHandleWithCodeforces>, 'submissions'>;
                 cfHandles.push({
                   n: name,
                   h: handle.handle,

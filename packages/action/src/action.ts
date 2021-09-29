@@ -36,15 +36,9 @@ export async function run({
 
   const instance = createInstance({
     plugins: [
-      usedPluginSet.has('codeforces')
-        ? codeforcesPlugin({ basePath, ...config })
-        : undefined,
-      usedPluginSet.has('hdu')
-        ? await hduPlugin({ basePath, ...config })
-        : undefined,
-      usedPluginSet.has('luogu')
-        ? await luoguPlugin({ basePath, ...config })
-        : undefined
+      usedPluginSet.has('codeforces') ? codeforcesPlugin({ basePath, ...config }) : undefined,
+      usedPluginSet.has('hdu') ? await hduPlugin({ basePath, ...config }) : undefined,
+      usedPluginSet.has('luogu') ? await luoguPlugin({ basePath, ...config }) : undefined
     ],
     logger: logger ? core : undefined,
     config
@@ -91,8 +85,7 @@ export async function run({
 
     for (const type in user) {
       const rawHandles = user[type];
-      const handles =
-        typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
+      const handles = typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
 
       for (const handle of handles) {
         const fn = async () => {

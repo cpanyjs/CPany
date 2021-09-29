@@ -21,9 +21,7 @@
         </c-table>
 
         <div class="text-right <md:mt-4 pt-2">
-          <router-link
-            :to="{ name: 'Contests' }"
-            class="text-gray-400 font-thin hover:underline"
+          <router-link :to="{ name: 'Contests' }" class="text-gray-400 font-thin hover:underline"
             >→ 更多比赛</router-link
           >
         </div>
@@ -37,16 +35,7 @@
             <span v-if="title !== ''">{{ title }}&nbsp;</span>总览
           </h3>
 
-          <div
-            class="
-              py-4
-              md:(flex
-              items-center
-              justify-around)
-              <md:(grid
-              grid-cols-2)
-            "
-          >
+          <div class="py-4 md:(flex items-center justify-around) <md:(grid grid-cols-2)">
             <c-stastic title="用户">
               <template #prefix><icon-account /></template>
               <template #>{{ users.length }}</template>
@@ -58,9 +47,7 @@
             </c-stastic>
 
             <c-stastic title="提交">
-              <template #prefix
-                ><icon-lightbulb-on class="text-yellow-400"
-              /></template>
+              <template #prefix><icon-lightbulb-on class="text-yellow-400" /></template>
               <template #>{{ allSubmissionCount }}</template>
             </c-stastic>
 
@@ -71,9 +58,7 @@
           </div>
 
           <div class="text-right pt-2">
-            <router-link
-              :to="{ name: 'About' }"
-              class="text-gray-400 font-thin hover:underline"
+            <router-link :to="{ name: 'About' }" class="text-gray-400 font-thin hover:underline"
               >→ 更多</router-link
             >
           </div>
@@ -97,9 +82,7 @@
           </c-table>
 
           <div class="text-right pt-2">
-            <router-link
-              :to="{ name: 'Members' }"
-              class="text-gray-400 font-thin hover:underline"
+            <router-link :to="{ name: 'Members' }" class="text-gray-400 font-thin hover:underline"
               >→ 更多</router-link
             >
           </div>
@@ -123,9 +106,7 @@
           </c-table>
 
           <div class="text-right pt-2">
-            <router-link
-              :to="{ name: 'Members' }"
-              class="text-gray-400 font-thin hover:underline"
+            <router-link :to="{ name: 'Members' }" class="text-gray-400 font-thin hover:underline"
               >→ 更多</router-link
             >
           </div>
@@ -165,9 +146,7 @@ const usersBySub = users
 
 const usersByContest = users
   .map((user) => {
-    const contestsLength = user.contests.filter(
-      ({ t }) => t >= recentStartTime
-    ).length;
+    const contestsLength = user.contests.filter(({ t }) => t >= recentStartTime).length;
     return { contestsLength, ...user };
   })
   .sort((lhs, rhs) => rhs.contestsLength - lhs.contestsLength)

@@ -17,19 +17,15 @@ import {
 import { listJsonFiles, slash } from '@cpany/utils';
 
 import type { IPluginOption } from './types';
-import {
-  DefaultRecentContestsCount,
-  DefaultRecentTime,
-  DefaultRecentUserCount
-} from './constant';
+import { DefaultRecentContestsCount, DefaultRecentTime, DefaultRecentUserCount } from './constant';
 
 export async function createEnvLoader({ dataRootPath }: IPluginOption) {
   const envMap: Map<string, string> = new Map();
   const load = async () => {
     try {
-      const content = (
-        await promises.readFile(path.join(dataRootPath, '.env'), 'utf8')
-      ).split('\n');
+      const content = (await promises.readFile(path.join(dataRootPath, '.env'), 'utf8')).split(
+        '\n'
+      );
       for (const _line of content) {
         const line = _line.trim();
         if (line === '') continue;
@@ -80,9 +76,7 @@ export async function createLoader({
       const fullPath = slash(path.resolve(dataRootPath, contestPath));
       const isStatic = (() => {
         for (const staticPath of config.static ?? []) {
-          if (
-            fullPath.startsWith(slash(path.resolve(dataRootPath, staticPath)))
-          ) {
+          if (fullPath.startsWith(slash(path.resolve(dataRootPath, staticPath)))) {
             return true;
           }
         }
@@ -97,11 +91,7 @@ export async function createLoader({
         contests.push(contest);
       }
     }
-    return genRouteKey(
-      'contest',
-      contests,
-      (lhs, rhs) => lhs.startTime - rhs.startTime
-    );
+    return genRouteKey('contest', contests, (lhs, rhs) => lhs.startTime - rhs.startTime);
   })();
 
   const { findHandle } = createHandleSet(handles);
@@ -120,8 +110,7 @@ export async function createLoader({
     const cfRoundSet: Set<number> = new Set();
     for (const type in configUser[userName]) {
       const rawHandles = configUser[userName][type];
-      const thisHandles =
-        typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
+      const thisHandles = typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
 
       for (const handleName of thisHandles) {
         const handle = findHandle(type, handleName);
@@ -137,9 +126,7 @@ export async function createLoader({
                 submission.author.participantType === ParticipantType.VIRTUAL ||
                 submission.author.participantType === ParticipantType.OUT_OF_COMPETITION
               ) {
-                const contestId = +/^(\d+)/.exec(
-                  '' + submission.problem.id
-                )![1];
+                const contestId = +/^(\d+)/.exec('' + submission.problem.id)![1];
                 if (!cfRoundSet.has(contestId)) {
                   const contest = findCodeforces(contestId);
                   if (contest !== null) {
@@ -192,9 +179,7 @@ export async function createLoader({
   }
 
   const filterContestEmptyPrefix = (contests: RouteKey<IContest>[]) => {
-    const sorted = contests.sort(
-      (lhs: IContest, rhs: IContest) => lhs.startTime - rhs.startTime
-    );
+    const sorted = contests.sort((lhs: IContest, rhs: IContest) => lhs.startTime - rhs.startTime);
     let deleteCount = 0;
     for (let i = 0; i < sorted.length; i++) {
       if (sorted[i].participantNumber === 0) {
@@ -210,9 +195,7 @@ export async function createLoader({
   // Dep: skip codeforces gym when gen overview
   const contestsFilterGym = filterContestEmptyPrefix(
     contests.filter(
-      (contest) =>
-        !contest.type.startsWith('codeforces/gym') ||
-        contest.participantNumber > 0
+      (contest) => !contest.type.startsWith('codeforces/gym') || contest.participantNumber > 0
     )
   );
 
@@ -232,8 +215,7 @@ export async function createLoader({
 
   // recentTime = -1: get all sub
   const createUsersOverview = (recentTime: number) => {
-    const recentStartTime =
-      recentTime >= 0 ? new Date().getTime() / 1000 - recentTime : 0;
+    const recentStartTime = recentTime >= 0 ? new Date().getTime() / 1000 - recentTime : 0;
     const overview = (user: IUser): IUserOverview => {
       const submissions: IUserOverview['submissions'] = [];
 
@@ -293,10 +275,7 @@ export async function createLoader({
   const createOverview = () => {
     const overviewMap: Map<string, string> = new Map();
     overviewMap.set('title', '`' + (config.app?.title ?? '') + '`');
-    overviewMap.set(
-      'recentTime',
-      String(config.app?.recentTime ?? DefaultRecentTime)
-    );
+    overviewMap.set('recentTime', String(config.app?.recentTime ?? DefaultRecentTime));
     overviewMap.set(
       'recentContestsCount',
       String(config.app?.recentContestsCount ?? DefaultRecentContestsCount)
@@ -308,12 +287,7 @@ export async function createLoader({
     overviewMap.set('cliVersion', '`' + cliVersion + '`');
 
     const allSubmissionCount = users.reduce(
-      (sum, user) =>
-        sum +
-        user.handles.reduce(
-          (sum, handle) => sum + handle.submissions.length,
-          0
-        ),
+      (sum, user) => sum + user.handles.reduce((sum, handle) => sum + handle.submissions.length, 0),
       0
     );
     overviewMap.set('allSubmissionCount', String(allSubmissionCount));
@@ -323,19 +297,14 @@ export async function createLoader({
         sum +
         user.handles.reduce(
           (sum, handle) =>
-            sum +
-            handle.submissions.filter((sub) => sub.verdict === Verdict.OK)
-              .length,
+            sum + handle.submissions.filter((sub) => sub.verdict === Verdict.OK).length,
           0
         ),
       0
     );
     overviewMap.set('allOkSubmissionCount', String(allOkSubmissionCount));
 
-    const allContestCount = users.reduce(
-      (sum, user) => sum + user.contests.length,
-      0
-    );
+    const allContestCount = users.reduce((sum, user) => sum + user.contests.length, 0);
     overviewMap.set('allContestCount', String(allContestCount));
 
     return overviewMap;
@@ -379,8 +348,7 @@ function genRouteKey<T extends IContest | IHandle>(
         return null;
       }
     });
-    const flag =
-      keys.every((key) => key !== null) && new Set(keys).size === keys.length;
+    const flag = keys.every((key) => key !== null) && new Set(keys).size === keys.length;
 
     const typeFirst = type.split('/')[0];
     for (let i = 0; i < sorted.length; i++) {

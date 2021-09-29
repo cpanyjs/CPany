@@ -7,14 +7,7 @@
       </div>
       <div
         @click="flip"
-        class="
-          p-1
-          flex
-          items-center
-          rounded-full
-          cursor-pointer
-          hover:bg-light-700
-        "
+        class="p-1 flex items-center rounded-full cursor-pointer hover:bg-light-700"
       >
         <icon-down v-if="!state" class="text-2xl inline-block"></icon-down>
         <icon-up v-else class="text-2xl inline-block"></icon-up>

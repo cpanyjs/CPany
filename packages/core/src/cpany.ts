@@ -9,12 +9,7 @@ import type {
   ITransformPlugin
 } from './plugin';
 
-import {
-  IContext,
-  ILogger,
-  createDefaultLogger,
-  createPrefixLogger
-} from './utils';
+import { IContext, ILogger, createDefaultLogger, createPrefixLogger } from './utils';
 
 export interface ICreateOptions<T = any> {
   plugins?: Array<IPlugin | IPlugin[] | null | undefined>;
@@ -35,15 +30,16 @@ export interface CPanyInstance {
 
   load: (key: string) => Promise<LoadResult | null | undefined>;
 
-  transform: <T extends ITransformPayload>(
-    payload: T
-  ) => Promise<LoadResult | null | undefined>;
+  transform: <T extends ITransformPayload>(payload: T) => Promise<LoadResult | null | undefined>;
 }
 
 export function createInstance<T>(option: ICreateOptions<T>): CPanyInstance {
   const logger: ILogger = option?.logger ?? createDefaultLogger();
 
-  const { createLogger, cleanPlugins, loadPlugins, transformPlugins } = classifyPlugins(logger, option.plugins);
+  const { createLogger, cleanPlugins, loadPlugins, transformPlugins } = classifyPlugins(
+    logger,
+    option.plugins
+  );
 
   const instanceLogger = createLogger('instance');
 
@@ -68,7 +64,7 @@ export function createInstance<T>(option: ICreateOptions<T>): CPanyInstance {
       const result = await plugin.clean();
       files.push(...result.files);
     }
-    return { files }
+    return { files };
   };
 
   const load = async (key: string) => {
@@ -132,14 +128,10 @@ export function createInstance<T>(option: ICreateOptions<T>): CPanyInstance {
           cacheToContext(result.key, result.content);
           return result;
         } else {
-          pluginLogger.error(
-            `Error: has resolved id "${key}", but failed transforming`
-          );
+          pluginLogger.error(`Error: has resolved id "${key}", but failed transforming`);
         }
       } catch (error) {
-        pluginLogger.error(
-          `Error: Fetch (id: ${payload.id}, type: ${payload.type}) fail`
-        );
+        pluginLogger.error(`Error: Fetch (id: ${payload.id}, type: ${payload.type}) fail`);
         return null;
       }
     }
@@ -195,5 +187,5 @@ function classifyPlugins(logger: ILogger, plugins?: Array<IPlugin | IPlugin[] | 
     cleanPlugins,
     loadPlugins,
     transformPlugins
-  }
+  };
 }

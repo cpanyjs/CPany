@@ -13,11 +13,7 @@ export function load<T>(_compressed: any): T {
   return walkTransKey(compressed.data, keyMap, stringMap);
 }
 
-function walkTransKey(
-  obj: any,
-  keyMap: Map<string, string>,
-  stringMap: Map<string, string>
-) {
+function walkTransKey(obj: any, keyMap: Map<string, string>, stringMap: Map<string, string>) {
   if (obj === null || obj === undefined) return obj;
   const type = typeof obj;
   if (type === 'undefined') return obj;

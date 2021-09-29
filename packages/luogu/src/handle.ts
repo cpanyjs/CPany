@@ -1,10 +1,6 @@
 import { IPlugin, ILogger } from '@cpany/core';
 import { IHandle, ISubmission, Verdict, ParticipantType } from '@cpany/types';
-import type {
-  IHandleWithLuogu,
-  UserDataDto,
-  RecordListDto
-} from '@cpany/types/luogu';
+import type { IHandleWithLuogu, UserDataDto, RecordListDto } from '@cpany/types/luogu';
 
 import { AxiosInstance } from 'axios';
 
@@ -29,16 +25,9 @@ export function createLuoguHandlePlugin(api: AxiosInstance): IPlugin {
       if (type === name) {
         const user = await fetchUser(api, id);
         try {
-          user.submissions = await fetchSubmissions(
-            api,
-            user.luogu.name,
-            id,
-            logger
-          );
+          user.submissions = await fetchSubmissions(api, user.luogu.name, id, logger);
         } catch (error) {
-          logger.error(
-            `Error: fail to fetch submissions of Luogu handle ${id}`
-          );
+          logger.error(`Error: fail to fetch submissions of Luogu handle ${id}`);
           logger.error((error as any).message);
         }
         return { key: gid(id), content: JSON.stringify(user, null, 2) };
@@ -48,10 +37,7 @@ export function createLuoguHandlePlugin(api: AxiosInstance): IPlugin {
   };
 }
 
-async function fetchUser(
-  api: AxiosInstance,
-  id: string
-): Promise<IHandleWithLuogu> {
+async function fetchUser(api: AxiosInstance, id: string): Promise<IHandleWithLuogu> {
   const { data } = await api.get<UserDataDto>('/user/' + id);
   return {
     type: 'luogu/handle',

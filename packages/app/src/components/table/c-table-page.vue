@@ -10,11 +10,7 @@
   </div>
 
   <div class="flex justify-center">
-    <c-button
-      v-if="!isMobile"
-      padding="p-2"
-      @click="prePage"
-      :disable="current <= first"
+    <c-button v-if="!isMobile" padding="p-2" @click="prePage" :disable="current <= first"
       ><icon-left></icon-left
     ></c-button>
 
@@ -39,34 +35,12 @@
       >
         <span>{{ index + first }}</span>
       </c-button>
-      <span
-        class="
-          select-none
-          ml-2
-          inline-flex
-          justify-center
-          items-center
-          py-2
-          md:px-2
-        "
-        >...</span
-      >
+      <span class="select-none ml-2 inline-flex justify-center items-center py-2 md:px-2">...</span>
       <c-button class="ml-2" @click="goPage(last - 1)">{{ last }}</c-button>
     </template>
     <template v-else-if="last - current <= pageView">
       <c-button class="ml-2" @click="goPage(first)">{{ first + 1 }}</c-button>
-      <span
-        class="
-          select-none
-          ml-2
-          inline-flex
-          justify-center
-          items-center
-          py-2
-          md:px-2
-        "
-        >...</span
-      >
+      <span class="select-none ml-2 inline-flex justify-center items-center py-2 md:px-2">...</span>
       <c-button
         v-for="index in pageView"
         :key="index"
@@ -79,18 +53,7 @@
     </template>
     <template v-else>
       <c-button class="ml-2" @click="goPage(first)">{{ first + 1 }}</c-button>
-      <span
-        class="
-          select-none
-          ml-2
-          inline-flex
-          justify-center
-          items-center
-          py-2
-          md:px-2
-        "
-        >...</span
-      >
+      <span class="select-none ml-2 inline-flex justify-center items-center py-2 md:px-2">...</span>
       <c-button
         v-for="index in pageView"
         :key="index"
@@ -100,18 +63,7 @@
       >
         <span>{{ current - Math.floor(pageView / 2) + index }}</span>
       </c-button>
-      <span
-        class="
-          select-none
-          ml-2
-          inline-flex
-          justify-center
-          items-center
-          py-2
-          md:px-2
-        "
-        >...</span
-      >
+      <span class="select-none ml-2 inline-flex justify-center items-center py-2 md:px-2">...</span>
       <c-button class="ml-2" @click="goPage(last - 1)">{{ last }}</c-button>
     </template>
 
@@ -144,13 +96,7 @@ const props = defineProps<{
   goPage: (page: number) => void;
 }>();
 
-const {
-  isMobile: _isMobile,
-  pageView: _pageView,
-  current,
-  first,
-  last
-} = toRefs(props);
+const { isMobile: _isMobile, pageView: _pageView, current, first, last } = toRefs(props);
 
 const pageView = computed(() => _pageView?.value ?? 5);
 const isMobile = computed(() => _isMobile?.value ?? false);

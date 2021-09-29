@@ -7,9 +7,7 @@ import path from 'path';
 
 import { createHduHandlePlugin, addToCache } from './handle';
 
-export async function hduPlugin(
-  config: ICPanyConfig & { basePath: string }
-): Promise<IPlugin[]> {
+export async function hduPlugin(config: ICPanyConfig & { basePath: string }): Promise<IPlugin[]> {
   for (const handlePath of config.handles ?? []) {
     const fullPath = path.resolve(config.basePath, handlePath);
     try {

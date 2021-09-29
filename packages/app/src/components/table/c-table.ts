@@ -60,14 +60,7 @@ export default defineComponent({
     }
   },
   setup(props, { slots }) {
-    const {
-      data,
-      defaultSort,
-      defaultSortOrder,
-      mobile,
-      pageSize,
-      mobilePageSize
-    } = toRefs(props);
+    const { data, defaultSort, defaultSortOrder, mobile, pageSize, mobilePageSize } = toRefs(props);
 
     const { isMobile, clean } = useIsMobile(mobile);
     onUnmounted(() => clean());
@@ -77,8 +70,10 @@ export default defineComponent({
     );
 
     const isPagination = computed(() => isDef(realPageSize.value));
-    const { current, pageLength, L, R, nextPage, prePage, goPage } =
-      usePagination(realPageSize, data);
+    const { current, pageLength, L, R, nextPage, prePage, goPage } = usePagination(
+      realPageSize,
+      data
+    );
 
     const cache = !!props.cache ? sortCache.get(props.cache) : undefined;
 
@@ -115,11 +110,7 @@ export default defineComponent({
       for (const slot of slots) {
         if (slot.type === Fragment && Array.isArray(slot.children)) {
           for (const child of slot.children) {
-            if (
-              child !== null &&
-              typeof child === 'object' &&
-              !Array.isArray(child)
-            ) {
+            if (child !== null && typeof child === 'object' && !Array.isArray(child)) {
               columns.push(child);
             }
           }
@@ -169,8 +160,7 @@ export default defineComponent({
       const renderHead = () =>
         columns.map((column) => {
           const hasSort = isDef(column.props?.sort);
-          const isActiveSort =
-            hasSort && (column.props?.label ?? '') === sortField.value;
+          const isActiveSort = hasSort && (column.props?.label ?? '') === sortField.value;
 
           const style = {
             width: column.props?.width,
@@ -235,8 +225,7 @@ export default defineComponent({
           return h(
             'tr',
             {},
-            slots.columns &&
-              filterColumn(slots.columns({ row, index: index + L.value }))
+            slots.columns && filterColumn(slots.columns({ row, index: index + L.value }))
           );
         });
 
@@ -244,18 +233,9 @@ export default defineComponent({
         h(
           'table',
           {
-            class: [
-              'table',
-              'w-full',
-              'border-separate',
-              'table-auto',
-              'rounded'
-            ]
+            class: ['table', 'w-full', 'border-separate', 'table-auto', 'rounded']
           },
-          [
-            h('thead', {}, h('tr', {}, renderHead())),
-            h('tbody', {}, renderBody(slicedData.value))
-          ]
+          [h('thead', {}, h('tr', {}, renderHead())), h('tbody', {}, renderBody(slicedData.value))]
         ),
         isPagination.value && renderPage()
       ]);
@@ -296,15 +276,11 @@ export default defineComponent({
               },
               options
             ),
-            h(
-              resolveComponent('c-button'),
-              { info: true, onClick: filpSortOrder },
-              [
-                sortOrder.value === 'desc'
-                  ? h(resolveComponent('icon-down'), {})
-                  : h(resolveComponent('icon-up'), {})
-              ]
-            )
+            h(resolveComponent('c-button'), { info: true, onClick: filpSortOrder }, [
+              sortOrder.value === 'desc'
+                ? h(resolveComponent('icon-down'), {})
+                : h(resolveComponent('icon-up'), {})
+            ])
           ])
         );
       };
@@ -312,15 +288,13 @@ export default defineComponent({
       const renderBody = () => {
         return slicedData.value.map((row, index) => {
           const columns = filterColumn(
-            slots.columns &&
-              slots.columns({ row, index: index + L.value, mobile: true })
+            slots.columns && slots.columns({ row, index: index + L.value, mobile: true })
           );
           return h(
             'div',
             { class: ['box', 'p-0', 'my-4'] },
             columns.map((column) => {
-              const customHeader =
-                (column.props && column.props['mobile-header-class']) ?? [];
+              const customHeader = (column.props && column.props['mobile-header-class']) ?? [];
               return h(
                 'div',
                 {

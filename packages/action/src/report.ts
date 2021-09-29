@@ -22,10 +22,7 @@ export async function processReadme(basePath: string, time: Dayjs) {
 }
 
 export async function processVersion(basePath: string, time: Dayjs) {
-  const content = [
-    `ACTION_VERSION=${ActionVersion}`,
-    `UPDATE_TIME=${time.unix()}`
-  ];
+  const content = [`ACTION_VERSION=${ActionVersion}`, `UPDATE_TIME=${time.unix()}`];
   await promises.writeFile(resolve(basePath, '.env'), content.join('\n'));
 }
 

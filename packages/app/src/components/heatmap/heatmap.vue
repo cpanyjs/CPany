@@ -18,10 +18,7 @@
         >
       </div>
     </div>
-    <div
-      ref="container"
-      class="mb-4 w-full text-left whitespace-nowrap pb-[4px] overflow-x-auto"
-    >
+    <div ref="container" class="mb-4 w-full text-left whitespace-nowrap pb-[4px] overflow-x-auto">
       <div
         v-for="week in 53"
         :key="week"
@@ -32,22 +29,14 @@
           :class="[!displayMonth(week) ? 'text-transparent' : '', 'relative']"
           :style="{ height: unit }"
         >
-          <span
-            class="inline-block absolute"
-            :style="{ fontSize: '12px', transform: fontScale }"
-            >{{ displayMonth(week) ?? '一' }}</span
-          >
+          <span class="inline-block absolute" :style="{ fontSize: '12px', transform: fontScale }">{{
+            displayMonth(week) ?? '一'
+          }}</span>
         </div>
         <div v-for="day in 7" :key="day" :style="{ height: unit }">
           <div
             v-show="week < 53 || day <= getDay(now)"
-            class="
-              w-full
-              h-full
-              rounded
-              bg-[#ebedf0]
-              border-[rgba(27,31,35,0.06)]
-            "
+            class="w-full h-full rounded bg-[#ebedf0] border-[rgba(27,31,35,0.06)]"
             @click="getDate(week, day)"
             :style="{ backgroundColor: getDayColor(week, day) }"
             :ref="(el) => el && (items[week * 7 + day] = { el, week, day })"
@@ -88,9 +77,7 @@ const colors = computed(() => _colors?.value ?? DefaultColors);
 const dayInWeek = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
 
 const container = ref<HTMLElement | null>(null);
-const items = ref<Array<{ el: any; week: number; day: number }>>(
-  Array(53 * 7).fill(null)
-);
+const items = ref<Array<{ el: any; week: number; day: number }>>(Array(53 * 7).fill(null));
 
 const unitValue = computed(() => {
   if (container.value === null) {
@@ -176,10 +163,7 @@ const displayMonth = computed(() => (week: number) => {
 
 const getDayColor = computed(() => (week: number, day: number) => {
   const date = parseHeatMapDate(getDate.value(week, day));
-  const color = Math.max(
-    0,
-    Math.min(colors.value.length - 1, getColor.value(date) ?? 0)
-  );
+  const color = Math.max(0, Math.min(colors.value.length - 1, getColor.value(date) ?? 0));
   return colors.value[color];
 });
 </script>

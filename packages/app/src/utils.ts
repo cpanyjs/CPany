@@ -1,9 +1,7 @@
 import { Ref, ref, unref } from 'vue';
 import type { IContest, IProblem } from '@cpany/types';
 
-export function isUndef<T>(
-  object: T | undefined | null
-): object is undefined | null {
+export function isUndef<T>(object: T | undefined | null): object is undefined | null {
   return object === undefined || object === null;
 }
 
@@ -17,9 +15,9 @@ function alignNumber(value: number) {
 
 export function toDate(seconds: number | Ref<number>) {
   const date = new Date(unref(seconds) * 1000);
-  const prefix = `${date.getFullYear()}-${alignNumber(
-    date.getMonth() + 1
-  )}-${alignNumber(date.getDate())} `;
+  const prefix = `${date.getFullYear()}-${alignNumber(date.getMonth() + 1)}-${alignNumber(
+    date.getDate()
+  )} `;
   const hours = alignNumber(date.getHours());
   const minutes = alignNumber(date.getMinutes());
   return ref(prefix + hours + ':' + minutes);

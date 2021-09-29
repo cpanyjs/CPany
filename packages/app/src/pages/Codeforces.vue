@@ -16,10 +16,7 @@
         </c-table-column>
 
         <c-table-column label="Handle">
-          <a
-            :href="`https://codeforces.com/profile/${row.handle}`"
-            target="_blank"
-          >
+          <a :href="`https://codeforces.com/profile/${row.handle}`" target="_blank">
             <cf-rating-color :rating="row.rating">
               {{ row.handle }}
             </cf-rating-color>
@@ -31,57 +28,31 @@
           }}</cf-rating-color></c-table-column
         >
 
-        <c-table-column
-          label="最近通过"
-          width="7em"
-          align="right"
-          :sort="sortByRecentOk"
-          >{{ row.recentOkCount }}</c-table-column
-        >
-        <c-table-column
-          label="最近平均难度"
-          width="10em"
-          align="right"
-          :sort="sortByAvgDiffcult"
-          >{{ row.recentAvgDiffcult }}</c-table-column
-        >
-        <c-table-column
-          label="最近比赛"
-          width="7em"
-          align="right"
-          :sort="sortByRecentContest"
-          >{{ row.recentContest }}</c-table-column
-        >
-        <c-table-column
-          label="最新通过"
-          width="10em"
-          align="center"
-          :sort="sortByLastSolve"
+        <c-table-column label="最近通过" width="7em" align="right" :sort="sortByRecentOk">{{
+          row.recentOkCount
+        }}</c-table-column>
+        <c-table-column label="最近平均难度" width="10em" align="right" :sort="sortByAvgDiffcult">{{
+          row.recentAvgDiffcult
+        }}</c-table-column>
+        <c-table-column label="最近比赛" width="7em" align="right" :sort="sortByRecentContest">{{
+          row.recentContest
+        }}</c-table-column>
+        <c-table-column label="最新通过" width="10em" align="center" :sort="sortByLastSolve"
           ><span v-if="row.lastSolveTime > 0">{{
             toDate(row.lastSolveTime).value
           }}</span></c-table-column
         >
 
-        <c-table-column
-          label="通过"
-          width="6em"
-          align="right"
-          :sort="sortByOk"
-          >{{ row.okCount }}</c-table-column
-        >
-        <c-table-column
-          label="比赛场次"
-          width="7em"
-          align="right"
-          :sort="sortByContest"
-          >{{ row.contests.length }}</c-table-column
-        >
+        <c-table-column label="通过" width="6em" align="right" :sort="sortByOk">{{
+          row.okCount
+        }}</c-table-column>
+        <c-table-column label="比赛场次" width="7em" align="right" :sort="sortByContest">{{
+          row.contests.length
+        }}</c-table-column>
       </template>
     </c-table>
     <div class="mt-4 pt-4">
-      <span class="text-gray-400"
-        >最近开始于 {{ toDate(recentStartTime).value }}</span
-      >
+      <span class="text-gray-400">最近开始于 {{ toDate(recentStartTime).value }}</span>
     </div>
   </div>
 </template>
@@ -106,9 +77,7 @@ const extendFn = (user: IUserOverview) => {
   const submissions = user.submissions.filter(({ type }) => isTypeCf(type));
   const subCount = submissions.length;
   const okCount = submissions.filter(({ v }) => v === 1).length;
-  const recentSubCount = submissions.filter(
-    ({ t }) => t >= recentStartTime.value
-  ).length;
+  const recentSubCount = submissions.filter(({ t }) => t >= recentStartTime.value).length;
   const recentOkCount = submissions.filter(
     ({ t, v }) => t >= recentStartTime.value && v === 1
   ).length;
@@ -119,19 +88,12 @@ const extendFn = (user: IUserOverview) => {
   const recentOkDiffcultSubs = submissions.filter(
     ({ t, v, d }) => t >= recentStartTime.value && v === 1 && isDef(d)
   );
-  const recentDiffcult = recentOkDiffcultSubs.reduce(
-    (sum, sub) => sum + (sub.d ?? 0),
-    0
-  );
+  const recentDiffcult = recentOkDiffcultSubs.reduce((sum, sub) => sum + (sub.d ?? 0), 0);
   const recentAvgDiffcult = Math.ceil(
-    recentOkDiffcultSubs.length > 0
-      ? recentDiffcult / recentOkDiffcultSubs.length
-      : 0
+    recentOkDiffcultSubs.length > 0 ? recentDiffcult / recentOkDiffcultSubs.length : 0
   );
 
-  const solveSubs = submissions
-    .filter(({ v }) => v === 1)
-    .sort((lhs, rhs) => rhs.t - lhs.t);
+  const solveSubs = submissions.filter(({ v }) => v === 1).sort((lhs, rhs) => rhs.t - lhs.t);
   const lastSolveTime = solveSubs.length > 0 ? solveSubs[0].t : 0;
 
   const handles = user.handles.filter((user) => isTypeCf(user.type));
@@ -165,12 +127,9 @@ const extendUsers = computed(() => users.map(extendFn));
 
 type ExtendUser = ReturnType<typeof extendFn>;
 
-const sortByRating = (lhs: ExtendUser, rhs: ExtendUser) =>
-  lhs.rating - rhs.rating;
-const sortByOk = (lhs: ExtendUser, rhs: ExtendUser) =>
-  lhs.okCount - rhs.okCount;
-const sortByRecentOk = (lhs: ExtendUser, rhs: ExtendUser) =>
-  lhs.recentOkCount - rhs.recentOkCount;
+const sortByRating = (lhs: ExtendUser, rhs: ExtendUser) => lhs.rating - rhs.rating;
+const sortByOk = (lhs: ExtendUser, rhs: ExtendUser) => lhs.okCount - rhs.okCount;
+const sortByRecentOk = (lhs: ExtendUser, rhs: ExtendUser) => lhs.recentOkCount - rhs.recentOkCount;
 const sortByAvgDiffcult = (lhs: ExtendUser, rhs: ExtendUser) =>
   lhs.recentAvgDiffcult - rhs.recentAvgDiffcult;
 
@@ -178,6 +137,5 @@ const sortByContest = (lhs: ExtendUser, rhs: ExtendUser) =>
   lhs.contests.length - rhs.contests.length;
 const sortByRecentContest = (lhs: ExtendUser, rhs: ExtendUser) =>
   lhs.recentContest - rhs.recentContest;
-const sortByLastSolve = (lhs: ExtendUser, rhs: ExtendUser) =>
-  lhs.lastSolveTime - rhs.lastSolveTime;
+const sortByLastSolve = (lhs: ExtendUser, rhs: ExtendUser) => lhs.lastSolveTime - rhs.lastSolveTime;
 </script>

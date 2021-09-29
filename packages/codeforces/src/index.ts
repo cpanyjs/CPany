@@ -15,9 +15,7 @@ export interface ICodeforcesPluginOption {
   timeout?: number;
 }
 
-export function codeforcesPlugin(
-  option: ICodeforcesPluginOption & ICPanyConfig
-): IPlugin[] {
+export function codeforcesPlugin(option: ICodeforcesPluginOption & ICPanyConfig): IPlugin[] {
   const api = axios.create({
     baseURL: option.baseUrl ?? 'https://codeforces.com/api/',
     timeout: option.timeout ?? 30 * 1000

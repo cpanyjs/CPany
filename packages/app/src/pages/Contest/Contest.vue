@@ -10,9 +10,7 @@
       <p>人数：{{ contest.participantNumber }} 人</p>
       <p v-if="contest.contestUrl || contest.standingsUrl">
         <a :href="contest.contestUrl" target="_blank">比赛主页</a>
-        <a :href="contest.standingsUrl" target="_blank" class="ml-2"
-          >完整榜单</a
-        >
+        <a :href="contest.standingsUrl" target="_blank" class="ml-2">完整榜单</a>
       </p>
     </div>
     <contest-standings :contest="contest"></contest-standings>

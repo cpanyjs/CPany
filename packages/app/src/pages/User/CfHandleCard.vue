@@ -19,9 +19,7 @@
   </p>
   <p>
     <span class="font-600">通过: </span>
-    <span>{{
-      handle.submissions.filter(({ verdict }) => verdict === Verdict.OK).length
-    }}</span>
+    <span>{{ handle.submissions.filter(({ verdict }) => verdict === Verdict.OK).length }}</span>
   </p>
 </template>
 

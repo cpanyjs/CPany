@@ -17,9 +17,7 @@
     </p>
     <p>
       <span class="font-600">通过: </span>
-      <span>{{
-        hdu.submissions.filter(({ verdict }) => verdict === Verdict.OK).length
-      }}</span>
+      <span>{{ hdu.submissions.filter(({ verdict }) => verdict === Verdict.OK).length }}</span>
     </p>
   </template>
   <template v-else-if="luogu">
@@ -33,9 +31,7 @@
     </p>
     <p>
       <span class="font-600">通过: </span>
-      <span>{{
-        luogu.submissions.filter(({ verdict }) => verdict === Verdict.OK).length
-      }}</span>
+      <span>{{ luogu.submissions.filter(({ verdict }) => verdict === Verdict.OK).length }}</span>
     </p>
   </template>
   <template v-else>

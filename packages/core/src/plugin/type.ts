@@ -31,26 +31,18 @@ export interface ICleanPlugin {
 export interface ILoadPlugin {
   name: string;
 
-  load: <U>(
-    id: string,
-    instance: IInstance<U>
-  ) => Promise<LoadResult | string | null | undefined>;
+  load: <U>(id: string, instance: IInstance<U>) => Promise<LoadResult | string | null | undefined>;
 
   logger?: ILogger;
 }
 
-export interface ITransformPlugin<
-  T extends ITransformPayload = ITransformPayload
-> {
+export interface ITransformPlugin<T extends ITransformPayload = ITransformPayload> {
   name: string;
 
   resolveKey: (payload: T) => string | null | undefined;
 
-  transform: <U>(
-    payload: T,
-    instance: IInstance<U>
-  ) => Promise<LoadResult | null | undefined>;
-  
+  transform: <U>(payload: T, instance: IInstance<U>) => Promise<LoadResult | null | undefined>;
+
   logger?: ILogger;
 }
 

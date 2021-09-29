@@ -5,13 +5,7 @@
       :class="submissionUrl !== '' && 'cursor-pointer'"
       @click="handleClick"
     >
-      <div
-        :class="[
-          'text-center',
-          'font-bold',
-          !practice ? 'text-green-500' : 'text-blue-500'
-        ]"
-      >
+      <div :class="['text-center', 'font-bold', !practice ? 'text-green-500' : 'text-blue-500']">
         <span>+</span>
         <span v-if="result.dirty">{{ result.dirty }}</span>
       </div>
@@ -34,8 +28,7 @@ import { Verdict } from '@cpany/types';
 
 import { toRefs, computed } from 'vue';
 
-const props =
-  defineProps<{ result?: IContestSubmission; practice?: boolean }>();
+const props = defineProps<{ result?: IContestSubmission; practice?: boolean }>();
 
 const { result } = toRefs(props);
 const submissionUrl = computed(() => result?.value?.submissionUrl ?? '');

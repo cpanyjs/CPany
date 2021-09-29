@@ -19,8 +19,4 @@ router.afterEach(async () => {
   loading.value = false;
 });
 
-createApp(App)
-  .provide('loading', loading)
-  .use(router)
-  .component('c-button', CButton)
-  .mount('#app');
+createApp(App).provide('loading', loading).use(router).component('c-button', CButton).mount('#app');

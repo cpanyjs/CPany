@@ -5,13 +5,9 @@ import rawHandles from './cpany/cfHandles.json';
 
 export const handles = load<CodeforcesHandleList>(rawHandles);
 
-const handleUser = new Map<string, string>(
-  handles.map((handle) => [handle.h, handle.n])
-);
+const handleUser = new Map<string, string>(handles.map((handle) => [handle.h, handle.n]));
 
-const handleRating = new Map<string, number>(
-  handles.map((handle) => [handle.h, handle.r])
-);
+const handleRating = new Map<string, number>(handles.map((handle) => [handle.h, handle.r]));
 
 export function findHandleUser(handle: string) {
   return handleUser.get(handle) ?? handle;
