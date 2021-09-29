@@ -7,7 +7,7 @@
   </p>
   <p v-if="!!luogu.luogu.ranking">
     <span class="font-600">Rank: </span>
-    <span>{{ luogu.luogu.ranking }}</span>
+    <span :class="['font-600', 'lg-' + luogu.luogu.color]">{{ luogu.luogu.ranking }}</span>
   </p>
   <p>
     <span class="font-600">提交: </span>
