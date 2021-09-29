@@ -32,18 +32,15 @@ export function codeforcesPlugin(option: ICodeforcesPluginOption & ICPanyConfig)
 function codeforcesCleanPlugin(basePath: string): IPlugin {
   return {
     name: 'codeforces/clean',
-    async load(id: string) {
-      if (id === 'codeforces/clean') {
-        const fullPath = path.resolve(basePath, 'codeforces/handle');
-        const rmFiles: string[] = [];
-        try {
-          for await (const file of listFiles(fullPath)) {
-            rmFiles.push(file);
-          }
-        } catch (error) {}
-        return JSON.stringify(rmFiles);
-      }
-      return null;
+    async clean() {
+      const fullPath = path.resolve(basePath, 'codeforces/handle');
+      const files: string[] = [];
+      try {
+        for await (const file of listFiles(fullPath)) {
+          files.push(file);
+        }
+      } catch (error) {}
+      return { files }
     }
-  };
+  }
 }

@@ -20,15 +20,6 @@ export async function hduPlugin(config: ICPanyConfig & { basePath: string }): Pr
   }
 
   return [
-    createHduHandlePlugin(),
-    {
-      name: 'hdu/clean',
-      async load(id) {
-        if (id === 'hdu/clean') {
-          return '[]';
-        }
-        return null;
-      }
-    }
+    createHduHandlePlugin()
   ];
 }

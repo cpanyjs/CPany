@@ -54,15 +54,9 @@ export async function run({
 
   // clean cache
   instance.logger.startGroup('Clean cache');
-  for (const plugin of usedPluginSet) {
-    const rawFiles = await instance.load(plugin + '/clean');
-    if (!!rawFiles) {
-      const files: string[] = JSON.parse(rawFiles.content);
-      for (const file of files) {
-        await fs.rm(file);
-        instance.logger.info(`Remove: ${file}`);
-      }
-    }
+  for (const file of (await instance.clean()).files) {
+    await fs.rm(file);
+    instance.logger.info(`Remove: ${file}`);
   }
   instance.logger.endGroup();
 

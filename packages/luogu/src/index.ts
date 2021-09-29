@@ -45,15 +45,6 @@ export async function luoguPlugin(config: ICPanyConfig & { basePath: string }): 
   });
 
   return [
-    createLuoguHandlePlugin(api),
-    {
-      name: 'luogu/clean',
-      async load(id) {
-        if (id === 'luogu/clean') {
-          return '[]';
-        }
-        return null;
-      }
-    }
+    createLuoguHandlePlugin(api)
   ];
 }

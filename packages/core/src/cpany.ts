@@ -34,17 +34,17 @@ export interface CPanyInstance {
 }
 
 export function createInstance<T>(option: ICreateOptions<T>): CPanyInstance {
-  const logger: ILogger = option?.logger ?? createDefaultLogger();
+  const baseLogger: ILogger = option?.logger ?? createDefaultLogger();
 
   const { createLogger, cleanPlugins, loadPlugins, transformPlugins } = classifyPlugins(
-    logger,
+    baseLogger,
     option.plugins
   );
 
   const instanceLogger = createLogger('instance');
 
   const context = option?.context ?? {};
-  const instance: IInstance<T> = { logger, context, config: option.config };
+  const instance: IInstance<T> = { logger: instanceLogger, context, config: option.config };
 
   const isKeyInContext = (key: string) => {
     return key in context;

@@ -15690,9 +15690,7 @@ function contestListPlugin(api) {
             return __awaiter(this, void 0, void 0, function* () {
                 if (id === name) {
                     const { data: { result } } = yield api.get('contest.list');
-                    return JSON.stringify(result
-                        .map(transformContestInfo)
-                        .filter(({ phase }) => phase === 'FINISHED'), null, 2);
+                    return JSON.stringify(result.map(transformContestInfo).filter(({ phase }) => phase === 'FINISHED'), null, 2);
                 }
             });
         }
@@ -15707,9 +15705,7 @@ function gymContestListPlugin(api) {
             return __awaiter(this, void 0, void 0, function* () {
                 if (id === name) {
                     const { data: { result } } = yield api.get('contest.list', { params: { gym: true } });
-                    return JSON.stringify(result
-                        .map(transformGymContestInfo)
-                        .filter(({ phase }) => phase === 'FINISHED'), null, 2);
+                    return JSON.stringify(result.map(transformGymContestInfo).filter(({ phase }) => phase === 'FINISHED'), null, 2);
                 }
             });
         }
@@ -15791,8 +15787,7 @@ function handleInfoPlugin(api) {
                                 author: {
                                     members: submission.author.members.map(({ handle }) => handle),
                                     participantType: submission.author.participantType,
-                                    participantTime: submission.creationTimeSeconds -
-                                        submission.relativeTimeSeconds,
+                                    participantTime: submission.creationTimeSeconds - submission.relativeTimeSeconds,
                                     teamName: submission.author.teamName
                                 },
                                 problem: {
@@ -15882,31 +15877,28 @@ exports.codeforcesPlugin = codeforcesPlugin;
 function codeforcesCleanPlugin(basePath) {
     return {
         name: 'codeforces/clean',
-        load(id) {
+        clean() {
             var e_1, _a;
             return __awaiter(this, void 0, void 0, function* () {
-                if (id === 'codeforces/clean') {
-                    const fullPath = path_1.default.resolve(basePath, 'codeforces/handle');
-                    const rmFiles = [];
+                const fullPath = path_1.default.resolve(basePath, 'codeforces/handle');
+                const files = [];
+                try {
                     try {
-                        try {
-                            for (var _b = __asyncValues(utils_1.listFiles(fullPath)), _c; _c = yield _b.next(), !_c.done;) {
-                                const file = _c.value;
-                                rmFiles.push(file);
-                            }
-                        }
-                        catch (e_1_1) { e_1 = { error: e_1_1 }; }
-                        finally {
-                            try {
-                                if (_c && !_c.done && (_a = _b.return)) yield _a.call(_b);
-                            }
-                            finally { if (e_1) throw e_1.error; }
+                        for (var _b = __asyncValues(utils_1.listFiles(fullPath)), _c; _c = yield _b.next(), !_c.done;) {
+                            const file = _c.value;
+                            files.push(file);
                         }
                     }
-                    catch (error) { }
-                    return JSON.stringify(rmFiles);
+                    catch (e_1_1) { e_1 = { error: e_1_1 }; }
+                    finally {
+                        try {
+                            if (_c && !_c.done && (_a = _b.return)) yield _a.call(_b);
+                        }
+                        finally { if (e_1) throw e_1.error; }
+                    }
                 }
-                return null;
+                catch (error) { }
+                return { files };
             });
         }
     };
@@ -15934,11 +15926,11 @@ exports.createInstance = void 0;
 const utils_1 = __nccwpck_require__(2498);
 function createInstance(option) {
     var _a, _b;
-    const logger = (_a = option === null || option === void 0 ? void 0 : option.logger) !== null && _a !== void 0 ? _a : utils_1.createDefaultLogger();
-    const { createLogger, cleanPlugins, loadPlugins, transformPlugins } = classifyPlugins(logger, option.plugins);
+    const baseLogger = (_a = option === null || option === void 0 ? void 0 : option.logger) !== null && _a !== void 0 ? _a : utils_1.createDefaultLogger();
+    const { createLogger, cleanPlugins, loadPlugins, transformPlugins } = classifyPlugins(baseLogger, option.plugins);
     const instanceLogger = createLogger('instance');
     const context = (_b = option === null || option === void 0 ? void 0 : option.context) !== null && _b !== void 0 ? _b : {};
-    const instance = { logger, context, config: option.config };
+    const instance = { logger: instanceLogger, context, config: option.config };
     const isKeyInContext = (key) => {
         return key in context;
     };
@@ -16249,9 +16241,7 @@ function fetchSubmissions(handle, logger) {
                 params: { user: handle.handle, first }
             });
             const root = node_html_parser_1.parse(data);
-            const items = root
-                .querySelectorAll('tr[align]')
-                .filter((node) => node.childNodes.length === 9);
+            const items = root.querySelectorAll('tr[align]').filter((node) => node.childNodes.length === 9);
             for (const node of items) {
                 const id = +node.childNodes[0].innerText;
                 const language = node.childNodes[7].innerText;
@@ -16372,18 +16362,7 @@ function hduPlugin(config) {
             catch (error) { }
         }
         return [
-            handle_1.createHduHandlePlugin(),
-            {
-                name: 'hdu/clean',
-                load(id) {
-                    return __awaiter(this, void 0, void 0, function* () {
-                        if (id === 'hdu/clean') {
-                            return '[]';
-                        }
-                        return null;
-                    });
-                }
-            }
+            handle_1.createHduHandlePlugin()
         ];
     });
 }
@@ -16686,18 +16665,7 @@ function luoguPlugin(config) {
             }
         });
         return [
-            handle_1.createLuoguHandlePlugin(api),
-            {
-                name: 'luogu/clean',
-                load(id) {
-                    return __awaiter(this, void 0, void 0, function* () {
-                        if (id === 'luogu/clean') {
-                            return '[]';
-                        }
-                        return null;
-                    });
-                }
-            }
+            handle_1.createLuoguHandlePlugin(api)
         ];
     });
 }
@@ -21108,18 +21076,8 @@ function createGitFileSystem(basePath, { disable = false } = {}) {
                 return;
             const username = process.env.GITHUB_ACTOR || 'Unknown';
             yield (0,exec.exec)('git', ['config', '--local', 'user.name', username]);
-            yield (0,exec.exec)('git', [
-                'config',
-                '--local',
-                'user.email',
-                `${username}@users.noreply.github.com`
-            ]);
-            yield (0,exec.exec)('git', [
-                'add',
-                (0,external_path_.resolve)(basePath, 'README.md'),
-                (0,external_path_.resolve)(basePath, '.env'),
-                ...files
-            ]);
+            yield (0,exec.exec)('git', ['config', '--local', 'user.email', `${username}@users.noreply.github.com`]);
+            yield (0,exec.exec)('git', ['add', (0,external_path_.resolve)(basePath, 'README.md'), (0,external_path_.resolve)(basePath, '.env'), ...files]);
             yield (0,exec.exec)('git', ['commit', '-m', `Fetch data on ${time}`]);
             yield (0,exec.exec)('git', ['push']);
         });
@@ -21157,10 +21115,7 @@ function processReadme(basePath, time) {
 }
 function processVersion(basePath, time) {
     return report_awaiter(this, void 0, void 0, function* () {
-        const content = [
-            `ACTION_VERSION=${ActionVersion}`,
-            `UPDATE_TIME=${time.unix()}`
-        ];
+        const content = [`ACTION_VERSION=${ActionVersion}`, `UPDATE_TIME=${time.unix()}`];
         yield external_fs_.promises.writeFile((0,external_path_.resolve)(basePath, '.env'), content.join('\n'));
     });
 }
@@ -21335,15 +21290,9 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
         const config = yield getConfig((0,external_path_.resolve)(basePath, configPath));
         const instance = (0,dist.createInstance)({
             plugins: [
-                usedPluginSet.has('codeforces')
-                    ? (0,codeforces_dist.codeforcesPlugin)(Object.assign({ basePath }, config))
-                    : undefined,
-                usedPluginSet.has('hdu')
-                    ? yield (0,hdu_dist.hduPlugin)(Object.assign({ basePath }, config))
-                    : undefined,
-                usedPluginSet.has('luogu')
-                    ? yield (0,luogu_dist.luoguPlugin)(Object.assign({ basePath }, config))
-                    : undefined
+                usedPluginSet.has('codeforces') ? (0,codeforces_dist.codeforcesPlugin)(Object.assign({ basePath }, config)) : undefined,
+                usedPluginSet.has('hdu') ? yield (0,hdu_dist.hduPlugin)(Object.assign({ basePath }, config)) : undefined,
+                usedPluginSet.has('luogu') ? yield (0,luogu_dist.luoguPlugin)(Object.assign({ basePath }, config)) : undefined
             ],
             logger: logger ? core : undefined,
             config
@@ -21356,15 +21305,9 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
         instance.logger.endGroup();
         // clean cache
         instance.logger.startGroup('Clean cache');
-        for (const plugin of usedPluginSet) {
-            const rawFiles = yield instance.load(plugin + '/clean');
-            if (!!rawFiles) {
-                const files = JSON.parse(rawFiles.content);
-                for (const file of files) {
-                    yield fs.rm(file);
-                    instance.logger.info(`Remove: ${file}`);
-                }
-            }
+        for (const file of (yield instance.clean()).files) {
+            yield fs.rm(file);
+            instance.logger.info(`Remove: ${file}`);
         }
         instance.logger.endGroup();
         instance.logger.startGroup('Fetch data');
