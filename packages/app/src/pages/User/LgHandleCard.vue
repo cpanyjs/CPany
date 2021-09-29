@@ -17,7 +17,7 @@
     <span class="font-600">通过: </span>
     <span>{{ luogu.submissions.filter(({ verdict }) => verdict === Verdict.OK).length }}</span>
   </p>
-  <p>{{ luogu.luogu.slogan }}</p>
+  <p v-if="!!luogu.luogu.slogan && luogu.luogu.slogan.length > 0">{{ luogu.luogu.slogan }}</p>
 </template>
 
 <script setup lang="ts">
