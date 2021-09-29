@@ -107,7 +107,7 @@ async function fetchSubmissions(
     if (isEnd || curSubs.length === 0) break;
 
     logger.info(
-      `Page ${page}: Luogu handle (name: ${name}, id: ${id}) has fetched ${
+      `Fetch: At page ${page} Luogu handle (name: ${name}, id: ${id}) has fetched ${
         subs.length - oldLen
       } new submissions`
     );
