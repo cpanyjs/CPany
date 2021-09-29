@@ -44,7 +44,5 @@ export async function luoguPlugin(config: ICPanyConfig & { basePath: string }): 
     }
   });
 
-  return [
-    createLuoguHandlePlugin(api)
-  ];
+  return [createLuoguHandlePlugin(api)];
 }

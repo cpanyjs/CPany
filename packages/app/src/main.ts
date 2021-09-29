@@ -4,6 +4,7 @@ import { router } from './router';
 import 'tippy.js/dist/tippy.css';
 import 'virtual:windi.css';
 import './assets/cf.css';
+import './assets/luogu.css';
 import './assets/layout.css';
 
 import App from './App.vue';

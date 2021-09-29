@@ -46,7 +46,10 @@ async function fetchUser(api: AxiosInstance, id: string): Promise<IHandleWithLuo
     avatar: `https://cdn.luogu.com.cn/upload/usericon/${id}.png`,
     handleUrl: `https://www.luogu.com.cn/user/${id}`,
     luogu: {
-      name: data.currentData.user.name
+      name: data.currentData.user.name,
+      color: data.currentData.user.color.toLowerCase(),
+      ranking: data.currentData.user.ranking,
+      slogan: data.currentData.user.slogan
     }
   };
 }

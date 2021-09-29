@@ -40,7 +40,7 @@ function codeforcesCleanPlugin(basePath: string): IPlugin {
           files.push(file);
         }
       } catch (error) {}
-      return { files }
+      return { files };
     }
-  }
+  };
 }

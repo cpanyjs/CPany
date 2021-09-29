@@ -16361,9 +16361,7 @@ function hduPlugin(config) {
             }
             catch (error) { }
         }
-        return [
-            handle_1.createHduHandlePlugin()
-        ];
+        return [handle_1.createHduHandlePlugin()];
     });
 }
 exports.hduPlugin = hduPlugin;
@@ -16488,7 +16486,10 @@ function fetchUser(api, id) {
             avatar: `https://cdn.luogu.com.cn/upload/usericon/${id}.png`,
             handleUrl: `https://www.luogu.com.cn/user/${id}`,
             luogu: {
-                name: data.currentData.user.name
+                name: data.currentData.user.name,
+                color: data.currentData.user.color.toLowerCase(),
+                ranking: data.currentData.user.ranking,
+                slogan: data.currentData.user.slogan
             }
         };
     });
@@ -16666,9 +16667,7 @@ function luoguPlugin(config) {
                 Cookie: `_uid=${cookie.uid}; __client_id=${cookie.clientId}`
             }
         });
-        return [
-            handle_1.createLuoguHandlePlugin(api)
-        ];
+        return [handle_1.createLuoguHandlePlugin(api)];
     });
 }
 exports.luoguPlugin = luoguPlugin;
@@ -21027,7 +21026,7 @@ function createGitFileSystem(basePath, { disable = false } = {}) {
 }
 
 ;// CONCATENATED MODULE: ./src/version.ts
-const ActionVersion = '0.0.46';
+const ActionVersion = '0.0.47';
 
 ;// CONCATENATED MODULE: ./src/report.ts
 var report_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {

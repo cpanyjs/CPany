@@ -19,7 +19,5 @@ export async function hduPlugin(config: ICPanyConfig & { basePath: string }): Pr
     } catch (error) {}
   }
 
-  return [
-    createHduHandlePlugin()
-  ];
+  return [createHduHandlePlugin()];
 }

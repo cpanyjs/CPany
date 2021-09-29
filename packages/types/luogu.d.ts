@@ -3,6 +3,9 @@ import type { IHandle } from './index';
 export interface ILuoguMeta {
   luogu: {
     name: string;
+    color: string;
+    slogan: string;
+    ranking?: number;
   };
 }
 

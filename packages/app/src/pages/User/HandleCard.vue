@@ -21,18 +21,7 @@
     </p>
   </template>
   <template v-else-if="luogu">
-    <p>
-      <span class="font-600">洛谷: </span>
-      <a :href="handle.handleUrl" target="_blank">{{ luogu.luogu.name }}</a>
-    </p>
-    <p>
-      <span class="font-600">提交: </span>
-      <span>{{ luogu.submissions.length }}</span>
-    </p>
-    <p>
-      <span class="font-600">通过: </span>
-      <span>{{ luogu.submissions.filter(({ verdict }) => verdict === Verdict.OK).length }}</span>
-    </p>
+    <LgHandleCardVue :luogu="luogu"></LgHandleCardVue>
   </template>
   <template v-else>
     <p>
@@ -51,6 +40,7 @@ import { Verdict } from '@cpany/types';
 
 import { toRefs, computed } from 'vue';
 import CfHandleCard from './CfHandleCard.vue';
+import LgHandleCardVue from './LgHandleCard.vue';
 
 const props = defineProps<{ handle: IHandle }>();
 const { handle } = toRefs(props);
