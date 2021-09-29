@@ -8,8 +8,6 @@ import { createServer, build } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import WindiCSS from 'vite-plugin-windicss';
 import Icons from 'unplugin-icons/vite';
-import IconsResolver from 'unplugin-icons/resolver';
-import Components from 'unplugin-vue-components/vite';
 
 import Compress from '@cpany/compress';
 import { run as runAction } from '@cpany/action';
@@ -73,9 +71,6 @@ cli
         vue(),
         WindiCSS(),
         Icons(),
-        Components({
-          resolvers: IconsResolver()
-        }),
         await createCPanyPlugin(pluginOption),
         Compress({ enable: true })
       ],
@@ -123,9 +118,6 @@ cli
         vue(),
         WindiCSS(),
         Icons(),
-        Components({
-          resolvers: IconsResolver()
-        }),
         await createCPanyPlugin(pluginOption),
         Compress({ enable: false })
       ],

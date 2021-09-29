@@ -16540,7 +16540,7 @@ function fetchSubmissions(api, name, id, logger) {
             }
             if (isEnd || curSubs.length === 0)
                 break;
-            logger.info(`Page ${page}: Luogu handle (name: ${name}, id: ${id}) has fetched ${subs.length - oldLen} new submissions`);
+            logger.info(`Fetch: At page ${page} Luogu handle (name: ${name}, id: ${id}) has fetched ${subs.length - oldLen} new submissions`);
             page = page + 1;
         }
         return [...subs, ...preSubs];
@@ -21026,7 +21026,7 @@ function createGitFileSystem(basePath, { disable = false } = {}) {
 }
 
 ;// CONCATENATED MODULE: ./src/version.ts
-const ActionVersion = '0.0.47';
+const ActionVersion = '0.0.50';
 
 ;// CONCATENATED MODULE: ./src/report.ts
 var report_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
