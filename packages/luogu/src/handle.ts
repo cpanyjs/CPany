@@ -124,15 +124,16 @@ function parseVerdict(status: number) {
 
 function parseLanguage(type: string, id: number) {
   const list = [
-    '',
     'Pascal',
     'C',
     'C++ 98',
     'C++ 11',
+    'Unknown',
     'Python 2',
     'Python 3',
     'Java',
     'Node.js LTS',
+    'Unknown',
     'C++ 14',
     'C++ 17',
     'Ruby',

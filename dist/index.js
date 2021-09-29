@@ -16279,7 +16279,7 @@ function fetchSubmissions(handle, logger) {
             if (subs.length === oldLen)
                 break;
         }
-        logger.info(`Hdu handle ${handle.handle} has fetched ${subs.length} new submissions`);
+        logger.info(`Fetch: Hdu handle ${handle.handle} has fetched ${subs.length} new submissions`);
         return [...subs, ...handle.submissions];
     });
 }
@@ -16556,15 +16556,16 @@ function parseVerdict(status) {
 }
 function parseLanguage(type, id) {
     const list = [
-        '',
         'Pascal',
         'C',
         'C++ 98',
         'C++ 11',
+        'Unknown',
         'Python 2',
         'Python 3',
         'Java',
         'Node.js LTS',
+        'Unknown',
         'C++ 14',
         'C++ 17',
         'Ruby',
@@ -16715,120 +16716,55 @@ exports.ParticipantType = ParticipantType; exports.Verdict = Verdict;
 
 /***/ }),
 
-/***/ 3234:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __await = (this && this.__await) || function (v) { return this instanceof __await ? (this.v = v, this) : new __await(v); }
-var __asyncValues = (this && this.__asyncValues) || function (o) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var m = o[Symbol.asyncIterator], i;
-    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
-    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
-    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
-};
-var __asyncDelegator = (this && this.__asyncDelegator) || function (o) {
-    var i, p;
-    return i = {}, verb("next"), verb("throw", function (e) { throw e; }), verb("return"), i[Symbol.iterator] = function () { return this; }, i;
-    function verb(n, f) { i[n] = o[n] ? function (v) { return (p = !p) ? { value: __await(o[n](v)), done: n === "return" } : f ? f(v) : v; } : f; }
-};
-var __asyncGenerator = (this && this.__asyncGenerator) || function (thisArg, _arguments, generator) {
-    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
-    var g = generator.apply(thisArg, _arguments || []), i, q = [];
-    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
-    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
-    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
-    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
-    function fulfill(value) { resume("next", value); }
-    function reject(value) { resume("throw", value); }
-    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.listFiles = exports.listJsonFiles = void 0;
-const fs_1 = __nccwpck_require__(5747);
-const path_1 = __importDefault(__nccwpck_require__(5622));
-function listJsonFiles(dir) {
-    return __asyncGenerator(this, arguments, function* listJsonFiles_1() {
-        if (dir.endsWith('.json')) {
-            const files = JSON.parse(yield __await(fs_1.promises.readFile(dir, 'utf8')));
-            if (Array.isArray(files)) {
-                for (const contest of files) {
-                    yield yield __await(contest);
-                }
-            }
-            else {
-                yield yield __await(files);
-            }
-        }
-        else {
-            const dirents = yield __await(fs_1.promises.readdir(dir, { withFileTypes: true }));
-            for (const dirent of dirents) {
-                const id = path_1.default.join(dir, dirent.name);
-                yield __await(yield* __asyncDelegator(__asyncValues(listJsonFiles(id))));
-            }
-        }
-    });
-}
-exports.listJsonFiles = listJsonFiles;
-function listFiles(dir, skipList = new Set()) {
-    return __asyncGenerator(this, arguments, function* listFiles_1() {
-        const dirents = yield __await(fs_1.promises.readdir(dir, { withFileTypes: true }));
-        for (const dirent of dirents) {
-            const id = path_1.default.join(dir, dirent.name);
-            if (dirent.name.startsWith('.') || skipList.has(id)) {
-                continue;
-            }
-            if (dirent.isDirectory()) {
-                yield __await(yield* __asyncDelegator(__asyncValues(listFiles(id, skipList))));
-            }
-            else {
-                yield yield __await(id);
-            }
-        }
-    });
-}
-exports.listFiles = listFiles;
-
-
-/***/ }),
-
 /***/ 3124:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
 "use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(3234), exports);
-__exportStar(__nccwpck_require__(8419), exports);
-
-
-/***/ }),
-
-/***/ 8419:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.slash = void 0;
-function slash(path) {
-    return path.replace(/\\/g, '/');
+Object.defineProperty(exports, "__esModule", ({value: true})); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }// src/fs.ts
+var _fs = __nccwpck_require__(5747);
+var _path = __nccwpck_require__(5622); var _path2 = _interopRequireDefault(_path);
+async function* listJsonFiles(dir) {
+  if (dir.endsWith(".json")) {
+    const files = JSON.parse(await _fs.promises.readFile(dir, "utf8"));
+    if (Array.isArray(files)) {
+      for (const contest of files) {
+        yield contest;
+      }
+    } else {
+      yield files;
+    }
+  } else {
+    const dirents = await _fs.promises.readdir(dir, { withFileTypes: true });
+    for (const dirent of dirents) {
+      const id = _path2.default.join(dir, dirent.name);
+      yield* listJsonFiles(id);
+    }
+  }
 }
-exports.slash = slash;
+async function* listFiles(dir, skipList = new Set()) {
+  const dirents = await _fs.promises.readdir(dir, { withFileTypes: true });
+  for (const dirent of dirents) {
+    const id = _path2.default.join(dir, dirent.name);
+    if (dirent.name.startsWith(".") || skipList.has(id)) {
+      continue;
+    }
+    if (dirent.isDirectory()) {
+      yield* listFiles(id, skipList);
+    } else {
+      yield id;
+    }
+  }
+}
+
+// src/path.ts
+function slash(path2) {
+  return path2.replace(/\\/g, "/");
+}
+
+
+
+
+exports.listFiles = listFiles; exports.listJsonFiles = listJsonFiles; exports.slash = slash;
 
 
 /***/ }),
