@@ -41,10 +41,10 @@ const fetchStanding = async (contest: RouteKey<IContest>) => {
   }
   contest.standings = [];
   for (const row of result.rows) {
-    // Skip practise
     if (
       row.party.participantType !== ParticipantType.CONTESTANT &&
       row.party.participantType !== ParticipantType.VIRTUAL &&
+      row.party.participantType !== ParticipantType.OUT_OF_COMPETITION &&
       row.party.participantType !== ParticipantType.PRACTICE
     ) {
       continue;

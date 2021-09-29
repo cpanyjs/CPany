@@ -9,6 +9,7 @@ import {
   IHandle,
   IContestOverview,
   IUserOverview,
+  ParticipantType,
   RouteKey,
   Verdict,
   IProblem
@@ -132,8 +133,9 @@ export async function createLoader({
           if (handle.type.startsWith('codeforces')) {
             for (const submission of handle.submissions) {
               if (
-                submission.author.participantType === 'CONTESTANT' ||
-                submission.author.participantType === 'VIRTUAL'
+                submission.author.participantType === ParticipantType.CONTESTANT ||
+                submission.author.participantType === ParticipantType.VIRTUAL ||
+                submission.author.participantType === ParticipantType.OUT_OF_COMPETITION
               ) {
                 const contestId = +/^(\d+)/.exec(
                   '' + submission.problem.id
