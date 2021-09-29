@@ -107,8 +107,6 @@
         "name": "Minimal Coverage",
         "rating": 2200,
         "tags": [
-          "binary search",
-          "bitmasks",
           "dp"
         ],
         "problemUrl": "https://codeforces.com/contest/1579/problem/G"
