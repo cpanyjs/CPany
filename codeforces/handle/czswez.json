@@ -12,6 +12,626 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 130238088,
+      "creationTime": 1632900450,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514583197
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "316E3",
+        "name": "Summer Homework",
+        "rating": 2300,
+        "tags": [
+          "data structures",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/316/problem/E3"
+      },
+      "submissionUrl": "https://codeforces.com/contest/316/submission/130238088"
+    },
+    {
+      "type": "codeforces",
+      "id": 130236787,
+      "creationTime": 1632899543,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514584104
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "316E1",
+        "name": "Summer Homework",
+        "rating": 1500,
+        "tags": [
+          "brute force",
+          "data structures"
+        ],
+        "problemUrl": "https://codeforces.com/contest/316/problem/E1"
+      },
+      "submissionUrl": "https://codeforces.com/contest/316/submission/130236787"
+    },
+    {
+      "type": "codeforces",
+      "id": 130236492,
+      "creationTime": 1632899318,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514584329
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "316E2",
+        "name": "Summer Homework",
+        "rating": 2300,
+        "tags": [
+          "data structures",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/316/problem/E2"
+      },
+      "submissionUrl": "https://codeforces.com/contest/316/submission/130236492"
+    },
+    {
+      "type": "codeforces",
+      "id": 130226407,
+      "creationTime": 1632889697,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514593950
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1579G",
+        "name": "Minimal Coverage",
+        "tags": [
+          "binary search",
+          "dp",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1579/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1579/submission/130226407"
+    },
+    {
+      "type": "codeforces",
+      "id": 130193079,
+      "creationTime": 1632848788,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514634859
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1579F",
+        "name": "Array Stabilization (AND version)",
+        "tags": [
+          "binary search",
+          "brute force",
+          "graphs",
+          "greedy",
+          "implementation",
+          "math",
+          "number theory",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1579/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1579/submission/130193079"
+    },
+    {
+      "type": "codeforces",
+      "id": 130184090,
+      "creationTime": 1632847170,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1632839700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1579F",
+        "name": "Array Stabilization (AND version)",
+        "tags": [
+          "binary search",
+          "brute force",
+          "graphs",
+          "greedy",
+          "implementation",
+          "math",
+          "number theory",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1579/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1579/submission/130184090"
+    },
+    {
+      "type": "codeforces",
+      "id": 130174764,
+      "creationTime": 1632846047,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1632839700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1579E2",
+        "name": "Array Optimization by Deque",
+        "tags": [
+          "data structures",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1579/problem/E2"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1579/submission/130174764"
+    },
+    {
+      "type": "codeforces",
+      "id": 130172774,
+      "creationTime": 1632845825,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1632839700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1579E2",
+        "name": "Array Optimization by Deque",
+        "tags": [
+          "data structures",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1579/problem/E2"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1579/submission/130172774"
+    },
+    {
+      "type": "codeforces",
+      "id": 130170511,
+      "creationTime": 1632845574,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1632839700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1579E2",
+        "name": "Array Optimization by Deque",
+        "tags": [
+          "data structures",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1579/problem/E2"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1579/submission/130170511"
+    },
+    {
+      "type": "codeforces",
+      "id": 130151775,
+      "creationTime": 1632843716,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1632839700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1579E1",
+        "name": "Permutation Minimization by Deque",
+        "tags": [
+          "constructive algorithms",
+          "greedy",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1579/problem/E1"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1579/submission/130151775"
+    },
+    {
+      "type": "codeforces",
+      "id": 130142338,
+      "creationTime": 1632842887,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1632839700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1579D",
+        "name": "Productive Meeting",
+        "tags": [
+          "graphs",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1579/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1579/submission/130142338"
+    },
+    {
+      "type": "codeforces",
+      "id": 130125265,
+      "creationTime": 1632841487,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1632839700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1579B",
+        "name": "Shifting Sort",
+        "tags": [
+          "implementation",
+          "sortings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1579/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1579/submission/130125265"
+    },
+    {
+      "type": "codeforces",
+      "id": 130119190,
+      "creationTime": 1632840997,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1632839700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1579B",
+        "name": "Shifting Sort",
+        "tags": [
+          "implementation",
+          "sortings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1579/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1579/submission/130119190"
+    },
+    {
+      "type": "codeforces",
+      "id": 130118955,
+      "creationTime": 1632840978,
+      "language": "GNU C++14",
+      "verdict": "COMPILATION_ERROR",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1632839700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1579B",
+        "name": "Shifting Sort",
+        "tags": [
+          "implementation",
+          "sortings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1579/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1579/submission/130118955"
+    },
+    {
+      "type": "codeforces",
+      "id": 130100056,
+      "creationTime": 1632839881,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1632839700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1579A",
+        "name": "Casimir's String Solitaire",
+        "tags": [
+          "math",
+          "strings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1579/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1579/submission/130100056"
+    },
+    {
+      "type": "codeforces",
+      "id": 130070039,
+      "creationTime": 1632817701,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514665946
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1114F",
+        "name": "Please, another Queries on Array?",
+        "rating": 2400,
+        "tags": [
+          "bitmasks",
+          "data structures",
+          "divide and conquer",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1114/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1114/submission/130070039"
+    },
+    {
+      "type": "codeforces",
+      "id": 130066133,
+      "creationTime": 1632814419,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514669228
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1114F",
+        "name": "Please, another Queries on Array?",
+        "rating": 2400,
+        "tags": [
+          "bitmasks",
+          "data structures",
+          "divide and conquer",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1114/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1114/submission/130066133"
+    },
+    {
+      "type": "codeforces",
+      "id": 130065850,
+      "creationTime": 1632814195,
+      "language": "GNU C++14",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514669452
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1114F",
+        "name": "Please, another Queries on Array?",
+        "rating": 2400,
+        "tags": [
+          "bitmasks",
+          "data structures",
+          "divide and conquer",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1114/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1114/submission/130065850"
+    },
+    {
+      "type": "codeforces",
+      "id": 130020535,
+      "creationTime": 1632758462,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514725185
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572C",
+        "name": "Paint",
+        "rating": 2700,
+        "tags": [
+          "dp",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/130020535"
+    },
+    {
+      "type": "codeforces",
+      "id": 129985154,
+      "creationTime": 1632734488,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514749159
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572B",
+        "name": "Xor of 3",
+        "rating": 2500,
+        "tags": [
+          "brute force",
+          "constructive algorithms",
+          "greedy",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129985154"
+    },
+    {
+      "type": "codeforces",
+      "id": 129984761,
+      "creationTime": 1632734139,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514749508
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572B",
+        "name": "Xor of 3",
+        "rating": 2500,
+        "tags": [
+          "brute force",
+          "constructive algorithms",
+          "greedy",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129984761"
+    },
+    {
+      "type": "codeforces",
+      "id": 129984671,
+      "creationTime": 1632734056,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514749591
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572B",
+        "name": "Xor of 3",
+        "rating": 2500,
+        "tags": [
+          "brute force",
+          "constructive algorithms",
+          "greedy",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129984671"
+    },
+    {
+      "type": "codeforces",
+      "id": 129981631,
+      "creationTime": 1632731294,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514752353
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1572A",
+        "name": "Book",
+        "rating": 1800,
+        "tags": [
+          "binary search",
+          "brute force",
+          "data structures",
+          "dp",
+          "graphs",
+          "implementation",
+          "sortings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1572/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1572/submission/129981631"
+    },
+    {
+      "type": "codeforces",
       "id": 129051326,
       "creationTime": 1631869782,
       "language": "GNU C++17 (64)",

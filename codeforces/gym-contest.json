@@ -12972,5 +12972,16 @@
     "phase": "FINISHED",
     "contestUrl": "https://codeforces.com/gym/103295",
     "standingsUrl": "https://codeforces.com/gym/103295/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "2021 ICPC Gran Premio de Mexico 2da Fecha",
+    "startTime": 1632589200,
+    "duration": 14400,
+    "participantNumber": 0,
+    "id": 103306,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103306",
+    "standingsUrl": "https://codeforces.com/gym/103306/standings"
   }
 ]
