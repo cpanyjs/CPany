@@ -8,6 +8,48 @@
   "submissions": [
     {
       "type": "hdu",
+      "id": 36826732,
+      "creationTime": 1632943697,
+      "language": "G++",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1632943697
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 5306,
+        "name": "Gorgeous Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=5306"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36826732"
+    },
+    {
+      "type": "hdu",
+      "id": 36826672,
+      "creationTime": 1632943408,
+      "language": "G++",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "c2014chh"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": 1632943408
+      },
+      "problem": {
+        "type": "hdu",
+        "id": 5306,
+        "name": "Gorgeous Sequence",
+        "problemUrl": "https://acm.hdu.edu.cn/showproblem.php?pid=5306"
+      },
+      "submissionUrl": "https://acm.hdu.edu.cn/viewcode.php?rid=36826672"
+    },
+    {
+      "type": "hdu",
       "id": 36759891,
       "creationTime": 1631889065,
       "language": "G++",

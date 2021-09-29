@@ -105,10 +105,11 @@
         "type": "codeforces",
         "id": "1579G",
         "name": "Minimal Coverage",
+        "rating": 2200,
         "tags": [
           "binary search",
-          "dp",
-          "greedy"
+          "bitmasks",
+          "dp"
         ],
         "problemUrl": "https://codeforces.com/contest/1579/problem/G"
       },
@@ -131,12 +132,10 @@
         "type": "codeforces",
         "id": "1579F",
         "name": "Array Stabilization (AND version)",
+        "rating": 1700,
         "tags": [
-          "binary search",
           "brute force",
           "graphs",
-          "greedy",
-          "implementation",
           "math",
           "number theory",
           "shortest paths"
@@ -162,12 +161,10 @@
         "type": "codeforces",
         "id": "1579F",
         "name": "Array Stabilization (AND version)",
+        "rating": 1700,
         "tags": [
-          "binary search",
           "brute force",
           "graphs",
-          "greedy",
-          "implementation",
           "math",
           "number theory",
           "shortest paths"
@@ -193,6 +190,7 @@
         "type": "codeforces",
         "id": "1579E2",
         "name": "Array Optimization by Deque",
+        "rating": 1700,
         "tags": [
           "data structures",
           "greedy"
@@ -218,6 +216,7 @@
         "type": "codeforces",
         "id": "1579E2",
         "name": "Array Optimization by Deque",
+        "rating": 1700,
         "tags": [
           "data structures",
           "greedy"
@@ -243,6 +242,7 @@
         "type": "codeforces",
         "id": "1579E2",
         "name": "Array Optimization by Deque",
+        "rating": 1700,
         "tags": [
           "data structures",
           "greedy"
@@ -268,6 +268,7 @@
         "type": "codeforces",
         "id": "1579E1",
         "name": "Permutation Minimization by Deque",
+        "rating": 1000,
         "tags": [
           "constructive algorithms",
           "greedy",
@@ -294,6 +295,7 @@
         "type": "codeforces",
         "id": "1579D",
         "name": "Productive Meeting",
+        "rating": 1400,
         "tags": [
           "graphs",
           "greedy"
@@ -319,6 +321,7 @@
         "type": "codeforces",
         "id": "1579B",
         "name": "Shifting Sort",
+        "rating": 1100,
         "tags": [
           "implementation",
           "sortings"
@@ -344,6 +347,7 @@
         "type": "codeforces",
         "id": "1579B",
         "name": "Shifting Sort",
+        "rating": 1100,
         "tags": [
           "implementation",
           "sortings"
@@ -369,6 +373,7 @@
         "type": "codeforces",
         "id": "1579B",
         "name": "Shifting Sort",
+        "rating": 1100,
         "tags": [
           "implementation",
           "sortings"
@@ -394,6 +399,7 @@
         "type": "codeforces",
         "id": "1579A",
         "name": "Casimir's String Solitaire",
+        "rating": 800,
         "tags": [
           "math",
           "strings"
