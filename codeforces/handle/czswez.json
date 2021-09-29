@@ -107,6 +107,7 @@
         "name": "Minimal Coverage",
         "rating": 2200,
         "tags": [
+          "binary search",
           "dp"
         ],
         "problemUrl": "https://codeforces.com/contest/1579/problem/G"
@@ -295,6 +296,7 @@
         "name": "Productive Meeting",
         "rating": 1400,
         "tags": [
+          "constructive algorithms",
           "graphs",
           "greedy"
         ],
