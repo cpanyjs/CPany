@@ -15933,19 +15933,11 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createInstance = void 0;
 const utils_1 = __nccwpck_require__(2498);
 function createInstance(option) {
-    var _a, _b, _c;
+    var _a, _b;
     const logger = (_a = option === null || option === void 0 ? void 0 : option.logger) !== null && _a !== void 0 ? _a : utils_1.createDefaultLogger();
-    const plugins = ((_b = option === null || option === void 0 ? void 0 : option.plugins) !== null && _b !== void 0 ? _b : [])
-        .flat()
-        .filter((plugin) => plugin !== undefined && plugin !== null);
-    const loggerPrefixLength = ['instance']
-        .concat(plugins.map((plugin) => plugin.name))
-        .reduce((len, name) => Math.max(len, name.length), 0);
-    const prefix = (name = 'instance') => {
-        return '[ ' + name + ' '.repeat(loggerPrefixLength - name.length) + ' ]';
-    };
-    const instanceLogger = utils_1.createPrefixLogger(prefix(), logger);
-    const context = (_c = option === null || option === void 0 ? void 0 : option.context) !== null && _c !== void 0 ? _c : {};
+    const { createLogger, cleanPlugins, loadPlugins, transformPlugins } = classifyPlugins(logger, option.plugins);
+    const instanceLogger = createLogger('instance');
+    const context = (_b = option === null || option === void 0 ? void 0 : option.context) !== null && _b !== void 0 ? _b : {};
     const instance = { logger, context, config: option.config };
     const isKeyInContext = (key) => {
         return key in context;
@@ -15956,32 +15948,38 @@ function createInstance(option) {
     const cacheToContext = (key, content) => {
         context[key] = content;
     };
+    const clean = () => __awaiter(this, void 0, void 0, function* () {
+        const files = [];
+        for (const plugin of cleanPlugins) {
+            const result = yield plugin.clean();
+            files.push(...result.files);
+        }
+        return { files };
+    });
     const load = (key) => __awaiter(this, void 0, void 0, function* () {
         if (isKeyInContext(key)) {
             return { key, content: loadFromContext(key) };
         }
         instanceLogger.info(`Fetch: ${key}`);
-        for (const plugin of plugins) {
-            if ('load' in plugin) {
-                const pluginLogger = utils_1.createPrefixLogger(prefix(plugin.name), logger);
-                try {
-                    const result = yield plugin.load(key, Object.assign(Object.assign({}, instance), { logger: pluginLogger }));
-                    if (result !== undefined && result !== null) {
-                        pluginLogger.info(`Ok   : ${key}`);
-                        if (typeof result === 'string') {
-                            cacheToContext(key, result);
-                            return { key, content: result };
-                        }
-                        else {
-                            cacheToContext(result.key, result.content);
-                            return result;
-                        }
+        for (const plugin of loadPlugins) {
+            const pluginLogger = plugin.logger;
+            try {
+                const result = yield plugin.load(key, Object.assign(Object.assign({}, instance), { logger: pluginLogger }));
+                if (result !== undefined && result !== null) {
+                    pluginLogger.info(`Ok   : ${key}`);
+                    if (typeof result === 'string') {
+                        cacheToContext(key, result);
+                        return { key, content: result };
+                    }
+                    else {
+                        cacheToContext(result.key, result.content);
+                        return result;
                     }
                 }
-                catch (error) {
-                    pluginLogger.error(`Error: Fetch "${key}" fail`);
-                    return null;
-                }
+            }
+            catch (error) {
+                pluginLogger.error(`Error: Fetch "${key}" fail`);
+                return null;
             }
         }
         instanceLogger.warning(`Error: No matching plugins for ${key}`);
@@ -15989,46 +15987,78 @@ function createInstance(option) {
     });
     const transform = (payload) => __awaiter(this, void 0, void 0, function* () {
         instanceLogger.info(`Fetch: (id: ${payload.id}, type: ${payload.type})`);
-        for (const plugin of plugins) {
-            if ('transform' in plugin) {
-                const key = plugin.resolveKey(payload);
-                if (key === undefined || key === null)
-                    continue;
-                if (isKeyInContext(key)) {
-                    return {
-                        key,
-                        content: loadFromContext(key)
-                    };
+        for (const plugin of transformPlugins) {
+            const key = plugin.resolveKey(payload);
+            if (key === undefined || key === null)
+                continue;
+            if (isKeyInContext(key)) {
+                return {
+                    key,
+                    content: loadFromContext(key)
+                };
+            }
+            const pluginLogger = plugin.logger;
+            try {
+                const result = yield plugin.transform(payload, Object.assign(Object.assign({}, instance), { logger: pluginLogger }));
+                if (result !== undefined && result !== null) {
+                    pluginLogger.info(`Ok   : ${result.key}`);
+                    cacheToContext(result.key, result.content);
+                    return result;
                 }
-                const pluginLogger = utils_1.createPrefixLogger(prefix(plugin.name), logger);
-                try {
-                    const result = yield plugin.transform(payload, Object.assign(Object.assign({}, instance), { logger: pluginLogger }));
-                    if (result !== undefined && result !== null) {
-                        pluginLogger.info(`Ok   : ${result.key}`);
-                        cacheToContext(result.key, result.content);
-                        return result;
-                    }
-                    else {
-                        pluginLogger.error(`Error: has resolved id "${key}", but failed transforming`);
-                    }
+                else {
+                    pluginLogger.error(`Error: has resolved id "${key}", but failed transforming`);
                 }
-                catch (error) {
-                    pluginLogger.error(`Error: Fetch (id: ${payload.id}, type: ${payload.type}) fail`);
-                    return null;
-                }
+            }
+            catch (error) {
+                pluginLogger.error(`Error: Fetch (id: ${payload.id}, type: ${payload.type}) fail`);
+                return null;
             }
         }
         instanceLogger.warning(`Error: No matching plugins for (id: ${payload.id}, type: ${payload.type})`);
         return undefined;
     });
     return {
-        logger: utils_1.createPrefixLogger(prefix('action'), logger),
+        logger: createLogger('action'),
         context,
+        clean,
         load,
         transform
     };
 }
 exports.createInstance = createInstance;
+function classifyPlugins(logger, plugins) {
+    const cleanPlugins = [];
+    const loadPlugins = [];
+    const transformPlugins = [];
+    let loggerPrefixLength = Math.max('instance'.length, 'action'.length);
+    for (const plugin of (plugins !== null && plugins !== void 0 ? plugins : []).flat()) {
+        if (!plugin)
+            continue;
+        loggerPrefixLength = Math.max(loggerPrefixLength, plugin.name.split('/')[0].length);
+        if ('clean' in plugin) {
+            cleanPlugins.push(plugin);
+        }
+        if ('load' in plugin) {
+            loadPlugins.push(plugin);
+        }
+        if ('transform' in plugin) {
+            transformPlugins.push(plugin);
+        }
+    }
+    const prefix = (name) => {
+        return '[ ' + name + ' '.repeat(loggerPrefixLength - name.length) + ' ]';
+    };
+    const createLogger = (name) => utils_1.createPrefixLogger(prefix(name), logger);
+    for (const plugin of [...cleanPlugins, ...loadPlugins, ...transformPlugins]) {
+        plugin.logger = createLogger(plugin.name.split('/')[0]);
+    }
+    return {
+        createLogger,
+        cleanPlugins,
+        loadPlugins,
+        transformPlugins
+    };
+}
 
 
 /***/ }),
