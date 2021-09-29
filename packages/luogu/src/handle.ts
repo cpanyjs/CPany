@@ -124,6 +124,7 @@ function parseVerdict(status: number) {
 
 function parseLanguage(type: string, id: number) {
   const list = [
+    '',
     'Pascal',
     'C',
     'C++ 98',

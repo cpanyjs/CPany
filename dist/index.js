@@ -16556,6 +16556,7 @@ function parseVerdict(status) {
 }
 function parseLanguage(type, id) {
     const list = [
+        '',
         'Pascal',
         'C',
         'C++ 98',
@@ -21026,7 +21027,7 @@ function createGitFileSystem(basePath, { disable = false } = {}) {
 }
 
 ;// CONCATENATED MODULE: ./src/version.ts
-const ActionVersion = '0.0.45';
+const ActionVersion = '0.0.46';
 
 ;// CONCATENATED MODULE: ./src/report.ts
 var report_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
