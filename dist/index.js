@@ -16676,106 +16676,43 @@ exports.luoguPlugin = luoguPlugin;
 
 /***/ }),
 
-/***/ 7232:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
-/***/ 4227:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ParticipantType = exports.Verdict = void 0;
-var Verdict;
-(function (Verdict) {
-    Verdict["OK"] = "OK";
-    Verdict["FAILED"] = "FAILED";
-    Verdict["PARTIAL"] = "PARTIAL";
-    Verdict["COMPILATION_ERROR"] = "COMPILATION_ERROR";
-    Verdict["RUNTIME_ERROR"] = "RUNTIME_ERROR";
-    Verdict["WRONG_ANSWER"] = "WRONG_ANSWER";
-    Verdict["PRESENTATION_ERROR"] = "PRESENTATION_ERROR";
-    Verdict["TIME_LIMIT_EXCEEDED"] = "TIME_LIMIT_EXCEEDED";
-    Verdict["MEMORY_LIMIT_EXCEEDED"] = "MEMORY_LIMIT_EXCEEDED";
-    Verdict["IDLENESS_LIMIT_EXCEEDED"] = "IDLENESS_LIMIT_EXCEEDED";
-    Verdict["SECURITY_VIOLATED"] = "SECURITY_VIOLATED";
-    Verdict["CRASHED"] = "CRASHED";
-    Verdict["INPUT_PREPARATION_CRASHED"] = "INPUT_PREPARATION_CRASHED";
-    Verdict["CHALLENGED"] = "CHALLENGED";
-    Verdict["SKIPPED"] = "SKIPPED";
-    Verdict["TESTING"] = "TESTING";
-    Verdict["REJECTED"] = "REJECTED";
-})(Verdict = exports.Verdict || (exports.Verdict = {}));
-var ParticipantType;
-(function (ParticipantType) {
-    ParticipantType["CONTESTANT"] = "CONTESTANT";
-    ParticipantType["PRACTICE"] = "PRACTICE";
-    ParticipantType["VIRTUAL"] = "VIRTUAL";
-    ParticipantType["MANAGER"] = "MANAGER";
-    ParticipantType["OUT_OF_COMPETITION"] = "OUT_OF_COMPETITION";
-})(ParticipantType = exports.ParticipantType || (exports.ParticipantType = {}));
-
-
-/***/ }),
-
-/***/ 7190:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-
-/***/ }),
-
 /***/ 7584:
-/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
-
-"use strict";
-
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __exportStar = (this && this.__exportStar) || function(m, exports) {
-    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(4227), exports);
-__exportStar(__nccwpck_require__(7190), exports);
-__exportStar(__nccwpck_require__(5476), exports);
-__exportStar(__nccwpck_require__(4957), exports);
-__exportStar(__nccwpck_require__(7232), exports);
-
-
-/***/ }),
-
-/***/ 4957:
 /***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
+Object.defineProperty(exports, "__esModule", ({value: true}));// src/enum.ts
+var Verdict;
+(function(Verdict2) {
+  Verdict2["OK"] = "OK";
+  Verdict2["FAILED"] = "FAILED";
+  Verdict2["PARTIAL"] = "PARTIAL";
+  Verdict2["COMPILATION_ERROR"] = "COMPILATION_ERROR";
+  Verdict2["RUNTIME_ERROR"] = "RUNTIME_ERROR";
+  Verdict2["WRONG_ANSWER"] = "WRONG_ANSWER";
+  Verdict2["PRESENTATION_ERROR"] = "PRESENTATION_ERROR";
+  Verdict2["TIME_LIMIT_EXCEEDED"] = "TIME_LIMIT_EXCEEDED";
+  Verdict2["MEMORY_LIMIT_EXCEEDED"] = "MEMORY_LIMIT_EXCEEDED";
+  Verdict2["IDLENESS_LIMIT_EXCEEDED"] = "IDLENESS_LIMIT_EXCEEDED";
+  Verdict2["SECURITY_VIOLATED"] = "SECURITY_VIOLATED";
+  Verdict2["CRASHED"] = "CRASHED";
+  Verdict2["INPUT_PREPARATION_CRASHED"] = "INPUT_PREPARATION_CRASHED";
+  Verdict2["CHALLENGED"] = "CHALLENGED";
+  Verdict2["SKIPPED"] = "SKIPPED";
+  Verdict2["TESTING"] = "TESTING";
+  Verdict2["REJECTED"] = "REJECTED";
+})(Verdict || (Verdict = exports.Verdict = {}));
+var ParticipantType;
+(function(ParticipantType2) {
+  ParticipantType2["CONTESTANT"] = "CONTESTANT";
+  ParticipantType2["PRACTICE"] = "PRACTICE";
+  ParticipantType2["VIRTUAL"] = "VIRTUAL";
+  ParticipantType2["MANAGER"] = "MANAGER";
+  ParticipantType2["OUT_OF_COMPETITION"] = "OUT_OF_COMPETITION";
+})(ParticipantType || (ParticipantType = exports.ParticipantType = {}));
 
-Object.defineProperty(exports, "__esModule", ({ value: true }));
 
 
-/***/ }),
-
-/***/ 5476:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ParticipantType = ParticipantType; exports.Verdict = Verdict;
 
 
 /***/ }),
@@ -16998,7 +16935,7 @@ module.exports = JSON.parse('[["0","\\u0000",128],["a1","｡",62],["8140","　�
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"private":true,"husky":{"hooks":{"pre-commit":"lint-staged && pnpm run build && git add dist"}},"lint-staged":{"*.ts":["prettier --parser=typescript --write"],"*.vue":["prettier --parser=vue --write"]},"scripts":{"dev":"node packages/cli/dist/cli.js dev --app packages/app --data example","site":"node packages/cli/dist/cli.js build --app packages/app --data example --outDir site","build":"pnpm run build --filter ./packages && pnpm -C packages/action run package","build:action":"pnpm -C packages/action run build","build:cli":"pnpm -C packages/cli run build","format":"prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore","release":"node scripts/release.js","publish":"pnpm publish -r --access public"},"devDependencies":{"@types/node":"^16.0.1","@vercel/ncc":"^0.29.0","execa":"^5.1.1","fs-extra":"^10.0.0","husky":"4.3.7","lint-staged":"^11.0.0","pnpm":"^6.12.1","prettier":"^2.3.2","rimraf":"^3.0.2","typescript":"^4.3.5"}}');
+module.exports = JSON.parse('{"private":true,"husky":{"hooks":{"pre-commit":"lint-staged && pnpm run build && git add dist"}},"lint-staged":{"*.ts":["prettier --parser=typescript --write"],"*.vue":["prettier --parser=vue --write"]},"scripts":{"dev":"node packages/cli/dist/cli.js dev --app packages/app --data example","site":"node packages/cli/dist/cli.js build --app packages/app --data example --outDir site","build":"pnpm run build --filter ./packages && pnpm -C packages/action run package","build:action":"pnpm -C packages/action run build","build:cli":"pnpm -C packages/cli run build","format":"prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore","release":"node scripts/release.js","publish":"pnpm publish -r --access public"},"devDependencies":{"@types/node":"^16.0.1","@vercel/ncc":"^0.29.0","execa":"^5.1.1","fs-extra":"^10.0.0","husky":"4.3.7","lint-staged":"^11.0.0","pnpm":"^6.12.1","prettier":"^2.3.2","rimraf":"^3.0.2","tsup":"^4.14.0","typescript":"^4.3.5"}}');
 
 /***/ }),
 

@@ -9,17 +9,17 @@
   "license": "MIT",
   "author": "XLor",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
     "src",
-    "index.d.ts",
     "codeforces.d.ts",
     "hdu.d.ts",
     "luogu.d.ts"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "pnpx tsup src/index.ts --format cjs,esm --dts"
   },
   "engines": {
     "node": ">=12.0.0"
