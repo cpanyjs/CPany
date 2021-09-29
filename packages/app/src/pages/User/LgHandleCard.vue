@@ -1,12 +1,12 @@
 <template>
   <p>
     <span class="font-600">洛谷: </span>
-    <a :href="luogu.handleUrl" target="_blank" :class="['font-600', 'lg-' + luogu.luogu.color]">{{
+    <a :href="luogu.handleUrl" target="_blank" :class="['font-bold', 'lg-' + luogu.luogu.color]">{{
       luogu.luogu.name
     }}</a>
   </p>
   <p v-if="!!luogu.luogu.ranking">
-    <span class="font-600">Rank: </span>
+    <span class="font-bold">Rank: </span>
     <span :class="['font-600', 'lg-' + luogu.luogu.color]">{{ luogu.luogu.ranking }}</span>
   </p>
   <p>
