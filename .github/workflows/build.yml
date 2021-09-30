@@ -34,3 +34,5 @@ jobs:
           path: ./.main
       - uses: ./.main
         name: Fetch Data
+        with:
+          plugins: codeforces
