@@ -44,6 +44,7 @@ export async function createEnvLoader({ dataRootPath }: IPluginOption) {
   const UpdateTime = envMap.get('UPDATE_TIME') ?? '';
   process.env.VITE_ACTION_VERSION = ActionVersion;
   process.env.VITE_UPDATE_TIME = UpdateTime;
+  process.env.VITE_BUILD_TIME = String(new Date().getTime() / 1000);
   return {
     ActionVersion,
     UpdateTime

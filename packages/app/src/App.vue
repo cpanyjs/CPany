@@ -48,6 +48,9 @@
         </div>
       </div>
       <p v-if="updateTime !== ''">
+        <span>构建时间: {{ toDate(+buildTime).value }}</span>
+      </p>
+      <p class="mt-2" v-if="buildTime !== ''">
         <span>更新时间: {{ toDate(+updateTime).value }}</span>
       </p>
       <p class="mt-2">
@@ -70,6 +73,8 @@ const cliVersion = import.meta.env.VITE_CLI_VERSION!;
 const actionVersion = import.meta.env.VITE_ACTION_VERSION!;
 
 const updateTime = import.meta.env.VITE_UPDATE_TIME!;
+
+const buildTime = import.meta.env.VITE_BUILD_TIME!;
 </script>
 
 <style>
