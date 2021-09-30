@@ -1,9 +1,10 @@
 import os from 'os';
 import path from 'path';
-import { createServer, build } from 'vite';
+import { createServer, build, ViteDevServer } from 'vite';
 import { cac } from 'cac';
+import openBrowser from 'open';
 import isInstalledGlobally from 'is-installed-globally';
-import { blue, bold, cyan, dim, yellow, green } from 'kolorist';
+import { blue, bold, cyan, dim, yellow, green, underline } from 'kolorist';
 
 import { run as runAction } from '@cpany/action';
 
@@ -36,11 +37,66 @@ cli
   .action(async (option: ICliOption) => {
     const port = (option.port = await findFreePort(option.port));
 
-    const server = await createServer(await resolveOptions(option, 'dev'));
+    let server: ViteDevServer | undefined = undefined;
 
-    await server.listen(port);
+    const bootstrap = async () => {
+      server = await createServer(await resolveOptions(option, 'dev'));
+      await server.listen(port);
+      console.clear();
+      printDevInfo(path.resolve(option.data), port, option.host);
+    };
 
-    printDevInfo(path.resolve(option.data), port, option.host);
+    const SHORTCUTS = [
+      {
+        name: 'r',
+        fullname: 'restart',
+        async action() {
+          if (server) {
+            const oldServer = server;
+            server = undefined;
+            await oldServer.close();
+          }
+          await bootstrap();
+        }
+      },
+      {
+        name: 'o',
+        fullname: 'open',
+        async action() {
+          openBrowser(`http://localhost:${port}`);
+        }
+      },
+      {
+        name: 'q',
+        fullname: 'quit',
+        async action() {
+          process.exit(0);
+        }
+      }
+    ];
+
+    function bindShortcut() {
+      process.stdin.resume();
+      process.stdin.setEncoding('utf8');
+      process.stdin.on('data', async (data) => {
+        const str = data.toString().trim().toLowerCase();
+        const [sh] = SHORTCUTS.filter((item) => item.name === str || item.fullname === str);
+        if (sh) {
+          // clear the last line
+          process.stdout.moveCursor(0, -1);
+          process.stdout.clearLine(1);
+          try {
+            await sh.action();
+          } catch (err) {
+            console.error(`Failed to execute shortcut ${sh.fullname}`, err);
+          }
+        }
+      });
+    }
+
+    await bootstrap();
+
+    bindShortcut();
   });
 
 cli
@@ -73,26 +129,34 @@ cli.parse();
 function printDevInfo(dataPath: string, port: number, host?: string | boolean) {
   console.log();
   console.log(
-    `${bold('  CPany ')} ${cyan(`v${version}`)} ${isInstalledGlobally ? yellow('(global)') : ''}`
+    `${bold('  CPany')} ${cyan(`v${version}`)} ${isInstalledGlobally ? yellow('(global)') : ''}`
   );
   console.log();
-  console.log(`${dim('  Data  ')} ${green(dataPath)}`);
+  console.log(`${dim('  Data ')} ${green(dataPath)}`);
 
   if (port) {
     console.log();
-    console.log(`${dim('  Local ')} > ${cyan(`http://localhost:${bold(port)}/`)}`);
+    console.log(`${dim('  Local    ')} > ${cyan(`http://localhost:${bold(port)}/`)}`);
 
     if (host) {
       Object.values(os.networkInterfaces()).forEach((v) =>
         (v || [])
           .filter((details) => details.family === 'IPv4' && !details.address.includes('127.0.0.1'))
           .forEach(({ address }) => {
-            console.log(`${dim('  Remote')} > ${blue(`http://${address}:${port}/`)}`);
+            console.log(`${dim('  Remote   ')} > ${blue(`http://${address}:${port}/`)}`);
           })
       );
     } else {
-      console.log(`${dim('  Remote')} > ${dim('pass --host to enable')}`);
+      console.log(`${dim('  Remote   ')} > ${dim('pass --host to enable')}`);
     }
+
+    console.log();
+    console.log(
+      `${dim('  Shortcuts')} > ${underline('r')}${dim('estart | ')}${underline('o')}${dim(
+        'pen | '
+      )}${underline('q')}${dim('uit')}`
+    );
   }
+
   console.log();
 }
