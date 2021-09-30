@@ -12,6 +12,222 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 130398900,
+      "creationTime": 1633020845,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514462802
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1580B",
+        "name": "Mathematics Curriculum",
+        "rating": 2600,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1580/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1580/submission/130398900"
+    },
+    {
+      "type": "codeforces",
+      "id": 130398084,
+      "creationTime": 1633020270,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514463377
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1580B",
+        "name": "Mathematics Curriculum",
+        "rating": 2600,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1580/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1580/submission/130398084"
+    },
+    {
+      "type": "codeforces",
+      "id": 130397669,
+      "creationTime": 1633019999,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514463648
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1580B",
+        "name": "Mathematics Curriculum",
+        "rating": 2600,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1580/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1580/submission/130397669"
+    },
+    {
+      "type": "codeforces",
+      "id": 130397533,
+      "creationTime": 1633019914,
+      "language": "GNU C++17 (64)",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514463733
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1580B",
+        "name": "Mathematics Curriculum",
+        "rating": 2600,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1580/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1580/submission/130397533"
+    },
+    {
+      "type": "codeforces",
+      "id": 130397323,
+      "creationTime": 1633019764,
+      "language": "GNU C++17 (64)",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514463883
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1580B",
+        "name": "Mathematics Curriculum",
+        "rating": 2600,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1580/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1580/submission/130397323"
+    },
+    {
+      "type": "codeforces",
+      "id": 130396842,
+      "creationTime": 1633019399,
+      "language": "GNU C++17 (64)",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514464248
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1580B",
+        "name": "Mathematics Curriculum",
+        "rating": 2600,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1580/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1580/submission/130396842"
+    },
+    {
+      "type": "codeforces",
+      "id": 130396803,
+      "creationTime": 1633019375,
+      "language": "GNU C++17 (64)",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514464272
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1580B",
+        "name": "Mathematics Curriculum",
+        "rating": 2600,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1580/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1580/submission/130396803"
+    },
+    {
+      "type": "codeforces",
+      "id": 130394791,
+      "creationTime": 1633018135,
+      "language": "GNU C++17 (64)",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514465512
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1580B",
+        "name": "Mathematics Curriculum",
+        "rating": 2600,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1580/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1580/submission/130394791"
+    },
+    {
+      "type": "codeforces",
       "id": 130373916,
       "creationTime": 1633006140,
       "language": "GNU C++17 (64)",
@@ -270,7 +486,6 @@
         "name": "Minimal Coverage",
         "rating": 2200,
         "tags": [
-          "binary search",
           "dp"
         ],
         "problemUrl": "https://codeforces.com/contest/1579/problem/G"
