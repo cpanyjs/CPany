@@ -61,7 +61,7 @@ export async function resolveOptions(
   if (isInstalledGlobally) {
     common.cacheDir = path.join(appPath, 'node_modules/.vite');
     // @ts-expect-error
-    injection.resolve.alias.vue = `${resolveImportPath('vue/dist/vue.esm-browser.js', true)}`;
+    common.resolve.alias.vue = `${resolveImportPath('vue/dist/vue.esm-browser.js', true)}`;
   }
 
   if (mode === 'dev') {
