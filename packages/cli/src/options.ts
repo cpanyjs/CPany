@@ -45,6 +45,7 @@ export async function resolveOptions(
   }
 
   const common: InlineConfig = {
+    root: appPath,
     configFile: false,
     envDir: path.resolve(__dirname, '../'),
     plugins: [
@@ -56,7 +57,8 @@ export async function resolveOptions(
         }
       }),
       Icons(),
-      await createCPanyPlugin(pluginOption)
+      await createCPanyPlugin(pluginOption),
+      Compress({ enable: mode !== 'dev' })
     ],
     resolve: {
       alias: {
@@ -70,7 +72,8 @@ export async function resolveOptions(
     },
     optimizeDeps: {
       include: Object.keys(deps)
-    }
+    },
+    logLevel: 'silent'
   };
 
   if (isInstalledGlobally) {
@@ -81,32 +84,9 @@ export async function resolveOptions(
 
   if (mode === 'dev') {
     return mergeConfig(common, <InlineConfig>{
-      publicDir: path.join(appPath, 'public'),
       define: {
         __DEV__: true
       },
-      plugins: [
-        Compress({ enable: false }),
-        {
-          name: 'cpany:html',
-          configureServer(server) {
-            return () => {
-              const indexHtml = fs
-                .readFileSync(path.join(appPath, 'index.html'), 'utf-8')
-                .replace('/src/main.ts', '/@fs/' + slash(path.join(appPath, 'src', 'main.ts')));
-              server.middlewares.use(async (req, res, next) => {
-                if (req.url!.endsWith('.html')) {
-                  res.setHeader('Content-Type', 'text/html');
-                  res.statusCode = 200;
-                  res.end(indexHtml);
-                  return;
-                }
-                next();
-              });
-            };
-          }
-        }
-      ],
       server: {
         port: option.port,
         host: option.host,
@@ -120,11 +100,9 @@ export async function resolveOptions(
     });
   } else {
     return mergeConfig(common, <InlineConfig>{
-      root: appPath,
       define: {
         __DEV__: false
       },
-      plugins: [Compress({ enable: true })],
       build: {
         outDir: path.resolve(option.outDir),
         emptyOutDir: option.emptyOutDir,

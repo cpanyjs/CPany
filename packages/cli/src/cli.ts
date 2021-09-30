@@ -1,11 +1,16 @@
-import { cac } from 'cac';
+import os from 'os';
+import path from 'path';
 import { createServer, build } from 'vite';
+import { cac } from 'cac';
+import isInstalledGlobally from 'is-installed-globally';
+import { blue, bold, cyan, dim, yellow, green } from 'kolorist';
 
 import { run as runAction } from '@cpany/action';
 
 import type { ICliActionOption, ICliOption } from './types';
 import { version } from './version';
 import { resolveOptions } from './options';
+import { findFreePort } from './utils';
 
 const cli = cac('cpany').option('--data <dir>', 'data directory', { default: '.' });
 
@@ -29,9 +34,13 @@ cli
     default: false
   })
   .action(async (option: ICliOption) => {
+    const port = (option.port = await findFreePort(option.port));
+
     const server = await createServer(await resolveOptions(option, 'dev'));
 
-    await server.listen();
+    await server.listen(port);
+
+    printDevInfo(path.resolve(option.data), port, option.host);
   });
 
 cli
@@ -59,3 +68,30 @@ cli.help();
 cli.version(version);
 
 cli.parse();
+
+function printDevInfo(dataPath: string, port: number, host?: string | boolean) {
+  console.log();
+  console.log(
+    `${bold('  CPany ')} ${blue(`v${version}`)} ${isInstalledGlobally ? yellow('(global)') : ''}`
+  );
+  console.log();
+  console.log(`${dim('  Data  ')} ${green(dataPath)}`);
+  
+  if (port) {
+    console.log();
+    console.log(`${dim('  Local ')} > ${cyan(`http://localhost:${bold(port)}/`)}`);
+
+    if (host) {
+      Object.values(os.networkInterfaces()).forEach((v) =>
+        (v || [])
+          .filter((details) => details.family === 'IPv4' && !details.address.includes('127.0.0.1'))
+          .forEach(({ address }) => {
+            console.log(`${dim('  Remote')} > ${blue(`http://${address}:${port}/`)}`);
+          })
+      );
+    } else {
+      console.log(`${dim('  Remote')} > ${dim('pass --host to enable')}`);
+    }
+  }
+  console.log();
+}

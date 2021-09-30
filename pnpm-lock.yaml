@@ -122,6 +122,7 @@ importers:
       cac: ^6.7.3
       is-installed-globally: ^0.4.0
       js-yaml: ^4.1.0
+      kolorist: ^1.5.0
       resolve: ^1.20.0
       resolve-from: ^5.0.0
       resolve-global: ^1.0.0
@@ -143,6 +144,7 @@ importers:
       cac: 6.7.3
       is-installed-globally: 0.4.0
       js-yaml: 4.1.0
+      kolorist: 1.5.0
       resolve: 1.20.0
       resolve-from: 5.0.0
       resolve-global: 1.0.0
@@ -1542,6 +1544,10 @@ packages:
     optionalDependencies:
       graceful-fs: 4.2.8
     dev: true
+
+  /kolorist/1.5.0:
+    resolution: {integrity: sha512-pPobydIHK884YBtkS/tWSZXpSAEpcMbilyun3KL37ot935qL2HNKm/tI45i/Rd+MxdIWEhm7/LmUQzWZYK+Qhg==}
+    dev: false
 
   /lilconfig/2.0.3:
     resolution: {integrity: sha512-EHKqr/+ZvdKCifpNrJCKxBTgk5XupZA3y/aCPY9mxfgBzmgh93Mt/WqjjQ38oMxXuvDokaKiM3lAgvSH2sjtHg==}
