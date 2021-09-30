@@ -368,17 +368,21 @@ function genRouteKey<T extends IContest | IHandle>(
 function createHandleSet(handles: RouteKey<IHandle>[]) {
   const mapByType: Map<string, Map<string, RouteKey<IHandle>>> = new Map();
 
+  const norm = (raw: string) => raw.split('/')[0];
+
   for (const handle of handles) {
-    if (mapByType.has(handle.type)) {
-      mapByType.get(handle.type)!.set(handle.handle, handle);
+    const type = norm(handle.type);
+    if (mapByType.has(type)) {
+      mapByType.get(type)!.set(handle.handle, handle);
     } else {
       const map: Map<string, RouteKey<IHandle>> = new Map();
       map.set(handle.handle, handle);
-      mapByType.set(handle.type, map);
+      mapByType.set(type, map);
     }
   }
 
-  const findHandle = (type: string, handle: string) => {
+  const findHandle = (_type: string, handle: string) => {
+    const type = norm(_type);
     if (mapByType.has(type)) {
       const map = mapByType.get(type)!;
       if (map.has(handle)) {

@@ -23,6 +23,9 @@
   <template v-else-if="luogu">
     <LgHandleCardVue :luogu="luogu"></LgHandleCardVue>
   </template>
+  <template v-else-if="atcoder">
+    <AtHandleCardVue :atcoder="atcoder"></AtHandleCardVue>
+  </template>
   <template v-else>
     <p>
       <span class="font-600">{{ handle.type.split('/')[0] }}: </span>
@@ -36,11 +39,13 @@ import type { IHandle } from '@cpany/types';
 import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
 import type { IHandleWithHdu } from '@cpany/types/hdu';
 import type { IHandleWithLuogu } from '@cpany/types/luogu';
+import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
 import { Verdict } from '@cpany/types';
 
 import { toRefs, computed } from 'vue';
 import CfHandleCard from './CfHandleCard.vue';
 import LgHandleCardVue from './LgHandleCard.vue';
+import AtHandleCardVue from './AtHandleCard.vue';
 
 const props = defineProps<{ handle: IHandle }>();
 const { handle } = toRefs(props);
@@ -64,6 +69,14 @@ const hdu = computed(() => {
 const luogu = computed(() => {
   if (handle.value.type.startsWith('luogu')) {
     return handle.value as IHandleWithLuogu;
+  } else {
+    return null;
+  }
+});
+
+const atcoder = computed(() => {
+  if (handle.value.type.startsWith('atcoder')) {
+    return handle.value as IHandleWithAtCoder;
   } else {
     return null;
   }

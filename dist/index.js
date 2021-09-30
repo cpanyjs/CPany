@@ -15626,6 +15626,102 @@ module.exports = {
 
 /***/ }),
 
+/***/ 188:
+/***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
+
+"use strict";
+var __webpack_unused_export__;
+__webpack_unused_export__ = ({value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }// src/index.ts
+var _path = __nccwpck_require__(5622); var _path2 = _interopRequireDefault(_path);
+var _axios = __nccwpck_require__(5186); var _axios2 = _interopRequireDefault(_axios);
+var _utils = __nccwpck_require__(3124);
+
+// src/handle.ts
+var _nodehtmlparser = __nccwpck_require__(5738);
+function createAtCoderHandlePlugin(api) {
+  const name = "atcoder/handle";
+  const gid = (id) => name + "/" + id + ".json";
+  return {
+    name,
+    resolveKey({ id, type }) {
+      if (type === name) {
+        return gid(id);
+      }
+      return null;
+    },
+    async transform({ id, type }) {
+      if (type === name) {
+        const user = await fetchUser(api, id);
+        return { key: gid(id), content: JSON.stringify(user, null, 2) };
+      }
+      return null;
+    }
+  };
+}
+async function fetchUser(api, id) {
+  const { data } = await api.get("/users/" + id);
+  const root = _nodehtmlparser.parse.call(void 0, data);
+  const avatar = (() => {
+    var _a;
+    const raw = (_a = root.querySelector("img.avatar")) == null ? void 0 : _a.getAttribute("src");
+    if (!raw)
+      return void 0;
+    if (raw === "//img.atcoder.jp/assets/icon/avatar.png")
+      return void 0;
+    return raw;
+  })();
+  return {
+    type: "atcoder/handle",
+    handle: id,
+    submissions: [],
+    avatar,
+    handleUrl: "https://atcoder.jp/users/" + id,
+    atcoder: {}
+  };
+}
+
+// src/index.ts
+function loadCookie() {
+  const session = process.env.REVEL_SESSION;
+  if (!session) {
+    console.error("Please set env variable REVEL_SESSION!");
+    process.exit(1);
+  }
+  return session;
+}
+function atcoderPlugin(config) {
+  const cookie = loadCookie();
+  const api = _axios2.default.create({
+    baseURL: "https://atcoder.jp/",
+    headers: {
+      Cookie: `REVEL_FLASH=; REVEL_SESSION=${cookie}`
+    }
+  });
+  return [
+    createAtCoderHandlePlugin(api),
+    {
+      name: "atcoder/clean",
+      async clean() {
+        const fullPath = _path2.default.resolve(config.basePath, "atcoder/handle");
+        const files = [];
+        try {
+          for await (const file of _utils.listFiles.call(void 0, fullPath)) {
+            files.push(file);
+          }
+        } catch (error) {
+        }
+        return { files };
+      }
+    }
+  ];
+}
+
+
+exports.g = atcoderPlugin;
+
+
+/***/ }),
+
 /***/ 4371:
 /***/ ((__unused_webpack_module, exports) => {
 
@@ -16875,7 +16971,7 @@ module.exports = JSON.parse('[["0","\\u0000",128],["a1","｡",62],["8140","　�
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"private":true,"scripts":{"dev":"node packages/cli/dist/cli.js dev --data example","site":"node packages/cli/dist/cli.js build --data example --outDir site","build":"pnpm run build --filter ./packages && pnpm -C packages/action run package","build:action":"pnpm -C packages/action run build","build:cli":"pnpm -C packages/cli run build","format":"prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore","release":"node scripts/release.js","publish":"pnpm publish -r --access public"},"husky":{"hooks":{"pre-commit":"lint-staged && pnpm run build && git add dist"}},"lint-staged":{"*.ts":["prettier --parser=typescript --write"],"*.vue":["prettier --parser=vue --write"]},"devDependencies":{"@cpany/cli":"workspace:*","@cpany/compress":"workspace:*","@cpany/types":"workspace:*","@types/node":"^16.0.1","@vercel/ncc":"^0.29.0","execa":"^5.1.1","fs-extra":"^10.0.0","husky":"4.3.7","lint-staged":"^11.0.0","pnpm":"^6.12.1","prettier":"^2.3.2","rimraf":"^3.0.2","tippy.js":"^6.3.1","tsup":"^4.14.0","typescript":"^4.3.5","vue":"^3.2.12","vue-router":"4"}}');
+module.exports = JSON.parse('{"private":true,"scripts":{"dev":"cpany dev --data example","site":"cpany build --data example --outDir site","build":"pnpm run build --filter ./packages && pnpm -C packages/action run package","build:action":"pnpm -C packages/action run build","build:cli":"pnpm -C packages/cli run build","format":"prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore","release":"node scripts/release.js","publish":"pnpm publish -r --access public"},"husky":{"hooks":{"pre-commit":"lint-staged && pnpm run build && git add dist"}},"lint-staged":{"*.ts":["prettier --parser=typescript --write"],"*.vue":["prettier --parser=vue --write"]},"devDependencies":{"@cpany/cli":"workspace:*","@cpany/compress":"workspace:*","@cpany/types":"workspace:*","@types/node":"^16.0.1","@vercel/ncc":"^0.29.0","execa":"^5.1.1","fs-extra":"^10.0.0","husky":"4.3.7","lint-staged":"^11.0.0","pnpm":"^6.12.1","prettier":"^2.3.2","rimraf":"^3.0.2","tippy.js":"^6.3.1","tsup":"^4.14.0","typescript":"^4.3.5","vue":"^3.2.12","vue-router":"4"}}');
 
 /***/ }),
 
@@ -20979,6 +21075,8 @@ var codeforces_dist = __nccwpck_require__(3948);
 var hdu_dist = __nccwpck_require__(8808);
 // EXTERNAL MODULE: ../luogu/dist/index.js
 var luogu_dist = __nccwpck_require__(3267);
+// EXTERNAL MODULE: ../atcoder/dist/index.js
+var atcoder_dist = __nccwpck_require__(188);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@actions+io@1.1.1/node_modules/@actions/io/lib/io.js
 var io = __nccwpck_require__(7554);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@actions+exec@1.1.0/node_modules/@actions/exec/lib/exec.js
@@ -21225,6 +21323,7 @@ var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _a
 
 
 
+
 function run({ logger = true, basePath = './', disableGit, plugins = ['codeforces', 'hdu'], configPath, maxRetry }) {
     var _a, _b;
     return action_awaiter(this, void 0, void 0, function* () {
@@ -21233,6 +21332,7 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
         const instance = (0,dist.createInstance)({
             plugins: [
                 usedPluginSet.has('codeforces') ? (0,codeforces_dist.codeforcesPlugin)(Object.assign({ basePath }, config)) : undefined,
+                usedPluginSet.has('atcoder') ? (0,atcoder_dist/* atcoderPlugin */.g)(Object.assign({ basePath }, config)) : undefined,
                 usedPluginSet.has('hdu') ? yield (0,hdu_dist.hduPlugin)(Object.assign({ basePath }, config)) : undefined,
                 usedPluginSet.has('luogu') ? yield (0,luogu_dist.luoguPlugin)(Object.assign({ basePath }, config)) : undefined
             ],

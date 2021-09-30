@@ -1,0 +1,30 @@
+{
+  "name": "@cpany/atcoder",
+  "version": "0.0.53",
+  "description": "CPany AtCoder package",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yjl9903/CPany"
+  },
+  "license": "MIT",
+  "author": "XLor",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "pnpx tsup src/index.ts --format cjs --dts"
+  },
+  "dependencies": {
+    "@cpany/core": "workspace:*",
+    "@cpany/types": "workspace:*",
+    "@cpany/utils": "workspace:*",
+    "axios": "^0.21.1",
+    "node-html-parser": "^4.1.3"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}

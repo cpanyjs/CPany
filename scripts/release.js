@@ -9,6 +9,7 @@ const packages = [
   './packages/codeforces',
   './packages/hdu',
   './packages/luogu',
+  './packages/atcoder',
   './packages/utils',
   './packages/core',
   './packages/types',

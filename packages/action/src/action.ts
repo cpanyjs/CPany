@@ -8,6 +8,7 @@ import { createInstance } from '@cpany/core';
 import { codeforcesPlugin } from '@cpany/codeforces';
 import { hduPlugin } from '@cpany/hdu';
 import { luoguPlugin } from '@cpany/luogu';
+import { atcoderPlugin } from '@cpany/atcoder';
 
 import { createGitFileSystem } from './fs';
 import { processReport } from './report';
@@ -37,6 +38,7 @@ export async function run({
   const instance = createInstance({
     plugins: [
       usedPluginSet.has('codeforces') ? codeforcesPlugin({ basePath, ...config }) : undefined,
+      usedPluginSet.has('atcoder') ? atcoderPlugin({ basePath, ...config }) : undefined,
       usedPluginSet.has('hdu') ? await hduPlugin({ basePath, ...config }) : undefined,
       usedPluginSet.has('luogu') ? await luoguPlugin({ basePath, ...config }) : undefined
     ],
