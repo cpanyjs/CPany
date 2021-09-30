@@ -159,8 +159,9 @@ export async function createLoader({
   // Use username to push contest
   for (const contest of contests) {
     for (const standing of contest.standings ?? []) {
-      for (const member of standing.author.members) {
-        const user = userMap.get(member);
+      const push = (name?: string) => {
+        if (!name) return;
+        const user = userMap.get(name);
         if (user !== null && user !== undefined) {
           contest.participantNumber++;
           user.contests.push({
@@ -168,6 +169,11 @@ export async function createLoader({
             ...contest
           });
         }
+      };
+
+      push(standing.author.teamName);
+      for (const member of standing.author.members) {
+        push(member);
       }
     }
   }

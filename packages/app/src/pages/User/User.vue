@@ -176,7 +176,7 @@ const sortedHandles = computed(() => {
     if (handle.type.startsWith('codeforces')) {
       return base * 9 + (handle as IHandleWithCodeforces).codeforces.rating;
     } else if (handle.type.startsWith('atcoder')) {
-      return base * 8 + ((handle as IHandleWithAtCoder).atcoder.rating ?? 0)
+      return base * 8 + ((handle as IHandleWithAtCoder).atcoder.rating ?? 0);
     } else if (handle.type.startsWith('luogu')) {
       return base * 7;
     } else {

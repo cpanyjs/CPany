@@ -8,9 +8,10 @@ import type {
   IContest,
   RouteKey,
   IUser,
-  CodeforcesHandleList
+  CompressHandleList
 } from '@cpany/types';
 import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
+import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
 import { slash } from '@cpany/utils';
 
 import type { IPluginOption } from './types';
@@ -253,6 +254,7 @@ export function createCPanyLoadPlugin(
   const codeforcesPath = slash(path.join(appRootPath, 'src', 'cpany', 'codeforces.json'));
   const usersPath = slash(path.join(appRootPath, 'src', 'cpany', 'users.json'));
   const cfHandlesPath = slash(path.join(appRootPath, 'src', 'cpany', 'cfHandles.json'));
+  const atHandlesPath = slash(path.join(appRootPath, 'src', 'cpany', 'atHandles.json'));
 
   return {
     name: 'cpany:load',
@@ -269,9 +271,9 @@ export function createCPanyLoadPlugin(
       } else if (id === usersPath) {
         return JSON.stringify(users, null, 2);
       } else if (id === cfHandlesPath) {
-        const handles = ([] as CodeforcesHandleList).concat(
+        const handles = ([] as CompressHandleList).concat(
           ...users.map(({ name, handles }) => {
-            const cfHandles: CodeforcesHandleList = [];
+            const cfHandles: CompressHandleList = [];
             for (const handle of handles) {
               if (handle.type.startsWith('codeforces')) {
                 const cfHandle = handle as Omit<RouteKey<IHandleWithCodeforces>, 'submissions'>;
@@ -283,6 +285,24 @@ export function createCPanyLoadPlugin(
               }
             }
             return cfHandles;
+          })
+        );
+        return JSON.stringify(handles, null, 2);
+      } else if (id === atHandlesPath) {
+        const handles = ([] as CompressHandleList).concat(
+          ...users.map(({ name, handles }) => {
+            const atHandles: CompressHandleList = [];
+            for (const handle of handles) {
+              if (handle.type.startsWith('atcoder')) {
+                const atHandle = handle as Omit<RouteKey<IHandleWithAtCoder>, 'submissions'>;
+                atHandles.push({
+                  n: name,
+                  h: handle.handle,
+                  r: atHandle.atcoder.rating ?? 0
+                });
+              }
+            }
+            return atHandles;
           })
         );
         return JSON.stringify(handles, null, 2);

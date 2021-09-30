@@ -55,4 +55,4 @@ export interface IUserOverview {
   submissions: Array<{ type: string; t: number; v: number; d?: number }>;
 }
 
-export type CodeforcesHandleList = Array<{ n: string; h: string; r: number }>;
+export type CompressHandleList = Array<{ n: string; h: string; r: number }>;

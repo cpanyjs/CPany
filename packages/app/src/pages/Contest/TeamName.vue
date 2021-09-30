@@ -1,7 +1,9 @@
 <template>
   <template v-if="isDef(author.teamName)">
-    <div :class="teamUrl !== '' && 'cursor-pointer'" @click="handleClick">
-      {{ author.teamName }}
+    <div>
+      <span :class="teamUrl !== '' && 'cursor-pointer'" @click="handleClick">{{
+        author.teamName
+      }}</span>
     </div>
     <div class="space-left">
       <user-link

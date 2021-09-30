@@ -1,7 +1,7 @@
 import type { CompressHandleList } from '@cpany/types';
 import { load } from '@cpany/compress/load';
 
-import rawHandles from './cpany/cfHandles.json';
+import rawHandles from './cpany/atHandles.json';
 
 export const handles = load<CompressHandleList>(rawHandles);
 
