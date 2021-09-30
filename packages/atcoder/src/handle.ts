@@ -1,7 +1,12 @@
 import type { AxiosInstance } from 'axios';
 import { parse } from 'node-html-parser';
-import type { IPlugin } from '@cpany/core';
+import { decode } from 'html-entities';
+
+import type { IPlugin, ILogger } from '@cpany/core';
 import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
+import { ISubmission, ParticipantType, Verdict } from '@cpany/types';
+
+import { addContest } from './contests';
 
 export function createAtCoderHandlePlugin(api: AxiosInstance): IPlugin {
   const name = 'atcoder/handle';
@@ -14,9 +19,14 @@ export function createAtCoderHandlePlugin(api: AxiosInstance): IPlugin {
       }
       return null;
     },
-    async transform({ id, type }) {
+    async transform({ id, type }, { logger }) {
       if (type === name) {
         const user = await fetchUser(api, id);
+        try {
+          user.submissions = await fetchSubmissions(api, id, logger);
+        } catch (error) {
+          console.log(error);
+        }
         return { key: gid(id), content: JSON.stringify(user, null, 2) };
       }
       return null;
@@ -63,4 +73,105 @@ async function fetchUser(api: AxiosInstance, id: string): Promise<IHandleWithAtC
       color
     }
   };
+}
+
+async function fetchSubmissions(
+  api: AxiosInstance,
+  id: string,
+  logger: ILogger
+): Promise<ISubmission[]> {
+  const { data } = await api.get('/users/' + id + '/history');
+  const root = parse(data);
+
+  const contests = root
+    .querySelectorAll('tr td.text-left')
+    .map((td) => td.querySelector('a').getAttribute('href')?.split('/')[2]!)
+    .filter((contest) => !!contest);
+
+  logger.info(`Fetch: ${id} has participated in ${contests.length} contests`);
+
+  const submissions: ISubmission[] = [];
+  const run = async (contest: string) => {
+    const initLen = submissions.length;
+    for (let page = 1; ; page++) {
+      const oldLen = submissions.length;
+
+      const { data } = await api.get(`/contests/${contest}/submissions`, {
+        params: {
+          'f.User': id,
+          page
+        }
+      });
+      const root = parse(data);
+
+      const durations = root.querySelectorAll('.contest-duration a');
+      const startTime = new Date(durations[0].innerText).getTime() / 1000;
+      const endTime = new Date(durations[1].innerText).getTime() / 1000;
+
+      submissions.push(
+        ...root.querySelectorAll('table.table tbody tr').map((tr) => {
+          const td = tr.querySelectorAll('td');
+
+          const sid = +td[td.length - 1].querySelector('a').getAttribute('href')?.split('/').pop()!;
+          const creationTime = new Date(td[0].innerText).getTime() / 1000;
+          const language = decode(td[3].innerText.replace(/\([\s\S]*\)/, '').trim());
+          const verdict: Verdict = ((str: string) => {
+            if (str === 'AC') return Verdict.OK;
+            if (str === 'WA') return Verdict.WRONG_ANSWER;
+            if (str === 'TLE') return Verdict.TIME_LIMIT_EXCEEDED;
+            if (str === 'MLE') return Verdict.MEMORY_LIMIT_EXCEEDED;
+            if (str === 'OLE') return Verdict.IDLENESS_LIMIT_EXCEEDED;
+            if (str === 'RE') return Verdict.RUNTIME_ERROR;
+            if (str === 'CE') return Verdict.COMPILATION_ERROR;
+            return Verdict.FAILED;
+          })(td[6].innerText);
+
+          const type =
+            startTime <= creationTime && creationTime < endTime
+              ? ParticipantType.CONTESTANT
+              : ParticipantType.PRACTICE;
+
+          const problemId = ((id) => {
+            const [a, b] = id.split('_');
+            return a + b.toUpperCase();
+          })(td[1].querySelector('a').getAttribute('href')?.split('/').pop()!);
+          const problemName = decode(/^[\s\S]+ - ([\s\S]+)$/.exec(td[1].innerText)![1]);
+
+          return {
+            type: 'atcoder',
+            id: sid,
+            creationTime,
+            language,
+            verdict,
+            author: {
+              members: [id],
+              participantType: type,
+              participantTime: type === ParticipantType.CONTESTANT ? startTime : creationTime
+            },
+            submissionUrl:
+              'https://atcoder.jp' + td[td.length - 1].querySelector('a').getAttribute('href'),
+            problem: {
+              type: 'atcoder',
+              id: problemId,
+              name: problemName,
+              problemUrl: 'https://atcoder.jp' + td[1].querySelector('a').getAttribute('href')
+            }
+          };
+        })
+      );
+
+      if (submissions.length === oldLen) break;
+    }
+
+    logger.info(
+      `Fetch: ${id} has created ${submissions.length - initLen} submissions in ${contest}`
+    );
+  };
+
+  for (const contest of contests) {
+    addContest(contest);
+    await run(contest);
+  }
+
+  return submissions;
 }

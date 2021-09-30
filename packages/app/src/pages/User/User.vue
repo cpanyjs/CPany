@@ -168,10 +168,11 @@ const submissions = ref<ISubmission[]>(
     .map((sub, index) => ({ index: index + 1, ...sub }))
     .reverse()
 );
-const contests = ref<IContest[]>(user.value.contests
-  .sort((lhs, rhs) => lhs.author.participantTime - rhs.author.participantTime)
-  .map((contest, index) => ({ index: index + 1, ...contest }))
-  .reverse()
+const contests = ref<IContest[]>(
+  user.value.contests
+    .sort((lhs, rhs) => lhs.author.participantTime - rhs.author.participantTime)
+    .map((contest, index) => ({ index: index + 1, ...contest }))
+    .reverse()
 );
 
 const sortedHandles = computed(() => {

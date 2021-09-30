@@ -61,16 +61,6 @@ export async function run({
 
   instance.logger.startGroup('Fetch data');
 
-  const configFetch = config?.fetch ?? [];
-  for (const id of configFetch) {
-    const result = await instance.load(id);
-
-    if (!!result) {
-      const { key, content } = result;
-      await fs.add(key, content);
-    }
-  }
-
   const retry = createRetryContainer(maxRetry);
   const configUser = config?.users ?? {};
   for (const userKey in configUser) {
@@ -101,6 +91,15 @@ export async function run({
         };
         retry.add(`(id: "${handle}", type: "${type}")`, fn);
       }
+    }
+  }
+
+  for (const id of config?.fetch ?? []) {
+    const result = await instance.load(id);
+
+    if (!!result) {
+      const { key, content } = result;
+      await fs.add(key, content);
     }
   }
 
