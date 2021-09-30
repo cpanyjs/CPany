@@ -4,18 +4,153 @@
   "handleUrl": "https://codeforces.com/profile/czswez",
   "avatar": "https://userpic.codeforces.org/no-title.jpg",
   "codeforces": {
-    "rank": "candidate master",
-    "rating": 1934,
+    "rank": "expert",
+    "rating": 1850,
     "maxRank": "candidate master",
     "maxRating": 1934
   },
   "submissions": [
     {
       "type": "codeforces",
+      "id": 130373916,
+      "creationTime": 1633006140,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514477507
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1580B",
+        "name": "Mathematics Curriculum",
+        "rating": 2600,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1580/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1580/submission/130373916"
+    },
+    {
+      "type": "codeforces",
+      "id": 130370313,
+      "creationTime": 1633004030,
+      "language": "GNU C++17 (64)",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1632996900
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1580B",
+        "name": "Mathematics Curriculum",
+        "rating": 2600,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1580/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1580/submission/130370313"
+    },
+    {
+      "type": "codeforces",
+      "id": 130369961,
+      "creationTime": 1633003969,
+      "language": "GNU C++17 (64)",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1632996900
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1580B",
+        "name": "Mathematics Curriculum",
+        "rating": 2600,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1580/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1580/submission/130369961"
+    },
+    {
+      "type": "codeforces",
+      "id": 130369781,
+      "creationTime": 1633003936,
+      "language": "GNU C++17 (64)",
+      "verdict": "COMPILATION_ERROR",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1632996900
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1580B",
+        "name": "Mathematics Curriculum",
+        "rating": 2600,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1580/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1580/submission/130369781"
+    },
+    {
+      "type": "codeforces",
+      "id": 130368941,
+      "creationTime": 1633003753,
+      "language": "GNU C++17 (64)",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "czswez"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1632996900
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1580B",
+        "name": "Mathematics Curriculum",
+        "rating": 2600,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1580/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1580/submission/130368941"
+    },
+    {
+      "type": "codeforces",
       "id": 130353330,
       "creationTime": 1633000101,
       "language": "GNU C++17 (64)",
-      "verdict": "OK",
+      "verdict": "WRONG_ANSWER",
       "author": {
         "members": [
           "czswez"
@@ -27,7 +162,13 @@
         "type": "codeforces",
         "id": "1580A",
         "name": "Portal",
-        "tags": [],
+        "rating": 1700,
+        "tags": [
+          "brute force",
+          "dp",
+          "greedy",
+          "implementation"
+        ],
         "problemUrl": "https://codeforces.com/contest/1580/problem/A"
       },
       "submissionUrl": "https://codeforces.com/contest/1580/submission/130353330"
