@@ -72,7 +72,7 @@ cli.parse();
 function printDevInfo(dataPath: string, port: number, host?: string | boolean) {
   console.log();
   console.log(
-    `${bold('  CPany ')} ${blue(`v${version}`)} ${isInstalledGlobally ? yellow('(global)') : ''}`
+    `${bold('  CPany ')} ${cyan(`v${version}`)} ${isInstalledGlobally ? yellow('(global)') : ''}`
   );
   console.log();
   console.log(`${dim('  Data  ')} ${green(dataPath)}`);
