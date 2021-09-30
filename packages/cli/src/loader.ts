@@ -160,7 +160,7 @@ export async function createLoader({
   for (const contest of contests) {
     for (const standing of contest.standings ?? []) {
       const push = (name?: string) => {
-        if (!name) return;
+        if (!name) return false;
         const user = userMap.get(name);
         if (user !== null && user !== undefined) {
           contest.participantNumber++;
@@ -168,10 +168,13 @@ export async function createLoader({
             author: standing.author,
             ...contest
           });
+          return true;
         }
+        return false;
       };
 
-      push(standing.author.teamName);
+      // use teamName or members
+      if (push(standing.author.teamName)) continue;
       for (const member of standing.author.members) {
         push(member);
       }
