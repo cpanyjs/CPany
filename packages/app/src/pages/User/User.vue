@@ -22,7 +22,7 @@
         </div>
 
         <div class="<md:mt-2 md:mt-4 grid <md:(grid-cols-1 gap-2) md:(grid-cols-2 gap-4)">
-          <div v-for="(handle, index) in user.handles" :key="index" class="box <md:(p-2)">
+          <div v-for="(handle, index) in sortedHandles" :key="index" class="box <md:(p-2)">
             <handle-card :handle="handle"></handle-card>
           </div>
         </div>
@@ -124,7 +124,7 @@
 </template>
 
 <script setup lang="ts">
-import type { IUser, ISubmission, IContest } from '@cpany/types';
+import type { IUser, ISubmission, IContest, IHandle } from '@cpany/types';
 import { Verdict } from '@cpany/types';
 import { ref, toRefs, computed } from 'vue';
 
@@ -140,8 +140,10 @@ import { HeatMap, parseHeatMapDate } from '@/components/heatmap';
 import { CSelect } from '@/components/select';
 import { toDate, displayContestType, displayProblemType } from '@/utils';
 
+import { IHandleWithCodeforces } from '@cpany/types/codeforces';
 import Hover from './Hover.vue';
 import HandleCard from './HandleCard.vue';
+import { IHandleWithAtCoder } from '@cpany/types/atcoder';
 
 const props = defineProps<{ user: IUser }>();
 const { user } = toRefs(props);
@@ -167,6 +169,24 @@ const submissions = ref<ISubmission[]>(
     .reverse()
 );
 const contests = ref<IContest[]>(user.value.contests);
+
+const sortedHandles = computed(() => {
+  const f = (handle: IHandle) => {
+    const base = 100000;
+    if (handle.type.startsWith('codeforces')) {
+      return base * 9 + (handle as IHandleWithCodeforces).codeforces.rating;
+    } else if (handle.type.startsWith('atcoder')) {
+      return base * 8 + ((handle as IHandleWithAtCoder).atcoder.rating ?? 0)
+    } else if (handle.type.startsWith('luogu')) {
+      return base * 7;
+    } else {
+      return 0;
+    }
+  };
+  return user.value.handles.sort((lhs, rhs) => {
+    return f(rhs) - f(lhs);
+  });
+});
 
 const sortByIndex = (lhs: { index: number }, rhs: { index: number }) => lhs.index - rhs.index;
 const sortByProblemRating = (lhs: ISubmission, rhs: ISubmission) => {
