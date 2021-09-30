@@ -1,4 +1,4 @@
-import type { IHandle } from './index';
+import type { IHandle } from './dist/index.d';
 
 export interface IHduMeta {
   hdu: {
@@ -6,4 +6,4 @@ export interface IHduMeta {
   };
 }
 
-export declare type IHandleWithHdu = IHandle & IHduMeta;
+export type IHandleWithHdu = IHandle & IHduMeta;

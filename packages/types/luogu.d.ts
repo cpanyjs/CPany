@@ -1,4 +1,4 @@
-import type { IHandle } from './index';
+import type { IHandle } from './dist/index.d';
 
 export interface ILuoguMeta {
   luogu: {
