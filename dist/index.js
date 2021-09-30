@@ -15661,6 +15661,14 @@ function createAtCoderHandlePlugin(api) {
 async function fetchUser(api, id) {
   const { data } = await api.get("/users/" + id);
   const root = _nodehtmlparser.parse.call(void 0, data);
+  const color = (() => {
+    const username = root.querySelector("a.username span");
+    const style = username.getAttribute("style");
+    if (!style)
+      return void 0;
+    const res = /(#[0-9A-F]{6})/.exec(style);
+    return res ? res[1] : void 0;
+  })();
   const avatar = (() => {
     var _a;
     const raw = (_a = root.querySelector("img.avatar")) == null ? void 0 : _a.getAttribute("src");
@@ -15670,13 +15678,22 @@ async function fetchUser(api, id) {
       return void 0;
     return raw;
   })();
+  const fields = root.querySelectorAll(".col-md-9 .dl-table tr td");
+  const rank = 0 < fields.length ? Number.parseInt(fields[0].innerText) : void 0;
+  const rating = 1 < fields.length ? Number.parseInt(fields[1].querySelector("span").innerText) : void 0;
+  const maxRating = 2 < fields.length ? Number.parseInt(fields[2].querySelector("span").innerText) : void 0;
   return {
     type: "atcoder/handle",
     handle: id,
     submissions: [],
     avatar,
     handleUrl: "https://atcoder.jp/users/" + id,
-    atcoder: {}
+    atcoder: {
+      rank,
+      rating,
+      maxRating,
+      color
+    }
   };
 }
 
