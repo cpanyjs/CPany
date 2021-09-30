@@ -72,8 +72,7 @@ export async function resolveOptions(
     },
     optimizeDeps: {
       include: Object.keys(deps)
-    },
-    logLevel: 'silent'
+    }
   };
 
   if (isInstalledGlobally) {
@@ -96,7 +95,8 @@ export async function resolveOptions(
           strict: true,
           allow: uniq([searchForWorkspaceRoot(appPath), ...(isInstalledGlobally ? [appPath] : [])])
         }
-      }
+      },
+      logLevel: 'warn'
     });
   } else {
     return mergeConfig(common, <InlineConfig>{
@@ -106,7 +106,7 @@ export async function resolveOptions(
       build: {
         outDir: path.resolve(option.outDir),
         emptyOutDir: option.emptyOutDir,
-        chunkSizeWarningLimit: 1024
+        chunkSizeWarningLimit: 2048
       }
     });
   }
