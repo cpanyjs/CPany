@@ -10,7 +10,6 @@ const plugins = core
 
 run({
   disableGit: false,
-  configPath: core.getInput('config'),
   maxRetry: +core.getInput('max-retry'),
   plugins
 });

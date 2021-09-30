@@ -57,7 +57,6 @@ cli
       logger: false,
       basePath,
       disableGit: true,
-      configPath: 'cpany.yml',
       maxRetry,
       plugins
     });

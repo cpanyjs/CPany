@@ -20,7 +20,6 @@ export interface IRunOption {
   basePath?: string;
   disableGit?: boolean;
   plugins?: string[];
-  configPath: string;
   maxRetry: number;
 }
 
@@ -29,11 +28,10 @@ export async function run({
   basePath = './',
   disableGit,
   plugins = ['codeforces', 'hdu'],
-  configPath,
   maxRetry
 }: IRunOption) {
   const usedPluginSet = new Set(plugins);
-  const config = await getConfig(resolve(basePath, configPath));
+  const config = await getConfig(resolve(basePath, 'cpany.yml'));
 
   const instance = createInstance({
     plugins: [

@@ -21341,11 +21341,11 @@ var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _a
 
 
 
-function run({ logger = true, basePath = './', disableGit, plugins = ['codeforces', 'hdu'], configPath, maxRetry }) {
+function run({ logger = true, basePath = './', disableGit, plugins = ['codeforces', 'hdu'], maxRetry }) {
     var _a, _b;
     return action_awaiter(this, void 0, void 0, function* () {
         const usedPluginSet = new Set(plugins);
-        const config = yield getConfig((0,external_path_.resolve)(basePath, configPath));
+        const config = yield getConfig((0,external_path_.resolve)(basePath, 'cpany.yml'));
         const instance = (0,dist.createInstance)({
             plugins: [
                 usedPluginSet.has('codeforces') ? (0,codeforces_dist.codeforcesPlugin)(Object.assign({ basePath }, config)) : undefined,
@@ -21434,7 +21434,6 @@ var _a;
 const plugins = (_a = core.getInput('plugins')) === null || _a === void 0 ? void 0 : _a.split(',').map((plugin) => plugin.trim().toLowerCase()).filter((plugin) => plugin !== undefined && plugin !== null && plugin !== '');
 run({
     disableGit: false,
-    configPath: core.getInput('config'),
     maxRetry: +core.getInput('max-retry'),
     plugins
 });

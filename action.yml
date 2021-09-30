@@ -2,10 +2,6 @@ name: 'fetch-cpany'
 description: 'Competitive Programming Statistic Site Generator'
 author: 'XLor'
 inputs:
-  config:
-    required: false
-    description: 'CPany config file path'
-    default: 'cpany.yml'
   plugins:
     required: false
     description: 'CPany plugins'
