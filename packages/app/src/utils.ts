@@ -1,5 +1,6 @@
 import { Ref, ref, unref } from 'vue';
 import type { IContest, IProblem } from '@cpany/types';
+import { isCodeforces, isAtCoder, isNowCoder, isPintia, isLuogu, isHdu } from '@cpany/types'
 
 export function isUndef<T>(object: T | undefined | null): object is undefined | null {
   return object === undefined || object === null;
@@ -46,7 +47,7 @@ export function toDuration(duration: number | Ref<number>) {
 }
 
 export const displayContestType = (contest: IContest) => {
-  if (contest.type.startsWith('codeforces')) {
+  if (isCodeforces(contest)) {
     if (/Round/.test(contest.name) || /Div/.test(contest.name)) {
       return 'Codeforces Round';
     } else if (/gym/.test(contest.type)) {
@@ -54,15 +55,15 @@ export const displayContestType = (contest: IContest) => {
     } else {
       return 'Codeforces';
     }
-  } else if (contest.type === 'nowcoder') {
+  } else if (isNowCoder(contest)) {
     return '牛客竞赛';
-  } else if (contest.type === 'hdu') {
+  } else if (isHdu(contest)) {
     return 'HDu';
-  } else if (contest.type === 'lugou') {
+  } else if (isLuogu(contest)) {
     return '洛谷';
-  } else if (contest.type === 'pintia') {
+  } else if (isPintia(contest)) {
     return '拼题A';
-  } else if (contest.type === 'atcoder') {
+  } else if (isAtCoder(contest)) {
     return 'AtCoder';
   } else {
     const type = contest.type;
@@ -71,14 +72,16 @@ export const displayContestType = (contest: IContest) => {
 };
 
 export const displayProblemType = (problem: IProblem) => {
-  if (problem.type.startsWith('codeforces')) {
+  if (isCodeforces(problem)) {
     return 'Codeforces';
-  } else if (problem.type.startsWith('nowcoder')) {
+  } else if (isNowCoder(problem)) {
     return '牛客竞赛';
-  } else if (problem.type.startsWith('hdu')) {
+  } else if (isHdu(problem)) {
     return 'HDu';
-  } else if (problem.type.startsWith('luogu')) {
+  } else if (isLuogu(problem)) {
     return '洛谷';
+  } else if (isAtCoder(problem)) {
+    return 'AtCoder';
   } else {
     const type = problem.type;
     return type.charAt(0).toUpperCase() + type.slice(1);

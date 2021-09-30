@@ -11,6 +11,8 @@ export * from './problem';
 
 export * from './contest';
 
+export * from './platform';
+
 // Action/Cli config interface
 export interface AppConfig {
   title: string;
