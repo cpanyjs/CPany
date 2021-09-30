@@ -13,8 +13,7 @@ import { version } from './version';
 // import { createCPanyPlugin } from './plugin';
 import { resolveOptions } from './options';
 
-const cli = cac('cpany')
-  .option('--data <dir>', 'data directory', { default: '.' });
+const cli = cac('cpany').option('--data <dir>', 'data directory', { default: '.' });
 
 cli
   .command('', 'Build CPany site')
