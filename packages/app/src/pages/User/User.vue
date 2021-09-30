@@ -78,7 +78,7 @@
           <c-table-column label="时间" center width="10em">
             <a :href="row.submissionUrl" target="_blank">{{ toDate(row.creationTime).value }}</a>
           </c-table-column>
-          <c-table-column label="类型" center width="4em">
+          <c-table-column label="平台" center width="4em">
             <span>{{ displayProblemType(row) }}</span>
           </c-table-column>
           <c-table-column label="题目" :mobile-header-class="['min-w-8']">
@@ -112,8 +112,11 @@
           <c-table-column label="比赛" :mobile-header-class="['min-w-8']">
             <router-link :to="row.path">{{ row.name }}</router-link>
           </c-table-column>
-          <c-table-column label="类型" center>
+          <c-table-column label="平台" center>
             <span>{{ displayContestType(row) }}</span>
+          </c-table-column>
+          <c-table-column label="类型" center>
+            <span>{{ displayParticipantType(row.author.participantType) }}</span>
           </c-table-column>
         </template>
       </c-table>
@@ -138,7 +141,7 @@ import { CTable, CTableColumn } from '@/components/table';
 import { CStastic } from '@/components/stastic';
 import { HeatMap, parseHeatMapDate } from '@/components/heatmap';
 import { CSelect } from '@/components/select';
-import { toDate, displayContestType, displayProblemType } from '@/utils';
+import { toDate, displayContestType, displayProblemType, displayParticipantType } from '@/utils';
 
 import { IHandleWithCodeforces } from '@cpany/types/codeforces';
 import Hover from './Hover.vue';

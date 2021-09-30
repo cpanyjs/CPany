@@ -47,20 +47,22 @@ cli
   .command('action [basePath]', 'Run @cpany/action locally')
   .option('--max-retry <number>', 'CPany max retry times', { default: 10 })
   .option('--plugins <string>', 'CPany plugins', { default: 'codeforces,hdu' })
-  .action(async (basePath: string | undefined, { maxRetry, plugins: _plugins }: ICliActionOption) => {
-    const plugins = _plugins
-      .split(',')
-      .map((plugin) => plugin.trim().toLowerCase())
-      .filter((plugin) => plugin !== undefined && plugin !== null && plugin !== '');
+  .action(
+    async (basePath: string | undefined, { maxRetry, plugins: _plugins }: ICliActionOption) => {
+      const plugins = _plugins
+        .split(',')
+        .map((plugin) => plugin.trim().toLowerCase())
+        .filter((plugin) => plugin !== undefined && plugin !== null && plugin !== '');
 
-    await runAction({
-      logger: false,
-      basePath,
-      disableGit: true,
-      maxRetry,
-      plugins
-    });
-  });
+      await runAction({
+        logger: false,
+        basePath,
+        disableGit: true,
+        maxRetry,
+        plugins
+      });
+    }
+  );
 
 cli.help();
 

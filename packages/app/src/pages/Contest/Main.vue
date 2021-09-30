@@ -10,7 +10,7 @@
         <c-table-column label="比赛" :mobile-header-class="['min-w-8']">
           <router-link :to="row.path">{{ row.name }}</router-link>
         </c-table-column>
-        <c-table-column label="类型" center>
+        <c-table-column label="平台" center>
           <span>{{ displayContestType(row) }}</span>
         </c-table-column>
         <c-table-column label="时间" align="center" width="10em">

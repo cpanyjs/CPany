@@ -1,6 +1,15 @@
 import { Ref, ref, unref } from 'vue';
-import type { IContest, IProblem } from '@cpany/types';
-import { isCodeforces, isAtCoder, isNowCoder, isPintia, isLuogu, isHdu } from '@cpany/types'
+import {
+  IContest,
+  IProblem,
+  ParticipantType,
+  isCodeforces,
+  isAtCoder,
+  isNowCoder,
+  isPintia,
+  isLuogu,
+  isHdu
+} from '@cpany/types';
 
 export function isUndef<T>(object: T | undefined | null): object is undefined | null {
   return object === undefined || object === null;
@@ -85,5 +94,21 @@ export const displayProblemType = (problem: IProblem) => {
   } else {
     const type = problem.type;
     return type.charAt(0).toUpperCase() + type.slice(1);
+  }
+};
+
+export const displayParticipantType = (type: ParticipantType) => {
+  if (type === ParticipantType.CONTESTANT) {
+    return '比赛';
+  } else if (type === ParticipantType.MANAGER) {
+    return '管理';
+  } else if (type === ParticipantType.OUT_OF_COMPETITION) {
+    return '打星';
+  } else if (type === ParticipantType.PRACTICE) {
+    return '练习';
+  } else if (type === ParticipantType.VIRTUAL) {
+    return '虚拟';
+  } else {
+    return '';
   }
 };
