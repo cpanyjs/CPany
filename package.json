@@ -14,8 +14,8 @@
     ]
   },
   "scripts": {
-    "dev": "node packages/cli/dist/cli.js dev --app packages/app --data example",
-    "site": "node packages/cli/dist/cli.js build --app packages/app --data example --outDir site",
+    "dev": "node packages/cli/dist/cli.js dev --data example",
+    "site": "node packages/cli/dist/cli.js build --data example --outDir site",
     "build": "pnpm run build --filter ./packages && pnpm -C packages/action run package",
     "build:action": "pnpm -C packages/action run build",
     "build:cli": "pnpm -C packages/cli run build",
