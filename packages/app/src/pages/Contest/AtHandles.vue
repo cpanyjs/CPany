@@ -6,7 +6,7 @@
         v-for="(handle, index) in author.members"
         :key="index"
         class="ml-2 font-bold"
-        :href="`https://codeforces.com/profile/${handle}`"
+        :href="`https://atcoder.jp/users/${handle}`"
         target="_blank"
       >
         <at-rating-color :rating="findHandleRating(handle)">{{ handle }}</at-rating-color>
