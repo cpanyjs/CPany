@@ -76,7 +76,7 @@ function printDevInfo(dataPath: string, port: number, host?: string | boolean) {
   );
   console.log();
   console.log(`${dim('  Data  ')} ${green(dataPath)}`);
-  
+
   if (port) {
     console.log();
     console.log(`${dim('  Local ')} > ${cyan(`http://localhost:${bold(port)}/`)}`);
