@@ -1,6 +1,7 @@
 import path from 'path';
-import { InlineConfig, mergeConfig } from 'vite';
+import fs from 'fs';
 import isInstalledGlobally from 'is-installed-globally';
+import { InlineConfig, mergeConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import WindiCSS from 'vite-plugin-windicss';
 import Icons from 'unplugin-icons/vite';
@@ -9,10 +10,9 @@ import Compress from '@cpany/compress';
 import { uniq } from '@cpany/utils';
 
 import type { ICliOption } from './types';
-import { resolveImportPath } from './utils';
+import { resolveImportPath, slash } from './utils';
 import { createCPanyPlugin } from './plugin';
 import { version } from './version';
-import { readFileSync } from 'fs';
 import { searchForWorkspaceRoot } from './searchRoot';
 
 export function getTypesRoot() {
@@ -29,7 +29,9 @@ export async function resolveOptions(
 ): Promise<InlineConfig> {
   const appPath = getAppRoot();
   const typesPath = getTypesRoot();
-  const deps = JSON.parse(readFileSync(path.join(appPath, 'package.json'), 'utf-8')).dependencies;
+  const deps = JSON.parse(
+    fs.readFileSync(path.join(appPath, 'package.json'), 'utf-8')
+  ).dependencies;
 
   const dataPath = path.resolve(option.data);
   const pluginOption = {
@@ -38,11 +40,24 @@ export async function resolveOptions(
     cliVersion: version
   };
 
+  if (!fs.existsSync(path.join(dataPath, 'cpany.yml'))) {
+    throw new Error(`Can not find cpany.yml in ${dataPath}`);
+  }
+
   const common: InlineConfig = {
     configFile: false,
-    root: appPath,
     envDir: path.resolve(__dirname, '../'),
-    plugins: [vue(), WindiCSS(), Icons(), await createCPanyPlugin(pluginOption)],
+    plugins: [
+      vue(),
+      WindiCSS({
+        configFiles: [path.join(appPath, 'windi.config.js')],
+        onOptionsResolved(config) {
+          config.scanOptions.include.push(`${slash(path.resolve(appPath, 'src/**/*.{vue,ts}'))}`);
+        }
+      }),
+      Icons(),
+      await createCPanyPlugin(pluginOption)
+    ],
     resolve: {
       alias: {
         '@cpany/types': typesPath,
@@ -66,10 +81,32 @@ export async function resolveOptions(
 
   if (mode === 'dev') {
     return mergeConfig(common, <InlineConfig>{
+      publicDir: path.join(appPath, 'public'),
       define: {
         __DEV__: true
       },
-      plugins: [Compress({ enable: false })],
+      plugins: [
+        Compress({ enable: false }),
+        {
+          name: 'cpany:html',
+          configureServer(server) {
+            return () => {
+              const indexHtml = fs
+                .readFileSync(path.join(appPath, 'index.html'), 'utf-8')
+                .replace('/src/main.ts', '/@fs/' + slash(path.join(appPath, 'src', 'main.ts')));
+              server.middlewares.use(async (req, res, next) => {
+                if (req.url!.endsWith('.html')) {
+                  res.setHeader('Content-Type', 'text/html');
+                  res.statusCode = 200;
+                  res.end(indexHtml);
+                  return;
+                }
+                next();
+              });
+            };
+          }
+        }
+      ],
       server: {
         port: option.port,
         host: option.host,
@@ -83,6 +120,7 @@ export async function resolveOptions(
     });
   } else {
     return mergeConfig(common, <InlineConfig>{
+      root: appPath,
       define: {
         __DEV__: false
       },

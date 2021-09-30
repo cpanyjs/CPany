@@ -1,5 +1,15 @@
 {
   "private": true,
+  "scripts": {
+    "dev": "node packages/cli/dist/cli.js dev --data example",
+    "site": "node packages/cli/dist/cli.js build --data example --outDir site",
+    "build": "pnpm run build --filter ./packages && pnpm -C packages/action run package",
+    "build:action": "pnpm -C packages/action run build",
+    "build:cli": "pnpm -C packages/cli run build",
+    "format": "prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore",
+    "release": "node scripts/release.js",
+    "publish": "pnpm publish -r --access public"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged && pnpm run build && git add dist"
@@ -13,17 +23,10 @@
       "prettier --parser=vue --write"
     ]
   },
-  "scripts": {
-    "dev": "node packages/cli/dist/cli.js dev --data example",
-    "site": "node packages/cli/dist/cli.js build --data example --outDir site",
-    "build": "pnpm run build --filter ./packages && pnpm -C packages/action run package",
-    "build:action": "pnpm -C packages/action run build",
-    "build:cli": "pnpm -C packages/cli run build",
-    "format": "prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore",
-    "release": "node scripts/release.js",
-    "publish": "pnpm publish -r --access public"
-  },
   "devDependencies": {
+    "@cpany/cli": "workspace:*",
+    "@cpany/compress": "workspace:*",
+    "@cpany/types": "workspace:*",
     "@types/node": "^16.0.1",
     "@vercel/ncc": "^0.29.0",
     "execa": "^5.1.1",
@@ -33,7 +36,10 @@
     "pnpm": "^6.12.1",
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
+    "tippy.js": "^6.3.1",
     "tsup": "^4.14.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "vue": "^3.2.12",
+    "vue-router": "4"
   }
 }
