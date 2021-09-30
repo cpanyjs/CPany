@@ -102,9 +102,9 @@
 
     <Hover title="所有比赛">
       <c-table :data="contests" :page-size="10" :mobile-page-size="5">
-        <template #columns="{ row, index }">
+        <template #columns="{ row }">
           <c-table-column class="font-600" label="序号" width="4em" center>
-            <span>{{ index + 1 }}</span>
+            <span>{{ row.index }}</span>
           </c-table-column>
           <c-table-column label="时间" center width="10em">
             <a :href="row.contestUrl">{{ toDate(row.author.participantTime).value }}</a>
@@ -168,7 +168,11 @@ const submissions = ref<ISubmission[]>(
     .map((sub, index) => ({ index: index + 1, ...sub }))
     .reverse()
 );
-const contests = ref<IContest[]>(user.value.contests);
+const contests = ref<IContest[]>(user.value.contests
+  .sort((lhs, rhs) => lhs.author.participantTime - rhs.author.participantTime)
+  .map((contest, index) => ({ index: index + 1, ...contest }))
+  .reverse()
+);
 
 const sortedHandles = computed(() => {
   const f = (handle: IHandle) => {
