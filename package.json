@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "dev": "cpany dev --data example",
-    "site": "cpany build --data example --outDir site",
+    "dev": "cpany dev example",
+    "site": "cpany build example --outDir site",
     "build": "pnpm run build --filter ./packages && pnpm -C packages/action run package",
     "build:action": "pnpm -C packages/action run build",
     "build:cli": "pnpm -C packages/cli run build",
