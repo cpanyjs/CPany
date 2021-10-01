@@ -10,6 +10,7 @@ export interface ICliOption {
   port: number;
   force: boolean;
   open: boolean;
+  clearScreen: boolean;
 }
 
 export interface ICliActionOption {

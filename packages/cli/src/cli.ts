@@ -13,28 +13,31 @@ import { version } from './version';
 import { resolveOptions } from './options';
 import { findFreePort } from './utils';
 
-const cli = cac('cpany').option('--data <dir>', 'data directory', { default: '.' });
+const cli = cac('cpany');
 
 cli
-  .command('', 'Build CPany site')
+  .command('[data]', 'Build CPany site')
   .alias('build')
   .option('--emptyOutDir', "force empty outDir when it's outside of root", {
     default: false
   })
   .option('--outDir <dir>', 'output directory', { default: 'dist' })
-  .action(async (option: ICliOption) => {
+  .action(async (dataPath: string | undefined, option: ICliOption) => {
+    option.data = dataPath ?? './';
     await build(await resolveOptions(option, 'prod'));
   });
 
 cli
-  .command('dev', 'Start CPany dev server')
+  .command('dev [data]', 'Start CPany dev server')
   .option('--host [host]', 'specify hostname')
   .option('--port <port>', 'port to listen to', { default: 3000 })
   .option('--open', 'open browser on startup', { default: false })
   .option('--force', 'force the optimizer to ignore the cache and re-bundle', {
     default: false
   })
-  .action(async (option: ICliOption) => {
+  .option('--clear-screen', `allow/disable clear screen`, { default: true })
+  .action(async (dataPath: string | undefined, option: ICliOption) => {
+    option.data = dataPath ?? './';
     const port = (option.port = await findFreePort(option.port));
 
     let server: ViteDevServer | undefined = undefined;
@@ -42,7 +45,7 @@ cli
     const bootstrap = async () => {
       server = await createServer(await resolveOptions(option, 'dev'));
       await server.listen(port);
-      console.clear();
+      if (!!option.clearScreen) console.clear();
       printDevInfo(path.resolve(option.data), port, option.host);
     };
 
@@ -100,11 +103,11 @@ cli
   });
 
 cli
-  .command('action [basePath]', 'Run @cpany/action locally')
+  .command('action [data]', 'Run @cpany/action locally')
+  .option('-p, --plugins <string>', 'CPany plugins', { default: 'codeforces,hdu' })
   .option('--max-retry <number>', 'CPany max retry times', { default: 10 })
-  .option('--plugins <string>', 'CPany plugins', { default: 'codeforces,hdu' })
   .action(
-    async (basePath: string | undefined, { maxRetry, plugins: _plugins }: ICliActionOption) => {
+    async (dataPath: string | undefined, { maxRetry, plugins: _plugins }: ICliActionOption) => {
       const plugins = _plugins
         .split(',')
         .map((plugin) => plugin.trim().toLowerCase())
@@ -112,7 +115,7 @@ cli
 
       await runAction({
         logger: false,
-        basePath,
+        basePath: dataPath,
         disableGit: true,
         maxRetry,
         plugins
