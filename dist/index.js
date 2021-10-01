@@ -17142,9 +17142,35 @@ var ParticipantType;
   ParticipantType2["OUT_OF_COMPETITION"] = "OUT_OF_COMPETITION";
 })(ParticipantType || (ParticipantType = exports.ParticipantType = {}));
 
+// src/platform.ts
+function isCodeforces(entity) {
+  return entity.type.startsWith("codeforces");
+}
+function isAtCoder(entity) {
+  return entity.type.startsWith("atcoder");
+}
+function isNowCoder(entity) {
+  return entity.type.startsWith("nowcoder");
+}
+function isLuogu(entity) {
+  return entity.type.startsWith("luogu");
+}
+function isHdu(entity) {
+  return entity.type.startsWith("hdu");
+}
+function isPintia(entity) {
+  return entity.type.startsWith("pintia");
+}
 
 
-exports.ParticipantType = ParticipantType; exports.Verdict = Verdict;
+
+
+
+
+
+
+
+exports.ParticipantType = ParticipantType; exports.Verdict = Verdict; exports.isAtCoder = isAtCoder; exports.isCodeforces = isCodeforces; exports.isHdu = isHdu; exports.isLuogu = isLuogu; exports.isNowCoder = isNowCoder; exports.isPintia = isPintia;
 
 
 /***/ }),
@@ -17308,7 +17334,7 @@ module.exports = JSON.parse('[["0","\\u0000",128],["a1","｡",62],["8140","　�
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"private":true,"scripts":{"dev":"cpany dev --data example","site":"cpany build --data example --outDir site","build":"pnpm run build --filter ./packages && pnpm -C packages/action run package","build:action":"pnpm -C packages/action run build","build:cli":"pnpm -C packages/cli run build","format":"prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore","release":"node scripts/release.js","publish":"pnpm publish -r --access public"},"husky":{"hooks":{"pre-commit":"lint-staged"}},"lint-staged":{"*.ts":["prettier --parser=typescript --write"],"*.vue":["prettier --parser=vue --write"]},"devDependencies":{"@cpany/cli":"workspace:*","@cpany/compress":"workspace:*","@cpany/types":"workspace:*","@types/node":"^16.0.1","@vercel/ncc":"^0.29.0","execa":"^5.1.1","fs-extra":"^10.0.0","husky":"4.3.7","lint-staged":"^11.0.0","pnpm":"^6.12.1","prettier":"^2.3.2","rimraf":"^3.0.2","tippy.js":"^6.3.1","tsup":"^4.14.0","typescript":"^4.3.5","vue":"^3.2.12","vue-router":"4"}}');
+module.exports = JSON.parse('{"private":true,"scripts":{"dev":"cpany dev example","site":"cpany build example --outDir site","build":"pnpm run build --filter ./packages && pnpm -C packages/action run package","build:action":"pnpm -C packages/action run build","build:cli":"pnpm -C packages/cli run build","format":"prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore","release":"node scripts/release.js","publish":"pnpm publish -r --access public"},"husky":{"hooks":{"pre-commit":"lint-staged"}},"lint-staged":{"*.ts":["prettier --parser=typescript --write"],"*.vue":["prettier --parser=vue --write"]},"devDependencies":{"@cpany/cli":"workspace:*","@cpany/compress":"workspace:*","@cpany/types":"workspace:*","@types/node":"^16.0.1","@vercel/ncc":"^0.29.0","execa":"^5.1.1","fs-extra":"^10.0.0","husky":"4.3.7","lint-staged":"^11.0.0","pnpm":"^6.12.1","prettier":"^2.3.2","rimraf":"^3.0.2","tippy.js":"^6.3.1","tsup":"^4.14.0","typescript":"^4.3.5","vue":"^3.2.12","vue-router":"4"}}');
 
 /***/ }),
 
@@ -21467,7 +21493,7 @@ function createGitFileSystem(basePath, { disable = false } = {}) {
 }
 
 ;// CONCATENATED MODULE: ./src/version.ts
-const ActionVersion = '0.0.56';
+const ActionVersion = '0.0.57';
 
 ;// CONCATENATED MODULE: ./src/report.ts
 var report_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
