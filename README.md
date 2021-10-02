@@ -79,7 +79,7 @@ Fetch data, and start your static site.
 
 ```bash
 # fetch data
-cpany action ./
+cpany action
 
 # Start dev server
 cpany dev
