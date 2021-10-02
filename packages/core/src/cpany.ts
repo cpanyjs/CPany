@@ -91,12 +91,16 @@ export function createInstance(option: ICreateOptions): CPanyInstance {
           }
         }
       } catch (error) {
+        const message = (error as any).message;
+        if (!!message && typeof message === 'string' && message.length > 0) {
+          pluginLogger.error(`Error: ${message}`);
+        }
         pluginLogger.error(`Error: Fetch "${key}" fail`);
         return null;
       }
     }
 
-    instanceLogger.warning(`Error: No matching plugins for ${key}`);
+    instanceLogger.warning(`Warn : No matching plugins for ${key}`);
 
     return undefined;
   };
@@ -129,13 +133,17 @@ export function createInstance(option: ICreateOptions): CPanyInstance {
           pluginLogger.error(`Error: has resolved id "${key}", but failed transforming`);
         }
       } catch (error) {
+        const message = (error as any).message;
+        if (!!message && typeof message === 'string' && message.length > 0) {
+          pluginLogger.error(`Error: ${message}`);
+        }
         pluginLogger.error(`Error: Fetch (id: ${payload.id}, type: ${payload.type}) fail`);
         return null;
       }
     }
 
     instanceLogger.warning(
-      `Error: No matching plugins for (id: ${payload.id}, type: ${payload.type})`
+      `Warn : No matching plugins for (id: ${payload.id}, type: ${payload.type})`
     );
 
     return undefined;
