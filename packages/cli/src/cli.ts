@@ -109,9 +109,9 @@ cli
   .action(
     async (dataPath: string | undefined, { maxRetry, plugins: _plugins }: ICliActionOption) => {
       const plugins = _plugins
-        .split(',')
+        .split(/,| /)
         .map((plugin) => plugin.trim().toLowerCase())
-        .filter((plugin) => plugin !== undefined && plugin !== null && plugin !== '');
+        .filter((plugin) => !!plugin && plugin !== '');  
 
       await runAction({
         logger: false,
