@@ -21,7 +21,7 @@
       <a
         v-for="(handle, index) in author.members"
         :key="index"
-        class="mr-2"
+        :class="index > 0 && 'ml-2'"
         :href="`https://codeforces.com/profile/${handle}`"
         target="_blank"
       >
