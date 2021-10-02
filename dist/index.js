@@ -15853,7 +15853,25 @@ module.exports = {
 
 "use strict";
 var __webpack_unused_export__;
-__webpack_unused_export__ = ({value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }// src/index.ts
+__webpack_unused_export__ = ({value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var __defProp = Object.defineProperty;
+var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __propIsEnum = Object.prototype.propertyIsEnumerable;
+var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+var __spreadValues = (a, b) => {
+  for (var prop in b || (b = {}))
+    if (__hasOwnProp.call(b, prop))
+      __defNormalProp(a, prop, b[prop]);
+  if (__getOwnPropSymbols)
+    for (var prop of __getOwnPropSymbols(b)) {
+      if (__propIsEnum.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    }
+  return a;
+};
+var __require =  true ? require : 0;
+
+// src/index.ts
 var _path = __nccwpck_require__(5622); var _path2 = _interopRequireDefault(_path);
 var _axios = __nccwpck_require__(5186); var _axios2 = _interopRequireDefault(_axios);
 var _utils = __nccwpck_require__(3124);
@@ -15861,12 +15879,129 @@ var _utils = __nccwpck_require__(3124);
 // src/handle.ts
 var _nodehtmlparser = __nccwpck_require__(5738);
 var _htmlentities = __nccwpck_require__(838);
+var _core = __nccwpck_require__(8780);
 var _types = __nccwpck_require__(7584);
 
-// src/contests.ts
+// src/contest.ts
+
+
+
+var handleMap = new Map();
 var contestSet = new Set();
 function addContest(contest) {
   contestSet.add(contest);
+}
+function createAtCoderContestPlugin(api, _handleMap) {
+  for (const [key, value] of _handleMap)
+    handleMap.set(key, value);
+  return {
+    name: "atcoder/contest.json",
+    async load(id, { logger }) {
+      if (id === "atcoder/contest.json") {
+        logger.info(`Fetch: ${contestSet.size} AtCoder contests`);
+        const retry = _core.createRetryContainer.call(void 0, logger, 5);
+        const contests = [];
+        for (const contestId of contestSet) {
+          retry.add(`AtCoder Contest ${contestId}`, async () => {
+            logger.info("Fetch: AtCoder Contest " + contestId);
+            try {
+              const contest = await fecthContest(api, contestId);
+              contests.push(__spreadValues(__spreadValues({}, contest), parseStandings(contestId, contest.startTime, await fetchStandings(api, contestId))));
+              return true;
+            } catch (error) {
+              logger.error("Error: " + error.message);
+              return false;
+            }
+          });
+        }
+        await retry.run();
+        return JSON.stringify(contests, null, 2);
+      }
+    }
+  };
+}
+async function fecthContest(api, contestId) {
+  const { data } = await api.get(`/contests/${contestId}`);
+  const root = _nodehtmlparser.parse.call(void 0, data);
+  const durations = root.querySelectorAll(".contest-duration a");
+  const startTime = new Date(durations[0].innerText).getTime() / 1e3;
+  const endTime = new Date(durations[1].innerText).getTime() / 1e3;
+  return {
+    type: "atcoder",
+    name: root.querySelector("h1").innerText,
+    startTime,
+    duration: endTime - startTime,
+    participantNumber: 0,
+    id: contestId,
+    contestUrl: `https://atcoder.jp/contests/${contestId}`,
+    standingsUrl: `https://atcoder.jp/contests/${contestId}/standings`,
+    inlinePage: true
+  };
+}
+function parseStandings(contestId, startTime, { problems, standings }) {
+  const pIndex = (index) => {
+    if (/[a-z]$/.test(index)) {
+      return index.charCodeAt(index.length - 1) - "a".charCodeAt(0);
+    } else {
+      return index.charCodeAt(index.length - 1) - "A".charCodeAt(0);
+    }
+  };
+  return {
+    problems: problems.map((problem, index) => ({
+      type: "atcoder",
+      contestId,
+      index,
+      name: problem.TaskName,
+      problemUrl: `https://atcoder.jp/contests/${contestId}/tasks/${problem.TaskScreenName}`
+    })),
+    standings: standings.map((standing) => {
+      var _a;
+      let penalty = standing.TotalResult.Penalty * 20 * 60;
+      const submissions = [];
+      for (const pid in standing.TaskResults) {
+        const result = standing.TaskResults[pid];
+        const problemIndex = pIndex(pid);
+        if (result.Score === 0) {
+          submissions.push({
+            id: -1,
+            creationTime: -1,
+            relativeTime: -1,
+            problemIndex,
+            dirty: result.Failure
+          });
+        } else {
+          const relativeTime = Math.round(result.Elapsed / 1e9);
+          submissions.push({
+            id: -1,
+            creationTime: startTime + relativeTime,
+            relativeTime,
+            problemIndex,
+            verdict: _types.Verdict.OK,
+            dirty: result.Penalty
+          });
+        }
+      }
+      const username = standing.UserScreenName !== "" ? standing.UserScreenName : standing.UserName;
+      return {
+        author: {
+          members: [username],
+          teamName: (_a = handleMap.get(username)) != null ? _a : username,
+          participantType: standing.IsRated ? _types.ParticipantType.CONTESTANT : _types.ParticipantType.OUT_OF_COMPETITION,
+          participantTime: startTime
+        },
+        rank: standing.Rank,
+        solved: standing.TotalResult.Accepted,
+        penalty,
+        submissions
+      };
+    }).filter((standing) => standing.submissions.length > 0)
+  };
+}
+async function fetchStandings(api, contestId) {
+  const { data } = await api.get(`/contests/${contestId}/standings/json`);
+  const problems = data.TaskInfo;
+  const standings = data.StandingsData.filter((row) => handleMap.has(row.UserName) || handleMap.has(row.UserScreenName));
+  return { problems, standings };
 }
 
 // src/handle.ts
@@ -15884,11 +16019,7 @@ function createAtCoderHandlePlugin(api) {
     async transform({ id, type }, { logger }) {
       if (type === name) {
         const user = await fetchUser(api, id);
-        try {
-          user.submissions = await fetchSubmissions(api, id, logger);
-        } catch (error) {
-          console.log(error);
-        }
+        user.submissions = await fetchSubmissions(api, id, logger);
         return { key: gid(id), content: JSON.stringify(user, null, 2) };
       }
       return null;
@@ -16010,10 +16141,20 @@ async function fetchSubmissions(api, id, logger) {
     }
     logger.info(`Fetch: ${id} has created ${submissions.length - initLen} submissions in ${contest}`);
   };
+  const retry = _core.createRetryContainer.call(void 0, logger, 5);
   for (const contest of contests) {
     addContest(contest);
-    await run(contest);
+    retry.add(`${id}'s submissions at ${contest}'`, async () => {
+      try {
+        await run(contest);
+        return true;
+      } catch (error) {
+        logger.error("Error: " + error.message);
+        return false;
+      }
+    });
   }
+  await retry.run();
   return submissions;
 }
 
@@ -16027,6 +16168,21 @@ function loadCookie() {
   return session;
 }
 function atcoderPlugin(config) {
+  var _a;
+  const configUsers = (_a = config.users) != null ? _a : {};
+  const handleMap2 = new Map();
+  for (const username in configUsers) {
+    const user = configUsers[username];
+    for (const type in user) {
+      if (type.startsWith("atcoder")) {
+        const rawHandles = user[type];
+        const handles = typeof rawHandles === "string" ? [rawHandles] : rawHandles;
+        for (const handle of handles) {
+          handleMap2.set(handle, username);
+        }
+      }
+    }
+  }
   const cookie = loadCookie();
   const api = _axios2.default.create({
     baseURL: "https://atcoder.jp/",
@@ -16036,6 +16192,7 @@ function atcoderPlugin(config) {
   });
   return [
     createAtCoderHandlePlugin(api),
+    createAtCoderContestPlugin(api, handleMap2),
     {
       name: "atcoder/clean",
       async clean() {
@@ -16403,11 +16560,15 @@ function createInstance(option) {
                 }
             }
             catch (error) {
+                const message = error.message;
+                if (!!message && typeof message === 'string' && message.length > 0) {
+                    pluginLogger.error(`Error: ${message}`);
+                }
                 pluginLogger.error(`Error: Fetch "${key}" fail`);
                 return null;
             }
         }
-        instanceLogger.warning(`Error: No matching plugins for ${key}`);
+        instanceLogger.warning(`Warn : No matching plugins for ${key}`);
         return undefined;
     });
     const transform = (payload) => __awaiter(this, void 0, void 0, function* () {
@@ -16435,11 +16596,15 @@ function createInstance(option) {
                 }
             }
             catch (error) {
+                const message = error.message;
+                if (!!message && typeof message === 'string' && message.length > 0) {
+                    pluginLogger.error(`Error: ${message}`);
+                }
                 pluginLogger.error(`Error: Fetch (id: ${payload.id}, type: ${payload.type}) fail`);
                 return null;
             }
         }
-        instanceLogger.warning(`Error: No matching plugins for (id: ${payload.id}, type: ${payload.type})`);
+        instanceLogger.warning(`Warn : No matching plugins for (id: ${payload.id}, type: ${payload.type})`);
         return undefined;
     });
     return {
@@ -16506,6 +16671,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createDefaultLogger = void 0;
 __exportStar(__nccwpck_require__(8241), exports);
+__exportStar(__nccwpck_require__(6462), exports);
 __exportStar(__nccwpck_require__(7414), exports);
 var utils_1 = __nccwpck_require__(2498);
 Object.defineProperty(exports, "createDefaultLogger", ({ enumerable: true, get: function () { return utils_1.createDefaultLogger; } }));
@@ -16519,6 +16685,66 @@ Object.defineProperty(exports, "createDefaultLogger", ({ enumerable: true, get: 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+
+/***/ }),
+
+/***/ 6462:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.sleep = exports.createRetryContainer = void 0;
+const random_js_1 = __nccwpck_require__(5415);
+const random = new random_js_1.Random(random_js_1.MersenneTwister19937.autoSeed());
+function createRetryContainer(logger, maxRetry = 10) {
+    const tasks = [];
+    const add = (id, fn) => {
+        tasks.push({ id, fn });
+    };
+    const run = () => __awaiter(this, void 0, void 0, function* () {
+        for (const task of tasks) {
+            let stop = false;
+            for (let count = 1; count <= maxRetry; count++) {
+                const ok = yield task.fn();
+                if (!ok) {
+                    if (count === maxRetry) {
+                        stop = true;
+                        logger.error(`Error: Task ${task.id} failed`);
+                        break;
+                    }
+                    const suffix = count % 10 === 1 ? 'st' : count % 10 === 2 ? 'nd' : 'th';
+                    logger.info(`Retry: Task ${task.id} failed at the ${count}-${suffix} time`);
+                    yield sleep(random.integer(2 * 1000, 5 * 1000));
+                }
+                else {
+                    break;
+                }
+            }
+            if (stop)
+                break;
+        }
+    });
+    return {
+        add,
+        run
+    };
+}
+exports.createRetryContainer = createRetryContainer;
+function sleep(duration) {
+    return new Promise((res) => setTimeout(() => res(), duration));
+}
+exports.sleep = sleep;
 
 
 /***/ }),
@@ -16649,7 +16875,7 @@ function fetchHandle(handle, logger) {
     return __awaiter(this, void 0, void 0, function* () {
         if (handles.has(handle))
             return handles.get(handle);
-        logger.info(`Start fetching Hdu handle: ${handle}`);
+        logger.info(`Fetch: Hdu handle ${handle}`);
         const { data } = yield axios_1.default.get(`https://acm.hdu.edu.cn/userstatus.php?user=${handle}`);
         const rank = /<tr><td>Rank<\/td><td align=center>(\d+)<\/td><\/tr>/.exec(data);
         return {
@@ -16973,7 +17199,7 @@ function fetchSubmissions(api, name, id, logger) {
             }
             if (isEnd || curSubs.length === 0)
                 break;
-            logger.info(`Fetch: At page ${page} Luogu handle (name: ${name}, id: ${id}) has fetched ${subs.length - oldLen} new submissions`);
+            logger.info(`Fetch: (name: ${name}, id: ${id}) has fetched ${subs.length - oldLen} new submissions at page ${page}`);
             page = page + 1;
         }
         return [...subs, ...preSubs];
@@ -21606,63 +21832,6 @@ function listDir(dir, skipList = new Set()) {
 function now() {
     return dayjs_min_default()().tz('Asia/Shanghai');
 }
-function sleep(duration) {
-    return new Promise((res) => setTimeout(() => res(), duration));
-}
-
-// EXTERNAL MODULE: ../../node_modules/.pnpm/random-js@2.1.0/node_modules/random-js/dist/random-js.umd.js
-var random_js_umd = __nccwpck_require__(5415);
-;// CONCATENATED MODULE: ./src/retry.ts
-var retry_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-
-
-
-const random = new random_js_umd.Random(random_js_umd.MersenneTwister19937.autoSeed());
-function createRetryContainer(maxRetry = 10) {
-    const tasks = [];
-    const add = (id, fn) => {
-        tasks.push({ id, fn, count: 0 });
-    };
-    const run = () => retry_awaiter(this, void 0, void 0, function* () {
-        while (tasks.length > 0) {
-            const newTasks = [];
-            let stop = false;
-            for (const { id, fn, count } of tasks) {
-                if (stop) {
-                    newTasks.push({ id, fn, count });
-                    continue;
-                }
-                const ok = yield fn();
-                if (!ok) {
-                    stop = true;
-                    if (count === maxRetry) {
-                        core.error(`Task ${id} run fail`);
-                    }
-                    else {
-                        newTasks.push({ id, fn, count: count + 1 });
-                    }
-                }
-            }
-            tasks.splice(0);
-            tasks.push(...newTasks);
-            if (tasks.length > 0) {
-                yield sleep(random.integer(2 * 1000, 5 * 1000));
-            }
-        }
-    });
-    return {
-        add,
-        run
-    };
-}
 
 ;// CONCATENATED MODULE: ./src/action.ts
 var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -21674,7 +21843,6 @@ var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _a
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-
 
 
 
@@ -21715,7 +21883,7 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
         }
         instance.logger.endGroup();
         instance.logger.startGroup('Fetch data');
-        const retry = createRetryContainer(maxRetry);
+        const retry = (0,dist.createRetryContainer)(instance.logger, maxRetry);
         const configUser = (_a = config === null || config === void 0 ? void 0 : config.users) !== null && _a !== void 0 ? _a : {};
         for (const userKey in configUser) {
             const user = configUser[userKey];
@@ -21746,6 +21914,7 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
                 }
             }
         }
+        yield retry.run();
         for (const id of (_b = config === null || config === void 0 ? void 0 : config.fetch) !== null && _b !== void 0 ? _b : []) {
             const result = yield instance.load(id);
             if (!!result) {
@@ -21753,7 +21922,6 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
                 yield fs.add(key, content);
             }
         }
-        yield retry.run();
         instance.logger.endGroup();
         const nowTime = now();
         try {
