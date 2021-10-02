@@ -42,6 +42,7 @@ async function run() {
   await writeFile('./README.md', readme);
   await writeFile('./packages/cli/README.md', readme);
 
+  await execa('npm', ['run', 'format'], { stdio: 'inherit' });
   await execa('npm', ['run', 'build'], { stdio: 'inherit' });
 
   await execa('git', ['add', '.'], { stdio: 'inherit' });
