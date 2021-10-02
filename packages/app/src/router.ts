@@ -76,6 +76,15 @@ const routes = [
 
 /* __contests__ */
 
+routes.push({
+  path: '/contest/:platform/:id',
+  name: 'EmptyContest',
+  component: () => import('./pages/Contest/Empty.vue'),
+  meta: {
+    title: '错误 - CPany'
+  }
+});
+
 export const router = createRouter({
   history: createWebHistory(),
   routes,

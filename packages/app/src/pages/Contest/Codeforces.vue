@@ -1,7 +1,11 @@
 <template>
   <div>
-    <div v-if="contest">
+    <div v-if="contest && !displayError">
       <Page :contest="contest" />
+    </div>
+    <div v-else class="divide-y">
+      <h2 class="mb-2">错误</h2>
+      <p class="pt-2">未找到 ID 为 {{ route.params.id }} 的 Codeforces 比赛</p>
     </div>
   </div>
 </template>
@@ -10,8 +14,8 @@
 import type { IContest, IContestProblem, RouteKey } from '@cpany/types';
 import { Verdict, ParticipantType } from '@cpany/types';
 
-import { useRoute } from 'vue-router';
-import { ref, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
+import { ref, watch, onUnmounted } from 'vue';
 
 import { useGlobalLoading } from '@/components/progress';
 import { findCodeforces } from '@/codeforces';
@@ -21,7 +25,11 @@ import Page from './Contest.vue';
 
 const route = useRoute();
 
+const router = useRouter();
+
 const contest = ref<RouteKey<IContest> | null>(null);
+
+const displayError = ref(false);
 
 const { start, end } = useGlobalLoading();
 
@@ -111,6 +119,11 @@ watch(
         fetchStanding(contest.value);
         // Dep: manual update document title
         document.title = `${cf.name} - CPany`;
+      } else {
+        displayError.value = true;
+        const returnHome = () => router.replace({ name: 'Home' });
+        const timer = setTimeout(returnHome, 3000);
+        onUnmounted(() => clearTimeout(timer));
       }
     }
   },

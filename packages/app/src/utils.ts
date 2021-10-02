@@ -55,6 +55,25 @@ export function toDuration(duration: number | Ref<number>) {
   );
 }
 
+export const displayPlatform = (type: string) => {
+  const wrapper = { type };
+  if (isCodeforces(wrapper)) {
+    return 'Codeforces';
+  } else if (isNowCoder(wrapper)) {
+    return '牛客竞赛';
+  } else if (isHdu(wrapper)) {
+    return 'HDu';
+  } else if (isLuogu(wrapper)) {
+    return '洛谷';
+  } else if (isPintia(wrapper)) {
+    return '拼题A';
+  } else if (isAtCoder(wrapper)) {
+    return 'AtCoder';
+  } else {
+    return type.charAt(0).toUpperCase() + type.slice(1);
+  }
+};
+
 export const displayContestType = (contest: IContest) => {
   if (isCodeforces(contest)) {
     if (/Round/.test(contest.name) || /Div/.test(contest.name)) {
@@ -81,20 +100,7 @@ export const displayContestType = (contest: IContest) => {
 };
 
 export const displayProblemType = (problem: IProblem) => {
-  if (isCodeforces(problem)) {
-    return 'Codeforces';
-  } else if (isNowCoder(problem)) {
-    return '牛客竞赛';
-  } else if (isHdu(problem)) {
-    return 'HDu';
-  } else if (isLuogu(problem)) {
-    return '洛谷';
-  } else if (isAtCoder(problem)) {
-    return 'AtCoder';
-  } else {
-    const type = problem.type;
-    return type.charAt(0).toUpperCase() + type.slice(1);
-  }
+  return displayPlatform(problem.type);
 };
 
 export const displayParticipantType = (type: ParticipantType) => {

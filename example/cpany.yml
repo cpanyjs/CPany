@@ -23,7 +23,6 @@ contests:
   - codeforces/contest.json
   - codeforces/gym-contest.json
   - atcoder/contest.json
-  - hdu/contest
   - nowcoder
 
 fetch:
@@ -33,7 +32,6 @@ fetch:
 
 static:
   - atcoder/contest.json
-  - hdu/contest
   - nowcoder
 
 app:
