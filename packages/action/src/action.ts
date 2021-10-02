@@ -4,7 +4,8 @@ import { resolve } from 'path';
 import { load } from 'js-yaml';
 
 import type { ICPanyConfig } from '@cpany/types';
-import { createInstance } from '@cpany/core';
+import { createInstance, createRetryContainer } from '@cpany/core';
+
 import { codeforcesPlugin } from '@cpany/codeforces';
 import { hduPlugin } from '@cpany/hdu';
 import { luoguPlugin } from '@cpany/luogu';
@@ -13,7 +14,6 @@ import { atcoderPlugin } from '@cpany/atcoder';
 import { createGitFileSystem } from './fs';
 import { processReport } from './report';
 import { now } from './utils';
-import { createRetryContainer } from './retry';
 
 export interface IRunOption {
   logger?: boolean;
@@ -61,7 +61,7 @@ export async function run({
 
   instance.logger.startGroup('Fetch data');
 
-  const retry = createRetryContainer(maxRetry);
+  const retry = createRetryContainer(instance.logger, maxRetry);
   const configUser = config?.users ?? {};
   for (const userKey in configUser) {
     const user = configUser[userKey];
@@ -94,6 +94,8 @@ export async function run({
     }
   }
 
+  await retry.run();
+
   for (const id of config?.fetch ?? []) {
     const result = await instance.load(id);
 
@@ -102,8 +104,6 @@ export async function run({
       await fs.add(key, content);
     }
   }
-
-  await retry.run();
 
   instance.logger.endGroup();
 
