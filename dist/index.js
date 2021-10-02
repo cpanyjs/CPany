@@ -17414,21 +17414,24 @@ function uniq(array) {
 var _fs = __nccwpck_require__(5747);
 var _path = __nccwpck_require__(5622); var _path2 = _interopRequireDefault(_path);
 async function* listJsonFiles(dir) {
-  if (dir.endsWith(".json")) {
-    const files = JSON.parse(await _fs.promises.readFile(dir, "utf8"));
-    if (Array.isArray(files)) {
-      for (const contest of files) {
-        yield contest;
+  try {
+    if (dir.endsWith(".json")) {
+      const files = JSON.parse(await _fs.promises.readFile(dir, "utf8"));
+      if (Array.isArray(files)) {
+        for (const contest of files) {
+          yield contest;
+        }
+      } else {
+        yield files;
       }
     } else {
-      yield files;
+      const dirents = await _fs.promises.readdir(dir, { withFileTypes: true });
+      for (const dirent of dirents) {
+        const id = _path2.default.join(dir, dirent.name);
+        yield* listJsonFiles(id);
+      }
     }
-  } else {
-    const dirents = await _fs.promises.readdir(dir, { withFileTypes: true });
-    for (const dirent of dirents) {
-      const id = _path2.default.join(dir, dirent.name);
-      yield* listJsonFiles(id);
-    }
+  } catch (e) {
   }
 }
 async function* listFiles(dir, skipList = new Set()) {
@@ -21719,7 +21722,7 @@ function createGitFileSystem(basePath, { disable = false } = {}) {
 }
 
 ;// CONCATENATED MODULE: ./src/version.ts
-const ActionVersion = '0.0.57';
+const ActionVersion = '0.0.58';
 
 ;// CONCATENATED MODULE: ./src/report.ts
 var report_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
