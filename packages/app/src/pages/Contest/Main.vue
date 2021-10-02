@@ -42,10 +42,22 @@ import { toDate, displayContestType } from '@/utils';
 
 const unit = recentContestsCount * 2;
 
-const displayContests = ref(contests.slice(0, unit));
+const KEY = 'contest.size';
+
+const load = () => {
+  const value = sessionStorage.getItem(KEY);
+  return value !== null ? +value : unit;
+};
+
+const store = (len: number) => {
+  sessionStorage.setItem(KEY, String(len));
+};
+
+const displayContests = ref(contests.slice(0, load()));
 
 const displayMore = () => {
   const curLength = displayContests.value.length;
   displayContests.value.push(...contests.slice(curLength, curLength + unit));
+  store(displayContests.value.length);
 };
 </script>
