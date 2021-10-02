@@ -130,7 +130,9 @@ function parseStandings(contestId: string, startTime: number, { problems, standi
           author: {
             members: [username],
             teamName: handleMap.get(username) ?? username,
-            participantType: ParticipantType.CONTESTANT,
+            participantType: standing.IsRated
+              ? ParticipantType.CONTESTANT
+              : ParticipantType.OUT_OF_COMPETITION,
             participantTime: startTime
           },
           rank: standing.Rank,

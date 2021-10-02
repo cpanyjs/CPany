@@ -7,9 +7,17 @@
           <span v-else class="font-600">-</span>
         </c-table-column>
         <c-table-column :label="isCfRound ? 'Handle' : ''">
-          <cf-handles v-if="isCfRound" :author="row.author"></cf-handles>
-          <at-handles v-else-if="isAtRound" :author="row.author"></at-handles>
-          <team-name v-else :author="row.author"></team-name>
+          <div class="flex items-center">
+            <icon-star
+              v-if="isOutOfCompetition(row)"
+              class="mr-1 text-sm text-yellow-300 inline-block"
+            ></icon-star>
+            <div>
+              <cf-handles v-if="isCfRound" :author="row.author"></cf-handles>
+              <at-handles v-else-if="isAtRound" :author="row.author"></at-handles>
+              <team-name v-else :author="row.author"></team-name>
+            </div>
+          </div>
         </c-table-column>
         <c-table-column label="解决" align="center" width="4em">
           <span>{{ row.solved }}</span>
@@ -49,6 +57,7 @@ import { Verdict, ParticipantType } from '@cpany/types';
 
 import { computed, toRefs } from 'vue';
 
+import IconStar from '~icons/mdi/star';
 import { CTable, CTableColumn } from '@/components/table';
 import { isUndef, isDef, toNumDuration } from '@/utils';
 
@@ -63,6 +72,9 @@ const { contest } = toRefs(props);
 
 const isCfRound = computed(() => contest.value.type.startsWith('codeforces'));
 const isAtRound = computed(() => contest.value.type.startsWith('atcoder'));
+
+const isOutOfCompetition = (standing: IContestStanding) =>
+  standing.author.participantType === ParticipantType.OUT_OF_COMPETITION;
 
 const isPractice = (standing: IContestStanding) =>
   standing.author.participantType === ParticipantType.PRACTICE;
