@@ -16,16 +16,19 @@ export function useIsMobile(mobileWidth: MaybeRef<number>) {
 
 const pageCache = new Map<string, number>();
 
-export function usePagination(_pageSize: Ref<number | undefined>, data: MaybeRef<any[]>, key?: string) {
-  
+export function usePagination(
+  _pageSize: Ref<number | undefined>,
+  data: MaybeRef<any[]>,
+  key?: string
+) {
   const dataLength = computed(() => unref(data).length);
   const pageSize = computed(() => Math.max(1, unref(_pageSize) ?? dataLength.value));
-  
+
   const pageLength = computed(() => Math.ceil(dataLength.value / pageSize.value));
-  const current = ref(key ? (pageCache.get(key) ?? 0) : 0);
+  const current = ref(key ? pageCache.get(key) ?? 0 : 0);
   const L = computed(() => current.value * pageSize.value);
   const R = computed(() => Math.min(dataLength.value, L.value + pageSize.value));
-  
+
   watch(current, (current: number) => {
     if (key) {
       pageCache.set(key, current);

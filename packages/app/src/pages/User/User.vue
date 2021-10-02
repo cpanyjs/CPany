@@ -102,7 +102,12 @@
     </Hover>
 
     <Hover title="所有比赛">
-      <c-table :cache="user.name + '/contest'" :data="contests" :page-size="10" :mobile-page-size="5">
+      <c-table
+        :cache="user.name + '/contest'"
+        :data="contests"
+        :page-size="10"
+        :mobile-page-size="5"
+      >
         <template #columns="{ row }">
           <c-table-column class="font-600" label="序号" width="4em" center>
             <span>{{ row.index }}</span>
