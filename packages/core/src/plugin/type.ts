@@ -33,6 +33,8 @@ export interface ILoadPlugin {
 
   load: (id: string, instance: IInstance) => Promise<LoadResult | string | null | undefined>;
 
+  enforce?: 'pre' | 'post';
+
   logger?: ILogger;
 }
 
@@ -42,6 +44,8 @@ export interface ITransformPlugin<T extends ITransformPayload = ITransformPayloa
   resolveKey: (payload: T) => string | null | undefined;
 
   transform: (payload: T, instance: IInstance) => Promise<LoadResult | null | undefined>;
+
+  enforce?: 'pre' | 'post';
 
   logger?: ILogger;
 }
