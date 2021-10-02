@@ -1,7 +1,7 @@
 import type { AxiosInstance } from 'axios';
 import { parse } from 'node-html-parser';
 
-import type { IPlugin } from '@cpany/core';
+import { IPlugin, createRetryContainer } from '@cpany/core';
 import { IContest, IContestSubmission, ParticipantType, Verdict } from '@cpany/types';
 
 const handleMap = new Map<string, string>();
@@ -22,17 +22,28 @@ export function createAtCoderContestPlugin(
     async load(id: string, { logger }) {
       if (id === 'atcoder/contest.json') {
         logger.info(`Fetch: ${contestSet.size} AtCoder contests`);
+
+        const retry = createRetryContainer(logger, 5);
         const contests: IContest[] = [];
         for (const contestId of contestSet) {
-          logger.info('Fetch: AtCoder Contest ' + contestId);
-
-          const contest = await fecthContest(api, contestId);
-
-          contests.push({
-            ...contest,
-            ...parseStandings(contestId, contest.startTime, await fetchStandings(api, contestId))
+          retry.add(`AtCoder Contest ${contestId}`, async () => {
+            logger.info('Fetch: AtCoder Contest ' + contestId);
+            
+            try {
+              const contest = await fecthContest(api, contestId);
+              contests.push({
+                ...contest,
+                ...parseStandings(contestId, contest.startTime, await fetchStandings(api, contestId))
+              });
+              return true;
+            } catch (error) {
+              logger.error('Error: ' + (error as any).message);
+              return false;
+            }
           });
         }
+        await retry.run();
+        
         return JSON.stringify(contests, null, 2);
       }
     }
@@ -121,7 +132,7 @@ function parseStandings(contestId: string, startTime: number, { problems, standi
         penalty,
         submissions
       };
-    })
+    }).filter(standing => standing.submissions.length > 0)
   };
 }
 
