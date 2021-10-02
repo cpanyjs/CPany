@@ -43,7 +43,7 @@ export function createHduHandlePlugin(): IPlugin {
 export async function fetchHandle(handle: string, logger: ILogger): Promise<IHandleWithHdu> {
   if (handles.has(handle)) return handles.get(handle)!;
 
-  logger.info(`Start fetching Hdu handle: ${handle}`);
+  logger.info(`Fetch: Hdu handle ${handle}`);
 
   const { data } = await axios.get(`https://acm.hdu.edu.cn/userstatus.php?user=${handle}`);
   const rank = /<tr><td>Rank<\/td><td align=center>(\d+)<\/td><\/tr>/.exec(data);
