@@ -6,6 +6,7 @@ import type { ICPanyConfig } from '@cpany/types';
 import { listFiles } from '@cpany/utils';
 
 import { createAtCoderHandlePlugin } from './handle';
+import { createAtCoderContestPlugin } from './contest';
 
 function loadCookie(): string {
   const session = process.env.REVEL_SESSION;
@@ -17,6 +18,21 @@ function loadCookie(): string {
 }
 
 export function atcoderPlugin(config: ICPanyConfig & { basePath: string }): IPlugin[] {
+  const configUsers = config.users ?? {};
+  const handleMap = new Map<string, string>();
+  for (const username in configUsers) {
+    const user = configUsers[username];
+    for (const type in user) {
+      if (type.startsWith('atcoder')) {
+        const rawHandles = user[type];
+        const handles = typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
+        for (const handle of handles) {
+          handleMap.set(handle, username);
+        }
+      }
+    }
+  }
+
   const cookie = loadCookie();
 
   const api = axios.create({
@@ -28,6 +44,7 @@ export function atcoderPlugin(config: ICPanyConfig & { basePath: string }): IPlu
 
   return [
     createAtCoderHandlePlugin(api),
+    createAtCoderContestPlugin(api, handleMap),
     {
       name: 'atcoder/clean',
       async clean() {

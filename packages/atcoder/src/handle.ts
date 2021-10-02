@@ -6,7 +6,7 @@ import type { IPlugin, ILogger } from '@cpany/core';
 import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
 import { ISubmission, ParticipantType, Verdict } from '@cpany/types';
 
-import { addContest } from './contests';
+import { addContest } from './contest';
 
 export function createAtCoderHandlePlugin(api: AxiosInstance): IPlugin {
   const name = 'atcoder/handle';
@@ -22,11 +22,7 @@ export function createAtCoderHandlePlugin(api: AxiosInstance): IPlugin {
     async transform({ id, type }, { logger }) {
       if (type === name) {
         const user = await fetchUser(api, id);
-        try {
-          user.submissions = await fetchSubmissions(api, id, logger);
-        } catch (error) {
-          console.log(error);
-        }
+        user.submissions = await fetchSubmissions(api, id, logger);
         return { key: gid(id), content: JSON.stringify(user, null, 2) };
       }
       return null;

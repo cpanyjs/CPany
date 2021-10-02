@@ -1,6 +1,5 @@
 import type { Verdict } from './enum';
 import type { IAuthor } from './handle';
-import type { IContestProblem } from './problem';
 
 export interface IContest {
   type: string;
@@ -15,6 +14,16 @@ export interface IContest {
   problems?: IContestProblem[];
   standings?: IContestStanding[];
   inlinePage?: boolean;
+}
+
+export interface IContestProblem {
+  type: string;
+  contestId?: number | string;
+  index: number | string;
+  name: string;
+  problemUrl?: string;
+  rating?: number;
+  tags?: string[];
 }
 
 export interface IContestStanding {
