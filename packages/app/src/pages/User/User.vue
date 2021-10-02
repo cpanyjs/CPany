@@ -65,6 +65,7 @@
 
     <Hover title="所有提交" class="mb-4">
       <c-table
+        :cache="user.name + '/submissions'"
         :data="submissions"
         default-sort="序号"
         default-sort-order="desc"
@@ -101,7 +102,7 @@
     </Hover>
 
     <Hover title="所有比赛">
-      <c-table :data="contests" :page-size="10" :mobile-page-size="5">
+      <c-table :cache="user.name + '/contest'" :data="contests" :page-size="10" :mobile-page-size="5">
         <template #columns="{ row }">
           <c-table-column class="font-600" label="序号" width="4em" center>
             <span>{{ row.index }}</span>

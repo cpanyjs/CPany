@@ -1,4 +1,4 @@
-import { ref, computed, Ref, unref } from 'vue';
+import { ref, Ref, unref, computed, watch } from 'vue';
 
 type MaybeRef<T> = Ref<T> | T;
 
@@ -14,14 +14,23 @@ export function useIsMobile(mobileWidth: MaybeRef<number>) {
   return { width, isMobile, clean };
 }
 
-export function usePagination(_pageSize: Ref<number | undefined>, data: MaybeRef<any[]>) {
+const pageCache = new Map<string, number>();
+
+export function usePagination(_pageSize: Ref<number | undefined>, data: MaybeRef<any[]>, key?: string) {
+  
   const dataLength = computed(() => unref(data).length);
   const pageSize = computed(() => Math.max(1, unref(_pageSize) ?? dataLength.value));
-
+  
   const pageLength = computed(() => Math.ceil(dataLength.value / pageSize.value));
-  const current = ref(0);
+  const current = ref(key ? (pageCache.get(key) ?? 0) : 0);
   const L = computed(() => current.value * pageSize.value);
   const R = computed(() => Math.min(dataLength.value, L.value + pageSize.value));
+  
+  watch(current, (current: number) => {
+    if (key) {
+      pageCache.set(key, current);
+    }
+  });
 
   const hasNextPage = computed(
     () => current.value + 1 < pageLength.value && R.value < dataLength.value

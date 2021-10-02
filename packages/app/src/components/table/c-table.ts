@@ -69,13 +69,14 @@ export default defineComponent({
       !isMobile.value ? pageSize.value : mobilePageSize.value ?? pageSize.value
     );
 
+    const cache = !!props.cache ? sortCache.get(props.cache) : undefined;
+
     const isPagination = computed(() => isDef(realPageSize.value));
     const { current, pageLength, L, R, nextPage, prePage, goPage } = usePagination(
       realPageSize,
-      data
+      data,
+      props.cache
     );
-
-    const cache = !!props.cache ? sortCache.get(props.cache) : undefined;
 
     // sort
     const sortField = ref(cache?.field ?? defaultSort.value);
