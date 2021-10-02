@@ -2,8 +2,8 @@ import type { AxiosInstance } from 'axios';
 import { parse } from 'node-html-parser';
 import { decode } from 'html-entities';
 
-import type { IPlugin, ILogger } from '@cpany/core';
 import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
+import { IPlugin, ILogger, createRetryContainer } from '@cpany/core';
 import { ISubmission, ParticipantType, Verdict } from '@cpany/types';
 
 import { addContest } from './contest';
@@ -164,10 +164,20 @@ async function fetchSubmissions(
     );
   };
 
+  const retry = createRetryContainer(logger, 5);
   for (const contest of contests) {
     addContest(contest);
-    await run(contest);
+    retry.add(`${id}'s submissions at ${contest}'`, async () => {
+      try {
+        await run(contest);
+        return true;
+      } catch (error) {
+        logger.error('Error: ' + (error as any).message);
+        return false;
+      }
+    });
   }
+  await retry.run();
 
   return submissions;
 }
