@@ -111,7 +111,7 @@ cli
       const plugins = _plugins
         .split(/,| /)
         .map((plugin) => plugin.trim().toLowerCase())
-        .filter((plugin) => !!plugin && plugin !== '');  
+        .filter((plugin) => !!plugin && plugin !== '');
 
       await runAction({
         logger: false,

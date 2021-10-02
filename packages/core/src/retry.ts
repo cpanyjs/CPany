@@ -29,8 +29,8 @@ export function createRetryContainer(logger: ILogger, maxRetry: number = 10) {
             logger.error(`Error: Task ${task.id} failed`);
             break;
           }
-          const suffix = count % 10 === 1 ? 'st' : count % 10 === 2 ? 'nd' : 'th'; 
-          logger.info(`Retry: Task ${task.id} failed at the ${count}-${suffix} time`)
+          const suffix = count % 10 === 1 ? 'st' : count % 10 === 2 ? 'nd' : 'th';
+          logger.info(`Retry: Task ${task.id} failed at the ${count}-${suffix} time`);
           await sleep(random.integer(2 * 1000, 5 * 1000));
         } else {
           break;

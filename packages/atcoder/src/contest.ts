@@ -28,12 +28,16 @@ export function createAtCoderContestPlugin(
         for (const contestId of contestSet) {
           retry.add(`AtCoder Contest ${contestId}`, async () => {
             logger.info('Fetch: AtCoder Contest ' + contestId);
-            
+
             try {
               const contest = await fecthContest(api, contestId);
               contests.push({
                 ...contest,
-                ...parseStandings(contestId, contest.startTime, await fetchStandings(api, contestId))
+                ...parseStandings(
+                  contestId,
+                  contest.startTime,
+                  await fetchStandings(api, contestId)
+                )
               });
               return true;
             } catch (error) {
@@ -43,7 +47,7 @@ export function createAtCoderContestPlugin(
           });
         }
         await retry.run();
-        
+
         return JSON.stringify(contests, null, 2);
       }
     }
@@ -90,49 +94,52 @@ function parseStandings(contestId: string, startTime: number, { problems, standi
       name: problem.TaskName,
       problemUrl: `https://atcoder.jp/contests/${contestId}/tasks/${problem.TaskScreenName}`
     })),
-    standings: standings.map((standing: any) => {
-      let penalty = standing.TotalResult.Penalty * 20 * 60;
-      const submissions: IContestSubmission[] = [];
-      for (const pid in standing.TaskResults) {
-        const result = standing.TaskResults[pid];
-        const problemIndex = pIndex(pid);
+    standings: standings
+      .map((standing: any) => {
+        let penalty = standing.TotalResult.Penalty * 20 * 60;
+        const submissions: IContestSubmission[] = [];
+        for (const pid in standing.TaskResults) {
+          const result = standing.TaskResults[pid];
+          const problemIndex = pIndex(pid);
 
-        if (result.Score === 0) {
-          submissions.push({
-            id: -1,
-            creationTime: -1,
-            relativeTime: -1,
-            problemIndex,
-            dirty: result.Failure
-          });
-        } else {
-          const relativeTime = Math.round(result.Elapsed / 1000000000);
+          if (result.Score === 0) {
+            submissions.push({
+              id: -1,
+              creationTime: -1,
+              relativeTime: -1,
+              problemIndex,
+              dirty: result.Failure
+            });
+          } else {
+            const relativeTime = Math.round(result.Elapsed / 1000000000);
 
-          submissions.push({
-            id: -1,
-            creationTime: startTime + relativeTime,
-            relativeTime,
-            problemIndex,
-            verdict: Verdict.OK,
-            dirty: result.Penalty
-          });
+            submissions.push({
+              id: -1,
+              creationTime: startTime + relativeTime,
+              relativeTime,
+              problemIndex,
+              verdict: Verdict.OK,
+              dirty: result.Penalty
+            });
+          }
         }
-      }
-      const username = standing.UserScreenName !== '' ? standing.UserScreenName : standing.UserName;
+        const username =
+          standing.UserScreenName !== '' ? standing.UserScreenName : standing.UserName;
 
-      return {
-        author: {
-          members: [username],
-          teamName: handleMap.get(username) ?? username,
-          participantType: ParticipantType.CONTESTANT,
-          participantTime: startTime
-        },
-        rank: standing.Rank,
-        solved: standing.TotalResult.Accepted,
-        penalty,
-        submissions
-      };
-    }).filter(standing => standing.submissions.length > 0)
+        return {
+          author: {
+            members: [username],
+            teamName: handleMap.get(username) ?? username,
+            participantType: ParticipantType.CONTESTANT,
+            participantTime: startTime
+          },
+          rank: standing.Rank,
+          solved: standing.TotalResult.Accepted,
+          penalty,
+          submissions
+        };
+      })
+      .filter((standing) => standing.submissions.length > 0)
   };
 }
 
