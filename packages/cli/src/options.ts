@@ -96,6 +96,9 @@ export async function resolveOptions(
           allow: uniq([searchForWorkspaceRoot(appPath), ...(isInstalledGlobally ? [appPath] : [])])
         }
       },
+      json: {
+        stringify: false
+      },
       logLevel: 'warn'
     });
   } else {
