@@ -12,6 +12,58 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 130543967,
+      "creationTime": 1633165375,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514318272
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "17C",
+        "name": "Balance",
+        "rating": 2500,
+        "tags": [
+          "dp"
+        ],
+        "problemUrl": "https://codeforces.com/contest/17/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/17/submission/130543967"
+    },
+    {
+      "type": "codeforces",
+      "id": 130469075,
+      "creationTime": 1633096178,
+      "language": "GNU C++14",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "MojeDes"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -514387469
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "16E",
+        "name": "Fish",
+        "rating": 1900,
+        "tags": [
+          "bitmasks",
+          "dp",
+          "probabilities"
+        ],
+        "problemUrl": "https://codeforces.com/contest/16/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/16/submission/130469075"
+    },
+    {
+      "type": "codeforces",
       "id": 130092383,
       "creationTime": 1632835432,
       "language": "GNU C++14",
