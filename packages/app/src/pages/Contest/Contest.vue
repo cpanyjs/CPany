@@ -21,7 +21,7 @@
 import type { IContest } from '@cpany/types';
 
 import { toDate, toDuration } from '@/utils';
-import ContestStandings from './ContestStandings.vue';
+import ContestStandings from './Standings/ContestStandings.vue';
 
 defineProps<{ contest: IContest }>();
 </script>
