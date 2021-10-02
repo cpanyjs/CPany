@@ -30,6 +30,7 @@
         "type": "codeforces",
         "id": "1578B",
         "name": "Building Forest Trails",
+        "rating": 2800,
         "tags": [
           "data structures",
           "dsu"
@@ -58,6 +59,7 @@
         "type": "codeforces",
         "id": "1578B",
         "name": "Building Forest Trails",
+        "rating": 2800,
         "tags": [
           "data structures",
           "dsu"
@@ -86,9 +88,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -114,9 +118,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -142,9 +148,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -170,9 +178,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -198,6 +208,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -227,6 +238,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -256,6 +268,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -285,6 +298,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -314,6 +328,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -343,9 +358,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -371,6 +388,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -400,6 +418,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -429,6 +448,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -458,9 +478,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -486,6 +508,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -515,6 +538,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -544,6 +568,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -573,9 +598,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -601,9 +628,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -629,6 +658,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -658,6 +688,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -687,6 +718,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -716,9 +748,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -744,9 +778,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -772,9 +808,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -800,6 +838,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -829,9 +868,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -857,6 +898,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -886,6 +928,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -915,9 +958,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -943,6 +988,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -972,6 +1018,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -1001,9 +1048,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -1029,9 +1078,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -1057,9 +1108,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -1085,6 +1138,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -1114,6 +1168,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -1143,6 +1198,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -1172,6 +1228,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -1201,6 +1258,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -1230,9 +1288,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -1258,6 +1318,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -1287,6 +1348,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -1316,6 +1378,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -1345,9 +1408,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -1373,9 +1438,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -1401,9 +1468,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -1429,6 +1498,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -1458,9 +1528,11 @@
         "type": "codeforces",
         "id": "1578L",
         "name": "Labyrinth",
+        "rating": 2400,
         "tags": [
           "binary search",
-          "dsu"
+          "dsu",
+          "greedy"
         ],
         "problemUrl": "https://codeforces.com/contest/1578/problem/L"
       },
@@ -1486,6 +1558,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -1515,6 +1588,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -1544,6 +1618,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -1573,6 +1648,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -1602,6 +1678,7 @@
         "type": "codeforces",
         "id": "1578K",
         "name": "Kingdom of Islands",
+        "rating": 2800,
         "tags": [
           "brute force",
           "graphs",
@@ -1631,6 +1708,7 @@
         "type": "codeforces",
         "id": "1578H",
         "name": "Higher Order Functions",
+        "rating": 1700,
         "tags": [
           "implementation",
           "strings"
@@ -1659,6 +1737,7 @@
         "type": "codeforces",
         "id": "1578E",
         "name": "Easy Scheduling",
+        "rating": 1200,
         "tags": [
           "implementation",
           "math"
@@ -1687,6 +1766,7 @@
         "type": "codeforces",
         "id": "1578E",
         "name": "Easy Scheduling",
+        "rating": 1200,
         "tags": [
           "implementation",
           "math"
