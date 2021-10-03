@@ -37,7 +37,7 @@
             isDef(row.result[index]) &&
             row.result[index].verdict === Verdict.OK &&
             row.result[index].relativeTime <=
-              (standings.firstBlood[index]?.relativeTime ?? Number.MIN_VALUE) &&
+              (standings.firstBlood[index]?.relativeTime ?? Number.MIN_SAFE_INTEGER) &&
             'bg-[#E0FFE4]'
           "
         >
