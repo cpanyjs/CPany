@@ -100,7 +100,7 @@ export function createInstance(option: ICreateOptions): CPanyInstance {
       }
     }
 
-    instanceLogger.warning(`Warn : No matching plugins for ${key}`);
+    instanceLogger.warning(`Warn : No matching plugin for ${key}`);
 
     return undefined;
   };
@@ -143,7 +143,7 @@ export function createInstance(option: ICreateOptions): CPanyInstance {
     }
 
     instanceLogger.warning(
-      `Warn : No matching plugins for (id: ${payload.id}, type: ${payload.type})`
+      `Warn : No matching plugin for (id: ${payload.id}, type: ${payload.type})`
     );
 
     return undefined;
