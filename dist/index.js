@@ -15854,6 +15854,8 @@ module.exports = {
 "use strict";
 var __webpack_unused_export__;
 __webpack_unused_export__ = ({value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var __defProp = Object.defineProperty;
+var __defProps = Object.defineProperties;
+var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
@@ -15869,6 +15871,7 @@ var __spreadValues = (a, b) => {
     }
   return a;
 };
+var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 var __require =  true ? require : 0;
 
 // src/index.ts
@@ -15881,23 +15884,101 @@ var _utils = __nccwpck_require__(3124);
 // src/handle.ts
 var _nodehtmlparser = __nccwpck_require__(5738);
 var _htmlentities = __nccwpck_require__(838);
+
 var _core = __nccwpck_require__(8780);
 
-
 // src/contest.ts
+
+
+
 
 
 
 var handleMap = new Map();
 var contestSet = new Set();
 var contestCache = new Map();
+var contestPracticeCache = new Map();
+var contestSubmissionsUrl = new Map();
+function pushContest(contest) {
+  contestSet.add(contest);
+}
 function addContests(contests) {
   for (const contest of contests) {
+    if (!!contest.standings) {
+      contest.standings = contest.standings.filter((standing) => standing.author.participantType !== _types.ParticipantType.PRACTICE);
+    }
     contestCache.set(contest.id, contest);
   }
 }
-function pushContest(contest) {
-  contestSet.add(contest);
+function addContestPractice(contestId, handle, submissions) {
+  var _a;
+  if (!contestPracticeCache.has(contestId)) {
+    contestPracticeCache.set(contestId, []);
+  }
+  const addSubUrl = (pid, url) => {
+    if (!url)
+      return;
+    if (contestSubmissionsUrl.has(handle)) {
+      contestSubmissionsUrl.get(handle).set(pid, url);
+    } else {
+      contestSubmissionsUrl.set(handle, new Map([[pid, url]]));
+    }
+  };
+  let practiceCount = 0;
+  const allSubs = new Map();
+  for (const sub of submissions.sort((lhs, rhs) => lhs.creationTime - rhs.creationTime)) {
+    const pid = parseIndex(sub.problem.id);
+    if (sub.author.participantType === _types.ParticipantType.PRACTICE) {
+      practiceCount++;
+      if (allSubs.has(pid)) {
+        const oldSub = allSubs.get(pid);
+        const update = () => {
+          oldSub.id = sub.id;
+          oldSub.creationTime = sub.creationTime;
+          oldSub.relativeTime = sub.creationTime;
+          oldSub.submissionUrl = sub.submissionUrl;
+        };
+        if (sub.verdict === _types.Verdict.OK) {
+          if (oldSub.verdict !== _types.Verdict.OK) {
+            oldSub.verdict = _types.Verdict.OK;
+            update();
+          }
+        } else {
+          if (oldSub.verdict !== _types.Verdict.OK) {
+            oldSub.dirty += 1;
+            update();
+          }
+        }
+      } else {
+        allSubs.set(pid, __spreadProps(__spreadValues({}, sub), {
+          dirty: sub.verdict === _types.Verdict.OK ? 0 : 1,
+          problemIndex: pid,
+          relativeTime: sub.creationTime
+        }));
+      }
+    } else {
+      if (sub.verdict === _types.Verdict.OK) {
+        const pid2 = sub.problem.id.split("");
+        const index = "_" + String.fromCharCode(pid2.pop().charCodeAt(0) - "A".charCodeAt(0) + "a".charCodeAt(0));
+        addSubUrl(pid2.concat(index).join(""), sub.submissionUrl);
+      }
+    }
+  }
+  if (practiceCount === 0)
+    return;
+  const standing = {
+    author: {
+      members: [handle],
+      teamName: (_a = handleMap.get(handle)) != null ? _a : handle,
+      participantType: _types.ParticipantType.PRACTICE,
+      participantTime: 0
+    },
+    rank: Number.MAX_SAFE_INTEGER,
+    solved: submissions.filter((sub) => sub.author.participantType === _types.ParticipantType.PRACTICE && sub.verdict === _types.Verdict.OK).length,
+    penalty: 0,
+    submissions: [...allSubs.values()]
+  };
+  contestPracticeCache.get(contestId).push(standing);
 }
 function createAtCoderContestPlugin(api, _handleMap) {
   for (const [key, value] of _handleMap)
@@ -15930,6 +16011,19 @@ function createAtCoderContestPlugin(api, _handleMap) {
         }
         logger.info(`Fetch: plan to fetch ${planSz} contests`);
         await retry.run();
+        for (const contest of contests) {
+          if (!!contest.standings && !!contest.id && contestPracticeCache.get(String(contest.id))) {
+            const practice = contestPracticeCache.get(String(contest.id));
+            contest.standings.push(...practice.map((standing) => {
+              standing.author.participantTime = contest.startTime;
+              standing.submissions = standing.submissions.map((sub) => {
+                sub.relativeTime -= contest.startTime;
+                return sub;
+              });
+              return standing;
+            }).sort((lhs, rhs) => rhs.solved - lhs.solved));
+          }
+        }
         return JSON.stringify(contests, null, 2);
       }
     }
@@ -15954,13 +16048,6 @@ async function fecthContest(api, contestId) {
   };
 }
 function parseStandings(contestId, startTime, { problems, standings }) {
-  const pIndex = (index) => {
-    if (/[a-z]$/.test(index)) {
-      return index.charCodeAt(index.length - 1) - "a".charCodeAt(0);
-    } else {
-      return index.charCodeAt(index.length - 1) - "A".charCodeAt(0);
-    }
-  };
   return {
     problems: problems.map((problem, index) => ({
       type: "atcoder",
@@ -15970,12 +16057,13 @@ function parseStandings(contestId, startTime, { problems, standings }) {
       problemUrl: `https://atcoder.jp/contests/${contestId}/tasks/${problem.TaskScreenName}`
     })),
     standings: standings.map((standing) => {
-      var _a;
+      var _a, _b;
+      const username = standing.UserScreenName !== "" ? standing.UserScreenName : standing.UserName;
       let penalty = standing.TotalResult.Penalty * 20 * 60;
       const submissions = [];
       for (const pid in standing.TaskResults) {
         const result = standing.TaskResults[pid];
-        const problemIndex = pIndex(pid);
+        const problemIndex = parseIndex(pid);
         if (result.Score === 0) {
           submissions.push({
             id: -1,
@@ -15986,21 +16074,22 @@ function parseStandings(contestId, startTime, { problems, standings }) {
           });
         } else {
           const relativeTime = Math.round(result.Elapsed / 1e9);
+          penalty += relativeTime;
           submissions.push({
             id: -1,
             creationTime: startTime + relativeTime,
             relativeTime,
             problemIndex,
             verdict: _types.Verdict.OK,
-            dirty: result.Penalty
+            dirty: result.Penalty,
+            submissionUrl: (_a = contestSubmissionsUrl.get(username)) == null ? void 0 : _a.get(pid)
           });
         }
       }
-      const username = standing.UserScreenName !== "" ? standing.UserScreenName : standing.UserName;
       return {
         author: {
           members: [username],
-          teamName: (_a = handleMap.get(username)) != null ? _a : username,
+          teamName: (_b = handleMap.get(username)) != null ? _b : username,
           participantType: standing.IsRated ? _types.ParticipantType.CONTESTANT : _types.ParticipantType.OUT_OF_COMPETITION,
           participantTime: startTime
         },
@@ -16017,6 +16106,13 @@ async function fetchStandings(api, contestId) {
   const problems = data.TaskInfo;
   const standings = data.StandingsData.filter((row) => handleMap.has(row.UserName) || handleMap.has(row.UserScreenName));
   return { problems, standings };
+}
+function parseIndex(index) {
+  if (/[a-z]$/.test(index)) {
+    return index.charCodeAt(index.length - 1) - "a".charCodeAt(0);
+  } else {
+    return index.charCodeAt(index.length - 1) - "A".charCodeAt(0);
+  }
 }
 
 // src/handle.ts
@@ -16087,11 +16183,10 @@ async function fetchSubmissions(api, id, logger) {
     return (_a = td.querySelector("a").getAttribute("href")) == null ? void 0 : _a.split("/")[2];
   }).filter((contest) => !!contest);
   logger.info(`Fetch: ${id} has participated in ${contests.length} contests`);
-  const submissions = [];
   const run = async (contest) => {
-    const initLen = submissions.length;
+    const submissions2 = [];
     for (let page = 1; ; page++) {
-      const oldLen = submissions.length;
+      const oldLen = submissions2.length;
       const { data: data2 } = await api.get(`/contests/${contest}/submissions`, {
         params: {
           "f.User": id,
@@ -16102,7 +16197,7 @@ async function fetchSubmissions(api, id, logger) {
       const durations = root2.querySelectorAll(".contest-duration a");
       const startTime = new Date(durations[0].innerText).getTime() / 1e3;
       const endTime = new Date(durations[1].innerText).getTime() / 1e3;
-      submissions.push(...root2.querySelectorAll("table.table tbody tr").map((tr) => {
+      submissions2.push(...root2.querySelectorAll("table.table tbody tr").map((tr) => {
         var _a, _b;
         const td = tr.querySelectorAll("td");
         const sid = +((_a = td[td.length - 1].querySelector("a").getAttribute("href")) == null ? void 0 : _a.split("/").pop());
@@ -16151,17 +16246,20 @@ async function fetchSubmissions(api, id, logger) {
           }
         };
       }));
-      if (submissions.length === oldLen)
+      if (submissions2.length === oldLen)
         break;
     }
-    logger.info(`Fetch: ${id} has created ${submissions.length - initLen} submissions in ${contest}`);
+    addContestPractice(contest, id, submissions2);
+    logger.info(`Fetch: ${id} has created ${submissions2.length} submissions in ${contest}`);
+    return submissions2;
   };
   const retry = _core.createRetryContainer.call(void 0, logger, 5);
+  const submissions = [];
   for (const contest of contests) {
     pushContest(contest);
     retry.add(`${id}'s submissions at ${contest}'`, async () => {
       try {
-        await run(contest);
+        submissions.push(...await run(contest));
         return true;
       } catch (error) {
         logger.error("Error: " + error.message);
@@ -16587,7 +16685,7 @@ function createInstance(option) {
                 return null;
             }
         }
-        instanceLogger.warning(`Warn : No matching plugins for ${key}`);
+        instanceLogger.warning(`Warn : No matching plugin for ${key}`);
         return undefined;
     });
     const transform = (payload) => __awaiter(this, void 0, void 0, function* () {
@@ -16623,7 +16721,7 @@ function createInstance(option) {
                 return null;
             }
         }
-        instanceLogger.warning(`Warn : No matching plugins for (id: ${payload.id}, type: ${payload.type})`);
+        instanceLogger.warning(`Warn : No matching plugin for (id: ${payload.id}, type: ${payload.type})`);
         return undefined;
     });
     return {

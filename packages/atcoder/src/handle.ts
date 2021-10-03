@@ -3,10 +3,10 @@ import { parse } from 'node-html-parser';
 import { decode } from 'html-entities';
 
 import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
-import { IPlugin, ILogger, createRetryContainer } from '@cpany/core';
 import { ISubmission, ParticipantType, Verdict } from '@cpany/types';
+import { IPlugin, ILogger, createRetryContainer } from '@cpany/core';
 
-import { pushContest } from './contest';
+import { addContestPractice, pushContest } from './contest';
 
 export function createAtCoderHandlePlugin(api: AxiosInstance): IPlugin {
   const name = 'atcoder/handle';
@@ -86,9 +86,9 @@ async function fetchSubmissions(
 
   logger.info(`Fetch: ${id} has participated in ${contests.length} contests`);
 
-  const submissions: ISubmission[] = [];
   const run = async (contest: string) => {
-    const initLen = submissions.length;
+    const submissions: ISubmission[] = [];
+
     for (let page = 1; ; page++) {
       const oldLen = submissions.length;
 
@@ -159,17 +159,20 @@ async function fetchSubmissions(
       if (submissions.length === oldLen) break;
     }
 
-    logger.info(
-      `Fetch: ${id} has created ${submissions.length - initLen} submissions in ${contest}`
-    );
+    addContestPractice(contest, id, submissions);
+
+    logger.info(`Fetch: ${id} has created ${submissions.length} submissions in ${contest}`);
+
+    return submissions;
   };
 
   const retry = createRetryContainer(logger, 5);
+  const submissions: ISubmission[] = [];
   for (const contest of contests) {
     pushContest(contest);
     retry.add(`${id}'s submissions at ${contest}'`, async () => {
       try {
-        await run(contest);
+        submissions.push(...(await run(contest)));
         return true;
       } catch (error) {
         logger.error('Error: ' + (error as any).message);

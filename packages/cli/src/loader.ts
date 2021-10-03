@@ -156,9 +156,12 @@ export async function createLoader({
     userMap.set(user.name, user);
   }
 
-  // Use username to push contest
+  // Use username to push static contest
   for (const contest of contests) {
     for (const standing of contest.standings ?? []) {
+      // skip PRACTICE contest participant
+      if (standing.author.participantType === ParticipantType.PRACTICE) continue;
+
       const push = (name?: string) => {
         if (!name) return false;
         const user = userMap.get(name);
