@@ -1,6 +1,17 @@
 [
   {
     "type": "codeforces/icpc",
+    "name": "COMPFEST 13 - Finals Online Mirror (Unrated, ICPC Rules, Teams Preferred)",
+    "startTime": 1633181700,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 1575,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/contest/1575",
+    "standingsUrl": "https://codeforces.com/contest/1575/standings"
+  },
+  {
+    "type": "codeforces/icpc",
     "name": "ICPC WF Moscow Invitational Contest - Online Mirror (Unrated, ICPC Rules, Teams Preferred)",
     "startTime": 1633093500,
     "duration": 18000,
