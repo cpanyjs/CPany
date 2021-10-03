@@ -97,7 +97,7 @@ export async function run({
 
   await retry.run();
 
-  for (const id of config?.fetch ?? []) {
+  for (const id of config.fetch) {
     const result = await instance.load(id);
 
     if (!!result) {
@@ -144,8 +144,6 @@ async function getConfig(basePath: string, filename = 'cpany.yml'): Promise<ICPa
 
   if (isUndef(config.fetch)) {
     config.fetch = [];
-  } else {
-    config.fetch = transform(config.fetch);
   }
 
   if (isUndef(config.static)) {
