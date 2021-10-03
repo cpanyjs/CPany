@@ -1,12 +1,13 @@
+import fs from 'fs';
 import path from 'path';
 import axios from 'axios';
 
 import type { IPlugin } from '@cpany/core';
-import { ICPanyPluginConfig, isAtCoder } from '@cpany/types';
+import { ICPanyPluginConfig, IContest, isAtCoder } from '@cpany/types';
 import { listFiles } from '@cpany/utils';
 
 import { createAtCoderHandlePlugin } from './handle';
-import { createAtCoderContestPlugin } from './contest';
+import { addContests, createAtCoderContestPlugin } from './contest';
 
 function loadCookie(): string {
   const session = process.env.REVEL_SESSION;
@@ -18,20 +19,8 @@ function loadCookie(): string {
 }
 
 export function atcoderPlugin(config: ICPanyPluginConfig): IPlugin[] {
-  const configUsers = config.users ?? {};
-  const handleMap = new Map<string, string>();
-  for (const username in configUsers) {
-    const user = configUsers[username];
-    for (const type in user) {
-      if (isAtCoder({ type })) {
-        const rawHandles = user[type];
-        const handles = typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
-        for (const handle of handles) {
-          handleMap.set(handle, username);
-        }
-      }
-    }
-  }
+  loadContest(config);
+  const handleMap = loadHandleMap(config);
 
   const cookie = loadCookie();
 
@@ -57,4 +46,30 @@ export function atcoderPlugin(config: ICPanyPluginConfig): IPlugin[] {
       }
     }
   ];
+}
+
+function loadContest(config: ICPanyPluginConfig) {
+  try {
+    const contests = JSON.parse(
+      fs.readFileSync(path.resolve(config.basePath, 'atcoder/contest.json'), 'utf-8')
+    ) as IContest[];
+    addContests(contests);
+  } catch {}
+}
+
+function loadHandleMap(config: ICPanyPluginConfig) {
+  const handleMap = new Map<string, string>();
+  for (const username in config.users) {
+    const user = config.users[username];
+    for (const type in user) {
+      if (isAtCoder({ type })) {
+        const rawHandles = user[type];
+        const handles = typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
+        for (const handle of handles) {
+          handleMap.set(handle, username);
+        }
+      }
+    }
+  }
+  return handleMap;
 }

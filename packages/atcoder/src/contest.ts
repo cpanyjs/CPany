@@ -6,8 +6,20 @@ import { IContest, IContestSubmission, ParticipantType, Verdict } from '@cpany/t
 
 const handleMap = new Map<string, string>();
 const contestSet = new Set<string>();
+const contestCache = new Map<string, IContest>();
 
-export function addContest(contest: string) {
+export function addContests(contests: IContest[]) {
+  for (const contest of contests) {
+    if (!!contest.standings) {
+      contest.standings = contest.standings.filter(
+        (standing) => standing.author.participantType !== ParticipantType.PRACTICE
+      );
+    }
+    contestCache.set(contest.id as string, contest);
+  }
+}
+
+export function pushContest(contest: string) {
   contestSet.add(contest);
 }
 
@@ -21,31 +33,41 @@ export function createAtCoderContestPlugin(
     name: 'atcoder/contest.json',
     async load(id: string, { logger }) {
       if (id === 'atcoder/contest.json') {
-        logger.info(`Fetch: ${contestSet.size} AtCoder contests`);
-
         const retry = createRetryContainer(logger, 5);
         const contests: IContest[] = [];
-        for (const contestId of contestSet) {
-          retry.add(`AtCoder Contest ${contestId}`, async () => {
-            logger.info('Fetch: AtCoder Contest ' + contestId);
+        let planSz = 0,
+          curRunSz = 0;
 
-            try {
-              const contest = await fecthContest(api, contestId);
-              contests.push({
-                ...contest,
-                ...parseStandings(
-                  contestId,
-                  contest.startTime,
-                  await fetchStandings(api, contestId)
-                )
-              });
-              return true;
-            } catch (error) {
-              logger.error('Error: ' + (error as any).message);
-              return false;
-            }
-          });
+        for (const contestId of contestSet) {
+          if (contestCache.has(contestId)) {
+            contests.push(contestCache.get(contestId)!);
+          } else {
+            planSz++;
+
+            retry.add(`AtCoder Contest ${contestId}`, async () => {
+              logger.info(`Fetch: AtCoder Contest ${contestId} (${curRunSz + 1}/${planSz})`);
+
+              try {
+                const contest = await fecthContest(api, contestId);
+                contests.push({
+                  ...contest,
+                  ...parseStandings(
+                    contestId,
+                    contest.startTime,
+                    await fetchStandings(api, contestId)
+                  )
+                });
+                curRunSz++;
+                return true;
+              } catch (error) {
+                logger.error('Error: ' + (error as any).message);
+                return false;
+              }
+            });
+          }
         }
+
+        logger.info(`Fetch: plan to fetch ${planSz} contests`);
         await retry.run();
 
         return JSON.stringify(contests, null, 2);

@@ -6,7 +6,7 @@ import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
 import { IPlugin, ILogger, createRetryContainer } from '@cpany/core';
 import { ISubmission, ParticipantType, Verdict } from '@cpany/types';
 
-import { addContest } from './contest';
+import { pushContest } from './contest';
 
 export function createAtCoderHandlePlugin(api: AxiosInstance): IPlugin {
   const name = 'atcoder/handle';
@@ -166,7 +166,7 @@ async function fetchSubmissions(
 
   const retry = createRetryContainer(logger, 5);
   for (const contest of contests) {
-    addContest(contest);
+    pushContest(contest);
     retry.add(`${id}'s submissions at ${contest}'`, async () => {
       try {
         await run(contest);

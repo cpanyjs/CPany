@@ -15872,15 +15872,17 @@ var __spreadValues = (a, b) => {
 var __require =  true ? require : 0;
 
 // src/index.ts
+var _fs = __nccwpck_require__(5747); var _fs2 = _interopRequireDefault(_fs);
 var _path = __nccwpck_require__(5622); var _path2 = _interopRequireDefault(_path);
 var _axios = __nccwpck_require__(5186); var _axios2 = _interopRequireDefault(_axios);
+var _types = __nccwpck_require__(7584);
 var _utils = __nccwpck_require__(3124);
 
 // src/handle.ts
 var _nodehtmlparser = __nccwpck_require__(5738);
 var _htmlentities = __nccwpck_require__(838);
 var _core = __nccwpck_require__(8780);
-var _types = __nccwpck_require__(7584);
+
 
 // src/contest.ts
 
@@ -15888,7 +15890,13 @@ var _types = __nccwpck_require__(7584);
 
 var handleMap = new Map();
 var contestSet = new Set();
-function addContest(contest) {
+var contestCache = new Map();
+function addContests(contests) {
+  for (const contest of contests) {
+    contestCache.set(contest.id, contest);
+  }
+}
+function pushContest(contest) {
   contestSet.add(contest);
 }
 function createAtCoderContestPlugin(api, _handleMap) {
@@ -15898,22 +15906,29 @@ function createAtCoderContestPlugin(api, _handleMap) {
     name: "atcoder/contest.json",
     async load(id, { logger }) {
       if (id === "atcoder/contest.json") {
-        logger.info(`Fetch: ${contestSet.size} AtCoder contests`);
         const retry = _core.createRetryContainer.call(void 0, logger, 5);
         const contests = [];
+        let planSz = 0, curRunSz = 0;
         for (const contestId of contestSet) {
-          retry.add(`AtCoder Contest ${contestId}`, async () => {
-            logger.info("Fetch: AtCoder Contest " + contestId);
-            try {
-              const contest = await fecthContest(api, contestId);
-              contests.push(__spreadValues(__spreadValues({}, contest), parseStandings(contestId, contest.startTime, await fetchStandings(api, contestId))));
-              return true;
-            } catch (error) {
-              logger.error("Error: " + error.message);
-              return false;
-            }
-          });
+          if (contestCache.has(contestId)) {
+            contests.push(contestCache.get(contestId));
+          } else {
+            planSz++;
+            retry.add(`AtCoder Contest ${contestId}`, async () => {
+              logger.info(`Fetch: AtCoder Contest ${contestId} (${curRunSz + 1}/${planSz})`);
+              try {
+                const contest = await fecthContest(api, contestId);
+                contests.push(__spreadValues(__spreadValues({}, contest), parseStandings(contestId, contest.startTime, await fetchStandings(api, contestId))));
+                curRunSz++;
+                return true;
+              } catch (error) {
+                logger.error("Error: " + error.message);
+                return false;
+              }
+            });
+          }
         }
+        logger.info(`Fetch: plan to fetch ${planSz} contests`);
         await retry.run();
         return JSON.stringify(contests, null, 2);
       }
@@ -16143,7 +16158,7 @@ async function fetchSubmissions(api, id, logger) {
   };
   const retry = _core.createRetryContainer.call(void 0, logger, 5);
   for (const contest of contests) {
-    addContest(contest);
+    pushContest(contest);
     retry.add(`${id}'s submissions at ${contest}'`, async () => {
       try {
         await run(contest);
@@ -16162,27 +16177,14 @@ async function fetchSubmissions(api, id, logger) {
 function loadCookie() {
   const session = process.env.REVEL_SESSION;
   if (!session) {
-    console.error("Please set env variable REVEL_SESSION!");
+    console.error("Please set env variable REVEL_SESSION !");
     process.exit(1);
   }
   return session;
 }
 function atcoderPlugin(config) {
-  var _a;
-  const configUsers = (_a = config.users) != null ? _a : {};
-  const handleMap2 = new Map();
-  for (const username in configUsers) {
-    const user = configUsers[username];
-    for (const type in user) {
-      if (type.startsWith("atcoder")) {
-        const rawHandles = user[type];
-        const handles = typeof rawHandles === "string" ? [rawHandles] : rawHandles;
-        for (const handle of handles) {
-          handleMap2.set(handle, username);
-        }
-      }
-    }
-  }
+  loadContest(config);
+  const handleMap2 = loadHandleMap(config);
   const cookie = loadCookie();
   const api = _axios2.default.create({
     baseURL: "https://atcoder.jp/",
@@ -16198,16 +16200,36 @@ function atcoderPlugin(config) {
       async clean() {
         const fullPath = _path2.default.resolve(config.basePath, "atcoder/handle");
         const files = [];
-        try {
-          for await (const file of _utils.listFiles.call(void 0, fullPath)) {
-            files.push(file);
-          }
-        } catch (error) {
+        for await (const file of _utils.listFiles.call(void 0, fullPath)) {
+          files.push(file);
         }
         return { files };
       }
     }
   ];
+}
+function loadContest(config) {
+  try {
+    const contests = JSON.parse(_fs2.default.readFileSync(_path2.default.resolve(config.basePath, "atcoder/contest.json"), "utf-8"));
+    addContests(contests);
+  } catch (e) {
+  }
+}
+function loadHandleMap(config) {
+  const handleMap2 = new Map();
+  for (const username in config.users) {
+    const user = config.users[username];
+    for (const type in user) {
+      if (_types.isAtCoder.call(void 0, { type })) {
+        const rawHandles = user[type];
+        const handles = typeof rawHandles === "string" ? [rawHandles] : rawHandles;
+        for (const handle of handles) {
+          handleMap2.set(handle, username);
+        }
+      }
+    }
+  }
+  return handleMap2;
 }
 
 
@@ -16473,21 +16495,18 @@ function codeforcesCleanPlugin(basePath) {
                 const fullPath = path_1.default.resolve(basePath, 'codeforces/handle');
                 const files = [];
                 try {
-                    try {
-                        for (var _b = __asyncValues(utils_1.listFiles(fullPath)), _c; _c = yield _b.next(), !_c.done;) {
-                            const file = _c.value;
-                            files.push(file);
-                        }
-                    }
-                    catch (e_1_1) { e_1 = { error: e_1_1 }; }
-                    finally {
-                        try {
-                            if (_c && !_c.done && (_a = _b.return)) yield _a.call(_b);
-                        }
-                        finally { if (e_1) throw e_1.error; }
+                    for (var _b = __asyncValues(utils_1.listFiles(fullPath)), _c; _c = yield _b.next(), !_c.done;) {
+                        const file = _c.value;
+                        files.push(file);
                     }
                 }
-                catch (error) { }
+                catch (e_1_1) { e_1 = { error: e_1_1 }; }
+                finally {
+                    try {
+                        if (_c && !_c.done && (_a = _b.return)) yield _a.call(_b);
+                    }
+                    finally { if (e_1) throw e_1.error; }
+                }
                 return { files };
             });
         }
@@ -16987,38 +17006,30 @@ var __asyncValues = (this && this.__asyncValues) || function (o) {
     function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
     function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.hduPlugin = void 0;
+const types_1 = __nccwpck_require__(7584);
 const utils_1 = __nccwpck_require__(3124);
-const path_1 = __importDefault(__nccwpck_require__(5622));
 const handle_1 = __nccwpck_require__(6616);
 function hduPlugin(config) {
     var e_1, _a;
-    var _b;
     return __awaiter(this, void 0, void 0, function* () {
-        for (const handlePath of (_b = config.handles) !== null && _b !== void 0 ? _b : []) {
-            const fullPath = path_1.default.resolve(config.basePath, handlePath);
+        for (const handlePath of config.handles) {
             try {
-                try {
-                    for (var _c = (e_1 = void 0, __asyncValues(utils_1.listJsonFiles(fullPath))), _d; _d = yield _c.next(), !_d.done;) {
-                        const handle = _d.value;
-                        if (handle.type.startsWith('hdu')) {
-                            handle_1.addToCache(handle);
-                        }
+                for (var _b = (e_1 = void 0, __asyncValues(utils_1.listJsonFiles(handlePath))), _c; _c = yield _b.next(), !_c.done;) {
+                    const handle = _c.value;
+                    if (types_1.isHdu(handle)) {
+                        handle_1.addToCache(handle);
                     }
-                }
-                catch (e_1_1) { e_1 = { error: e_1_1 }; }
-                finally {
-                    try {
-                        if (_d && !_d.done && (_a = _c.return)) yield _a.call(_c);
-                    }
-                    finally { if (e_1) throw e_1.error; }
                 }
             }
-            catch (error) { }
+            catch (e_1_1) { e_1 = { error: e_1_1 }; }
+            finally {
+                try {
+                    if (_c && !_c.done && (_a = _b.return)) yield _a.call(_b);
+                }
+                finally { if (e_1) throw e_1.error; }
+            }
         }
         return [handle_1.createHduHandlePlugin()];
     });
@@ -17276,48 +17287,45 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.luoguPlugin = void 0;
-const utils_1 = __nccwpck_require__(3124);
 const path_1 = __importDefault(__nccwpck_require__(5622));
-const handle_1 = __nccwpck_require__(5854);
 const axios_1 = __importDefault(__nccwpck_require__(5186));
+const types_1 = __nccwpck_require__(7584);
+const utils_1 = __nccwpck_require__(3124);
+const handle_1 = __nccwpck_require__(5854);
 function loadCookie() {
     const clientId = process.env.CLIENT_ID;
     const uid = process.env.UID;
     if (!clientId) {
-        console.error('Please set env variable CLIENT_ID!');
+        console.error('Please set env variable CLIENT_ID !');
         process.exit(1);
     }
     if (!uid) {
-        console.error('Please set env variable UID!');
+        console.error('Please set env variable UID !');
         process.exit(1);
     }
     return { clientId, uid };
 }
 function luoguPlugin(config) {
     var e_1, _a;
-    var _b;
     return __awaiter(this, void 0, void 0, function* () {
         const cookie = loadCookie();
-        for (const handlePath of (_b = config.handles) !== null && _b !== void 0 ? _b : []) {
+        for (const handlePath of config.handles) {
             const fullPath = path_1.default.resolve(config.basePath, handlePath);
             try {
-                try {
-                    for (var _c = (e_1 = void 0, __asyncValues(utils_1.listJsonFiles(fullPath))), _d; _d = yield _c.next(), !_d.done;) {
-                        const handle = _d.value;
-                        if (handle.type.startsWith('luogu')) {
-                            handle_1.addToCache(handle);
-                        }
+                for (var _b = (e_1 = void 0, __asyncValues(utils_1.listJsonFiles(fullPath))), _c; _c = yield _b.next(), !_c.done;) {
+                    const handle = _c.value;
+                    if (types_1.isLuogu(handle)) {
+                        handle_1.addToCache(handle);
                     }
-                }
-                catch (e_1_1) { e_1 = { error: e_1_1 }; }
-                finally {
-                    try {
-                        if (_d && !_d.done && (_a = _c.return)) yield _a.call(_c);
-                    }
-                    finally { if (e_1) throw e_1.error; }
                 }
             }
-            catch (error) { }
+            catch (e_1_1) { e_1 = { error: e_1_1 }; }
+            finally {
+                try {
+                    if (_c && !_c.done && (_a = _b.return)) yield _a.call(_b);
+                }
+                finally { if (e_1) throw e_1.error; }
+            }
         }
         const api = axios_1.default.create({
             baseURL: 'https://www.luogu.com.cn/',
@@ -17435,17 +17443,20 @@ async function* listJsonFiles(dir) {
   }
 }
 async function* listFiles(dir, skipList = new Set()) {
-  const dirents = await _fs.promises.readdir(dir, { withFileTypes: true });
-  for (const dirent of dirents) {
-    const id = _path2.default.join(dir, dirent.name);
-    if (dirent.name.startsWith(".") || skipList.has(id)) {
-      continue;
+  try {
+    const dirents = await _fs.promises.readdir(dir, { withFileTypes: true });
+    for (const dirent of dirents) {
+      const id = _path2.default.join(dir, dirent.name);
+      if (dirent.name.startsWith(".") || skipList.has(id)) {
+        continue;
+      }
+      if (dirent.isDirectory()) {
+        yield* listFiles(id, skipList);
+      } else {
+        yield id;
+      }
     }
-    if (dirent.isDirectory()) {
-      yield* listFiles(id, skipList);
-    } else {
-      yield id;
-    }
+  } catch (e2) {
   }
 }
 
@@ -17454,11 +17465,21 @@ function slash(path2) {
   return path2.replace(/\\/g, "/");
 }
 
+// src/guard.ts
+function isUndef(object) {
+  return object === void 0 || object === null;
+}
+function isDef(object) {
+  return object !== void 0 && object !== null;
+}
 
 
 
 
-exports.listFiles = listFiles; exports.listJsonFiles = listJsonFiles; exports.slash = slash; exports.uniq = uniq;
+
+
+
+exports.isDef = isDef; exports.isUndef = isUndef; exports.listFiles = listFiles; exports.listJsonFiles = listJsonFiles; exports.slash = slash; exports.uniq = uniq;
 
 
 /***/ }),
@@ -21661,14 +21682,16 @@ var jsYaml = {
 
 // EXTERNAL MODULE: ../core/dist/index.js
 var dist = __nccwpck_require__(8780);
+// EXTERNAL MODULE: ../utils/dist/index.js
+var utils_dist = __nccwpck_require__(3124);
 // EXTERNAL MODULE: ../codeforces/dist/index.js
 var codeforces_dist = __nccwpck_require__(3948);
-// EXTERNAL MODULE: ../hdu/dist/index.js
-var hdu_dist = __nccwpck_require__(8808);
-// EXTERNAL MODULE: ../luogu/dist/index.js
-var luogu_dist = __nccwpck_require__(3267);
 // EXTERNAL MODULE: ../atcoder/dist/index.js
 var atcoder_dist = __nccwpck_require__(188);
+// EXTERNAL MODULE: ../luogu/dist/index.js
+var luogu_dist = __nccwpck_require__(3267);
+// EXTERNAL MODULE: ../hdu/dist/index.js
+var hdu_dist = __nccwpck_require__(8808);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@actions+io@1.1.1/node_modules/@actions/io/lib/io.js
 var io = __nccwpck_require__(7554);
 // EXTERNAL MODULE: ../../node_modules/.pnpm/@actions+exec@1.1.0/node_modules/@actions/exec/lib/exec.js
@@ -21858,17 +21881,17 @@ var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _a
 
 
 
+
 function run({ logger = true, basePath = './', disableGit, plugins = ['codeforces', 'hdu'], maxRetry }) {
-    var _a, _b;
     return action_awaiter(this, void 0, void 0, function* () {
         const usedPluginSet = new Set(plugins);
-        const config = yield getConfig((0,external_path_.resolve)(basePath, 'cpany.yml'));
+        const config = yield getConfig(basePath);
         const instance = (0,dist.createInstance)({
             plugins: [
-                usedPluginSet.has('codeforces') ? (0,codeforces_dist.codeforcesPlugin)(Object.assign({ basePath }, config)) : undefined,
-                usedPluginSet.has('atcoder') ? (0,atcoder_dist/* atcoderPlugin */.g)(Object.assign({ basePath }, config)) : undefined,
-                usedPluginSet.has('hdu') ? yield (0,hdu_dist.hduPlugin)(Object.assign({ basePath }, config)) : undefined,
-                usedPluginSet.has('luogu') ? yield (0,luogu_dist.luoguPlugin)(Object.assign({ basePath }, config)) : undefined
+                usedPluginSet.has('codeforces') ? (0,codeforces_dist.codeforcesPlugin)(config) : undefined,
+                usedPluginSet.has('atcoder') ? (0,atcoder_dist/* atcoderPlugin */.g)(config) : undefined,
+                usedPluginSet.has('hdu') ? yield (0,hdu_dist.hduPlugin)(config) : undefined,
+                usedPluginSet.has('luogu') ? yield (0,luogu_dist.luoguPlugin)(config) : undefined
             ],
             logger: logger ? core : undefined
         });
@@ -21887,9 +21910,8 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
         instance.logger.endGroup();
         instance.logger.startGroup('Fetch data');
         const retry = (0,dist.createRetryContainer)(instance.logger, maxRetry);
-        const configUser = (_a = config === null || config === void 0 ? void 0 : config.users) !== null && _a !== void 0 ? _a : {};
-        for (const userKey in configUser) {
-            const user = configUser[userKey];
+        for (const userKey in config.users) {
+            const user = config.users[userKey];
             for (const type in user) {
                 const rawHandles = user[type];
                 const handles = typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
@@ -21918,7 +21940,7 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
             }
         }
         yield retry.run();
-        for (const id of (_b = config === null || config === void 0 ? void 0 : config.fetch) !== null && _b !== void 0 ? _b : []) {
+        for (const id of config.fetch) {
             const result = yield instance.load(id);
             if (!!result) {
                 const { key, content } = result;
@@ -21936,10 +21958,39 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
         yield fs.push(nowTime.format('YYYY-MM-DD HH:mm'));
     });
 }
-function getConfig(path) {
+function getConfig(basePath, filename = 'cpany.yml') {
     return action_awaiter(this, void 0, void 0, function* () {
+        const path = (0,external_path_.resolve)(basePath, filename);
         const content = (0,external_fs_.readFileSync)(path, 'utf8');
-        return load(content);
+        const config = load(content);
+        const transform = (pathes) => {
+            return pathes.map((path) => (0,external_path_.resolve)(basePath, path));
+        };
+        if ((0,utils_dist.isUndef)(config.users)) {
+            config.users = {};
+        }
+        if ((0,utils_dist.isUndef)(config.handles)) {
+            config.handles = [];
+        }
+        else {
+            config.handles = transform(config.handles);
+        }
+        if ((0,utils_dist.isUndef)(config.contests)) {
+            config.contests = [];
+        }
+        else {
+            config.contests = transform(config.contests);
+        }
+        if ((0,utils_dist.isUndef)(config.fetch)) {
+            config.fetch = [];
+        }
+        if ((0,utils_dist.isUndef)(config.static)) {
+            config.static = [];
+        }
+        else {
+            config.static = transform(config.fetch);
+        }
+        return Object.assign(Object.assign({}, config), { basePath });
     });
 }
 
