@@ -2,7 +2,7 @@ import path from 'path';
 import axios from 'axios';
 
 import type { IPlugin } from '@cpany/core';
-import type { ICPanyConfig } from '@cpany/types';
+import { ICPanyPluginConfig, isAtCoder } from '@cpany/types';
 import { listFiles } from '@cpany/utils';
 
 import { createAtCoderHandlePlugin } from './handle';
@@ -11,19 +11,19 @@ import { createAtCoderContestPlugin } from './contest';
 function loadCookie(): string {
   const session = process.env.REVEL_SESSION;
   if (!session) {
-    console.error('Please set env variable REVEL_SESSION!');
+    console.error('Please set env variable REVEL_SESSION !');
     process.exit(1);
   }
   return session!;
 }
 
-export function atcoderPlugin(config: ICPanyConfig & { basePath: string }): IPlugin[] {
+export function atcoderPlugin(config: ICPanyPluginConfig): IPlugin[] {
   const configUsers = config.users ?? {};
   const handleMap = new Map<string, string>();
   for (const username in configUsers) {
     const user = configUsers[username];
     for (const type in user) {
-      if (type.startsWith('atcoder')) {
+      if (isAtCoder({ type })) {
         const rawHandles = user[type];
         const handles = typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
         for (const handle of handles) {
@@ -50,11 +50,9 @@ export function atcoderPlugin(config: ICPanyConfig & { basePath: string }): IPlu
       async clean() {
         const fullPath = path.resolve(config.basePath, 'atcoder/handle');
         const files: string[] = [];
-        try {
-          for await (const file of listFiles(fullPath)) {
-            files.push(file);
-          }
-        } catch (error) {}
+        for await (const file of listFiles(fullPath)) {
+          files.push(file);
+        }
         return { files };
       }
     }

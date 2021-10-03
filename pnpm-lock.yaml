@@ -51,6 +51,7 @@ importers:
       '@cpany/hdu': workspace:*
       '@cpany/luogu': workspace:*
       '@cpany/types': workspace:*
+      '@cpany/utils': workspace:*
       '@types/js-yaml': ^4.0.2
       dayjs: ^1.10.6
       js-yaml: ^4.1.0
@@ -64,6 +65,7 @@ importers:
       '@cpany/hdu': link:../hdu
       '@cpany/luogu': link:../luogu
       '@cpany/types': link:../types
+      '@cpany/utils': link:../utils
       dayjs: 1.10.6
       js-yaml: 4.1.0
     devDependencies:

@@ -26,16 +26,18 @@ export async function* listFiles(
   dir: string,
   skipList: Set<string> = new Set()
 ): AsyncGenerator<string> {
-  const dirents = await promises.readdir(dir, { withFileTypes: true });
-  for (const dirent of dirents) {
-    const id = path.join(dir, dirent.name);
-    if (dirent.name.startsWith('.') || skipList.has(id)) {
-      continue;
+  try {
+    const dirents = await promises.readdir(dir, { withFileTypes: true });
+    for (const dirent of dirents) {
+      const id = path.join(dir, dirent.name);
+      if (dirent.name.startsWith('.') || skipList.has(id)) {
+        continue;
+      }
+      if (dirent.isDirectory()) {
+        yield* listFiles(id, skipList);
+      } else {
+        yield id;
+      }
     }
-    if (dirent.isDirectory()) {
-      yield* listFiles(id, skipList);
-    } else {
-      yield id;
-    }
-  }
+  } catch {}
 }

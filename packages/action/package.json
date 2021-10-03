@@ -27,6 +27,7 @@
     "@cpany/hdu": "workspace:*",
     "@cpany/luogu": "workspace:*",
     "@cpany/types": "workspace:*",
+    "@cpany/utils": "workspace:*",
     "dayjs": "^1.10.6",
     "js-yaml": "^4.1.0"
   },

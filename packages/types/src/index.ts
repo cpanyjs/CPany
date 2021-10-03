@@ -31,6 +31,8 @@ export interface ICPanyConfig {
   app?: Partial<AppConfig>;
 }
 
+export type ICPanyPluginConfig = Required<ICPanyConfig> & { basePath: string; timeout?: number };
+
 export type RouteKey<T, K = number> = T & {
   type: string;
   key: K;

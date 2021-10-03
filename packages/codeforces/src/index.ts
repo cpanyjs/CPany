@@ -2,7 +2,7 @@ import axios from 'axios';
 import path from 'path';
 
 import type { IPlugin } from '@cpany/core';
-import type { ICPanyConfig } from '@cpany/types';
+import type { ICPanyPluginConfig } from '@cpany/types';
 import { listFiles } from '@cpany/utils';
 
 import { contestListPlugin, gymContestListPlugin } from './contest';
@@ -15,7 +15,7 @@ export interface ICodeforcesPluginOption {
   timeout?: number;
 }
 
-export function codeforcesPlugin(option: ICodeforcesPluginOption & ICPanyConfig): IPlugin[] {
+export function codeforcesPlugin(option: ICPanyPluginConfig & { baseUrl?: string }): IPlugin[] {
   const api = axios.create({
     baseURL: option.baseUrl ?? 'https://codeforces.com/api/',
     timeout: option.timeout ?? 30 * 1000
@@ -35,11 +35,9 @@ function codeforcesCleanPlugin(basePath: string): IPlugin {
     async clean() {
       const fullPath = path.resolve(basePath, 'codeforces/handle');
       const files: string[] = [];
-      try {
-        for await (const file of listFiles(fullPath)) {
-          files.push(file);
-        }
-      } catch (error) {}
+      for await (const file of listFiles(fullPath)) {
+        files.push(file);
+      }
       return { files };
     }
   };

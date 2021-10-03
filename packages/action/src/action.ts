@@ -3,13 +3,14 @@ import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import { load } from 'js-yaml';
 
-import type { ICPanyConfig } from '@cpany/types';
+import type { ICPanyConfig, ICPanyPluginConfig } from '@cpany/types';
 import { createInstance, createRetryContainer } from '@cpany/core';
+import { isUndef } from '@cpany/utils';
 
 import { codeforcesPlugin } from '@cpany/codeforces';
-import { hduPlugin } from '@cpany/hdu';
-import { luoguPlugin } from '@cpany/luogu';
 import { atcoderPlugin } from '@cpany/atcoder';
+import { luoguPlugin } from '@cpany/luogu';
+import { hduPlugin } from '@cpany/hdu';
 
 import { createGitFileSystem } from './fs';
 import { processReport } from './report';
@@ -31,14 +32,14 @@ export async function run({
   maxRetry
 }: IRunOption) {
   const usedPluginSet = new Set(plugins);
-  const config = await getConfig(resolve(basePath, 'cpany.yml'));
+  const config = await getConfig(basePath);
 
   const instance = createInstance({
     plugins: [
-      usedPluginSet.has('codeforces') ? codeforcesPlugin({ basePath, ...config }) : undefined,
-      usedPluginSet.has('atcoder') ? atcoderPlugin({ basePath, ...config }) : undefined,
-      usedPluginSet.has('hdu') ? await hduPlugin({ basePath, ...config }) : undefined,
-      usedPluginSet.has('luogu') ? await luoguPlugin({ basePath, ...config }) : undefined
+      usedPluginSet.has('codeforces') ? codeforcesPlugin(config) : undefined,
+      usedPluginSet.has('atcoder') ? atcoderPlugin(config) : undefined,
+      usedPluginSet.has('hdu') ? await hduPlugin(config) : undefined,
+      usedPluginSet.has('luogu') ? await luoguPlugin(config) : undefined
     ],
     logger: logger ? core : undefined
   });
@@ -62,9 +63,9 @@ export async function run({
   instance.logger.startGroup('Fetch data');
 
   const retry = createRetryContainer(instance.logger, maxRetry);
-  const configUser = config?.users ?? {};
-  for (const userKey in configUser) {
-    const user = configUser[userKey];
+
+  for (const userKey in config.users) {
+    const user = config.users[userKey];
 
     for (const type in user) {
       const rawHandles = user[type];
@@ -116,7 +117,42 @@ export async function run({
   await fs.push(nowTime.format('YYYY-MM-DD HH:mm'));
 }
 
-async function getConfig(path: string) {
+async function getConfig(basePath: string, filename = 'cpany.yml'): Promise<ICPanyPluginConfig> {
+  const path = resolve(basePath, filename);
   const content = readFileSync(path, 'utf8');
-  return load(content) as ICPanyConfig;
+  const config = load(content) as ICPanyConfig;
+
+  const transform = (pathes: string[]) => {
+    return pathes.map((path) => resolve(basePath, path));
+  };
+
+  if (isUndef(config.users)) {
+    config.users = {};
+  }
+
+  if (isUndef(config.handles)) {
+    config.handles = [];
+  } else {
+    config.handles = transform(config.handles);
+  }
+
+  if (isUndef(config.contests)) {
+    config.contests = [];
+  } else {
+    config.contests = transform(config.contests);
+  }
+
+  if (isUndef(config.fetch)) {
+    config.fetch = [];
+  } else {
+    config.fetch = transform(config.fetch);
+  }
+
+  if (isUndef(config.static)) {
+    config.static = [];
+  } else {
+    config.static = transform(config.fetch);
+  }
+
+  return { ...config, basePath } as ICPanyPluginConfig;
 }
