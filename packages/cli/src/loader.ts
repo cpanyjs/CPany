@@ -218,8 +218,9 @@ export async function createLoader({
   ): IContestOverview[] => {
     const length = _length === undefined ? _contests.length : _length;
     const overview: IContestOverview[] = [];
-    for (let i = 0; i < length && i < _contests.length; i++) {
+    for (let i = 0; overview.length < length && i < _contests.length; i++) {
       const contest = { ..._contests[i] };
+      if (contest.participantNumber === 0) continue;
       Reflect.deleteProperty(contest, 'standings');
       overview.push(contest);
     }
