@@ -31,15 +31,15 @@ export async function run({
   plugins = ['codeforces', 'hdu'],
   maxRetry
 }: IRunOption) {
-  const usedPluginSet = new Set(plugins);
+  const activatePlugin = getPluginSet(plugins);
   const config = await getConfig(basePath);
 
   const instance = createInstance({
     plugins: [
-      usedPluginSet.has('codeforces') ? codeforcesPlugin(config) : undefined,
-      usedPluginSet.has('atcoder') ? atcoderPlugin(config) : undefined,
-      usedPluginSet.has('hdu') ? await hduPlugin(config) : undefined,
-      usedPluginSet.has('luogu') ? await luoguPlugin(config) : undefined
+      activatePlugin.codeforces ? codeforcesPlugin(config) : undefined,
+      activatePlugin.atcoder ? atcoderPlugin(config) : undefined,
+      activatePlugin.hdu ? await hduPlugin(config) : undefined,
+      activatePlugin.luogu ? await luoguPlugin(config) : undefined
     ],
     logger: logger ? core : undefined
   });
@@ -115,6 +115,16 @@ export async function run({
     instance.logger.error(error as string);
   }
   await fs.push(nowTime.format('YYYY-MM-DD HH:mm'));
+}
+
+function getPluginSet(plugins: string[]) {
+  const set = new Set(plugins);
+  return {
+    codeforces: set.has('codeforces') || set.has('cf'),
+    atcoder: set.has('atcoder') || set.has('at'),
+    hdu: set.has('hdu'),
+    luogu: set.has('luogu') || set.has('lg')
+  }
 }
 
 async function getConfig(basePath: string, filename = 'cpany.yml'): Promise<ICPanyPluginConfig> {
