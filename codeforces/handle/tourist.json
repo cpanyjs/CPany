@@ -12,6 +12,195 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 131186762,
+      "creationTime": 1633707227,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1633705500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1594A",
+        "name": "Consecutive Sum Riddle",
+        "rating": 800,
+        "tags": [
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1594/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1594/submission/131186762"
+    },
+    {
+      "type": "codeforces",
+      "id": 131186472,
+      "creationTime": 1633707194,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1633705500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1594B",
+        "name": "Special Numbers",
+        "rating": 1100,
+        "tags": [
+          "bitmasks",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1594/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1594/submission/131186472"
+    },
+    {
+      "type": "codeforces",
+      "id": 131185995,
+      "creationTime": 1633707134,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1633705500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1594C",
+        "name": "Make Them Equal",
+        "rating": 1200,
+        "tags": [
+          "brute force",
+          "greedy",
+          "math",
+          "strings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1594/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1594/submission/131185995"
+    },
+    {
+      "type": "codeforces",
+      "id": 131184592,
+      "creationTime": 1633706961,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1633705500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1594D",
+        "name": "The Number of Imposters",
+        "rating": 1700,
+        "tags": [
+          "constructive algorithms",
+          "dfs and similar",
+          "dp",
+          "dsu",
+          "graphs"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1594/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1594/submission/131184592"
+    },
+    {
+      "type": "codeforces",
+      "id": 131182845,
+      "creationTime": 1633706754,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1633705500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1594E2",
+        "name": "Rubik's Cube Coloring (hard version)",
+        "rating": 2300,
+        "tags": [
+          "brute force",
+          "dp",
+          "implementation",
+          "math",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1594/problem/E2"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1594/submission/131182845"
+    },
+    {
+      "type": "codeforces",
+      "id": 131179417,
+      "creationTime": 1633706368,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1633705500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1594E1",
+        "name": "Rubik's Cube Coloring (easy version)",
+        "rating": 1300,
+        "tags": [
+          "combinatorics",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1594/problem/E1"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1594/submission/131179417"
+    },
+    {
+      "type": "codeforces",
+      "id": 131173452,
+      "creationTime": 1633705842,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1633705500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1594F",
+        "name": "Ideal Farm",
+        "rating": 2400,
+        "tags": [
+          "constructive algorithms",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1594/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1594/submission/131173452"
+    },
+    {
+      "type": "codeforces",
       "id": 130541437,
       "creationTime": 1633163674,
       "language": "Kotlin 1.4",
@@ -27,7 +216,10 @@
         "type": "codeforces",
         "id": "1570G",
         "name": "XOR Guessing",
-        "tags": [],
+        "tags": [
+          "*special",
+          "interactive"
+        ],
         "problemUrl": "https://codeforces.com/contest/1570/problem/G"
       },
       "submissionUrl": "https://codeforces.com/contest/1570/submission/130541437"
@@ -49,7 +241,9 @@
         "type": "codeforces",
         "id": "1570F",
         "name": "Square Filling",
-        "tags": [],
+        "tags": [
+          "*special"
+        ],
         "problemUrl": "https://codeforces.com/contest/1570/problem/F"
       },
       "submissionUrl": "https://codeforces.com/contest/1570/submission/130540812"
@@ -71,7 +265,10 @@
         "type": "codeforces",
         "id": "1570E",
         "name": "Erasing Zeroes",
-        "tags": [],
+        "tags": [
+          "*special",
+          "strings"
+        ],
         "problemUrl": "https://codeforces.com/contest/1570/problem/E"
       },
       "submissionUrl": "https://codeforces.com/contest/1570/submission/130540347"
@@ -93,7 +290,10 @@
         "type": "codeforces",
         "id": "1570D",
         "name": "Reachable Numbers",
-        "tags": [],
+        "tags": [
+          "*special",
+          "implementation"
+        ],
         "problemUrl": "https://codeforces.com/contest/1570/problem/D"
       },
       "submissionUrl": "https://codeforces.com/contest/1570/submission/130540048"
@@ -115,7 +315,11 @@
         "type": "codeforces",
         "id": "1570C",
         "name": "Shooting",
-        "tags": [],
+        "tags": [
+          "*special",
+          "greedy",
+          "implementation"
+        ],
         "problemUrl": "https://codeforces.com/contest/1570/problem/C"
       },
       "submissionUrl": "https://codeforces.com/contest/1570/submission/130539797"
@@ -137,7 +341,10 @@
         "type": "codeforces",
         "id": "1570B",
         "name": "Yellow Cards",
-        "tags": [],
+        "tags": [
+          "*special",
+          "math"
+        ],
         "problemUrl": "https://codeforces.com/contest/1570/problem/B"
       },
       "submissionUrl": "https://codeforces.com/contest/1570/submission/130539436"
@@ -159,7 +366,9 @@
         "type": "codeforces",
         "id": "1570A",
         "name": "A+B (Trial Problem)",
-        "tags": [],
+        "tags": [
+          "*special"
+        ],
         "problemUrl": "https://codeforces.com/contest/1570/problem/A"
       },
       "submissionUrl": "https://codeforces.com/contest/1570/submission/130539035"

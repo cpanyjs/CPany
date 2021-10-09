@@ -13005,5 +13005,25 @@
     "phase": "FINISHED",
     "contestUrl": "https://codeforces.com/gym/103317",
     "standingsUrl": "https://codeforces.com/gym/103317/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Сириус.2021.Ноябрь.Очный отбор",
+    "duration": 14400,
+    "participantNumber": 0,
+    "id": 103325,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103325",
+    "standingsUrl": "https://codeforces.com/gym/103325/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "2020-2021 Summer Petrozavodsk Camp, Day 6: XJTU Contest (XXII Opencup, Grand Prix of XiAn)",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103329,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103329",
+    "standingsUrl": "https://codeforces.com/gym/103329/standings"
   }
 ]
