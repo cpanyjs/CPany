@@ -12,13 +12,16 @@ import {
 } from '@cpany/types';
 
 const handleMap = new Map<string, string>();
-const contestSet = new Set<string>();
+const contestantSet = new Map<string, string[]>();
 const contestCache = new Map<string, IContest>();
 const contestPracticeCache = new Map<string, IContestStanding[]>();
 const contestSubmissionsUrl = new Map<string, Map<string, string>>();
 
-export function pushContest(contest: string) {
-  contestSet.add(contest);
+export function pushContest(contest: string, handle: string) {
+  if (!contestantSet.has(contest)) {
+    contestantSet.set(contest, []);
+  }
+  contestantSet.get(contest)!.push(handle);
 }
 
 export function addContests(contests: IContest[]) {
@@ -130,8 +133,13 @@ export function createAtCoderContestPlugin(
         let planSz = 0,
           curRunSz = 0;
 
-        for (const contestId of contestSet) {
-          if (contestCache.has(contestId)) {
+        for (const [contestId, handlesParticipant] of contestantSet) {
+          const cacheStandings =
+            contestCache
+              .get(contestId)
+              ?.standings?.map((standing) => standing.author.members)
+              .flat() ?? [];
+          if (contestCache.has(contestId) && isHandlesLte(handlesParticipant, cacheStandings)) {
             contests.push(contestCache.get(contestId)!);
           } else {
             planSz++;
@@ -289,4 +297,10 @@ function parseIndex(index: string) {
   } else {
     return index.charCodeAt(index.length - 1) - 'A'.charCodeAt(0);
   }
+}
+
+function isHandlesLte(sa: string[], sb: string[]) {
+  const set = new Set(sa);
+  for (const handle of sb) set.delete(handle);
+  return set.size === 0;
 }

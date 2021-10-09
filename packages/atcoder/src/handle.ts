@@ -169,10 +169,15 @@ async function fetchSubmissions(
   const retry = createRetryContainer(logger, 5);
   const submissions: ISubmission[] = [];
   for (const contest of contests) {
-    pushContest(contest);
     retry.add(`${id}'s submissions at ${contest}'`, async () => {
       try {
-        submissions.push(...(await run(contest)));
+        const newSubs = await run(contest);
+        if (
+          newSubs.findIndex((sub) => sub.author.participantType === ParticipantType.CONTESTANT) >= 0
+        ) {
+          pushContest(contest, id);
+        }
+        submissions.push(...newSubs);
         return true;
       } catch (error) {
         logger.error('Error: ' + (error as any).message);
