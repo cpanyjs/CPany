@@ -15895,12 +15895,15 @@ var _core = __nccwpck_require__(8780);
 
 
 var handleMap = new Map();
-var contestSet = new Set();
+var contestantSet = new Map();
 var contestCache = new Map();
 var contestPracticeCache = new Map();
 var contestSubmissionsUrl = new Map();
-function pushContest(contest) {
-  contestSet.add(contest);
+function pushContest(contest, handle) {
+  if (!contestantSet.has(contest)) {
+    contestantSet.set(contest, []);
+  }
+  contestantSet.get(contest).push(handle);
 }
 function addContests(contests) {
   for (const contest of contests) {
@@ -15986,12 +15989,14 @@ function createAtCoderContestPlugin(api, _handleMap) {
   return {
     name: "atcoder/contest.json",
     async load(id, { logger }) {
+      var _a, _b, _c;
       if (id === "atcoder/contest.json") {
         const retry = _core.createRetryContainer.call(void 0, logger, 5);
         const contests = [];
         let planSz = 0, curRunSz = 0;
-        for (const contestId of contestSet) {
-          if (contestCache.has(contestId)) {
+        for (const [contestId, handlesParticipant] of contestantSet) {
+          const cacheStandings = (_c = (_b = (_a = contestCache.get(contestId)) == null ? void 0 : _a.standings) == null ? void 0 : _b.map((standing) => standing.author.members).flat()) != null ? _c : [];
+          if (contestCache.has(contestId) && isHandlesLte(handlesParticipant, cacheStandings)) {
             contests.push(contestCache.get(contestId));
           } else {
             planSz++;
@@ -16113,6 +16118,12 @@ function parseIndex(index) {
   } else {
     return index.charCodeAt(index.length - 1) - "A".charCodeAt(0);
   }
+}
+function isHandlesLte(sa, sb) {
+  const set = new Set(sa);
+  for (const handle of sb)
+    set.delete(handle);
+  return set.size === 0;
 }
 
 // src/handle.ts
@@ -16256,10 +16267,13 @@ async function fetchSubmissions(api, id, logger) {
   const retry = _core.createRetryContainer.call(void 0, logger, 5);
   const submissions = [];
   for (const contest of contests) {
-    pushContest(contest);
     retry.add(`${id}'s submissions at ${contest}'`, async () => {
       try {
-        submissions.push(...await run(contest));
+        const newSubs = await run(contest);
+        if (newSubs.findIndex((sub) => sub.author.participantType === _types.ParticipantType.CONTESTANT) >= 0) {
+          pushContest(contest, id);
+        }
+        submissions.push(...newSubs);
         return true;
       } catch (error) {
         logger.error("Error: " + error.message);
@@ -21843,7 +21857,7 @@ function createGitFileSystem(basePath, { disable = false } = {}) {
 }
 
 ;// CONCATENATED MODULE: ./src/version.ts
-const ActionVersion = '0.0.59';
+const ActionVersion = '0.0.60';
 
 ;// CONCATENATED MODULE: ./src/report.ts
 var report_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
@@ -21982,14 +21996,14 @@ var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _a
 
 function run({ logger = true, basePath = './', disableGit, plugins = ['codeforces', 'hdu'], maxRetry }) {
     return action_awaiter(this, void 0, void 0, function* () {
-        const usedPluginSet = new Set(plugins);
+        const activatePlugin = getPluginSet(plugins);
         const config = yield getConfig(basePath);
         const instance = (0,dist.createInstance)({
             plugins: [
-                usedPluginSet.has('codeforces') ? (0,codeforces_dist.codeforcesPlugin)(config) : undefined,
-                usedPluginSet.has('atcoder') ? (0,atcoder_dist/* atcoderPlugin */.g)(config) : undefined,
-                usedPluginSet.has('hdu') ? yield (0,hdu_dist.hduPlugin)(config) : undefined,
-                usedPluginSet.has('luogu') ? yield (0,luogu_dist.luoguPlugin)(config) : undefined
+                activatePlugin.codeforces ? (0,codeforces_dist.codeforcesPlugin)(config) : undefined,
+                activatePlugin.atcoder ? (0,atcoder_dist/* atcoderPlugin */.g)(config) : undefined,
+                activatePlugin.hdu ? yield (0,hdu_dist.hduPlugin)(config) : undefined,
+                activatePlugin.luogu ? yield (0,luogu_dist.luoguPlugin)(config) : undefined
             ],
             logger: logger ? core : undefined
         });
@@ -22055,6 +22069,15 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
         }
         yield fs.push(nowTime.format('YYYY-MM-DD HH:mm'));
     });
+}
+function getPluginSet(plugins) {
+    const set = new Set(plugins);
+    return {
+        codeforces: set.has('codeforces') || set.has('cf'),
+        atcoder: set.has('atcoder') || set.has('at'),
+        hdu: set.has('hdu'),
+        luogu: set.has('luogu') || set.has('lg')
+    };
 }
 function getConfig(basePath, filename = 'cpany.yml') {
     return action_awaiter(this, void 0, void 0, function* () {
