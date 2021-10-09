@@ -124,7 +124,7 @@ function getPluginSet(plugins: string[]) {
     atcoder: set.has('atcoder') || set.has('at'),
     hdu: set.has('hdu'),
     luogu: set.has('luogu') || set.has('lg')
-  }
+  };
 }
 
 async function getConfig(basePath: string, filename = 'cpany.yml'): Promise<ICPanyPluginConfig> {
