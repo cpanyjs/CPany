@@ -13,10 +13,10 @@
         <span>{{ toNumDuration(result.relativeTime) }}</span>
       </div>
     </div>
-    <div v-else>
+    <div v-else-if="!!result.dirty">
       <div class="text-center font-bold text-red-500">
         <span>-</span>
-        <span>{{ result.dirty ?? 1 }}</span>
+        <span>{{ result.dirty }}</span>
       </div>
     </div>
   </template>
