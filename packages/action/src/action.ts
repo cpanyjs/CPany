@@ -128,39 +128,45 @@ function getPluginSet(plugins: string[]) {
 }
 
 async function getConfig(basePath: string, filename = 'cpany.yml'): Promise<ICPanyPluginConfig> {
-  const path = resolve(basePath, filename);
-  const content = readFileSync(path, 'utf8');
-  const config = load(content) as ICPanyConfig;
+  try {
+    const path = resolve(basePath, filename);
+    const content = readFileSync(path, 'utf8');
+    const config = load(content) as ICPanyConfig;
 
-  const transform = (pathes: string[]) => {
-    return pathes.map((path) => resolve(basePath, path));
-  };
+    const transform = (pathes: string[]) => {
+      return pathes.map((path) => resolve(basePath, path));
+    };
 
-  if (isUndef(config.users)) {
-    config.users = {};
+    if (isUndef(config.users)) {
+      config.users = {};
+    }
+
+    if (isUndef(config.handles)) {
+      config.handles = [];
+    } else {
+      config.handles = transform(config.handles);
+    }
+
+    if (isUndef(config.contests)) {
+      config.contests = [];
+    } else {
+      config.contests = transform(config.contests);
+    }
+
+    if (isUndef(config.fetch)) {
+      config.fetch = [];
+    }
+
+    if (isUndef(config.static)) {
+      config.static = [];
+    } else {
+      config.static = transform(config.fetch);
+    }
+
+    return { ...config, basePath } as ICPanyPluginConfig;
+  } catch (error) {
+    console.log(error);
+
+    process.exit(1);
   }
-
-  if (isUndef(config.handles)) {
-    config.handles = [];
-  } else {
-    config.handles = transform(config.handles);
-  }
-
-  if (isUndef(config.contests)) {
-    config.contests = [];
-  } else {
-    config.contests = transform(config.contests);
-  }
-
-  if (isUndef(config.fetch)) {
-    config.fetch = [];
-  }
-
-  if (isUndef(config.static)) {
-    config.static = [];
-  } else {
-    config.static = transform(config.fetch);
-  }
-
-  return { ...config, basePath } as ICPanyPluginConfig;
 }
