@@ -28,7 +28,10 @@
         "id": "1601E",
         "name": "Phys Ed Online",
         "tags": [
-          "data structures"
+          "data structures",
+          "dp",
+          "greedy",
+          "trees"
         ],
         "problemUrl": "https://codeforces.com/contest/1601/problem/E"
       },
@@ -54,6 +57,7 @@
         "tags": [
           "data structures",
           "dp",
+          "greedy",
           "sortings"
         ],
         "problemUrl": "https://codeforces.com/contest/1601/problem/D"
@@ -80,7 +84,8 @@
         "tags": [
           "data structures",
           "divide and conquer",
-          "greedy"
+          "greedy",
+          "sortings"
         ],
         "problemUrl": "https://codeforces.com/contest/1601/problem/C"
       },
@@ -105,9 +110,9 @@
         "name": "Frog Traveler",
         "tags": [
           "data structures",
+          "dfs and similar",
           "dp",
           "graphs",
-          "greedy",
           "shortest paths"
         ],
         "problemUrl": "https://codeforces.com/contest/1601/problem/B"
