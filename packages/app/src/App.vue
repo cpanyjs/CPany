@@ -8,9 +8,11 @@
       >
     </template>
     <template #start>
-      <navbar-item tag="router-link" :to="{ name: 'Members' }">成员</navbar-item>
-      <navbar-item tag="router-link" :to="{ name: 'Codeforces' }">Codeforces</navbar-item>
-      <navbar-item tag="router-link" :to="{ name: 'Contests' }">比赛</navbar-item>
+      <navbar-item tag="router-link" :to="{ name: 'Members' }" v-if="members">成员</navbar-item>
+      <navbar-item tag="router-link" :to="{ name: 'Codeforces' }" v-if="codeforces"
+        >Codeforces</navbar-item
+      >
+      <navbar-item tag="router-link" :to="{ name: 'Contests' }" v-if="contests">比赛</navbar-item>
     </template>
   </navbar>
 
@@ -67,6 +69,7 @@ import IconGithub from '~icons/mdi/github';
 import { Navbar, NavbarItem } from './components/navbar';
 import { Progress } from './components/progress';
 import { toDate } from './utils';
+import { nav } from './overview';
 
 const cliVersion = import.meta.env.VITE_CLI_VERSION!;
 
@@ -75,6 +78,10 @@ const actionVersion = import.meta.env.VITE_ACTION_VERSION!;
 const updateTime = import.meta.env.VITE_UPDATE_TIME!;
 
 const buildTime = import.meta.env.VITE_BUILD_TIME!;
+
+const members = nav.findIndex((t) => t === 'members' || t === 'member') !== -1;
+const codeforces = nav.findIndex((t) => t === 'codeforces') !== -1;
+const contests = nav.findIndex((t) => t === 'contests' || t === 'contest') !== -1;
 </script>
 
 <style>

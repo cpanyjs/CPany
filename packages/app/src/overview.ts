@@ -4,6 +4,7 @@ let title = '';
 let recentTime = 30 * 24 * 3600;
 let recentContestsCount = 15;
 let recentUserCount = 5;
+let nav = ['members', 'codeforces', 'contests'];
 
 let allSubmissionCount = 0;
 let allOkSubmissionCount = 0;
@@ -29,6 +30,7 @@ export {
   recentContestsCount,
   recentUserCount,
   recentStartTime,
+  nav,
   allSubmissionCount,
   allOkSubmissionCount,
   allContestCount,

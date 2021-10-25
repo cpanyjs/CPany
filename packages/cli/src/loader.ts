@@ -299,6 +299,9 @@ export async function createLoader({
       String(config.app?.recentUserCount ?? DefaultRecentUserCount)
     );
     overviewMap.set('cliVersion', '`' + cliVersion + '`');
+    if (Array.isArray(config.app?.nav)) {
+      overviewMap.set('nav', `[${config.app?.nav.map((t) => `"${t}"`).join(', ')}]`);
+    }
 
     const allSubmissionCount = users.reduce(
       (sum, user) => sum + user.handles.reduce((sum, handle) => sum + handle.submissions.length, 0),

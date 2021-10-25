@@ -19,6 +19,8 @@ export interface AppConfig {
   recentTime: number;
   recentContestsCount: number;
   recentUserCount: number;
+  // default: ['members', 'codeforces', 'contests'];
+  nav: string[];
 }
 
 export interface ICPanyConfig {
