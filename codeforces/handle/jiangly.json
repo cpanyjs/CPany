@@ -5,11 +5,232 @@
   "avatar": "https://userpic.codeforces.org/887306/title/8a005a7ae1ea1a45.jpg",
   "codeforces": {
     "rank": "legendary grandmaster",
-    "rating": 3204,
+    "rating": 3288,
     "maxRank": "legendary grandmaster",
     "maxRating": 3492
   },
   "submissions": [
+    {
+      "type": "codeforces",
+      "id": 132241119,
+      "creationTime": 1634472753,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1634468700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1586G",
+        "name": "Omkar and Time Travel",
+        "tags": [
+          "data structures",
+          "dp",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1586/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1586/submission/132241119"
+    },
+    {
+      "type": "codeforces",
+      "id": 132234366,
+      "creationTime": 1634471552,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1634468700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1586F",
+        "name": "Defender of Childhood Dreams",
+        "tags": [
+          "bitmasks",
+          "constructive algorithms",
+          "divide and conquer",
+          "graphs",
+          "greedy",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1586/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1586/submission/132234366"
+    },
+    {
+      "type": "codeforces",
+      "id": 132228693,
+      "creationTime": 1634470706,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1634468700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1586E",
+        "name": "Moment of Bloom",
+        "tags": [
+          "constructive algorithms",
+          "dfs and similar",
+          "dsu",
+          "graph matchings",
+          "graphs",
+          "greedy",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1586/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1586/submission/132228693"
+    },
+    {
+      "type": "codeforces",
+      "id": 132224444,
+      "creationTime": 1634470164,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1634468700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1586D",
+        "name": "Omkar and the Meaning of Life",
+        "tags": [
+          "constructive algorithms",
+          "greedy",
+          "interactive",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1586/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1586/submission/132224444"
+    },
+    {
+      "type": "codeforces",
+      "id": 132223733,
+      "creationTime": 1634470091,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1634468700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1586D",
+        "name": "Omkar and the Meaning of Life",
+        "tags": [
+          "constructive algorithms",
+          "greedy",
+          "interactive",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1586/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1586/submission/132223733"
+    },
+    {
+      "type": "codeforces",
+      "id": 132219460,
+      "creationTime": 1634469553,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1634468700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1586C",
+        "name": "Omkar and Determination",
+        "tags": [
+          "constructive algorithms",
+          "dp",
+          "greedy",
+          "implementation",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1586/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1586/submission/132219460"
+    },
+    {
+      "type": "codeforces",
+      "id": 132215490,
+      "creationTime": 1634469185,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1634468700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1586B",
+        "name": "Omkar and Heavenly Tree",
+        "tags": [
+          "brute force",
+          "constructive algorithms",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1586/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1586/submission/132215490"
+    },
+    {
+      "type": "codeforces",
+      "id": 132214020,
+      "creationTime": 1634469037,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1634468700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1586A",
+        "name": "Windblume Ode",
+        "tags": [
+          "brute force",
+          "constructive algorithms",
+          "greedy",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1586/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1586/submission/132214020"
+    },
     {
       "type": "codeforces",
       "id": 131285215,

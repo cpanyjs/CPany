@@ -5,11 +5,141 @@
   "avatar": "https://userpic.codeforces.org/664/title/c1ef9e749cad14a0.jpg",
   "codeforces": {
     "rank": "legendary grandmaster",
-    "rating": 3229,
+    "rating": 3159,
     "maxRank": "legendary grandmaster",
     "maxRating": 3597
   },
   "submissions": [
+    {
+      "type": "codeforces",
+      "id": 133031152,
+      "creationTime": 1635150650,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635143700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1601E",
+        "name": "Phys Ed Online",
+        "tags": [
+          "data structures"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1601/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1601/submission/133031152"
+    },
+    {
+      "type": "codeforces",
+      "id": 133009479,
+      "creationTime": 1635148217,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635143700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1601D",
+        "name": "Difficult Mountain",
+        "tags": [
+          "data structures",
+          "dp",
+          "sortings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1601/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1601/submission/133009479"
+    },
+    {
+      "type": "codeforces",
+      "id": 132998578,
+      "creationTime": 1635145626,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635143700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1601C",
+        "name": "Optimal Insertion",
+        "tags": [
+          "data structures",
+          "divide and conquer",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1601/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1601/submission/132998578"
+    },
+    {
+      "type": "codeforces",
+      "id": 132992231,
+      "creationTime": 1635144518,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635143700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1601B",
+        "name": "Frog Traveler",
+        "tags": [
+          "data structures",
+          "dp",
+          "graphs",
+          "greedy",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1601/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1601/submission/132992231"
+    },
+    {
+      "type": "codeforces",
+      "id": 132986123,
+      "creationTime": 1635143940,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635143700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1601A",
+        "name": "Array Elimination",
+        "tags": [
+          "bitmasks",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1601/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1601/submission/132986123"
+    },
     {
       "type": "codeforces",
       "id": 126690106,

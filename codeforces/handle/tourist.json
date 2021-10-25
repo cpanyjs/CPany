@@ -12,6 +12,427 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 131878106,
+      "creationTime": 1634162815,
+      "language": "GNU C++17 (64)",
+      "verdict": "PARTIAL",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1633737600
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1576A",
+        "name": "Communication Routing Challenge",
+        "tags": [
+          "*special"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1576/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1576/submission/131878106"
+    },
+    {
+      "type": "codeforces",
+      "id": 131878012,
+      "creationTime": 1634162679,
+      "language": "GNU C++17 (64)",
+      "verdict": "PARTIAL",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1633737600
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1576A",
+        "name": "Communication Routing Challenge",
+        "tags": [
+          "*special"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1576/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1576/submission/131878012"
+    },
+    {
+      "type": "codeforces",
+      "id": 131877862,
+      "creationTime": 1634162507,
+      "language": "GNU C++17 (64)",
+      "verdict": "PARTIAL",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1633737600
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1576A",
+        "name": "Communication Routing Challenge",
+        "tags": [
+          "*special"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1576/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1576/submission/131877862"
+    },
+    {
+      "type": "codeforces",
+      "id": 131877768,
+      "creationTime": 1634162374,
+      "language": "GNU C++17 (64)",
+      "verdict": "PARTIAL",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1633737600
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1576A",
+        "name": "Communication Routing Challenge",
+        "tags": [
+          "*special"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1576/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1576/submission/131877768"
+    },
+    {
+      "type": "codeforces",
+      "id": 131877637,
+      "creationTime": 1634162160,
+      "language": "GNU C++17 (64)",
+      "verdict": "PARTIAL",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1633737600
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1576A",
+        "name": "Communication Routing Challenge",
+        "tags": [
+          "*special"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1576/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1576/submission/131877637"
+    },
+    {
+      "type": "codeforces",
+      "id": 131877056,
+      "creationTime": 1634161326,
+      "language": "GNU C++17 (64)",
+      "verdict": "PARTIAL",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1633737600
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1576A",
+        "name": "Communication Routing Challenge",
+        "tags": [
+          "*special"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1576/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1576/submission/131877056"
+    },
+    {
+      "type": "codeforces",
+      "id": 131876836,
+      "creationTime": 1634161037,
+      "language": "GNU C++17 (64)",
+      "verdict": "PARTIAL",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1633737600
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1576A",
+        "name": "Communication Routing Challenge",
+        "tags": [
+          "*special"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1576/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1576/submission/131876836"
+    },
+    {
+      "type": "codeforces",
+      "id": 131876802,
+      "creationTime": 1634161009,
+      "language": "GNU C++17 (64)",
+      "verdict": "PARTIAL",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1633737600
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1576A",
+        "name": "Communication Routing Challenge",
+        "tags": [
+          "*special"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1576/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1576/submission/131876802"
+    },
+    {
+      "type": "codeforces",
+      "id": 131442050,
+      "creationTime": 1633862044,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1633856700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1598G",
+        "name": "The Sum of Good Numbers",
+        "rating": 3200,
+        "tags": [
+          "hashing",
+          "math",
+          "string suffix structures",
+          "strings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1598/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1598/submission/131442050"
+    },
+    {
+      "type": "codeforces",
+      "id": 131413919,
+      "creationTime": 1633858311,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1633856700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1598F",
+        "name": "RBS",
+        "rating": 2400,
+        "tags": [
+          "binary search",
+          "bitmasks",
+          "brute force",
+          "data structures",
+          "dp"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1598/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1598/submission/131413919"
+    },
+    {
+      "type": "codeforces",
+      "id": 131409216,
+      "creationTime": 1633857822,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1633856700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1598E",
+        "name": "Staircases",
+        "rating": 2100,
+        "tags": [
+          "brute force",
+          "combinatorics",
+          "data structures",
+          "dfs and similar",
+          "dp",
+          "implementation",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1598/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1598/submission/131409216"
+    },
+    {
+      "type": "codeforces",
+      "id": 131405446,
+      "creationTime": 1633857438,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1633856700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1598D",
+        "name": "Training Session",
+        "rating": 1700,
+        "tags": [
+          "combinatorics",
+          "data structures",
+          "geometry",
+          "implementation",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1598/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1598/submission/131405446"
+    },
+    {
+      "type": "codeforces",
+      "id": 131402318,
+      "creationTime": 1633857134,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1633856700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1598C",
+        "name": "Delete Two Elements",
+        "rating": 1200,
+        "tags": [
+          "data structures",
+          "dp",
+          "implementation",
+          "math",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1598/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1598/submission/131402318"
+    },
+    {
+      "type": "codeforces",
+      "id": 131402149,
+      "creationTime": 1633857121,
+      "language": "GNU C++17",
+      "verdict": "COMPILATION_ERROR",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1633856700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1598C",
+        "name": "Delete Two Elements",
+        "rating": 1200,
+        "tags": [
+          "data structures",
+          "dp",
+          "implementation",
+          "math",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1598/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1598/submission/131402149"
+    },
+    {
+      "type": "codeforces",
+      "id": 131399659,
+      "creationTime": 1633856930,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1633856700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1598B",
+        "name": "Groups",
+        "rating": 1000,
+        "tags": [
+          "brute force",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1598/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1598/submission/131399659"
+    },
+    {
+      "type": "codeforces",
+      "id": 131398034,
+      "creationTime": 1633856775,
+      "language": "GNU C++17",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1633856700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1598A",
+        "name": "Computer Game",
+        "rating": 800,
+        "tags": [
+          "brute force",
+          "dfs and similar",
+          "dp",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1598/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1598/submission/131398034"
+    },
+    {
+      "type": "codeforces",
       "id": 131369110,
       "creationTime": 1633821937,
       "language": "GNU C++17",
@@ -27,7 +448,9 @@
         "type": "codeforces",
         "id": "1576A",
         "name": "Communication Routing Challenge",
-        "tags": [],
+        "tags": [
+          "*special"
+        ],
         "problemUrl": "https://codeforces.com/contest/1576/problem/A"
       },
       "submissionUrl": "https://codeforces.com/contest/1576/submission/131369110"
@@ -49,7 +472,9 @@
         "type": "codeforces",
         "id": "1576A",
         "name": "Communication Routing Challenge",
-        "tags": [],
+        "tags": [
+          "*special"
+        ],
         "problemUrl": "https://codeforces.com/contest/1576/problem/A"
       },
       "submissionUrl": "https://codeforces.com/contest/1576/submission/131369087"
@@ -71,7 +496,9 @@
         "type": "codeforces",
         "id": "1576A",
         "name": "Communication Routing Challenge",
-        "tags": [],
+        "tags": [
+          "*special"
+        ],
         "problemUrl": "https://codeforces.com/contest/1576/problem/A"
       },
       "submissionUrl": "https://codeforces.com/contest/1576/submission/131369015"
@@ -93,7 +520,9 @@
         "type": "codeforces",
         "id": "1576A",
         "name": "Communication Routing Challenge",
-        "tags": [],
+        "tags": [
+          "*special"
+        ],
         "problemUrl": "https://codeforces.com/contest/1576/problem/A"
       },
       "submissionUrl": "https://codeforces.com/contest/1576/submission/131368931"
@@ -115,7 +544,9 @@
         "type": "codeforces",
         "id": "1576A",
         "name": "Communication Routing Challenge",
-        "tags": [],
+        "tags": [
+          "*special"
+        ],
         "problemUrl": "https://codeforces.com/contest/1576/problem/A"
       },
       "submissionUrl": "https://codeforces.com/contest/1576/submission/131368912"
@@ -137,7 +568,9 @@
         "type": "codeforces",
         "id": "1576A",
         "name": "Communication Routing Challenge",
-        "tags": [],
+        "tags": [
+          "*special"
+        ],
         "problemUrl": "https://codeforces.com/contest/1576/problem/A"
       },
       "submissionUrl": "https://codeforces.com/contest/1576/submission/131368739"
@@ -159,7 +592,9 @@
         "type": "codeforces",
         "id": "1576A",
         "name": "Communication Routing Challenge",
-        "tags": [],
+        "tags": [
+          "*special"
+        ],
         "problemUrl": "https://codeforces.com/contest/1576/problem/A"
       },
       "submissionUrl": "https://codeforces.com/contest/1576/submission/131368711"
@@ -181,7 +616,9 @@
         "type": "codeforces",
         "id": "1576A",
         "name": "Communication Routing Challenge",
-        "tags": [],
+        "tags": [
+          "*special"
+        ],
         "problemUrl": "https://codeforces.com/contest/1576/problem/A"
       },
       "submissionUrl": "https://codeforces.com/contest/1576/submission/131368605"
@@ -203,7 +640,9 @@
         "type": "codeforces",
         "id": "1576A",
         "name": "Communication Routing Challenge",
-        "tags": [],
+        "tags": [
+          "*special"
+        ],
         "problemUrl": "https://codeforces.com/contest/1576/problem/A"
       },
       "submissionUrl": "https://codeforces.com/contest/1576/submission/131368183"
@@ -225,7 +664,9 @@
         "type": "codeforces",
         "id": "1576A",
         "name": "Communication Routing Challenge",
-        "tags": [],
+        "tags": [
+          "*special"
+        ],
         "problemUrl": "https://codeforces.com/contest/1576/problem/A"
       },
       "submissionUrl": "https://codeforces.com/contest/1576/submission/131368081"
@@ -247,7 +688,9 @@
         "type": "codeforces",
         "id": "1576A",
         "name": "Communication Routing Challenge",
-        "tags": [],
+        "tags": [
+          "*special"
+        ],
         "problemUrl": "https://codeforces.com/contest/1576/problem/A"
       },
       "submissionUrl": "https://codeforces.com/contest/1576/submission/131368066"

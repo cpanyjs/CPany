@@ -13018,6 +13018,16 @@
   },
   {
     "type": "codeforces/gym/icpc",
+    "name": "National Taiwan University NCPC Preliminary 2021",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103328,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103328",
+    "standingsUrl": "https://codeforces.com/gym/103328/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
     "name": "2020-2021 Summer Petrozavodsk Camp, Day 6: XJTU Contest (XXII Opencup, Grand Prix of XiAn)",
     "duration": 18000,
     "participantNumber": 0,
@@ -13025,5 +13035,78 @@
     "phase": "FINISHED",
     "contestUrl": "https://codeforces.com/gym/103329",
     "standingsUrl": "https://codeforces.com/gym/103329/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "UTPC Contest 10-15-21 Div. 2 (Beginner)",
+    "startTime": 1634339400,
+    "duration": 7200,
+    "participantNumber": 0,
+    "id": 103347,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103347",
+    "standingsUrl": "https://codeforces.com/gym/103347/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "UTPC Contest 10-15-21 Div. 1 (Advanced)",
+    "startTime": 1634339400,
+    "duration": 7200,
+    "participantNumber": 0,
+    "id": 103348,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103348",
+    "standingsUrl": "https://codeforces.com/gym/103348/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "SDU Open 2021 Fall",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103351,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103351",
+    "standingsUrl": "https://codeforces.com/gym/103351/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Интернет-олимпиады, Сезон 2020-2021, Вторая личная олимпиада",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103358,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103358",
+    "standingsUrl": "https://codeforces.com/gym/103358/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Интернет-олимпиады, Сезон 2020-2021, Третья личная олимпиада",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103359,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103359",
+    "standingsUrl": "https://codeforces.com/gym/103359/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Индивидуальная олимпиада школьников по информатике и программированию 2020",
+    "duration": 14400,
+    "participantNumber": 0,
+    "id": 103360,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103360",
+    "standingsUrl": "https://codeforces.com/gym/103360/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "2021 Jiangxi Provincial Collegiate Programming Contest",
+    "startTime": 1634954400,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103366,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103366",
+    "standingsUrl": "https://codeforces.com/gym/103366/standings"
   }
 ]
