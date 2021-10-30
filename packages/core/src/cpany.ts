@@ -161,7 +161,11 @@ export function createInstance(option: ICreateOptions): CPanyInstance {
   };
 }
 
-function classifyPlugins(logger: ILogger, logLevel: LogLevel, plugins?: Array<IPlugin | IPlugin[] | null | undefined>) {
+function classifyPlugins(
+  logger: ILogger,
+  logLevel: LogLevel,
+  plugins?: Array<IPlugin | IPlugin[] | null | undefined>
+) {
   const cleanPlugins: ICleanPlugin[] = [];
   const loadPlugins: ILoadPlugin[] = [];
   const transformPlugins: ITransformPlugin[] = [];

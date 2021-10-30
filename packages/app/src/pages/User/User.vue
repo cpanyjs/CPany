@@ -133,7 +133,15 @@
 </template>
 
 <script setup lang="ts">
-import { IUser, ISubmission, IContest, IHandle, isCodeforces, isAtCoder, isLuogu } from '@cpany/types';
+import {
+  IUser,
+  ISubmission,
+  IContest,
+  IHandle,
+  isCodeforces,
+  isAtCoder,
+  isLuogu
+} from '@cpany/types';
 import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
 import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
 import type { IHandleWithLuogu } from '@cpany/types/luogu';

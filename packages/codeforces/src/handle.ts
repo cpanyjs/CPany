@@ -29,14 +29,17 @@ export function handleInfoPlugin(api: AxiosInstance): ITransformPlugin {
             }
           });
 
-          const meta = !!data.rank && !!data.maxRank ? {
-            codeforces: {
-              rank: data.rank,
-              rating: data.rating,
-              maxRank: data.maxRank,
-              maxRating: data.maxRating
-            }
-          } : {};
+          const meta =
+            !!data.rank && !!data.maxRank
+              ? {
+                  codeforces: {
+                    rank: data.rank,
+                    rating: data.rating,
+                    maxRank: data.maxRank,
+                    maxRating: data.maxRating
+                  }
+                }
+              : {};
 
           return {
             type: name,
