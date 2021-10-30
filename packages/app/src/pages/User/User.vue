@@ -133,7 +133,10 @@
 </template>
 
 <script setup lang="ts">
-import type { IUser, ISubmission, IContest, IHandle } from '@cpany/types';
+import { IUser, ISubmission, IContest, IHandle, isCodeforces, isAtCoder, isLuogu } from '@cpany/types';
+import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
+import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
+import type { IHandleWithLuogu } from '@cpany/types/luogu';
 import { Verdict } from '@cpany/types';
 import { ref, toRefs, computed } from 'vue';
 
@@ -149,10 +152,8 @@ import { HeatMap, parseHeatMapDate } from '@/components/heatmap';
 import { CSelect } from '@/components/select';
 import { toDate, displayContestType, displayProblemType, displayParticipantType } from '@/utils';
 
-import { IHandleWithCodeforces } from '@cpany/types/codeforces';
 import Hover from './Hover.vue';
 import HandleCard from './HandleCard.vue';
-import { IHandleWithAtCoder } from '@cpany/types/atcoder';
 
 const props = defineProps<{ user: IUser }>();
 const { user } = toRefs(props);
@@ -187,12 +188,12 @@ const contests = ref<IContest[]>(
 const sortedHandles = computed(() => {
   const f = (handle: IHandle) => {
     const base = 100000;
-    if (handle.type.startsWith('codeforces')) {
-      return base * 9 + (handle as IHandleWithCodeforces).codeforces.rating;
-    } else if (handle.type.startsWith('atcoder')) {
+    if (isCodeforces(handle)) {
+      return base * 9 + ((handle as IHandleWithCodeforces).codeforces?.rating ?? 0);
+    } else if (isAtCoder(handle)) {
       return base * 8 + ((handle as IHandleWithAtCoder).atcoder.rating ?? 0);
-    } else if (handle.type.startsWith('luogu')) {
-      return base * 7;
+    } else if (isLuogu(handle)) {
+      return base * 7 + ((handle as IHandleWithLuogu).luogu.ranking ?? 0);
     } else {
       return 0;
     }

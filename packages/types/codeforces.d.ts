@@ -1,7 +1,7 @@
 import type { IHandle, Verdict, ParticipantType } from './dist/index.d';
 
 export interface ICodeforcesMeta {
-  codeforces: {
+  codeforces?: {
     rank: string;
     rating: number;
     maxRank: string;

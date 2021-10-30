@@ -29,18 +29,22 @@ export function handleInfoPlugin(api: AxiosInstance): ITransformPlugin {
             }
           });
 
-          return {
-            type: name,
-            handle: data.handle,
-            handleUrl: `https://codeforces.com/profile/${data.handle}`,
-            avatar: data.titlePhoto,
+          const meta = !!data.rank && !!data.maxRank ? {
             codeforces: {
               rank: data.rank,
               rating: data.rating,
               maxRank: data.maxRank,
               maxRating: data.maxRating
-            },
-            submissions: []
+            }
+          } : {};
+
+          return {
+            type: name,
+            handle: data.handle,
+            handleUrl: `https://codeforces.com/profile/${data.handle}`,
+            avatar: data.titlePhoto,
+            submissions: [],
+            ...meta
           };
         };
 

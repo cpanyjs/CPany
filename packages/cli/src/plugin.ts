@@ -280,7 +280,7 @@ export function createCPanyLoadPlugin(
                 cfHandles.push({
                   n: name,
                   h: handle.handle,
-                  r: cfHandle.codeforces.rating
+                  r: cfHandle.codeforces?.rating ?? 0
                 });
               }
             }

@@ -17,13 +17,13 @@
 
         <c-table-column label="Handle">
           <a :href="`https://codeforces.com/profile/${row.handle}`" target="_blank">
-            <cf-rating-color :rating="row.rating">
+            <cf-rating-color v-if="row.isRated" :rating="row.rating">
               {{ row.handle }}
             </cf-rating-color>
           </a>
         </c-table-column>
         <c-table-column label="Rating" :sort="sortByRating" align="right"
-          ><cf-rating-color :rating="row.rating" disable-legendary>{{
+          ><cf-rating-color v-if="row.isRated" :rating="row.rating" disable-legendary>{{
             row.rating
           }}</cf-rating-color></c-table-column
         >
@@ -97,10 +97,14 @@ const extendFn = (user: IUserOverview) => {
   const lastSolveTime = solveSubs.length > 0 ? solveSubs[0].t : 0;
 
   const handles = user.handles.filter((user) => isTypeCf(user.type));
-  let handle = handles.length > 0 ? handles[0] : '';
+  let handle = handles.length > 0 ? handles[0].handle : '';
+  let isRated = false;
   const rating = handles.reduce((max, _handle) => {
     const cfHandle = _handle as unknown as IHandleWithCodeforces;
-    if (cfHandle.codeforces.rating > max) {
+    if (isDef(cfHandle.codeforces)) {
+      isRated = true;
+    }
+    if (isDef(cfHandle.codeforces) && cfHandle.codeforces.rating > max) {
       handle = cfHandle.handle;
       return cfHandle.codeforces.rating;
     } else {
@@ -118,6 +122,7 @@ const extendFn = (user: IUserOverview) => {
     recentAvgDiffcult,
     lastSolveTime,
     rating,
+    isRated,
     handle,
     ...user
   };

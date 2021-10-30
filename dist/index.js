@@ -16476,19 +16476,15 @@ function handleInfoPlugin(api) {
                                 handles: id
                             }
                         });
-                        return {
-                            type: name,
-                            handle: data.handle,
-                            handleUrl: `https://codeforces.com/profile/${data.handle}`,
-                            avatar: data.titlePhoto,
+                        const meta = !!data.rank && !!data.maxRank ? {
                             codeforces: {
                                 rank: data.rank,
                                 rating: data.rating,
                                 maxRank: data.maxRank,
                                 maxRating: data.maxRating
-                            },
-                            submissions: []
-                        };
+                            }
+                        } : {};
+                        return Object.assign({ type: name, handle: data.handle, handleUrl: `https://codeforces.com/profile/${data.handle}`, avatar: data.titlePhoto, submissions: [] }, meta);
                     });
                     const fetchSubmission = () => __awaiter(this, void 0, void 0, function* () {
                         const { data: { result } } = yield api.get('user.status', {
@@ -22081,37 +22077,43 @@ function getPluginSet(plugins) {
 }
 function getConfig(basePath, filename = 'cpany.yml') {
     return action_awaiter(this, void 0, void 0, function* () {
-        const path = (0,external_path_.resolve)(basePath, filename);
-        const content = (0,external_fs_.readFileSync)(path, 'utf8');
-        const config = load(content);
-        const transform = (pathes) => {
-            return pathes.map((path) => (0,external_path_.resolve)(basePath, path));
-        };
-        if ((0,utils_dist.isUndef)(config.users)) {
-            config.users = {};
+        try {
+            const path = (0,external_path_.resolve)(basePath, filename);
+            const content = (0,external_fs_.readFileSync)(path, 'utf8');
+            const config = load(content);
+            const transform = (pathes) => {
+                return pathes.map((path) => (0,external_path_.resolve)(basePath, path));
+            };
+            if ((0,utils_dist.isUndef)(config.users)) {
+                config.users = {};
+            }
+            if ((0,utils_dist.isUndef)(config.handles)) {
+                config.handles = [];
+            }
+            else {
+                config.handles = transform(config.handles);
+            }
+            if ((0,utils_dist.isUndef)(config.contests)) {
+                config.contests = [];
+            }
+            else {
+                config.contests = transform(config.contests);
+            }
+            if ((0,utils_dist.isUndef)(config.fetch)) {
+                config.fetch = [];
+            }
+            if ((0,utils_dist.isUndef)(config.static)) {
+                config.static = [];
+            }
+            else {
+                config.static = transform(config.fetch);
+            }
+            return Object.assign(Object.assign({}, config), { basePath });
         }
-        if ((0,utils_dist.isUndef)(config.handles)) {
-            config.handles = [];
+        catch (error) {
+            console.log(error);
+            process.exit(1);
         }
-        else {
-            config.handles = transform(config.handles);
-        }
-        if ((0,utils_dist.isUndef)(config.contests)) {
-            config.contests = [];
-        }
-        else {
-            config.contests = transform(config.contests);
-        }
-        if ((0,utils_dist.isUndef)(config.fetch)) {
-            config.fetch = [];
-        }
-        if ((0,utils_dist.isUndef)(config.static)) {
-            config.static = [];
-        }
-        else {
-            config.static = transform(config.fetch);
-        }
-        return Object.assign(Object.assign({}, config), { basePath });
     });
 }
 

@@ -1,13 +1,13 @@
 <template>
   <span class="font-600">Codeforces: </span>
   <cf-handle :handle="handle"></cf-handle>
-  <p>
+  <p v-if="handle.codeforces">
     <span class="font-600">Contest rating: </span>
     <cf-rating-color :rating="handle.codeforces.rating" disable-legendary>{{
       handle.codeforces.rating
     }}</cf-rating-color>
   </p>
-  <p>
+  <p v-if="handle.codeforces">
     <span class="font-600">Max rating: </span>
     <cf-rating-color :rating="handle.codeforces.maxRating" disable-legendary>{{
       handle.codeforces.maxRating
