@@ -3,13 +3,163 @@
   "handle": "jiangly",
   "handleUrl": "https://codeforces.com/profile/jiangly",
   "avatar": "https://userpic.codeforces.org/887306/title/8a005a7ae1ea1a45.jpg",
-  "codeforces": {
-    "rank": "legendary grandmaster",
-    "rating": 3288,
-    "maxRank": "legendary grandmaster",
-    "maxRating": 3492
-  },
   "submissions": [
+    {
+      "type": "codeforces",
+      "id": 133684798,
+      "creationTime": 1635611699,
+      "language": "GNU C++20 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635604500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603F",
+        "name": "October 18, 2017",
+        "tags": [
+          "combinatorics",
+          "dp",
+          "implementation",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133684798"
+    },
+    {
+      "type": "codeforces",
+      "id": 133663811,
+      "creationTime": 1635608866,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635604500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603D",
+        "name": "Artistic Partition",
+        "tags": [
+          "dp",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133663811"
+    },
+    {
+      "type": "codeforces",
+      "id": 133642566,
+      "creationTime": 1635606435,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635604500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603C",
+        "name": "Extreme Extension",
+        "tags": [
+          "dp",
+          "greedy",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133642566"
+    },
+    {
+      "type": "codeforces",
+      "id": 133627917,
+      "creationTime": 1635605277,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635604500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603B",
+        "name": "Moderate Modular Mode",
+        "tags": [
+          "constructive algorithms",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133627917"
+    },
+    {
+      "type": "codeforces",
+      "id": 133620309,
+      "creationTime": 1635604851,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635604500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603A",
+        "name": "Di-visible Confusion",
+        "tags": [
+          "constructive algorithms",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133620309"
+    },
+    {
+      "type": "codeforces",
+      "id": 133617487,
+      "creationTime": 1635604677,
+      "language": "GNU C++20 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635604500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603A",
+        "name": "Di-visible Confusion",
+        "tags": [
+          "constructive algorithms",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133617487"
+    },
     {
       "type": "codeforces",
       "id": 132241119,
@@ -27,6 +177,7 @@
         "type": "codeforces",
         "id": "1586G",
         "name": "Omkar and Time Travel",
+        "rating": 3000,
         "tags": [
           "data structures",
           "dp",
@@ -53,6 +204,7 @@
         "type": "codeforces",
         "id": "1586F",
         "name": "Defender of Childhood Dreams",
+        "rating": 2500,
         "tags": [
           "bitmasks",
           "constructive algorithms",
@@ -82,6 +234,7 @@
         "type": "codeforces",
         "id": "1586E",
         "name": "Moment of Bloom",
+        "rating": 2200,
         "tags": [
           "constructive algorithms",
           "dfs and similar",
@@ -112,6 +265,7 @@
         "type": "codeforces",
         "id": "1586D",
         "name": "Omkar and the Meaning of Life",
+        "rating": 1800,
         "tags": [
           "constructive algorithms",
           "greedy",
@@ -139,6 +293,7 @@
         "type": "codeforces",
         "id": "1586D",
         "name": "Omkar and the Meaning of Life",
+        "rating": 1800,
         "tags": [
           "constructive algorithms",
           "greedy",
@@ -166,6 +321,7 @@
         "type": "codeforces",
         "id": "1586C",
         "name": "Omkar and Determination",
+        "rating": 1700,
         "tags": [
           "constructive algorithms",
           "dp",
@@ -194,6 +350,7 @@
         "type": "codeforces",
         "id": "1586B",
         "name": "Omkar and Heavenly Tree",
+        "rating": 1200,
         "tags": [
           "brute force",
           "constructive algorithms",
@@ -220,6 +377,7 @@
         "type": "codeforces",
         "id": "1586A",
         "name": "Windblume Ode",
+        "rating": 800,
         "tags": [
           "brute force",
           "constructive algorithms",
@@ -135536,5 +135694,11 @@
       },
       "submissionUrl": "https://codeforces.com/contest/1105/submission/48611453"
     }
-  ]
+  ],
+  "codeforces": {
+    "rank": "legendary grandmaster",
+    "rating": 3288,
+    "maxRank": "legendary grandmaster",
+    "maxRating": 3492
+  }
 }

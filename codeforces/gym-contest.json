@@ -13100,6 +13100,16 @@
   },
   {
     "type": "codeforces/gym/icpc",
+    "name": "Открытая Командная Олимпиада ЮМШ по программированию",
+    "duration": 14400,
+    "participantNumber": 0,
+    "id": 103361,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103361",
+    "standingsUrl": "https://codeforces.com/gym/103361/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
     "name": "2021 Jiangxi Provincial Collegiate Programming Contest",
     "startTime": 1634954400,
     "duration": 18000,
@@ -13108,5 +13118,119 @@
     "phase": "FINISHED",
     "contestUrl": "https://codeforces.com/gym/103366",
     "standingsUrl": "https://codeforces.com/gym/103366/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "Интернет-олимпиады, Сезон 2021-2022, Первая командная олимпиада",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103367,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103367",
+    "standingsUrl": "https://codeforces.com/gym/103367/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "Moscow team olympiad 2021",
+    "startTime": 1635249600,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103369,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103369",
+    "standingsUrl": "https://codeforces.com/gym/103369/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "XXII Open Cup. Grand Prix of Korea",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103371,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103371",
+    "standingsUrl": "https://codeforces.com/gym/103371/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "XXII Open Cup. Grand Prix of Korea (Division 2)",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103372,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103372",
+    "standingsUrl": "https://codeforces.com/gym/103372/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "2021 ICPC Asia Taiwan Online Programming Contest",
+    "startTime": 1634950800,
+    "duration": 10800,
+    "participantNumber": 0,
+    "id": 103373,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103373",
+    "standingsUrl": "https://codeforces.com/gym/103373/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "UTPC Contest 10-29-21 Div. 1 (Advanced)",
+    "startTime": 1635548700,
+    "duration": 7200,
+    "participantNumber": 0,
+    "id": 103379,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103379",
+    "standingsUrl": "https://codeforces.com/gym/103379/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "UTPC Contest 10-29-21 Div. 2 (Beginner)",
+    "startTime": 1635548700,
+    "duration": 7200,
+    "participantNumber": 0,
+    "id": 103380,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103380",
+    "standingsUrl": "https://codeforces.com/gym/103380/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Школьный этап ВСОШ по информатике для 9 - 11 классов (3 группа регионов)",
+    "duration": 7200,
+    "participantNumber": 0,
+    "id": 103382,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103382",
+    "standingsUrl": "https://codeforces.com/gym/103382/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Школьный этап ВСОШ по информатике 9-11 класс  2021 (4 группа регионов)",
+    "duration": 7200,
+    "participantNumber": 0,
+    "id": 103383,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103383",
+    "standingsUrl": "https://codeforces.com/gym/103383/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Школьный этап ВСОШ по информатике 9-11 класс 2021 (2 группа регионов)",
+    "duration": 7200,
+    "participantNumber": 0,
+    "id": 103384,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103384",
+    "standingsUrl": "https://codeforces.com/gym/103384/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Школьный этап ВСОШ по информатике 9-11 класс 2021 (1 группа регионов)",
+    "duration": 7200,
+    "participantNumber": 0,
+    "id": 103385,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103385",
+    "standingsUrl": "https://codeforces.com/gym/103385/standings"
   }
 ]

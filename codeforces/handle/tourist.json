@@ -3,13 +3,187 @@
   "handle": "tourist",
   "handleUrl": "https://codeforces.com/profile/tourist",
   "avatar": "https://userpic.codeforces.org/422/title/50a270ed4a722867.jpg",
-  "codeforces": {
-    "rank": "legendary grandmaster",
-    "rating": 3707,
-    "maxRank": "legendary grandmaster",
-    "maxRating": 3822
-  },
   "submissions": [
+    {
+      "type": "codeforces",
+      "id": 133678384,
+      "creationTime": 1635610967,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635604500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603D",
+        "name": "Artistic Partition",
+        "tags": [
+          "dp",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133678384"
+    },
+    {
+      "type": "codeforces",
+      "id": 133654251,
+      "creationTime": 1635607666,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635604500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603E",
+        "name": "A Perfect Problem",
+        "tags": [
+          "combinatorics",
+          "dp"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133654251"
+    },
+    {
+      "type": "codeforces",
+      "id": 133634336,
+      "creationTime": 1635605736,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635604500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603C",
+        "name": "Extreme Extension",
+        "tags": [
+          "dp",
+          "greedy",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133634336"
+    },
+    {
+      "type": "codeforces",
+      "id": 133625504,
+      "creationTime": 1635605135,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635604500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603B",
+        "name": "Moderate Modular Mode",
+        "tags": [
+          "constructive algorithms",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133625504"
+    },
+    {
+      "type": "codeforces",
+      "id": 133623344,
+      "creationTime": 1635605014,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635604500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603B",
+        "name": "Moderate Modular Mode",
+        "tags": [
+          "constructive algorithms",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133623344"
+    },
+    {
+      "type": "codeforces",
+      "id": 133622639,
+      "creationTime": 1635604969,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635604500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603B",
+        "name": "Moderate Modular Mode",
+        "tags": [
+          "constructive algorithms",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133622639"
+    },
+    {
+      "type": "codeforces",
+      "id": 133616996,
+      "creationTime": 1635604617,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "tourist"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635604500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603A",
+        "name": "Di-visible Confusion",
+        "tags": [
+          "constructive algorithms",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133616996"
+    },
     {
       "type": "codeforces",
       "id": 131878106,
@@ -82953,5 +83127,11 @@
       },
       "submissionUrl": "https://codeforces.com/contest/2/submission/7267"
     }
-  ]
+  ],
+  "codeforces": {
+    "rank": "legendary grandmaster",
+    "rating": 3707,
+    "maxRank": "legendary grandmaster",
+    "maxRating": 3822
+  }
 }
