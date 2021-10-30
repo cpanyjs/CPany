@@ -13,7 +13,7 @@ importers:
       fs-extra: ^10.0.0
       husky: 4.3.7
       lint-staged: ^11.0.0
-      pnpm: ^6.12.1
+      pnpm: ^6.19.1
       prettier: ^2.3.2
       rimraf: ^3.0.2
       tippy.js: ^6.3.1
@@ -31,7 +31,7 @@ importers:
       fs-extra: 10.0.0
       husky: 4.3.7
       lint-staged: 11.0.0
-      pnpm: 6.12.1
+      pnpm: 6.19.1
       prettier: 2.3.2
       rimraf: 3.0.2
       tippy.js: 6.3.1
@@ -1238,6 +1238,7 @@ packages:
     resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
+    requiresBuild: true
     optional: true
 
   /function-bind/1.1.1:
@@ -1911,8 +1912,8 @@ packages:
       semver-compare: 1.0.0
     dev: true
 
-  /pnpm/6.12.1:
-    resolution: {integrity: sha512-p2fowre11u8/f6rw6n1zadtpNLQd2XNux40sUUdcVQqwryUG0YO7xveP96iRTBSWi+RdyCRlXnDgppyvb31d8g==}
+  /pnpm/6.19.1:
+    resolution: {integrity: sha512-591jc9Ppqow44ztAMwH2m3G0gBIqd7oa5UBI5uA6iFjV0V9Fgjn+BBFQZEY75xtwjWdeLFOJTIk3fjYVXSX+ng==}
     engines: {node: '>=12.17'}
     hasBin: true
     dev: true
