@@ -9,7 +9,7 @@ import type {
   ITransformPlugin
 } from './plugin';
 
-import { IContext, ILogger, createDefaultLogger, createPrefixLogger } from './utils';
+import { IContext, ILogger, LogLevel, createDefaultLogger, createPrefixLogger } from './utils';
 
 export interface ICreateOptions {
   plugins?: Array<IPlugin | IPlugin[] | null | undefined>;
@@ -17,6 +17,8 @@ export interface ICreateOptions {
   context?: IContext;
 
   logger?: ILogger;
+
+  logLevel?: LogLevel;
 }
 
 export interface CPanyInstance {
@@ -36,6 +38,7 @@ export function createInstance(option: ICreateOptions): CPanyInstance {
 
   const { createLogger, cleanPlugins, loadPlugins, transformPlugins } = classifyPlugins(
     baseLogger,
+    option.logLevel ?? 'warn',
     option.plugins
   );
 
@@ -158,7 +161,7 @@ export function createInstance(option: ICreateOptions): CPanyInstance {
   };
 }
 
-function classifyPlugins(logger: ILogger, plugins?: Array<IPlugin | IPlugin[] | null | undefined>) {
+function classifyPlugins(logger: ILogger, logLevel: LogLevel, plugins?: Array<IPlugin | IPlugin[] | null | undefined>) {
   const cleanPlugins: ICleanPlugin[] = [];
   const loadPlugins: ILoadPlugin[] = [];
   const transformPlugins: ITransformPlugin[] = [];
@@ -182,7 +185,7 @@ function classifyPlugins(logger: ILogger, plugins?: Array<IPlugin | IPlugin[] | 
     return '[ ' + name + ' '.repeat(loggerPrefixLength - name.length) + ' ]';
   };
 
-  const createLogger = (name: string) => createPrefixLogger(prefix(name), logger);
+  const createLogger = (name: string) => createPrefixLogger(prefix(name), logger, logLevel);
 
   for (const plugin of [...cleanPlugins, ...loadPlugins, ...transformPlugins]) {
     plugin.logger = createLogger(plugin.name.split('/')[0]);

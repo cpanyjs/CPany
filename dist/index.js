@@ -16642,11 +16642,11 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createInstance = void 0;
 const utils_1 = __nccwpck_require__(2498);
 function createInstance(option) {
-    var _a, _b;
+    var _a, _b, _c;
     const baseLogger = (_a = option === null || option === void 0 ? void 0 : option.logger) !== null && _a !== void 0 ? _a : utils_1.createDefaultLogger();
-    const { createLogger, cleanPlugins, loadPlugins, transformPlugins } = classifyPlugins(baseLogger, option.plugins);
+    const { createLogger, cleanPlugins, loadPlugins, transformPlugins } = classifyPlugins(baseLogger, (_b = option.logLevel) !== null && _b !== void 0 ? _b : 'warn', option.plugins);
     const instanceLogger = createLogger('instance');
-    const context = (_b = option === null || option === void 0 ? void 0 : option.context) !== null && _b !== void 0 ? _b : {};
+    const context = (_c = option === null || option === void 0 ? void 0 : option.context) !== null && _c !== void 0 ? _c : {};
     const instance = { logger: instanceLogger, context };
     const isKeyInContext = (key) => {
         return key in context;
@@ -16743,7 +16743,7 @@ function createInstance(option) {
     };
 }
 exports.createInstance = createInstance;
-function classifyPlugins(logger, plugins) {
+function classifyPlugins(logger, logLevel, plugins) {
     const cleanPlugins = [];
     const loadPlugins = [];
     const transformPlugins = [];
@@ -16765,7 +16765,7 @@ function classifyPlugins(logger, plugins) {
     const prefix = (name) => {
         return '[ ' + name + ' '.repeat(loggerPrefixLength - name.length) + ' ]';
     };
-    const createLogger = (name) => utils_1.createPrefixLogger(prefix(name), logger);
+    const createLogger = (name) => utils_1.createPrefixLogger(prefix(name), logger, logLevel);
     for (const plugin of [...cleanPlugins, ...loadPlugins, ...transformPlugins]) {
         plugin.logger = createLogger(plugin.name.split('/')[0]);
     }
@@ -16914,7 +16914,7 @@ function createDefaultLogger() {
     };
 }
 exports.createDefaultLogger = createDefaultLogger;
-function createPrefixLogger(prefix, logger) {
+function createPrefixLogger(prefix, logger, logLevel) {
     return {
         debug(message) {
             return logger.debug(prefix + ' ' + message);
@@ -16923,10 +16923,14 @@ function createPrefixLogger(prefix, logger) {
             return logger.info(prefix + ' ' + message);
         },
         warning(message) {
-            return logger.warning(prefix + ' ' + message);
+            if (logLevel === 'warn') {
+                return logger.warning(prefix + ' ' + message);
+            }
         },
         error(message) {
-            return logger.error(prefix + ' ' + message);
+            if (logLevel === 'warn' || logLevel === 'error') {
+                return logger.error(prefix + ' ' + message);
+            }
         },
         startGroup(name) {
             return logger.startGroup(name);
@@ -21990,7 +21994,7 @@ var action_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _a
 
 
 
-function run({ logger = true, basePath = './', disableGit, plugins = ['codeforces', 'hdu'], maxRetry }) {
+function run({ logger = true, logLevel = 'warn', basePath = './', disableGit, plugins = ['codeforces', 'hdu'], maxRetry }) {
     return action_awaiter(this, void 0, void 0, function* () {
         const activatePlugin = getPluginSet(plugins);
         const config = yield getConfig(basePath);
@@ -22001,7 +22005,8 @@ function run({ logger = true, basePath = './', disableGit, plugins = ['codeforce
                 activatePlugin.hdu ? yield (0,hdu_dist.hduPlugin)(config) : undefined,
                 activatePlugin.luogu ? yield (0,luogu_dist.luoguPlugin)(config) : undefined
             ],
-            logger: logger ? core : undefined
+            logger: logger ? core : undefined,
+            logLevel
         });
         const fs = yield createGitFileSystem(basePath, {
             disable: disableGit

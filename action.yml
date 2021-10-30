@@ -9,7 +9,11 @@ inputs:
   max-retry:
     required: false
     description: 'CPany max retry times'
-    default: 10
+    default: '10'
+  log-level:
+    required: false
+    description: 'CPany log level'
+    default: 'warn'
 runs:
   using: 'node12'
   main: 'dist/index.js'

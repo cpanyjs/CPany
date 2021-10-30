@@ -1,5 +1,7 @@
 type LogFn = (message: string) => void;
 
+export type LogLevel = 'warn' | 'error' | 'silent';
+
 export type IContext = Record<string, string>;
 
 export interface ILogger {
@@ -45,7 +47,7 @@ export function createDefaultLogger(): ILogger {
   };
 }
 
-export function createPrefixLogger(prefix: string, logger: ILogger): ILogger {
+export function createPrefixLogger(prefix: string, logger: ILogger, logLevel: LogLevel): ILogger {
   return {
     debug(message) {
       return logger.debug(prefix + ' ' + message);
@@ -54,10 +56,14 @@ export function createPrefixLogger(prefix: string, logger: ILogger): ILogger {
       return logger.info(prefix + ' ' + message);
     },
     warning(message) {
-      return logger.warning(prefix + ' ' + message);
+      if (logLevel === 'warn') {
+        return logger.warning(prefix + ' ' + message);
+      }
     },
     error(message) {
-      return logger.error(prefix + ' ' + message);
+      if (logLevel === 'warn' || logLevel === 'error') {
+        return logger.error(prefix + ' ' + message);
+      }
     },
     startGroup(name) {
       return logger.startGroup(name);

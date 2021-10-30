@@ -105,9 +105,10 @@ cli
 cli
   .command('action [data]', 'Run @cpany/action locally')
   .option('-p, --plugins <string>', 'CPany plugins', { default: 'codeforces,hdu' })
+  .option('--log <level>', 'warn | error | silent', { default: 'warn' })
   .option('--max-retry <number>', 'CPany max retry times', { default: 10 })
   .action(
-    async (dataPath: string | undefined, { maxRetry, plugins: _plugins }: ICliActionOption) => {
+    async (dataPath: string | undefined, { maxRetry, log, plugins: _plugins }: ICliActionOption) => {
       const plugins = _plugins
         .split(/,| /)
         .map((plugin) => plugin.trim().toLowerCase())
@@ -115,6 +116,7 @@ cli
 
       await runAction({
         logger: false,
+        logLevel: log,
         basePath: dataPath,
         disableGit: true,
         maxRetry,

@@ -14,6 +14,7 @@ export interface ICliOption {
 }
 
 export interface ICliActionOption {
+  log: 'warn' | 'error' | 'silent';
   maxRetry: number;
   plugins: string;
 }

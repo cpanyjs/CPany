@@ -18,6 +18,7 @@ import { now } from './utils';
 
 export interface IRunOption {
   logger?: boolean;
+  logLevel?: 'warn' | 'error' | 'silent';
   basePath?: string;
   disableGit?: boolean;
   plugins?: string[];
@@ -26,6 +27,7 @@ export interface IRunOption {
 
 export async function run({
   logger = true,
+  logLevel = 'warn',
   basePath = './',
   disableGit,
   plugins = ['codeforces', 'hdu'],
@@ -41,7 +43,8 @@ export async function run({
       activatePlugin.hdu ? await hduPlugin(config) : undefined,
       activatePlugin.luogu ? await luoguPlugin(config) : undefined
     ],
-    logger: logger ? core : undefined
+    logger: logger ? core : undefined,
+    logLevel
   });
 
   const fs = await createGitFileSystem(basePath, {

@@ -13,6 +13,8 @@ export * from './contest';
 
 export * from './platform';
 
+export type LogLevel = 'warn' | 'error' | 'silent';
+
 // Action/Cli config interface
 export interface AppConfig {
   title: string;
