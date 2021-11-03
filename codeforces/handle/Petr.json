@@ -6,6 +6,60 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 133698597,
+      "creationTime": 1635621690,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -511861957
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603E",
+        "name": "A Perfect Problem",
+        "rating": 3200,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133698597"
+    },
+    {
+      "type": "codeforces",
+      "id": 133698397,
+      "creationTime": 1635621529,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -511862118
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603D",
+        "name": "Artistic Partition",
+        "rating": 3000,
+        "tags": [
+          "divide and conquer",
+          "dp",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133698397"
+    },
+    {
+      "type": "codeforces",
       "id": 133670917,
       "creationTime": 1635609871,
       "language": "GNU C++17 (64)",
@@ -21,9 +75,11 @@
         "type": "codeforces",
         "id": "1603E",
         "name": "A Perfect Problem",
+        "rating": 3200,
         "tags": [
           "combinatorics",
-          "dp"
+          "dp",
+          "math"
         ],
         "problemUrl": "https://codeforces.com/contest/1603/problem/E"
       },
@@ -46,10 +102,13 @@
         "type": "codeforces",
         "id": "1603C",
         "name": "Extreme Extension",
+        "rating": 2300,
         "tags": [
+          "divide and conquer",
           "dp",
           "greedy",
-          "math"
+          "math",
+          "number theory"
         ],
         "problemUrl": "https://codeforces.com/contest/1603/problem/C"
       },
@@ -72,6 +131,7 @@
         "type": "codeforces",
         "id": "1603B",
         "name": "Moderate Modular Mode",
+        "rating": 1600,
         "tags": [
           "constructive algorithms",
           "math",
@@ -98,6 +158,7 @@
         "type": "codeforces",
         "id": "1603A",
         "name": "Di-visible Confusion",
+        "rating": 1300,
         "tags": [
           "constructive algorithms",
           "math",
@@ -43230,7 +43291,7 @@
   ],
   "codeforces": {
     "rank": "legendary grandmaster",
-    "rating": 3163,
+    "rating": 3315,
     "maxRank": "legendary grandmaster",
     "maxRating": 3597
   }

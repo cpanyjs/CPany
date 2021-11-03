@@ -1,6 +1,17 @@
 [
   {
     "type": "codeforces/cf",
+    "name": "Codeforces Round #753 (Div. 3)",
+    "startTime": 1635863700,
+    "duration": 7200,
+    "participantNumber": 0,
+    "id": 1607,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/contest/1607",
+    "standingsUrl": "https://codeforces.com/contest/1607/standings"
+  },
+  {
+    "type": "codeforces/cf",
     "name": "Codeforces Round #752 (Div. 1)",
     "startTime": 1635604500,
     "duration": 7200,

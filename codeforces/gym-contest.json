@@ -13232,5 +13232,26 @@
     "phase": "FINISHED",
     "contestUrl": "https://codeforces.com/gym/103385",
     "standingsUrl": "https://codeforces.com/gym/103385/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "2021-2022 ACM-ICPC Brazil Subregional Programming Contest",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103388,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103388",
+    "standingsUrl": "https://codeforces.com/gym/103388/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "2021年中国大学生程序设计竞赛女生专场",
+    "startTime": 1635642000,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103389,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103389",
+    "standingsUrl": "https://codeforces.com/gym/103389/standings"
   }
 ]
