@@ -16,7 +16,17 @@ const packages = [
   './packages/compress'
 ];
 
+async function check() {
+  const result = await execa('git', ['branch']);
+  if (result.stdout.search('main') < 0) {
+    console.error(`Please re-run in main branch`);
+    process.exit(1);
+  }
+}
+
 async function run() {
+  await check();
+
   const version = process.argv[2];
 
   if (!version || !/^\d+.\d+.\d+/.test(version)) {
@@ -47,9 +57,17 @@ async function run() {
 
   await execa('git', ['add', '.'], { stdio: 'inherit' });
   await execa('git', ['commit', '-m', `release: v${version}`], { stdio: 'inherit' });
+
   await execa('git', ['tag', '-a', `v${version}`, '-m', `release: v${version}`], {
     stdio: 'inherit'
   });
+  await execa('git', ['push', 'origin', `:refs/tags/v${version.split('.')[0]}`], {
+    stdio: 'inherit'
+  });
+  await execa('git', ['tag', '-fa', `v${version.split('.')[0]}`, '-m', `release: v${version}`], {
+    stdio: 'inherit'
+  });
+  await execa('git', ['push', 'origin', 'main', '--tags']);
 }
 
 run();
