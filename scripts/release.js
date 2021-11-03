@@ -24,7 +24,11 @@ async function check() {
   }
 }
 
-async function run() {
+async function run(cmd, ...args) {
+  return execa(cmd, args, { stdio: 'inherit' });
+}
+
+async function boostrap() {
   await check();
 
   const version = process.argv[2];
@@ -52,22 +56,16 @@ async function run() {
   await writeFile('./README.md', readme);
   await writeFile('./packages/cli/README.md', readme);
 
-  await execa('npm', ['run', 'format'], { stdio: 'inherit' });
-  await execa('npm', ['run', 'build'], { stdio: 'inherit' });
+  await run('npm', 'run', 'format');
+  await run('npm', 'run', 'build');
 
-  await execa('git', ['add', '.'], { stdio: 'inherit' });
-  await execa('git', ['commit', '-m', `release: v${version}`], { stdio: 'inherit' });
+  await run('git', 'add', '.');
+  await run('git', 'commit', '-m', `release: v${version}`);
 
-  await execa('git', ['tag', '-a', `v${version}`, '-m', `release: v${version}`], {
-    stdio: 'inherit'
-  });
-  await execa('git', ['push', 'origin', `:refs/tags/v${version.split('.')[0]}`], {
-    stdio: 'inherit'
-  });
-  await execa('git', ['tag', '-fa', `v${version.split('.')[0]}`, '-m', `release: v${version}`], {
-    stdio: 'inherit'
-  });
-  await execa('git', ['push', 'origin', 'main', '--tags']);
+  await run('git', 'tag', '-a', `v${version}`, '-m', `release: v${version}`);
+  await run('git', 'push', 'origin', `:refs/tags/v${version.split('.')[0]}`);
+  await run('git', 'tag', '-fa', `v${version.split('.')[0]}`, '-m', `release: v${version}`);
+  await run('git', 'push', 'origin', 'main', '--tags');
 }
 
-run();
+boostrap();
