@@ -8,11 +8,15 @@
 
 Use CPany template [@yjl9903/CPany-Template](https://github.com/yjl9903/CPany-Template) to create your own repository for data storage.
 
-Update config file `cpany.yml`, and push the changes to Github. Then, Github Actions will automatically fetch data and push to your repository.
+Update config file `cpany.yml`, and push the changes to Github.
+
+Then, Github Actions will automatically fetch data and push to your repository!
+
+## Deploy
 
 You can use Netlify, Vercel, Github Pages, etc. to deploy generated static site.
 
-### Netlify Deploy
+### Netlify
 
 The template repository has provided Netlify config file `netlify.toml` with the following content.
 
@@ -32,7 +36,7 @@ The template repository has provided Netlify config file `netlify.toml` with the
 
 Then you can just create a new CPany site with your repository on Netlify.
 
-### Vercel Deploy
+### Vercel
 
 The template repository has provided Vercel config file `Vercel.json` with the following content.
 
@@ -46,11 +50,11 @@ The template repository has provided Vercel config file `Vercel.json` with the f
 
 Then you can just create a new CPany site with your repository on Vercel.
 
-### Github Pages Deploy
+### Github Pages
 
 The template repository has also provided a workflow `gh-pages.yml`, which will automatically push the generated static site to the branch `gh-pages`. You can just enable Github Pages in the Settings of your repository.
 
-### Run locally
+## Run locally
 
 Install [Node.js >= 14](https://nodejs.org/).
 
