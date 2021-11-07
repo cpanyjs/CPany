@@ -109,8 +109,6 @@ export function createInstance(option: ICreateOptions): CPanyInstance {
   };
 
   const transform = async <T extends ITransformPayload>(payload: T) => {
-    instanceLogger.info(`Fetch: (id: ${payload.id}, type: ${payload.type})`);
-
     for (const plugin of transformPlugins) {
       const key = plugin.resolveKey(payload);
       if (key === undefined || key === null) continue;
@@ -120,6 +118,8 @@ export function createInstance(option: ICreateOptions): CPanyInstance {
           content: loadFromContext(key)
         };
       }
+
+      instanceLogger.info(`Fetch: (id: ${payload.id}, type: ${payload.type})`);
 
       const pluginLogger = plugin.logger!;
 
