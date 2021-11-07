@@ -1,5 +1,6 @@
 import os from 'os';
 import path from 'path';
+import readline from 'readline';
 import { createServer, build, ViteDevServer } from 'vite';
 import { cac } from 'cac';
 import openBrowser from 'open';
@@ -81,13 +82,15 @@ cli
     function bindShortcut() {
       process.stdin.resume();
       process.stdin.setEncoding('utf8');
+      readline.emitKeypressEvents(process.stdin);
+      if (process.stdin.isTTY) {
+        process.stdin.setRawMode(true);
+      }
       process.stdin.on('data', async (data) => {
         const str = data.toString().trim().toLowerCase();
         const [sh] = SHORTCUTS.filter((item) => item.name === str || item.fullname === str);
         if (sh) {
           // clear the last line
-          process.stdout.moveCursor(0, -1);
-          process.stdout.clearLine(1);
           try {
             await sh.action();
           } catch (err) {
