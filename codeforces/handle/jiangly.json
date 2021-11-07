@@ -106,7 +106,6 @@
         "name": "Extreme Extension",
         "rating": 2300,
         "tags": [
-          "divide and conquer",
           "dp",
           "greedy",
           "math",
