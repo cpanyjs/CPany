@@ -19,6 +19,8 @@ export interface ICliActionOption {
   plugins: string;
 }
 
+export type ICliExportOption = ICliOption & { page: string; out: string; type: string };
+
 export interface IPluginOption {
   appRootPath: string;
   dataRootPath: string;

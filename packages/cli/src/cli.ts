@@ -9,7 +9,7 @@ import { blue, bold, cyan, dim, yellow, green, underline } from 'kolorist';
 
 import { run as runAction } from '@cpany/action';
 
-import type { ICliActionOption, ICliOption } from './types';
+import type { ICliOption, ICliActionOption, ICliExportOption } from './types';
 import { version } from './version';
 import { resolveOptions } from './options';
 import { findFreePort, resolveImportPath } from './utils';
@@ -113,7 +113,10 @@ cli
   .option('--force', 'force the optimizer to ignore the cache and re-bundle', {
     default: false
   })
-  .action(async (dataPath: string | undefined, option: ICliOption) => {
+  .option('--page [url]', 'Page url to be exported', { default: 'members' })
+  .option('--out <filename>', 'Image filename', { default: 'screenshot' })
+  .option('--type <image type>', 'Image type: png | jpeg | webp', { default: 'png' })
+  .action(async (dataPath: string | undefined, option: ICliExportOption) => {
     if (!resolveImportPath(`capture-website-cli/package.json`)) {
       throw new Error(
         'The exporting for CPany is powered by capture-website-cli, please installed it via `npm i capture-website-cli`'
@@ -121,11 +124,12 @@ cli
     }
 
     option.data = dataPath ?? './';
+    option.page = typeof option.page === 'boolean' ? '/' : option.page;
     const port = (option.port = await findFreePort(option.port));
 
     let server = await createServer(await resolveOptions(option, 'dev'));
     await server.listen(port);
-    await capture(`http://localhost:${port}`);
+    await capture(port, option);
     await server.close();
   });
 
