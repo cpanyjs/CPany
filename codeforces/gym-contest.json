@@ -13253,5 +13253,15 @@
     "phase": "FINISHED",
     "contestUrl": "https://codeforces.com/gym/103389",
     "standingsUrl": "https://codeforces.com/gym/103389/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "Fast modular multiplication",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103399,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103399",
+    "standingsUrl": "https://codeforces.com/gym/103399/standings"
   }
 ]
