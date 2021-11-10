@@ -85,6 +85,11 @@ const contests = nav.findIndex((t) => t === 'contests' || t === 'contest') !== -
 </script>
 
 <style>
+html,
+body {
+  background-color: white;
+}
+
 @screen md {
   html,
   body,
