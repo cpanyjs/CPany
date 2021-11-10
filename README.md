@@ -3,5 +3,5 @@
 [![Fetch data](https://github.com/yjl9903/CPany/actions/workflows/fetch.yml/badge.svg)](https://github.com/yjl9903/CPany/actions/workflows/fetch.yml)
 
 <!-- START_SECTION: update_time -->
-更新时间：[2021-11-11 01:57](https://www.timeanddate.com/worldclock/fixedtime.html?msg=Fetch+data&iso=20211111T015717&p1=237)
+更新时间：[2021-11-11 02:05](https://www.timeanddate.com/worldclock/fixedtime.html?msg=Fetch+data&iso=20211111T020529&p1=237)
 <!-- END_SECTION: update_time -->
