@@ -4,7 +4,7 @@
 
 CPany, A Competitive Programming Statistic Site Generator.
 
-![Screen shot](./screenshot.jpeg)
+![Screen shot](./screenshot.png)
 
 ## Getting Started
 
