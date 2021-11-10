@@ -23,6 +23,7 @@ jobs:
       - run: pnpm install
       - run: pnpm run build
       - run: pnpm run site
+      - run: pnpx cpany export example
   fetch:
     runs-on: ubuntu-latest
     steps:
