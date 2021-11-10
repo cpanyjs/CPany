@@ -127,10 +127,14 @@ cli
     option.page = typeof option.page === 'boolean' ? '/' : option.page;
     const port = (option.port = await findFreePort(option.port));
 
-    let server = await createServer(await resolveOptions(option, 'dev'));
-    await server.listen(port);
-    await capture(port, option);
-    await server.close();
+    try {
+      let server = await createServer(await resolveOptions(option, 'dev'));
+      await server.listen(port);
+      await capture(port, option);
+      await server.close();
+    } catch (err) {
+      process.exit(1);
+    }
   });
 
 cli
