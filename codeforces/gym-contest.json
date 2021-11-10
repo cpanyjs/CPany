@@ -13263,5 +13263,16 @@
     "phase": "FINISHED",
     "contestUrl": "https://codeforces.com/gym/103399",
     "standingsUrl": "https://codeforces.com/gym/103399/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 16-th BIT Campus Programming Contest - Online Round",
+    "startTime": 1636257600,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103401,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103401",
+    "standingsUrl": "https://codeforces.com/gym/103401/standings"
   }
 ]
