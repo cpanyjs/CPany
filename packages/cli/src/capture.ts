@@ -24,6 +24,11 @@ export async function capture(port: number, option: ICliExportOption): Promise<v
   console.log(`${dim('  Page  ')} ${green('/' + page)}`);
 
   const url = `http://localhost:${port}/${page}`;
+  const style = [
+    'html, body {',
+    `  font-family: 'wqy microhei', apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;`,
+    '}',
+  ].join(' ');
 
   const spinner = ora(`${dim('Image ')} ${green(filename)}`).start();
 
@@ -33,13 +38,13 @@ export async function capture(port: number, option: ICliExportOption): Promise<v
       url,
       '--full-page',
       '--no-default-background',
-      '--overwrite',
       '--style',
-      'html, body { background-color: white; }',
+      `"${style}"`,
       '--delay',
       '1',
       '--type',
       option.type,
+      '--overwrite',
       '--output',
       filename
     ]);
