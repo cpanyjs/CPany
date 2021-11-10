@@ -3,13 +3,368 @@
   "handle": "Petr",
   "handleUrl": "https://codeforces.com/profile/Petr",
   "avatar": "https://userpic.codeforces.org/664/title/c1ef9e749cad14a0.jpg",
-  "codeforces": {
-    "rank": "legendary grandmaster",
-    "rating": 3229,
-    "maxRank": "legendary grandmaster",
-    "maxRating": 3597
-  },
   "submissions": [
+    {
+      "type": "codeforces",
+      "id": 133698597,
+      "creationTime": 1635621690,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -511861957
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603E",
+        "name": "A Perfect Problem",
+        "rating": 3200,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133698597"
+    },
+    {
+      "type": "codeforces",
+      "id": 133698397,
+      "creationTime": 1635621529,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -511862118
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603D",
+        "name": "Artistic Partition",
+        "rating": 3000,
+        "tags": [
+          "divide and conquer",
+          "dp",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133698397"
+    },
+    {
+      "type": "codeforces",
+      "id": 133670917,
+      "creationTime": 1635609871,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635604500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603E",
+        "name": "A Perfect Problem",
+        "rating": 3200,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133670917"
+    },
+    {
+      "type": "codeforces",
+      "id": 133641887,
+      "creationTime": 1635606373,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635604500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603C",
+        "name": "Extreme Extension",
+        "rating": 2300,
+        "tags": [
+          "dp",
+          "greedy",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133641887"
+    },
+    {
+      "type": "codeforces",
+      "id": 133627460,
+      "creationTime": 1635605248,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635604500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603B",
+        "name": "Moderate Modular Mode",
+        "rating": 1600,
+        "tags": [
+          "constructive algorithms",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133627460"
+    },
+    {
+      "type": "codeforces",
+      "id": 133618050,
+      "creationTime": 1635604716,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635604500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1603A",
+        "name": "Di-visible Confusion",
+        "rating": 1300,
+        "tags": [
+          "constructive algorithms",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1603/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1603/submission/133618050"
+    },
+    {
+      "type": "codeforces",
+      "id": 133292010,
+      "creationTime": 1635373033,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -512110614
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1601D",
+        "name": "Difficult Mountain",
+        "rating": 2700,
+        "tags": [
+          "data structures",
+          "dp",
+          "greedy",
+          "sortings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1601/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1601/submission/133292010"
+    },
+    {
+      "type": "codeforces",
+      "id": 133291554,
+      "creationTime": 1635372043,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -512111604
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1601D",
+        "name": "Difficult Mountain",
+        "rating": 2700,
+        "tags": [
+          "data structures",
+          "dp",
+          "greedy",
+          "sortings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1601/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1601/submission/133291554"
+    },
+    {
+      "type": "codeforces",
+      "id": 133031152,
+      "creationTime": 1635150650,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635143700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1601E",
+        "name": "Phys Ed Online",
+        "rating": 2900,
+        "tags": [
+          "data structures",
+          "dp",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1601/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1601/submission/133031152"
+    },
+    {
+      "type": "codeforces",
+      "id": 133009479,
+      "creationTime": 1635148217,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635143700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1601D",
+        "name": "Difficult Mountain",
+        "rating": 2700,
+        "tags": [
+          "data structures",
+          "dp",
+          "greedy",
+          "sortings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1601/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1601/submission/133009479"
+    },
+    {
+      "type": "codeforces",
+      "id": 132998578,
+      "creationTime": 1635145626,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635143700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1601C",
+        "name": "Optimal Insertion",
+        "rating": 2300,
+        "tags": [
+          "data structures",
+          "divide and conquer",
+          "dp",
+          "greedy",
+          "sortings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1601/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1601/submission/132998578"
+    },
+    {
+      "type": "codeforces",
+      "id": 132992231,
+      "creationTime": 1635144518,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635143700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1601B",
+        "name": "Frog Traveler",
+        "rating": 1900,
+        "tags": [
+          "data structures",
+          "dfs and similar",
+          "dp",
+          "graphs",
+          "shortest paths",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1601/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1601/submission/132992231"
+    },
+    {
+      "type": "codeforces",
+      "id": 132986123,
+      "creationTime": 1635143940,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1635143700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1601A",
+        "name": "Array Elimination",
+        "rating": 1300,
+        "tags": [
+          "bitmasks",
+          "greedy",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1601/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1601/submission/132986123"
+    },
     {
       "type": "codeforces",
       "id": 126690106,
@@ -42932,5 +43287,11 @@
       },
       "submissionUrl": "https://codeforces.com/contest/1/submission/863"
     }
-  ]
+  ],
+  "codeforces": {
+    "rank": "legendary grandmaster",
+    "rating": 3315,
+    "maxRank": "legendary grandmaster",
+    "maxRating": 3597
+  }
 }
