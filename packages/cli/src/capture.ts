@@ -26,7 +26,7 @@ export async function capture(port: number, option: ICliExportOption): Promise<v
   const url = `http://localhost:${port}/${page}`;
   const style = [
     'html, body {',
-    `  font-family: 'wqy microhei', apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;`,
+    `  font-family: 'WenQuanYiMicroHei', apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;`,
     '}',
   ].join(' ');
 
