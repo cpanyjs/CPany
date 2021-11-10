@@ -23,7 +23,13 @@ jobs:
       - run: pnpm install
       - run: pnpm run build
       - run: pnpm run site
-      - run: pnpx cpany export example
+      - name: Export CPany Page Image
+        run: pnpx cpany export example
+      - name: Upload CPany Page Image
+        uses: actions/upload-artifact@v2
+        with:
+          name: screenshot
+          path: screenshot.png
   fetch:
     runs-on: ubuntu-latest
     steps:
