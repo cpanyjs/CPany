@@ -19,7 +19,7 @@ export default defineConfig({
     },
     extend: {
       fontFamily: {
-        mono: ['Fira Code Regular', 'Consolas', 'monospace'],
+        mono: ['var(--font-family-mono)', 'var(--font-family-base)'],
       },
     },
   }
