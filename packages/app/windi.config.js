@@ -19,8 +19,8 @@ export default defineConfig({
     },
     extend: {
       fontFamily: {
-        mono: ['var(--font-family-mono)', 'var(--font-family-base)'],
-      },
-    },
+        mono: ['var(--font-family-mono)', 'var(--font-family-base)']
+      }
+    }
   }
 });

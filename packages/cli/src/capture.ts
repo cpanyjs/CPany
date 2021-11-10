@@ -27,7 +27,7 @@ export async function capture(port: number, option: ICliExportOption): Promise<v
   const style = [
     ':root {',
     `  --font-family-base: 'WenQuanYiMicroHei', apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;`,
-    '}',
+    '}'
   ].join(' ');
 
   const spinner = ora(`${dim('Image ')} ${green(filename)}`).start();

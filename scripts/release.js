@@ -28,6 +28,9 @@ async function run(cmd, ...args) {
   return execa(cmd, args, { stdio: 'inherit' });
 }
 
+/**
+ * Usage: pnpm run release %d.%d.%d
+ */
 async function boostrap() {
   await check();
 
