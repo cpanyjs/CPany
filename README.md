@@ -1,6 +1,8 @@
-# 🥖 CPany - Competitive Programming Statistic
+# 🥖 CPany
 
 [![version](https://img.shields.io/npm/v/@cpany/cli?color=rgb%2850%2C203%2C86%29&label=CPany)](https://www.npmjs.com/package/@cpany/cli) [![Demo](https://img.shields.io/badge/CPany-Demo-brightgreen)](https://cpany.dev/) [![build-test](https://github.com/yjl9903/CPany/actions/workflows/build.yml/badge.svg)](https://github.com/yjl9903/CPany/actions/workflows/build.yml)
+
+CPany, A Competitive Programming Statistic Site Generator.
 
 ![Screen shot](./screenshot.jpeg)
 
