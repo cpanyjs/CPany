@@ -50,6 +50,14 @@
     "@types/node": "^16.4.13",
     "@types/resolve": "^1.20.1"
   },
+  "peerDependencies": {
+    "capture-website-cli": "^2.1.0"
+  },
+  "peerDependenciesMeta": {
+    "capture-website-cli": {
+      "optional": true
+    }
+  },
   "engines": {
     "node": ">=12.0.0"
   }

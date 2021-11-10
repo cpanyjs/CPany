@@ -16701,7 +16701,6 @@ function createInstance(option) {
         return undefined;
     });
     const transform = (payload) => __awaiter(this, void 0, void 0, function* () {
-        instanceLogger.info(`Fetch: (id: ${payload.id}, type: ${payload.type})`);
         for (const plugin of transformPlugins) {
             const key = plugin.resolveKey(payload);
             if (key === undefined || key === null)
@@ -16712,6 +16711,7 @@ function createInstance(option) {
                     content: loadFromContext(key)
                 };
             }
+            instanceLogger.info(`Fetch: (id: ${payload.id}, type: ${payload.type})`);
             const pluginLogger = plugin.logger;
             try {
                 const result = yield plugin.transform(payload, Object.assign(Object.assign({}, instance), { logger: pluginLogger }));
@@ -17698,7 +17698,7 @@ module.exports = JSON.parse('[["0","\\u0000",128],["a1","｡",62],["8140","　�
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"private":true,"scripts":{"dev":"cpany dev example","site":"cpany build example --outDir site","build":"pnpm run build --filter ./packages && pnpm -C packages/action run package","build:action":"pnpm -C packages/action run build","build:cli":"pnpm -C packages/cli run build","format":"prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore","release":"node scripts/release.js","publish":"pnpm publish -r --access public"},"husky":{"hooks":{"pre-commit":"lint-staged"}},"lint-staged":{"*.ts":["prettier --parser=typescript --write"],"*.vue":["prettier --parser=vue --write"]},"devDependencies":{"@cpany/cli":"workspace:*","@cpany/compress":"workspace:*","@cpany/types":"workspace:*","@types/node":"^16.0.1","@vercel/ncc":"^0.29.0","execa":"^5.1.1","fs-extra":"^10.0.0","husky":"4.3.7","lint-staged":"^11.0.0","pnpm":"^6.19.1","prettier":"^2.3.2","rimraf":"^3.0.2","tippy.js":"^6.3.1","tsup":"^4.14.0","typescript":"^4.3.5","vue":"^3.2.12","vue-router":"4"}}');
+module.exports = JSON.parse('{"private":true,"scripts":{"dev":"cpany dev example","site":"cpany build example --outDir site","build":"pnpm run build --filter ./packages && pnpm -C packages/action run package","build:action":"pnpm -C packages/action run build","build:cli":"pnpm -C packages/cli run build","format":"prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore","release":"node scripts/release.js","publish":"pnpm publish -r --access public"},"husky":{"hooks":{"pre-commit":"lint-staged"}},"lint-staged":{"*.ts":["prettier --parser=typescript --write"],"*.vue":["prettier --parser=vue --write"]},"devDependencies":{"@cpany/cli":"workspace:*","@cpany/compress":"workspace:*","@cpany/types":"workspace:*","@types/node":"^16.0.1","@vercel/ncc":"^0.29.0","execa":"^5.1.1","fs-extra":"^10.0.0","husky":"4.3.7","lint-staged":"^11.0.0","pnpm":"^6.19.1","prettier":"^2.3.2","rimraf":"^3.0.2","tsup":"^4.14.0","typescript":"^4.3.5","capture-website-cli":"^2.1.0"}}');
 
 /***/ }),
 

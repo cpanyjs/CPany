@@ -12,7 +12,8 @@ import { run as runAction } from '@cpany/action';
 import type { ICliActionOption, ICliOption } from './types';
 import { version } from './version';
 import { resolveOptions } from './options';
-import { findFreePort } from './utils';
+import { findFreePort, resolveImportPath } from './utils';
+import { capture } from './capture';
 
 const cli = cac('cpany');
 
@@ -103,6 +104,29 @@ cli
     await bootstrap();
 
     bindShortcut();
+  });
+
+cli
+  .command('export [data]', 'Export CPany pages to Pictures')
+  .option('--host [host]', 'specify hostname')
+  .option('--port <port>', 'port to listen to', { default: 3000 })
+  .option('--force', 'force the optimizer to ignore the cache and re-bundle', {
+    default: false
+  })
+  .action(async (dataPath: string | undefined, option: ICliOption) => {
+    if (!resolveImportPath(`capture-website-cli/package.json`)) {
+      throw new Error(
+        'The exporting for CPany is powered by capture-website-cli, please installed it via `npm i capture-website-cli`'
+      );
+    }
+
+    option.data = dataPath ?? './';
+    const port = (option.port = await findFreePort(option.port));
+
+    let server = await createServer(await resolveOptions(option, 'dev'));
+    await server.listen(port);
+    await capture(`http://localhost:${port}`);
+    await server.close();
   });
 
 cli
