@@ -16,6 +16,11 @@ export default defineConfig({
       info: '0 0 0 0.125em rgb(32 156 238 / 25%)',
       warning: '0 0 0 0.125em rgb(255 224 138 / 25%)',
       danger: '0 0 0 0.125em rgb(241 70 104 / 25%)'
-    }
+    },
+    extend: {
+      fontFamily: {
+        mono: ['Fira Code Regular', 'Consolas', 'monospace'],
+      },
+    },
   }
 });
