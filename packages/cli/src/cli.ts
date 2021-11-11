@@ -113,9 +113,10 @@ cli
   .option('--force', 'force the optimizer to ignore the cache and re-bundle', {
     default: false
   })
-  .option('--page [url]', 'Page url to be exported', { default: 'members' })
-  .option('--out <filename>', 'Image filename', { default: 'screenshot' })
-  .option('--type <image type>', 'Image type: png | jpeg | webp', { default: 'png' })
+  .option('--open', 'open exported image', { default: false })
+  .option('--page [url]', 'page url to be exported', { default: 'members' })
+  .option('--out <filename>', 'image filename', { default: 'screenshot' })
+  .option('--type <image type>', 'image type: png | jpeg | webp', { default: 'png' })
   .action(async (dataPath: string | undefined, option: ICliExportOption) => {
     if (!resolveImportPath(`capture-website-cli/package.json`)) {
       throw new Error(
@@ -128,7 +129,8 @@ cli
     const port = (option.port = await findFreePort(option.port));
 
     try {
-      let server = await createServer(await resolveOptions(option, 'dev'));
+      // Open exported image, not website
+      let server = await createServer(await resolveOptions({ ...option, open: false }, 'dev'));
       await server.listen(port);
       await capture(port, option);
       await server.close();

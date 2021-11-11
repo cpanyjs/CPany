@@ -2,6 +2,7 @@ import execa from 'execa';
 import isInstalledGlobally from 'is-installed-globally';
 import { bold, cyan, dim, yellow, green } from 'kolorist';
 import ora from 'ora-classic';
+import openFile from 'open';
 
 import { version } from './version';
 import type { ICliExportOption } from './types';
@@ -49,6 +50,10 @@ export async function capture(port: number, option: ICliExportOption): Promise<v
       filename
     ]);
     spinner.stopAndPersist({ symbol: okMark });
+
+    if (option.open) {
+      openFile(filename);
+    }
   } catch (err) {
     spinner.stopAndPersist({ symbol: failMark });
     console.log();
