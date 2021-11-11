@@ -25,7 +25,9 @@ async function check() {
 }
 
 async function run(cmd, ...args) {
-  return execa(cmd, args, { stdio: 'inherit' });
+  console.log(`$ ${cmd} ${args.join(' ')}`);
+  await execa(cmd, args, { stdio: 'inherit' });
+  console.log();
 }
 
 /**
@@ -42,6 +44,7 @@ async function boostrap() {
   }
 
   console.log('Publish @cpany version:', version);
+  console.log();
 
   for (const package of packages) {
     const path = join(package, 'package.json');
