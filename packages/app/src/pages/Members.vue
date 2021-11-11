@@ -1,7 +1,12 @@
 <template>
   <div class="divide-y">
     <h2 class="mb-4">成员</h2>
-    <c-table :data="extendUsers" cache="members" :default-sort="defaultSort" :default-sort-order="defaultSortOrder">
+    <c-table
+      :data="extendUsers"
+      cache="members"
+      :default-sort="defaultSort"
+      :default-sort-order="defaultSortOrder"
+    >
       <template #columns="{ index, row }">
         <c-table-column label="#" width="3em" align="center"
           ><span class="font-600">{{ index + 1 }}</span></c-table-column
