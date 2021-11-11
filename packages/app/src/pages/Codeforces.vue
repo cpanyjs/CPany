@@ -4,8 +4,8 @@
     <c-table
       :data="extendUsers"
       cache="codeforces"
-      default-sort="最近通过"
-      default-sort-order="desc"
+      :default-sort="defaultSort"
+      :default-sort-order="defaultSortOrder"
     >
       <template #columns="{ index, row }">
         <c-table-column label="#" width="3em" align="center"
@@ -61,6 +61,7 @@
 import type { IUserOverview } from '@cpany/types';
 import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
 import { ref, computed } from 'vue';
+import { useRoute } from 'vue-router';
 
 import { users } from '../users';
 import { CTable, CTableColumn } from '../components/table';
@@ -68,6 +69,10 @@ import UserLink from '../components/user-link.vue';
 import { CfRatingColor } from '../components/codeforces';
 import { recentStartTime as defaultRecentStartTime } from '../overview';
 import { toDate, isDef } from '../utils';
+
+const route = useRoute();
+const defaultSort = String(route.query.sort ?? '最近通过');
+const defaultSortOrder = String(route.query.order ?? 'desc');
 
 const recentStartTime = ref(defaultRecentStartTime);
 

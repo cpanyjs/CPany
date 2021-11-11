@@ -1,7 +1,7 @@
 <template>
   <div class="divide-y">
     <h2 class="mb-4">成员</h2>
-    <c-table :data="extendUsers" cache="members" default-sort="最近通过" default-sort-order="desc">
+    <c-table :data="extendUsers" cache="members" :default-sort="defaultSort" :default-sort-order="defaultSortOrder">
       <template #columns="{ index, row }">
         <c-table-column label="#" width="3em" align="center"
           ><span class="font-600">{{ index + 1 }}</span></c-table-column
@@ -48,12 +48,17 @@
 <script setup lang="ts">
 import type { IUserOverview } from '@cpany/types';
 import { ref, computed } from 'vue';
+import { useRoute } from 'vue-router';
 
 import { users } from '../users';
 import { CTable, CTableColumn } from '../components/table';
 import UserLink from '../components/user-link.vue';
 import { recentStartTime as defaultRecentStartTime } from '../overview';
 import { toDate } from '../utils';
+
+const route = useRoute();
+const defaultSort = String(route.query.sort ?? '最近通过');
+const defaultSortOrder = String(route.query.order ?? 'desc');
 
 const recentStartTime = ref(defaultRecentStartTime);
 
