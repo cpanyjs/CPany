@@ -7,7 +7,7 @@ import openBrowser from 'open';
 import isInstalledGlobally from 'is-installed-globally';
 import { blue, bold, cyan, dim, yellow, green, underline } from 'kolorist';
 
-import { run as runAction } from '@cpany/action';
+import { run as runAction } from './fetch';
 
 import type { ICliOption, ICliActionOption, ICliExportOption } from './types';
 import { version } from './version';
