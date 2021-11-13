@@ -29,6 +29,8 @@ export function codeforcesPlugin(option: ICPanyPluginConfig & { baseUrl?: string
   ];
 }
 
+export default codeforcesPlugin;
+
 function codeforcesCleanPlugin(basePath: string): IPlugin {
   return {
     name: 'codeforces/clean',

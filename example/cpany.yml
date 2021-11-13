@@ -1,17 +1,17 @@
 users:
   tourist:
     codeforces/handle: tourist
-    atcoder/handle: tourist
-  Petr:
-    codeforces/handle: Petr
-  Benq:
-    codeforces/handle: Benq
-  ksun48:
-    codeforces/handle: ksun48
-  jiangly:
-    codeforces/handle: jiangly
-    atcoder/handle: jiangly
-    luogu/handle: '149656'
+  #   atcoder/handle: tourist
+  # Petr:
+  #   codeforces/handle: Petr
+  # Benq:
+  #   codeforces/handle: Benq
+  # ksun48:
+  #   codeforces/handle: ksun48
+  # jiangly:
+  #   codeforces/handle: jiangly
+  #   atcoder/handle: jiangly
+  #   luogu/handle: '149656'
 
 handles:
   - codeforces/handle
@@ -26,9 +26,9 @@ contests:
   - nowcoder
 
 fetch:
-  - codeforces/contest.json
-  - codeforces/gym-contest.json
-  - atcoder/contest.json
+  # - codeforces/contest.json
+  # - codeforces/gym-contest.json
+  # - atcoder/contest.json
 
 static:
   - atcoder/contest.json

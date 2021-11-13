@@ -36,37 +36,6 @@ importers:
       tsup: 4.14.0_typescript@4.3.5
       typescript: 4.3.5
 
-  packages/action:
-    specifiers:
-      '@actions/core': ^1.4.0
-      '@actions/exec': ^1.1.0
-      '@actions/io': ^1.1.1
-      '@cpany/atcoder': workspace:*
-      '@cpany/codeforces': workspace:*
-      '@cpany/core': workspace:*
-      '@cpany/hdu': workspace:*
-      '@cpany/luogu': workspace:*
-      '@cpany/types': workspace:*
-      '@cpany/utils': workspace:*
-      '@types/js-yaml': ^4.0.2
-      dayjs: ^1.10.6
-      js-yaml: ^4.1.0
-    dependencies:
-      '@actions/core': 1.4.0
-      '@actions/exec': 1.1.0
-      '@actions/io': 1.1.1
-      '@cpany/atcoder': link:../atcoder
-      '@cpany/codeforces': link:../codeforces
-      '@cpany/core': link:../core
-      '@cpany/hdu': link:../hdu
-      '@cpany/luogu': link:../luogu
-      '@cpany/types': link:../types
-      '@cpany/utils': link:../utils
-      dayjs: 1.10.6
-      js-yaml: 4.1.0
-    devDependencies:
-      '@types/js-yaml': 4.0.2
-
   packages/app:
     specifiers:
       '@cpany/compress': workspace:*
@@ -124,12 +93,12 @@ importers:
       '@actions/exec': ^1.1.0
       '@actions/io': ^1.1.1
       '@cpany/app': workspace:*
-      '@cpany/atcoder': workspace:*
-      '@cpany/codeforces': workspace:*
       '@cpany/compress': workspace:*
       '@cpany/core': workspace:*
-      '@cpany/hdu': workspace:*
-      '@cpany/luogu': workspace:*
+      '@cpany/plugin-atcoder': workspace:*
+      '@cpany/plugin-codeforces': workspace:*
+      '@cpany/plugin-hdu': workspace:*
+      '@cpany/plugin-luogu': workspace:*
       '@cpany/types': workspace:*
       '@cpany/utils': workspace:*
       '@iconify/json': ^1.1.387
@@ -184,10 +153,10 @@ importers:
       '@actions/core': 1.4.0
       '@actions/exec': 1.1.0
       '@actions/io': 1.1.1
-      '@cpany/atcoder': link:../atcoder
-      '@cpany/codeforces': link:../codeforces
-      '@cpany/hdu': link:../hdu
-      '@cpany/luogu': link:../luogu
+      '@cpany/plugin-atcoder': link:../atcoder
+      '@cpany/plugin-codeforces': link:../codeforces
+      '@cpany/plugin-hdu': link:../hdu
+      '@cpany/plugin-luogu': link:../luogu
       '@types/js-yaml': 4.0.2
       '@types/node': 16.4.13
       '@types/resolve': 1.20.1
@@ -255,14 +224,17 @@ packages:
 
   /@actions/core/1.4.0:
     resolution: {integrity: sha512-CGx2ilGq5i7zSLgiiGUtBCxhRRxibJYU6Fim0Q1Wg2aQL2LTnF27zbqZOrxfvFQ55eSBW0L8uVStgtKMpa0Qlg==}
+    dev: true
 
   /@actions/exec/1.1.0:
     resolution: {integrity: sha512-LImpN9AY0J1R1mEYJjVJfSZWU4zYOlEcwSTgPve1rFQqK5AwrEs6uWW5Rv70gbDIQIAUwI86z6B+9mPK4w9Sbg==}
     dependencies:
       '@actions/io': 1.1.1
+    dev: true
 
   /@actions/io/1.1.1:
     resolution: {integrity: sha512-Qi4JoKXjmE0O67wAOH6y0n26QXhMKMFo7GD/4IXNVcrtLjUlGjGuVys6pQgwF3ArfGTQu0XpqaNr0YhED2RaRA==}
+    dev: true
 
   /@antfu/utils/0.2.4:
     resolution: {integrity: sha512-2bZNkVfL9IZESmvE26UKi8SzyvSoaIsGXDcnbHFMtmGMqUiB1fXpAJ1ijGf+tSqKRQ5yagck2U1Qk0p+705/kw==}
@@ -1242,10 +1214,6 @@ packages:
   /date-fns/2.25.0:
     resolution: {integrity: sha512-ovYRFnTrbGPD4nqaEqescPEv1mNwvt+UTqI3Ay9SzNtey9NZnYu6E2qCcBBgJ6/2VF1zGGygpyTDITqpQQ5e+w==}
     engines: {node: '>=0.11'}
-    dev: false
-
-  /dayjs/1.10.6:
-    resolution: {integrity: sha512-AztC/IOW4L1Q41A86phW5Thhcrco3xuAA+YX/BLpLWWjRcTj5TOt/QImBLmCKlrF7u7k47arTnOyL6GnbG8Hvw==}
     dev: false
 
   /de-indent/1.0.2:

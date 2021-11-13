@@ -51,19 +51,35 @@
     "@actions/core": "^1.4.0",
     "@actions/exec": "^1.1.0",
     "@actions/io": "^1.1.1",
-    "@cpany/atcoder": "workspace:*",
-    "@cpany/codeforces": "workspace:*",
-    "@cpany/hdu": "workspace:*",
-    "@cpany/luogu": "workspace:*",
+    "@cpany/plugin-atcoder": "workspace:*",
+    "@cpany/plugin-codeforces": "workspace:*",
+    "@cpany/plugin-hdu": "workspace:*",
+    "@cpany/plugin-luogu": "workspace:*",
     "@types/js-yaml": "^4.0.2",
     "@types/node": "^16.4.13",
     "@types/resolve": "^1.20.1",
     "tsup": "^4.14.0"
   },
   "peerDependencies": {
+    "@cpany/plugin-atcoder": "workspace:*",
+    "@cpany/plugin-codeforces": "workspace:*",
+    "@cpany/plugin-hdu": "workspace:*",
+    "@cpany/plugin-luogu": "workspace:*",
     "capture-website-cli": "^2.1.0"
   },
   "peerDependenciesMeta": {
+    "@cpany/plugin-atcoder": {
+      "optional": true
+    },
+    "@cpany/plugin-codeforces": {
+      "optional": true
+    },
+    "@cpany/plugin-hdu": {
+      "optional": true
+    },
+    "@cpany/plugin-luogu": {
+      "optional": true
+    },
     "capture-website-cli": {
       "optional": true
     }

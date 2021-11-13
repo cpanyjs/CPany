@@ -1,7 +1,7 @@
 {
-  "name": "@cpany/atcoder",
+  "name": "@cpany/plugin-atcoder",
   "version": "0.0.62",
-  "description": "CPany AtCoder package",
+  "description": "CPany AtCoder plugin",
   "repository": {
     "type": "git",
     "url": "https://github.com/yjl9903/CPany"
@@ -15,7 +15,7 @@
     "src"
   ],
   "scripts": {
-    "build": "pnpx tsup src/index.ts --format cjs --dts"
+    "build": "pnpx tsup-node src/index.ts --format cjs --dts"
   },
   "dependencies": {
     "@cpany/core": "workspace:*",

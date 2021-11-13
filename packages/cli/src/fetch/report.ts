@@ -2,7 +2,7 @@ import { promises } from 'fs';
 import { resolve } from 'path';
 
 import format from 'date-fns/format';
-import getUnixTime from 'date-fns/getUnixTime'
+import getUnixTime from 'date-fns/getUnixTime';
 
 import { version } from '../version';
 
@@ -13,9 +13,11 @@ export async function processReadme(basePath: string, time: Date) {
 
   const newContent = content.replace(
     /<!-- START_SECTION: update_time -->([\s\S]*)<!-- END_SECTION: update_time -->/,
-    `<!-- START_SECTION: update_time -->\n更新时间：[${format(time, 
+    `<!-- START_SECTION: update_time -->\n更新时间：[${format(
+      time,
       'yyyy-MM-dd HH:mm'
-    )}](https://www.timeanddate.com/worldclock/fixedtime.html?msg=Fetch+data&iso=${format(time,
+    )}](https://www.timeanddate.com/worldclock/fixedtime.html?msg=Fetch+data&iso=${format(
+      time,
       'yyyyMMddTHHmmss'
     )}&p1=237)\n<!-- END_SECTION: update_time -->`
   );

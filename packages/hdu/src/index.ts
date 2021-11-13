@@ -16,3 +16,5 @@ export async function hduPlugin(config: ICPanyPluginConfig): Promise<IPlugin[]> 
 
   return [createHduHandlePlugin()];
 }
+
+export default hduPlugin;

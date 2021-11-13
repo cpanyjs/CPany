@@ -30,14 +30,14 @@ jobs:
         with:
           name: screenshot
           path: screenshot.png
-  fetch:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: cpany
-      - uses: actions/checkout@v2
-        with:
-          path: ./.main
-      - uses: ./.main
-        name: Fetch Data
+  # fetch:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         ref: cpany
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         path: ./.main
+  #     - uses: ./.main
+  #       name: Fetch Data

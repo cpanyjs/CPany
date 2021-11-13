@@ -5,17 +5,14 @@ import { load } from 'js-yaml';
 import format from 'date-fns/format';
 
 import type { ICPanyConfig, ICPanyPluginConfig } from '@cpany/types';
-import { createInstance, createRetryContainer } from '@cpany/core';
-import { isUndef } from '@cpany/utils';
-
-import { codeforcesPlugin } from '@cpany/codeforces';
-import { atcoderPlugin } from '@cpany/atcoder';
-import { luoguPlugin } from '@cpany/luogu';
-import { hduPlugin } from '@cpany/hdu';
+import { createInstance, createRetryContainer, IPlugin } from '@cpany/core';
+import { isUndef, uniq } from '@cpany/utils';
 
 import { createGitFileSystem } from './fs';
 import { processReport } from './report';
 import { now } from './utils';
+
+import { resolveCPanyPlugin } from '../utils';
 
 export interface IRunOption {
   logger?: boolean;
@@ -34,16 +31,10 @@ export async function run({
   plugins = ['codeforces', 'hdu'],
   maxRetry
 }: IRunOption) {
-  const activatePlugin = getPluginSet(plugins);
   const config = await getConfig(basePath);
 
   const instance = createInstance({
-    plugins: [
-      activatePlugin.codeforces ? codeforcesPlugin(config) : undefined,
-      activatePlugin.atcoder ? atcoderPlugin(config) : undefined,
-      activatePlugin.hdu ? await hduPlugin(config) : undefined,
-      activatePlugin.luogu ? await luoguPlugin(config) : undefined
-    ],
+    plugins: await getPluginSet(plugins, config),
     logger: logger ? core : undefined,
     logLevel
   });
@@ -121,14 +112,23 @@ export async function run({
   await fs.push(format(nowTime, 'yyyy-MM-dd HH:mm'));
 }
 
-function getPluginSet(plugins: string[]) {
-  const set = new Set(plugins);
-  return {
-    codeforces: set.has('codeforces') || set.has('cf'),
-    atcoder: set.has('atcoder') || set.has('at'),
-    hdu: set.has('hdu'),
-    luogu: set.has('luogu') || set.has('lg')
-  };
+async function getPluginSet(
+  plugins: string[],
+  config: ICPanyPluginConfig
+): Promise<Array<IPlugin | IPlugin[]>> {
+  const resolvedPlugins: Array<IPlugin | IPlugin[]> = [];
+  for (const pluginName of uniq(plugins)) {
+    const pluginDir = resolveCPanyPlugin(pluginName);
+    if (!!pluginDir) {
+      const plugin = await import(pluginDir);
+      const output = await plugin.default(config);
+      resolvedPlugins.push(output);
+      console.log(output);
+    } else {
+      // log error
+    }
+  }
+  return resolvedPlugins;
 }
 
 async function getConfig(basePath: string, filename = 'cpany.yml'): Promise<ICPanyPluginConfig> {

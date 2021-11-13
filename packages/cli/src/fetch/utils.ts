@@ -1,6 +1,6 @@
 import { join } from 'path';
 import { promises } from 'fs';
-import { utcToZonedTime } from 'date-fns-tz'
+import { utcToZonedTime } from 'date-fns-tz';
 
 export async function* listDir(
   dir: string,

@@ -1,7 +1,7 @@
 {
-  "name": "@cpany/hdu",
+  "name": "@cpany/plugin-hdu",
   "version": "0.0.62",
-  "description": "CPany hdu package",
+  "description": "CPany HDu plugin",
   "repository": {
     "type": "git",
     "url": "https://github.com/yjl9903/CPany"
