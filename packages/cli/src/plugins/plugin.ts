@@ -14,9 +14,9 @@ import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
 import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
 import { slash } from '@cpany/utils';
 
-import type { IPluginOption } from './types';
+import type { IPluginOption } from '../types';
 import { createEnvLoader, createLoader } from './loader';
-import { DefaultRecentContestsCount, DefaultRecentTime } from './constant';
+import { DefaultRecentContestsCount, DefaultRecentTime } from '../constant';
 
 export async function createCPanyPlugin(option: IPluginOption): Promise<Plugin[]> {
   createEnvLoader(option);

@@ -16,8 +16,8 @@ import {
 } from '@cpany/types';
 import { listJsonFiles, slash } from '@cpany/utils';
 
-import type { IPluginOption } from './types';
-import { DefaultRecentContestsCount, DefaultRecentTime, DefaultRecentUserCount } from './constant';
+import type { IPluginOption } from '../types';
+import { DefaultRecentContestsCount, DefaultRecentTime, DefaultRecentUserCount } from '../constant';
 
 export async function createEnvLoader({ dataRootPath }: IPluginOption) {
   const envMap: Map<string, string> = new Map();

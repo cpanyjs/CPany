@@ -10,10 +10,9 @@ import Compress from '@cpany/compress';
 import { uniq } from '@cpany/utils';
 
 import type { ICliOption } from './types';
-import { resolveImportPath, slash } from './utils';
-import { createCPanyPlugin } from './plugin';
 import { version } from './version';
-import { searchForWorkspaceRoot } from './searchRoot';
+import { createCPanyPlugin } from './plugins';
+import { resolveImportPath, slash, searchForWorkspaceRoot } from './utils';
 
 export function getTypesRoot() {
   return path.dirname(resolveImportPath('@cpany/types/package.json', true));
