@@ -15,13 +15,16 @@
     "src"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsup-node src/index.ts --format cjs --dts"
   },
   "dependencies": {
     "@cpany/core": "workspace:*",
     "@cpany/types": "workspace:*",
     "@cpany/utils": "workspace:*",
     "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "tsup": "^4.14.0"
   },
   "engines": {
     "node": ">=12.0.0"
