@@ -120,10 +120,9 @@ async function getPluginSet(
   for (const pluginName of uniq(plugins)) {
     const pluginDir = resolveCPanyPlugin(pluginName);
     if (!!pluginDir) {
-      const plugin = await import(pluginDir);
-      const output = await plugin.default(config);
-      resolvedPlugins.push(output);
-      console.log(output);
+      const pluginModule = await import(pluginDir);
+      const plugin = await pluginModule.default(config);
+      resolvedPlugins.push(plugin);
     } else {
       // log error
     }
