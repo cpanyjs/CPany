@@ -1,6 +1,7 @@
 import * as core from '@actions/core';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
+import debug from 'debug';
 import { load } from 'js-yaml';
 import format from 'date-fns/format';
 
@@ -22,6 +23,8 @@ export interface IRunOption {
   plugins?: string[];
   maxRetry: number;
 }
+
+const debugFetch = debug('fetch');
 
 export async function run({
   logger = true,
@@ -120,6 +123,7 @@ async function getPluginSet(
   for (const pluginName of uniq(plugins)) {
     const pluginDir = resolveCPanyPlugin(pluginName);
     if (!!pluginDir) {
+      debugFetch(`Plugin [${pluginName}] => ${pluginDir}`);
       const pluginModule = await import(pluginDir);
       const plugin = await pluginModule.default(config);
       resolvedPlugins.push(plugin);

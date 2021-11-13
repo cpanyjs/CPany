@@ -105,6 +105,7 @@ importers:
       '@cpany/types': workspace:*
       '@cpany/utils': workspace:*
       '@iconify/json': ^1.1.387
+      '@types/debug': ^4.1.7
       '@types/js-yaml': ^4.0.2
       '@types/node': ^16.4.13
       '@types/resolve': ^1.20.1
@@ -113,6 +114,7 @@ importers:
       cac: ^6.7.3
       date-fns: ^2.25.0
       date-fns-tz: ^1.1.6
+      debug: ^4.3.2
       execa: ^5.1.1
       is-installed-globally: ^0.4.0
       js-yaml: ^4.1.0
@@ -139,6 +141,7 @@ importers:
       cac: 6.7.3
       date-fns: 2.25.0
       date-fns-tz: 1.1.6_date-fns@2.25.0
+      debug: 4.3.2
       execa: 5.1.1
       is-installed-globally: 0.4.0
       js-yaml: 4.1.0
@@ -160,6 +163,7 @@ importers:
       '@cpany/plugin-codeforces': link:../codeforces
       '@cpany/plugin-hdu': link:../hdu
       '@cpany/plugin-luogu': link:../luogu
+      '@types/debug': 4.1.7
       '@types/js-yaml': 4.0.2
       '@types/node': 16.4.13
       '@types/resolve': 1.20.1
@@ -540,6 +544,12 @@ packages:
     resolution: {integrity: sha512-+euflG6ygo4bn0JHtn4pYqcXwRtLvElQ7/nnjDu7iYG56H0+OhCd7d6Ug0IE3WcFpZozBKW2+80FUbv5QGk5AQ==}
     dev: true
 
+  /@types/debug/4.1.7:
+    resolution: {integrity: sha512-9AonUzyTjXXhEOa0DnqpzZi6VHlqKMswga9EXjpXnnqxwLtdvPPtlO8evrI5D9S6asFRCQ6v+wpiUKbw+vKqyg==}
+    dependencies:
+      '@types/ms': 0.7.31
+    dev: true
+
   /@types/estree/0.0.48:
     resolution: {integrity: sha512-LfZwXoGUDo0C3me81HXgkBg5CTQYb6xzEl+fNmbO4JdRiSKQ8A0GD1OBBvKAIsbCUgoyAty7m99GqqMQe784ew==}
 
@@ -555,6 +565,10 @@ packages:
 
   /@types/minimist/1.2.2:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
+    dev: true
+
+  /@types/ms/0.7.31:
+    resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
     dev: true
 
   /@types/node/16.0.1:
