@@ -62,6 +62,49 @@ export function toDuration(duration: number | Ref<number>) {
   );
 }
 
+export function createSortBy<T>(...mapFns: Array<(item: T) => number>) {
+  return (lhs: T, rhs: T) => {
+    for (const fn of mapFns) {
+      const l = fn(lhs);
+      const r = fn(rhs);
+      if (l !== r) {
+        return l - r;
+      }
+    }
+    return 0;
+  };
+}
+
+export function createSortByString<T>(mapFn: (item: T) => string) {
+  return (_lhs: T, _rhs: T) => {
+    const lhs = mapFn(_lhs);
+    const rhs = mapFn(_rhs);
+    for (let i = 0; i < lhs.length && i < rhs.length; i++) {
+      const result = lhs.charCodeAt(i) - rhs.charCodeAt(i);
+      if (result !== 0) {
+        return result;
+      }
+    }
+    return lhs.length - rhs.length;
+  };
+}
+
+export function createRevSortBy<T>(...mapFns: Array<(item: T) => number>) {
+  return createSortBy(...mapFns.map((fn) => (item: T) => -fn(item)));
+}
+
+export function combineCmp<T>(...cmpFns: Array<(lhs: T, rhs: T) => number>) {
+  return (lhs: T, rhs: T) => {
+    for (const fn of cmpFns) {
+      const result = fn(lhs, rhs);
+      if (result !== 0) {
+        return result;
+      }
+    }
+    return 0;
+  };
+}
+
 export const displayPlatform = (type: string) => {
   const wrapper = { type };
   if (isCodeforces(wrapper)) {
