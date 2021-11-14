@@ -2,6 +2,10 @@
   "name": "@cpany/cli",
   "version": "0.0.62",
   "description": "CPany cli package",
+  "keywords": [
+    "CPany",
+    "cli"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/yjl9903/CPany"

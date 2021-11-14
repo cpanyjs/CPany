@@ -2,6 +2,11 @@
   "name": "@cpany/plugin-atcoder",
   "version": "0.0.62",
   "description": "CPany AtCoder plugin",
+  "keywords": [
+    "CPany",
+    "plugin",
+    "atcoder"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/yjl9903/CPany"
