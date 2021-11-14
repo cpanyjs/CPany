@@ -27,7 +27,11 @@ const LocaleOffset = 8; /* UTC+8 */
 
 export function toDate(seconds: number | Ref<number>) {
   const date = new Date(unref(seconds) * 1000);
-  date.setTime(date.getTime() + date.getTimezoneOffset() * 60 * 1000 /* convert to UTC */ + LocaleOffset * 60 * 60 * 1000);
+  date.setTime(
+    date.getTime() +
+      date.getTimezoneOffset() * 60 * 1000 /* convert to UTC */ +
+      LocaleOffset * 60 * 60 * 1000
+  );
   const prefix = `${date.getFullYear()}-${alignNumber(date.getMonth() + 1)}-${alignNumber(
     date.getDate()
   )} `;
@@ -82,11 +86,11 @@ export function createSortByString<T>(mapFn: (item: T) => string) {
       }
     }
     return lhs.length - rhs.length;
-  }
-};
+  };
+}
 
 export function createRevSortBy<T>(...mapFns: Array<(item: T) => number>) {
-  return createSortBy(...mapFns.map(fn => (item: T) => -fn(item)));
+  return createSortBy(...mapFns.map((fn) => (item: T) => -fn(item)));
 }
 
 export function combineCmp<T>(...cmpFns: Array<(lhs: T, rhs: T) => number>) {
