@@ -22,31 +22,31 @@
             </cf-rating-color>
           </a>
         </c-table-column>
-        <c-table-column label="Rating" :sort="sortByRating" align="right"
+        <c-table-column label="Rating" :sort="normalSortBy(sortByRating)" align="right"
           ><cf-rating-color v-if="row.isRated" :rating="row.rating" disable-legendary>{{
             row.rating
           }}</cf-rating-color></c-table-column
         >
 
-        <c-table-column label="最近通过" width="7em" align="right" :sort="sortByRecentOk">{{
+        <c-table-column label="最近通过" width="7em" align="right" :sort="normalSortBy(sortByRecentOk)">{{
           row.recentOkCount
         }}</c-table-column>
-        <c-table-column label="最近平均难度" width="10em" align="right" :sort="sortByAvgDiffcult">{{
+        <c-table-column label="最近平均难度" width="10em" align="right" :sort="normalSortBy(sortByAvgDiffcult)">{{
           row.recentAvgDiffcult
         }}</c-table-column>
-        <c-table-column label="最近比赛" width="7em" align="right" :sort="sortByRecentContest">{{
+        <c-table-column label="最近比赛" width="7em" align="right" :sort="normalSortBy(sortByRecentContest)">{{
           row.recentContest
         }}</c-table-column>
-        <c-table-column label="最新通过" width="10em" align="center" :sort="sortByLastSolve"
+        <c-table-column label="最新通过" width="10em" align="center" :sort="normalSortBy(sortByLastSolve)"
           ><span v-if="row.lastSolveTime > 0">{{
             toDate(row.lastSolveTime).value
           }}</span></c-table-column
         >
 
-        <c-table-column label="通过" width="6em" align="right" :sort="sortByOk">{{
+        <c-table-column label="通过" width="6em" align="right" :sort="normalSortBy(sortByOk)">{{
           row.okCount
         }}</c-table-column>
-        <c-table-column label="比赛场次" width="7em" align="right" :sort="sortByContest">{{
+        <c-table-column label="比赛场次" width="7em" align="right" :sort="normalSortBy(sortByContest)">{{
           row.contests.length
         }}</c-table-column>
       </template>
@@ -68,7 +68,7 @@ import { CTable, CTableColumn } from '../components/table';
 import UserLink from '../components/user-link.vue';
 import { CfRatingColor } from '../components/codeforces';
 import { recentStartTime as defaultRecentStartTime } from '../overview';
-import { toDate, isDef } from '../utils';
+import { toDate, isDef, createSortBy, combineCmp, createSortByString } from '../utils';
 
 const route = useRoute();
 const defaultSort = String(route.query.sort ?? '最近通过');
@@ -137,15 +137,17 @@ const extendUsers = computed(() => users.map(extendFn));
 
 type ExtendUser = ReturnType<typeof extendFn>;
 
-const sortByRating = (lhs: ExtendUser, rhs: ExtendUser) => lhs.rating - rhs.rating;
-const sortByOk = (lhs: ExtendUser, rhs: ExtendUser) => lhs.okCount - rhs.okCount;
-const sortByRecentOk = (lhs: ExtendUser, rhs: ExtendUser) => lhs.recentOkCount - rhs.recentOkCount;
-const sortByAvgDiffcult = (lhs: ExtendUser, rhs: ExtendUser) =>
-  lhs.recentAvgDiffcult - rhs.recentAvgDiffcult;
+const sortByRating = createSortBy<ExtendUser>(user => user.rating);
+const sortByRecentOk = createSortBy<ExtendUser>(user => user.recentOkCount);
+const sortByRecentContest = createSortBy<ExtendUser>(user => user.recentContest)
+const sortByLastSolve = createSortBy<ExtendUser>(user => user.lastSolveTime);
+const sortByAvgDiffcult = createSortBy<ExtendUser>(user => user.recentAvgDiffcult)
+const sortByOk = createSortBy<ExtendUser>(user => user.okCount)
+const sortByContest = createSortBy<ExtendUser>(user => user.contests.length)
 
-const sortByContest = (lhs: ExtendUser, rhs: ExtendUser) =>
-  lhs.contests.length - rhs.contests.length;
-const sortByRecentContest = (lhs: ExtendUser, rhs: ExtendUser) =>
-  lhs.recentContest - rhs.recentContest;
-const sortByLastSolve = (lhs: ExtendUser, rhs: ExtendUser) => lhs.lastSolveTime - rhs.lastSolveTime;
+const sortByName = createSortByString<ExtendUser>(user => user.name);
+
+function normalSortBy(cmpFn: typeof sortByRating) {
+  return combineCmp(cmpFn, sortByRating, sortByRecentOk, sortByRecentContest, sortByLastSolve, sortByAvgDiffcult, sortByOk, sortByContest, sortByName);
+}
 </script>

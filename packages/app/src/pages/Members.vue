@@ -15,31 +15,31 @@
           <user-link :name="row.name"></user-link>
         </c-table-column>
 
-        <c-table-column label="最近通过" width="7em" align="right" :sort="sortByRecentOk">{{
+        <c-table-column label="最近通过" width="7em" align="right" :sort="normalSortBy(sortByRecentOk)">{{
           row.recentOkCount
         }}</c-table-column>
-        <c-table-column label="最近提交" width="7em" align="right" :sort="sortByRecentSub">{{
+        <c-table-column label="最近提交" width="7em" align="right" :sort="normalSortBy(sortByRecentSub)">{{
           row.recentSubCount
         }}</c-table-column>
-        <c-table-column label="最近比赛" width="7em" align="right" :sort="sortByRecentContest">{{
+        <c-table-column label="最近比赛" width="7em" align="right" :sort="normalSortBy(sortByRecentContest)">{{
           row.recentContest
         }}</c-table-column>
-        <c-table-column label="最新通过" width="10em" align="center" :sort="sortByLastSolve"
+        <c-table-column label="最新通过" width="10em" align="center" :sort="normalSortBy(sortByLastSolve)"
           ><span v-if="row.lastSolveTime > 0">{{
             toDate(row.lastSolveTime).value
           }}</span></c-table-column
         >
 
-        <c-table-column label="通过" width="6em" align="right" :sort="sortByOk">{{
+        <c-table-column label="通过" width="6em" align="right" :sort="normalSortBy(sortByOk)">{{
           row.okCount
         }}</c-table-column>
-        <c-table-column label="提交" width="6em" align="right" :sort="sortBySub">{{
+        <c-table-column label="提交" width="6em" align="right" :sort="normalSortBy(sortBySub)">{{
           row.subCount
         }}</c-table-column>
-        <c-table-column label="通过率" width="6em" align="right" :sort="sortByOkRate">{{
+        <c-table-column label="通过率" width="6em" align="right" :sort="normalSortBy(sortByOkRate)">{{
           row.okRate
         }}</c-table-column>
-        <c-table-column label="比赛场次" width="7em" align="right" :sort="sortByContest">{{
+        <c-table-column label="比赛场次" width="7em" align="right" :sort="normalSortBy(sortByContest)">{{
           row.contests.length
         }}</c-table-column>
       </template>
@@ -59,7 +59,7 @@ import { users } from '../users';
 import { CTable, CTableColumn } from '../components/table';
 import UserLink from '../components/user-link.vue';
 import { recentStartTime as defaultRecentStartTime } from '../overview';
-import { toDate } from '../utils';
+import { combineCmp, createSortBy, createSortByString, toDate } from '../utils';
 
 const route = useRoute();
 const defaultSort = String(route.query.sort ?? '最近通过');
@@ -94,17 +94,18 @@ const extendUsers = computed(() => users.map(extendFn));
 
 type ExtendUser = ReturnType<typeof extendFn>;
 
-const sortBySub = (lhs: ExtendUser, rhs: ExtendUser) => lhs.subCount - rhs.subCount;
-const sortByOk = (lhs: ExtendUser, rhs: ExtendUser) => lhs.okCount - rhs.okCount;
-const sortByRecentSub = (lhs: ExtendUser, rhs: ExtendUser) =>
-  lhs.recentSubCount - rhs.recentSubCount;
-const sortByRecentOk = (lhs: ExtendUser, rhs: ExtendUser) => lhs.recentOkCount - rhs.recentOkCount;
+const sortByRecentOk = createSortBy<ExtendUser>(handle => handle.recentOkCount);
+const sortByRecentContest = createSortBy<ExtendUser>(handle => handle.recentContest);
+const sortByLastSolve = createSortBy<ExtendUser>(handle => handle.lastSolveTime);
+const sortByRecentSub = createSortBy<ExtendUser>(handle => handle.recentSubCount);
+const sortByOk = createSortBy<ExtendUser>(handle => handle.okCount);
+const sortByContest = createSortBy<ExtendUser>(handle => handle.contests.length);
+const sortBySub = createSortBy<ExtendUser>(handle => handle.subCount);
+const sortByOkRate = createSortBy<ExtendUser>(handle => Number.parseFloat(handle.okRate));
 
-const sortByOkRate = (lhs: ExtendUser, rhs: ExtendUser) =>
-  Number.parseFloat(lhs.okRate) - Number.parseFloat(rhs.okRate);
-const sortByContest = (lhs: ExtendUser, rhs: ExtendUser) =>
-  lhs.contests.length - rhs.contests.length;
-const sortByRecentContest = (lhs: ExtendUser, rhs: ExtendUser) =>
-  lhs.recentContest - rhs.recentContest;
-const sortByLastSolve = (lhs: ExtendUser, rhs: ExtendUser) => lhs.lastSolveTime - rhs.lastSolveTime;
+const sortByName = createSortByString<ExtendUser>(handle => handle.name);
+
+function normalSortBy(cmpFn: typeof sortBySub) {
+  return combineCmp(cmpFn, sortByRecentOk, sortByRecentContest, sortByLastSolve, sortByRecentSub, sortByOk, sortByContest, sortBySub, sortByOkRate, sortByName);
+}
 </script>
