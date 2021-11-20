@@ -109,7 +109,8 @@ export async function resolveOptions(
       build: {
         outDir: path.resolve(option.outDir),
         emptyOutDir: option.emptyOutDir,
-        chunkSizeWarningLimit: 2048
+        chunkSizeWarningLimit: 2048,
+        cssCodeSplit: false
       }
     });
   }
