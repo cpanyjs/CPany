@@ -140,7 +140,7 @@ cli
   });
 
 cli
-  .command('action [data]', 'Run @cpany/action locally')
+  .command('fetch [data]', 'Run @cpany/action locally')
   .option('-p, --plugins <string>', 'CPany plugins', { default: 'codeforces,hdu' })
   .option('--log <level>', 'warn | error | silent', { default: 'warn' })
   .option('--max-retry <number>', 'CPany max retry times', { default: 10 })
