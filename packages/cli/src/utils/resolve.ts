@@ -6,7 +6,7 @@ import { execSync } from 'child_process';
 
 let GlobalNodemodules: string | undefined;
 
-export function resolveGlobal(importName: string, root = process.cwd()) {
+export function resolveGlobal(importName: string, root = __dirname) {
   try {
     return resolve(importName, {
       preserveSymlinks: false,
@@ -46,7 +46,7 @@ export function resolveImportPath(
   root?: string,
   ensure?: boolean
 ): string | undefined;
-export function resolveImportPath(importName: string, root = process.cwd(), ensure = false) {
+export function resolveImportPath(importName: string, root = __dirname, ensure = false) {
   try {
     return resolve(importName, {
       preserveSymlinks: false,
@@ -65,7 +65,7 @@ export function resolveImportPath(importName: string, root = process.cwd(), ensu
   return undefined;
 }
 
-export function resolveCPanyPlugin(name: string, root: string = process.cwd()) {
+export function resolveCPanyPlugin(name: string, root: string = __dirname) {
   for (const plugin of [name, `@cpany/${name}`, `@cpany/plugin-${name}`, `cpany-plugin-${name}`]) {
     const resolved = resolveImportPath(`${plugin}/package.json`, root);
     if (resolved) {

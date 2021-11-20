@@ -11,14 +11,14 @@ import { uniq, isDef } from '@cpany/utils';
 
 import type { ICliOption } from './types';
 import { createCPanyPlugin } from './plugins';
-import { version, dependencies, resolveImportPath, slash, searchForWorkspaceRoot } from './utils';
+import { version, resolveImportPath, slash, searchForWorkspaceRoot } from './utils';
 
 export function getTypesRoot() {
-  return path.dirname(resolveImportPath('@cpany/types/package.json', process.cwd(), true));
+  return path.dirname(resolveImportPath('@cpany/types/package.json', __dirname, true));
 }
 
 export function getAppRoot() {
-  return path.dirname(resolveImportPath('@cpany/app/package.json', process.cwd(), true));
+  return path.dirname(resolveImportPath('@cpany/app/package.json', __dirname, true));
 }
 
 export async function resolveOptions(
@@ -36,6 +36,10 @@ export async function resolveOptions(
   const appPath = getAppRoot();
   const typesPath = getTypesRoot();
 
+  const dependencies = JSON.parse(
+    fs.readFileSync(path.join(appPath, 'package.json'), 'utf-8')
+  ).dependencies;
+
   const pluginOption = {
     appRootPath: appPath,
     dataRootPath: dataPath,
@@ -51,7 +55,7 @@ export async function resolveOptions(
     configFile: false,
     envDir: path.resolve(__dirname, '../'),
     define: {
-      CLI_VERSION: version
+      CLI_VERSION: JSON.stringify(version)
     },
     plugins: [
       vue(),
