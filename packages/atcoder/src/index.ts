@@ -48,6 +48,8 @@ export function atcoderPlugin(config: ICPanyPluginConfig): IPlugin[] {
   ];
 }
 
+export default atcoderPlugin;
+
 function loadContest(config: ICPanyPluginConfig) {
   try {
     const contests = JSON.parse(

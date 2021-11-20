@@ -44,3 +44,5 @@ export async function luoguPlugin(config: ICPanyPluginConfig): Promise<IPlugin[]
 
   return [createLuoguHandlePlugin(api)];
 }
+
+export default luoguPlugin;

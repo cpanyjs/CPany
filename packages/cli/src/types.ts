@@ -1,5 +1,17 @@
 export interface ICliOption {
+  /**
+   * Data Path
+   *
+   * @default "./"
+   */
   data: string;
+
+  /**
+   * CPany Plugins
+   *
+   * @default "codeforces,hdu"
+   */
+  plugins: string;
 
   // build
   outDir: string;
@@ -26,4 +38,5 @@ export interface IPluginOption {
   dataRootPath: string;
   configPath?: string;
   cliVersion: string;
+  plugins: string[];
 }

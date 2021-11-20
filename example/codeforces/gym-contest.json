@@ -13274,5 +13274,15 @@
     "phase": "FINISHED",
     "contestUrl": "https://codeforces.com/gym/103401",
     "standingsUrl": "https://codeforces.com/gym/103401/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Сумасшедший контест (Miston Cats)",
+    "duration": 10800,
+    "participantNumber": 0,
+    "id": 103402,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103402",
+    "standingsUrl": "https://codeforces.com/gym/103402/standings"
   }
 ]

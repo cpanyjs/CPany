@@ -4,7 +4,7 @@ import { bold, cyan, dim, yellow, green } from 'kolorist';
 import ora from 'ora-classic';
 import openFile from 'open';
 
-import { version } from './version';
+import { version } from './utils';
 import type { ICliExportOption } from './types';
 
 const okMark = '\x1b[32m✓\x1b[0m';

@@ -2,6 +2,10 @@
   "name": "@cpany/cli",
   "version": "0.0.63",
   "description": "CPany cli package",
+  "keywords": [
+    "CPany",
+    "cli"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/yjl9903/CPany"
@@ -19,21 +23,23 @@
     ".env"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsup-node src/cli.ts --format cjs --splitting"
   },
   "dependencies": {
-    "@cpany/action": "workspace:*",
     "@cpany/app": "workspace:*",
     "@cpany/compress": "workspace:*",
+    "@cpany/core": "workspace:*",
     "@cpany/types": "workspace:*",
     "@cpany/utils": "workspace:*",
     "@iconify/json": "^1.1.387",
     "@vitejs/plugin-vue": "^1.8.1",
     "@vue/compiler-sfc": "^3.2.12",
-    "@vuedx/typecheck": "^0.7.4",
-    "@vuedx/typescript-plugin-vue": "^0.7.4",
     "cac": "^6.7.3",
+    "date-fns": "^2.25.0",
+    "date-fns-tz": "^1.1.6",
+    "debug": "^4.3.2",
     "execa": "^5.1.1",
+    "global-dirs": "^3.0.0",
     "is-installed-globally": "^0.4.0",
     "js-yaml": "^4.1.0",
     "kolorist": "^1.5.0",
@@ -48,14 +54,39 @@
     "windicss": "^3.1.7"
   },
   "devDependencies": {
+    "@actions/core": "^1.4.0",
+    "@actions/exec": "^1.1.0",
+    "@actions/io": "^1.1.1",
+    "@cpany/plugin-atcoder": "workspace:*",
+    "@cpany/plugin-codeforces": "workspace:*",
+    "@cpany/plugin-hdu": "workspace:*",
+    "@cpany/plugin-luogu": "workspace:*",
+    "@types/debug": "^4.1.7",
     "@types/js-yaml": "^4.0.2",
     "@types/node": "^16.4.13",
-    "@types/resolve": "^1.20.1"
+    "@types/resolve": "^1.20.1",
+    "tsup": "^4.14.0"
   },
   "peerDependencies": {
+    "@cpany/plugin-atcoder": "workspace:*",
+    "@cpany/plugin-codeforces": "workspace:*",
+    "@cpany/plugin-hdu": "workspace:*",
+    "@cpany/plugin-luogu": "workspace:*",
     "capture-website-cli": "^2.1.0"
   },
   "peerDependenciesMeta": {
+    "@cpany/plugin-atcoder": {
+      "optional": true
+    },
+    "@cpany/plugin-codeforces": {
+      "optional": true
+    },
+    "@cpany/plugin-hdu": {
+      "optional": true
+    },
+    "@cpany/plugin-luogu": {
+      "optional": true
+    },
     "capture-website-cli": {
       "optional": true
     }
