@@ -10,12 +10,14 @@ import { blue, bold, cyan, dim, yellow, green, underline } from 'kolorist';
 import { run as runAction } from './fetch';
 
 import type { ICliOption, ICliActionOption, ICliExportOption } from './types';
-import { version } from './version';
+import { version } from './utils';
 import { resolveOptions } from './options';
 import { findFreePort, resolveImportPath } from './utils';
 import { capture } from './capture';
 
-const cli = cac('cpany');
+const cli = cac('cpany').option('-p, --plugins <string>', 'CPany plugins', {
+  default: 'codeforces,hdu'
+});
 
 cli
   .command('[data]', 'Build CPany site')
@@ -24,9 +26,11 @@ cli
     default: false
   })
   .option('--outDir <dir>', 'output directory', { default: 'dist' })
+  .option('--force', 'force the optimizer to ignore the cache and re-bundle', {
+    default: false
+  })
   .action(async (dataPath: string | undefined, option: ICliOption) => {
-    option.data = dataPath ?? './';
-    await build(await resolveOptions(option, 'prod'));
+    await build(await resolveOptions(dataPath, option, 'build'));
   });
 
 cli
@@ -45,7 +49,7 @@ cli
     let server: ViteDevServer | undefined = undefined;
 
     const bootstrap = async () => {
-      server = await createServer(await resolveOptions(option, 'dev'));
+      server = await createServer(await resolveOptions(dataPath, option, 'dev'));
       await server.listen(port);
       if (!!option.clearScreen) console.clear();
       printDevInfo(path.resolve(option.data), port, option.host);
@@ -124,13 +128,14 @@ cli
       );
     }
 
-    option.data = dataPath ?? './';
     option.page = typeof option.page === 'boolean' ? '/' : option.page;
     const port = (option.port = await findFreePort(option.port));
 
     try {
       // Open exported image, not website
-      let server = await createServer(await resolveOptions({ ...option, open: false }, 'dev'));
+      let server = await createServer(
+        await resolveOptions(dataPath, { ...option, open: false }, 'dev')
+      );
       await server.listen(port);
       await capture(port, option);
       await server.close();
@@ -141,7 +146,6 @@ cli
 
 cli
   .command('fetch [data]', 'Run @cpany/action locally')
-  .option('-p, --plugins <string>', 'CPany plugins', { default: 'codeforces,hdu' })
   .option('--log <level>', 'warn | error | silent', { default: 'warn' })
   .option('--max-retry <number>', 'CPany max retry times', { default: 10 })
   .action(

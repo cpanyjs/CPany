@@ -7,46 +7,52 @@ import WindiCSS from 'vite-plugin-windicss';
 import Icons from 'unplugin-icons/vite';
 
 import Compress from '@cpany/compress';
-import { uniq } from '@cpany/utils';
+import { uniq, isDef } from '@cpany/utils';
 
 import type { ICliOption } from './types';
-import { version } from './version';
 import { createCPanyPlugin } from './plugins';
-import { resolveImportPath, slash, searchForWorkspaceRoot } from './utils';
+import { version, dependencies, resolveImportPath, slash, searchForWorkspaceRoot } from './utils';
 
 export function getTypesRoot() {
-  return path.dirname(resolveImportPath('@cpany/types/package.json', true));
+  return path.dirname(resolveImportPath('@cpany/types/package.json', process.cwd(), true));
 }
 
 export function getAppRoot() {
-  return path.dirname(resolveImportPath('@cpany/app/package.json', true));
+  return path.dirname(resolveImportPath('@cpany/app/package.json', process.cwd(), true));
 }
 
 export async function resolveOptions(
+  rawDataPath: string | undefined,
   option: ICliOption,
-  mode: 'dev' | 'prod'
+  mode: 'dev' | 'build'
 ): Promise<InlineConfig> {
-  const appPath = getAppRoot();
-  const typesPath = getTypesRoot();
-  const deps = JSON.parse(
-    fs.readFileSync(path.join(appPath, 'package.json'), 'utf-8')
-  ).dependencies;
-
+  option.data = rawDataPath ?? './';
   const dataPath = path.resolve(option.data);
-  const pluginOption = {
-    appRootPath: appPath,
-    dataRootPath: dataPath,
-    cliVersion: version
-  };
 
   if (!fs.existsSync(path.join(dataPath, 'cpany.yml'))) {
     throw new Error(`Can not find cpany.yml in ${dataPath}`);
   }
 
+  const appPath = getAppRoot();
+  const typesPath = getTypesRoot();
+
+  const pluginOption = {
+    appRootPath: appPath,
+    dataRootPath: dataPath,
+    cliVersion: version,
+    plugins: option.plugins
+      .split(/,| /)
+      .map((plugin) => plugin.trim().toLowerCase())
+      .filter((plugin) => isDef(plugin) && plugin !== '')
+  };
+
   const common: InlineConfig = {
     root: appPath,
     configFile: false,
     envDir: path.resolve(__dirname, '../'),
+    define: {
+      CLI_VERSION: version
+    },
     plugins: [
       vue(),
       WindiCSS({
@@ -70,7 +76,7 @@ export async function resolveOptions(
       stringify: true
     },
     optimizeDeps: {
-      include: Object.keys(deps)
+      include: Object.keys(dependencies)
     }
   };
 
@@ -106,7 +112,7 @@ export async function resolveOptions(
         __DEV__: false
       },
       build: {
-        outDir: path.resolve(option.outDir),
+        outDir: option.outDir,
         emptyOutDir: option.emptyOutDir,
         chunkSizeWarningLimit: 2048,
         cssCodeSplit: false

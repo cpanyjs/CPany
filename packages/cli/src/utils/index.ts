@@ -2,6 +2,8 @@ export * from './searchRoot';
 
 export * from './resolve';
 
+export * from './package';
+
 import net from 'net';
 
 export function slash(path: string) {

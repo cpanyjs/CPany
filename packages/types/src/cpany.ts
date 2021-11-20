@@ -1,5 +1,5 @@
-import { IHandle, IAuthor } from "./handle";
-import { IContest } from "./contest";
+import { IHandle, IAuthor } from './handle';
+import { IContest } from './contest';
 
 export interface IUser {
   name: string;
@@ -26,7 +26,7 @@ export interface IResolvedCPanyConfig {
 
   blogs: Array<{}>;
 
-  app: AppConfig
+  app: AppConfig;
 }
 
 // Action/Cli config interface

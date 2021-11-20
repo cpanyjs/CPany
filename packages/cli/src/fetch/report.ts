@@ -4,7 +4,7 @@ import { resolve } from 'path';
 import format from 'date-fns/format';
 import getUnixTime from 'date-fns/getUnixTime';
 
-import { version } from '../version';
+import { version } from '../utils';
 
 export async function processReadme(basePath: string, time: Date) {
   const fullPath = resolve(basePath, 'README.md');
