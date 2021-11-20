@@ -66,7 +66,7 @@ export function resolveImportPath(importName: string, root = __dirname, ensure =
 }
 
 export function resolveCPanyPlugin(name: string, root: string = __dirname) {
-  for (const plugin of [name, `@cpany/${name}`, `@cpany/plugin-${name}`, `cpany-plugin-${name}`]) {
+  for (const plugin of [name, `@cpany/plugin-${name}`, `cpany-plugin-${name}`]) {
     const resolved = resolveImportPath(`${plugin}/package.json`, root);
     if (resolved) {
       return { name: plugin, directory: dirname(resolved) };
