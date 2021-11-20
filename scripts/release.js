@@ -3,7 +3,6 @@ const { readJSON, writeJSON, writeFile, readFile } = require('fs-extra');
 const execa = require('execa');
 
 const packages = [
-  './packages/action',
   './packages/app',
   './packages/cli',
   './packages/codeforces',
@@ -54,7 +53,6 @@ async function boostrap() {
   }
 
   await writeFile('./packages/cli/.env', `VITE_CLI_VERSION=${version}`);
-  await writeFile('./packages/action/src/version.ts', `export const ActionVersion = '${version}';`);
 
   const readme = (await readFile('./README.md'))
     .toString()
