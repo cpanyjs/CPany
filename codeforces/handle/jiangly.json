@@ -6,6 +6,248 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 135877830,
+      "creationTime": 1637070418,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -510413229
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103409F",
+        "name": "Illuminations II",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103409/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103409/submission/135877830"
+    },
+    {
+      "type": "codeforces",
+      "id": 135877689,
+      "creationTime": 1637070335,
+      "language": "GNU C++20 (64)",
+      "verdict": "TIME_LIMIT_EXCEEDED",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -510413312
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103409F",
+        "name": "Illuminations II",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103409/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103409/submission/135877689"
+    },
+    {
+      "type": "codeforces",
+      "id": 135877156,
+      "creationTime": 1637070001,
+      "language": "GNU C++20 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -510413646
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103409F",
+        "name": "Illuminations II",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103409/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103409/submission/135877156"
+    },
+    {
+      "type": "codeforces",
+      "id": 135852545,
+      "creationTime": 1637054561,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -510429086
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103409K",
+        "name": "Tax",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103409/problem/K"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103409/submission/135852545"
+    },
+    {
+      "type": "codeforces",
+      "id": 135850518,
+      "creationTime": 1637053230,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -510430417
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103409B",
+        "name": "A Plus B Problem",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103409/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103409/submission/135850518"
+    },
+    {
+      "type": "codeforces",
+      "id": 135848754,
+      "creationTime": 1637051994,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -510431653
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103409D",
+        "name": "Assumption is All You Need",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103409/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103409/submission/135848754"
+    },
+    {
+      "type": "codeforces",
+      "id": 135848225,
+      "creationTime": 1637051651,
+      "language": "GNU C++20 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -510431996
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103409D",
+        "name": "Assumption is All You Need",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103409/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103409/submission/135848225"
+    },
+    {
+      "type": "codeforces",
+      "id": 135847220,
+      "creationTime": 1637050990,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -510432657
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103409E",
+        "name": "Buy and Delete",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103409/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103409/submission/135847220"
+    },
+    {
+      "type": "codeforces",
+      "id": 135846493,
+      "creationTime": 1637050463,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -510433184
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103409G",
+        "name": "Occupy the Cities",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103409/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103409/submission/135846493"
+    },
+    {
+      "type": "codeforces",
+      "id": 135843677,
+      "creationTime": 1637049794,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -510433853
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103409I",
+        "name": "PTSD",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103409/problem/I"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103409/submission/135843677"
+    },
+    {
+      "type": "codeforces",
+      "id": 135841281,
+      "creationTime": 1637049597,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -510434050
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "103409A",
+        "name": "A Hero Named Magnus",
+        "tags": [],
+        "problemUrl": "https://codeforces.com/gym/103409/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/gym/103409/submission/135841281"
+    },
+    {
+      "type": "codeforces",
       "id": 135382787,
       "creationTime": 1636875884,
       "language": "GNU C++20 (64)",
@@ -23,7 +265,8 @@
         "name": "Eligible Segments",
         "rating": 3200,
         "tags": [
-          "geometry"
+          "geometry",
+          "two pointers"
         ],
         "problemUrl": "https://codeforces.com/contest/1588/problem/E"
       },
@@ -48,7 +291,8 @@
         "name": "Eligible Segments",
         "rating": 3200,
         "tags": [
-          "geometry"
+          "geometry",
+          "two pointers"
         ],
         "problemUrl": "https://codeforces.com/contest/1588/problem/E"
       },
@@ -73,7 +317,8 @@
         "name": "Eligible Segments",
         "rating": 3200,
         "tags": [
-          "geometry"
+          "geometry",
+          "two pointers"
         ],
         "problemUrl": "https://codeforces.com/contest/1588/problem/E"
       },
@@ -98,7 +343,8 @@
         "name": "Eligible Segments",
         "rating": 3200,
         "tags": [
-          "geometry"
+          "geometry",
+          "two pointers"
         ],
         "problemUrl": "https://codeforces.com/contest/1588/problem/E"
       },
@@ -124,7 +370,6 @@
         "rating": 2600,
         "tags": [
           "bitmasks",
-          "brute force",
           "dp",
           "graphs",
           "strings"
@@ -2223,6 +2468,7 @@
         "name": "One-Four Overload",
         "rating": 2700,
         "tags": [
+          "2-sat",
           "constructive algorithms",
           "dfs and similar",
           "dsu",
