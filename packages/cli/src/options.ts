@@ -116,7 +116,7 @@ export async function resolveOptions(
         __DEV__: false
       },
       build: {
-        outDir: option.outDir,
+        outDir: path.join(process.cwd(), option.outDir),
         emptyOutDir: option.emptyOutDir,
         chunkSizeWarningLimit: 2048,
         cssCodeSplit: false
