@@ -161,7 +161,6 @@ cli
       await runAction({
         logLevel: log,
         basePath: dataPath,
-        disableGit: true,
         maxRetry,
         plugins
       });

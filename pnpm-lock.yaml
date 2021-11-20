@@ -131,6 +131,9 @@ importers:
       vite-plugin-windicss: ^1.2.7
       windicss: ^3.1.7
     dependencies:
+      '@actions/core': 1.4.0
+      '@actions/exec': 1.1.0
+      '@actions/io': 1.1.1
       '@cpany/app': link:../app
       '@cpany/compress': link:../compress
       '@cpany/core': link:../core
@@ -158,9 +161,6 @@ importers:
       vite-plugin-windicss: 1.2.7_vite@2.5.10
       windicss: 3.1.7
     devDependencies:
-      '@actions/core': 1.4.0
-      '@actions/exec': 1.1.0
-      '@actions/io': 1.1.1
       '@cpany/plugin-atcoder': link:../atcoder
       '@cpany/plugin-codeforces': link:../codeforces
       '@cpany/plugin-hdu': link:../hdu
@@ -242,17 +242,17 @@ packages:
 
   /@actions/core/1.4.0:
     resolution: {integrity: sha512-CGx2ilGq5i7zSLgiiGUtBCxhRRxibJYU6Fim0Q1Wg2aQL2LTnF27zbqZOrxfvFQ55eSBW0L8uVStgtKMpa0Qlg==}
-    dev: true
+    dev: false
 
   /@actions/exec/1.1.0:
     resolution: {integrity: sha512-LImpN9AY0J1R1mEYJjVJfSZWU4zYOlEcwSTgPve1rFQqK5AwrEs6uWW5Rv70gbDIQIAUwI86z6B+9mPK4w9Sbg==}
     dependencies:
       '@actions/io': 1.1.1
-    dev: true
+    dev: false
 
   /@actions/io/1.1.1:
     resolution: {integrity: sha512-Qi4JoKXjmE0O67wAOH6y0n26QXhMKMFo7GD/4IXNVcrtLjUlGjGuVys6pQgwF3ArfGTQu0XpqaNr0YhED2RaRA==}
-    dev: true
+    dev: false
 
   /@antfu/utils/0.2.4:
     resolution: {integrity: sha512-2bZNkVfL9IZESmvE26UKi8SzyvSoaIsGXDcnbHFMtmGMqUiB1fXpAJ1ijGf+tSqKRQ5yagck2U1Qk0p+705/kw==}

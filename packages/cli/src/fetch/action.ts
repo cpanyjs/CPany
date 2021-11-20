@@ -3,7 +3,7 @@ import format from 'date-fns/format';
 import type { LogLevel } from '@cpany/types';
 import { createRetryContainer } from '@cpany/core';
 
-import { createCPany } from '../cpany';
+import { createCPany, isGithubActions } from '../cpany';
 
 import { createGitFileSystem } from './fs';
 import { processReport } from './report';
@@ -12,7 +12,6 @@ import { now } from './utils';
 export interface IRunOption {
   logLevel?: LogLevel;
   basePath?: string;
-  disableGit?: boolean;
   plugins?: string[];
   maxRetry: number;
 }
@@ -20,14 +19,13 @@ export interface IRunOption {
 export async function run({
   logLevel = 'warn',
   basePath = './',
-  disableGit,
   plugins = ['codeforces', 'hdu'],
   maxRetry
 }: IRunOption) {
   const { config, instance } = await createCPany(basePath, plugins, logLevel);
 
   const fs = await createGitFileSystem(basePath, {
-    disable: disableGit
+    disable: !isGithubActions
   });
 
   instance.logger.startGroup('Load CPany config');

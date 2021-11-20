@@ -12,6 +12,8 @@ import { resolveCPanyPlugin } from './utils';
 
 const debugCPany = debug('CPany');
 
+export const isGithubActions = testGithubActions();
+
 export async function createCPany(
   basePath: string,
   plugins: string[],
@@ -21,7 +23,7 @@ export async function createCPany(
 
   const instance = createInstance({
     plugins: await getPluginSet(plugins, config),
-    logger: isGithubActions() ? core : undefined,
+    logger: isGithubActions ? core : undefined,
     logLevel
   });
 
@@ -91,7 +93,7 @@ async function getConfig(basePath: string, filename = 'cpany.yml'): Promise<ICPa
   }
 }
 
-function isGithubActions() {
+function testGithubActions() {
   const flag = process.env['GITHUB_ACTIONS'];
   return isDef(flag) && flag === 'true';
 }

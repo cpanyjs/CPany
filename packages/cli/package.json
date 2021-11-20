@@ -26,6 +26,9 @@
     "build": "tsup-node src/cli.ts --format cjs --splitting"
   },
   "dependencies": {
+    "@actions/core": "^1.4.0",
+    "@actions/exec": "^1.1.0",
+    "@actions/io": "^1.1.1",
     "@cpany/app": "workspace:*",
     "@cpany/compress": "workspace:*",
     "@cpany/core": "workspace:*",
@@ -54,9 +57,6 @@
     "windicss": "^3.1.7"
   },
   "devDependencies": {
-    "@actions/core": "^1.4.0",
-    "@actions/exec": "^1.1.0",
-    "@actions/io": "^1.1.1",
     "@cpany/plugin-atcoder": "workspace:*",
     "@cpany/plugin-codeforces": "workspace:*",
     "@cpany/plugin-hdu": "workspace:*",
