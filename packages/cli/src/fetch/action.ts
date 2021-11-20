@@ -24,7 +24,7 @@ export async function run({
   plugins = ['codeforces', 'hdu'],
   maxRetry
 }: IRunOption) {
-  const {config, instance} = await createCPany(basePath, plugins, logLevel);
+  const { config, instance } = await createCPany(basePath, plugins, logLevel);
 
   const fs = await createGitFileSystem(basePath, {
     disable: disableGit

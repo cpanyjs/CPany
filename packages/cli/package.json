@@ -1,6 +1,6 @@
 {
   "name": "@cpany/cli",
-  "version": "0.0.63",
+  "version": "0.1.0",
   "description": "CPany cli package",
   "keywords": [
     "CPany",

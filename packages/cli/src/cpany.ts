@@ -12,7 +12,11 @@ import { resolveCPanyPlugin } from './utils';
 
 const debugCPany = debug('CPany');
 
-export async function createCPany(basePath: string, plugins: string[], logLevel: LogLevel = 'warn') {
+export async function createCPany(
+  basePath: string,
+  plugins: string[],
+  logLevel: LogLevel = 'warn'
+) {
   const config = await getConfig(basePath);
 
   const instance = createInstance({
