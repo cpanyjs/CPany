@@ -10,7 +10,6 @@ import { processReport } from './report';
 import { now } from './utils';
 
 export interface IRunOption {
-  logger?: boolean;
   logLevel?: LogLevel;
   basePath?: string;
   disableGit?: boolean;

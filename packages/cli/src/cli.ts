@@ -159,7 +159,6 @@ cli
         .filter((plugin) => !!plugin && plugin !== '');
 
       await runAction({
-        logger: false,
         logLevel: log,
         basePath: dataPath,
         disableGit: true,
