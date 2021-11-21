@@ -42,11 +42,11 @@
           >
         </div>
       </div>
-      <p v-if="updateTime !== ''">
-        <span>构建时间: {{ toDate(+buildTime).value }}</span>
+      <p v-if="fetchTime && fetchTime !== ''">
+        <span>更新时间: {{ toDate(+fetchTime).value }}</span>
       </p>
-      <p class="mt-2" v-if="buildTime !== ''">
-        <span>更新时间: {{ toDate(+updateTime).value }}</span>
+      <p v-if="buildTime && buildTime !== ''" class="mt-2">
+        <span>构建时间: {{ toDate(+buildTime).value }}</span>
       </p>
       <p class="mt-2">
         <a href="https://github.com/cpanyjs/CPany/blob/master/LICENSE" target="_blank">MIT</a>
@@ -66,7 +66,7 @@ import { nav } from './overview';
 
 const cliVersion = __CLI_VERSION__;
 
-const updateTime = __FETCH_TIMESTAMP__;
+const fetchTime = __FETCH_TIMESTAMP__;
 
 const buildTime = __BUILD_TIMESTAMP__;
 
