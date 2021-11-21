@@ -128,6 +128,7 @@ cli
       );
     }
 
+    option.data = dataPath ?? './';
     option.page = typeof option.page === 'boolean' ? '/' : option.page;
     const port = (option.port = await findFreePort(option.port));
 
