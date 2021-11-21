@@ -1,6 +1,6 @@
 # 🥖 CPany
 
-[![version](https://img.shields.io/npm/v/@cpany/cli?color=rgb%2850%2C203%2C86%29&label=CPany)](https://www.npmjs.com/package/@cpany/cli) [![Demo](https://img.shields.io/badge/CPany-Demo-brightgreen)](https://cpany.dev/) [![build-test](https://github.com//actions/workflows/build.yml/badge.svg)](https://github.com/yjl9903/CPany/actions/workflows/build.yml)
+[![version](https://img.shields.io/npm/v/@cpany/cli?color=rgb%2850%2C203%2C86%29&label=CPany)](https://www.npmjs.com/package/@cpany/cli) [![Demo](https://img.shields.io/badge/CPany-Demo-brightgreen)](https://cpany.dev/) [![build-test](https://github.com/cpanyjs/CPany/actions/workflows/build.yml/badge.svg)](https://github.com/cpanyjs/CPany/actions/workflows/build.yml)
 
 **C**ompetitive **P**rogramming Statistic **An**al**y**sis Site Generator.
 
@@ -8,7 +8,7 @@
 
 ## Getting Started
 
-Use CPany template [@yjl9903/CPany-Template](https://github.com/yjl9903/CPany-Template) to create your own repository for data storage.
+Use CPany template [cpanyjs/template](https://github.com/cpanyjs/template) to create your own repository for data storage.
 
 Update config file `cpany.yml`, and push the changes to Github.
 

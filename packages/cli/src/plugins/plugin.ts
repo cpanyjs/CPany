@@ -44,7 +44,7 @@ export function createDefineMetaPlugin({ dataRootPath }: IPluginOption): Plugin 
   const load = () => {
     const envMap: Map<string, string> = new Map();
     try {
-      const rawContent = fs.readFileSync(path.join(dataRootPath, '.env'), 'utf8')
+      const rawContent = fs.readFileSync(path.join(dataRootPath, '.env'), 'utf8');
       const content = rawContent.trim().replace(/\r?\n/, '\n').split('\n');
       for (const _line of content) {
         const line = _line.trim();
@@ -58,7 +58,7 @@ export function createDefineMetaPlugin({ dataRootPath }: IPluginOption): Plugin 
     } catch (error) {
       console.log((error as any).message);
     } finally {
-      return envMap
+      return envMap;
     }
   };
 
