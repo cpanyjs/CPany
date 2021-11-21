@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "dev": "cpany dev example",
+    "dev": "cpany dev example --open",
     "site": "cpany build example --outDir site",
     "build": "pnpm run build --filter ./packages",
     "build:cli": "pnpm -C packages/cli run build",

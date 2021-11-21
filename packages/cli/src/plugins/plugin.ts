@@ -16,6 +16,7 @@ import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
 import { slash } from '@cpany/utils';
 
 import type { IPluginOption } from '../types';
+import { now } from '../utils';
 import { DefaultRecentContestsCount, DefaultRecentTime } from '../constant';
 import { createLoader } from './loader';
 
@@ -64,7 +65,7 @@ export function createDefineMetaPlugin({ dataRootPath }: IPluginOption): Plugin 
 
   const env = load();
   const FetchTimestamp = env.get('UPDATE_TIME') ?? '';
-  const BuildTimestamp = String(new Date().getTime() / 1000);
+  const BuildTimestamp = String(now().getTime() / 1000);
 
   return {
     name: 'cpany:define',

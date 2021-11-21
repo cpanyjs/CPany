@@ -30,7 +30,7 @@ export async function createGitFileSystem(
 
   const push = async (time: string) => {
     if (disable) return;
-    const username = process.env.GITHUB_ACTOR || 'Unknown';
+    const username = process.env.GITHUB_ACTOR || 'github-actions[bot]';
     // TODO: not overwrite
     await exec('git', ['config', '--local', 'user.name', username]);
     await exec('git', ['config', '--local', 'user.email', `${username}@users.noreply.github.com`]);

@@ -13284,5 +13284,98 @@
     "phase": "FINISHED",
     "contestUrl": "https://codeforces.com/gym/103402",
     "standingsUrl": "https://codeforces.com/gym/103402/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 2021 CCPC Guilin Onsite (Grand Prix of EDG)",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103409,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103409",
+    "standingsUrl": "https://codeforces.com/gym/103409/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "2020-2021, ICPC, East Siberian Regional Contest",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103411,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103411",
+    "standingsUrl": "https://codeforces.com/gym/103411/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "2021-2022 Saint-Petersburg Open High School Programming Contest (SpbKOSHP 21)",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103414,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103414",
+    "standingsUrl": "https://codeforces.com/gym/103414/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 2021 CCPC Guangzhou Onsite",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103415,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103415",
+    "standingsUrl": "https://codeforces.com/gym/103415/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "NU Open Fall 2021",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103416,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103416",
+    "standingsUrl": "https://codeforces.com/gym/103416/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Infoleague Autumn 2021 Round 2 Div. 2",
+    "startTime": 1637422200,
+    "duration": 10800,
+    "participantNumber": 0,
+    "id": 103422,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103422",
+    "standingsUrl": "https://codeforces.com/gym/103422/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Infoleague Autumn 2021 Round 2 Div. 1",
+    "startTime": 1637422200,
+    "duration": 14400,
+    "participantNumber": 0,
+    "id": 103423,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103423",
+    "standingsUrl": "https://codeforces.com/gym/103423/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Innopolis Open 2021-2022. First qualification round",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103426,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103426",
+    "standingsUrl": "https://codeforces.com/gym/103426/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 2021 ICPC Asia Shenyang Regional Contest",
+    "startTime": 1637463600,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103427,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103427",
+    "standingsUrl": "https://codeforces.com/gym/103427/standings"
   }
 ]

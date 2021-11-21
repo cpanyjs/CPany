@@ -6,6 +6,13 @@ export * from './package';
 
 import net from 'net';
 
+import { utcToZonedTime } from 'date-fns-tz';
+
+export function now() {
+  const zone = new Date(new Date().toUTCString());
+  return utcToZonedTime(zone, 'Asia/Shanghai');
+}
+
 export function slash(path: string) {
   return path.replace(/\\/g, '/');
 }

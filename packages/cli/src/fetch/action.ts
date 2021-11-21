@@ -4,10 +4,10 @@ import type { LogLevel } from '@cpany/types';
 import { createRetryContainer } from '@cpany/core';
 
 import { createCPany, isGithubActions } from '../cpany';
+import { now } from '../utils';
 
 import { createGitFileSystem } from './fs';
 import { processReport } from './report';
-import { now } from './utils';
 
 export interface IRunOption {
   logLevel?: LogLevel;
