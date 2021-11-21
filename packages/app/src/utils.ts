@@ -23,15 +23,8 @@ function alignNumber(value: number) {
   return (value < 10 ? '0' : '') + value;
 }
 
-const LocaleOffset = 8; /* UTC+8 */
-
 export function toDate(seconds: number | Ref<number>) {
   const date = new Date(unref(seconds) * 1000);
-  date.setTime(
-    date.getTime() +
-      date.getTimezoneOffset() * 60 * 1000 /* convert to UTC */ +
-      LocaleOffset * 60 * 60 * 1000
-  );
   const prefix = `${date.getFullYear()}-${alignNumber(date.getMonth() + 1)}-${alignNumber(
     date.getDate()
   )} `;
