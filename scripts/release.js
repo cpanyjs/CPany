@@ -52,9 +52,7 @@ async function boostrap() {
     await writeJSON(path, json, { spaces: 2 });
   }
 
-  const readme = (await readFile('./README.md'))
-    .toString()
-    .replace(/yjl9903\/CPany@v\d+\.\d+\.\d+/, `yjl9903/CPany@v${version}`);
+  const readme = (await readFile('./README.md')).toString();
   await writeFile('./README.md', readme);
   await writeFile('./packages/cli/README.md', readme);
 

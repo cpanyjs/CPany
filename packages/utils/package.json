@@ -2,9 +2,13 @@
   "name": "@cpany/utils",
   "version": "0.1.2",
   "description": "CPany utils package",
+  "keywords": [
+    "CPany",
+    "utils"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/yjl9903/CPany"
+    "url": "https://github.com/cpanyjs/CPany"
   },
   "license": "MIT",
   "author": "XLor",

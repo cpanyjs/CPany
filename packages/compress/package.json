@@ -2,9 +2,12 @@
   "name": "@cpany/compress",
   "version": "0.1.2",
   "description": "CPany compress package",
+  "keywords": [
+    "CPany"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/yjl9903/CPany"
+    "url": "https://github.com/cpanyjs/CPany"
   },
   "license": "MIT",
   "author": "XLor",
