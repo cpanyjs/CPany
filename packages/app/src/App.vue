@@ -66,9 +66,9 @@ import { nav } from './overview';
 
 const cliVersion = __CLI_VERSION__;
 
-const updateTime = import.meta.env.VITE_UPDATE_TIME!;
+const updateTime = __FETCH_TIMESTAMP__;
 
-const buildTime = import.meta.env.VITE_BUILD_TIME!;
+const buildTime = __BUILD_TIMESTAMP__;
 
 const members = nav.findIndex((t) => t === 'members' || t === 'member') !== -1;
 const codeforces = nav.findIndex((t) => t === 'codeforces') !== -1;

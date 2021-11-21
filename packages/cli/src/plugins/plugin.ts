@@ -1,6 +1,7 @@
 import type { Plugin } from 'vite';
 
 import path from 'path';
+import fs from 'fs';
 
 import type {
   IContestOverview,
@@ -15,18 +16,17 @@ import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
 import { slash } from '@cpany/utils';
 
 import type { IPluginOption } from '../types';
-import { createEnvLoader, createLoader } from './loader';
 import { DefaultRecentContestsCount, DefaultRecentTime } from '../constant';
+import { createLoader } from './loader';
 
 export async function createCPanyPlugin(option: IPluginOption): Promise<Plugin[]> {
-  createEnvLoader(option);
-
   const { config, contests, users, createUsersOverview, createContestsOverview, createOverview } =
     await createLoader(option);
 
   const staticContests = contests.filter((contest) => contest.inlinePage);
 
   return [
+    createDefineMetaPlugin(option),
     createCPanyOverviewPlugin(
       createUsersOverview(config.app?.recentTime ?? DefaultRecentTime),
       createContestsOverview(config.app?.recentContestsCount ?? DefaultRecentContestsCount),
@@ -38,6 +38,43 @@ export async function createCPanyPlugin(option: IPluginOption): Promise<Plugin[]
     createCPanyUserPagePlugin(users, option),
     createCPanyLoadPlugin(createUsersOverview(-1), contests, option)
   ];
+}
+
+export function createDefineMetaPlugin({ dataRootPath }: IPluginOption): Plugin {
+  const load = () => {
+    const envMap: Map<string, string> = new Map();
+    try {
+      const rawContent = fs.readFileSync(path.join(dataRootPath, '.env'), 'utf8')
+      const content = rawContent.trim().replace(/\r?\n/, '\n').split('\n');
+      for (const _line of content) {
+        const line = _line.trim();
+        if (line === '') continue;
+        const [key, value] = line
+          .split('=')
+          .map((s) => s.trim())
+          .filter((s) => s !== '');
+        envMap.set(key, value);
+      }
+    } catch (error) {
+      console.log((error as any).message);
+    } finally {
+      return envMap
+    }
+  };
+
+  const env = load();
+  const FetchTimestamp = env.get('UPDATE_TIME') ?? '';
+  const BuildTimestamp = String(new Date().getTime() / 1000);
+
+  return {
+    name: 'cpany:define',
+    config: () => ({
+      define: {
+        __FETCH_TIMESTAMP__: FetchTimestamp,
+        __BUILD_TIMESTAMP__: BuildTimestamp
+      }
+    })
+  };
 }
 
 export function createCPanyOverviewPlugin(

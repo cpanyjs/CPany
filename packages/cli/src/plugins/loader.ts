@@ -19,38 +19,6 @@ import { listJsonFiles, slash } from '@cpany/utils';
 import type { IPluginOption } from '../types';
 import { DefaultRecentContestsCount, DefaultRecentTime, DefaultRecentUserCount } from '../constant';
 
-export async function createEnvLoader({ dataRootPath }: IPluginOption) {
-  const envMap: Map<string, string> = new Map();
-  const load = async () => {
-    try {
-      const content = (await promises.readFile(path.join(dataRootPath, '.env'), 'utf8')).split(
-        '\n'
-      );
-      for (const _line of content) {
-        const line = _line.trim();
-        if (line === '') continue;
-        const [key, value] = line
-          .split('=')
-          .map((s) => s.trim())
-          .filter((s) => s !== '');
-        envMap.set(key, value);
-      }
-    } catch (error) {
-      console.log((error as any).message);
-    }
-  };
-  await load();
-  const ActionVersion = envMap.get('ACTION_VERSION') ?? 'Unknown';
-  const UpdateTime = envMap.get('UPDATE_TIME') ?? '';
-  process.env.VITE_ACTION_VERSION = ActionVersion;
-  process.env.VITE_UPDATE_TIME = UpdateTime;
-  process.env.VITE_BUILD_TIME = String(new Date().getTime() / 1000);
-  return {
-    ActionVersion,
-    UpdateTime
-  };
-}
-
 export async function createLoader({
   dataRootPath,
   cliVersion,
