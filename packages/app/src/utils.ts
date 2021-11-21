@@ -11,6 +11,8 @@ import {
   isHdu
 } from '@cpany/types';
 
+import { utcToZonedTime } from 'date-fns-tz';
+
 export function isUndef<T>(object: T | undefined | null): object is undefined | null {
   return object === undefined || object === null;
 }
@@ -23,8 +25,21 @@ function alignNumber(value: number) {
   return (value < 10 ? '0' : '') + value;
 }
 
+export function toUTC(date: Date) {
+  return Date.UTC(
+    date.getUTCFullYear(),
+    date.getUTCMonth(),
+    date.getUTCDate(),
+    date.getUTCHours(),
+    date.getUTCMinutes(),
+    date.getUTCSeconds(),
+    date.getUTCMilliseconds()
+  );
+}
+
 export function toDate(seconds: number | Ref<number>) {
-  const date = new Date(unref(seconds) * 1000);
+  const utc = toUTC(new Date(unref(seconds) * 1000));
+  const date = utcToZonedTime(utc, 'Asia/Shanghai');
   const prefix = `${date.getFullYear()}-${alignNumber(date.getMonth() + 1)}-${alignNumber(
     date.getDate()
   )} `;

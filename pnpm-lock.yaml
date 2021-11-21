@@ -45,6 +45,8 @@ importers:
       '@vue/compiler-sfc': ^3.2.12
       '@vuedx/typecheck': ^0.7.4
       '@vuedx/typescript-plugin-vue': ^0.7.4
+      date-fns: ^2.25.0
+      date-fns-tz: ^1.1.6
       tippy.js: ^6.3.1
       typescript: ^4.3.5
       unplugin-icons: ^0.7.0
@@ -56,6 +58,8 @@ importers:
     dependencies:
       '@cpany/compress': link:../compress
       '@cpany/types': link:../types
+      date-fns: 2.25.0
+      date-fns-tz: 1.1.6_date-fns@2.25.0
       tippy.js: 6.3.1
       vue: 3.2.12
       vue-router: 4.0.11_vue@3.2.12
