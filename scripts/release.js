@@ -52,8 +52,6 @@ async function boostrap() {
     await writeJSON(path, json, { spaces: 2 });
   }
 
-  await writeFile('./packages/cli/.env', `VITE_CLI_VERSION=${version}`);
-
   const readme = (await readFile('./README.md'))
     .toString()
     .replace(/yjl9903\/CPany@v\d+\.\d+\.\d+/, `yjl9903/CPany@v${version}`);

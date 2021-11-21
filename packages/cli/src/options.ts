@@ -55,7 +55,7 @@ export async function resolveOptions(
     configFile: false,
     envDir: path.resolve(__dirname, '../'),
     define: {
-      CLI_VERSION: JSON.stringify(version)
+      __CLI_VERSION__: JSON.stringify(version)
     },
     plugins: [
       vue(),

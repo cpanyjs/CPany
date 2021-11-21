@@ -35,17 +35,10 @@
         <div>
           <a
             class="block text-left"
-            :href="`https://github.com/yjl9903/CPany/tree/v${cliVersion}`"
+            :href="`https://github.com/cpanyjs/CPany/tree/v${cliVersion}`"
             target="_blank"
           >
             @cpany/cli: {{ cliVersion }}</a
-          >
-          <a
-            class="block text-left"
-            :href="`https://github.com/marketplace/actions/fetch-cpany?version=v${actionVersion}`"
-            target="_blank"
-          >
-            @cpany/action: {{ actionVersion }}</a
           >
         </div>
       </div>
@@ -71,9 +64,7 @@ import { Progress } from './components/progress';
 import { toDate } from './utils';
 import { nav } from './overview';
 
-const cliVersion = import.meta.env.VITE_CLI_VERSION!;
-
-const actionVersion = import.meta.env.VITE_ACTION_VERSION!;
+const cliVersion = __CLI_VERSION__;
 
 const updateTime = import.meta.env.VITE_UPDATE_TIME!;
 

@@ -19,8 +19,7 @@
   },
   "files": [
     "dist",
-    "src",
-    ".env"
+    "src"
   ],
   "scripts": {
     "build": "tsup-node src/cli.ts --format cjs --splitting"
