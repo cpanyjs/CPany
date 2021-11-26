@@ -17,11 +17,10 @@ import { slash } from '@cpany/utils';
 
 import type { IPluginOption } from '../types';
 import { now } from '../utils';
-import { DefaultRecentContestsCount, DefaultRecentTime } from '../constant';
 import { createLoader } from './loader';
 
 export async function createCPanyPlugin(option: IPluginOption): Promise<Plugin[]> {
-  const { config, contests, users, createUsersOverview, createContestsOverview, createOverview } =
+  const { contests, users, createUsersOverview, createContestsOverview, createOverview } =
     await createLoader(option);
 
   const staticContests = contests.filter((contest) => contest.inlinePage);
@@ -29,8 +28,8 @@ export async function createCPanyPlugin(option: IPluginOption): Promise<Plugin[]
   return [
     createDefineMetaPlugin(option),
     createCPanyOverviewPlugin(
-      createUsersOverview(config.app?.recentTime ?? DefaultRecentTime),
-      createContestsOverview(config.app?.recentContestsCount ?? DefaultRecentContestsCount),
+      createUsersOverview(option.option.app.recentTime),
+      createContestsOverview(option.option.app.recentContestsCount),
       createOverview(),
       option
     ),
@@ -41,11 +40,11 @@ export async function createCPanyPlugin(option: IPluginOption): Promise<Plugin[]
   ];
 }
 
-export function createDefineMetaPlugin({ dataRootPath }: IPluginOption): Plugin {
+export function createDefineMetaPlugin({ dataRoot }: IPluginOption): Plugin {
   const load = () => {
     const envMap: Map<string, string> = new Map();
     try {
-      const rawContent = fs.readFileSync(path.join(dataRootPath, '.env'), 'utf8');
+      const rawContent = fs.readFileSync(path.join(dataRoot, '.env'), 'utf8');
       const content = rawContent.trim().replace(/\r?\n/, '\n').split('\n');
       for (const _line of content) {
         const line = _line.trim();
@@ -82,9 +81,9 @@ export function createCPanyOverviewPlugin(
   users: IUserOverview[],
   contests: IContestOverview[],
   overview: Map<string, string>,
-  { appRootPath }: IPluginOption
+  { appRoot }: IPluginOption
 ): Plugin {
-  const overviewPath = slash(path.join(appRootPath, 'src', 'overview.ts'));
+  const overviewPath = slash(path.join(appRoot, 'src', 'overview.ts'));
 
   return {
     name: 'cpany:overview',
@@ -124,9 +123,9 @@ function userVirtualComponentPath(username: string) {
 export function createCPanyRoutePlugin(
   users: IUser[],
   contests: RouteKey<IContest>[],
-  { appRootPath }: IPluginOption
+  { appRoot }: IPluginOption
 ): Plugin {
-  const routerPath = slash(path.join(appRootPath, 'src', 'router.ts'));
+  const routerPath = slash(path.join(appRoot, 'src', 'router.ts'));
 
   return {
     name: 'cpany:router',
@@ -156,9 +155,9 @@ export function createCPanyRoutePlugin(
 
 export function createCPanyContestPagePlugin(
   contests: RouteKey<IContest>[],
-  { appRootPath }: IPluginOption
+  { appRoot }: IPluginOption
 ): Plugin {
-  const componentPath = slash(path.join(appRootPath, 'src', 'pages', 'Contest', 'Contest.vue'));
+  const componentPath = slash(path.join(appRoot, 'src', 'pages', 'Contest', 'Contest.vue'));
 
   const virtualContestJson = (contestPath: string) =>
     slash(path.join('@cpany', contestPath + '.json'));
@@ -220,8 +219,8 @@ export function createCPanyContestPagePlugin(
   };
 }
 
-export function createCPanyUserPagePlugin(users: IUser[], { appRootPath }: IPluginOption): Plugin {
-  const componentPath = slash(path.join(appRootPath, 'src', 'pages', 'User', 'User.vue'));
+export function createCPanyUserPagePlugin(users: IUser[], { appRoot }: IPluginOption): Plugin {
+  const componentPath = slash(path.join(appRoot, 'src', 'pages', 'User', 'User.vue'));
 
   const virtualUserJson = (username: string) =>
     slash(path.join('@cpany', 'users', username + '.json'));
@@ -286,13 +285,13 @@ export function createCPanyUserPagePlugin(users: IUser[], { appRootPath }: IPlug
 export function createCPanyLoadPlugin(
   users: IUserOverview[],
   contests: RouteKey<IContest>[],
-  { appRootPath }: IPluginOption
+  { appRoot }: IPluginOption
 ): Plugin {
-  const contestsPath = slash(path.join(appRootPath, 'src', 'cpany', 'contests.json'));
-  const codeforcesPath = slash(path.join(appRootPath, 'src', 'cpany', 'codeforces.json'));
-  const usersPath = slash(path.join(appRootPath, 'src', 'cpany', 'users.json'));
-  const cfHandlesPath = slash(path.join(appRootPath, 'src', 'cpany', 'cfHandles.json'));
-  const atHandlesPath = slash(path.join(appRootPath, 'src', 'cpany', 'atHandles.json'));
+  const contestsPath = slash(path.join(appRoot, 'src', 'cpany', 'contests.json'));
+  const codeforcesPath = slash(path.join(appRoot, 'src', 'cpany', 'codeforces.json'));
+  const usersPath = slash(path.join(appRoot, 'src', 'cpany', 'users.json'));
+  const cfHandlesPath = slash(path.join(appRoot, 'src', 'cpany', 'cfHandles.json'));
+  const atHandlesPath = slash(path.join(appRoot, 'src', 'cpany', 'atHandles.json'));
 
   return {
     name: 'cpany:load',

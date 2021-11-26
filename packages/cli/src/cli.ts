@@ -1,23 +1,52 @@
 import os from 'os';
+import fs from 'fs';
 import path from 'path';
 import readline from 'readline';
 import { createServer, build, ViteDevServer } from 'vite';
 import { cac } from 'cac';
+import { debug } from 'debug';
+import { load } from 'js-yaml';
 import openBrowser from 'open';
-import isInstalledGlobally from 'is-installed-globally';
 import { blue, bold, cyan, dim, yellow, green, underline } from 'kolorist';
+import isInstalledGlobally from 'is-installed-globally';
 
-import { run as runAction } from './fetch';
+import { CPanyOption } from '@cpany/types';
+import { resolveCPanyOption } from '@cpany/core';
 
-import type { ICliOption, ICliActionOption, ICliExportOption } from './types';
-import { version } from './utils';
-import { resolveOptions } from './options';
-import { findFreePort, resolveImportPath } from './utils';
+import type { ICliOption, ICliExportOption } from './types';
 import { capture } from './capture';
+import { run as runAction } from './fetch';
+import { resolveViteOptions } from './options';
+import { findFreePort, resolveImportPath, version } from './utils';
 
-const cli = cac('cpany').option('-p, --plugins <string>', 'CPany plugins', {
-  default: 'codeforces,hdu'
-});
+const cli = cac('cpany')
+  .option('-p, --plugins [...plugins]', 'CPany plugins', {
+    default: ['codeforces', 'hdu']
+  })
+  .option('--log <level>', 'warn | error | silent', { default: 'warn' });
+
+function resolveOption(dataPath: string | undefined, option: ICliOption) {
+  option.dataRoot = dataPath ?? process.cwd();
+
+  if (!fs.existsSync(path.join(option.dataRoot, 'cpany.yml'))) {
+    throw new Error(`Can not find cpany.yml in ${dataPath}`);
+  }
+
+  const optionPath = path.resolve(option.dataRoot, 'cpany.yml');
+  const content = fs.readFileSync(optionPath, 'utf8');
+  const cpanyOption = load(content) as CPanyOption;
+
+  option.rawOption = cpanyOption;
+  option.option = resolveCPanyOption(option.dataRoot, cpanyOption);
+
+  const absolute = (pathes: string[]) => {
+    return pathes.map((p) => path.resolve(option.dataRoot, p));
+  };
+  option.option.static.handles = absolute(option.option.static.handles);
+  option.option.static.contests = absolute(option.option.static.contests);
+
+  debug('CLI')(option);
+}
 
 cli
   .command('[data]', 'Build CPany site')
@@ -30,7 +59,9 @@ cli
     default: false
   })
   .action(async (dataPath: string | undefined, option: ICliOption) => {
-    await build(await resolveOptions(dataPath, option, 'build'));
+    resolveOption(dataPath, option);
+
+    await build(await resolveViteOptions(option, 'build'));
   });
 
 cli
@@ -43,16 +74,17 @@ cli
   })
   .option('--clear-screen', `allow/disable clear screen`, { default: true })
   .action(async (dataPath: string | undefined, option: ICliOption) => {
-    option.data = dataPath ?? './';
+    resolveOption(dataPath, option);
+
     const port = (option.port = await findFreePort(option.port));
 
     let server: ViteDevServer | undefined = undefined;
 
     const bootstrap = async () => {
-      server = await createServer(await resolveOptions(dataPath, option, 'dev'));
+      server = await createServer(await resolveViteOptions(option, 'dev'));
       await server.listen(port);
       if (!!option.clearScreen) console.clear();
-      printDevInfo(path.resolve(option.data), port, option.host);
+      printDevInfo(path.resolve(option.dataRoot), port, option.host);
     };
 
     const SHORTCUTS = [
@@ -128,15 +160,14 @@ cli
       );
     }
 
-    option.data = dataPath ?? './';
+    resolveOption(dataPath, option);
+
     option.page = typeof option.page === 'boolean' ? '/' : option.page;
     const port = (option.port = await findFreePort(option.port));
 
     try {
       // Open exported image, not website
-      let server = await createServer(
-        await resolveOptions(dataPath, { ...option, open: false }, 'dev')
-      );
+      let server = await createServer(await resolveViteOptions({ ...option, open: false }, 'dev'));
       await server.listen(port);
       await capture(port, option);
       await server.close();
@@ -147,26 +178,12 @@ cli
 
 cli
   .command('fetch [data]', 'Run @cpany/action locally')
-  .option('--log <level>', 'warn | error | silent', { default: 'warn' })
   .option('--max-retry <number>', 'CPany max retry times', { default: 10 })
-  .action(
-    async (
-      dataPath: string | undefined,
-      { maxRetry, log, plugins: _plugins }: ICliActionOption
-    ) => {
-      const plugins = _plugins
-        .split(/,| /)
-        .map((plugin) => plugin.trim().toLowerCase())
-        .filter((plugin) => !!plugin && plugin !== '');
+  .action(async (dataPath: string | undefined, option: ICliOption) => {
+    resolveOption(dataPath, option);
 
-      await runAction({
-        logLevel: log,
-        basePath: dataPath,
-        maxRetry,
-        plugins
-      });
-    }
-  );
+    await runAction(option);
+  });
 
 cli.help();
 

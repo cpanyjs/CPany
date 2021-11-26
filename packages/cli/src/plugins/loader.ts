@@ -1,10 +1,7 @@
 import path from 'path';
-import { promises } from 'fs';
-import { load } from 'js-yaml';
 
 import {
   IContest,
-  ICPanyConfig,
   IUser,
   IHandle,
   IContestOverview,
@@ -17,21 +14,12 @@ import {
 import { listJsonFiles, slash } from '@cpany/utils';
 
 import type { IPluginOption } from '../types';
-import { DefaultRecentContestsCount, DefaultRecentTime, DefaultRecentUserCount } from '../constant';
 
-export async function createLoader({
-  dataRootPath,
-  cliVersion,
-  configPath = 'cpany.yml'
-}: IPluginOption) {
-  const config = load(
-    await promises.readFile(path.join(dataRootPath, configPath), 'utf8')
-  ) as ICPanyConfig;
-
+export async function createLoader({ dataRoot, cliVersion, option }: IPluginOption) {
   const handles = await (async () => {
     const handles: IHandle[] = [];
-    for (const handlePath of config.handles ?? []) {
-      const fullPath = path.resolve(dataRootPath, handlePath);
+    for (const handlePath of option.static.handles) {
+      const fullPath = path.resolve(dataRoot, handlePath);
       for await (const handle of listJsonFiles<IHandle>(fullPath)) {
         handles.push(handle);
       }
@@ -41,14 +29,15 @@ export async function createLoader({
 
   const contests = await (async () => {
     const contests: IContest[] = [];
-    for (const contestPath of config.contests ?? []) {
-      const fullPath = slash(path.resolve(dataRootPath, contestPath));
+    for (const contestPath of option.static.contests) {
+      const fullPath = slash(path.resolve(dataRoot, contestPath));
       const isStatic = (() => {
-        for (const staticPath of config.static ?? []) {
-          if (fullPath.startsWith(slash(path.resolve(dataRootPath, staticPath)))) {
-            return true;
-          }
-        }
+        // TODO: Add Static to external contest
+        // for (const staticPath of config.static ?? []) {
+        //   if (fullPath.startsWith(slash(path.resolve(dataRoot, staticPath)))) {
+        //     return true;
+        //   }
+        // }
         return false;
       })();
 
@@ -68,8 +57,7 @@ export async function createLoader({
 
   const users: IUser[] = [];
   const userMap: Map<string, IUser> = new Map();
-  const configUser = config?.users ?? {};
-  for (const userName in configUser) {
+  for (const userName in option.users) {
     const user: IUser = {
       name: userName,
       handles: [],
@@ -77,40 +65,35 @@ export async function createLoader({
     };
 
     const cfRoundSet: Set<number> = new Set();
-    for (const type in configUser[userName]) {
-      const rawHandles = configUser[userName][type];
-      const thisHandles = typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
+    for (const _handle of option.users[userName].handle) {
+      const handle = findHandle(_handle.platform, _handle.handle);
 
-      for (const handleName of thisHandles) {
-        const handle = findHandle(type, handleName);
+      if (handle !== null) {
+        user.handles.push(handle);
 
-        if (handle !== null) {
-          user.handles.push(handle);
+        // Dep: find codeforces contests
+        if (handle.type.startsWith('codeforces')) {
+          for (const submission of handle.submissions) {
+            if (
+              submission.author.participantType === ParticipantType.CONTESTANT ||
+              submission.author.participantType === ParticipantType.VIRTUAL ||
+              submission.author.participantType === ParticipantType.OUT_OF_COMPETITION
+            ) {
+              const contestId = +/^(\d+)/.exec('' + submission.problem.id)![1];
+              if (!cfRoundSet.has(contestId)) {
+                const contest = findCodeforces(contestId);
+                if (contest !== null) {
+                  // Add field participantType
+                  user.contests.push({
+                    author: submission.author,
+                    ...contest
+                  });
+                  contest.participantNumber++;
+                  cfRoundSet.add(contestId);
 
-          // Dep: find codeforces contests
-          if (handle.type.startsWith('codeforces')) {
-            for (const submission of handle.submissions) {
-              if (
-                submission.author.participantType === ParticipantType.CONTESTANT ||
-                submission.author.participantType === ParticipantType.VIRTUAL ||
-                submission.author.participantType === ParticipantType.OUT_OF_COMPETITION
-              ) {
-                const contestId = +/^(\d+)/.exec('' + submission.problem.id)![1];
-                if (!cfRoundSet.has(contestId)) {
-                  const contest = findCodeforces(contestId);
-                  if (contest !== null) {
-                    // Add field participantType
-                    user.contests.push({
-                      author: submission.author,
-                      ...contest
-                    });
-                    contest.participantNumber++;
-                    cfRoundSet.add(contestId);
-
-                    // Dep: codeforces fix gym startTime
-                    if (!contest.startTime) {
-                      contest.startTime = submission.author.participantTime;
-                    }
+                  // Dep: codeforces fix gym startTime
+                  if (!contest.startTime) {
+                    contest.startTime = submission.author.participantTime;
                   }
                 }
               }
@@ -256,19 +239,13 @@ export async function createLoader({
   // Dep: app overview.ts
   const createOverview = () => {
     const overviewMap: Map<string, string> = new Map();
-    overviewMap.set('title', '`' + (config.app?.title ?? '') + '`');
-    overviewMap.set('recentTime', String(config.app?.recentTime ?? DefaultRecentTime));
-    overviewMap.set(
-      'recentContestsCount',
-      String(config.app?.recentContestsCount ?? DefaultRecentContestsCount)
-    );
-    overviewMap.set(
-      'recentUserCount',
-      String(config.app?.recentUserCount ?? DefaultRecentUserCount)
-    );
+    overviewMap.set('title', '`' + option.app.title + '`');
+    overviewMap.set('recentTime', String(option.app.recentTime));
+    overviewMap.set('recentContestsCount', String(option.app.recentContestsCount));
+    overviewMap.set('recentUserCount', String(option.app.recentUserCount));
     overviewMap.set('cliVersion', '`' + cliVersion + '`');
-    if (Array.isArray(config.app?.nav)) {
-      overviewMap.set('nav', `[${config.app?.nav.map((t) => `"${t}"`).join(', ')}]`);
+    if (Array.isArray(option.app.nav)) {
+      overviewMap.set('nav', `[${option.app.nav.map((t) => `"${t}"`).join(', ')}]`);
     }
 
     const allSubmissionCount = users.reduce(
@@ -296,7 +273,6 @@ export async function createLoader({
   };
 
   return {
-    config,
     handles,
     allContests: filterContestEmptyPrefix(contests),
     contests: contestsFilterGym,

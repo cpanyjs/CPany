@@ -3,11 +3,12 @@ import format from 'date-fns/format';
 import type { LogLevel } from '@cpany/types';
 import { createRetryContainer } from '@cpany/core';
 
-import { createCPany, isGithubActions } from '../cpany';
 import { now } from '../utils';
+import { ICliOption } from '../types';
+import { createCPany, isGithubActions } from '../cpany';
 
-import { createGitFileSystem } from './fs';
 import { processReport } from './report';
+import { createGitFileSystem } from './fs';
 
 export interface IRunOption {
   logLevel?: LogLevel;
@@ -16,20 +17,15 @@ export interface IRunOption {
   maxRetry: number;
 }
 
-export async function run({
-  logLevel = 'warn',
-  basePath = './',
-  plugins = ['codeforces', 'hdu'],
-  maxRetry
-}: IRunOption) {
-  const { config, instance } = await createCPany(basePath, plugins, logLevel);
+export async function run(option: ICliOption) {
+  const { instance } = await createCPany(option);
 
-  const fs = await createGitFileSystem(basePath, {
+  const fs = await createGitFileSystem(option.dataRoot, {
     disable: !isGithubActions
   });
 
   instance.logger.startGroup('Load CPany config');
-  instance.logger.info(JSON.stringify(config, null, 2));
+  instance.logger.info(JSON.stringify(option, null, 2));
   instance.logger.endGroup();
 
   // clean cache
@@ -42,55 +38,51 @@ export async function run({
 
   instance.logger.startGroup('Fetch data');
 
-  const retry = createRetryContainer(instance.logger, maxRetry);
+  const retry = createRetryContainer(instance.logger, option.maxRetry);
 
-  for (const userKey in config.users) {
-    const user = config.users[userKey];
+  for (const username in option.option.users) {
+    const user = option.option.users[username];
 
-    for (const type in user) {
-      const rawHandles = user[type];
-      const handles = typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
+    for (const handle of user.handle) {
+      const fn = async () => {
+        const result = await instance.transform({
+          id: handle.handle,
+          type: handle.platform
+        });
 
-      for (const handle of handles) {
-        const fn = async () => {
-          const result = await instance.transform({
-            id: handle,
-            type
-          });
-
-          if (!!result) {
-            const { key, content } = result;
-            await fs.add(key, content);
-            return true;
-          } else if (result === null) {
-            // fetch fail
-            return false;
-          } else {
-            // no matching plugin
-            return true;
-          }
-        };
-        retry.add(`(id: "${handle}", type: "${type}")`, fn);
-      }
+        if (!!result) {
+          const { key, content } = result;
+          await fs.add(key, content);
+          return true;
+        } else if (result === null) {
+          // fetch fail
+          return false;
+        } else {
+          // no matching plugin
+          return true;
+        }
+      };
+      retry.add(`(id: "${handle}", platform: "${handle.platform}")`, fn);
     }
   }
 
   await retry.run();
 
-  for (const id of config.fetch) {
-    const result = await instance.load(id);
+  // Todo: Support fetch
+  // for (const id of config.fetch) {
+  //   const result = await instance.load(id);
 
-    if (!!result) {
-      const { key, content } = result;
-      await fs.add(key, content);
-    }
-  }
+  //   if (!!result) {
+  //     const { key, content } = result;
+  //     await fs.add(key, content);
+  //   }
+  // }
 
   instance.logger.endGroup();
 
   const nowTime = now();
   try {
-    await processReport(basePath, nowTime);
+    await processReport(option.dataRoot, nowTime);
   } catch (error) {
     instance.logger.error(error as string);
   }

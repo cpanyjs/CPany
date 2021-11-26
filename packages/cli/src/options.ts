@@ -7,7 +7,7 @@ import WindiCSS from 'vite-plugin-windicss';
 import Icons from 'unplugin-icons/vite';
 
 import Compress from '@cpany/compress';
-import { uniq, isDef } from '@cpany/utils';
+import { uniq } from '@cpany/utils';
 
 import type { ICliOption } from './types';
 import { createCPanyPlugin } from './plugins';
@@ -21,17 +21,11 @@ export function getAppRoot() {
   return path.dirname(resolveImportPath('@cpany/app/package.json', __dirname, true));
 }
 
-export async function resolveOptions(
-  rawDataPath: string | undefined,
+export async function resolveViteOptions(
   option: ICliOption,
   mode: 'dev' | 'build'
 ): Promise<InlineConfig> {
-  option.data = rawDataPath ?? './';
-  const dataPath = path.resolve(option.data);
-
-  if (!fs.existsSync(path.join(dataPath, 'cpany.yml'))) {
-    throw new Error(`Can not find cpany.yml in ${dataPath}`);
-  }
+  const dataPath = option.dataRoot;
 
   const appPath = getAppRoot();
   const typesPath = getTypesRoot();
@@ -41,19 +35,14 @@ export async function resolveOptions(
   ).dependencies;
 
   const pluginOption = {
-    appRootPath: appPath,
-    dataRootPath: dataPath,
-    cliVersion: version,
-    plugins: option.plugins
-      .split(/,| /)
-      .map((plugin) => plugin.trim().toLowerCase())
-      .filter((plugin) => isDef(plugin) && plugin !== '')
+    ...option,
+    appRoot: appPath,
+    cliVersion: version
   };
 
   const common: InlineConfig = {
     root: appPath,
     configFile: false,
-    envDir: path.resolve(__dirname, '../'),
     define: {
       __CLI_VERSION__: JSON.stringify(version)
     },

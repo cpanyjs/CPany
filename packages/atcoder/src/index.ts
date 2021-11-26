@@ -67,6 +67,8 @@ function loadHandleMap(config: ICPanyPluginConfig) {
       if (isAtCoder({ type })) {
         const rawHandles = user[type];
         const handles = typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
+        // TODO: check
+        // @ts-ignore
         for (const handle of handles) {
           handleMap.set(handle, username);
         }

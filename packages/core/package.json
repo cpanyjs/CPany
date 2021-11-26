@@ -12,15 +12,17 @@
   "license": "MIT",
   "author": "XLor",
   "main": "dist/index.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
     "src"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "pnpx tsup src/index.ts --format cjs,esm --dts"
   },
   "dependencies": {
+    "@cpany/types": "workspace:*",
     "random-js": "^2.1.0"
   },
   "engines": {

@@ -7,39 +7,95 @@ export interface IUser {
   contests: Array<RouteKey<IContest> & { author: IAuthor }>;
 }
 
-export interface ICPanyConfig {
-  users?: Record<string, Record<string, string[] | string>>;
+export interface CPanyOption {
+  users?: Record<string, Record<string, string | string[] | Record<string, string | string[]>>>;
+
   handles?: string[];
+
   contests?: string[];
+
   fetch?: string[];
+
   static?: string[];
 
-  app?: Partial<AppConfig>;
+  app?: Partial<AppOption>;
 }
 
-export interface IResolvedCPanyConfig {
-  users: Array<IUser>;
+export type ICPanyPluginConfig = Required<CPanyOption> & { basePath: string; timeout?: number };
 
-  handles: Array<IHandle>;
+export interface ResolvedCPanyUserOption {
+  /**
+   * Username
+   */
+  name: string;
 
-  contests: Array<IContest>;
+  handle: Array<{
+    platform: string;
+    handle: string;
+  }>;
+}
 
-  blogs: Array<{}>;
+export interface ResolvedCPanyOption {
+  /**
+   * Absolute data root path
+   */
+  dataPath: string;
 
-  app: AppConfig;
+  /**
+   * Flattern users option
+   */
+  users: Array<ResolvedCPanyUserOption>;
+
+  static: {
+    /**
+     * Absolute directories for external handles
+     */
+    handles: Array<string>;
+
+    /**
+     * Absolute directories for external contests
+     */
+    contests: Array<string>;
+
+    /**
+     * Absolute directories for external blog posts
+     */
+    blogs: Array<{}>;
+  };
+
+  /**
+   * App options
+   */
+  app: AppOption;
 }
 
 // Action/Cli config interface
-export interface AppConfig {
+export interface AppOption {
+  /**
+   * @default ""
+   */
   title: string;
+
+  /**
+   * @default 2592000
+   */
   recentTime: number;
+
+  /**
+   * @default 15
+   */
   recentContestsCount: number;
+
+  /**
+   * @default 5
+   */
   recentUserCount: number;
-  // default: ['members', 'codeforces', 'contests'];
+
+  /**
+   * @default "['members', 'codeforces', 'contests']"
+   */
   nav: string[];
 }
-
-export type ICPanyPluginConfig = Required<ICPanyConfig> & { basePath: string; timeout?: number };
 
 export type RouteKey<T, K = number> = T & {
   type: string;

@@ -198,8 +198,10 @@ importers:
 
   packages/core:
     specifiers:
+      '@cpany/types': workspace:*
       random-js: ^2.1.0
     dependencies:
+      '@cpany/types': link:../types
       random-js: 2.1.0
 
   packages/hdu:

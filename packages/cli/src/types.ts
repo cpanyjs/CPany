@@ -1,17 +1,34 @@
+import { CPanyOption, ResolvedCPanyOption } from '@cpany/types';
+
 export interface ICliOption {
   /**
    * Data Path
    *
    * @default "./"
    */
-  data: string;
+  dataRoot: string;
+
+  /**
+   * Resolved CPany Option
+   */
+  option: ResolvedCPanyOption;
+
+  /**
+   * Raw CPany Option from cpany.yml
+   */
+  rawOption: CPanyOption;
 
   /**
    * CPany Plugins
    *
-   * @default "codeforces,hdu"
+   * @default "['codeforces', 'hdu']"
    */
-  plugins: string;
+  plugins: string[];
+
+  /**
+   * Log level
+   */
+  log: 'warn' | 'error' | 'silent';
 
   // build
   outDir: string;
@@ -23,20 +40,17 @@ export interface ICliOption {
   force: boolean;
   open: boolean;
   clearScreen: boolean;
-}
 
-export interface ICliActionOption {
-  log: 'warn' | 'error' | 'silent';
+  // Fetch
+  /**
+   * @default 5
+   */
   maxRetry: number;
-  plugins: string;
 }
 
 export type ICliExportOption = ICliOption & { page: string; out: string; type: string };
 
-export interface IPluginOption {
-  appRootPath: string;
-  dataRootPath: string;
-  configPath?: string;
+export interface IPluginOption extends ICliOption {
+  appRoot: string;
   cliVersion: string;
-  plugins: string[];
 }
