@@ -45,7 +45,7 @@ function resolveOption(dataPath: string | undefined, option: ICliOption) {
   option.option.static.handles = absolute(option.option.static.handles);
   option.option.static.contests = absolute(option.option.static.contests);
 
-  debug('CLI')(option);
+  debug('cpany:cli')(option);
 }
 
 cli

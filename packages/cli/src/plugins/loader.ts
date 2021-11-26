@@ -1,4 +1,5 @@
 import path from 'path';
+import debug from 'debug';
 
 import {
   IContest,
@@ -15,6 +16,8 @@ import { listJsonFiles, slash } from '@cpany/utils';
 
 import type { IPluginOption } from '../types';
 
+const debugLoader = debug('cpany:loader');
+
 export async function createLoader({ dataRoot, cliVersion, option }: IPluginOption) {
   const handles = await (async () => {
     const handles: IHandle[] = [];
@@ -27,17 +30,19 @@ export async function createLoader({ dataRoot, cliVersion, option }: IPluginOpti
     return genRouteKey('handle', handles);
   })();
 
+  debugLoader(`Total: ${handles.length} handles`);
+
   const contests = await (async () => {
     const contests: IContest[] = [];
     for (const contestPath of option.static.contests) {
       const fullPath = slash(path.resolve(dataRoot, contestPath));
       const isStatic = (() => {
         // TODO: Add Static to external contest
-        // for (const staticPath of config.static ?? []) {
-        //   if (fullPath.startsWith(slash(path.resolve(dataRoot, staticPath)))) {
-        //     return true;
-        //   }
-        // }
+        for (const staticPath of [...option.static.contests]) {
+          if (fullPath.startsWith(slash(path.resolve(dataRoot, staticPath)))) {
+            return true;
+          }
+        }
         return false;
       })();
 
@@ -57,15 +62,15 @@ export async function createLoader({ dataRoot, cliVersion, option }: IPluginOpti
 
   const users: IUser[] = [];
   const userMap: Map<string, IUser> = new Map();
-  for (const userName in option.users) {
+  for (const rawUser of option.users) {
     const user: IUser = {
-      name: userName,
+      name: rawUser.name,
       handles: [],
       contests: []
     };
 
     const cfRoundSet: Set<number> = new Set();
-    for (const _handle of option.users[userName].handle) {
+    for (const _handle of rawUser.handle) {
       const handle = findHandle(_handle.platform, _handle.handle);
 
       if (handle !== null) {

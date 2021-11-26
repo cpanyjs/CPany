@@ -13,6 +13,12 @@ users:
     handle/atcoder: jiangly
     handle/luogu: '149656'
 
+handles:
+  - codeforces/handle
+  - atcoder/handle
+  - luogu/handle
+  - hdu/handle
+
 contests:
   - codeforces/contest.json
   - codeforces/gym-contest.json
