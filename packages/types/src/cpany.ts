@@ -21,8 +21,6 @@ export interface CPanyOption {
   app?: Partial<AppOption>;
 }
 
-export type ICPanyPluginConfig = Required<CPanyOption> & { basePath: string; timeout?: number };
-
 export interface ResolvedCPanyUserOption {
   /**
    * Username
@@ -39,7 +37,7 @@ export interface ResolvedCPanyOption {
   /**
    * Absolute data root path
    */
-  dataPath: string;
+  dataRoot: string;
 
   /**
    * Flattern users option
@@ -68,6 +66,8 @@ export interface ResolvedCPanyOption {
    */
   app: AppOption;
 }
+
+export type ICPanyPluginConfig = ResolvedCPanyOption & { baseUrl: string; };
 
 // Action/Cli config interface
 export interface AppOption {

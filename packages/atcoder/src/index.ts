@@ -37,7 +37,7 @@ export function atcoderPlugin(config: ICPanyPluginConfig): IPlugin[] {
     {
       name: 'atcoder/clean',
       async clean() {
-        const fullPath = path.resolve(config.basePath, 'atcoder/handle');
+        const fullPath = path.resolve(config.dataRoot, 'atcoder/handle');
         const files: string[] = [];
         for await (const file of listFiles(fullPath)) {
           files.push(file);
@@ -53,7 +53,7 @@ export default atcoderPlugin;
 function loadContest(config: ICPanyPluginConfig) {
   try {
     const contests = JSON.parse(
-      fs.readFileSync(path.resolve(config.basePath, 'atcoder/contest.json'), 'utf-8')
+      fs.readFileSync(path.resolve(config.dataRoot, 'atcoder/contest.json'), 'utf-8')
     ) as IContest[];
     addContests(contests);
   } catch {}
@@ -61,17 +61,10 @@ function loadContest(config: ICPanyPluginConfig) {
 
 function loadHandleMap(config: ICPanyPluginConfig) {
   const handleMap = new Map<string, string>();
-  for (const username in config.users) {
-    const user = config.users[username];
-    for (const type in user) {
-      if (isAtCoder({ type })) {
-        const rawHandles = user[type];
-        if (Array.isArray(rawHandles) || typeof rawHandles === 'string') {
-          const handles = typeof rawHandles === 'string' ? [rawHandles] : rawHandles;
-          for (const handle of handles) {
-            handleMap.set(handle, username);
-          }
-        }
+  for (const user of config.users) {
+    for (const handle of user.handle) {
+      if (isAtCoder({ type: handle.platform })) {
+        handleMap.set(handle.handle, user.name);
       }
     }
   }

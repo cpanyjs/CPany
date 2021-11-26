@@ -6,7 +6,7 @@ import {
   DefaultRecentUserCount
 } from './constant';
 
-export function resolveCPanyOption(dataPath: string, rawOption: CPanyOption): ResolvedCPanyOption {
+export function resolveCPanyOption(dataRoot: string, rawOption: CPanyOption): ResolvedCPanyOption {
   const users = [];
 
   for (const username in rawOption.users) {
@@ -64,7 +64,7 @@ export function resolveCPanyOption(dataPath: string, rawOption: CPanyOption): Re
   }
 
   return {
-    dataPath,
+    dataRoot,
     users,
     static: {
       handles: rawOption.handles ?? [],

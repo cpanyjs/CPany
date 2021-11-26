@@ -25,12 +25,10 @@ function loadCookie(): ICookie {
 export async function luoguPlugin(config: ICPanyPluginConfig): Promise<IPlugin[]> {
   const cookie = loadCookie();
 
-  for (const handlePath of config.handles) {
-    const fullPath = path.resolve(config.basePath, handlePath);
-    for await (const handle of listJsonFiles<IHandle>(fullPath)) {
-      if (isLuogu(handle)) {
-        addToCache(handle);
-      }
+  const handlePath = path.join(config.dataRoot, 'luogu', 'handle');
+  for await (const handle of listJsonFiles<IHandle>(handlePath)) {
+    if (isLuogu(handle)) {
+      addToCache(handle);
     }
   }
 
