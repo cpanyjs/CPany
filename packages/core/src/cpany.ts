@@ -240,7 +240,18 @@ export function createCPany(option: CreateOptions): CPanyInstance {
 
   const loadAll = async (option: ResolvedCPanyOption) => {
     const handles: IHandle[] = [];
-    const contests: IContest[] = [];
+    const contests: Key<IContest>[] = [];
+    const users: IUser[] = option.users.map((user) => {
+      return {
+        name: user.name,
+        key: user.name,
+        handles: [],
+        contests: []
+      };
+    });
+
+    const userMap = new Map(users.map((user) => [user.name, user]));
+    const findUser = (name: string) => userMap.get(name);
 
     function findHandle(platform: string, name: string) {
       // TODO: user hashmap
@@ -252,26 +263,41 @@ export function createCPany(option: CreateOptions): CPanyInstance {
       return undefined;
     }
 
-    // function findUser(name: string) {
-    //   // TODO: user hashmap
-    //   for (const user of users) {
-    //     if (user.name === name) {
-    //       return user;
-    //     }
-    //   }
-    //   return undefined;
-    // }
-
     function createLoadContext(platform: string): LoadContext {
       return {
         ...createFetchContext(platform),
         addHandle(...newHandles: IHandle[]) {
           handles.push(...newHandles);
         },
-        addContest(...newContests: IContest[]) {
+        addContest(...newContests: Key<IContest>[]) {
           contests.push(...newContests);
         },
-        findHandle
+        addUserContest(name, contest, author) {
+          const user = findUser(name);
+          if (!!user) {
+            if (!user.contests.find((c) => c.key === contest.key)) {
+              user.contests.push({ ...contest, author });
+              return true;
+            } else {
+              // User has added this contest
+              return false;
+            }
+          } else {
+            // Fail to find user
+            return false;
+          }
+        },
+        findHandle,
+        findUsername(platform: string, id: string) {
+          for (const user of option.users) {
+            for (const handle of user.handle) {
+              if (platform === handle.platform && id === handle.handle) {
+                return user.name;
+              }
+            }
+          }
+          return undefined;
+        }
       };
     }
 
@@ -281,24 +307,20 @@ export function createCPany(option: CreateOptions): CPanyInstance {
     }
 
     const indexedHandles = genKey(handles);
-    const indexedContests = genKey(contests, (lhs, rhs) => lhs.startTime - rhs.startTime);
+    const indexedContests = contests.sort((lhs, rhs) => lhs.startTime - rhs.startTime);
 
-    const users: IUser[] = option.users.map((user) => {
-      return {
-        name: user.name,
-        key: user.name,
-        handles: filterMap(user.handle, (handle) => {
-          const res = findHandle(handle.platform, handle.handle);
-          if (res === undefined) {
-            logger.debug(
-              `Not found: (handle: ${handle.handle}, platform: ${handle.platform}) of ${user.name}`
-            );
-          }
-          return res;
-        }),
-        contests: []
-      };
-    });
+    for (const { name, handle } of option.users) {
+      const user = findUser(name)!;
+      user.handles = filterMap(handle, (handle) => {
+        const res = findHandle(handle.platform, handle.handle);
+        if (res === undefined) {
+          logger.debug(
+            `Not found: (handle: ${handle.handle}, platform: ${handle.platform}) of ${user.name}`
+          );
+        }
+        return res;
+      });
+    }
 
     return {
       handles: indexedHandles,

@@ -56,7 +56,7 @@ export function atcoderPlugin(config: ICPanyPluginConfig): CPanyPlugin[] {
 
         const contests = await ctx.readJsonFile<IContest[]>('contest');
         for (const contest of contests) {
-          ctx.addContest(contest);
+          ctx.addContest({ ...contest, key: String(contest.id!!) });
         }
       }
     }

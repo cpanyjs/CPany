@@ -24,14 +24,13 @@ async function getPluginSet(
   plugins: string[],
   option: ResolvedCPanyOption
 ): Promise<Array<CPanyPlugin | CPanyPlugin[]>> {
-  debugCLI(typeof plugins);
-  debugCLI(`Plugins: ${plugins.join(', ')}`);
+  debugCLI(`plugins: ${plugins.join(', ')}`);
 
   const resolvedPlugins: Array<CPanyPlugin | CPanyPlugin[]> = [];
   for (const pluginName of uniq(plugins)) {
     const pluginDir = resolveCPanyPlugin(pluginName);
     if (!!pluginDir) {
-      debugCLI(`import plugin [${pluginName}] => ${pluginDir.directory}`);
+      debugCLI(`import plugin ${pluginName} => ${pluginDir.directory}`);
       const pluginModule = await import(pluginDir.directory);
       const plugin = await pluginModule.default(option);
       resolvedPlugins.push(plugin);

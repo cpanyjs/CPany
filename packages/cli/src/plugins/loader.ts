@@ -5,13 +5,13 @@ import debug from 'debug';
 import {
   IContest,
   IUser,
-  IHandle,
   IContestOverview,
   IUserOverview,
-  // ParticipantType,
   RouteKey,
   Verdict,
-  IProblem
+  IProblem,
+  Key,
+  IRouteUser
 } from '@cpany/types';
 
 import { listDir } from '../utils';
@@ -38,10 +38,20 @@ export async function createLoader(cliOption: IPluginOption) {
     return files;
   });
 
-  const { handles: rawHandles, contests: rawContests, users } = await cpany.loadAll(option);
+  const { handles, contests: rawContests, users: rawUsers } = await cpany.loadAll(option);
 
-  const handles = genRouteKey('handle', rawHandles);
-  const contests = genRouteKey('contest', rawContests, (lhs, rhs) => lhs.startTime - rhs.startTime);
+  const patchContest = <T extends IContest>(contest: Key<T>) => ({
+    ...contest,
+    path: `/contest/${contest.type.split('/')[0]}/${contest.key}`
+  });
+  const contests: RouteKey<IContest>[] = rawContests.map(patchContest);
+  const users: IRouteUser[] = rawUsers.map((user) => ({
+    name: user.name,
+    key: user.key,
+    path: `/user/${user.key}`,
+    handles: user.handles,
+    contests: user.contests.map(patchContest)
+  }));
 
   debugLoader(`Total: ${handles.length} handles`);
   debugLoader(`Total: ${contests.length} contests`);
@@ -174,7 +184,7 @@ export async function createLoader(cliOption: IPluginOption) {
     );
   }
 
-  const filterContestEmptyPrefix = (contests: RouteKey<IContest>[]) => {
+  const filterContestEmptyPrefix = (contests: Key<IContest>[]) => {
     const sorted = contests.sort((lhs: IContest, rhs: IContest) => lhs.startTime - rhs.startTime);
     let deleteCount = 0;
     for (let i = 0; i < sorted.length; i++) {
@@ -315,47 +325,47 @@ export async function createLoader(cliOption: IPluginOption) {
   };
 }
 
-function genRouteKey<T extends IContest | IHandle>(
-  base: string,
-  rawFiles: T[],
-  sortFn?: (lhs: T, rhs: T) => number
-) {
-  const mapByType: Map<string, T[]> = new Map();
-  for (const file of rawFiles) {
-    if (mapByType.has(file.type)) {
-      mapByType.get(file.type)!.push(file);
-    } else {
-      mapByType.set(file.type, [file]);
-    }
-  }
-  const files: Array<RouteKey<T>> = [];
-  for (const [type, rawFiles] of mapByType.entries()) {
-    const sorted = rawFiles.sort(sortFn);
-    mapByType.set(type, sorted);
+// function genRouteKey<T extends IContest | IHandle>(
+//   base: string,
+//   rawFiles: T[],
+//   sortFn?: (lhs: T, rhs: T) => number
+// ) {
+//   const mapByType: Map<string, T[]> = new Map();
+//   for (const file of rawFiles) {
+//     if (mapByType.has(file.type)) {
+//       mapByType.get(file.type)!.push(file);
+//     } else {
+//       mapByType.set(file.type, [file]);
+//     }
+//   }
+//   const files: Array<RouteKey<T>> = [];
+//   for (const [type, rawFiles] of mapByType.entries()) {
+//     const sorted = rawFiles.sort(sortFn);
+//     mapByType.set(type, sorted);
 
-    // Dep: try use T.id as key
-    const keys = sorted.map((contest) => {
-      if ('id' in contest && typeof contest.id === 'number') {
-        return contest.id;
-      } else {
-        return null;
-      }
-    });
-    const flag = keys.every((key) => key !== null) && new Set(keys).size === keys.length;
+//     // Dep: try use T.id as key
+//     const keys = sorted.map((contest) => {
+//       if ('id' in contest && typeof contest.id === 'number') {
+//         return contest.id;
+//       } else {
+//         return null;
+//       }
+//     });
+//     const flag = keys.every((key) => key !== null) && new Set(keys).size === keys.length;
 
-    const typeFirst = type.split('/')[0];
-    for (let i = 0; i < sorted.length; i++) {
-      const key = flag ? keys[i] : i + 1;
-      files.push({
-        key,
-        path: `/${base}/${typeFirst}/${key}`,
-        ...sorted[i]
-      } as RouteKey<T>);
-    }
-  }
-  // Desc sort
-  return files.sort(sortFn).reverse();
-}
+//     const typeFirst = type.split('/')[0];
+//     for (let i = 0; i < sorted.length; i++) {
+//       const key = flag ? keys[i] : i + 1;
+//       files.push({
+//         key,
+//         path: `/${base}/${typeFirst}/${key}`,
+//         ...sorted[i]
+//       } as RouteKey<T>);
+//     }
+//   }
+//   // Desc sort
+//   return files.sort(sortFn).reverse();
+// }
 
 // function createHandleSet(handles: RouteKey<IHandle>[]) {
 //   const mapByType: Map<string, Map<string, RouteKey<IHandle>>> = new Map();
@@ -390,19 +400,4 @@ function genRouteKey<T extends IContest | IHandle>(
 //   return {
 //     findHandle
 //   };
-// }
-
-// function createCodeforcesSet(contests: RouteKey<IContest>[]) {
-//   const map: Map<number, RouteKey<IContest>> = new Map();
-//   for (const contest of contests) {
-//     if (contest.type.startsWith('codeforces')) {
-//       map.set(contest.id as number, contest);
-//     }
-//   }
-
-//   const findCodeforces = (id: number | string) => {
-//     return map.get(+id) ?? null;
-//   };
-
-//   return { findCodeforces };
 // }

@@ -8,6 +8,14 @@ export interface IUser {
   contests: Array<Key<IContest & { author: IAuthor }>>;
 }
 
+export interface IRouteUser {
+  name: string;
+  key: string;
+  path: string;
+  handles: Array<IHandle>;
+  contests: Array<RouteKey<IContest & { author: IAuthor }>>;
+}
+
 export interface CPanyOption {
   users?: Record<string, Record<string, string | string[] | Record<string, string | string[]>>>;
 
@@ -102,13 +110,13 @@ export interface AppOption {
 
 export type Key<T> = T & { key: string };
 
-export type RouteKey<T, K = number> = T & {
+export type RouteKey<T> = T & {
   type: string;
-  key: K;
+  key: string;
   path: string;
 };
 
-export type IContestOverview = Omit<RouteKey<IContest>, 'standings'>;
+export type IContestOverview = Omit<Key<IContest>, 'standings'>;
 
 export interface IUserOverview {
   name: string;

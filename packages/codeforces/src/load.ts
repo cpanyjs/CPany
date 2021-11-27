@@ -1,5 +1,5 @@
 import type { LoadPlugin } from '@cpany/core';
-import type { IContest } from '@cpany/types';
+import { IContest, Key, ParticipantType } from '@cpany/types';
 import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
 
 import { codeforces } from './constant';
@@ -16,14 +16,59 @@ export function loadCodeforcesPlugin(): LoadPlugin {
       }
 
       // Load contests
-      const contests = await ctx.readJsonFile<IContest[]>('contest');
-      const gymContests = await ctx.readJsonFile<IContest[]>('gym-contest');
+      const contests = (await ctx.readJsonFile<IContest[]>('contest')).map((c) => ({
+        ...c,
+        key: String(c.id!!)
+      }));
+      const gymContests = (await ctx.readJsonFile<IContest[]>('gym-contest')).map((c) => ({
+        ...c,
+        key: String(c.id!!)
+      }));
+      const { findRound } = createRoundSet(...contests, ...gymContests);
+      for (const handle of handles) {
+        for (const submission of handle.submissions) {
+          if (
+            submission.author.participantType === ParticipantType.CONTESTANT ||
+            submission.author.participantType === ParticipantType.VIRTUAL ||
+            submission.author.participantType === ParticipantType.OUT_OF_COMPETITION
+          ) {
+            const contestId = +/^(\d+)/.exec('' + submission.problem.id)![1];
+            const contest = findRound(contestId)!;
+
+            const username = ctx.findUsername(handle.type, handle.handle);
+            if (username && ctx.addUserContest(username, contest, submission.author)) {
+              contest.participantNumber++;
+            }
+
+            // Dep: codeforces fix gym startTime
+            if (!contest.startTime) {
+              contest.startTime = submission.author.participantTime;
+            }
+          }
+        }
+      }
+
       for (const contest of contests) {
         ctx.addContest(contest);
       }
       for (const contest of gymContests) {
-        ctx.addContest(contest);
+        if (contest.participantNumber > 0) {
+          ctx.addContest(contest);
+        }
       }
     }
   };
+}
+
+function createRoundSet(...contests: Key<IContest>[]) {
+  const map: Map<number, Key<IContest>> = new Map();
+  for (const contest of contests) {
+    map.set(contest.id as number, contest);
+  }
+
+  const findRound = (id: number | string) => {
+    return map.get(+id) ?? undefined;
+  };
+
+  return { findRound };
 }
