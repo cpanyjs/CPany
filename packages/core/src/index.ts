@@ -1,4 +1,4 @@
-export * from './fetch';
+export * from './cpany';
 
 export * from './retry';
 

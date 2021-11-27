@@ -1,14 +1,7 @@
 import type { Logger } from '../logger';
+import type { BasicPlugin } from './types';
 
-export type CPanyPlugin = CachePlugin | FetchPlugin | QueryPlugin;
-
-interface BasicPlugin {
-  name: string;
-
-  platform: string;
-
-  enforce?: 'pre' | 'post';
-}
+export type CPanyFetchPlugin = CachePlugin | FetchPlugin | QueryPlugin;
 
 // Cache manipulation
 export interface CachePlugin extends BasicPlugin {

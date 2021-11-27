@@ -1,5 +1,5 @@
 import type {
-  CPanyPlugin,
+  CPanyFetchPlugin,
   CachePlugin,
   FetchPlugin,
   QueryPlugin,
@@ -7,7 +7,20 @@ import type {
   FetchContext
 } from './fetch';
 
-export type { CPanyPlugin, CachePlugin, FetchPlugin, QueryPlugin, FetchResult, FetchContext };
+import type { LoadPlugin, LoadContext } from './load';
+
+export type CPanyPlugin = CPanyFetchPlugin | LoadPlugin;
+
+export type {
+  CPanyFetchPlugin,
+  LoadPlugin,
+  CachePlugin,
+  FetchPlugin,
+  QueryPlugin,
+  FetchResult,
+  FetchContext,
+  LoadContext
+};
 
 export function isCachePlugin(plugin: CPanyPlugin): plugin is CachePlugin {
   return 'cache' in plugin;
@@ -19,6 +32,10 @@ export function isFetchPlugin(plugin: CPanyPlugin): plugin is FetchPlugin {
 
 export function isQueryPlugin(plugin: CPanyPlugin): plugin is QueryPlugin {
   return 'query' in plugin;
+}
+
+export function isLoadPlugin(plugin: CPanyPlugin): plugin is LoadPlugin {
+  return 'load' in plugin;
 }
 
 export function createPluginContainer(
@@ -42,6 +59,11 @@ export function createPluginContainer(
     container[platform] = classify(plugins);
   }
 
+  all.cache = sortPlugins(all.cache);
+  all.fetch = sortPlugins(all.fetch);
+  all.query = sortPlugins(all.query);
+  all.load = sortPlugins(all.load);
+
   return {
     plugins: sortPlugins(allPlugins),
     platforms: [...map.keys()],
@@ -62,7 +84,8 @@ export function createPluginContainer(
         }
       }
       return undefined;
-    }
+    },
+    load: () => all.load
   };
 }
 
@@ -70,6 +93,7 @@ function classify(plugins: CPanyPlugin[]): ClassifiedPlugins {
   const cache: CachePlugin[] = [];
   const fetch: FetchPlugin[] = [];
   const query: QueryPlugin[] = [];
+  const load: LoadPlugin[] = [];
 
   for (const plugin of plugins) {
     if (!plugin) continue;
@@ -82,16 +106,20 @@ function classify(plugins: CPanyPlugin[]): ClassifiedPlugins {
     if (isQueryPlugin(plugin)) {
       query.push(plugin);
     }
+    if (isLoadPlugin(plugin)) {
+      load.push(plugin);
+    }
   }
 
   return {
     cache,
     fetch,
-    query
+    query,
+    load
   };
 }
 
-export function sortPlugins(plugins: CPanyPlugin[]) {
+export function sortPlugins<T extends CPanyPlugin>(plugins: T[]): T[] {
   return plugins.sort((lhs, rhs) => {
     const gid = (plugin: CPanyPlugin) => {
       if (!!plugin.enforce) {
@@ -134,10 +162,13 @@ interface PluginContainer {
   allQuery(): QueryPlugin[];
 
   query(platform: string, name: string): QueryPlugin | undefined;
+
+  load(): LoadPlugin[];
 }
 
 interface ClassifiedPlugins {
   cache: CachePlugin[];
   fetch: FetchPlugin[];
   query: QueryPlugin[];
+  load: LoadPlugin[];
 }

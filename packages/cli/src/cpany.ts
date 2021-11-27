@@ -2,7 +2,7 @@ import debug from 'debug';
 import * as core from '@actions/core';
 
 import type { ResolvedCPanyOption } from '@cpany/types';
-import { createFetcher, CPanyPlugin } from '@cpany/core';
+import { createCPany as createCPanyInstance, CPanyPlugin } from '@cpany/core';
 import { isDef, uniq } from '@cpany/utils';
 
 import { resolveCPanyPlugin } from './utils';
@@ -12,8 +12,8 @@ const debugCLI = debug('cpany:cli');
 
 export const isGithubActions = testGithubActions();
 
-export async function createCPanyFetcher(option: ICliOption) {
-  return createFetcher({
+export async function createCPany(option: ICliOption) {
+  return createCPanyInstance({
     plugins: await getPluginSet(option.plugins, option.option),
     logger: isGithubActions ? core : undefined,
     logLevel: option.log

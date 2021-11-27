@@ -1,12 +1,18 @@
 import { ResolvedCPanyOption } from '@cpany/types';
 
-import { CreateOptions, CPanyFetcher, FSOperations, FSEventType } from './types';
+import type { CreateOptions, CPanyInstance, FSOperations, FSEventType } from './types';
 import { DefaultMaxRetry } from './constant';
 import { createLoggerFactory } from './logger';
-import { createPluginContainer, CPanyPlugin, FetchContext, isCachePlugin } from './plugin';
-import { sleep, random } from './utils';
+import { sleep, random, addExt } from './utils';
+import {
+  createPluginContainer,
+  CPanyPlugin,
+  FetchContext,
+  LoadContext,
+  isCachePlugin
+} from './plugin';
 
-export function createFetcher(option: CreateOptions): CPanyFetcher {
+export function createCPany(option: CreateOptions): CPanyInstance {
   const { on, getFSFn } = getFSOperation();
 
   const container = createPluginContainer(option.plugins);
@@ -128,7 +134,7 @@ export function createFetcher(option: CreateOptions): CPanyFetcher {
     }
   };
 
-  const run = async (option: ResolvedCPanyOption) => {
+  const fetchAll = async (option: ResolvedCPanyOption) => {
     type Task = () => Promise<void>;
 
     const initTasks: Task[] = [];
@@ -232,13 +238,25 @@ export function createFetcher(option: CreateOptions): CPanyFetcher {
     logger.endGroup();
   };
 
+  const loadAll = async (option: ResolvedCPanyOption) => {
+    function createLoadContext(platform: string): LoadContext {
+      return { ...createFetchContext(platform) };
+    }
+
+    for (const plugin of container.load()) {
+      const context = createLoadContext(plugin.platform);
+      await plugin.load(option, context);
+    }
+  };
+
   return {
     logger,
     platforms: container.platforms,
     cache,
     fetch,
     query,
-    run,
+    fetchAll,
+    loadAll,
     on
   };
 }
@@ -266,12 +284,4 @@ function getFSOperation() {
       }
     }
   };
-}
-
-function addExt(filename: string, ext = 'json') {
-  if (filename.endsWith(`.${ext}`)) {
-    return filename;
-  } else {
-    return `${filename}.${ext}`;
-  }
 }

@@ -6,7 +6,7 @@ import type { LogLevel } from '@cpany/types';
 
 import { now, slash } from '../utils';
 import { ICliOption } from '../types';
-import { createCPanyFetcher } from '../cpany';
+import { createCPany } from '../cpany';
 
 import { processReport } from './report';
 // import { createGitFileSystem } from './fs';
@@ -21,7 +21,7 @@ export interface IRunOption {
 }
 
 export async function run(option: ICliOption) {
-  const fetcher = await createCPanyFetcher(option);
+  const fetcher = await createCPany(option);
 
   fetcher.on('read', async (...paths: string[]) => {
     const fullPath = path.join(option.dataRoot, ...paths);
@@ -47,7 +47,7 @@ export async function run(option: ICliOption) {
     fetcher.logger.info(`Remove: ${slash(fullPath)}`);
   });
 
-  await fetcher.run(option.option);
+  await fetcher.fetchAll(option.option);
 
   const nowTime = now();
   debugFetch(nowTime);

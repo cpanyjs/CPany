@@ -11,12 +11,14 @@ export interface CreateOptions {
   logLevel?: LogLevel;
 }
 
-export interface CPanyFetcher extends FSOperations {
+export interface CPanyInstance extends FSOperations {
   logger: Logger;
 
   platforms: string[];
 
-  run: (option: ResolvedCPanyOption) => Promise<void>;
+  fetchAll: (option: ResolvedCPanyOption) => Promise<void>;
+
+  loadAll: (option: ResolvedCPanyOption) => Promise<void>;
 
   cache: () => Promise<void>;
 
