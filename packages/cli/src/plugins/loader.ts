@@ -1,3 +1,4 @@
+import fs from 'fs';
 import path from 'path';
 import debug from 'debug';
 
@@ -7,138 +8,164 @@ import {
   IHandle,
   IContestOverview,
   IUserOverview,
-  ParticipantType,
+  // ParticipantType,
   RouteKey,
   Verdict,
   IProblem
 } from '@cpany/types';
-import { listJsonFiles, slash } from '@cpany/utils';
+
+import { listDir } from '../utils';
 
 import type { IPluginOption } from '../types';
+import { createCPany } from '../cpany';
 
 const debugLoader = debug('cpany:loader');
 
-export async function createLoader({ dataRoot, cliVersion, option }: IPluginOption) {
-  const handles = await (async () => {
-    const handles: IHandle[] = [];
-    for (const handlePath of option.static.handles) {
-      const fullPath = path.resolve(dataRoot, handlePath);
-      for await (const handle of listJsonFiles<IHandle>(fullPath)) {
-        handles.push(handle);
-      }
+export async function createLoader(cliOption: IPluginOption) {
+  const { cliVersion, option } = cliOption;
+  const cpany = await createCPany(cliOption);
+
+  cpany.on('read', async (...paths: string[]) => {
+    const fullPath = path.join(option.dataRoot, ...paths);
+    return await fs.promises.readFile(fullPath, 'utf-8');
+  });
+  cpany.on('list', async (platform: string, ...paths: string[]) => {
+    const rootDir = path.join(option.dataRoot, ...paths);
+    const files = [];
+    for await (const file of listDir(rootDir)) {
+      files.push(path.relative(path.join(option.dataRoot, platform), file));
     }
-    return genRouteKey('handle', handles);
-  })();
+    return files;
+  });
+
+  const { handles: rawHandles, contests: rawContests, users } = await cpany.loadAll(option);
+
+  const handles = genRouteKey('handle', rawHandles);
+  const contests = genRouteKey('contest', rawContests, (lhs, rhs) => lhs.startTime - rhs.startTime);
 
   debugLoader(`Total: ${handles.length} handles`);
+  debugLoader(`Total: ${contests.length} contests`);
 
-  const contests = await (async () => {
-    const contests: IContest[] = [];
-    for (const contestPath of option.static.contests) {
-      const fullPath = slash(path.resolve(dataRoot, contestPath));
-      const isStatic = (() => {
-        // TODO: Add Static to external contest
-        for (const staticPath of [...option.static.contests]) {
-          if (fullPath.startsWith(slash(path.resolve(dataRoot, staticPath)))) {
-            return true;
-          }
-        }
-        return false;
-      })();
+  // const handles = await (async () => {
+  //   const handles: IHandle[] = [];
+  //   for (const handlePath of option.static.handles) {
+  //     const fullPath = path.resolve(dataRoot, handlePath);
+  //     for await (const handle of listJsonFiles<IHandle>(fullPath)) {
+  //       handles.push(handle);
+  //     }
+  //   }
+  //   return genRouteKey('handle', handles);
+  // })();
 
-      for await (const contest of listJsonFiles<IContest>(fullPath)) {
-        if (isStatic) {
-          // Dep: inline static contest pages
-          contest.inlinePage = true;
-        }
-        contests.push(contest);
-      }
-    }
-    return genRouteKey('contest', contests, (lhs, rhs) => lhs.startTime - rhs.startTime);
-  })();
+  // debugLoader(`Total: ${handles.length} handles`);
 
-  const { findHandle } = createHandleSet(handles);
-  const { findCodeforces } = createCodeforcesSet(contests);
+  // const contests = await (async () => {
+  //   const contests: IContest[] = [];
+  //   for (const contestPath of option.static.contests) {
+  //     const fullPath = slash(path.resolve(dataRoot, contestPath));
+  //     const isStatic = (() => {
+  //       // TODO: Add Static to external contest
+  //       for (const staticPath of [...option.static.contests]) {
+  //         if (fullPath.startsWith(slash(path.resolve(dataRoot, staticPath)))) {
+  //           return true;
+  //         }
+  //       }
+  //       return false;
+  //     })();
 
-  const users: IUser[] = [];
-  const userMap: Map<string, IUser> = new Map();
-  for (const rawUser of option.users) {
-    const user: IUser = {
-      name: rawUser.name,
-      handles: [],
-      contests: []
-    };
+  //     for await (const contest of listJsonFiles<IContest>(fullPath)) {
+  //       if (isStatic) {
+  //         // Dep: inline static contest pages
+  //         contest.inlinePage = true;
+  //       }
+  //       contests.push(contest);
+  //     }
+  //   }
+  //   return genRouteKey('contest', contests, (lhs, rhs) => lhs.startTime - rhs.startTime);
+  // })();
 
-    const cfRoundSet: Set<number> = new Set();
-    for (const _handle of rawUser.handle) {
-      const handle = findHandle(_handle.platform, _handle.handle);
+  // const { findHandle } = createHandleSet(handles);
+  // const { findCodeforces } = createCodeforcesSet(contests);
 
-      if (handle !== null) {
-        user.handles.push(handle);
+  // const users: IUser[] = [];
+  // const userMap: Map<string, IUser> = new Map();
+  // for (const rawUser of option.users) {
+  //   const user: IUser = {
+  //     name: rawUser.name,
+  //     handles: [],
+  //     contests: []
+  //   };
 
-        // Dep: find codeforces contests
-        if (handle.type.startsWith('codeforces')) {
-          for (const submission of handle.submissions) {
-            if (
-              submission.author.participantType === ParticipantType.CONTESTANT ||
-              submission.author.participantType === ParticipantType.VIRTUAL ||
-              submission.author.participantType === ParticipantType.OUT_OF_COMPETITION
-            ) {
-              const contestId = +/^(\d+)/.exec('' + submission.problem.id)![1];
-              if (!cfRoundSet.has(contestId)) {
-                const contest = findCodeforces(contestId);
-                if (contest !== null) {
-                  // Add field participantType
-                  user.contests.push({
-                    author: submission.author,
-                    ...contest
-                  });
-                  contest.participantNumber++;
-                  cfRoundSet.add(contestId);
+  //   const cfRoundSet: Set<number> = new Set();
+  //   for (const _handle of rawUser.handle) {
+  //     const handle = findHandle(_handle.platform, _handle.handle);
 
-                  // Dep: codeforces fix gym startTime
-                  if (!contest.startTime) {
-                    contest.startTime = submission.author.participantTime;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+  //     if (handle !== null) {
+  //       user.handles.push(handle);
 
-    users.push(user);
-    userMap.set(user.name, user);
-  }
+  //       // Dep: find codeforces contests
+  //       if (handle.type.startsWith('codeforces')) {
+  //         for (const submission of handle.submissions) {
+  //           if (
+  //             submission.author.participantType === ParticipantType.CONTESTANT ||
+  //             submission.author.participantType === ParticipantType.VIRTUAL ||
+  //             submission.author.participantType === ParticipantType.OUT_OF_COMPETITION
+  //           ) {
+  //             const contestId = +/^(\d+)/.exec('' + submission.problem.id)![1];
+  //             if (!cfRoundSet.has(contestId)) {
+  //               const contest = findCodeforces(contestId);
+  //               if (contest !== null) {
+  //                 // Add field participantType
+  //                 user.contests.push({
+  //                   author: submission.author,
+  //                   ...contest
+  //                 });
+  //                 contest.participantNumber++;
+  //                 cfRoundSet.add(contestId);
 
-  // Use username to push static contest
-  for (const contest of contests) {
-    for (const standing of contest.standings ?? []) {
-      // skip PRACTICE contest participant
-      if (standing.author.participantType === ParticipantType.PRACTICE) continue;
+  //                 // Dep: codeforces fix gym startTime
+  //                 if (!contest.startTime) {
+  //                   contest.startTime = submission.author.participantTime;
+  //                 }
+  //               }
+  //             }
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
 
-      const push = (name?: string) => {
-        if (!name) return false;
-        const user = userMap.get(name);
-        if (user !== null && user !== undefined) {
-          contest.participantNumber++;
-          user.contests.push({
-            author: standing.author,
-            ...contest
-          });
-          return true;
-        }
-        return false;
-      };
+  //   users.push(user);
+  //   userMap.set(user.name, user);
+  // }
 
-      // use teamName or members
-      if (push(standing.author.teamName)) continue;
-      for (const member of standing.author.members) {
-        push(member);
-      }
-    }
-  }
+  // // Use username to push static contest
+  // for (const contest of contests) {
+  //   for (const standing of contest.standings ?? []) {
+  //     // skip PRACTICE contest participant
+  //     if (standing.author.participantType === ParticipantType.PRACTICE) continue;
+
+  //     const push = (name?: string) => {
+  //       if (!name) return false;
+  //       const user = userMap.get(name);
+  //       if (user !== null && user !== undefined) {
+  //         contest.participantNumber++;
+  //         user.contests.push({
+  //           author: standing.author,
+  //           ...contest
+  //         });
+  //         return true;
+  //       }
+  //       return false;
+  //     };
+
+  //     // use teamName or members
+  //     if (push(standing.author.teamName)) continue;
+  //     for (const member of standing.author.members) {
+  //       push(member);
+  //     }
+  //   }
+  // }
 
   // Desc sort
   for (const user of users) {
@@ -330,52 +357,52 @@ function genRouteKey<T extends IContest | IHandle>(
   return files.sort(sortFn).reverse();
 }
 
-function createHandleSet(handles: RouteKey<IHandle>[]) {
-  const mapByType: Map<string, Map<string, RouteKey<IHandle>>> = new Map();
+// function createHandleSet(handles: RouteKey<IHandle>[]) {
+//   const mapByType: Map<string, Map<string, RouteKey<IHandle>>> = new Map();
 
-  const norm = (raw: string) => raw.split('/')[0];
+//   const norm = (raw: string) => raw.split('/')[0];
 
-  for (const handle of handles) {
-    const type = norm(handle.type);
-    if (mapByType.has(type)) {
-      mapByType.get(type)!.set(handle.handle, handle);
-    } else {
-      const map: Map<string, RouteKey<IHandle>> = new Map();
-      map.set(handle.handle, handle);
-      mapByType.set(type, map);
-    }
-  }
+//   for (const handle of handles) {
+//     const type = norm(handle.type);
+//     if (mapByType.has(type)) {
+//       mapByType.get(type)!.set(handle.handle, handle);
+//     } else {
+//       const map: Map<string, RouteKey<IHandle>> = new Map();
+//       map.set(handle.handle, handle);
+//       mapByType.set(type, map);
+//     }
+//   }
 
-  const findHandle = (_type: string, handle: string) => {
-    const type = norm(_type);
-    if (mapByType.has(type)) {
-      const map = mapByType.get(type)!;
-      if (map.has(handle)) {
-        return map.get(handle)!;
-      } else {
-        return null;
-      }
-    } else {
-      return null;
-    }
-  };
+//   const findHandle = (_type: string, handle: string) => {
+//     const type = norm(_type);
+//     if (mapByType.has(type)) {
+//       const map = mapByType.get(type)!;
+//       if (map.has(handle)) {
+//         return map.get(handle)!;
+//       } else {
+//         return null;
+//       }
+//     } else {
+//       return null;
+//     }
+//   };
 
-  return {
-    findHandle
-  };
-}
+//   return {
+//     findHandle
+//   };
+// }
 
-function createCodeforcesSet(contests: RouteKey<IContest>[]) {
-  const map: Map<number, RouteKey<IContest>> = new Map();
-  for (const contest of contests) {
-    if (contest.type.startsWith('codeforces')) {
-      map.set(contest.id as number, contest);
-    }
-  }
+// function createCodeforcesSet(contests: RouteKey<IContest>[]) {
+//   const map: Map<number, RouteKey<IContest>> = new Map();
+//   for (const contest of contests) {
+//     if (contest.type.startsWith('codeforces')) {
+//       map.set(contest.id as number, contest);
+//     }
+//   }
 
-  const findCodeforces = (id: number | string) => {
-    return map.get(+id) ?? null;
-  };
+//   const findCodeforces = (id: number | string) => {
+//     return map.get(+id) ?? null;
+//   };
 
-  return { findCodeforces };
-}
+//   return { findCodeforces };
+// }

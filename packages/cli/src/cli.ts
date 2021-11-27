@@ -20,9 +20,7 @@ import { resolveViteOptions } from './options';
 import { findFreePort, resolveImportPath, version } from './utils';
 
 const cli = cac('cpany')
-  .option('-p, --plugins [...plugins]', 'CPany plugins', {
-    default: ['codeforces', 'hdu']
-  })
+  .option('-p, --plugins [...plugins]', 'CPany plugins')
   .option('--log <level>', 'warn | error | silent', { default: 'warn' });
 
 function resolveOption(dataPath: string | undefined, option: ICliOption) {
@@ -48,6 +46,10 @@ function resolveOption(dataPath: string | undefined, option: ICliOption) {
   // Single plugin cli argument
   if (typeof option.plugins === 'string') {
     option.plugins = [option.plugins];
+  }
+  if (!option.plugins) {
+    option.plugins = cpanyOption.plugins ?? ['codeforces'];
+    delete cpanyOption['plugins'];
   }
 
   // @ts-ignore
@@ -82,7 +84,7 @@ cli
   .option('--force', 'force the optimizer to ignore the cache and re-bundle', {
     default: false
   })
-  .option('--clear-screen', `allow/disable clear screen`, { default: true })
+  .option('--clear-screen', `allow/disable clear screen`, { default: false })
   .action(async (dataPath: string | undefined, option: ICliOption) => {
     resolveOption(dataPath, option);
 

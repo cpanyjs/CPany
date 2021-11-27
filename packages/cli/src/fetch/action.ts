@@ -4,9 +4,9 @@ import debug from 'debug';
 
 import type { LogLevel } from '@cpany/types';
 
-import { now, slash } from '../utils';
-import { ICliOption } from '../types';
+import type { ICliOption } from '../types';
 import { createCPany } from '../cpany';
+import { now, slash, listDir } from '../utils';
 
 import { processReport } from './report';
 // import { createGitFileSystem } from './fs';
@@ -64,21 +64,4 @@ export async function run(option: ICliOption) {
   }
   // TODO: push
   // await fs.push(format(nowTime, 'yyyy-MM-dd HH:mm'));
-}
-
-async function* listDir(dir: string): AsyncGenerator<string> {
-  try {
-    const dirents = await fs.promises.readdir(dir, { withFileTypes: true });
-    for (const dirent of dirents) {
-      const id = path.join(dir, dirent.name);
-      if (dirent.name.startsWith('.')) {
-        continue;
-      }
-      if (dirent.isDirectory()) {
-        yield* listDir(id);
-      } else {
-        yield id;
-      }
-    }
-  } catch {}
 }

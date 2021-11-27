@@ -1,4 +1,4 @@
-import type { IContest, IHandle, IUser, ResolvedCPanyOption } from '@cpany/types';
+import type { IContest, IHandle, ResolvedCPanyOption } from '@cpany/types';
 import type { BasicPlugin } from './types';
 import type { FetchContext } from './fetch';
 
@@ -13,5 +13,5 @@ export interface LoadContext extends FetchContext {
 
   findHandle: (platform: string, handle: string) => IHandle | undefined;
 
-  findUser: (name: string) => IUser | undefined;
+  // findUser: (name: string) => IUser | undefined;
 }

@@ -1,8 +1,10 @@
 import axios from 'axios';
 
 import type { CPanyPlugin } from '@cpany/core';
+import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
 import { ICPanyPluginConfig, IContest, isAtCoder } from '@cpany/types';
 
+import { atcoder } from './constant';
 import { createAtCoderHandlePlugin } from './handle';
 import { addContests, createAtCoderContestPlugin } from './contest';
 
@@ -32,7 +34,7 @@ export function atcoderPlugin(config: ICPanyPluginConfig): CPanyPlugin[] {
     createAtCoderContestPlugin(api, handleMap),
     {
       name: 'cache',
-      platform: 'atcoder',
+      platform: atcoder,
       async cache(ctx) {
         const contests: IContest[] = await ctx.readJsonFile('contest.json');
         addContests(contests);
@@ -40,6 +42,21 @@ export function atcoderPlugin(config: ICPanyPluginConfig): CPanyPlugin[] {
         const handles = await ctx.listDir('handle');
         for (const handle of handles) {
           await ctx.removeFile(handle);
+        }
+      }
+    },
+    {
+      name: 'load',
+      platform: atcoder,
+      async load(_option, ctx) {
+        const handles = await ctx.readJsonDir<IHandleWithAtCoder>('handle');
+        for (const handle of handles) {
+          ctx.addHandle(handle);
+        }
+
+        const contests = await ctx.readJsonFile<IContest[]>('contest');
+        for (const contest of contests) {
+          ctx.addContest(contest);
         }
       }
     }

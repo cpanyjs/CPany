@@ -5,6 +5,7 @@ import type { ICPanyPluginConfig } from '@cpany/types';
 
 import { codeforces } from './constant';
 import { handleInfoPlugin } from './handle';
+import { loadCodeforcesPlugin } from './load';
 import { contestListPlugin, gymContestListPlugin } from './contest';
 
 export * from './constant';
@@ -19,7 +20,8 @@ export function codeforcesPlugin(option: ICPanyPluginConfig): CPanyPlugin[] {
     contestListPlugin(api),
     gymContestListPlugin(api),
     handleInfoPlugin(api),
-    codeforcesCleanPlugin()
+    codeforcesCleanPlugin(),
+    loadCodeforcesPlugin()
   ];
 }
 

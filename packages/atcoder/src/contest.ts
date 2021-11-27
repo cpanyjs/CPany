@@ -11,6 +11,8 @@ import {
   Verdict
 } from '@cpany/types';
 
+import { atcoder } from './constant';
+
 const handleMap = new Map<string, string>();
 const contestantSet = new Map<string, string[]>();
 const contestCache = new Map<string, IContest>();
@@ -126,7 +128,7 @@ export function createAtCoderContestPlugin(
 
   return {
     name: 'contest',
-    platform: 'atcoder',
+    platform: atcoder,
     async fetch({ logger }) {
       const retry = createRetryContainer(logger, 5);
       const contests: IContest[] = [];

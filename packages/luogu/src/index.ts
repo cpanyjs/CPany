@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 import type { CPanyPlugin } from '@cpany/core';
-import { ICPanyPluginConfig, IHandle } from '@cpany/types';
+import type { ICPanyPluginConfig, IHandle } from '@cpany/types';
+import type { IHandleWithLuogu } from '@cpany/types/luogu';
 
 import type { ICookie } from './type';
 import { addToCache, createLuoguHandlePlugin } from './handle';
@@ -32,6 +33,7 @@ export function luoguPlugin(_option: ICPanyPluginConfig): CPanyPlugin[] {
   });
 
   return [
+    createLuoguHandlePlugin(api),
     {
       name: 'cache',
       platform: 'luogu',
@@ -41,7 +43,16 @@ export function luoguPlugin(_option: ICPanyPluginConfig): CPanyPlugin[] {
         }
       }
     },
-    createLuoguHandlePlugin(api)
+    {
+      name: 'load',
+      platform: 'luogu',
+      async load(_option, ctx) {
+        const handles = await ctx.readJsonDir<IHandleWithLuogu>('handle');
+        for (const handle of handles) {
+          ctx.addHandle(handle);
+        }
+      }
+    }
   ];
 }
 

@@ -4,7 +4,9 @@ export * from './resolve';
 
 export * from './package';
 
+import fs from 'fs';
 import net from 'net';
+import path from 'path';
 
 import { utcToZonedTime } from 'date-fns-tz';
 
@@ -38,4 +40,21 @@ export async function findFreePort(start: number): Promise<number> {
 
   if (await isPortFree(start)) return start;
   return findFreePort(start + 1);
+}
+
+export async function* listDir(dir: string): AsyncGenerator<string> {
+  try {
+    const dirents = await fs.promises.readdir(dir, { withFileTypes: true });
+    for (const dirent of dirents) {
+      const id = path.join(dir, dirent.name);
+      if (dirent.name.startsWith('.')) {
+        continue;
+      }
+      if (dirent.isDirectory()) {
+        yield* listDir(id);
+      } else {
+        yield id;
+      }
+    }
+  } catch {}
 }

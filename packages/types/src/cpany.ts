@@ -3,8 +3,9 @@ import { IContest } from './contest';
 
 export interface IUser {
   name: string;
-  handles: Array<RouteKey<IHandle>>;
-  contests: Array<RouteKey<IContest> & { author: IAuthor }>;
+  key: string;
+  handles: Array<IHandle>;
+  contests: Array<Key<IContest & { author: IAuthor }>>;
 }
 
 export interface CPanyOption {
@@ -19,6 +20,8 @@ export interface CPanyOption {
   static?: string[];
 
   app?: Partial<AppOption>;
+
+  plugins?: string[];
 }
 
 export interface ResolvedCPanyUserOption {
@@ -97,6 +100,8 @@ export interface AppOption {
   nav: string[];
 }
 
+export type Key<T> = T & { key: string };
+
 export type RouteKey<T, K = number> = T & {
   type: string;
   key: K;
@@ -107,7 +112,7 @@ export type IContestOverview = Omit<RouteKey<IContest>, 'standings'>;
 
 export interface IUserOverview {
   name: string;
-  handles: Array<Omit<RouteKey<IHandle>, 'submissions'>>;
+  handles: Array<Omit<IHandle, 'submissions'>>;
 
   // t: short for participantTime
   contests: Array<{ type: string; t: number }>;

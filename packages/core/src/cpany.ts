@@ -1,4 +1,4 @@
-import { IUser, IHandle, IContest, ResolvedCPanyOption } from '@cpany/types';
+import { IUser, IHandle, IContest, ResolvedCPanyOption, Key } from '@cpany/types';
 
 import type { CreateOptions, CPanyInstance, FSOperations, FSEventType } from './types';
 import { DefaultMaxRetry } from './constant';
@@ -241,7 +241,26 @@ export function createCPany(option: CreateOptions): CPanyInstance {
   const loadAll = async (option: ResolvedCPanyOption) => {
     const handles: IHandle[] = [];
     const contests: IContest[] = [];
-    const users: IUser[] = [];
+
+    function findHandle(platform: string, name: string) {
+      // TODO: user hashmap
+      for (const handle of handles) {
+        if (handle.type === platform && handle.handle === name) {
+          return handle;
+        }
+      }
+      return undefined;
+    }
+
+    // function findUser(name: string) {
+    //   // TODO: user hashmap
+    //   for (const user of users) {
+    //     if (user.name === name) {
+    //       return user;
+    //     }
+    //   }
+    //   return undefined;
+    // }
 
     function createLoadContext(platform: string): LoadContext {
       return {
@@ -252,24 +271,7 @@ export function createCPany(option: CreateOptions): CPanyInstance {
         addContest(...newContests: IContest[]) {
           contests.push(...newContests);
         },
-        findHandle(platform: string, name: string) {
-          // TODO: user hashmap
-          for (const handle of handles) {
-            if (handle.type === platform && handle.handle === name) {
-              return handle;
-            }
-          }
-          return undefined;
-        },
-        findUser(name: string) {
-          // TODO: user hashmap
-          for (const user of users) {
-            if (user.name === name) {
-              return user;
-            }
-          }
-          return undefined;
-        }
+        findHandle
       };
     }
 
@@ -278,9 +280,29 @@ export function createCPany(option: CreateOptions): CPanyInstance {
       await plugin.load(option, context);
     }
 
+    const indexedHandles = genKey(handles);
+    const indexedContests = genKey(contests, (lhs, rhs) => lhs.startTime - rhs.startTime);
+
+    const users: IUser[] = option.users.map((user) => {
+      return {
+        name: user.name,
+        key: user.name,
+        handles: filterMap(user.handle, (handle) => {
+          const res = findHandle(handle.platform, handle.handle);
+          if (res === undefined) {
+            logger.debug(
+              `Not found: (handle: ${handle.handle}, platform: ${handle.platform}) of ${user.name}`
+            );
+          }
+          return res;
+        }),
+        contests: []
+      };
+    });
+
     return {
-      handles,
-      contests,
+      handles: indexedHandles,
+      contests: indexedContests,
       users
     };
   };
@@ -320,4 +342,44 @@ function getFSOperation() {
       }
     }
   };
+}
+
+function genKey<T extends IContest | IHandle>(rawFiles: T[], sortFn?: (lhs: T, rhs: T) => number) {
+  const mapByType: Map<string, T[]> = new Map();
+  for (const file of rawFiles) {
+    if (mapByType.has(file.type)) {
+      mapByType.get(file.type)!.push(file);
+    } else {
+      mapByType.set(file.type, [file]);
+    }
+  }
+  const files: Array<Key<T>> = [];
+  for (const [type, rawFiles] of mapByType.entries()) {
+    const sorted = rawFiles.sort(sortFn);
+    mapByType.set(type, sorted);
+
+    // Dep: try use T.id as key
+    const keys = sorted.map((file) => {
+      if ('id' in file) {
+        return String(file.id);
+      } else {
+        return null;
+      }
+    });
+    const flag = keys.every((key) => key !== null) && new Set(keys).size === keys.length;
+
+    for (let i = 0; i < sorted.length; i++) {
+      const key = flag ? keys[i]! : String(i + 1);
+      files.push({
+        key,
+        ...sorted[i]
+      } as Key<T>);
+    }
+  }
+
+  return files.sort(sortFn);
+}
+
+function filterMap<T, U>(array: readonly T[], fn: (arg: T) => U | undefined): U[] {
+  return array.map(fn).filter((u) => u !== undefined && u !== null) as U[];
 }

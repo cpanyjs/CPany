@@ -14,15 +14,10 @@ users:
     handle/luogu: '149656'
 
 handles:
-  - codeforces/handle
-  - atcoder/handle
   - luogu/handle
   - hdu/handle
 
 contests:
-  - codeforces/contest.json
-  - codeforces/gym-contest.json
-  - atcoder/contest.json
   - nowcoder
 
 fetch:
@@ -38,3 +33,9 @@ app:
   recentTime: 2592000 # 1 month
   recentContestsCount: 15
   recentUserCount: 5
+
+plugins:
+  - '@cpany/plugin-codeforces'
+  - '@cpany/plugin-hdu'
+  # - '@cpany/plugin-atcoder'
+  # - '@cpany/plugin-luogu'
