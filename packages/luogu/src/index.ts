@@ -31,15 +31,18 @@ export function luoguPlugin(_option: ICPanyPluginConfig): CPanyPlugin[] {
     }
   });
 
-  return [{
-    name: 'cache',
-    platform: 'luogu',
-    async cache(ctx) {
-      for (const handle of await ctx.readJsonDir<IHandle>('handle')) {
-        addToCache(handle);
+  return [
+    {
+      name: 'cache',
+      platform: 'luogu',
+      async cache(ctx) {
+        for (const handle of await ctx.readJsonDir<IHandle>('handle')) {
+          addToCache(handle);
+        }
       }
-    }
-  }, createLuoguHandlePlugin(api)];
+    },
+    createLuoguHandlePlugin(api)
+  ];
 }
 
 export default luoguPlugin;

@@ -44,54 +44,54 @@ export function handleInfoPlugin(api: AxiosInstance): QueryPlugin {
         };
       };
 
-        const fetchSubmission = async (): Promise<ISubmission[]> => {
-          const {
-            data: { result }
-          } = await api.get<{ result: SubmissionDTO[] }>('user.status', {
-            params: {
-              handle: handle
-            }
-          });
+      const fetchSubmission = async (): Promise<ISubmission[]> => {
+        const {
+          data: { result }
+        } = await api.get<{ result: SubmissionDTO[] }>('user.status', {
+          params: {
+            handle: handle
+          }
+        });
 
-          return result.map((submission: SubmissionDTO): ISubmission => {
-            const prefix =
-              (submission.contestId >= 100001
-                ? 'https://codeforces.com/gym/'
-                : 'https://codeforces.com/contest/') + submission.contestId;
+        return result.map((submission: SubmissionDTO): ISubmission => {
+          const prefix =
+            (submission.contestId >= 100001
+              ? 'https://codeforces.com/gym/'
+              : 'https://codeforces.com/contest/') + submission.contestId;
 
-            const submissionUrl = prefix + `/submission/${submission.id}`;
+          const submissionUrl = prefix + `/submission/${submission.id}`;
 
-            const problemUrl = prefix + `/problem/${submission.problem.index}`;
+          const problemUrl = prefix + `/problem/${submission.problem.index}`;
 
-            return {
+          return {
+            type: codeforces,
+            id: submission.id,
+            creationTime: submission.creationTimeSeconds,
+            language: submission.programmingLanguage,
+            verdict: submission.verdict,
+            author: {
+              members: submission.author.members.map(({ handle }) => handle),
+              participantType: submission.author.participantType,
+              participantTime: submission.creationTimeSeconds - submission.relativeTimeSeconds,
+              teamName: submission.author.teamName
+            },
+            problem: {
               type: codeforces,
-              id: submission.id,
-              creationTime: submission.creationTimeSeconds,
-              language: submission.programmingLanguage,
-              verdict: submission.verdict,
-              author: {
-                members: submission.author.members.map(({ handle }) => handle),
-                participantType: submission.author.participantType,
-                participantTime: submission.creationTimeSeconds - submission.relativeTimeSeconds,
-                teamName: submission.author.teamName
-              },
-              problem: {
-                type: codeforces,
-                id: `${submission.problem.contestId}${submission.problem.index}`,
-                name: submission.problem.name,
-                rating: submission.problem.rating,
-                tags: submission.problem.tags,
-                problemUrl
-              },
-              submissionUrl
-            };
-          });
-        };
+              id: `${submission.problem.contestId}${submission.problem.index}`,
+              name: submission.problem.name,
+              rating: submission.problem.rating,
+              tags: submission.problem.tags,
+              problemUrl
+            },
+            submissionUrl
+          };
+        });
+      };
 
-        const data = await fetchInfo();
-        data.submissions = await fetchSubmission();
+      const data = await fetchInfo();
+      data.submissions = await fetchSubmission();
 
-        return JSON.stringify(data, null, 2);
+      return JSON.stringify(data, null, 2);
     }
   };
 }

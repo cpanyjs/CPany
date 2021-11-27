@@ -142,7 +142,7 @@ export function createFetcher(option: CreateOptions): CPanyFetcher {
         for (let i = 0; i <= DefaultMaxRetry; i++) {
           try {
             await rawTask();
-            return ;
+            return;
           } catch (error: any) {
             const msg = error.message;
             if (typeof msg === 'string') {
@@ -175,8 +175,8 @@ export function createFetcher(option: CreateOptions): CPanyFetcher {
           const ctx = createFetchContext(plugin.platform);
 
           pushTask(plugin, async () => {
-            ctx.logger.info(`Fetch: ${handle.platform}/${plugin.name}/${handle.handle}`)
-            
+            ctx.logger.info(`Fetch: ${handle.platform}/${plugin.name}/${handle.handle}`);
+
             const result = await plugin.query(handle.handle, ctx);
 
             if (!!result) {
@@ -205,7 +205,7 @@ export function createFetcher(option: CreateOptions): CPanyFetcher {
       const ctx = createFetchContext(plugin.platform);
 
       pushTask(plugin, async () => {
-        ctx.logger.info(`Fetch: ${plugin.platform}/${plugin.name}`)
+        ctx.logger.info(`Fetch: ${plugin.platform}/${plugin.name}`);
 
         const result = await plugin.fetch(ctx);
 
@@ -221,11 +221,11 @@ export function createFetcher(option: CreateOptions): CPanyFetcher {
       });
     }
 
-    logger.startGroup('Cache')
-    for (const task of initTasks) await task()
+    logger.startGroup('Cache');
+    for (const task of initTasks) await task();
     logger.endGroup();
 
-    logger.startGroup('Fetch data')
+    logger.startGroup('Fetch data');
     for (const task of preTasks) await task();
     for (const task of tasks) await task();
     for (const task of postTasks) await task();

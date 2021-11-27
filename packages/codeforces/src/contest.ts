@@ -58,14 +58,14 @@ export function gymContestListPlugin(api: AxiosInstance): FetchPlugin {
     name: 'gym-contest',
     platform: codeforces,
     async fetch() {
-        const {
-          data: { result }
-        } = await api.get('contest.list', { params: { gym: true } });
-        return JSON.stringify(
-          result.map(transformGymContestInfo).filter(({ phase }: IContest) => phase === 'FINISHED'),
-          null,
-          2
-        );
+      const {
+        data: { result }
+      } = await api.get('contest.list', { params: { gym: true } });
+      return JSON.stringify(
+        result.map(transformGymContestInfo).filter(({ phase }: IContest) => phase === 'FINISHED'),
+        null,
+        2
+      );
     }
   };
 }

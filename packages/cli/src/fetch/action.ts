@@ -66,9 +66,7 @@ export async function run(option: ICliOption) {
   // await fs.push(format(nowTime, 'yyyy-MM-dd HH:mm'));
 }
 
-async function* listDir(
-  dir: string,
-): AsyncGenerator<string> {
+async function* listDir(dir: string): AsyncGenerator<string> {
   try {
     const dirents = await fs.promises.readdir(dir, { withFileTypes: true });
     for (const dirent of dirents) {

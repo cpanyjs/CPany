@@ -128,70 +128,70 @@ export function createAtCoderContestPlugin(
     name: 'contest',
     platform: 'atcoder',
     async fetch({ logger }) {
-        const retry = createRetryContainer(logger, 5);
-        const contests: IContest[] = [];
-        let planSz = 0,
-          curRunSz = 0;
+      const retry = createRetryContainer(logger, 5);
+      const contests: IContest[] = [];
+      let planSz = 0,
+        curRunSz = 0;
 
-        for (const [contestId, handlesParticipant] of contestantSet) {
-          const cacheStandings =
-            contestCache
-              .get(contestId)
-              ?.standings?.map((standing) => standing.author.members)
-              .flat() ?? [];
-          if (contestCache.has(contestId) && isHandlesLte(handlesParticipant, cacheStandings)) {
-            contests.push(contestCache.get(contestId)!);
-          } else {
-            planSz++;
+      for (const [contestId, handlesParticipant] of contestantSet) {
+        const cacheStandings =
+          contestCache
+            .get(contestId)
+            ?.standings?.map((standing) => standing.author.members)
+            .flat() ?? [];
+        if (contestCache.has(contestId) && isHandlesLte(handlesParticipant, cacheStandings)) {
+          contests.push(contestCache.get(contestId)!);
+        } else {
+          planSz++;
 
-            retry.add(`AtCoder Contest ${contestId}`, async () => {
-              logger.info(`Fetch: AtCoder Contest ${contestId} (${curRunSz + 1}/${planSz})`);
+          retry.add(`AtCoder Contest ${contestId}`, async () => {
+            logger.info(`Fetch: AtCoder Contest ${contestId} (${curRunSz + 1}/${planSz})`);
 
-              try {
-                const contest = await fecthContest(api, contestId);
-                contests.push({
-                  ...contest,
-                  ...parseStandings(
-                    contestId,
-                    contest.startTime,
-                    await fetchStandings(api, contestId)
-                  )
-                });
-                curRunSz++;
-                return true;
-              } catch (error) {
-                logger.error('Error: ' + (error as any).message);
-                return false;
-              }
-            });
-          }
+            try {
+              const contest = await fecthContest(api, contestId);
+              contests.push({
+                ...contest,
+                ...parseStandings(
+                  contestId,
+                  contest.startTime,
+                  await fetchStandings(api, contestId)
+                )
+              });
+              curRunSz++;
+              return true;
+            } catch (error) {
+              logger.error('Error: ' + (error as any).message);
+              return false;
+            }
+          });
         }
-
-        logger.info(`Fetch: plan to fetch ${planSz} contests`);
-        await retry.run();
-
-        for (const contest of contests) {
-          if (!!contest.standings && !!contest.id && contestPracticeCache.get(String(contest.id))) {
-            const practice = contestPracticeCache.get(String(contest.id))!;
-
-            contest.standings.push(
-              ...practice
-                .map((standing) => {
-                  // fill some unknown time
-                  standing.author.participantTime = contest.startTime;
-                  standing.submissions = standing.submissions.map((sub) => {
-                    sub.relativeTime -= contest.startTime;
-                    return sub;
-                  });
-                  return standing;
-                })
-                .sort((lhs, rhs) => rhs.solved - lhs.solved)
-            );
-          }
-        }
-
-        return JSON.stringify(contests, null, 2);
       }
+
+      logger.info(`Fetch: plan to fetch ${planSz} contests`);
+      await retry.run();
+
+      for (const contest of contests) {
+        if (!!contest.standings && !!contest.id && contestPracticeCache.get(String(contest.id))) {
+          const practice = contestPracticeCache.get(String(contest.id))!;
+
+          contest.standings.push(
+            ...practice
+              .map((standing) => {
+                // fill some unknown time
+                standing.author.participantTime = contest.startTime;
+                standing.submissions = standing.submissions.map((sub) => {
+                  sub.relativeTime -= contest.startTime;
+                  return sub;
+                });
+                return standing;
+              })
+              .sort((lhs, rhs) => rhs.solved - lhs.solved)
+          );
+        }
+      }
+
+      return JSON.stringify(contests, null, 2);
+    }
   };
 }
 

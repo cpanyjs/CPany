@@ -15,14 +15,14 @@ export function createLuoguHandlePlugin(api: AxiosInstance): QueryPlugin {
     name: 'luogu',
     platform: 'luogu',
     async query(id, { logger }) {
-        const user = await fetchUser(api, id);
-        try {
-          user.submissions = await fetchSubmissions(api, user.luogu.name, id, logger);
-        } catch (error) {
-          logger.error(`Error: fail to fetch submissions of Luogu handle ${id}`);
-          logger.error((error as any).message);
-        }
-        return JSON.stringify(user, null, 2)
+      const user = await fetchUser(api, id);
+      try {
+        user.submissions = await fetchSubmissions(api, user.luogu.name, id, logger);
+      } catch (error) {
+        logger.error(`Error: fail to fetch submissions of Luogu handle ${id}`);
+        logger.error((error as any).message);
+      }
+      return JSON.stringify(user, null, 2);
     }
   };
 }
