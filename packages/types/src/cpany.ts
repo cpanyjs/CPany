@@ -67,7 +67,7 @@ export interface ResolvedCPanyOption {
   app: AppOption;
 }
 
-export type ICPanyPluginConfig = ResolvedCPanyOption & { baseUrl: string; };
+export type ICPanyPluginConfig = ResolvedCPanyOption & { baseUrl: string };
 
 // Action/Cli config interface
 export interface AppOption {

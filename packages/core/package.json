@@ -22,8 +22,7 @@
     "build": "pnpx tsup src/index.ts --format cjs,esm --dts"
   },
   "dependencies": {
-    "@cpany/types": "workspace:*",
-    "random-js": "^2.1.0"
+    "@cpany/types": "workspace:*"
   },
   "engines": {
     "node": ">=12.0.0"

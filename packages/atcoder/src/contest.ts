@@ -1,7 +1,7 @@
 import type { AxiosInstance } from 'axios';
 import { parse } from 'node-html-parser';
 
-import { IPlugin, createRetryContainer } from '@cpany/core';
+import { createRetryContainer, FetchPlugin } from '@cpany/core';
 import {
   IContest,
   IContestStanding,
@@ -121,13 +121,13 @@ export function addContestPractice(contestId: string, handle: string, submission
 export function createAtCoderContestPlugin(
   api: AxiosInstance,
   _handleMap: Map<string, string>
-): IPlugin {
+): FetchPlugin {
   for (const [key, value] of _handleMap) handleMap.set(key, value);
 
   return {
-    name: 'atcoder/contest.json',
-    async load(id: string, { logger }) {
-      if (id === 'atcoder/contest.json') {
+    name: 'contest',
+    platform: 'atcoder',
+    async fetch({ logger }) {
         const retry = createRetryContainer(logger, 5);
         const contests: IContest[] = [];
         let planSz = 0,
@@ -192,7 +192,6 @@ export function createAtCoderContestPlugin(
 
         return JSON.stringify(contests, null, 2);
       }
-    }
   };
 }
 

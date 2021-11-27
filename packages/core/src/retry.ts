@@ -1,8 +1,5 @@
-import { Random, MersenneTwister19937 } from 'random-js';
-
-import type { ILogger } from './utils';
-
-const random = new Random(MersenneTwister19937.autoSeed());
+import type { Logger } from './logger';
+import { random, sleep } from './utils';
 
 type TaskFn = () => Promise<boolean>;
 
@@ -11,7 +8,7 @@ interface ITask {
   fn: TaskFn;
 }
 
-export function createRetryContainer(logger: ILogger, maxRetry: number = 10) {
+export function createRetryContainer(logger: Logger, maxRetry: number = 10) {
   const tasks: ITask[] = [];
 
   const add = (id: string, fn: TaskFn) => {
@@ -31,7 +28,7 @@ export function createRetryContainer(logger: ILogger, maxRetry: number = 10) {
           }
           const suffix = count % 10 === 1 ? 'st' : count % 10 === 2 ? 'nd' : 'th';
           logger.info(`Retry: Task ${task.id} failed at the ${count}-${suffix} time`);
-          await sleep(random.integer(2 * 1000, 5 * 1000));
+          await sleep(random(2 * 1000, 5 * 1000));
         } else {
           break;
         }
@@ -44,8 +41,4 @@ export function createRetryContainer(logger: ILogger, maxRetry: number = 10) {
     add,
     run
   };
-}
-
-export function sleep(duration: number): Promise<void> {
-  return new Promise((res) => setTimeout(() => res(), duration));
 }

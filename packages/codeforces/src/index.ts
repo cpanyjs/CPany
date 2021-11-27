@@ -1,44 +1,39 @@
 import axios from 'axios';
-import path from 'path';
 
-import type { IPlugin } from '@cpany/core';
+import type { CPanyPlugin } from '@cpany/core';
 import type { ICPanyPluginConfig } from '@cpany/types';
-import { listFiles } from '@cpany/utils';
 
-import { contestListPlugin, gymContestListPlugin } from './contest';
+import { codeforces } from './constant';
 import { handleInfoPlugin } from './handle';
+import { contestListPlugin, gymContestListPlugin } from './contest';
 
 export * from './constant';
 
-export function codeforcesPlugin(option: ICPanyPluginConfig): IPlugin[] {
+export function codeforcesPlugin(option: ICPanyPluginConfig): CPanyPlugin[] {
   const api = axios.create({
     baseURL: option.baseUrl ?? 'https://codeforces.com/api/',
     timeout: 30 * 1000
   });
 
-  console.log(option);
-  
-
   return [
     contestListPlugin(api),
     gymContestListPlugin(api),
     handleInfoPlugin(api),
-    codeforcesCleanPlugin(option.dataRoot)
+    codeforcesCleanPlugin()
   ];
 }
 
 export default codeforcesPlugin;
 
-function codeforcesCleanPlugin(basePath: string): IPlugin {
+function codeforcesCleanPlugin(): CPanyPlugin {
   return {
-    name: 'codeforces/clean',
-    async clean() {
-      const fullPath = path.resolve(basePath, 'codeforces/handle');
-      const files: string[] = [];
-      for await (const file of listFiles(fullPath)) {
-        files.push(file);
+    name: 'cache',
+    platform: codeforces,
+    async cache(ctx) {
+      const files = await ctx.listDir('handle');
+      for (const file of files) {
+        await ctx.removeFile(file);
       }
-      return { files };
     }
   };
 }

@@ -1,14 +1,17 @@
-import format from 'date-fns/format';
+import fs from 'fs';
+import path from 'path';
+import debug from 'debug';
 
 import type { LogLevel } from '@cpany/types';
-import { createRetryContainer } from '@cpany/core';
 
-import { now } from '../utils';
+import { now, slash } from '../utils';
 import { ICliOption } from '../types';
-import { createCPany, isGithubActions } from '../cpany';
+import { createCPanyFetcher } from '../cpany';
 
 import { processReport } from './report';
-import { createGitFileSystem } from './fs';
+// import { createGitFileSystem } from './fs';
+
+const debugFetch = debug('cpany:fetch');
 
 export interface IRunOption {
   logLevel?: LogLevel;
@@ -18,73 +21,66 @@ export interface IRunOption {
 }
 
 export async function run(option: ICliOption) {
-  const { instance } = await createCPany(option);
+  const fetcher = await createCPanyFetcher(option);
 
-  const fs = await createGitFileSystem(option.dataRoot, {
-    disable: !isGithubActions
+  fetcher.on('read', async (...paths: string[]) => {
+    const fullPath = path.join(option.dataRoot, ...paths);
+    return await fs.promises.readFile(fullPath, 'utf-8');
+  });
+  fetcher.on('list', async (platform: string, ...paths: string[]) => {
+    const rootDir = path.join(option.dataRoot, ...paths);
+    const files = [];
+    for await (const file of listDir(rootDir)) {
+      files.push(path.relative(path.join(option.dataRoot, platform), file));
+    }
+    return files;
+  });
+  fetcher.on('write', async (content: string, ...paths: string[]) => {
+    const fullPath = path.join(option.dataRoot, ...paths);
+    await fs.promises.mkdir(path.dirname(fullPath), { recursive: true }).catch(() => {});
+    await fs.promises.writeFile(fullPath, content, 'utf-8');
+    fetcher.logger.info(`Write: ${slash(fullPath)} (size: ${content.length} B)`);
+  });
+  fetcher.on('remove', async (...paths: string[]) => {
+    const fullPath = path.join(option.dataRoot, ...paths);
+    await fs.promises.unlink(fullPath);
+    fetcher.logger.info(`Remove: ${slash(fullPath)}`);
   });
 
-  instance.logger.startGroup('Load CPany config');
-  instance.logger.info(JSON.stringify(option, null, 2));
-  instance.logger.endGroup();
-
-  // clean cache
-  instance.logger.startGroup('Clean cache');
-  for (const file of (await instance.clean()).files) {
-    await fs.rm(file);
-    instance.logger.info(`Remove: ${file}`);
-  }
-  instance.logger.endGroup();
-
-  instance.logger.startGroup('Fetch data');
-
-  const retry = createRetryContainer(instance.logger, option.maxRetry);
-
-  for (const username in option.option.users) {
-    const user = option.option.users[username];
-
-    for (const handle of user.handle) {
-      const fn = async () => {
-        const result = await instance.transform({
-          id: handle.handle,
-          type: handle.platform
-        });
-
-        if (!!result) {
-          const { key, content } = result;
-          await fs.add(key, content);
-          return true;
-        } else if (result === null) {
-          // fetch fail
-          return false;
-        } else {
-          // no matching plugin
-          return true;
-        }
-      };
-      retry.add(`(id: "${handle}", platform: "${handle.platform}")`, fn);
-    }
-  }
-
-  await retry.run();
-
-  // Todo: Support fetch
-  // for (const id of config.fetch) {
-  //   const result = await instance.load(id);
-
-  //   if (!!result) {
-  //     const { key, content } = result;
-  //     await fs.add(key, content);
-  //   }
-  // }
-
-  instance.logger.endGroup();
+  await fetcher.run(option.option);
 
   const nowTime = now();
+  debugFetch(nowTime);
+
   try {
     await processReport(option.dataRoot, nowTime);
-  } catch (error) {
-    instance.logger.error(error as string);
+  } catch (error: any) {
+    const msg = error.message;
+    if (typeof msg === 'string') {
+      fetcher.logger.error(`Error: ${msg}`);
+    } else {
+      fetcher.logger.error(`Error: unknown, when process report`);
+    }
   }
-  await fs.push(format(nowTime, 'yyyy-MM-dd HH:mm'));
+  // TODO: push
+  // await fs.push(format(nowTime, 'yyyy-MM-dd HH:mm'));
+}
+
+async function* listDir(
+  dir: string,
+): AsyncGenerator<string> {
+  try {
+    const dirents = await fs.promises.readdir(dir, { withFileTypes: true });
+    for (const dirent of dirents) {
+      const id = path.join(dir, dirent.name);
+      if (dirent.name.startsWith('.')) {
+        continue;
+      }
+      if (dirent.isDirectory()) {
+        yield* listDir(id);
+      } else {
+        yield id;
+      }
+    }
+  } catch {}
 }

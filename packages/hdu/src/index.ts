@@ -1,21 +1,22 @@
-import path from 'path';
-
-import type { IPlugin } from '@cpany/core';
+import type { CPanyPlugin } from '@cpany/core';
 import type { IHandleWithHdu } from '@cpany/types/hdu';
-import { ICPanyPluginConfig, isHdu } from '@cpany/types';
-import { listJsonFiles } from '@cpany/utils';
+import { ICPanyPluginConfig } from '@cpany/types';
 
 import { createHduHandlePlugin, addToCache } from './handle';
 
-export async function hduPlugin(config: ICPanyPluginConfig): Promise<IPlugin[]> {
-  const handlePath = path.join(config.dataRoot, 'hdu', 'handle');
-  for await (const handle of listJsonFiles<IHandleWithHdu>(handlePath)) {
-    if (isHdu(handle)) {
-      addToCache(handle);
-    }
-  }
-
-  return [createHduHandlePlugin()];
+export function hduPlugin(_option: ICPanyPluginConfig): CPanyPlugin[] {
+  return [
+    {
+      name: 'cache',
+      platform: 'hdu',
+      async cache(ctx) {
+        for (const handle of await ctx.readJsonDir<IHandleWithHdu>('handle')) {
+          addToCache(handle);
+        }
+      }
+    },
+    createHduHandlePlugin()
+  ];
 }
 
 export default hduPlugin;

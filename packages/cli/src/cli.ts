@@ -45,6 +45,11 @@ function resolveOption(dataPath: string | undefined, option: ICliOption) {
   option.option.static.handles = absolute(option.option.static.handles);
   option.option.static.contests = absolute(option.option.static.contests);
 
+  // Single plugin cli argument
+  if (typeof option.plugins === 'string') {
+    option.plugins = [option.plugins];
+  }
+
   // @ts-ignore
   delete option['p'];
   // @ts-ignore

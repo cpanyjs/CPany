@@ -2,7 +2,7 @@ import debug from 'debug';
 import * as core from '@actions/core';
 
 import type { ResolvedCPanyOption } from '@cpany/types';
-import { createInstance, IPlugin } from '@cpany/core';
+import { createFetcher, CPanyPlugin } from '@cpany/core';
 import { isDef, uniq } from '@cpany/utils';
 
 import { resolveCPanyPlugin } from './utils';
@@ -12,27 +12,26 @@ const debugCLI = debug('cpany:cli');
 
 export const isGithubActions = testGithubActions();
 
-export async function createCPany(option: ICliOption) {
-  const instance = createInstance({
+export async function createCPanyFetcher(option: ICliOption) {
+  return createFetcher({
     plugins: await getPluginSet(option.plugins, option.option),
     logger: isGithubActions ? core : undefined,
     logLevel: option.log
   });
-
-  return { instance };
 }
 
 async function getPluginSet(
   plugins: string[],
   option: ResolvedCPanyOption
-): Promise<Array<IPlugin | IPlugin[]>> {
-  debug('cpany:cli')(`Plugins: ${plugins.join(', ')}`);
+): Promise<Array<CPanyPlugin | CPanyPlugin[]>> {
+  debugCLI(typeof plugins);
+  debugCLI(`Plugins: ${plugins.join(', ')}`);
 
-  const resolvedPlugins: Array<IPlugin | IPlugin[]> = [];
+  const resolvedPlugins: Array<CPanyPlugin | CPanyPlugin[]> = [];
   for (const pluginName of uniq(plugins)) {
     const pluginDir = resolveCPanyPlugin(pluginName);
     if (!!pluginDir) {
-      debugCLI(`Plugin [${pluginName}] => ${pluginDir.directory}`);
+      debugCLI(`import plugin [${pluginName}] => ${pluginDir.directory}`);
       const pluginModule = await import(pluginDir.directory);
       const plugin = await pluginModule.default(option);
       resolvedPlugins.push(plugin);

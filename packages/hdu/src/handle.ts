@@ -1,4 +1,4 @@
-import type { IPlugin, ILogger } from '@cpany/core';
+import type { QueryPlugin, Logger } from '@cpany/core';
 import type { IHandleWithHdu } from '@cpany/types/hdu';
 import { ISubmission, ParticipantType, Verdict } from '@cpany/types';
 
@@ -16,31 +16,19 @@ export function addToCache(handle: IHandleWithHdu) {
   }
 }
 
-export function createHduHandlePlugin(): IPlugin {
-  const name = 'hdu/handle';
-  const gid = (id: string) => name + '/' + id + '.json';
+export function createHduHandlePlugin(): QueryPlugin {
   return {
-    name,
-    resolveKey({ id, type }) {
-      if (type === name) {
-        return gid(id);
-      }
-    },
-    async transform({ id, type }, { logger }) {
-      if (type === name) {
-        const handle = await fetchHandle(id, logger);
-        handle.submissions = await fetchSubmissions(handle, logger);
-        return {
-          key: gid(id),
-          content: JSON.stringify(handle, null, 2)
-        };
-      }
-      return null;
+    name: 'handle',
+    platform: 'hdu',
+    async query(id: string, { logger }) {
+      const handle = await fetchHandle(id, logger);
+      handle.submissions = await fetchSubmissions(handle, logger);
+      return JSON.stringify(handle, null, 2);
     }
   };
 }
 
-export async function fetchHandle(handle: string, logger: ILogger): Promise<IHandleWithHdu> {
+export async function fetchHandle(handle: string, logger: Logger): Promise<IHandleWithHdu> {
   if (handles.has(handle)) return handles.get(handle)!;
 
   logger.info(`Fetch: Hdu handle ${handle}`);
@@ -60,7 +48,7 @@ export async function fetchHandle(handle: string, logger: ILogger): Promise<IHan
 
 export async function fetchSubmissions(
   handle: IHandleWithHdu,
-  logger: ILogger
+  logger: Logger
 ): Promise<ISubmission[]> {
   const latestSubId = handle.submissions.length > 0 ? handle.submissions[0].id : -1;
   const subs: ISubmission[] = [];

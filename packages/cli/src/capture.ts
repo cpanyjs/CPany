@@ -21,7 +21,7 @@ export async function capture(port: number, option: ICliExportOption): Promise<v
     `${bold('  CPany')} ${cyan(`v${version}`)} ${isInstalledGlobally ? yellow('(global)') : ''}`
   );
   console.log();
-  console.log(`${dim('  Data  ')} ${green(option.data)}`);
+  console.log(`${dim('  Data  ')} ${green(option.dataRoot)}`);
   console.log(`${dim('  Page  ')} ${green('/' + page)}`);
 
   const url = `http://localhost:${port}/${page}`;

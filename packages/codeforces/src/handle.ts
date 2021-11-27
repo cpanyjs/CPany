@@ -1,62 +1,55 @@
 import type { AxiosInstance } from 'axios';
 
-import type { ITransformPlugin } from '@cpany/core';
+import type { QueryPlugin } from '@cpany/core';
 import type { ISubmission } from '@cpany/types';
 import type { HandleDTO, SubmissionDTO, IHandleWithCodeforces } from '@cpany/types/codeforces';
 
 import { codeforces } from './constant';
 
-export function handleInfoPlugin(api: AxiosInstance): ITransformPlugin {
-  const name = 'codeforces/handle';
-  const gid = (id: string) => name + '/' + id + '.json';
+export function handleInfoPlugin(api: AxiosInstance): QueryPlugin {
   return {
-    name,
-    resolveKey({ id, type }) {
-      if (type === name) {
-        return gid(id);
-      }
-    },
-    async transform({ id, type }) {
-      if (type === name) {
-        const fetchInfo = async (): Promise<IHandleWithCodeforces> => {
-          const {
-            data: {
-              result: [data]
-            }
-          } = await api.get<{ result: HandleDTO[] }>('user.info', {
-            params: {
-              handles: id
-            }
-          });
+    name: 'handle',
+    platform: codeforces,
+    async query(handle: string) {
+      const fetchInfo = async (): Promise<IHandleWithCodeforces> => {
+        const {
+          data: {
+            result: [data]
+          }
+        } = await api.get<{ result: HandleDTO[] }>('user.info', {
+          params: {
+            handles: handle
+          }
+        });
 
-          const meta =
-            !!data.rank && !!data.maxRank
-              ? {
-                  codeforces: {
-                    rank: data.rank,
-                    rating: data.rating,
-                    maxRank: data.maxRank,
-                    maxRating: data.maxRating
-                  }
+        const meta =
+          !!data.rank && !!data.maxRank
+            ? {
+                codeforces: {
+                  rank: data.rank,
+                  rating: data.rating,
+                  maxRank: data.maxRank,
+                  maxRating: data.maxRating
                 }
-              : {};
+              }
+            : {};
 
-          return {
-            type: name,
-            handle: data.handle,
-            handleUrl: `https://codeforces.com/profile/${data.handle}`,
-            avatar: data.titlePhoto,
-            submissions: [],
-            ...meta
-          };
+        return {
+          type: codeforces,
+          handle: data.handle,
+          handleUrl: `https://codeforces.com/profile/${data.handle}`,
+          avatar: data.titlePhoto,
+          submissions: [],
+          ...meta
         };
+      };
 
         const fetchSubmission = async (): Promise<ISubmission[]> => {
           const {
             data: { result }
           } = await api.get<{ result: SubmissionDTO[] }>('user.status', {
             params: {
-              handle: id
+              handle: handle
             }
           });
 
@@ -98,11 +91,7 @@ export function handleInfoPlugin(api: AxiosInstance): ITransformPlugin {
         const data = await fetchInfo();
         data.submissions = await fetchSubmission();
 
-        return {
-          key: gid(id),
-          content: JSON.stringify(data, null, 2)
-        };
-      }
+        return JSON.stringify(data, null, 2);
     }
   };
 }

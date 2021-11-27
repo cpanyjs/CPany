@@ -1,10 +1,7 @@
-import fs from 'fs';
-import path from 'path';
 import axios from 'axios';
 
-import type { IPlugin } from '@cpany/core';
+import type { CPanyPlugin } from '@cpany/core';
 import { ICPanyPluginConfig, IContest, isAtCoder } from '@cpany/types';
-import { listFiles } from '@cpany/utils';
 
 import { createAtCoderHandlePlugin } from './handle';
 import { addContests, createAtCoderContestPlugin } from './contest';
@@ -18,8 +15,7 @@ function loadCookie(): string {
   return session!;
 }
 
-export function atcoderPlugin(config: ICPanyPluginConfig): IPlugin[] {
-  loadContest(config);
+export function atcoderPlugin(config: ICPanyPluginConfig): CPanyPlugin[] {
   const handleMap = loadHandleMap(config);
 
   const cookie = loadCookie();
@@ -35,29 +31,22 @@ export function atcoderPlugin(config: ICPanyPluginConfig): IPlugin[] {
     createAtCoderHandlePlugin(api),
     createAtCoderContestPlugin(api, handleMap),
     {
-      name: 'atcoder/clean',
-      async clean() {
-        const fullPath = path.resolve(config.dataRoot, 'atcoder/handle');
-        const files: string[] = [];
-        for await (const file of listFiles(fullPath)) {
-          files.push(file);
+      name: 'cache',
+      platform: 'atcoder',
+      async cache(ctx) {
+        const contests: IContest[] = await ctx.readJsonFile('contest.json');
+        addContests(contests);
+
+        const handles = await ctx.listDir('handle');
+        for (const handle of handles) {
+          await ctx.removeFile(handle);
         }
-        return { files };
       }
     }
   ];
 }
 
 export default atcoderPlugin;
-
-function loadContest(config: ICPanyPluginConfig) {
-  try {
-    const contests = JSON.parse(
-      fs.readFileSync(path.resolve(config.dataRoot, 'atcoder/contest.json'), 'utf-8')
-    ) as IContest[];
-    addContests(contests);
-  } catch {}
-}
 
 function loadHandleMap(config: ICPanyPluginConfig) {
   const handleMap = new Map<string, string>();

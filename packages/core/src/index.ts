@@ -1,4 +1,4 @@
-export * from './cpany';
+export * from './fetch';
 
 export * from './retry';
 
@@ -8,4 +8,4 @@ export * from './options';
 
 export * from './constant';
 
-export { ILogger, createDefaultLogger } from './utils';
+export * from './logger';

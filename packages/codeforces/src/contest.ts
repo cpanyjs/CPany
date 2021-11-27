@@ -1,6 +1,6 @@
 import type { AxiosInstance } from 'axios';
 
-import type { ILoadPlugin } from '@cpany/core';
+import type { FetchPlugin } from '@cpany/core';
 import type { IContest } from '@cpany/types';
 import type { ContestDTO } from '@cpany/types/codeforces';
 
@@ -36,31 +36,28 @@ function transformGymContestInfo(contest: ContestDTO): IContest {
   };
 }
 
-export function contestListPlugin(api: AxiosInstance): ILoadPlugin {
-  const name = 'codeforces/contest.json';
+export function contestListPlugin(api: AxiosInstance): FetchPlugin {
   return {
-    name,
-    async load(id) {
-      if (id === name) {
-        const {
-          data: { result }
-        } = await api.get('contest.list');
-        return JSON.stringify(
-          result.map(transformContestInfo).filter(({ phase }: IContest) => phase === 'FINISHED'),
-          null,
-          2
-        );
-      }
+    name: 'contest',
+    platform: codeforces,
+    async fetch() {
+      const {
+        data: { result }
+      } = await api.get('contest.list');
+      return JSON.stringify(
+        result.map(transformContestInfo).filter(({ phase }: IContest) => phase === 'FINISHED'),
+        null,
+        2
+      );
     }
   };
 }
 
-export function gymContestListPlugin(api: AxiosInstance): ILoadPlugin {
-  const name = 'codeforces/gym-contest.json';
+export function gymContestListPlugin(api: AxiosInstance): FetchPlugin {
   return {
-    name,
-    async load(id) {
-      if (id === name) {
+    name: 'gym-contest',
+    platform: codeforces,
+    async fetch() {
         const {
           data: { result }
         } = await api.get('contest.list', { params: { gym: true } });
@@ -69,7 +66,6 @@ export function gymContestListPlugin(api: AxiosInstance): ILoadPlugin {
           null,
           2
         );
-      }
     }
   };
 }

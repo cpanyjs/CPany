@@ -4,28 +4,18 @@ import { decode } from 'html-entities';
 
 import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
 import { ISubmission, ParticipantType, Verdict } from '@cpany/types';
-import { IPlugin, ILogger, createRetryContainer } from '@cpany/core';
+import { QueryPlugin, Logger, createRetryContainer } from '@cpany/core';
 
 import { addContestPractice, pushContest } from './contest';
 
-export function createAtCoderHandlePlugin(api: AxiosInstance): IPlugin {
-  const name = 'atcoder/handle';
-  const gid = (id: string) => name + '/' + id + '.json';
+export function createAtCoderHandlePlugin(api: AxiosInstance): QueryPlugin {
   return {
-    name,
-    resolveKey({ id, type }) {
-      if (type === name) {
-        return gid(id);
-      }
-      return null;
-    },
-    async transform({ id, type }, { logger }) {
-      if (type === name) {
-        const user = await fetchUser(api, id);
-        user.submissions = await fetchSubmissions(api, id, logger);
-        return { key: gid(id), content: JSON.stringify(user, null, 2) };
-      }
-      return null;
+    name: 'handle',
+    platform: 'atcoder',
+    async query(id, { logger }) {
+      const user = await fetchUser(api, id);
+      user.submissions = await fetchSubmissions(api, id, logger);
+      return JSON.stringify(user, null, 2);
     }
   };
 }
@@ -74,7 +64,7 @@ async function fetchUser(api: AxiosInstance, id: string): Promise<IHandleWithAtC
 async function fetchSubmissions(
   api: AxiosInstance,
   id: string,
-  logger: ILogger
+  logger: Logger
 ): Promise<ISubmission[]> {
   const { data } = await api.get('/users/' + id + '/history');
   const root = parse(data);

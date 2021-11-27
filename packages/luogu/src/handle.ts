@@ -1,4 +1,4 @@
-import { IPlugin, ILogger } from '@cpany/core';
+import { QueryPlugin, Logger } from '@cpany/core';
 import { IHandle, ISubmission, Verdict, ParticipantType } from '@cpany/types';
 import type { IHandleWithLuogu, UserDataDto, RecordListDto } from '@cpany/types/luogu';
 
@@ -10,19 +10,11 @@ export function addToCache(handle: IHandle) {
   cache.set(handle.handle, handle.submissions);
 }
 
-export function createLuoguHandlePlugin(api: AxiosInstance): IPlugin {
-  const name = 'luogu/handle';
-  const gid = (id: string) => name + '/' + id + '.json';
+export function createLuoguHandlePlugin(api: AxiosInstance): QueryPlugin {
   return {
-    name,
-    resolveKey({ id, type }) {
-      if (type === name) {
-        return gid(id);
-      }
-      return null;
-    },
-    async transform({ id, type }, { logger }) {
-      if (type === name) {
+    name: 'luogu',
+    platform: 'luogu',
+    async query(id, { logger }) {
         const user = await fetchUser(api, id);
         try {
           user.submissions = await fetchSubmissions(api, user.luogu.name, id, logger);
@@ -30,9 +22,7 @@ export function createLuoguHandlePlugin(api: AxiosInstance): IPlugin {
           logger.error(`Error: fail to fetch submissions of Luogu handle ${id}`);
           logger.error((error as any).message);
         }
-        return { key: gid(id), content: JSON.stringify(user, null, 2) };
-      }
-      return null;
+        return JSON.stringify(user, null, 2)
     }
   };
 }
@@ -58,7 +48,7 @@ async function fetchSubmissions(
   api: AxiosInstance,
   name: string,
   id: string,
-  logger: ILogger
+  logger: Logger
 ): Promise<ISubmission[]> {
   const preSubs: ISubmission[] = cache.get(id) ?? [];
   const maxId = preSubs.length > 0 ? preSubs[0].id : 0;

@@ -1,9 +1,7 @@
-import path from 'path';
 import axios from 'axios';
 
-import type { IPlugin } from '@cpany/core';
-import { ICPanyPluginConfig, IHandle, isLuogu } from '@cpany/types';
-import { listJsonFiles } from '@cpany/utils';
+import type { CPanyPlugin } from '@cpany/core';
+import { ICPanyPluginConfig, IHandle } from '@cpany/types';
 
 import type { ICookie } from './type';
 import { addToCache, createLuoguHandlePlugin } from './handle';
@@ -22,15 +20,8 @@ function loadCookie(): ICookie {
   return { clientId, uid };
 }
 
-export async function luoguPlugin(config: ICPanyPluginConfig): Promise<IPlugin[]> {
+export function luoguPlugin(_option: ICPanyPluginConfig): CPanyPlugin[] {
   const cookie = loadCookie();
-
-  const handlePath = path.join(config.dataRoot, 'luogu', 'handle');
-  for await (const handle of listJsonFiles<IHandle>(handlePath)) {
-    if (isLuogu(handle)) {
-      addToCache(handle);
-    }
-  }
 
   const api = axios.create({
     baseURL: 'https://www.luogu.com.cn/',
@@ -40,7 +31,15 @@ export async function luoguPlugin(config: ICPanyPluginConfig): Promise<IPlugin[]
     }
   });
 
-  return [createLuoguHandlePlugin(api)];
+  return [{
+    name: 'cache',
+    platform: 'luogu',
+    async cache(ctx) {
+      for (const handle of await ctx.readJsonDir<IHandle>('handle')) {
+        addToCache(handle);
+      }
+    }
+  }, createLuoguHandlePlugin(api)];
 }
 
 export default luoguPlugin;
