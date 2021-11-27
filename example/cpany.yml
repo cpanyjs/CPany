@@ -13,20 +13,7 @@ users:
     handle/atcoder: jiangly
     handle/luogu: '149656'
 
-handles:
-  - luogu/handle
-  - hdu/handle
-
 contests:
-  - nowcoder
-
-fetch:
-  - codeforces/contest.json
-  - codeforces/gym-contest.json
-  - atcoder/contest.json
-
-static:
-  - atcoder/contest.json
   - nowcoder
 
 app:

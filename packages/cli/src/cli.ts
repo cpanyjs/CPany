@@ -34,14 +34,7 @@ function resolveOption(dataPath: string | undefined, option: ICliOption) {
   const content = fs.readFileSync(optionPath, 'utf8');
   const cpanyOption = load(content) as CPanyOption;
 
-  option.rawOption = cpanyOption;
   option.option = resolveCPanyOption(option.dataRoot, cpanyOption);
-
-  const absolute = (pathes: string[]) => {
-    return pathes.map((p) => path.resolve(option.dataRoot, p));
-  };
-  option.option.static.handles = absolute(option.option.static.handles);
-  option.option.static.contests = absolute(option.option.static.contests);
 
   // Single plugin cli argument
   if (typeof option.plugins === 'string') {
@@ -49,7 +42,6 @@ function resolveOption(dataPath: string | undefined, option: ICliOption) {
   }
   if (!option.plugins) {
     option.plugins = cpanyOption.plugins ?? ['codeforces'];
-    delete cpanyOption['plugins'];
   }
 
   // @ts-ignore

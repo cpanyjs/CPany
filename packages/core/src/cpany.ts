@@ -1,4 +1,4 @@
-import { IUser, IHandle, IContest, ResolvedCPanyOption, Key } from '@cpany/types';
+import { IUser, IHandle, IContest, ResolvedCPanyOption, Key, ParticipantType } from '@cpany/types';
 
 import type { CreateOptions, CPanyInstance, FSOperations, FSEventType } from './types';
 import { DefaultMaxRetry } from './constant';
@@ -27,7 +27,7 @@ export function createCPany(option: CreateOptions): CPanyInstance {
 
   function createFetchContext(platform: string): FetchContext {
     return {
-      logger: buildLogger(platform),
+      logger: buildLogger(platform.length > 0 ? platform : 'main'),
       async readJsonFile(filename: string) {
         const readFile = getFSFn('read');
         if (!!readFile) {
@@ -304,6 +304,55 @@ export function createCPany(option: CreateOptions): CPanyInstance {
     for (const plugin of container.load()) {
       const context = createLoadContext(plugin.platform);
       await plugin.load(option, context);
+    }
+
+    {
+      // Load static contest
+      const staticContests: IContest[] = [];
+      const staticLoadCtx = createLoadContext('');
+      for (const dir of option.static.contests) {
+        const contests = await staticLoadCtx.readJsonDir<IContest>(dir);
+        for (const contest of contests) {
+          contest.inlinePage = true;
+          staticContests.push(contest);
+        }
+      }
+
+      const indexed = genKey(staticContests);
+      for (const contest of indexed) {
+        staticLoadCtx.addContest(contest);
+        // Use username to push static contest
+        for (const standing of contest.standings ?? []) {
+          // skip PRACTICE contest participant
+          if (standing.author.participantType === ParticipantType.PRACTICE) continue;
+
+          const push = (name?: string) => {
+            if (!name) return false;
+            const user = userMap.get(name);
+            if (user !== null && user !== undefined) {
+              contest.participantNumber++;
+              user.contests.push({
+                author: standing.author,
+                ...contest
+              });
+              return true;
+            }
+            return false;
+          };
+
+          // use teamName or members
+          if (push(standing.author.teamName)) continue;
+          for (const member of standing.author.members) {
+            push(member);
+          }
+        }
+      }
+
+      // Load static handle
+      for (const dir of option.static.handles) {
+        const handles = await staticLoadCtx.readJsonDir<IHandle>(dir);
+        staticLoadCtx.addHandle(...handles);
+      }
     }
 
     const indexedHandles = genKey(handles);

@@ -1,4 +1,4 @@
-import { CPanyOption, ResolvedCPanyOption } from '@cpany/types';
+import { ResolvedCPanyOption } from '@cpany/types';
 
 export interface ICliOption {
   /**
@@ -12,11 +12,6 @@ export interface ICliOption {
    * Resolved CPany Option
    */
   option: ResolvedCPanyOption;
-
-  /**
-   * Raw CPany Option from cpany.yml
-   */
-  rawOption: CPanyOption;
 
   /**
    * CPany Plugins
