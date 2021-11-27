@@ -1,4 +1,4 @@
-import { ResolvedCPanyOption } from '@cpany/types';
+import { IContest, IHandle, IUser, ResolvedCPanyOption } from '@cpany/types';
 
 import { Logger, LogLevel } from './logger';
 import { CPanyPlugin } from './plugin';
@@ -18,7 +18,11 @@ export interface CPanyInstance extends FSOperations {
 
   fetchAll: (option: ResolvedCPanyOption) => Promise<void>;
 
-  loadAll: (option: ResolvedCPanyOption) => Promise<void>;
+  loadAll: (option: ResolvedCPanyOption) => Promise<{
+    handles: IHandle[];
+    contests: IContest[];
+    users: IUser[];
+  }>;
 
   cache: () => Promise<void>;
 

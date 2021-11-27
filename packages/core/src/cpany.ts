@@ -1,4 +1,4 @@
-import { ResolvedCPanyOption } from '@cpany/types';
+import { IUser, IHandle, IContest, ResolvedCPanyOption } from '@cpany/types';
 
 import type { CreateOptions, CPanyInstance, FSOperations, FSEventType } from './types';
 import { DefaultMaxRetry } from './constant';
@@ -239,14 +239,50 @@ export function createCPany(option: CreateOptions): CPanyInstance {
   };
 
   const loadAll = async (option: ResolvedCPanyOption) => {
+    const handles: IHandle[] = [];
+    const contests: IContest[] = [];
+    const users: IUser[] = [];
+
     function createLoadContext(platform: string): LoadContext {
-      return { ...createFetchContext(platform) };
+      return {
+        ...createFetchContext(platform),
+        addHandle(...newHandles: IHandle[]) {
+          handles.push(...newHandles);
+        },
+        addContest(...newContests: IContest[]) {
+          contests.push(...newContests);
+        },
+        findHandle(platform: string, name: string) {
+          // TODO: user hashmap
+          for (const handle of handles) {
+            if (handle.type === platform && handle.handle === name) {
+              return handle;
+            }
+          }
+          return undefined;
+        },
+        findUser(name: string) {
+          // TODO: user hashmap
+          for (const user of users) {
+            if (user.name === name) {
+              return user;
+            }
+          }
+          return undefined;
+        }
+      };
     }
 
     for (const plugin of container.load()) {
       const context = createLoadContext(plugin.platform);
       await plugin.load(option, context);
     }
+
+    return {
+      handles,
+      contests,
+      users
+    };
   };
 
   return {
