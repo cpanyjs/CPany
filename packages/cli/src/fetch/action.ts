@@ -39,7 +39,7 @@ export async function run(option: ICliOption) {
     const fullPath = path.join(option.dataRoot, ...paths);
     await fs.promises.mkdir(path.dirname(fullPath), { recursive: true }).catch(() => {});
     await fs.promises.writeFile(fullPath, content, 'utf-8');
-    fetcher.logger.info(`Write: ${slash(fullPath)} (size: ${content.length} B)`);
+    fetcher.logger.info(`Write: ${slash(fullPath)} (size: ${binarySize(content)})`);
   });
   fetcher.on('remove', async (...paths: string[]) => {
     const fullPath = path.join(option.dataRoot, ...paths);
@@ -64,4 +64,17 @@ export async function run(option: ICliOption) {
   }
   // TODO: push
   // await fs.push(format(nowTime, 'yyyy-MM-dd HH:mm'));
+}
+
+function getBinarySize(text: string) {
+  return Buffer.byteLength(text, 'utf8');
+}
+
+function binarySize(text: string) {
+  const size = getBinarySize(text);
+  if (size < 1024) {
+    return `${text} B`;
+  } else {
+    return `${(size / 1024).toFixed(2)} KB`;
+  }
 }

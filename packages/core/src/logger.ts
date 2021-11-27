@@ -84,7 +84,7 @@ export function createLogger(
       if (logger) {
         logger.startGroup(name);
       } else {
-        console.log(`Group -> ${name}:`);
+        console.log(`--- ${name} ---`);
       }
     },
     endGroup() {

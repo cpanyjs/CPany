@@ -181,7 +181,7 @@ export function createCPany(option: CreateOptions): CPanyInstance {
           const ctx = createFetchContext(plugin.platform);
 
           pushTask(plugin, async () => {
-            ctx.logger.info(`Fetch: ${handle.platform}/${plugin.name}/${handle.handle}`);
+            ctx.logger.info(`Fetch: ${handle.platform} -> ${plugin.name}: ${handle.handle}`);
 
             const result = await plugin.query(handle.handle, ctx);
 
@@ -211,7 +211,7 @@ export function createCPany(option: CreateOptions): CPanyInstance {
       const ctx = createFetchContext(plugin.platform);
 
       pushTask(plugin, async () => {
-        ctx.logger.info(`Fetch: ${plugin.platform}/${plugin.name}`);
+        ctx.logger.info(`Fetch: ${plugin.platform} -> ${plugin.name}`);
 
         const result = await plugin.fetch(ctx);
 
