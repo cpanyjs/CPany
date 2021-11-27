@@ -49,7 +49,9 @@ export function loadCodeforcesPlugin(): LoadPlugin {
       }
 
       for (const contest of contests) {
-        ctx.addContest(contest);
+        if (!/[а-яА-ЯЁё]/.test(contest.name) || contest.participantNumber > 0) {
+          ctx.addContest(contest);
+        }
       }
       for (const contest of gymContests) {
         if (contest.participantNumber > 0) {
