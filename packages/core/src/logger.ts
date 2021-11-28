@@ -85,7 +85,7 @@ export function createLogger(
     warning(message) {
       if (logLevel === 'warn') {
         if (logger) {
-          logger.warning(addPrefix(message));
+          logger.warning('\n' + addPrefix(message));
         } else {
           console.warn(addPrefix(message));
         }
@@ -94,7 +94,8 @@ export function createLogger(
     error(message) {
       if (logLevel === 'warn' || logLevel === 'error') {
         if (logger) {
-          logger.error(addPrefix(message));
+          // new line for github actions
+          logger.error('\n' + addPrefix(message));
         } else {
           console.error(addPrefix(message));
         }
