@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import debug from 'debug';
 import { lightRed, dim, underline } from 'kolorist';
-import core from '@actions/core';
+import * as core from '@actions/core';
 
 import type { LogLevel } from '@cpany/types';
 
