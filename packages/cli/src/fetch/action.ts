@@ -1,8 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import debug from 'debug';
-import { lightRed, dim, underline } from 'kolorist';
 import * as core from '@actions/core';
+import { zonedTimeToUtc } from 'date-fns-tz';
+import { lightRed, dim, underline } from 'kolorist';
 
 import type { LogLevel } from '@cpany/types';
 
@@ -56,7 +57,7 @@ export async function run(option: ICliOption) {
   debugFetch(nowTime);
 
   if (isGithubActions) {
-    core.exportVariable('FETCH_TIME', nowTime.toUTCString());
+    core.exportVariable('FETCH_TIME', zonedTimeToUtc(nowTime, 'Asia/Shanghai'));
   }
 
   try {
