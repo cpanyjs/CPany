@@ -54,4 +54,4 @@ jobs:
           ref: cpany
           path: .cpany
       - name: Fetch Data
-        run: pnpx cpany fetch ./.cpany/ --plugins codeforces hdu
+        run: pnpx cpany fetch ./.cpany/ --plugin codeforces hdu
