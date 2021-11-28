@@ -2,7 +2,7 @@
   --font-family-base: apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
-  --font-family-mono: 'Fira Code Regular', source-code-pro, Menlo, Monaco, Consolas,
+  --font-family-mono: Consolas, 'Fira Code Regular', source-code-pro, Menlo, Monaco,
     'Courier New', monospace;
 
   --text-light-1: #2c3e50;

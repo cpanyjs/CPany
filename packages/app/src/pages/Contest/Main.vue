@@ -24,8 +24,10 @@
       </template>
     </c-table>
 
-    <div class="mt-4 flex justify-center">
+    <div class="mt-4 flex justify-between items-center">
+      <div></div>
       <c-button @click="displayMore" success>↓ 浏览更多</c-button>
+      <div class="text-gray-400 pr-4">共 <span class="font-mono">{{ length }}</span> 场比赛</div>
     </div>
   </div>
 </template>
@@ -60,4 +62,6 @@ const displayMore = () => {
   displayContests.value.push(...contests.slice(curLength, curLength + unit));
   store(displayContests.value.length);
 };
+
+const length = contests.length;
 </script>

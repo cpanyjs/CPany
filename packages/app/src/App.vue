@@ -25,8 +25,8 @@
   </div>
 
   <footer class="px-1 py-6">
-    <div class="text-center text-gray-400 font-mono">
-      <div class="flex items-center justify-center my-2">
+    <div class="text-center text-gray-400">
+      <div class="flex items-center justify-center my-2 font-mono">
         <div class="mr-2">
           <a class="text-$text-light-1" href="https://github.com/" target="_blank"
             ><icon-github class="align-middle"></icon-github
@@ -43,10 +43,12 @@
         </div>
       </div>
       <p v-if="fetchTime && fetchTime !== ''">
-        <span>更新时间: {{ toDate(+fetchTime).value }}</span>
+        <span>更新时间</span>
+        <span class="font-mono">: {{ toDate(+fetchTime).value }}</span>
       </p>
       <p v-if="buildTime && buildTime !== ''" class="mt-2">
-        <span>构建时间: {{ toDate(+buildTime).value }}</span>
+        <span>构建时间</span>
+        <span class="font-mono">: {{ toDate(+buildTime).value }}</span>
       </p>
       <p class="mt-2">
         <a href="https://github.com/cpanyjs/CPany/blob/master/LICENSE" target="_blank">MIT</a>
