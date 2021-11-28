@@ -197,8 +197,10 @@ importers:
   packages/core:
     specifiers:
       '@cpany/types': workspace:*
+      kolorist: ^1.5.0
     dependencies:
       '@cpany/types': link:../types
+      kolorist: 1.5.0
 
   packages/hdu:
     specifiers:

@@ -1,3 +1,23 @@
+import {
+  black,
+  red,
+  green,
+  yellow,
+  blue,
+  magenta,
+  cyan,
+  gray,
+  lightGray,
+  lightRed,
+  lightGreen,
+  lightYellow,
+  lightBlue,
+  lightMagenta,
+  lightCyan,
+  bold
+} from 'kolorist';
+import { shuffle } from './utils';
+
 type LogFn = (message: string) => void;
 
 export type LogLevel = 'warn' | 'error' | 'silent';
@@ -31,7 +51,7 @@ export function createLogger(
 
   const prefix = () => {
     if (!!context) {
-      return `[ ${context} ] `;
+      return `${context} `;
     } else {
       return '';
     }
@@ -84,7 +104,7 @@ export function createLogger(
       if (logger) {
         logger.startGroup(name);
       } else {
-        console.log(`--- ${name} ---`);
+        console.log(black(bold(`--- ${name} ---`)));
       }
     },
     endGroup() {
@@ -97,19 +117,45 @@ export function createLogger(
   };
 }
 
+const colorList = shuffle([
+  red,
+  green,
+  yellow,
+  blue,
+  magenta,
+  cyan,
+  gray,
+  lightGray,
+  lightRed,
+  lightGreen,
+  lightYellow,
+  lightBlue,
+  lightMagenta,
+  lightCyan
+]);
+
 export function createLoggerFactory(contexts: string[], logLevel?: LogLevel, logger?: Logger) {
   const maxLength = contexts.reduce((len, ctx) => Math.max(len, ctx.length), 0);
   const loggers = new Map(
-    contexts
-      .map((context) => context + ' '.repeat(maxLength - context.length))
-      .map((context) => [context, createLogger({ logLevel, context }, logger)])
+    contexts.map((context, index) => [
+      context,
+      createLogger(
+        {
+          logLevel,
+          context:
+            colorList[index % colorList.length](bold(context)) +
+            ' '.repeat(maxLength - context.length)
+        },
+        logger
+      )
+    ])
   );
   return (context: string) => {
     if (loggers.has(context)) {
       return loggers.get(context)!;
     } else {
       return createLogger(
-        { logLevel, context: context + ' '.repeat(Math.max(0, maxLength - context.length)) },
+        { logLevel, context: bold(context) + ' '.repeat(Math.max(0, maxLength - context.length)) },
         logger
       );
     }

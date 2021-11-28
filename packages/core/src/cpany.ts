@@ -1,4 +1,5 @@
 import { IUser, IHandle, IContest, ResolvedCPanyOption, Key, ParticipantType } from '@cpany/types';
+import { lightRed } from 'kolorist';
 
 import type { CreateOptions, CPanyInstance, FSOperations, FSEventType } from './types';
 import { DefaultMaxRetry } from './constant';
@@ -152,13 +153,16 @@ export function createCPany(option: CreateOptions): CPanyInstance {
           } catch (error: any) {
             const msg = error.message;
             if (typeof msg === 'string') {
-              logger.error(`Error: ${msg}`);
+              logger.error(`${lightRed('Error:')} ${msg}`);
             } else {
-              logger.error(`Error: unknown`);
+              logger.error(`${lightRed('Error:')} unknown`);
             }
             await sleep(random(1000, 2000));
           }
         }
+        // Retry all fail
+        logger.error(lightRed(`Error: This task has failed ${DefaultMaxRetry} times`));
+        process.exit(1);
       };
 
       if (plugin.enforce === 'pre') {
@@ -181,7 +185,7 @@ export function createCPany(option: CreateOptions): CPanyInstance {
           const ctx = createFetchContext(plugin.platform);
 
           pushTask(plugin, async () => {
-            ctx.logger.info(`Fetch: ${handle.platform} -> ${plugin.name}: ${handle.handle}`);
+            ctx.logger.info(`Fetch: ${plugin.name}/${handle.handle}`);
 
             const result = await plugin.query(handle.handle, ctx);
 
@@ -211,7 +215,7 @@ export function createCPany(option: CreateOptions): CPanyInstance {
       const ctx = createFetchContext(plugin.platform);
 
       pushTask(plugin, async () => {
-        ctx.logger.info(`Fetch: ${plugin.platform} -> ${plugin.name}`);
+        ctx.logger.info(`Fetch: ${plugin.name}`);
 
         const result = await plugin.fetch(ctx);
 
