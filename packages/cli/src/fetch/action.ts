@@ -58,7 +58,10 @@ export async function run(option: ICliOption) {
   debugFetch(nowTime);
 
   if (isGithubActions) {
-    core.exportVariable('FETCH_TIME', format(zonedTimeToUtc(nowTime, 'Asia/Shanghai'), 'yyyy-MM-dd HH:mm'));
+    core.exportVariable(
+      'FETCH_TIME',
+      format(zonedTimeToUtc(nowTime, 'Asia/Shanghai'), 'yyyy-MM-dd HH:mm')
+    );
   }
 
   try {
