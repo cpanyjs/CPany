@@ -30,7 +30,7 @@ jobs:
         with:
           path: .cpany
       - name: Fetch Data
-        run: pnpx cpany fetch ./.cpany/ --plugins codeforces hdu
+        run: pnpx cpany fetch ./.cpany/ --plugin codeforces hdu
       - name: Push
         run: |
           git config user.name "${{ github.actor }}"
