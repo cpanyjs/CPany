@@ -215,7 +215,7 @@ export function createCPany(option: CreateOptions): CPanyInstance {
       const ctx = createFetchContext(plugin.platform);
 
       pushTask(plugin, async () => {
-        ctx.logger.info(`Fetch: ${plugin.name}`);
+        ctx.logger.info(`Fetch: ${bold(plugin.name)}`);
 
         const result = await plugin.fetch(ctx);
 
