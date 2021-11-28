@@ -76,7 +76,7 @@ function getBinarySize(text: string) {
 function binarySize(text: string) {
   const size = getBinarySize(text);
   if (size < 1024) {
-    return `${text} B`;
+    return `${size} B`;
   } else {
     return `${(size / 1024).toFixed(2)} KB`;
   }
