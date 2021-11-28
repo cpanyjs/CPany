@@ -78,7 +78,7 @@ mkdir cpany-data
 cd cpany-data
 echo "users:" > cpany.yml
 echo "  tourist:" >> cpany.yml
-echo "    codeforces/handle: tourist" >> cpany.yml
+echo "    handle/codeforces: tourist" >> cpany.yml
 ```
 
 Fetch data, and start your static site.
