@@ -34,11 +34,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: cpany
-      - uses: actions/checkout@v2
-        with:
-          path: ./.cpany
       - uses: pnpm/action-setup@v2
         with:
           version: 6.23.2
@@ -50,7 +45,9 @@ jobs:
         run: |
           pnpm install
           pnpm build
-        working-directory: ./.cpany
+      - uses: actions/checkout@v2
+        with:
+          ref: cpany
+          path: .cpany
       - name: Fetch Data
-        run: pnpx cpany fetch ../ --plugins codeforces hdu
-        working-directory: ./.cpany
+        run: pnpx cpany fetch ./.cpany/ --plugins codeforces hdu
