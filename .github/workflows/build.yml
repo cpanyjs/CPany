@@ -47,7 +47,9 @@ jobs:
       - name: Fetch Data
         run: pnpx cpany fetch ./.cpany/ --plugins codeforces hdu
       - name: Export CPany Page Image
-        run: pnpx cpany export ./.cpany/
+        run: |
+          pnpm i -g capture-website-cli
+          pnpx cpany export ./.cpany/
       - name: Upload CPany Page Image
         uses: actions/upload-artifact@v2
         with:
