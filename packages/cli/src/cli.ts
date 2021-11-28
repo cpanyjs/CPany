@@ -20,7 +20,7 @@ import { resolveViteOptions } from './options';
 import { findFreePort, resolveImportPath, version } from './utils';
 
 const cli = cac('cpany')
-  .option('-p, --plugins [...plugins]', 'CPany plugins')
+  .option('-p, --plugin [...plugins]', 'CPany plugins')
   .option('--log <level>', 'warn | error | silent', { default: 'warn' });
 
 function resolveOption(dataPath: string | undefined, option: ICliOption) {
@@ -37,13 +37,20 @@ function resolveOption(dataPath: string | undefined, option: ICliOption) {
   option.option = resolveCPanyOption(option.dataRoot, cpanyOption);
 
   // Single plugin cli argument
-  if (typeof option.plugins === 'string') {
-    option.plugins = [option.plugins];
+  // @ts-ignore
+  if (typeof option.plugin === 'string') {
+    // @ts-ignore
+    option.plugins = [option.plugin];
+  } else {
+    // @ts-ignore
+    option.plugins = option.plugin;
   }
   if (!option.plugins) {
     option.plugins = cpanyOption.plugins ?? ['codeforces'];
   }
 
+  // @ts-ignore
+  delete option['plugin'];
   // @ts-ignore
   delete option['p'];
   // @ts-ignore
