@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import debug from 'debug';
 import * as core from '@actions/core';
+import format from 'date-fns/format';
 import { zonedTimeToUtc } from 'date-fns-tz';
 import { lightRed, dim, underline } from 'kolorist';
 
@@ -57,7 +58,7 @@ export async function run(option: ICliOption) {
   debugFetch(nowTime);
 
   if (isGithubActions) {
-    core.exportVariable('FETCH_TIME', zonedTimeToUtc(nowTime, 'Asia/Shanghai'));
+    core.exportVariable('FETCH_TIME', format(zonedTimeToUtc(nowTime, 'Asia/Shanghai'), 'yyyy-MM-dd HH:mm'));
   }
 
   try {
