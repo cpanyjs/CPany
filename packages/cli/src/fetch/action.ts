@@ -2,15 +2,15 @@ import fs from 'fs';
 import path from 'path';
 import debug from 'debug';
 import { lightRed, dim, underline } from 'kolorist';
+import core from '@actions/core';
 
 import type { LogLevel } from '@cpany/types';
 
 import type { ICliOption } from '../types';
-import { createCPany } from '../cpany';
+import { createCPany, isGithubActions } from '../cpany';
 import { now, slash, listDir } from '../utils';
 
 import { processReport } from './report';
-// import { createGitFileSystem } from './fs';
 
 const debugFetch = debug('cpany:fetch');
 
@@ -55,6 +55,10 @@ export async function run(option: ICliOption) {
   const nowTime = now();
   debugFetch(nowTime);
 
+  if (isGithubActions) {
+    core.exportVariable('FETCH_TIME', nowTime.toUTCString());
+  }
+
   try {
     await processReport(option.dataRoot, nowTime);
   } catch (error: any) {
@@ -65,8 +69,6 @@ export async function run(option: ICliOption) {
       fetcher.logger.error(`Error: unknown, when process report`);
     }
   }
-  // TODO: push
-  // await fs.push(format(nowTime, 'yyyy-MM-dd HH:mm'));
 }
 
 function getBinarySize(text: string) {
