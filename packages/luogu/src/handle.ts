@@ -13,7 +13,7 @@ export function addToCache(handle: IHandle) {
 
 export function createLuoguHandlePlugin(): QueryPlugin {
   return {
-    name: 'luogu',
+    name: 'handle',
     platform: luogu,
     async query(id, { logger }) {
       const api = getAPI();
