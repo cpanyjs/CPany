@@ -6,14 +6,15 @@ import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
 import { ISubmission, ParticipantType, Verdict } from '@cpany/types';
 import { QueryPlugin, Logger, createRetryContainer } from '@cpany/core';
 
-import { atcoder } from './constant';
+import { atcoder, getAPI } from './constant';
 import { addContestPractice, pushContest } from './contest';
 
-export function createAtCoderHandlePlugin(api: AxiosInstance): QueryPlugin {
+export function createAtCoderHandlePlugin(): QueryPlugin {
   return {
     name: 'handle',
     platform: atcoder,
     async query(id, { logger }) {
+      const api = getAPI();
       const user = await fetchUser(api, id);
       user.submissions = await fetchSubmissions(api, id, logger);
       return JSON.stringify(user, null, 2);

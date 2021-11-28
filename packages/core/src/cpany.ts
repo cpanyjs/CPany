@@ -252,22 +252,17 @@ export function createCPany(option: CreateOptions): CPanyInstance {
 
     const userMap = new Map(users.map((user) => [user.name, user]));
     const findUser = (name: string) => userMap.get(name);
-
-    function findHandle(platform: string, name: string) {
-      // TODO: user hashmap
-      for (const handle of handles) {
-        if (handle.type === platform && handle.handle === name) {
-          return handle;
-        }
-      }
-      return undefined;
-    }
+    const handleSet = createHandleSet();
+    const findHandle = (platform: string, name: string) => handleSet.findHandle(platform, name);
 
     function createLoadContext(platform: string): LoadContext {
       return {
         ...createFetchContext(platform),
         addHandle(...newHandles: IHandle[]) {
           handles.push(...newHandles);
+          for (const handle of newHandles) {
+            handleSet.addHandle(handle);
+          }
         },
         addContest(...newContests: Key<IContest>[]) {
           contests.push(...newContests);
@@ -276,6 +271,7 @@ export function createCPany(option: CreateOptions): CPanyInstance {
           const user = findUser(name);
           if (!!user) {
             if (!user.contests.find((c) => c.key === contest.key)) {
+              contest.participantNumber++;
               user.contests.push({ ...contest, author });
               return true;
             } else {
@@ -330,11 +326,7 @@ export function createCPany(option: CreateOptions): CPanyInstance {
             if (!name) return false;
             const user = userMap.get(name);
             if (user !== null && user !== undefined) {
-              contest.participantNumber++;
-              user.contests.push({
-                author: standing.author,
-                ...contest
-              });
+              staticLoadCtx.addUserContest(user.name, contest, standing.author);
               return true;
             }
             return false;
@@ -453,4 +445,40 @@ function genKey<T extends IContest | IHandle>(rawFiles: T[], sortFn?: (lhs: T, r
 
 function filterMap<T, U>(array: readonly T[], fn: (arg: T) => U | undefined): U[] {
   return array.map(fn).filter((u) => u !== undefined && u !== null) as U[];
+}
+
+function createHandleSet() {
+  const mapByType: Map<string, Map<string, IHandle>> = new Map();
+
+  const norm = (raw: string) => raw.split('/')[0];
+
+  const addHandle = (handle: IHandle) => {
+    const type = norm(handle.type);
+    if (mapByType.has(type)) {
+      mapByType.get(type)!.set(handle.handle, handle);
+    } else {
+      const map: Map<string, IHandle> = new Map();
+      map.set(handle.handle, handle);
+      mapByType.set(type, map);
+    }
+  };
+
+  const findHandle = (_type: string, handle: string) => {
+    const type = norm(_type);
+    if (mapByType.has(type)) {
+      const map = mapByType.get(type)!;
+      if (map.has(handle)) {
+        return map.get(handle)!;
+      } else {
+        return undefined;
+      }
+    } else {
+      return undefined;
+    }
+  };
+
+  return {
+    addHandle,
+    findHandle
+  };
 }

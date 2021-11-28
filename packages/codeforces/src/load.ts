@@ -36,8 +36,8 @@ export function loadCodeforcesPlugin(): LoadPlugin {
             const contest = findRound(contestId)!;
 
             const username = ctx.findUsername(handle.type, handle.handle);
-            if (username && ctx.addUserContest(username, contest, submission.author)) {
-              contest.participantNumber++;
+            if (username) {
+              ctx.addUserContest(username, contest, submission.author);
             }
 
             // Dep: codeforces fix gym startTime

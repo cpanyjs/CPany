@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import type { CPanyPlugin } from '@cpany/core';
 import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
 import { ICPanyPluginConfig, IContest, isAtCoder } from '@cpany/types';
@@ -8,30 +6,12 @@ import { atcoder } from './constant';
 import { createAtCoderHandlePlugin } from './handle';
 import { addContests, createAtCoderContestPlugin } from './contest';
 
-function loadCookie(): string {
-  const session = process.env.REVEL_SESSION;
-  if (!session) {
-    console.error('Please set env variable REVEL_SESSION !');
-    process.exit(1);
-  }
-  return session!;
-}
-
 export function atcoderPlugin(config: ICPanyPluginConfig): CPanyPlugin[] {
   const handleMap = loadHandleMap(config);
 
-  const cookie = loadCookie();
-
-  const api = axios.create({
-    baseURL: 'https://atcoder.jp/',
-    headers: {
-      Cookie: `REVEL_FLASH=; REVEL_SESSION=${cookie}`
-    }
-  });
-
   return [
-    createAtCoderHandlePlugin(api),
-    createAtCoderContestPlugin(api, handleMap),
+    createAtCoderHandlePlugin(),
+    createAtCoderContestPlugin(handleMap),
     {
       name: 'cache',
       platform: atcoder,
@@ -55,8 +35,15 @@ export function atcoderPlugin(config: ICPanyPluginConfig): CPanyPlugin[] {
         }
 
         const contests = await ctx.readJsonFile<IContest[]>('contest');
-        for (const contest of contests) {
-          ctx.addContest({ ...contest, key: String(contest.id!!) });
+        for (const rawContest of contests) {
+          const contest = { ...rawContest, key: String(rawContest.id!!) };
+          contest.inlinePage = true;
+          ctx.addContest(contest);
+
+          for (const standing of contest.standings ?? []) {
+            const name = standing.author.teamName!;
+            ctx.addUserContest(name, contest, standing.author);
+          }
         }
       }
     }

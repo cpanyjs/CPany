@@ -366,38 +366,3 @@ export async function createLoader(cliOption: IPluginOption) {
 //   // Desc sort
 //   return files.sort(sortFn).reverse();
 // }
-
-// function createHandleSet(handles: RouteKey<IHandle>[]) {
-//   const mapByType: Map<string, Map<string, RouteKey<IHandle>>> = new Map();
-
-//   const norm = (raw: string) => raw.split('/')[0];
-
-//   for (const handle of handles) {
-//     const type = norm(handle.type);
-//     if (mapByType.has(type)) {
-//       mapByType.get(type)!.set(handle.handle, handle);
-//     } else {
-//       const map: Map<string, RouteKey<IHandle>> = new Map();
-//       map.set(handle.handle, handle);
-//       mapByType.set(type, map);
-//     }
-//   }
-
-//   const findHandle = (_type: string, handle: string) => {
-//     const type = norm(_type);
-//     if (mapByType.has(type)) {
-//       const map = mapByType.get(type)!;
-//       if (map.has(handle)) {
-//         return map.get(handle)!;
-//       } else {
-//         return null;
-//       }
-//     } else {
-//       return null;
-//     }
-//   };
-
-//   return {
-//     findHandle
-//   };
-// }

@@ -11,7 +11,7 @@ import {
   Verdict
 } from '@cpany/types';
 
-import { atcoder } from './constant';
+import { atcoder, getAPI } from './constant';
 
 const handleMap = new Map<string, string>();
 const contestantSet = new Map<string, string[]>();
@@ -120,16 +120,15 @@ export function addContestPractice(contestId: string, handle: string, submission
   contestPracticeCache.get(contestId)!.push(standing);
 }
 
-export function createAtCoderContestPlugin(
-  api: AxiosInstance,
-  _handleMap: Map<string, string>
-): FetchPlugin {
+export function createAtCoderContestPlugin(_handleMap: Map<string, string>): FetchPlugin {
   for (const [key, value] of _handleMap) handleMap.set(key, value);
 
   return {
     name: 'contest',
     platform: atcoder,
     async fetch({ logger }) {
+      const api = getAPI();
+
       const retry = createRetryContainer(logger, 5);
       const contests: IContest[] = [];
       let planSz = 0,
