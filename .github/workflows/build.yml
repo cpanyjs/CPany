@@ -23,13 +23,6 @@ jobs:
       - run: pnpm install
       - run: pnpm run build
       - run: pnpm run site
-      - name: Export CPany Page Image
-        run: pnpx cpany export example
-      - name: Upload CPany Page Image
-        uses: actions/upload-artifact@v2
-        with:
-          name: screenshot
-          path: screenshot.png
   fetch:
     runs-on: ubuntu-latest
     steps:
@@ -53,3 +46,10 @@ jobs:
           path: .cpany
       - name: Fetch Data
         run: pnpx cpany fetch ./.cpany/ --plugins codeforces hdu
+      - name: Export CPany Page Image
+        run: pnpx cpany export ./.cpany/
+      - name: Upload CPany Page Image
+        uses: actions/upload-artifact@v2
+        with:
+          name: screenshot
+          path: screenshot.png
