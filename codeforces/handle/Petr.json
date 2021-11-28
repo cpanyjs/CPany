@@ -1,9 +1,332 @@
 {
-  "type": "codeforces/handle",
+  "type": "codeforces",
   "handle": "Petr",
   "handleUrl": "https://codeforces.com/profile/Petr",
   "avatar": "https://userpic.codeforces.org/664/title/c1ef9e749cad14a0.jpg",
   "submissions": [
+    {
+      "type": "codeforces",
+      "id": 136677440,
+      "creationTime": 1637688317,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1637678100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1610H",
+        "name": "Squid Game",
+        "rating": 3100,
+        "tags": [
+          "data structures",
+          "dfs and similar",
+          "greedy",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1610/problem/H"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1610/submission/136677440"
+    },
+    {
+      "type": "codeforces",
+      "id": 136674061,
+      "creationTime": 1637687097,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1637678100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1610G",
+        "name": "AmShZ Wins a Bet",
+        "rating": 3300,
+        "tags": [
+          "data structures",
+          "greedy",
+          "hashing"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1610/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1610/submission/136674061"
+    },
+    {
+      "type": "codeforces",
+      "id": 136671531,
+      "creationTime": 1637686227,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1637678100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1610I",
+        "name": "Mashtali vs AtCoder",
+        "rating": 3100,
+        "tags": [
+          "games",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1610/problem/I"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1610/submission/136671531"
+    },
+    {
+      "type": "codeforces",
+      "id": 136667653,
+      "creationTime": 1637685030,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1637678100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1610G",
+        "name": "AmShZ Wins a Bet",
+        "rating": 3300,
+        "tags": [
+          "data structures",
+          "greedy",
+          "hashing"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1610/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1610/submission/136667653"
+    },
+    {
+      "type": "codeforces",
+      "id": 136654897,
+      "creationTime": 1637682150,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1637678100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1610G",
+        "name": "AmShZ Wins a Bet",
+        "rating": 3300,
+        "tags": [
+          "data structures",
+          "greedy",
+          "hashing"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1610/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1610/submission/136654897"
+    },
+    {
+      "type": "codeforces",
+      "id": 136646794,
+      "creationTime": 1637680886,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1637678100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1610E",
+        "name": "AmShZ and G.O.A.T.",
+        "rating": 2300,
+        "tags": [
+          "binary search",
+          "brute force",
+          "greedy",
+          "implementation",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1610/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1610/submission/136646794"
+    },
+    {
+      "type": "codeforces",
+      "id": 136645863,
+      "creationTime": 1637680757,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1637678100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1610E",
+        "name": "AmShZ and G.O.A.T.",
+        "rating": 2300,
+        "tags": [
+          "binary search",
+          "brute force",
+          "greedy",
+          "implementation",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1610/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1610/submission/136645863"
+    },
+    {
+      "type": "codeforces",
+      "id": 136640916,
+      "creationTime": 1637680124,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1637678100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1610D",
+        "name": "Not Quite Lee",
+        "rating": 2000,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1610/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1610/submission/136640916"
+    },
+    {
+      "type": "codeforces",
+      "id": 136630534,
+      "creationTime": 1637679141,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1637678100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1610C",
+        "name": "Keshi Is Throwing a Party",
+        "rating": 1600,
+        "tags": [
+          "binary search",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1610/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1610/submission/136630534"
+    },
+    {
+      "type": "codeforces",
+      "id": 136623450,
+      "creationTime": 1637678657,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1637678100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1610B",
+        "name": "Kalindrome Array",
+        "rating": 1100,
+        "tags": [
+          "greedy",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1610/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1610/submission/136623450"
+    },
+    {
+      "type": "codeforces",
+      "id": 136620178,
+      "creationTime": 1637678460,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1637678100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1610A",
+        "name": "Anti Light's Cell Guessing",
+        "rating": 900,
+        "tags": [
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1610/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1610/submission/136620178"
+    },
+    {
+      "type": "codeforces",
+      "id": 136618967,
+      "creationTime": 1637678381,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1637678100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1610A",
+        "name": "Anti Light's Cell Guessing",
+        "rating": 900,
+        "tags": [
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1610/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1610/submission/136618967"
+    },
     {
       "type": "codeforces",
       "id": 133698597,
@@ -43290,7 +43613,7 @@
   ],
   "codeforces": {
     "rank": "legendary grandmaster",
-    "rating": 3315,
+    "rating": 3408,
     "maxRank": "legendary grandmaster",
     "maxRating": 3597
   }

@@ -1,6 +1,50 @@
 [
   {
     "type": "codeforces/cf",
+    "name": "Codeforces Round #757 (Div. 2)",
+    "startTime": 1637925300,
+    "duration": 7200,
+    "participantNumber": 0,
+    "id": 1614,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/contest/1614",
+    "standingsUrl": "https://codeforces.com/contest/1614/standings"
+  },
+  {
+    "type": "codeforces/cf",
+    "name": "Codeforces Round #756 (Div. 3)",
+    "startTime": 1637850900,
+    "duration": 8100,
+    "participantNumber": 0,
+    "id": 1611,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/contest/1611",
+    "standingsUrl": "https://codeforces.com/contest/1611/standings"
+  },
+  {
+    "type": "codeforces/cf",
+    "name": "Codeforces Global Round 17",
+    "startTime": 1637678100,
+    "duration": 10800,
+    "participantNumber": 0,
+    "id": 1610,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/contest/1610",
+    "standingsUrl": "https://codeforces.com/contest/1610/standings"
+  },
+  {
+    "type": "codeforces/cf",
+    "name": "Educational Codeforces Round 117 (Rated for Div. 2)",
+    "startTime": 1637573700,
+    "duration": 7200,
+    "participantNumber": 0,
+    "id": 1612,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/contest/1612",
+    "standingsUrl": "https://codeforces.com/contest/1612/standings"
+  },
+  {
+    "type": "codeforces/cf",
     "name": "Technocup 2022 - Elimination Round 2",
     "startTime": 1636869900,
     "duration": 8100,

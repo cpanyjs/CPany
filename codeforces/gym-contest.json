@@ -13288,6 +13288,7 @@
   {
     "type": "codeforces/gym/icpc",
     "name": "The 2021 CCPC Guilin Onsite (Grand Prix of EDG)",
+    "startTime": 1636246800,
     "duration": 18000,
     "participantNumber": 0,
     "id": 103409,
@@ -13318,6 +13319,7 @@
   {
     "type": "codeforces/gym/icpc",
     "name": "The 2021 CCPC Guangzhou Onsite",
+    "startTime": 1636851600,
     "duration": 18000,
     "participantNumber": 0,
     "id": 103415,
@@ -13334,5 +13336,89 @@
     "phase": "FINISHED",
     "contestUrl": "https://codeforces.com/gym/103416",
     "standingsUrl": "https://codeforces.com/gym/103416/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Infoleague Autumn 2021 Round 2 Div. 2",
+    "startTime": 1637422200,
+    "duration": 10800,
+    "participantNumber": 0,
+    "id": 103422,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103422",
+    "standingsUrl": "https://codeforces.com/gym/103422/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Infoleague Autumn 2021 Round 2 Div. 1",
+    "startTime": 1637422200,
+    "duration": 14400,
+    "participantNumber": 0,
+    "id": 103423,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103423",
+    "standingsUrl": "https://codeforces.com/gym/103423/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Innopolis Open 2021-2022. First qualification round",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103426,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103426",
+    "standingsUrl": "https://codeforces.com/gym/103426/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 2021 ICPC Asia Shenyang Regional Contest",
+    "startTime": 1637463600,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103427,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103427",
+    "standingsUrl": "https://codeforces.com/gym/103427/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 2021 CCPC Weihai Onsite",
+    "startTime": 1637456400,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103428,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103428",
+    "standingsUrl": "https://codeforces.com/gym/103428/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "2021-2022 ICPC, NERC, Southern and Volga Russian Regional Contest (problems intersect with Educational Codeforces Round 117)",
+    "duration": 14400,
+    "participantNumber": 0,
+    "id": 103430,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103430",
+    "standingsUrl": "https://codeforces.com/gym/103430/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "2018-2019 Russia Team Open, High School Programming Contest (VKOSHP 18)",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103433,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103433",
+    "standingsUrl": "https://codeforces.com/gym/103433/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "past problems",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103434,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103434",
+    "standingsUrl": "https://codeforces.com/gym/103434/standings"
   }
 ]
