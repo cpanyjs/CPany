@@ -33,7 +33,7 @@ export async function fetchHandle(handle: string, logger: Logger): Promise<IHand
 
   logger.info(`Fetch: Hdu handle ${handle}`);
 
-  const { data } = await axios.get(`https://acm.hdu.edu.cn/userstatus.php?user=${handle}`);
+  const { data } = await axios.get(`https://acm.hdu.edu.cn/userstatus.php?user=${handle}`, { timeout: 30 * 1000 });
   const rank = /<tr><td>Rank<\/td><td align=center>(\d+)<\/td><\/tr>/.exec(data);
   return {
     type: 'hdu/handle',
@@ -56,7 +56,7 @@ export async function fetchSubmissions(
     let minId = first ?? Number.MAX_VALUE;
 
     const { data } = await axios.get(`https://acm.hdu.edu.cn/status.php`, {
-      params: { user: handle.handle, first }
+      params: { user: handle.handle, first }, timeout: 30 * 1000
     });
 
     const root = parse(data);

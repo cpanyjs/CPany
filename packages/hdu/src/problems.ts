@@ -17,7 +17,8 @@ export async function getProblem(pid: number): Promise<IProblem> {
       params: {
         pid
       },
-      responseType: 'arraybuffer'
+      responseType: 'arraybuffer',
+      timeout: 30 * 1000
     })
     .then((res) => iconv.decode(res.data, 'gbk'));
   const root = parse(data);
