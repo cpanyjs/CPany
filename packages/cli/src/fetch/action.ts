@@ -43,13 +43,13 @@ export async function run(option: ICliOption) {
     await fs.promises.mkdir(path.dirname(fullPath), { recursive: true }).catch(() => {});
     await fs.promises.writeFile(fullPath, content, 'utf-8');
     fetcher.logger.info(
-      `Write: ${underline(slash(fullPath))} ${dim(`(size: ${binarySize(content)})`)}`
+      `Write: ${underline(slash(path.join(...paths)))} ${dim(`(size: ${binarySize(content)})`)}`
     );
   });
   fetcher.on('remove', async (...paths: string[]) => {
     const fullPath = path.join(option.dataRoot, ...paths);
     await fs.promises.unlink(fullPath);
-    fetcher.logger.info(`${lightRed('Remove:')} ${underline(slash(fullPath))}`);
+    fetcher.logger.info(`${lightRed('Remove:')} ${underline(slash(path.join(...paths)))}`);
   });
 
   await fetcher.fetchAll(option.option);
