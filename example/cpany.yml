@@ -25,4 +25,4 @@ plugins:
   - '@cpany/plugin-codeforces'
   - '@cpany/plugin-hdu'
   - '@cpany/plugin-atcoder'
-  # - '@cpany/plugin-luogu'
+  - '@cpany/plugin-luogu'

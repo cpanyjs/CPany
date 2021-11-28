@@ -3,6 +3,7 @@ import { IHandle, ISubmission, Verdict, ParticipantType } from '@cpany/types';
 import type { IHandleWithLuogu, UserDataDto, RecordListDto } from '@cpany/types/luogu';
 
 import { AxiosInstance } from 'axios';
+import { luogu, getAPI } from './constant';
 
 const cache = new Map<string, ISubmission[]>();
 
@@ -10,11 +11,12 @@ export function addToCache(handle: IHandle) {
   cache.set(handle.handle, handle.submissions);
 }
 
-export function createLuoguHandlePlugin(api: AxiosInstance): QueryPlugin {
+export function createLuoguHandlePlugin(): QueryPlugin {
   return {
     name: 'luogu',
-    platform: 'luogu',
+    platform: luogu,
     async query(id, { logger }) {
+      const api = getAPI();
       const user = await fetchUser(api, id);
       try {
         user.submissions = await fetchSubmissions(api, user.luogu.name, id, logger);
@@ -115,7 +117,7 @@ function parseVerdict(status: number) {
   return Verdict.FAILED;
 }
 
-function parseLanguage(type: string, id: number) {
+function parseLanguage(_type: string, id: number) {
   const list = [
     '',
     'Pascal',
