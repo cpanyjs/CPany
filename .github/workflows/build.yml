@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2
         with:
-          version: 6.19.1
+          version: 6.23.2
       - uses: actions/setup-node@v2
         with:
           node-version: 14
@@ -30,14 +30,27 @@ jobs:
         with:
           name: screenshot
           path: screenshot.png
-  # fetch:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         ref: cpany
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         path: ./.main
-  #     - uses: ./.main
-  #       name: Fetch Data
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: cpany
+      - uses: actions/checkout@v2
+        with:
+          path: ./.cpany
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 6.23.2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: pnpm
+      - name: Build CPany
+        run: |
+          pnpm install
+          pnpm build
+        working-directory: ./.cpany
+      - name: Fetch Data
+        run: pnpx cpany fetch ../ --plugins codeforces hdu
+        working-directory: ./.cpany

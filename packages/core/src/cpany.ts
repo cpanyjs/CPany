@@ -1,5 +1,5 @@
 import { IUser, IHandle, IContest, ResolvedCPanyOption, Key, ParticipantType } from '@cpany/types';
-import { lightRed } from 'kolorist';
+import { lightRed, dim, bold } from 'kolorist';
 
 import type { CreateOptions, CPanyInstance, FSOperations, FSEventType } from './types';
 import { DefaultMaxRetry } from './constant';
@@ -185,7 +185,7 @@ export function createCPany(option: CreateOptions): CPanyInstance {
           const ctx = createFetchContext(plugin.platform);
 
           pushTask(plugin, async () => {
-            ctx.logger.info(`Fetch: ${plugin.name}/${handle.handle}`);
+            ctx.logger.info(`Fetch: ${dim(plugin.name + '/')}${bold(handle.handle)}`);
 
             const result = await plugin.query(handle.handle, ctx);
 
