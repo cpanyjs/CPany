@@ -12,6 +12,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Set Timezone
+        run: sudo timedatectl set-timezone "Asia/Shanghai"
       - uses: actions/checkout@v2
       - uses: pnpm/action-setup@v2
         with:
@@ -23,6 +25,13 @@ jobs:
       - run: pnpm install
       - run: pnpm run build
       - run: pnpm run site
+      - name: Export CPany Page Image
+        run: pnpx cpany export ./example
+      - name: Upload CPany Page Image
+        uses: actions/upload-artifact@v2
+        with:
+          name: screenshot
+          path: screenshot.png
   fetch:
     runs-on: ubuntu-latest
     steps:
@@ -46,12 +55,3 @@ jobs:
           path: .cpany
       - name: Fetch Data
         run: pnpx cpany fetch ./.cpany/ --plugins codeforces hdu
-      - name: Export CPany Page Image
-        run: |
-          pnpm i -g capture-website-cli
-          pnpx cpany export ./.cpany/
-      - name: Upload CPany Page Image
-        uses: actions/upload-artifact@v2
-        with:
-          name: screenshot
-          path: screenshot.png
