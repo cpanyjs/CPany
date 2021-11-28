@@ -11,9 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/checkout@v2
         with:
           ref: main
-          path: ./.main
-      - uses: ./.main
-        name: Fetch Data
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 6.23.2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: pnpm
+      - name: Build CPany
+        run: |
+          pnpm install
+          pnpm build
+      - uses: actions/checkout@v2
+        with:
+          path: .cpany
+      - name: Fetch Data
+        run: pnpx cpany fetch ./.cpany/ --plugins codeforces hdu
