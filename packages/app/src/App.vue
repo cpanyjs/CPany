@@ -50,7 +50,7 @@
         <span>构建时间</span>
         <span class="font-mono">: {{ toDate(+buildTime).value }}</span>
       </p>
-      <p class="mt-2">
+      <p class="mt-2 font-mono">
         <a href="https://github.com/cpanyjs/CPany/blob/master/LICENSE" target="_blank">MIT</a>
         Licensed | Copyright © 2021
         <a href="https://xlor.cn" target="_blank">XLor</a>
