@@ -44,7 +44,7 @@ export async function createLoader(cliOption: IPluginOption) {
     ...contest,
     path: `/contest/${contest.type.split('/')[0]}/${contest.key}`
   });
-  const contests: RouteKey<IContest>[] = rawContests.map(patchContest);
+  const contests: RouteKey<IContest>[] = rawContests.map(patchContest).reverse();
   const users: IRouteUser[] = rawUsers.map((user) => ({
     name: user.name,
     key: user.key,
@@ -55,19 +55,6 @@ export async function createLoader(cliOption: IPluginOption) {
 
   debugLoader(`Total: ${handles.length} handles`);
   debugLoader(`Total: ${contests.length} contests`);
-
-  // const handles = await (async () => {
-  //   const handles: IHandle[] = [];
-  //   for (const handlePath of option.static.handles) {
-  //     const fullPath = path.resolve(dataRoot, handlePath);
-  //     for await (const handle of listJsonFiles<IHandle>(fullPath)) {
-  //       handles.push(handle);
-  //     }
-  //   }
-  //   return genRouteKey('handle', handles);
-  // })();
-
-  // debugLoader(`Total: ${handles.length} handles`);
 
   // const contests = await (async () => {
   //   const contests: IContest[] = [];
@@ -149,66 +136,7 @@ export async function createLoader(cliOption: IPluginOption) {
   //   userMap.set(user.name, user);
   // }
 
-  // // Use username to push static contest
-  // for (const contest of contests) {
-  //   for (const standing of contest.standings ?? []) {
-  //     // skip PRACTICE contest participant
-  //     if (standing.author.participantType === ParticipantType.PRACTICE) continue;
-
-  //     const push = (name?: string) => {
-  //       if (!name) return false;
-  //       const user = userMap.get(name);
-  //       if (user !== null && user !== undefined) {
-  //         contest.participantNumber++;
-  //         user.contests.push({
-  //           author: standing.author,
-  //           ...contest
-  //         });
-  //         return true;
-  //       }
-  //       return false;
-  //     };
-
-  //     // use teamName or members
-  //     if (push(standing.author.teamName)) continue;
-  //     for (const member of standing.author.members) {
-  //       push(member);
-  //     }
-  //   }
-  // }
-
-  // Desc sort
-  for (const user of users) {
-    user.contests = user.contests.sort(
-      (lhs, rhs) => rhs.author.participantTime - lhs.author.participantTime
-    );
-  }
-
-  const filterContestEmptyPrefix = (contests: Key<IContest>[]) => {
-    const sorted = contests.sort((lhs: IContest, rhs: IContest) => lhs.startTime - rhs.startTime);
-    let deleteCount = 0;
-    for (let i = 0; i < sorted.length; i++) {
-      if (sorted[i].participantNumber === 0) {
-        deleteCount++;
-      } else {
-        break;
-      }
-    }
-    sorted.splice(0, deleteCount);
-    return sorted.reverse();
-  };
-
-  // Dep: skip codeforces gym when gen overview
-  const contestsFilterGym = filterContestEmptyPrefix(
-    contests.filter(
-      (contest) => !contest.type.startsWith('codeforces/gym') || contest.participantNumber > 0
-    )
-  );
-
-  const createContestsOverview = (
-    _length?: number,
-    _contests = contestsFilterGym
-  ): IContestOverview[] => {
+  const createContestsOverview = (_length?: number, _contests = contests): IContestOverview[] => {
     const length = _length === undefined ? _contests.length : _length;
     const overview: IContestOverview[] = [];
     for (let i = 0; overview.length < length && i < _contests.length; i++) {
@@ -316,8 +244,8 @@ export async function createLoader(cliOption: IPluginOption) {
 
   return {
     handles,
-    allContests: filterContestEmptyPrefix(contests),
-    contests: contestsFilterGym,
+    allContests: contests,
+    contests,
     users,
     createContestsOverview,
     createUsersOverview,

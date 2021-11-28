@@ -367,6 +367,13 @@ export function createCPany(option: CreateOptions): CPanyInstance {
       });
     }
 
+    // Reverse sort user contest
+    for (const user of users) {
+      user.contests = user.contests.sort(
+        (lhs, rhs) => rhs.author.participantTime - lhs.author.participantTime
+      );
+    }
+
     return {
       handles: indexedHandles,
       contests: indexedContests,

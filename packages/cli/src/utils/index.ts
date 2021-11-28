@@ -8,11 +8,8 @@ import fs from 'fs';
 import net from 'net';
 import path from 'path';
 
-import { utcToZonedTime } from 'date-fns-tz';
-
 export function now() {
-  const zone = new Date(new Date().toUTCString());
-  return utcToZonedTime(zone, 'Asia/Shanghai');
+  return new Date(new Date().toUTCString());
 }
 
 export function slash(path: string) {
