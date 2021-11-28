@@ -52,6 +52,4 @@ jobs:
           ref: cpany
           path: .cpany
       - name: Fetch Data
-        run: |
-          pnpx cpany fetch ./.cpany/ --plugins codeforces hdu
-          echo $FETCH_TIME
+        run: pnpx cpany fetch ./.cpany/ --plugins codeforces hdu
