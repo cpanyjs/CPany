@@ -1,4 +1,4 @@
-name: Fetch data
+name: Fetch data in CPany
 
 on:
   workflow_dispatch:
