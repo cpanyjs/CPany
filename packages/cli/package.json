@@ -31,6 +31,7 @@
     "@cpany/app": "workspace:*",
     "@cpany/compress": "workspace:*",
     "@cpany/core": "workspace:*",
+    "@cpany/plugin-codeforces": "workspace:*",
     "@cpany/types": "workspace:*",
     "@cpany/utils": "workspace:*",
     "@iconify/json": "^1.1.387",
@@ -57,7 +58,6 @@
   },
   "devDependencies": {
     "@cpany/plugin-atcoder": "workspace:*",
-    "@cpany/plugin-codeforces": "workspace:*",
     "@cpany/plugin-hdu": "workspace:*",
     "@cpany/plugin-luogu": "workspace:*",
     "@types/debug": "^4.1.7",

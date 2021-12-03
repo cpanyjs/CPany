@@ -139,6 +139,7 @@ importers:
       '@cpany/app': link:../app
       '@cpany/compress': link:../compress
       '@cpany/core': link:../core
+      '@cpany/plugin-codeforces': link:../codeforces
       '@cpany/types': link:../types
       '@cpany/utils': link:../utils
       '@iconify/json': 1.1.387
@@ -164,7 +165,6 @@ importers:
       windicss: 3.1.7
     devDependencies:
       '@cpany/plugin-atcoder': link:../atcoder
-      '@cpany/plugin-codeforces': link:../codeforces
       '@cpany/plugin-hdu': link:../hdu
       '@cpany/plugin-luogu': link:../luogu
       '@types/debug': 4.1.7
