@@ -70,6 +70,10 @@
           >{{ row.contests.length }}</c-table-column
         >
       </template>
+
+      <template #empty>
+        <div class="my-4 px-3">人捏？</div>
+      </template>
     </c-table>
     <div class="mt-4 pt-4">
       <span class="text-gray-400">最近开始于 {{ toDate(recentStartTime).value }}</span>
