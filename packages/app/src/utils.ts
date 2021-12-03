@@ -70,6 +70,16 @@ export function toDuration(duration: number | Ref<number>) {
   );
 }
 
+export function debounce(fn: Function, delay = 1000) {
+  let timer: any;
+  return function () {
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      fn();
+    }, delay);
+  };
+}
+
 export function createSortBy<T>(...mapFns: Array<(item: T) => number>) {
   return (lhs: T, rhs: T) => {
     for (const fn of mapFns) {
