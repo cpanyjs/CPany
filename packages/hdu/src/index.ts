@@ -1,17 +1,35 @@
+import axios from 'axios';
+
 import type { CPanyPlugin } from '@cpany/core';
 import type { IHandleWithHdu } from '@cpany/types/hdu';
 import type { ICPanyPluginConfig } from '@cpany/types';
 
 import { createHduHandlePlugin, addToCache } from './handle';
 
-export function hduPlugin(_option: ICPanyPluginConfig): CPanyPlugin[] {
+async function testHDuLive(): Promise<boolean> {
+  try {
+    await axios.get(`https://acm.hdu.edu.cn/`, {
+      timeout: 30 * 1000
+    });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export async function hduPlugin(_option: ICPanyPluginConfig): Promise<Array<CPanyPlugin | undefined>> {
+  const flag = await testHDuLive();
   return [
     {
       name: 'cache',
       platform: 'hdu',
       async cache(ctx) {
-        for (const handle of await ctx.readJsonDir<IHandleWithHdu>('handle')) {
-          addToCache(handle);
+        if (flag) {
+          for (const handle of await ctx.readJsonDir<IHandleWithHdu>('handle')) {
+            addToCache(handle);
+          }
+        } else {
+          ctx.logger.warning(`Warn  : https://acm.hdu.edu.cn/ is dead.`)
         }
       }
     },
@@ -25,7 +43,7 @@ export function hduPlugin(_option: ICPanyPluginConfig): CPanyPlugin[] {
         }
       }
     },
-    createHduHandlePlugin()
+    flag ? createHduHandlePlugin() : undefined
   ];
 }
 
