@@ -35,7 +35,7 @@ export function handleInfoPlugin(api: AxiosInstance): QueryPlugin {
             : {};
 
         if (handle !== data.handle) {
-          logger.warning(`Warn  : handle is different (${handle} <-> ${data.handle})`);
+          logger.warning(`Warn  : handles are different (${handle} <-> ${data.handle})`);
         }
 
         return {
