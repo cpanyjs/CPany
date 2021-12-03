@@ -27,7 +27,7 @@
           </div>
         </div>
       </div>
-      <div v-if="avatar !== null" class="md:(ml-4 max-w-1/3) <md:(mb-2 w-full flex justify-center)">
+      <div v-if="!!avatar" class="md:(ml-4 max-w-1/3) <md:(mb-2 w-full flex justify-center)">
         <img :src="avatar" :alt="`${user.name}'s avatar`" />
       </div>
     </div>
@@ -185,11 +185,11 @@ const avatars = ref<string[]>([]);
 for (const handle of user.value.handles) {
   if (handle.avatar !== undefined && handle.avatar !== null && handle.avatar !== '') {
     avatars.value.push(handle.avatar);
-    break;
   }
 }
+
 const avatar = computed(() => {
-  if (avatars.value.length === 0) return '';
+  if (avatars.value.length === 0) return undefined;
   const id = Math.floor(Math.random() * avatars.value.length);
   return avatars.value[id];
 });
