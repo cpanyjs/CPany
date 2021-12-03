@@ -147,7 +147,7 @@ export const displayContestType = (contest: IContest) => {
     if (/Round/.test(contest.name) || /Div/.test(contest.name)) {
       return 'Codeforces Round';
     } else if (/gym/.test(contest.type)) {
-      return 'Codeforces Gym';
+      return 'Codeforces GYM';
     } else {
       return 'Codeforces';
     }
