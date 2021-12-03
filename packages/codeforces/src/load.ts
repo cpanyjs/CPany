@@ -24,6 +24,7 @@ export function loadCodeforcesPlugin(): LoadPlugin {
         ...c,
         key: String(c.id!!)
       }));
+
       const { findRound } = createRoundSet(...contests, ...gymContests);
       for (const handle of handles) {
         for (const submission of handle.submissions) {
@@ -48,7 +49,13 @@ export function loadCodeforcesPlugin(): LoadPlugin {
         }
       }
 
-      for (const contest of contests) {
+      // Remove ancient cf round
+      let lastId = contests.length;
+      while (lastId > 30 && contests[lastId - 1].participantNumber === 0) {
+        lastId--;
+      }
+
+      for (const contest of contests.slice(0, lastId)) {
         if (!/[а-яА-ЯЁё]/.test(contest.name) || contest.participantNumber > 0) {
           ctx.addContest(contest);
         }
