@@ -61,34 +61,45 @@ import { toDate, debounce, displayContestType } from '@/utils';
 
 const unit = recentContestsCount * 2;
 
-const KEY = 'contest.size';
+const SIZEKEY = 'contest.size';
 
-const searchInput = ref('');
+const SEARCHKEY = 'contest.search';
+
+const load = (key: string) => {
+  return sessionStorage.getItem(key);
+};
+
+const loadSize = () => {
+  const result = load(SIZEKEY);
+  return result !== null ? +result : unit;
+};
+
+const store = (key: string, value: string) => {
+  sessionStorage.setItem(key, value);
+};
+
+const searchInput = ref(load(SEARCHKEY) ?? '');
 
 const filterContests = ref([] as IContest[]);
 
-const debounceFilter = debounce(() => {
+const filterFn = () => {
   if (searchInput.value !== '') {
     filterContests.value = contests.filter((contest) =>
       contest.name.toLowerCase().includes(searchInput.value.toLowerCase())
     );
+    store(SEARCHKEY, searchInput.value);
+  } else {
+    store(SEARCHKEY, '');
   }
-}, 500);
+}
+filterFn();
+const debounceFilter = debounce(filterFn, 500);
 
 watch(searchInput, () => {
   debounceFilter();
 });
 
-const load = () => {
-  const value = sessionStorage.getItem(KEY);
-  return value !== null ? +value : unit;
-};
-
-const store = (len: number) => {
-  sessionStorage.setItem(KEY, String(len));
-};
-
-const fullContests = ref(contests.slice(0, load()));
+const fullContests = ref(contests.slice(0, loadSize()));
 const displayContests = computed(() => {
   if (searchInput.value === '') {
     return fullContests.value;
@@ -100,7 +111,7 @@ const displayContests = computed(() => {
 const displayMore = () => {
   const curLength = fullContests.value.length;
   fullContests.value.push(...contests.slice(curLength, curLength + unit));
-  store(fullContests.value.length);
+  store(SIZEKEY, String(fullContests.value.length));
 };
 
 const length = computed(() => {
