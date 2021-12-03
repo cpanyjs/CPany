@@ -98,6 +98,13 @@
             <icon-close v-else class="text-red-400"></icon-close>
           </c-table-column>
         </template>
+
+        <template #empty>
+          <div class="my-4 px-3 flex items-center justify-center font-bold text-xl">
+            <IconQuestion class="mr-2 text-red-300" />
+            <span>您完全不写题是嘛？</span>
+          </div>
+        </template>
       </c-table>
     </Hover>
 
@@ -124,6 +131,13 @@
           <c-table-column label="类型" center>
             <span>{{ displayParticipantType(row.author.participantType) }}</span>
           </c-table-column>
+        </template>
+
+        <template #empty>
+          <div class="my-4 px-3 flex items-center justify-center font-bold text-xl">
+            <IconQuestion class="mr-2 text-red-300" />
+            <span>您完全不参加比赛是嘛？</span>
+          </div>
         </template>
       </c-table>
     </Hover>
@@ -153,6 +167,7 @@ import IconClose from '~icons/mdi/close';
 import IconCloud from '~icons/mdi/cloud-outline';
 import IconBalloon from '~icons/mdi/balloon';
 import IconLightbulbOn from '~icons/mdi/lightbulb-on-outline';
+import IconQuestion from '~icons/mdi/cloud-question';
 
 import { CTable, CTableColumn } from '@/components/table';
 import { CStastic } from '@/components/stastic';

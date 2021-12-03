@@ -18,6 +18,10 @@
               </div>
             </c-table-column>
           </template>
+
+          <template #empty>
+            <div class="my-4 px-3">好像都大家没有参加比赛？</div>
+          </template>
         </c-table>
 
         <div class="text-right <md:mt-4 pt-2">

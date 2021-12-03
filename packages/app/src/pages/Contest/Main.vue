@@ -46,8 +46,13 @@
             </div>
           </c-table-column>
         </template>
+
+        <template #empty>
+          <div class="my-4 px-3">好像都没有找到比赛？</div>
+        </template>
       </c-table>
-      <div class="mt-4 flex justify-center" v-if="searchInput === ''">
+
+      <div class="mt-4 flex justify-center" v-if="length < displayContests.length">
         <c-button @click="displayMore" success>↓ 浏览更多</c-button>
       </div>
     </div>

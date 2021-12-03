@@ -62,6 +62,8 @@ export default defineComponent({
   setup(props, { slots }) {
     const { data, defaultSort, defaultSortOrder, mobile, pageSize, mobilePageSize } = toRefs(props);
 
+    const isDataEmpty = computed(() => data.value.length === 0);
+
     const { isMobile, clean } = useIsMobile(mobile);
     onUnmounted(() => clean());
 
@@ -238,7 +240,8 @@ export default defineComponent({
           },
           [h('thead', {}, h('tr', {}, renderHead())), h('tbody', {}, renderBody(slicedData.value))]
         ),
-        isPagination.value && renderPage()
+        !isDataEmpty.value && isPagination.value && renderPage(),
+        isDataEmpty.value && slots.empty && slots.empty({})
       ]);
     };
 
@@ -332,9 +335,10 @@ export default defineComponent({
       };
 
       return h('div', { class: ['mobile-table'] }, [
-        renderSortHeader(),
+        !isDataEmpty.value && renderSortHeader(),
         renderBody(),
-        isPagination.value && renderPage()
+        !isDataEmpty.value && isPagination.value && renderPage(),
+        isDataEmpty.value && slots.empty && slots.empty({})
       ]);
     };
 
