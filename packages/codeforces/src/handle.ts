@@ -10,7 +10,7 @@ export function handleInfoPlugin(api: AxiosInstance): QueryPlugin {
   return {
     name: 'handle',
     platform: codeforces,
-    async query(handle: string) {
+    async query(handle: string, { logger }) {
       const fetchInfo = async (): Promise<IHandleWithCodeforces> => {
         const {
           data: {
@@ -34,9 +34,13 @@ export function handleInfoPlugin(api: AxiosInstance): QueryPlugin {
               }
             : {};
 
+        if (handle !== data.handle) {
+          logger.warning(`Warn : handle is different (${handle} <-> ${data.handle})`)
+        }
+
         return {
           type: codeforces,
-          handle: data.handle,
+          handle: handle,
           handleUrl: `https://codeforces.com/profile/${data.handle}`,
           avatar: data.titlePhoto,
           submissions: [],
