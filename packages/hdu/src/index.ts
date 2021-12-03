@@ -17,7 +17,9 @@ async function testHDuLive(): Promise<boolean> {
   }
 }
 
-export async function hduPlugin(_option: ICPanyPluginConfig): Promise<Array<CPanyPlugin | undefined>> {
+export async function hduPlugin(
+  _option: ICPanyPluginConfig
+): Promise<Array<CPanyPlugin | undefined>> {
   const flag = await testHDuLive();
   return [
     {
@@ -29,7 +31,7 @@ export async function hduPlugin(_option: ICPanyPluginConfig): Promise<Array<CPan
             addToCache(handle);
           }
         } else {
-          ctx.logger.warning(`Warn  : https://acm.hdu.edu.cn/ is dead.`)
+          ctx.logger.warning(`Warn  : https://acm.hdu.edu.cn/ is dead.`);
         }
       }
     },

@@ -12,6 +12,18 @@
           class="input-search w-full py-2 pr-2 outline-transparent rounded border border-light-900"
           v-model="searchInput"
         />
+        <IconClose
+          @click="searchInput = ''"
+          class="
+            absolute
+            text-xl
+            icon-close
+            text-gray-400
+            rounded-full
+            hover:(bg-light-400
+            cursor-pointer)
+          "
+        />
       </div>
 
       <c-table :data="displayContests">
@@ -51,6 +63,7 @@ import { ref, computed, watch } from 'vue';
 
 import IconAccount from '~icons/mdi/account';
 import IconSearch from '~icons/ic/baseline-search';
+import IconClose from '~icons/mdi/close';
 
 import type { IContest } from '@cpany/types';
 
@@ -91,7 +104,7 @@ const filterFn = () => {
   } else {
     store(SEARCHKEY, '');
   }
-}
+};
 filterFn();
 const debounceFilter = debounce(filterFn, 500);
 
@@ -127,6 +140,11 @@ const length = computed(() => {
 .icon-search {
   top: 50%;
   transform: translate(0.5rem, -50%);
+}
+.icon-close {
+  top: 50%;
+  right: 0.5rem;
+  transform: translate(0rem, -50%);
 }
 .input-search {
   padding-left: calc(1.25rem + 1em);
