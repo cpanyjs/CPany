@@ -1,35 +1,36 @@
 <template>
-  <div>
+  <div class="divide-y">
     <h2 class="mb-4">所有比赛</h2>
 
-    <c-table :data="displayContests">
-      <template #columns="{ row, index }">
-        <c-table-column label="#" center>
-          <span class="font-600">{{ index + 1 }}</span>
-        </c-table-column>
-        <c-table-column label="比赛" :mobile-header-class="['min-w-8']">
-          <router-link :to="row.path">{{ row.name }}</router-link>
-        </c-table-column>
-        <c-table-column label="平台" center>
-          <span>{{ displayContestType(row) }}</span>
-        </c-table-column>
-        <c-table-column label="时间" align="center" width="10em">
-          <span>{{ toDate(row.startTime).value }}</span>
-        </c-table-column>
-        <c-table-column label="人数" align="center" width="5em">
-          <div class="flex flex-1 items-center justify-center">
-            <icon-account />&nbsp;<span>x {{ row.participantNumber }}</span>
-          </div>
-        </c-table-column>
-      </template>
-    </c-table>
-
-    <div class="mt-4 flex justify-between items-center">
-      <div></div>
-      <c-button @click="displayMore" success>↓ 浏览更多</c-button>
-      <div class="text-gray-400 pr-4">
-        共 <span class="font-mono">{{ length }}</span> 场比赛
+    <div>
+      <c-table :data="displayContests">
+        <template #columns="{ row, index }">
+          <c-table-column label="#" center>
+            <span class="font-600">{{ index + 1 }}</span>
+          </c-table-column>
+          <c-table-column label="比赛" :mobile-header-class="['min-w-8']">
+            <router-link :to="row.path">{{ row.name }}</router-link>
+          </c-table-column>
+          <c-table-column label="平台" center>
+            <span>{{ displayContestType(row) }}</span>
+          </c-table-column>
+          <c-table-column label="时间" align="center" width="10em">
+            <span>{{ toDate(row.startTime).value }}</span>
+          </c-table-column>
+          <c-table-column label="人数" align="center" width="5em">
+            <div class="flex flex-1 items-center justify-center">
+              <icon-account />&nbsp;<span>x {{ row.participantNumber }}</span>
+            </div>
+          </c-table-column>
+        </template>
+      </c-table>
+      <div class="mt-4 flex justify-center">
+        <c-button @click="displayMore" success>↓ 浏览更多</c-button>
       </div>
+    </div>
+
+    <div class="mt-4 pt-4 text-gray-400">
+      共 <span class="font-mono">{{ length }}</span> 场比赛
     </div>
   </div>
 </template>
