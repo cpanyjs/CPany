@@ -19,9 +19,9 @@
             text-xl
             icon-close
             text-gray-400
+            outline-transparent
             rounded-full
-            hover:(bg-light-400
-            cursor-pointer)
+            focus:bg-light-400
           "
         />
       </div>
@@ -153,5 +153,11 @@ const length = computed(() => {
 }
 .input-search {
   padding-left: calc(1.25rem + 1em);
+}
+
+@media (any-hover: hover) {
+  .icon-close:hover {
+    @apply cursor-pointer bg-light-400;
+  }
 }
 </style>

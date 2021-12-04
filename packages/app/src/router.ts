@@ -43,7 +43,7 @@ const routes = [
   {
     path: '/contests',
     name: 'Contests',
-    component: () => import('./pages/Contest/Main.vue'),
+    component: () => import('./pages/Contests.vue'),
     meta: {
       title: '比赛 - CPany'
     }
