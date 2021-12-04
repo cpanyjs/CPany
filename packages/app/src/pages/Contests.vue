@@ -9,7 +9,7 @@
           type="text"
           name="contest_search"
           id="contest_search"
-          class="input-search w-full py-2 pr-2 outline-transparent rounded border border-light-900"
+          class="input-search w-full py-2 pr-2 outline-transparent rounded-md <md:shadow-box border border-light-900"
           v-model="searchInput"
         />
         <IconClose
