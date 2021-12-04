@@ -1,6 +1,6 @@
 <template>
   <div v-if="contest.standings" class="mt-4 box">
-    <c-table :data="standings.standings" :mobile="1080">
+    <c-table :data="standings.standings" :mobile="1023">
       <template #columns="{ row }">
         <c-table-column label="#" align="center" width="4em">
           <span v-if="!isPractice(row)" class="font-600">{{ row.rank }}</span>

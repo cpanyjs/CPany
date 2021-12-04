@@ -46,10 +46,10 @@
           }}</span></c-table-column
         >
 
-        <c-table-column label="通过" width="6em" align="right" :sort="normalSortBy(sortByOk)">{{
+        <c-table-column label="通过" width="5em" align="right" :sort="normalSortBy(sortByOk)">{{
           row.okCount
         }}</c-table-column>
-        <c-table-column label="提交" width="6em" align="right" :sort="normalSortBy(sortBySub)">{{
+        <c-table-column label="提交" width="5em" align="right" :sort="normalSortBy(sortBySub)">{{
           row.subCount
         }}</c-table-column>
         <c-table-column
@@ -60,8 +60,8 @@
           >{{ row.okRate }}</c-table-column
         >
         <c-table-column
-          label="比赛场次"
-          width="7em"
+          label="比赛"
+          width="5em"
           align="right"
           :sort="normalSortBy(sortByContest)"
           >{{ row.contests.length }}</c-table-column

@@ -213,7 +213,7 @@ export default defineComponent({
                         ? resolveComponent('icon-down')
                         : resolveComponent('icon-up'),
                       {
-                        class: [!isActiveSort && 'text-transparent']
+                        class: [!isActiveSort && 'hidden']
                       }
                     )
                   : '',
