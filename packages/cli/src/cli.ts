@@ -7,7 +7,7 @@ import { cac } from 'cac';
 import { debug } from 'debug';
 import { load } from 'js-yaml';
 import openBrowser from 'open';
-import { blue, bold, cyan, dim, yellow, green, underline } from 'kolorist';
+import { blue, bold, cyan, dim, yellow, green, lightRed, underline } from 'kolorist';
 import isInstalledGlobally from 'is-installed-globally';
 
 import { CPanyOption } from '@cpany/types';
@@ -196,12 +196,6 @@ cli
     await runAction(option);
   });
 
-cli.help();
-
-cli.version(version);
-
-cli.parse();
-
 function printDevInfo(dataPath: string, port: number, host?: string | boolean) {
   console.log();
   console.log(
@@ -236,3 +230,23 @@ function printDevInfo(dataPath: string, port: number, host?: string | boolean) {
 
   console.log();
 }
+
+cli.help();
+
+cli.version(version);
+
+async function bootstrap() {
+  try {
+    cli.parse(process.argv, { run: false })
+    await cli.runMatchedCommand()
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error(lightRed('Error: ') + error.message);
+    } else {
+      console.error(error)
+    }
+    process.exit(1)
+  }
+}
+
+bootstrap();
