@@ -69,6 +69,7 @@ cli
   .option('--force', 'force the optimizer to ignore the cache and re-bundle', {
     default: false
   })
+  .option('--base <path>', `public base path`, { default: '/' })
   .action(async (dataPath: string | undefined, option: ICliOption) => {
     resolveOption(dataPath, option);
 

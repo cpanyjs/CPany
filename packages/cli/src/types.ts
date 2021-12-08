@@ -28,6 +28,7 @@ export interface ICliOption {
   // build
   outDir: string;
   emptyOutDir: boolean;
+  base: string;
 
   // dev
   host?: string;
