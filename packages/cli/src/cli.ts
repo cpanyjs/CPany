@@ -189,7 +189,7 @@ cli
   });
 
 cli
-  .command('fetch [data]', 'Run @cpany/action locally')
+  .command('fetch [data]', 'Fetch data locally')
   .option('--max-retry <number>', 'CPany max retry times', { default: 10 })
   .action(async (dataPath: string | undefined, option: ICliOption) => {
     resolveOption(dataPath, option);
