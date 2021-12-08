@@ -60,8 +60,7 @@ function resolveOption(dataPath: string | undefined, option: ICliOption) {
 }
 
 cli
-  .command('[data]', 'Build CPany site')
-  .alias('build')
+  .command('build [data]', 'Build CPany site')
   .option('--emptyOutDir', "force empty outDir when it's outside of root", {
     default: false
   })
@@ -78,6 +77,7 @@ cli
 
 cli
   .command('dev [data]', 'Start CPany dev server')
+  .alias('serve')
   .option('--host [host]', 'specify hostname')
   .option('--port <port>', 'port to listen to', { default: 3000 })
   .option('--open', 'open browser on startup', { default: false })
