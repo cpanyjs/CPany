@@ -79,6 +79,14 @@ const routes = [
     meta: {
       title: '错误 - CPany'
     }
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'EmptyPage',
+    component: () => import('./pages/Empty.vue'),
+    meta: {
+      title: '错误 - CPany'
+    }
   }
 ];
 
@@ -95,5 +103,5 @@ export const router = createRouter({
 });
 
 router.beforeEach((to) => {
-  document.title = to.meta.title;
+  document.title = to.meta.title ?? 'CPany - Competitive Programming Statistic';
 });
