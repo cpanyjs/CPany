@@ -61,7 +61,7 @@
         </template>
       </c-table>
 
-      <div class="mt-4 flex justify-center" v-if="length < displayContests.length">
+      <div class="mt-4 flex justify-center" v-if="displayContests.length < length">
         <c-button @click="displayMore" success>↓ 浏览更多</c-button>
       </div>
     </div>
