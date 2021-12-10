@@ -145,7 +145,9 @@ function parseLanguage(_type: string, id: number) {
     'Perl',
     'PyPy 2',
     'PyPy 3',
-    '文言'
+    '文言',
+    'C++ 20',
+    'C++ 14 (GCC 9)'
   ];
   return id < list.length ? list[id] : 'Unknown';
 }
