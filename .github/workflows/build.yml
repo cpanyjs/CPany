@@ -24,7 +24,6 @@ jobs:
           cache: pnpm
       - run: pnpm install
       - run: pnpm run build
-      - run: pnpm run site
       - name: Export CPany Page Image
         run: pnpx cpany export ./example
       - name: Upload CPany Page Image
@@ -32,6 +31,13 @@ jobs:
         with:
           name: screenshot
           path: screenshot.png
+      - name: Build
+        run: pnpx cpany build example --base CPany
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
   fetch:
     runs-on: ubuntu-latest
     steps:
