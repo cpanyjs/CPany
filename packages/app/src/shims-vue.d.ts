@@ -11,3 +11,11 @@ declare module '~icons/*' {
   const component: DefineComponent<{}, {}, any>;
   export default component;
 }
+
+declare module '~cpany/routes' {
+  import { RouteRecordRaw } from 'vue-router';
+
+  const routes: RouteRecordRaw[];
+
+  const base: string;
+}

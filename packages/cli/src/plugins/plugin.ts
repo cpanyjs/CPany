@@ -1,4 +1,4 @@
-import type { Plugin } from 'vite';
+import { Plugin, normalizePath } from 'vite';
 
 import path from 'path';
 import fs from 'fs';
@@ -13,7 +13,6 @@ import type {
 } from '@cpany/types';
 import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
 import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
-import { slash } from '@cpany/utils';
 
 import type { IPluginOption } from '../types';
 import { now } from '../utils';
@@ -83,7 +82,7 @@ export function createCPanyOverviewPlugin(
   overview: Map<string, string>,
   { appRoot }: IPluginOption
 ): Plugin {
-  const overviewPath = slash(path.join(appRoot, 'src', 'overview.ts'));
+  const overviewPath = normalizePath(path.join(appRoot, 'src', 'overview.ts'));
 
   return {
     name: 'cpany:overview',
@@ -112,41 +111,45 @@ export function createCPanyOverviewPlugin(
   };
 }
 
-function contestVirtualComponentPath(contestPath: string) {
-  return slash(path.join('@cpany', contestPath + '.vue'));
+function contestVirtualComponentPath(contestPath: string, relative = false) {
+  if (relative) return './' + normalizePath(path.join('./', contestPath + '.vue'));
+  return normalizePath(path.join('~cpany', contestPath + '.vue'));
 }
 
-function userVirtualComponentPath(username: string) {
-  return slash(path.join('@cpany', 'users', username + '.vue'));
+function userVirtualComponentPath(username: string, relative = false) {
+  if (relative) return './' + normalizePath(path.join('./', 'users', username + '.vue'));
+  return normalizePath(path.join('~cpany', 'users', username + '.vue'));
 }
 
 export function createCPanyRoutePlugin(
   users: IUser[],
   contests: RouteKey<IContest>[],
-  { appRoot }: IPluginOption
+  option: IPluginOption
 ): Plugin {
-  const routerPath = slash(path.join(appRoot, 'src', 'router.ts'));
+  const virtualRoutesFile = '~cpany/routes';
 
   return {
     name: 'cpany:router',
-    enforce: 'pre',
-    async transform(code, id) {
-      if (id === routerPath) {
-        // transform router.ts
-        const virtualRoutes = contests.map((contest) => {
-          const path = contestVirtualComponentPath(contest.path);
-          return `{ path: \`${contest.path}\`, component: () => import(\`${path}\`), meta: { title: \`${contest.name} - CPany\` } },`;
-        });
-        virtualRoutes.push(
+    resolveId(id) {
+      return id === virtualRoutesFile ? virtualRoutesFile + '.js' : null;
+    },
+    async load(id) {
+      if (id === virtualRoutesFile + '.js') {
+        const virtualRoutes = [
+          ...contests.map((contest) => {
+            const path = contestVirtualComponentPath(contest.path, true);
+            return `{ path: \`${contest.path}\`, component: () => import(\`${path}\`), meta: { title: \`${contest.name} - CPany\` } },`;
+          }),
           ...users.map((user) => {
-            const path = userVirtualComponentPath(user.name);
+            const path = userVirtualComponentPath(user.name, true);
             return `{ path: \`/user/${user.name}\`, component: () => import(\`${path}\`), meta: { title: \`用户 ${user.name} - CPany\` } },`;
           })
-        );
+        ];
 
-        code = code.replace('/* __contests__ */', `routes.push(${virtualRoutes.join('\n')});`);
+        const routes = `export const routes = [${virtualRoutes.join('\n')}];`;
+        const base = `export const base = '${option.base}';`;
 
-        return code;
+        return base + '\n' + routes + '\n';
       }
       return null;
     }
@@ -157,10 +160,10 @@ export function createCPanyContestPagePlugin(
   contests: RouteKey<IContest>[],
   { appRoot }: IPluginOption
 ): Plugin {
-  const componentPath = slash(path.join(appRoot, 'src', 'pages', 'Contest', 'Contest.vue'));
+  const componentPath = normalizePath(path.join(appRoot, 'src', 'pages', 'Contest', 'Contest.vue'));
 
   const virtualContestJson = (contestPath: string) =>
-    slash(path.join('@cpany', contestPath + '.json'));
+  normalizePath(path.join('~cpany', contestPath + '.json'));
 
   const findVirtualContestJson = (id: string): RouteKey<IContest> | null => {
     if (!id.endsWith('.json')) return null;
@@ -220,10 +223,10 @@ export function createCPanyContestPagePlugin(
 }
 
 export function createCPanyUserPagePlugin(users: IUser[], { appRoot }: IPluginOption): Plugin {
-  const componentPath = slash(path.join(appRoot, 'src', 'pages', 'User', 'User.vue'));
+  const componentPath = normalizePath(path.join(appRoot, 'src', 'pages', 'User', 'User.vue'));
 
   const virtualUserJson = (username: string) =>
-    slash(path.join('@cpany', 'users', username + '.json'));
+  normalizePath(path.join('~cpany', 'users', username + '.json'));
 
   const findvirtualUserJson = (id: string): IUser | null => {
     if (!id.endsWith('.json')) return null;
@@ -287,11 +290,11 @@ export function createCPanyLoadPlugin(
   contests: RouteKey<IContest>[],
   { appRoot }: IPluginOption
 ): Plugin {
-  const contestsPath = slash(path.join(appRoot, 'src', 'cpany', 'contests.json'));
-  const codeforcesPath = slash(path.join(appRoot, 'src', 'cpany', 'codeforces.json'));
-  const usersPath = slash(path.join(appRoot, 'src', 'cpany', 'users.json'));
-  const cfHandlesPath = slash(path.join(appRoot, 'src', 'cpany', 'cfHandles.json'));
-  const atHandlesPath = slash(path.join(appRoot, 'src', 'cpany', 'atHandles.json'));
+  const contestsPath = normalizePath(path.join(appRoot, 'src', 'cpany', 'contests.json'));
+  const codeforcesPath = normalizePath(path.join(appRoot, 'src', 'cpany', 'codeforces.json'));
+  const usersPath = normalizePath(path.join(appRoot, 'src', 'cpany', 'users.json'));
+  const cfHandlesPath = normalizePath(path.join(appRoot, 'src', 'cpany', 'cfHandles.json'));
+  const atHandlesPath = normalizePath(path.join(appRoot, 'src', 'cpany', 'atHandles.json'));
 
   return {
     name: 'cpany:load',

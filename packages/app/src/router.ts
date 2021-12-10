@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-
-/* __imports__ */
+import { routes as genRoutes, base } from '~cpany/routes';
 
 declare module 'vue-router' {
   interface RouteMeta {
@@ -71,22 +70,20 @@ const routes = [
     meta: {
       title: '关于 - CPany'
     }
+  },
+  ...genRoutes,
+  {
+    path: '/contest/:platform/:id',
+    name: 'EmptyContest',
+    component: () => import('./pages/Contest/Empty.vue'),
+    meta: {
+      title: '错误 - CPany'
+    }
   }
 ];
 
-/* __contests__ */
-
-routes.push({
-  path: '/contest/:platform/:id',
-  name: 'EmptyContest',
-  component: () => import('./pages/Contest/Empty.vue'),
-  meta: {
-    title: '错误 - CPany'
-  }
-});
-
 export const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(base),
   routes,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {

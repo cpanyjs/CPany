@@ -36,6 +36,8 @@ function resolveOption(dataPath: string | undefined, option: ICliOption) {
 
   option.option = resolveCPanyOption(option.dataRoot, cpanyOption);
 
+  option.base = option.base ?? '/';
+
   // Single plugin cli argument
   // @ts-ignore
   if (typeof option.plugin === 'string') {
@@ -238,15 +240,15 @@ cli.version(version);
 
 async function bootstrap() {
   try {
-    cli.parse(process.argv, { run: false })
-    await cli.runMatchedCommand()
+    cli.parse(process.argv, { run: false });
+    await cli.runMatchedCommand();
   } catch (error: unknown) {
     if (error instanceof Error) {
       console.error(lightRed('Error: ') + error.message);
     } else {
-      console.error(error)
+      console.error(error);
     }
-    process.exit(1)
+    process.exit(1);
   }
 }
 
