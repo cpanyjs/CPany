@@ -104,8 +104,8 @@ export async function resolveViteOptions(
       define: {
         __DEV__: false
       },
+      base: option.base,
       build: {
-        base: option.base,
         outDir: path.join(process.cwd(), option.outDir),
         emptyOutDir: option.emptyOutDir,
         chunkSizeWarningLimit: 2048,
