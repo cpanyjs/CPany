@@ -25,7 +25,6 @@
   "dependencies": {
     "@cpany/core": "workspace:*",
     "@cpany/types": "workspace:*",
-    "@cpany/utils": "workspace:*",
     "axios": "^0.21.1",
     "iconv-lite": "^0.6.3",
     "node-html-parser": "^4.1.3"

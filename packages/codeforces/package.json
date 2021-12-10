@@ -25,7 +25,6 @@
   "dependencies": {
     "@cpany/core": "workspace:*",
     "@cpany/types": "workspace:*",
-    "@cpany/utils": "workspace:*",
     "axios": "^0.21.1"
   },
   "devDependencies": {
