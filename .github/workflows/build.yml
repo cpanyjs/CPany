@@ -32,7 +32,7 @@ jobs:
           name: screenshot
           path: screenshot.png
       - name: Build
-        run: pnpx cpany build example --base CPany
+        run: pnpx cpany build example --base /CPany/
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
