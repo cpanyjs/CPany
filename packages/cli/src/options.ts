@@ -25,6 +25,8 @@ export async function resolveViteOptions(
   option: ICliOption,
   mode: 'dev' | 'build'
 ): Promise<InlineConfig> {
+  option.dev = mode === 'dev';
+
   const dataPath = option.dataRoot;
 
   const appPath = getAppRoot();
@@ -79,7 +81,7 @@ export async function resolveViteOptions(
     common.resolve.alias.vue = `${resolveImportPath('vue/dist/vue.esm-browser.js', true)}`;
   }
 
-  if (mode === 'dev') {
+  if (option.dev) {
     return mergeConfig(common, <InlineConfig>{
       define: {
         __DEV__: true

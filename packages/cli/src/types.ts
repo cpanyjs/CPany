@@ -31,6 +31,7 @@ export interface ICliOption {
   base: string;
 
   // dev
+  dev: boolean; // Set in resolveViteOptions
   host?: string;
   port: number;
   force: boolean;

@@ -137,11 +137,13 @@ export function createCPanyRoutePlugin(
       if (id === virtualRoutesFile + '.js') {
         const virtualRoutes = [
           ...contests.map((contest) => {
-            const path = contestVirtualComponentPath(contest.path, true);
+            // In dev server, use relative path
+            // In build, use absolute path
+            const path = contestVirtualComponentPath(contest.path, option.dev);
             return `{ path: \`${contest.path}\`, component: () => import(\`${path}\`), meta: { title: \`${contest.name} - CPany\` } },`;
           }),
           ...users.map((user) => {
-            const path = userVirtualComponentPath(user.name, true);
+            const path = userVirtualComponentPath(user.name, option.dev);
             return `{ path: \`/user/${user.name}\`, component: () => import(\`${path}\`), meta: { title: \`用户 ${user.name} - CPany\` } },`;
           })
         ];
@@ -163,7 +165,7 @@ export function createCPanyContestPagePlugin(
   const componentPath = normalizePath(path.join(appRoot, 'src', 'pages', 'Contest', 'Contest.vue'));
 
   const virtualContestJson = (contestPath: string) =>
-  normalizePath(path.join('~cpany', contestPath + '.json'));
+    normalizePath(path.join('~cpany', contestPath + '.json'));
 
   const findVirtualContestJson = (id: string): RouteKey<IContest> | null => {
     if (!id.endsWith('.json')) return null;
@@ -226,7 +228,7 @@ export function createCPanyUserPagePlugin(users: IUser[], { appRoot }: IPluginOp
   const componentPath = normalizePath(path.join(appRoot, 'src', 'pages', 'User', 'User.vue'));
 
   const virtualUserJson = (username: string) =>
-  normalizePath(path.join('~cpany', 'users', username + '.json'));
+    normalizePath(path.join('~cpany', 'users', username + '.json'));
 
   const findvirtualUserJson = (id: string): IUser | null => {
     if (!id.endsWith('.json')) return null;
