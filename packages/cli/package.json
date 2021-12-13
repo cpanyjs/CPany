@@ -64,7 +64,8 @@
     "@types/js-yaml": "^4.0.2",
     "@types/node": "^16.4.13",
     "@types/resolve": "^1.20.1",
-    "tsup": "^4.14.0"
+    "tsup": "^4.14.0",
+    "vite-plugin-inspect": "^0.3.11"
   },
   "peerDependencies": {
     "@cpany/plugin-atcoder": "workspace:*",

@@ -42,6 +42,8 @@ export async function resolveViteOptions(
     cliVersion: version
   };
 
+  const viteInspect = resolveImportPath('vite-plugin-inspect', __dirname, false);
+
   const common: InlineConfig = {
     root: appPath,
     configFile: false,
@@ -49,6 +51,7 @@ export async function resolveViteOptions(
       __CLI_VERSION__: JSON.stringify(version)
     },
     plugins: [
+      viteInspect && (await import(viteInspect)).default(),
       vue(),
       WindiCSS({
         configFiles: [path.join(appPath, 'windi.config.js')],
