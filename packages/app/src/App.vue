@@ -26,11 +26,24 @@
 
   <footer class="px-1 py-6">
     <div class="text-center text-gray-400">
+      <div v-if="!!githubRepo" class="flex items-center justify-center my-2 font-mono">
+        <div class="mr-2">
+          <a class="text-$text-light-1" href="https://github.com/" target="_blank"
+            ><icon-data class="align-middle"
+          /></a>
+        </div>
+        <div>
+          <a class="block text-left" :href="`https://github.com/${githubRepo}`" target="_blank">
+            {{ githubRepo }}</a
+          >
+        </div>
+      </div>
+
       <div class="flex items-center justify-center my-2 font-mono">
         <div class="mr-2">
           <a class="text-$text-light-1" href="https://github.com/" target="_blank"
-            ><icon-github class="align-middle"></icon-github
-          ></a>
+            ><icon-github class="align-middle"
+          /></a>
         </div>
         <div>
           <a
@@ -42,6 +55,7 @@
           >
         </div>
       </div>
+
       <p v-if="fetchTime && fetchTime !== ''">
         <span>更新时间</span>
         <span class="font-mono">: {{ toDate(+fetchTime).value }}</span>
@@ -61,12 +75,15 @@
 
 <script setup lang="ts">
 import IconGithub from '~icons/mdi/github';
+import IconData from '~icons/mdi/database';
 import { Navbar, NavbarItem } from './components/navbar';
 import { Progress } from './components/progress';
 import { toDate } from './utils';
 import { nav } from './overview';
 
 const cliVersion = __CLI_VERSION__;
+
+const githubRepo = __GITHUB_REPOSITORY__;
 
 const fetchTime = __FETCH_TIMESTAMP__;
 

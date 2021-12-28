@@ -48,7 +48,8 @@ export async function resolveViteOptions(
     root: appPath,
     configFile: false,
     define: {
-      __CLI_VERSION__: JSON.stringify(version)
+      __CLI_VERSION__: JSON.stringify(version),
+      __GITHUB_REPOSITORY__: JSON.stringify(process.env.GITHUB_REPOSITORY)
     },
     plugins: [
       viteInspect && (await import(viteInspect)).default(),
