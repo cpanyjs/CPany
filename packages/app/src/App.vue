@@ -51,7 +51,7 @@
             :href="`https://github.com/cpanyjs/CPany/tree/v${cliVersion}`"
             target="_blank"
           >
-            @cpany/cli: {{ cliVersion }}</a
+            CPany: {{ cliVersion }}</a
           >
         </div>
       </div>
