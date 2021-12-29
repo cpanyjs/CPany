@@ -28,7 +28,7 @@
     <div class="text-center text-gray-400">
       <div v-if="!!githubRepo" class="flex items-center justify-center my-2 font-mono">
         <div class="mr-2">
-          <a class="text-$text-light-1" href="https://github.com/" target="_blank"
+          <a class="text-$text-light-1" :href="`https://github.com/${githubRepo}`" target="_blank"
             ><icon-data class="align-middle"
           /></a>
         </div>
@@ -41,7 +41,7 @@
 
       <div class="flex items-center justify-center my-2 font-mono">
         <div class="mr-2">
-          <a class="text-$text-light-1" href="https://github.com/" target="_blank"
+          <a class="text-$text-light-1" href="https://github.com/cpanyjs/CPany" target="_blank"
             ><icon-github class="align-middle"
           /></a>
         </div>
