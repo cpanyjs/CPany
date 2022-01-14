@@ -67,7 +67,7 @@ async function fetchSubmissions(
       });
       const curSubs = data.currentData.records.result;
       if (!curSubs) break;
-  
+
       for (const sub of curSubs) {
         if (sub.id <= maxId) {
           isEnd = true;
@@ -75,7 +75,7 @@ async function fetchSubmissions(
         }
         if (sub.status === 0) continue;
         if (sub.problem.type === 'CF') continue;
-  
+
         subs.push({
           type: 'luogu',
           id: sub.id,
@@ -97,9 +97,9 @@ async function fetchSubmissions(
           submissionUrl: `https://www.luogu.com.cn/record/${sub.id}`
         });
       }
-  
+
       if (isEnd || curSubs.length === 0) break;
-  
+
       logger.info(
         `Fetch: (name: ${name}, id: ${id}) has fetched ${
           subs.length - oldLen
@@ -107,7 +107,7 @@ async function fetchSubmissions(
       );
       page = page + 1;
     } catch {
-      break; 
+      break;
     }
   }
 
