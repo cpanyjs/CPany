@@ -61,50 +61,54 @@ async function fetchSubmissions(
     let isEnd = false;
     const oldLen = subs.length;
 
-    const { data } = await api.get<RecordListDto>('/record/list', {
-      params: { user: id, page }
-    });
-    const curSubs = data.currentData.records.result;
-
-    for (const sub of curSubs) {
-      if (sub.id <= maxId) {
-        isEnd = true;
-        break;
-      }
-      if (sub.status === 0) continue;
-      if (sub.problem.type === 'CF') continue;
-
-      subs.push({
-        type: 'luogu',
-        id: sub.id,
-        creationTime: sub.submitTime,
-        language: parseLanguage(sub.problem.type, sub.language),
-        verdict: parseVerdict(sub.status),
-        author: {
-          members: [String(id)],
-          participantTime: sub.submitTime,
-          participantType: ParticipantType.PRACTICE
-        },
-        problem: {
-          type: 'luogu/' + sub.problem.type,
-          id: sub.problem.pid,
-          name: sub.problem.title,
-          rating: sub.problem.difficulty,
-          problemUrl: `https://www.luogu.com.cn/problem/${sub.problem.pid}`
-        },
-        submissionUrl: `https://www.luogu.com.cn/record/${sub.id}`
+    try {
+      const { data } = await api.get<RecordListDto>('/record/list', {
+        params: { user: id, page }
       });
+      const curSubs = data.currentData.records.result;
+      if (!curSubs) break;
+  
+      for (const sub of curSubs) {
+        if (sub.id <= maxId) {
+          isEnd = true;
+          break;
+        }
+        if (sub.status === 0) continue;
+        if (sub.problem.type === 'CF') continue;
+  
+        subs.push({
+          type: 'luogu',
+          id: sub.id,
+          creationTime: sub.submitTime,
+          language: parseLanguage(sub.problem.type, sub.language),
+          verdict: parseVerdict(sub.status),
+          author: {
+            members: [String(id)],
+            participantTime: sub.submitTime,
+            participantType: ParticipantType.PRACTICE
+          },
+          problem: {
+            type: 'luogu/' + sub.problem.type,
+            id: sub.problem.pid,
+            name: sub.problem.title,
+            rating: sub.problem.difficulty,
+            problemUrl: `https://www.luogu.com.cn/problem/${sub.problem.pid}`
+          },
+          submissionUrl: `https://www.luogu.com.cn/record/${sub.id}`
+        });
+      }
+  
+      if (isEnd || curSubs.length === 0) break;
+  
+      logger.info(
+        `Fetch: (name: ${name}, id: ${id}) has fetched ${
+          subs.length - oldLen
+        } new submissions at page ${page}`
+      );
+      page = page + 1;
+    } catch {
+      break; 
     }
-
-    if (isEnd || curSubs.length === 0) break;
-
-    logger.info(
-      `Fetch: (name: ${name}, id: ${id}) has fetched ${
-        subs.length - oldLen
-      } new submissions at page ${page}`
-    );
-
-    page = page + 1;
   }
 
   return [...subs, ...preSubs];
