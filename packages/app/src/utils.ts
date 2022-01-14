@@ -144,7 +144,7 @@ export const displayPlatform = (type: string) => {
 
 export const displayContestType = (contest: IContest) => {
   if (isCodeforces(contest)) {
-    if (/Round/.test(contest.name) || /Div/.test(contest.name)) {
+    if (/Round|Div|Hello \d+|Good Bye \d+/.test(contest.name)) {
       return 'Codeforces Round';
     } else if (/gym/.test(contest.type)) {
       return 'Codeforces GYM';

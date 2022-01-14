@@ -11945,6 +11945,17 @@
     "standingsUrl": "https://codeforces.com/gym/102896/standings"
   },
   {
+    "type": "codeforces/gym/icpc",
+    "name": "The 3rd Hangzhou Normal University Freshman Programming Contest",
+    "startTime": 1607832000,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 102897,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/102897",
+    "standingsUrl": "https://codeforces.com/gym/102897/standings"
+  },
+  {
     "type": "codeforces/gym/ioi",
     "name": "Innopolis Open 2020-2021, qualification, contest 2",
     "duration": 18000,
@@ -11953,6 +11964,17 @@
     "phase": "FINISHED",
     "contestUrl": "https://codeforces.com/gym/102898",
     "standingsUrl": "https://codeforces.com/gym/102898/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 2nd Hangzhou Normal University Freshman Programming Contest",
+    "startTime": 1576987200,
+    "duration": 14400,
+    "participantNumber": 0,
+    "id": 102899,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/102899",
+    "standingsUrl": "https://codeforces.com/gym/102899/standings"
   },
   {
     "type": "codeforces/gym/icpc",
@@ -12585,6 +12607,17 @@
     "phase": "FINISHED",
     "contestUrl": "https://codeforces.com/gym/103113",
     "standingsUrl": "https://codeforces.com/gym/103113/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 2021 Hangzhou Normal U Summer Trials",
+    "startTime": 1622264400,
+    "duration": 14400,
+    "participantNumber": 0,
+    "id": 103114,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103114",
+    "standingsUrl": "https://codeforces.com/gym/103114/standings"
   },
   {
     "type": "codeforces/gym/icpc",
@@ -13413,12 +13446,384 @@
   },
   {
     "type": "codeforces/gym/icpc",
-    "name": "past problems",
+    "name": "2021 ICPC Southeastern Europe Regional Contest",
     "duration": 18000,
     "participantNumber": 0,
-    "id": 103434,
+    "id": 103438,
     "phase": "FINISHED",
-    "contestUrl": "https://codeforces.com/gym/103434",
-    "standingsUrl": "https://codeforces.com/gym/103434/standings"
+    "contestUrl": "https://codeforces.com/gym/103438",
+    "standingsUrl": "https://codeforces.com/gym/103438/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "GP of Southeastern Europe 2021",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103439,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103439",
+    "standingsUrl": "https://codeforces.com/gym/103439/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 2021 ICPC Asia Taipei Regional Programming Contest",
+    "startTime": 1638063000,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103443,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103443",
+    "standingsUrl": "https://codeforces.com/gym/103443/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 2021 ICPC Asia Shanghai Regional Programming Contest",
+    "startTime": 1638068400,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103446,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103446",
+    "standingsUrl": "https://codeforces.com/gym/103446/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 2021 China Collegiate Programming Contest (Harbin)",
+    "startTime": 1638061200,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103447,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103447",
+    "standingsUrl": "https://codeforces.com/gym/103447/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 16-th Beihang University Collegiate Programming Contest (BCPC 2021) - Preliminary",
+    "startTime": 1637971200,
+    "duration": 302400,
+    "participantNumber": 0,
+    "id": 103448,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103448",
+    "standingsUrl": "https://codeforces.com/gym/103448/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Infoleague Winter 2021 Training Round",
+    "startTime": 1638626400,
+    "duration": 604800,
+    "participantNumber": 0,
+    "id": 103449,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103449",
+    "standingsUrl": "https://codeforces.com/gym/103449/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "Krosh Kaliningrad Contest 2",
+    "startTime": 1638615600,
+    "duration": 10800,
+    "participantNumber": 0,
+    "id": 103451,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103451",
+    "standingsUrl": "https://codeforces.com/gym/103451/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "UTPC Contest 12-03-21 Div. 2 (Beginner)",
+    "startTime": 1638576300,
+    "duration": 7200,
+    "participantNumber": 0,
+    "id": 103455,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103455",
+    "standingsUrl": "https://codeforces.com/gym/103455/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "UTPC Contest 12-03-21 Div. 1 (Advanced)",
+    "startTime": 1638576300,
+    "duration": 7200,
+    "participantNumber": 0,
+    "id": 103456,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103456",
+    "standingsUrl": "https://codeforces.com/gym/103456/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "Интернет-олимпиады, Сезон 2021-2022, Вторая командная олимпиада",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103457,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103457",
+    "standingsUrl": "https://codeforces.com/gym/103457/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "Интернет-олимпиады, Сезон 2021-2022, Третья командная олимпиада",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103458,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103458",
+    "standingsUrl": "https://codeforces.com/gym/103458/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The Hangzhou Normal U Qualification Trials for ZJPSC 2021",
+    "startTime": 1617165000,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103462,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103462",
+    "standingsUrl": "https://codeforces.com/gym/103462/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The Hangzhou Normal U Qualification Trials for ZJPSC 2020",
+    "startTime": 1600232400,
+    "duration": 15600,
+    "participantNumber": 0,
+    "id": 103463,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103463",
+    "standingsUrl": "https://codeforces.com/gym/103463/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "The second stage of the Republican Olympiad in Informatics. Mogilev region, 2021.",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103464,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103464",
+    "standingsUrl": "https://codeforces.com/gym/103464/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 2019 ICPC Asia Nanjing Regional Contest",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103466,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103466",
+    "standingsUrl": "https://codeforces.com/gym/103466/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 2021 ICPC Asia Nanjing Regional Contest (XXII Open Cup, Grand Prix of Nanjing)",
+    "startTime": 1638586800,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103470,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103470",
+    "standingsUrl": "https://codeforces.com/gym/103470/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Муниципальный этап ВсОШ по информатике в Липецке 2021 (9-11 классы)",
+    "startTime": 1638856800,
+    "duration": 14100,
+    "participantNumber": 0,
+    "id": 103471,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103471",
+    "standingsUrl": "https://codeforces.com/gym/103471/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Innopolis Open 2021-2022. Second qualification round.",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103476,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103476",
+    "standingsUrl": "https://codeforces.com/gym/103476/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 16-th Beihang University Collegiate Programming Contest (BCPC 2021) - Final",
+    "startTime": 1639285200,
+    "duration": 14400,
+    "participantNumber": 0,
+    "id": 103478,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103478",
+    "standingsUrl": "https://codeforces.com/gym/103478/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 4th Hangzhou Normal University Freshman Programming Contest",
+    "startTime": 1639287000,
+    "duration": 14400,
+    "participantNumber": 0,
+    "id": 103480,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103480",
+    "standingsUrl": "https://codeforces.com/gym/103480/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "2021-2022 Russia Team Open, High School Programming Contest (VKOSHP XXII)",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103483,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103483",
+    "standingsUrl": "https://codeforces.com/gym/103483/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "Copa Do Matão, University Of São Paulo Programming Contest",
+    "startTime": 1639933200,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103485,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103485",
+    "standingsUrl": "https://codeforces.com/gym/103485/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 15th Jilin Provincial Collegiate Programming Contest",
+    "startTime": 1638239400,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103486,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103486",
+    "standingsUrl": "https://codeforces.com/gym/103486/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "The 2021 Zhejiang University City College Freshman Programming Contest",
+    "startTime": 1639803600,
+    "duration": 14400,
+    "participantNumber": 0,
+    "id": 103488,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103488",
+    "standingsUrl": "https://codeforces.com/gym/103488/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "1 Silaeder olymp",
+    "duration": 14400,
+    "participantNumber": 0,
+    "id": 103491,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103491",
+    "standingsUrl": "https://codeforces.com/gym/103491/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "China Collegiate Programming Contest 2021, Qualification Round (Online), Rematch",
+    "startTime": 1633838400,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103492,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103492",
+    "standingsUrl": "https://codeforces.com/gym/103492/standings"
+  },
+  {
+    "type": "codeforces/gym/icpc",
+    "name": "2021 Jiangsu Collegiate Programming Contest",
+    "startTime": 1640401200,
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103495,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103495",
+    "standingsUrl": "https://codeforces.com/gym/103495/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Abakoda 2021 Long Contest",
+    "startTime": 1640599200,
+    "duration": 799200,
+    "participantNumber": 0,
+    "id": 103496,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103496",
+    "standingsUrl": "https://codeforces.com/gym/103496/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "box 2021",
+    "duration": 14400,
+    "participantNumber": 0,
+    "id": 103500,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103500",
+    "standingsUrl": "https://codeforces.com/gym/103500/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Infoleague Winter 2022 Round 1 Div. 2",
+    "startTime": 1641650400,
+    "duration": 14400,
+    "participantNumber": 0,
+    "id": 103503,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103503",
+    "standingsUrl": "https://codeforces.com/gym/103503/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Infoleague Winter 2022 Round 1 Div. 1",
+    "startTime": 1641650400,
+    "duration": 19800,
+    "participantNumber": 0,
+    "id": 103505,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103505",
+    "standingsUrl": "https://codeforces.com/gym/103505/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Интернет-олимпиады, Сезон 2018-2019, Третья личная олимпиада",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103521,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103521",
+    "standingsUrl": "https://codeforces.com/gym/103521/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Индивидуальная олимпиада школьников по информатике и программированию 2019",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103522,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103522",
+    "standingsUrl": "https://codeforces.com/gym/103522/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Интернет-олимпиады, Сезон 2017-2018, Первая личная олимпиада",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103524,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103524",
+    "standingsUrl": "https://codeforces.com/gym/103524/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "Интернет-олимпиады, Сезон 2017-2018, Вторая личная олимпиада",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103526,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103526",
+    "standingsUrl": "https://codeforces.com/gym/103526/standings"
   }
 ]

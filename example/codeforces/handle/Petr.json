@@ -6,6 +6,863 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 141574647,
+      "creationTime": 1641232210,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -506251437
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1621G",
+        "name": "Weighted Increasing Subsequences",
+        "rating": 3200,
+        "tags": [
+          "data structures",
+          "dp",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1621/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1621/submission/141574647"
+    },
+    {
+      "type": "codeforces",
+      "id": 141537885,
+      "creationTime": 1641224588,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1641220500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1621F",
+        "name": "Strange Instructions",
+        "rating": 2700,
+        "tags": [
+          "data structures",
+          "greedy",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1621/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1621/submission/141537885"
+    },
+    {
+      "type": "codeforces",
+      "id": 141535036,
+      "creationTime": 1641224214,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1641220500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1621F",
+        "name": "Strange Instructions",
+        "rating": 2700,
+        "tags": [
+          "data structures",
+          "greedy",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1621/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1621/submission/141535036"
+    },
+    {
+      "type": "codeforces",
+      "id": 141530476,
+      "creationTime": 1641223630,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1641220500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1621F",
+        "name": "Strange Instructions",
+        "rating": 2700,
+        "tags": [
+          "data structures",
+          "greedy",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1621/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1621/submission/141530476"
+    },
+    {
+      "type": "codeforces",
+      "id": 141524084,
+      "creationTime": 1641222868,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1641220500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1621E",
+        "name": "New School",
+        "rating": 2300,
+        "tags": [
+          "binary search",
+          "data structures",
+          "dp",
+          "greedy",
+          "implementation",
+          "sortings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1621/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1621/submission/141524084"
+    },
+    {
+      "type": "codeforces",
+      "id": 141522206,
+      "creationTime": 1641222654,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1641220500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1621E",
+        "name": "New School",
+        "rating": 2300,
+        "tags": [
+          "binary search",
+          "data structures",
+          "dp",
+          "greedy",
+          "implementation",
+          "sortings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1621/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1621/submission/141522206"
+    },
+    {
+      "type": "codeforces",
+      "id": 141514748,
+      "creationTime": 1641221888,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1641220500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1621D",
+        "name": "The Winter Hike",
+        "rating": 2100,
+        "tags": [
+          "constructive algorithms",
+          "greedy",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1621/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1621/submission/141514748"
+    },
+    {
+      "type": "codeforces",
+      "id": 141507635,
+      "creationTime": 1641221330,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1641220500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1621C",
+        "name": "Hidden Permutations",
+        "rating": 1700,
+        "tags": [
+          "dfs and similar",
+          "interactive",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1621/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1621/submission/141507635"
+    },
+    {
+      "type": "codeforces",
+      "id": 141500472,
+      "creationTime": 1641220923,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1641220500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1621B",
+        "name": "Integers Shop",
+        "rating": 1500,
+        "tags": [
+          "data structures",
+          "greedy",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1621/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1621/submission/141500472"
+    },
+    {
+      "type": "codeforces",
+      "id": 141496804,
+      "creationTime": 1641220630,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1641220500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1621A",
+        "name": "Stable Arrangement of Rooks",
+        "rating": 800,
+        "tags": [
+          "constructive algorithms"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1621/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1621/submission/141496804"
+    },
+    {
+      "type": "codeforces",
+      "id": 141128163,
+      "creationTime": 1640800779,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -506682868
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1616G",
+        "name": "Just Add an Edge",
+        "rating": 3500,
+        "tags": [
+          "dfs and similar",
+          "dp",
+          "graphs"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1616/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1616/submission/141128163"
+    },
+    {
+      "type": "codeforces",
+      "id": 141126122,
+      "creationTime": 1640799235,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640792100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1616G",
+        "name": "Just Add an Edge",
+        "rating": 3500,
+        "tags": [
+          "dfs and similar",
+          "dp",
+          "graphs"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1616/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1616/submission/141126122"
+    },
+    {
+      "type": "codeforces",
+      "id": 141105515,
+      "creationTime": 1640796742,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640792100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1616H",
+        "name": "Keep XOR Low",
+        "rating": 3000,
+        "tags": [
+          "bitmasks",
+          "combinatorics",
+          "data structures",
+          "divide and conquer",
+          "dp",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1616/problem/H"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1616/submission/141105515"
+    },
+    {
+      "type": "codeforces",
+      "id": 141089981,
+      "creationTime": 1640795107,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640792100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1616F",
+        "name": "Tricolor Triangles",
+        "rating": 2900,
+        "tags": [
+          "brute force",
+          "graphs",
+          "math",
+          "matrices"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1616/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1616/submission/141089981"
+    },
+    {
+      "type": "codeforces",
+      "id": 141073681,
+      "creationTime": 1640793858,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640792100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1616D",
+        "name": "Keep the Average High",
+        "rating": 2000,
+        "tags": [
+          "dp",
+          "greedy",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1616/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1616/submission/141073681"
+    },
+    {
+      "type": "codeforces",
+      "id": 141065776,
+      "creationTime": 1640793378,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640792100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1616E",
+        "name": "Lexicographically Small Enough",
+        "rating": 2200,
+        "tags": [
+          "brute force",
+          "data structures",
+          "greedy",
+          "strings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1616/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1616/submission/141065776"
+    },
+    {
+      "type": "codeforces",
+      "id": 141052874,
+      "creationTime": 1640792736,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640792100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1616C",
+        "name": "Representative Edges",
+        "rating": 1500,
+        "tags": [
+          "brute force",
+          "geometry",
+          "implementation",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1616/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1616/submission/141052874"
+    },
+    {
+      "type": "codeforces",
+      "id": 141047960,
+      "creationTime": 1640792536,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640792100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1616B",
+        "name": "Mirror in the String",
+        "rating": 1100,
+        "tags": [
+          "greedy",
+          "strings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1616/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1616/submission/141047960"
+    },
+    {
+      "type": "codeforces",
+      "id": 141038778,
+      "creationTime": 1640792221,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640792100
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1616A",
+        "name": "Integer Diversity",
+        "rating": 800,
+        "tags": [
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1616/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1616/submission/141038778"
+    },
+    {
+      "type": "codeforces",
+      "id": 140504280,
+      "creationTime": 1640365084,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640356500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1615G",
+        "name": "Maximum Adjacent Pairs",
+        "rating": 3300,
+        "tags": [
+          "constructive algorithms",
+          "graph matchings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1615/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1615/submission/140504280"
+    },
+    {
+      "type": "codeforces",
+      "id": 140503122,
+      "creationTime": 1640364846,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640356500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1615G",
+        "name": "Maximum Adjacent Pairs",
+        "rating": 3300,
+        "tags": [
+          "constructive algorithms",
+          "graph matchings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1615/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1615/submission/140503122"
+    },
+    {
+      "type": "codeforces",
+      "id": 140502865,
+      "creationTime": 1640364789,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640356500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1615G",
+        "name": "Maximum Adjacent Pairs",
+        "rating": 3300,
+        "tags": [
+          "constructive algorithms",
+          "graph matchings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1615/problem/G"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1615/submission/140502865"
+    },
+    {
+      "type": "codeforces",
+      "id": 140478903,
+      "creationTime": 1640360021,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640356500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1615E",
+        "name": "Purple Crayon",
+        "rating": 2400,
+        "tags": [
+          "data structures",
+          "dfs and similar",
+          "games",
+          "graphs",
+          "greedy",
+          "math",
+          "sortings",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1615/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1615/submission/140478903"
+    },
+    {
+      "type": "codeforces",
+      "id": 140478019,
+      "creationTime": 1640359876,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640356500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1615E",
+        "name": "Purple Crayon",
+        "rating": 2400,
+        "tags": [
+          "data structures",
+          "dfs and similar",
+          "games",
+          "graphs",
+          "greedy",
+          "math",
+          "sortings",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1615/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1615/submission/140478019"
+    },
+    {
+      "type": "codeforces",
+      "id": 140468502,
+      "creationTime": 1640358433,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640356500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1615D",
+        "name": "X(or)-mas Tree",
+        "rating": 2200,
+        "tags": [
+          "bitmasks",
+          "dfs and similar",
+          "dsu",
+          "graphs",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1615/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1615/submission/140468502"
+    },
+    {
+      "type": "codeforces",
+      "id": 140465429,
+      "creationTime": 1640358035,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640356500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1615C",
+        "name": "Menorah",
+        "rating": 1600,
+        "tags": [
+          "brute force",
+          "graphs",
+          "greedy",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1615/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1615/submission/140465429"
+    },
+    {
+      "type": "codeforces",
+      "id": 140465245,
+      "creationTime": 1640358015,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640356500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1615D",
+        "name": "X(or)-mas Tree",
+        "rating": 2200,
+        "tags": [
+          "bitmasks",
+          "dfs and similar",
+          "dsu",
+          "graphs",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1615/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1615/submission/140465245"
+    },
+    {
+      "type": "codeforces",
+      "id": 140464774,
+      "creationTime": 1640357956,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640356500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1615C",
+        "name": "Menorah",
+        "rating": 1600,
+        "tags": [
+          "brute force",
+          "graphs",
+          "greedy",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1615/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1615/submission/140464774"
+    },
+    {
+      "type": "codeforces",
+      "id": 140459687,
+      "creationTime": 1640357377,
+      "language": "GNU C++17 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640356500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1615C",
+        "name": "Menorah",
+        "rating": 1600,
+        "tags": [
+          "brute force",
+          "graphs",
+          "greedy",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1615/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1615/submission/140459687"
+    },
+    {
+      "type": "codeforces",
+      "id": 140453886,
+      "creationTime": 1640356883,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640356500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1615B",
+        "name": "And It's Non-Zero",
+        "rating": 1300,
+        "tags": [
+          "bitmasks",
+          "greedy",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1615/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1615/submission/140453886"
+    },
+    {
+      "type": "codeforces",
+      "id": 140447963,
+      "creationTime": 1640356599,
+      "language": "GNU C++17 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "Petr"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1640356500
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1615A",
+        "name": "Closing The Gap",
+        "rating": 800,
+        "tags": [
+          "greedy",
+          "math"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1615/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1615/submission/140447963"
+    },
+    {
+      "type": "codeforces",
       "id": 136677440,
       "creationTime": 1637688317,
       "language": "GNU C++17 (64)",
@@ -43613,7 +44470,7 @@
   ],
   "codeforces": {
     "rank": "legendary grandmaster",
-    "rating": 3408,
+    "rating": 3296,
     "maxRank": "legendary grandmaster",
     "maxRating": 3597
   }
