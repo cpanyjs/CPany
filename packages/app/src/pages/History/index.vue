@@ -5,15 +5,15 @@ import { records } from './history';
 <template>
   <div class="divide-y">
     <h2 class="mb-4">历史</h2>
-    <div class="py-4 pl-[8px]">
-      <div class="relative timeline">
+    <div class="py-4">
+      <div class="pl-[8px] relative timeline">
         <div
           v-for="(record, index) in records"
           :key="record.day"
           class="relative timeline-item pl-4"
         >
           <div
-            class="py-4 px-4 border rounded-md"
+            class="py-4 px-4 border rounded-md divide-y"
             :style="{
               borderTopWidth: index > 0 ? 0 : undefined,
               borderTopLeftRadius: index > 0 ? 0 : undefined,
@@ -22,13 +22,15 @@ import { records } from './history';
               borderBottomRightRadius: index + 1 < records.length ? 0 : undefined,
             }"
           >
-            <span class="font-bold">{{ record.day }}</span>
-            <div v-for="record in record.record.list()">
-              <router-link :to="`/user/${record.name}`">{{ record.name }}</router-link>
-              <span>
-                进行了
-                <span class="font-bold">{{ record.newSubmissions.length }}</span> 次提交</span
-              >
+            <div class="font-bold pb-2">{{ record.day }}</div>
+            <div class="pt-2">
+              <div v-for="record in record.record.list()">
+                <router-link :to="`/user/${record.name}`">{{ record.name }}</router-link>
+                <span>
+                  进行了
+                  <span class="font-bold">{{ record.newSubmissions.length }}</span> 次提交</span
+                >
+              </div>
             </div>
           </div>
         </div>

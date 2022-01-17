@@ -25,7 +25,7 @@ class Record {
     for (const [name, sub] of this.submissions) {
       result.push({ name, newSubmissions: sub, newContests: [] });
     }
-    return result;
+    return result.sort((lhs, rhs) => rhs.newSubmissions.length - lhs.newSubmissions.length);
   }
 }
 

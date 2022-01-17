@@ -43,20 +43,16 @@
       </div>
 
       <div class="flex items-center justify-center my-2 font-mono">
-        <div class="mr-2">
-          <a class="text-$text-light-1" href="https://github.com/cpanyjs/CPany" target="_blank"
-            ><icon-github class="align-middle"
-          /></a>
-        </div>
-        <div>
-          <a
-            class="block text-left"
-            :href="`https://github.com/cpanyjs/CPany/tree/v${cliVersion}`"
-            target="_blank"
-          >
-            CPany: {{ cliVersion }}</a
-          >
-        </div>
+        <a class="text-$text-light-1 mr-2 flex items-center" href="https://github.com/cpanyjs/CPany" target="_blank"
+          ><icon-github
+        /></a>
+        <a
+          class="block text-left"
+          :href="`https://github.com/cpanyjs/CPany/tree/v${cliVersion}`"
+          target="_blank"
+        >
+          CPany: {{ cliVersion }}</a
+        >
       </div>
 
       <p v-if="fetchTime && fetchTime !== ''">
