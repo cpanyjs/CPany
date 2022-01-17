@@ -108,10 +108,32 @@ export interface AppOption {
   nav: string[];
 }
 
-export interface DiffLog {
-  user: Record<string, []>;
+export interface UserDiffLog {
+  name: string;
 
-  contest: [];
+  newSubmissions: {
+    platfrom: string;
+    id: number | string;
+    name: string;
+    verdict: string;
+  };
+
+  newContests: {
+    platfrom: string;
+    name: string;
+  };
+}
+
+export interface DiffLog {
+  user?: UserDiffLog[];
+
+  contest?: Array<{
+    platform: string;
+    name: string;
+    startTime: number;
+    duration: number;
+    participantNumber: number;
+  }>;
 }
 
 export interface FetchLog {
@@ -122,7 +144,7 @@ export interface FetchLog {
 
   updateTime: number;
 
-  history?: DiffLog
+  history?: DiffLog;
 }
 
 export type Key<T> = T & { key: string };
