@@ -2,6 +2,7 @@ import { Plugin, normalizePath } from 'vite';
 
 import path from 'path';
 import fs from 'fs';
+import { execSync } from 'child_process';
 
 import type {
   IContestOverview,
@@ -40,20 +41,50 @@ export async function createCPanyPlugin(option: IPluginOption): Promise<Plugin[]
   ];
 }
 
-export function createDefineMetaPlugin({ dataRoot }: IPluginOption): Plugin {
+export function createDefineMetaPlugin({ dataRoot, option }: IPluginOption): Plugin {
   const load = () => {
     try {
       const rawContent = fs.readFileSync(path.join(dataRoot, 'log.json'), 'utf8');
       return JSON.parse(rawContent) as FetchLog;
-    } catch (error) {
-      console.log((error as any).message);
-      return { updateTime: undefined, history: undefined };
+    } catch {
+      return { updateTime: undefined, history: undefined, ref: undefined };
     }
   };
 
   const env = load();
   const FetchTimestamp = env.updateTime ?? '';
   const BuildTimestamp = String(now().getTime() / 1000);
+  const history = env.history ?? { user: [], contest: [] };
+  const startTime = new Date().getTime() / 1000 - option.app.recentTime;
+
+  const findPrevLog = (ref: string) => {
+    try {
+      const rawContent = execSync(
+        `git show ${ref}:${normalizePath(path.join(dataRoot, 'log.json'))}`,
+        { encoding: 'utf-8' }
+      );
+      const oldLog = JSON.parse(rawContent) as FetchLog;
+
+      if (oldLog.updateTime < startTime) return;
+
+      const oldHistory = oldLog?.history ?? { user: [], contest: [] };
+      if (oldHistory.user) {
+        history.user?.push(...oldHistory.user);
+      }
+      if (oldHistory.contest) {
+        history.contest?.push(...oldHistory.contest);
+      }
+
+      if (oldLog.ref) {
+        findPrevLog(oldLog.ref);
+      }
+    } catch {
+      return;
+    }
+  };
+  if (env.ref) {
+    findPrevLog(env.ref);
+  }
 
   return {
     name: 'cpany:log',
@@ -70,7 +101,7 @@ export function createDefineMetaPlugin({ dataRoot }: IPluginOption): Plugin {
     },
     load(id) {
       if (id === '~cpany/log.json') {
-        const content = { history: env.history ?? null };
+        const content = { history };
         return JSON.stringify(content, null, 2);
       }
     }

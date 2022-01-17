@@ -2,68 +2,8 @@
   "version": "0.1.10",
   "updateTime": 1642437161,
   "history": {
-    "user": [
-      {
-        "name": "tourist",
-        "newSubmissions": [
-          {
-            "platform": "codeforces",
-            "id": 142535896,
-            "pid": "1625E2",
-            "name": "Cats on the Upgrade (hard version)",
-            "verdict": "OK",
-            "creationTime": 1642007255
-          }
-        ],
-        "newContests": []
-      },
-      {
-        "name": "Petr",
-        "newSubmissions": [],
-        "newContests": []
-      },
-      {
-        "name": "Benq",
-        "newSubmissions": [
-          {
-            "platform": "codeforces",
-            "id": 141757703,
-            "pid": "1613D",
-            "name": "MEX Sequences",
-            "verdict": "OK",
-            "creationTime": 1641404217
-          },
-          {
-            "platform": "codeforces",
-            "id": 141592705,
-            "pid": "1621I",
-            "name": "Two Sequences",
-            "verdict": "OK",
-            "creationTime": 1641256442
-          }
-        ],
-        "newContests": []
-      },
-      {
-        "name": "ksun48",
-        "newSubmissions": [],
-        "newContests": []
-      },
-      {
-        "name": "jiangly",
-        "newSubmissions": [
-          {
-            "platform": "codeforces",
-            "id": 143023051,
-            "pid": "1626F",
-            "name": "A Random Code Problem",
-            "verdict": "CHALLENGED",
-            "creationTime": 1642352519
-          }
-        ],
-        "newContests": []
-      }
-    ],
+    "user": [],
     "contest": []
-  }
+  },
+  "ref": "9ed82393097efd20f983779a2fdf8adca9b229f5"
 }
