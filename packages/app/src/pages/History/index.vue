@@ -12,7 +12,16 @@ import { records } from './history';
           :key="record.day"
           class="relative timeline-item pl-4"
         >
-          <div class="py-4 px-4 border" :style="{ borderTopWidth: index > 0 ? 0 : undefined }">
+          <div
+            class="py-4 px-4 border rounded-md"
+            :style="{
+              borderTopWidth: index > 0 ? 0 : undefined,
+              borderTopLeftRadius: index > 0 ? 0 : undefined,
+              borderTopRightRadius: index > 0 ? 0 : undefined,
+              borderBottomLeftRadius: index + 1 < records.length ? 0 : undefined,
+              borderBottomRightRadius: index + 1 < records.length ? 0 : undefined,
+            }"
+          >
             <span class="font-bold">{{ record.day }}</span>
             <div v-for="record in record.record.list()">
               <router-link :to="`/user/${record.name}`">{{ record.name }}</router-link>

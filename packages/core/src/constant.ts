@@ -6,4 +6,4 @@ export const DefaultRecentContestsCount = 15;
 
 export const DefaultRecentUserCount = 5;
 
-export const DefaultNav = ['members', 'codeforces', 'contests'];
+export const DefaultNav = ['members', 'codeforces', 'contests', 'history'];

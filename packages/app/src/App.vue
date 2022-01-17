@@ -13,6 +13,9 @@
         >Codeforces</navbar-item
       >
       <navbar-item tag="router-link" :to="{ name: 'Contests' }" v-if="contests">比赛</navbar-item>
+      <navbar-item tag="router-link" :to="{ name: 'History' }" v-if="history" class="<md:hidden"
+        >历史</navbar-item
+      >
     </template>
   </navbar>
 
@@ -92,6 +95,7 @@ const buildTime = __BUILD_TIMESTAMP__;
 const members = nav.findIndex((t) => t === 'members' || t === 'member') !== -1;
 const codeforces = nav.findIndex((t) => t === 'codeforces') !== -1;
 const contests = nav.findIndex((t) => t === 'contests' || t === 'contest') !== -1;
+const history = nav.findIndex((t) => t === 'history') !== -1;
 </script>
 
 <style>
