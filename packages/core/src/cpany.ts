@@ -451,9 +451,11 @@ export function createCPany(option: CreateOptions): CPanyInstance {
         .sort((lhs, rhs) => rhs.participantTime - lhs.participantTime);
     };
     for (const [user, subs] of userSub) {
+      if (subs.length === 0) continue;
       userMap.set(user, { name: user, newSubmissions: transformSub(subs), newContests: [] });
     }
     for (const [user, contests] of userContest) {
+      if (contests.length === 0) continue;
       if (userMap.has(user)) {
         userMap.get(user)!.newContests = transformContest(contests);
       } else {
