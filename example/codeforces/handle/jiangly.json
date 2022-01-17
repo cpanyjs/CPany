@@ -6,6 +6,352 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 143023051,
+      "creationTime": 1642352519,
+      "language": "GNU C++20 (64)",
+      "verdict": "CHALLENGED",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -505131128
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1626F",
+        "name": "A Random Code Problem",
+        "tags": [
+          "combinatorics",
+          "dp",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1626/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1626/submission/143023051"
+    },
+    {
+      "type": "codeforces",
+      "id": 143009993,
+      "creationTime": 1642346872,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1642343700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1626E",
+        "name": "Black and White Tree",
+        "tags": [
+          "dfs and similar",
+          "dp",
+          "greedy",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1626/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1626/submission/143009993"
+    },
+    {
+      "type": "codeforces",
+      "id": 143009399,
+      "creationTime": 1642346813,
+      "language": "GNU C++20 (64)",
+      "verdict": "WRONG_ANSWER",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1642343700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1626E",
+        "name": "Black and White Tree",
+        "tags": [
+          "dfs and similar",
+          "dp",
+          "greedy",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1626/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1626/submission/143009399"
+    },
+    {
+      "type": "codeforces",
+      "id": 142995186,
+      "creationTime": 1642345627,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1642343700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1626D",
+        "name": "Martial Arts Tournament",
+        "tags": [
+          "binary search",
+          "bitmasks",
+          "brute force",
+          "greedy"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1626/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1626/submission/142995186"
+    },
+    {
+      "type": "codeforces",
+      "id": 142987870,
+      "creationTime": 1642345116,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1642343700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1626C",
+        "name": "Monsters And Spells",
+        "tags": [
+          "data structures",
+          "dp",
+          "greedy",
+          "implementation",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1626/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1626/submission/142987870"
+    },
+    {
+      "type": "codeforces",
+      "id": 142975316,
+      "creationTime": 1642344305,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1642343700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1626B",
+        "name": "Minor Reduction",
+        "tags": [
+          "greedy",
+          "strings",
+          "strings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1626/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1626/submission/142975316"
+    },
+    {
+      "type": "codeforces",
+      "id": 142965526,
+      "creationTime": 1642343858,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "CONTESTANT",
+        "participantTime": 1642343700
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1626A",
+        "name": "Equidistant Letters",
+        "tags": [
+          "constructive algorithms"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1626/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1626/submission/142965526"
+    },
+    {
+      "type": "codeforces",
+      "id": 142872701,
+      "creationTime": 1642263450,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1642257300
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1627F",
+        "name": "Not Splitting",
+        "tags": [
+          "geometry",
+          "graphs",
+          "implementation",
+          "shortest paths"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1627/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1627/submission/142872701"
+    },
+    {
+      "type": "codeforces",
+      "id": 142849132,
+      "creationTime": 1642259748,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1642257300
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1627E",
+        "name": "Not Escaping",
+        "tags": [
+          "data structures",
+          "dp",
+          "implementation",
+          "shortest paths",
+          "two pointers"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1627/problem/E"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1627/submission/142849132"
+    },
+    {
+      "type": "codeforces",
+      "id": 142844115,
+      "creationTime": 1642259051,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1642257300
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1627D",
+        "name": "Not Adding",
+        "tags": [
+          "brute force",
+          "dp",
+          "math",
+          "number theory"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1627/problem/D"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1627/submission/142844115"
+    },
+    {
+      "type": "codeforces",
+      "id": 142841273,
+      "creationTime": 1642258682,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1642257300
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1627C",
+        "name": "Not Assigning",
+        "tags": [
+          "constructive algorithms",
+          "dfs and similar",
+          "number theory",
+          "trees"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1627/problem/C"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1627/submission/142841273"
+    },
+    {
+      "type": "codeforces",
+      "id": 142837703,
+      "creationTime": 1642258272,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1642257300
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1627B",
+        "name": "Not Sitting",
+        "tags": [
+          "games",
+          "greedy",
+          "sortings"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1627/problem/B"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1627/submission/142837703"
+    },
+    {
+      "type": "codeforces",
+      "id": 142834313,
+      "creationTime": 1642257956,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "OUT_OF_COMPETITION",
+        "participantTime": 1642257300
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1627A",
+        "name": "Not Shading",
+        "tags": [
+          "constructive algorithms",
+          "implementation"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1627/problem/A"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1627/submission/142834313"
+    },
+    {
+      "type": "codeforces",
       "id": 142593478,
       "creationTime": 1642069651,
       "language": "GNU C++20 (64)",
@@ -395,6 +741,7 @@
         "type": "codeforces",
         "id": "1625E2",
         "name": "Cats on the Upgrade (hard version)",
+        "rating": 2800,
         "tags": [
           "binary search",
           "data structures",
@@ -423,6 +770,7 @@
         "type": "codeforces",
         "id": "1625E2",
         "name": "Cats on the Upgrade (hard version)",
+        "rating": 2800,
         "tags": [
           "binary search",
           "data structures",
@@ -451,6 +799,7 @@
         "type": "codeforces",
         "id": "1625E1",
         "name": "Cats on the Upgrade (easy version)",
+        "rating": 2500,
         "tags": [
           "brute force",
           "data structures",
@@ -481,6 +830,7 @@
         "type": "codeforces",
         "id": "1625D",
         "name": "Binary Spiders",
+        "rating": 2300,
         "tags": [
           "bitmasks",
           "data structures",
@@ -510,6 +860,7 @@
         "type": "codeforces",
         "id": "1625D",
         "name": "Binary Spiders",
+        "rating": 2300,
         "tags": [
           "bitmasks",
           "data structures",
@@ -539,8 +890,8 @@
         "type": "codeforces",
         "id": "1625C",
         "name": "Road Optimization",
+        "rating": 1700,
         "tags": [
-          "data structures",
           "dp"
         ],
         "problemUrl": "https://codeforces.com/contest/1625/problem/C"
@@ -564,6 +915,7 @@
         "type": "codeforces",
         "id": "1625B",
         "name": "Elementary Particles",
+        "rating": 1100,
         "tags": [
           "brute force",
           "greedy",
@@ -590,6 +942,7 @@
         "type": "codeforces",
         "id": "1625A",
         "name": "Ancient Civilization",
+        "rating": 800,
         "tags": [
           "bitmasks",
           "greedy",

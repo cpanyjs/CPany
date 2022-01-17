@@ -4,6 +4,8 @@ import { resolve } from 'path';
 import format from 'date-fns/format';
 import getUnixTime from 'date-fns/getUnixTime';
 
+import type { FetchLog } from '@cpany/types';
+
 import { version } from '../utils';
 
 export async function processReadme(basePath: string, time: Date) {
@@ -25,9 +27,12 @@ export async function processReadme(basePath: string, time: Date) {
   await promises.writeFile(fullPath, newContent, 'utf8');
 }
 
-export async function processVersion(basePath: string, time: Date) {
-  const content = [`ACTION_VERSION=${version}`, `UPDATE_TIME=${getUnixTime(time)}`];
-  await promises.writeFile(resolve(basePath, '.env'), content.join('\n'));
+export async function processLog(basePath: string, time: Date) {
+  const content: FetchLog = {
+    version,
+    updateTime: getUnixTime(time)
+  };
+  await promises.writeFile(resolve(basePath, 'log.json'), JSON.stringify(content, null, 2));
 }
 
 export async function processReport(basePath: string, time: Date) {
@@ -38,7 +43,7 @@ export async function processReport(basePath: string, time: Date) {
     firstError = error;
   }
   try {
-    await processVersion(basePath, time);
+    await processLog(basePath, time);
   } catch (error) {
     if (!firstError) {
       firstError = error;

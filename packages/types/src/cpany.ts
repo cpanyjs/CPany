@@ -108,6 +108,23 @@ export interface AppOption {
   nav: string[];
 }
 
+export interface DiffLog {
+  user: Record<string, []>;
+
+  contest: [];
+}
+
+export interface FetchLog {
+  /**
+   * CLI version running fetch
+   */
+  version: string;
+
+  updateTime: number;
+
+  history?: DiffLog
+}
+
 export type Key<T> = T & { key: string };
 
 export type RouteKey<T> = T & {

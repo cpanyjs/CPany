@@ -9,7 +9,8 @@ import type {
   IContest,
   RouteKey,
   IUser,
-  CompressHandleList
+  CompressHandleList,
+  FetchLog
 } from '@cpany/types';
 import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
 import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
@@ -41,28 +42,17 @@ export async function createCPanyPlugin(option: IPluginOption): Promise<Plugin[]
 
 export function createDefineMetaPlugin({ dataRoot }: IPluginOption): Plugin {
   const load = () => {
-    const envMap: Map<string, string> = new Map();
     try {
-      const rawContent = fs.readFileSync(path.join(dataRoot, '.env'), 'utf8');
-      const content = rawContent.trim().replace(/\r?\n/, '\n').split('\n');
-      for (const _line of content) {
-        const line = _line.trim();
-        if (line === '') continue;
-        const [key, value] = line
-          .split('=')
-          .map((s) => s.trim())
-          .filter((s) => s !== '');
-        envMap.set(key, value);
-      }
+      const rawContent = fs.readFileSync(path.join(dataRoot, 'log.json'), 'utf8');
+      return JSON.parse(rawContent) as FetchLog;
     } catch (error) {
       console.log((error as any).message);
-    } finally {
-      return envMap;
+      return { updateTime: undefined };
     }
   };
 
   const env = load();
-  const FetchTimestamp = env.get('UPDATE_TIME') ?? '';
+  const FetchTimestamp = env.updateTime ?? '';
   const BuildTimestamp = String(now().getTime() / 1000);
 
   return {
