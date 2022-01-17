@@ -48,6 +48,14 @@ export function toDate(seconds: number | Ref<number>) {
   return ref(prefix + hours + ':' + minutes);
 }
 
+export function toDay(seconds: number | Ref<number>) {
+  const utc = toUTC(new Date(unref(seconds) * 1000));
+  const date = utcToZonedTime(utc, 'Asia/Shanghai');
+  return ref(
+    `${date.getFullYear()}-${alignNumber(date.getMonth() + 1)}-${alignNumber(date.getDate())} `
+  );
+}
+
 export function toNumDuration(duration: number | Ref<number>) {
   const seconds = unref(duration);
   const hour = Math.floor(seconds / 3600);

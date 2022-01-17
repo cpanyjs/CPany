@@ -62,8 +62,8 @@
           </div>
 
           <div class="text-right pt-2">
-            <router-link :to="{ name: 'About' }" class="text-gray-400 font-thin hover:underline"
-              >→ 更多</router-link
+            <router-link :to="{ name: 'History' }" class="text-gray-400 font-thin hover:underline"
+              >→ 历史</router-link
             >
           </div>
         </div>

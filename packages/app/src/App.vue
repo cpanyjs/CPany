@@ -104,7 +104,7 @@ const contests = nav.findIndex((t) => t === 'contests' || t === 'contest') !== -
   }
 
   .main-view {
-    min-height: calc(100% - 10rem);
+    min-height: calc(100% - 16rem);
   }
 }
 
