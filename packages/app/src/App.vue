@@ -30,20 +30,22 @@
   <footer class="px-1 py-6">
     <div class="text-center text-gray-400">
       <div v-if="!!githubRepo" class="flex items-center justify-center my-2 font-mono">
-        <div class="mr-2">
-          <a class="text-$text-light-1" :href="`https://github.com/${githubRepo}`" target="_blank"
-            ><icon-data class="align-middle"
-          /></a>
-        </div>
-        <div>
-          <a class="block text-left" :href="`https://github.com/${githubRepo}`" target="_blank">
-            {{ githubRepo }}</a
-          >
-        </div>
+        <a
+          class="text-$text-light-1 mr-1"
+          :href="`https://github.com/${githubRepo}`"
+          target="_blank"
+          ><icon-data class="align-middle"
+        /></a>
+        <a class="block text-left" :href="`https://github.com/${githubRepo}`" target="_blank">
+          {{ githubRepo }}</a
+        >
       </div>
 
       <div class="flex items-center justify-center my-2 font-mono">
-        <a class="text-$text-light-1 mr-2 flex items-center" href="https://github.com/cpanyjs/CPany" target="_blank"
+        <a
+          class="text-$text-light-1 mr-1 flex items-center"
+          href="https://github.com/cpanyjs/CPany"
+          target="_blank"
           ><icon-github
         /></a>
         <a

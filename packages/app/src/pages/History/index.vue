@@ -19,7 +19,7 @@ import { records } from './history';
               borderTopLeftRadius: index > 0 ? 0 : undefined,
               borderTopRightRadius: index > 0 ? 0 : undefined,
               borderBottomLeftRadius: index + 1 < records.length ? 0 : undefined,
-              borderBottomRightRadius: index + 1 < records.length ? 0 : undefined,
+              borderBottomRightRadius: index + 1 < records.length ? 0 : undefined
             }"
           >
             <div class="font-bold pb-2">{{ record.day }}</div>
