@@ -41,4 +41,10 @@ for (const userLog of history.user ?? []) {
   }
 }
 
-export const records = [...groupByDay.entries()].map((r) => ({ day: r[0], record: r[1] }));
+export const records = [...groupByDay.entries()]
+  .map((r) => ({ day: r[0], record: r[1] }))
+  .sort((lhs, rhs) => rhs.day.localeCompare(lhs.day))
+  .map((r) => ({
+    day: r.day.replace(/(\d+)-0?(\d+)-0?(\d+)/, '$1 年 $2 月 $3 日'),
+    record: r.record
+  }));

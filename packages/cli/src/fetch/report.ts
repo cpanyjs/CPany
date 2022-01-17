@@ -1,5 +1,6 @@
 import { promises } from 'fs';
 import { resolve } from 'path';
+import { execSync } from 'child_process';
 
 import format from 'date-fns/format';
 import getUnixTime from 'date-fns/getUnixTime';
@@ -35,6 +36,12 @@ export async function processLog(option: ResolvedCPanyOption, time: Date, fetche
     updateTime: getUnixTime(time),
     history
   };
+
+  try {
+    const ref = execSync('git rev-parse HEAD', { encoding: 'utf-8' }).trim();
+    content.ref = ref;
+  } catch {}
+
   await promises.writeFile(resolve(option.dataRoot, 'log.json'), JSON.stringify(content, null, 2));
 }
 

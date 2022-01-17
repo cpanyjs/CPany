@@ -16,7 +16,10 @@ import { records } from './history';
             <span class="font-bold">{{ record.day }}</span>
             <div v-for="record in record.record.list()">
               <router-link :to="`/user/${record.name}`">{{ record.name }}</router-link>
-              <span> 进行了 {{ record.newSubmissions.length }} 次提交</span>
+              <span>
+                进行了
+                <span class="font-bold">{{ record.newSubmissions.length }}</span> 次提交</span
+              >
             </div>
           </div>
         </div>

@@ -148,6 +148,8 @@ export interface FetchLog {
 
   updateTime: number;
 
+  ref?: string;
+
   history?: DiffLog;
 }
 

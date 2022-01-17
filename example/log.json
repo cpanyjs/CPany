@@ -1,11 +1,20 @@
 {
   "version": "0.1.10",
-  "updateTime": 1642430427,
+  "updateTime": 1642437161,
   "history": {
     "user": [
       {
         "name": "tourist",
-        "newSubmissions": [],
+        "newSubmissions": [
+          {
+            "platform": "codeforces",
+            "id": 142535896,
+            "pid": "1625E2",
+            "name": "Cats on the Upgrade (hard version)",
+            "verdict": "OK",
+            "creationTime": 1642007255
+          }
+        ],
         "newContests": []
       },
       {
@@ -42,7 +51,16 @@
       },
       {
         "name": "jiangly",
-        "newSubmissions": [],
+        "newSubmissions": [
+          {
+            "platform": "codeforces",
+            "id": 143023051,
+            "pid": "1626F",
+            "name": "A Random Code Problem",
+            "verdict": "CHALLENGED",
+            "creationTime": 1642352519
+          }
+        ],
         "newContests": []
       }
     ],
