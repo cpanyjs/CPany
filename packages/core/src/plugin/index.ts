@@ -9,7 +9,9 @@ import type {
 
 import type { LoadPlugin, LoadContext } from './load';
 
-export type CPanyPlugin = CPanyFetchPlugin | LoadPlugin;
+import type { DiffPlugin } from './diff';
+
+export type CPanyPlugin = CPanyFetchPlugin | LoadPlugin | DiffPlugin;
 
 export type {
   CPanyFetchPlugin,
@@ -17,6 +19,7 @@ export type {
   CachePlugin,
   FetchPlugin,
   QueryPlugin,
+  DiffPlugin,
   FetchResult,
   FetchContext,
   LoadContext
@@ -36,6 +39,10 @@ export function isQueryPlugin(plugin: CPanyPlugin): plugin is QueryPlugin {
 
 export function isLoadPlugin(plugin: CPanyPlugin): plugin is LoadPlugin {
   return 'load' in plugin;
+}
+
+export function isDiffPlugin(plugin: CPanyPlugin): plugin is DiffPlugin {
+  return 'diff' in plugin;
 }
 
 export function createPluginContainer(
@@ -85,7 +92,8 @@ export function createPluginContainer(
       }
       return undefined;
     },
-    load: () => all.load
+    load: () => all.load,
+    diff: () => all.diff
   };
 }
 
@@ -94,6 +102,7 @@ function classify(plugins: CPanyPlugin[]): ClassifiedPlugins {
   const fetch: FetchPlugin[] = [];
   const query: QueryPlugin[] = [];
   const load: LoadPlugin[] = [];
+  const diff: DiffPlugin[] = [];
 
   for (const plugin of plugins) {
     if (!plugin) continue;
@@ -109,13 +118,17 @@ function classify(plugins: CPanyPlugin[]): ClassifiedPlugins {
     if (isLoadPlugin(plugin)) {
       load.push(plugin);
     }
+    if (isDiffPlugin(plugin)) {
+      diff.push(plugin);
+    }
   }
 
   return {
     cache,
     fetch,
     query,
-    load
+    load,
+    diff
   };
 }
 
@@ -164,6 +177,8 @@ interface PluginContainer {
   query(platform: string, name: string): QueryPlugin | undefined;
 
   load(): LoadPlugin[];
+
+  diff(): DiffPlugin[];
 }
 
 interface ClassifiedPlugins {
@@ -171,4 +186,5 @@ interface ClassifiedPlugins {
   fetch: FetchPlugin[];
   query: QueryPlugin[];
   load: LoadPlugin[];
+  diff: DiffPlugin[];
 }

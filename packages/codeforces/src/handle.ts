@@ -6,7 +6,10 @@ import type { HandleDTO, SubmissionDTO, IHandleWithCodeforces } from '@cpany/typ
 
 import { codeforces } from './constant';
 
-export function handleInfoPlugin(api: AxiosInstance): QueryPlugin {
+export function handleInfoPlugin(
+  api: AxiosInstance,
+  newHandles: IHandleWithCodeforces[]
+): QueryPlugin {
   return {
     name: 'handle',
     platform: codeforces,
@@ -94,6 +97,8 @@ export function handleInfoPlugin(api: AxiosInstance): QueryPlugin {
 
       const data = await fetchInfo();
       data.submissions = await fetchSubmission();
+
+      newHandles.push(data);
 
       return JSON.stringify(data, null, 2);
     }

@@ -1,4 +1,51 @@
 {
   "version": "0.1.10",
-  "updateTime": 1642415715
+  "updateTime": 1642430427,
+  "history": {
+    "user": [
+      {
+        "name": "tourist",
+        "newSubmissions": [],
+        "newContests": []
+      },
+      {
+        "name": "Petr",
+        "newSubmissions": [],
+        "newContests": []
+      },
+      {
+        "name": "Benq",
+        "newSubmissions": [
+          {
+            "platform": "codeforces",
+            "id": 141757703,
+            "pid": "1613D",
+            "name": "MEX Sequences",
+            "verdict": "OK",
+            "creationTime": 1641404217
+          },
+          {
+            "platform": "codeforces",
+            "id": 141592705,
+            "pid": "1621I",
+            "name": "Two Sequences",
+            "verdict": "OK",
+            "creationTime": 1641256442
+          }
+        ],
+        "newContests": []
+      },
+      {
+        "name": "ksun48",
+        "newSubmissions": [],
+        "newContests": []
+      },
+      {
+        "name": "jiangly",
+        "newSubmissions": [],
+        "newContests": []
+      }
+    ],
+    "contest": []
+  }
 }

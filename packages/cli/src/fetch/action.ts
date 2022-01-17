@@ -65,7 +65,7 @@ export async function run(option: ICliOption) {
   }
 
   try {
-    await processReport(option.dataRoot, nowTime);
+    await processReport(option.option, nowTime, fetcher);
   } catch (error: any) {
     const msg = error.message;
     if (typeof msg === 'string') {

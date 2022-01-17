@@ -1,4 +1,13 @@
-import { IUser, IHandle, IContest, ResolvedCPanyOption, Key, ParticipantType } from '@cpany/types';
+import {
+  IUser,
+  IHandle,
+  IContest,
+  ResolvedCPanyOption,
+  Key,
+  ParticipantType,
+  ISubmission,
+  UserDiffLog
+} from '@cpany/types';
 import { lightRed, dim, bold } from 'kolorist';
 
 import type { CreateOptions, CPanyInstance, FSOperations, FSEventType } from './types';
@@ -381,6 +390,87 @@ export function createCPany(option: CreateOptions): CPanyInstance {
     };
   };
 
+  const diff = async (option: ResolvedCPanyOption) => {
+    const userSub = new Map<string, ISubmission[]>();
+    const userContest = new Map<string, IContest[]>();
+    const findUsername = (platform: string, id: string) => {
+      for (const user of option.users) {
+        for (const handle of user.handle) {
+          if (platform === handle.platform && id === handle.handle) {
+            return user.name;
+          }
+        }
+      }
+      return undefined;
+    };
+
+    for (const plugin of container.diff()) {
+      const context = {
+        addHandleSubmission(handle: string, ...submissions: ISubmission[]) {
+          const user = findUsername(plugin.platform, handle)!;
+          if (userSub.has(user)) {
+            userSub.get(user)!.push(...submissions);
+          } else {
+            userSub.set(user, [...submissions]);
+          }
+        },
+        addHandleContest(handle: string, ...contests: IContest[]) {
+          const user = findUsername(plugin.platform, handle)!;
+          if (userContest.has(user)) {
+            userContest.get(user)!.push(...contests);
+          } else {
+            userContest.set(user, [...contests]);
+          }
+        },
+        addContest() {}
+      };
+      await plugin.diff(context);
+    }
+
+    const userMap = new Map<string, UserDiffLog>();
+    const transformSub = (submissions: ISubmission[]) => {
+      return submissions
+        .map((sub) => ({
+          platform: sub.type,
+          id: sub.id,
+          pid: sub.problem.id,
+          name: sub.problem.name,
+          verdict: sub.verdict,
+          creationTime: sub.creationTime
+        }))
+        .sort((lhs, rhs) => rhs.id - lhs.id);
+    };
+    const transformContest = (contests: IContest[]) => {
+      return contests
+        .map((contest) => ({
+          platform: contest.type,
+          name: contest.name,
+          // use author participant time
+          participantTime: contest.startTime
+        }))
+        .sort((lhs, rhs) => rhs.participantTime - lhs.participantTime);
+    };
+    for (const [user, subs] of userSub) {
+      userMap.set(user, { name: user, newSubmissions: transformSub(subs), newContests: [] });
+    }
+    for (const [user, contests] of userContest) {
+      if (userMap.has(user)) {
+        userMap.get(user)!.newContests = transformContest(contests);
+      } else {
+        userMap.set(user, {
+          name: user,
+          newSubmissions: [],
+          newContests: transformContest(contests)
+        });
+      }
+    }
+
+    return {
+      user: [...userMap.values()],
+      contest: []
+    };
+  };
+
   return {
     logger,
     platforms: container.platforms,
@@ -389,6 +479,7 @@ export function createCPany(option: CreateOptions): CPanyInstance {
     query,
     fetchAll,
     loadAll,
+    diff,
     on
   };
 }

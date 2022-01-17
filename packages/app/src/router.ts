@@ -64,6 +64,14 @@ const routes = [
     }
   },
   {
+    path: '/history',
+    name: 'History',
+    component: () => import('./pages/History/index.vue'),
+    meta: {
+      title: '历史 - CPany'
+    }
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import('./pages/About.vue'),

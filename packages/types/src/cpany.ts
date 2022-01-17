@@ -1,5 +1,6 @@
-import { IHandle, IAuthor } from './handle';
-import { IContest } from './contest';
+import type { IHandle, IAuthor } from './handle';
+import type { IContest } from './contest';
+import type { Verdict } from './enum';
 
 export interface IUser {
   name: string;
@@ -111,17 +112,20 @@ export interface AppOption {
 export interface UserDiffLog {
   name: string;
 
-  newSubmissions: {
-    platfrom: string;
-    id: number | string;
+  newSubmissions: Array<{
+    platform: string;
+    id: number;
+    verdict: Verdict;
+    creationTime: number;
+    pid: number | string;
     name: string;
-    verdict: string;
-  };
+  }>;
 
-  newContests: {
-    platfrom: string;
+  newContests: Array<{
+    platform: string;
     name: string;
-  };
+    participantTime: number;
+  }>;
 }
 
 export interface DiffLog {
@@ -132,7 +136,7 @@ export interface DiffLog {
     name: string;
     startTime: number;
     duration: number;
-    participantNumber: number;
+    participant: string[];
   }>;
 }
 

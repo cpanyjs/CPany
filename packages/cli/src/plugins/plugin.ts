@@ -47,7 +47,7 @@ export function createDefineMetaPlugin({ dataRoot }: IPluginOption): Plugin {
       return JSON.parse(rawContent) as FetchLog;
     } catch (error) {
       console.log((error as any).message);
-      return { updateTime: undefined };
+      return { updateTime: undefined, history: undefined };
     }
   };
 
@@ -56,13 +56,24 @@ export function createDefineMetaPlugin({ dataRoot }: IPluginOption): Plugin {
   const BuildTimestamp = String(now().getTime() / 1000);
 
   return {
-    name: 'cpany:define',
+    name: 'cpany:log',
     config: () => ({
       define: {
         __FETCH_TIMESTAMP__: FetchTimestamp,
         __BUILD_TIMESTAMP__: BuildTimestamp
       }
-    })
+    }),
+    resolveId(id) {
+      if (id === '~cpany/log') {
+        return '~cpany/log.json';
+      }
+    },
+    load(id) {
+      if (id === '~cpany/log.json') {
+        const content = { history: env.history ?? null };
+        return JSON.stringify(content, null, 2);
+      }
+    }
   };
 }
 

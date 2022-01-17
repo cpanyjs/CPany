@@ -4,7 +4,8 @@ import { resolve } from 'path';
 import format from 'date-fns/format';
 import getUnixTime from 'date-fns/getUnixTime';
 
-import type { FetchLog } from '@cpany/types';
+import type { FetchLog, ResolvedCPanyOption } from '@cpany/types';
+import type { CPanyInstance } from '@cpany/core';
 
 import { version } from '../utils';
 
@@ -27,23 +28,29 @@ export async function processReadme(basePath: string, time: Date) {
   await promises.writeFile(fullPath, newContent, 'utf8');
 }
 
-export async function processLog(basePath: string, time: Date) {
+export async function processLog(option: ResolvedCPanyOption, time: Date, fetcher: CPanyInstance) {
+  const history = await fetcher.diff(option);
   const content: FetchLog = {
     version,
-    updateTime: getUnixTime(time)
+    updateTime: getUnixTime(time),
+    history
   };
-  await promises.writeFile(resolve(basePath, 'log.json'), JSON.stringify(content, null, 2));
+  await promises.writeFile(resolve(option.dataRoot, 'log.json'), JSON.stringify(content, null, 2));
 }
 
-export async function processReport(basePath: string, time: Date) {
+export async function processReport(
+  option: ResolvedCPanyOption,
+  time: Date,
+  fetcher: CPanyInstance
+) {
   let firstError: any | null = null;
   try {
-    await processReadme(basePath, time);
+    await processReadme(option.dataRoot, time);
   } catch (error) {
     firstError = error;
   }
   try {
-    await processLog(basePath, time);
+    await processLog(option, time, fetcher);
   } catch (error) {
     if (!firstError) {
       firstError = error;

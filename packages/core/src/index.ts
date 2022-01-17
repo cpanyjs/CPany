@@ -9,3 +9,5 @@ export * from './options';
 export * from './constant';
 
 export * from './logger';
+
+export type { CPanyInstance } from './types';

@@ -17,6 +17,16 @@ const preset: Plugin[] = [
       }
       return null;
     }
+  },
+  {
+    name: 'cpany:log',
+    enforce: 'pre',
+    resolveId(id) {
+      return id === '~cpany/log' ? '~cpany/log.json' : null;
+    },
+    load(id) {
+      return id === '~cpany/log.json' ? '{ "history": {} }' : null;
+    }
   }
 ];
 
