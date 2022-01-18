@@ -6,6 +6,35 @@
   "submissions": [
     {
       "type": "codeforces",
+      "id": 143148041,
+      "creationTime": 1642439034,
+      "language": "GNU C++20 (64)",
+      "verdict": "OK",
+      "author": {
+        "members": [
+          "jiangly"
+        ],
+        "participantType": "PRACTICE",
+        "participantTime": -505044613
+      },
+      "problem": {
+        "type": "codeforces",
+        "id": "1626F",
+        "name": "A Random Code Problem",
+        "rating": 2800,
+        "tags": [
+          "combinatorics",
+          "dp",
+          "math",
+          "number theory",
+          "probabilities"
+        ],
+        "problemUrl": "https://codeforces.com/contest/1626/problem/F"
+      },
+      "submissionUrl": "https://codeforces.com/contest/1626/submission/143148041"
+    },
+    {
+      "type": "codeforces",
       "id": 143023051,
       "creationTime": 1642352519,
       "language": "GNU C++20 (64)",
@@ -26,7 +55,8 @@
           "combinatorics",
           "dp",
           "math",
-          "number theory"
+          "number theory",
+          "probabilities"
         ],
         "problemUrl": "https://codeforces.com/contest/1626/problem/F"
       },
@@ -108,7 +138,6 @@
         "rating": 2100,
         "tags": [
           "binary search",
-          "bitmasks",
           "brute force",
           "greedy"
         ],
@@ -135,10 +164,12 @@
         "name": "Monsters And Spells",
         "rating": 1700,
         "tags": [
+          "binary search",
           "data structures",
           "dp",
           "greedy",
           "implementation",
+          "math",
           "two pointers"
         ],
         "problemUrl": "https://codeforces.com/contest/1626/problem/C"
@@ -165,7 +196,6 @@
         "rating": 1100,
         "tags": [
           "greedy",
-          "strings",
           "strings"
         ],
         "problemUrl": "https://codeforces.com/contest/1626/problem/B"
@@ -191,7 +221,8 @@
         "name": "Equidistant Letters",
         "rating": 800,
         "tags": [
-          "constructive algorithms"
+          "constructive algorithms",
+          "sortings"
         ],
         "problemUrl": "https://codeforces.com/contest/1626/problem/A"
       },

@@ -13825,5 +13825,25 @@
     "phase": "FINISHED",
     "contestUrl": "https://codeforces.com/gym/103526",
     "standingsUrl": "https://codeforces.com/gym/103526/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "2021-2022 Всероссийская олимпиада школьников по информатике, региональный этап, 1 тур",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103532,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103532",
+    "standingsUrl": "https://codeforces.com/gym/103532/standings"
+  },
+  {
+    "type": "codeforces/gym/ioi",
+    "name": "2021-2022 Всероссийская олимпиада школьников по информатике, региональный этап, 2 тур",
+    "duration": 18000,
+    "participantNumber": 0,
+    "id": 103533,
+    "phase": "FINISHED",
+    "contestUrl": "https://codeforces.com/gym/103533",
+    "standingsUrl": "https://codeforces.com/gym/103533/standings"
   }
 ]
