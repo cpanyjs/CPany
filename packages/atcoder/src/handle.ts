@@ -9,7 +9,7 @@ import { QueryPlugin, Logger, createRetryContainer } from '@cpany/core';
 import { atcoder, getAPI } from './constant';
 import { addContestPractice, pushContest } from './contest';
 
-export function createAtCoderHandlePlugin(): QueryPlugin {
+export function createAtCoderHandlePlugin(newHandles: IHandleWithAtCoder[]): QueryPlugin {
   return {
     name: 'handle',
     platform: atcoder,
@@ -17,6 +17,7 @@ export function createAtCoderHandlePlugin(): QueryPlugin {
       const api = getAPI();
       const user = await fetchUser(api, id);
       user.submissions = await fetchSubmissions(api, id, logger);
+      newHandles.push(user);
       return JSON.stringify(user, null, 2);
     }
   };

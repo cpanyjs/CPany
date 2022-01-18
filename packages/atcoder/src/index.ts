@@ -1,5 +1,5 @@
-import type { CPanyPlugin } from '@cpany/core';
 import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
+import { CPanyPlugin, diff } from '@cpany/core';
 import { ICPanyPluginConfig, IContest, isAtCoder } from '@cpany/types';
 
 import { atcoder } from './constant';
@@ -8,9 +8,11 @@ import { addContests, createAtCoderContestPlugin } from './contest';
 
 export function atcoderPlugin(config: ICPanyPluginConfig): CPanyPlugin[] {
   const handleMap = loadHandleMap(config);
+  const oldHandles: IHandleWithAtCoder[] = [];
+  const newHandles: IHandleWithAtCoder[] = [];
 
   return [
-    createAtCoderHandlePlugin(),
+    createAtCoderHandlePlugin(newHandles),
     createAtCoderContestPlugin(handleMap),
     {
       name: 'cache',
@@ -21,7 +23,20 @@ export function atcoderPlugin(config: ICPanyPluginConfig): CPanyPlugin[] {
 
         const handles = await ctx.listDir('handle');
         for (const handle of handles) {
+          oldHandles.push(await ctx.readJsonFile(handle));
           await ctx.removeFile(handle);
+        }
+      }
+    },
+    {
+      name: 'diff',
+      platform: atcoder,
+      async diff(ctx) {
+        const oldMap = new Map(oldHandles.map((h) => [h.handle, h]));
+        for (const handle of newHandles) {
+          const oldHandle = oldMap.get(handle.handle);
+          const sub = diff((sub) => '' + sub.id, oldHandle?.submissions ?? [], handle.submissions);
+          ctx.addHandleSubmission(handle.handle, ...sub);
         }
       }
     },

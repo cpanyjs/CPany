@@ -11,3 +11,5 @@ export * from './constant';
 export * from './logger';
 
 export type { CPanyInstance } from './types';
+
+export { shuffle, diff } from './utils';

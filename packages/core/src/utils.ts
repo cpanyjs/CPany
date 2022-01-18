@@ -26,3 +26,14 @@ export function shuffle<T>(array: T[]): T[] {
 
   return array;
 }
+
+export function diff<T>(f: (item: T) => string, old: T[], cur: T[]): T[] {
+  const delta: T[] = [];
+  const set = new Set(old.map(f));
+  for (const item of cur) {
+    if (!set.has(f(item))) {
+      delta.push(item);
+    }
+  }
+  return delta;
+}
