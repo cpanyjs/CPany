@@ -45,9 +45,13 @@ export async function createCPanyPlugin(option: IPluginOption): Promise<Plugin[]
 }
 
 export function createDefineMetaPlugin({ option }: IPluginOption): Plugin {
+  const dataRoot = path.isAbsolute(option.dataRoot)
+    ? option.dataRoot
+    : path.join(process.cwd(), option.dataRoot);
+
   const load = () => {
     try {
-      const rawContent = fs.readFileSync(path.join(option.dataRoot, 'log.json'), 'utf8');
+      const rawContent = fs.readFileSync(path.join(dataRoot, 'log.json'), 'utf8');
       return JSON.parse(rawContent) as FetchLog;
     } catch {
       return { updateTime: undefined, history: undefined, ref: undefined };
@@ -62,7 +66,6 @@ export function createDefineMetaPlugin({ option }: IPluginOption): Plugin {
   const startTime = curTime.getTime() / 1000 - option.app.recentTime;
 
   const gitRepo = (() => {
-    const dataRoot = path.join(process.cwd(), option.dataRoot);
     let cur = dataRoot;
     while (!fs.existsSync(path.join(cur, '.git'))) {
       cur = path.dirname(cur);
@@ -73,7 +76,7 @@ export function createDefineMetaPlugin({ option }: IPluginOption): Plugin {
     debugLogger(`Ref: ${ref}`);
 
     try {
-      const logPath = path.relative(gitRepo, path.join(process.cwd(), option.dataRoot, 'log.json'));
+      const logPath = path.relative(gitRepo, path.join(dataRoot, 'log.json'));
 
       debugLogger(`Log: ${logPath}`);
 
@@ -83,9 +86,9 @@ export function createDefineMetaPlugin({ option }: IPluginOption): Plugin {
         cwd: gitRepo
       });
 
-      debugLogger(rawContent);
-
       const oldLog = JSON.parse(rawContent) as FetchLog;
+
+      debugLogger(oldLog);
 
       if (oldLog.updateTime < startTime) return;
 
