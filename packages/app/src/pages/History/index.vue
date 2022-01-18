@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { records } from './history';
+import { Verdict } from '@cpany/types';
+import { records, ISub } from './history';
+
+const countOk = (subs: ISub[]) => subs.filter((sub) => sub.verdict === Verdict.OK);
 </script>
 
 <template>
@@ -23,13 +26,14 @@ import { records } from './history';
             }"
           >
             <div class="font-bold pb-2">{{ record.day }}</div>
-            <div class="pt-2">
-              <div v-for="record in record.record.list()">
+            <div>
+              <div v-for="record in record.record.list()" class="mt-2">
                 <router-link :to="`/user/${record.name}`">{{ record.name }}</router-link>
-                <span>
-                  进行了
-                  <span class="font-bold">{{ record.newSubmissions.length }}</span> 次提交</span
-                >
+                <span> 提交了 </span>
+                <span class="font-bold">{{ record.newSubmissions.length }}</span>
+                <span> 次代码，通过了 </span>
+                <span class="font-bold">{{ countOk(record.newSubmissions).length }}</span>
+                <span> 个题目</span>
               </div>
             </div>
           </div>

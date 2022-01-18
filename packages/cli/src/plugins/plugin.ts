@@ -41,10 +41,10 @@ export async function createCPanyPlugin(option: IPluginOption): Promise<Plugin[]
   ];
 }
 
-export function createDefineMetaPlugin({ dataRoot, option }: IPluginOption): Plugin {
+export function createDefineMetaPlugin({ option }: IPluginOption): Plugin {
   const load = () => {
     try {
-      const rawContent = fs.readFileSync(path.join(dataRoot, 'log.json'), 'utf8');
+      const rawContent = fs.readFileSync(path.join(option.dataRoot, 'log.json'), 'utf8');
       return JSON.parse(rawContent) as FetchLog;
     } catch {
       return { updateTime: undefined, history: undefined, ref: undefined };
@@ -52,16 +52,27 @@ export function createDefineMetaPlugin({ dataRoot, option }: IPluginOption): Plu
   };
 
   const env = load();
+  const curTime = now();
   const FetchTimestamp = env.updateTime ?? '';
-  const BuildTimestamp = String(now().getTime() / 1000);
+  const BuildTimestamp = String(curTime.getTime() / 1000);
   const history = env.history ?? { user: [], contest: [] };
-  const startTime = new Date().getTime() / 1000 - option.app.recentTime;
+  const startTime = curTime.getTime() / 1000 - option.app.recentTime;
 
+  const gitRepo = (() => {
+    const dataRoot = path.join(process.cwd(), option.dataRoot);
+    let cur = dataRoot;
+    while (!fs.existsSync(path.join(cur, '.git'))) {
+      cur = path.dirname(cur);
+    }
+    return cur;
+  })();
   const findPrevLog = (ref: string) => {
     try {
       const rawContent = execSync(
-        `git show ${ref}:${normalizePath(path.join(dataRoot, 'log.json'))}`,
-        { encoding: 'utf-8' }
+        `git show ${ref}:${normalizePath(
+          path.relative(gitRepo, path.join(process.cwd(), option.dataRoot, 'log.json'))
+        )}`,
+        { encoding: 'utf-8', stdio: 'pipe' }
       );
       const oldLog = JSON.parse(rawContent) as FetchLog;
 

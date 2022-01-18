@@ -5,7 +5,7 @@ import { toDay } from '@/utils';
 
 export const history = load<FetchLog>(rawHistory).history ?? {};
 
-type ISub = UserDiffLog['newSubmissions'][0];
+export type ISub = UserDiffLog['newSubmissions'][0];
 
 class Record {
   submissions: Map<string, ISub[]> = new Map();

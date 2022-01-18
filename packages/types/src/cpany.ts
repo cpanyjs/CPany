@@ -47,7 +47,7 @@ export interface ResolvedCPanyUserOption {
 
 export interface ResolvedCPanyOption {
   /**
-   * Absolute data root path
+   * Data root path
    */
   dataRoot: string;
 
