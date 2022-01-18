@@ -15,6 +15,8 @@ jobs:
       - name: Set Timezone
         run: sudo timedatectl set-timezone "Asia/Shanghai"
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
       - uses: pnpm/action-setup@v2
         with:
           version: 6.23.2
@@ -33,6 +35,8 @@ jobs:
           path: screenshot.png
       - name: Build
         run: pnpx cpany build example --base /CPany/
+        env:
+          DEBUG: 'cpany:*'
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:

@@ -50,7 +50,7 @@ function resolveOption(dataPath: string | undefined, option: ICliOption) {
   if (!option.plugins) {
     option.plugins = cpanyOption.plugins ?? ['codeforces'];
   }
-  option.plugins = option.plugins.map(p => {
+  option.plugins = option.plugins.map((p) => {
     const alias: Record<string, string> = { cf: 'codeforces', at: 'atcoder', lg: 'luogu' };
     if (p in alias) return alias[p];
     else return p;

@@ -3,6 +3,7 @@ import { Plugin, normalizePath } from 'vite';
 import path from 'path';
 import fs from 'fs';
 import { execSync } from 'child_process';
+import debug from 'debug';
 
 import type {
   IContestOverview,
@@ -19,6 +20,8 @@ import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
 import type { IPluginOption } from '../types';
 import { now } from '../utils';
 import { createLoader } from './loader';
+
+const debugLogger = debug('cpany:plugin');
 
 export async function createCPanyPlugin(option: IPluginOption): Promise<Plugin[]> {
   const { contests, users, createUsersOverview, createContestsOverview, createOverview } =
@@ -67,13 +70,21 @@ export function createDefineMetaPlugin({ option }: IPluginOption): Plugin {
     return cur;
   })();
   const findPrevLog = (ref: string) => {
+    debugLogger(`Ref: ${ref}`);
+
     try {
-      const rawContent = execSync(
-        `git show ${ref}:${normalizePath(
-          path.relative(gitRepo, path.join(process.cwd(), option.dataRoot, 'log.json'))
-        )}`,
-        { encoding: 'utf-8', stdio: 'pipe' }
-      );
+      const logPath = path.relative(gitRepo, path.join(process.cwd(), option.dataRoot, 'log.json'));
+
+      debugLogger(`Log: ${logPath}`);
+
+      const rawContent = execSync(`git show ${ref}:${normalizePath(logPath)}`, {
+        encoding: 'utf-8',
+        stdio: 'pipe',
+        cwd: gitRepo
+      });
+
+      debugLogger(rawContent);
+
       const oldLog = JSON.parse(rawContent) as FetchLog;
 
       if (oldLog.updateTime < startTime) return;
@@ -89,12 +100,15 @@ export function createDefineMetaPlugin({ option }: IPluginOption): Plugin {
       if (oldLog.ref) {
         findPrevLog(oldLog.ref);
       }
-    } catch {
+    } catch (err) {
+      debugLogger(err);
       return;
     }
   };
   if (env.ref) {
     findPrevLog(env.ref);
+  } else {
+    debugLogger('No parent ref');
   }
 
   return {
