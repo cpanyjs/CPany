@@ -27,7 +27,7 @@ function resolveOption(dataPath: string | undefined, option: ICliOption) {
   option.dataRoot = dataPath ?? process.cwd();
 
   if (!fs.existsSync(path.join(option.dataRoot, 'cpany.yml'))) {
-    throw new Error(`Can not find cpany.yml in ${dataPath}`);
+    throw new Error(`Can not find cpany.yml in ${option.dataRoot}`);
   }
 
   const optionPath = path.resolve(option.dataRoot, 'cpany.yml');
