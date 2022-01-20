@@ -20,6 +20,7 @@
             <cf-rating-color v-if="row.isRated" :rating="row.rating">
               {{ row.handle }}
             </cf-rating-color>
+            <cf-rating-color v-else>{{ row.handle }}</cf-rating-color>
           </a>
         </c-table-column>
 
