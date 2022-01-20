@@ -18,7 +18,7 @@ import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
 import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
 
 import type { IPluginOption } from '../types';
-import { now } from '../utils';
+import { getRef, now } from '../utils';
 import { createLoader } from './loader';
 
 const debugLogger = debug('cpany:plugin');
@@ -63,7 +63,8 @@ export function createDefineMetaPlugin({ option }: IPluginOption): Plugin {
   const FetchTimestamp = env.updateTime ?? '';
   const BuildTimestamp = String(curTime.getTime() / 1000);
   const history = env.history ?? { user: [], contest: [] };
-  const startTime = curTime.getTime() / 1000 - option.app.recentTime;
+  const commits = [getRef()];
+  let startTime = curTime.getTime() / 1000 - option.app.recentTime;
 
   const gitRepo = (() => {
     let cur = dataRoot;
@@ -90,7 +91,12 @@ export function createDefineMetaPlugin({ option }: IPluginOption): Plugin {
 
       debugLogger(oldLog);
 
-      if (oldLog.updateTime < startTime) return;
+      if (oldLog.updateTime < startTime) {
+        startTime = oldLog.updateTime + 1;
+        return;
+      }
+
+      commits.push(ref);
 
       const oldHistory = oldLog?.history ?? { user: [], contest: [] };
       if (oldHistory.user) {
@@ -129,7 +135,7 @@ export function createDefineMetaPlugin({ option }: IPluginOption): Plugin {
     },
     load(id) {
       if (id === '~cpany/log.json') {
-        const content = { history };
+        const content = { startTime, history, commits: commits.filter((r) => !!r) };
         return JSON.stringify(content, null, 2);
       }
     }

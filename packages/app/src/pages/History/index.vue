@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Verdict } from '@cpany/types';
-import { records, ISub } from './history';
+import { ISub, records, startTime } from './history';
 
 const countOk = (subs: ISub[]) => subs.filter((sub) => sub.verdict === Verdict.OK);
 </script>
@@ -39,6 +39,9 @@ const countOk = (subs: ISub[]) => subs.filter((sub) => sub.verdict === Verdict.O
           </div>
         </div>
       </div>
+    </div>
+    <div class="mt-2 pt-4">
+      <span class="text-gray-400">最近开始于 {{ startTime }}</span>
     </div>
   </div>
 </template>

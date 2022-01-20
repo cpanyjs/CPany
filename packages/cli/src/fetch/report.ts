@@ -1,6 +1,5 @@
 import { promises } from 'fs';
 import { resolve } from 'path';
-import { execSync } from 'child_process';
 
 import format from 'date-fns/format';
 import getUnixTime from 'date-fns/getUnixTime';
@@ -8,7 +7,7 @@ import getUnixTime from 'date-fns/getUnixTime';
 import type { FetchLog, ResolvedCPanyOption } from '@cpany/types';
 import type { CPanyInstance } from '@cpany/core';
 
-import { version } from '../utils';
+import { getRef, version } from '../utils';
 
 export async function processReadme(basePath: string, time: Date) {
   const fullPath = resolve(basePath, 'README.md');
@@ -37,10 +36,7 @@ export async function processLog(option: ResolvedCPanyOption, time: Date, fetche
     history
   };
 
-  try {
-    const ref = execSync('git rev-parse HEAD', { encoding: 'utf-8' }).trim();
-    content.ref = ref;
-  } catch {}
+  content.ref = getRef();
 
   await promises.writeFile(resolve(option.dataRoot, 'log.json'), JSON.stringify(content, null, 2));
 }

@@ -1,9 +1,15 @@
 import rawHistory from '~cpany/log';
 import { load } from '@cpany/compress/load';
-import { FetchLog, UserDiffLog } from '@cpany/types';
-import { toDay } from '@/utils';
+import { DiffLog, UserDiffLog } from '@cpany/types';
+import { toDay, toDate } from '@/utils';
 
-export const history = load<FetchLog>(rawHistory).history ?? {};
+const content = load<{ history: DiffLog; commits: string[]; startTime: number }>(rawHistory);
+
+export const history = content.history;
+
+export const commits = content.commits;
+
+export const startTime = toDate(content.startTime);
 
 export type ISub = UserDiffLog['newSubmissions'][0];
 
@@ -33,6 +39,7 @@ const groupByDay = new Map<string, Record>();
 
 for (const userLog of history.user ?? []) {
   for (const sub of userLog.newSubmissions) {
+    if (sub.creationTime < content.startTime) continue;
     const d = toDay(sub.creationTime).value;
     if (!groupByDay.has(d)) {
       groupByDay.set(d, new Record());

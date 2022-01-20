@@ -7,6 +7,7 @@ export * from './package';
 import fs from 'fs';
 import net from 'net';
 import path from 'path';
+import { execSync } from 'child_process';
 
 export function now() {
   return new Date(new Date().toUTCString());
@@ -54,4 +55,12 @@ export async function* listDir(dir: string): AsyncGenerator<string> {
       }
     }
   } catch {}
+}
+
+export function getRef() {
+  try {
+    return execSync('git rev-parse HEAD', { encoding: 'utf-8' }).trim();
+  } catch {
+    return undefined;
+  }
 }
