@@ -13,9 +13,11 @@
         >Codeforces</navbar-item
       >
       <navbar-item tag="router-link" :to="{ name: 'Contests' }" v-if="contests">比赛</navbar-item>
-      <navbar-item tag="router-link" :to="{ name: 'History' }" v-if="history" class="<md:hidden"
-        >历史</navbar-item
-      >
+      <div class="<md:hidden">
+        <navbar-item tag="router-link" :to="{ name: 'History' }" v-if="history"
+          >历史</navbar-item
+        >
+      </div>
     </template>
   </navbar>
 
