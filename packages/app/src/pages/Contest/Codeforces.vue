@@ -3,7 +3,7 @@
     <div v-if="contest && !displayError">
       <Page :contest="contest" />
     </div>
-    <div v-else class="divide-y">
+    <div v-else-if="displayError" class="divide-y">
       <h2 class="mb-2">错误</h2>
       <p class="pt-2">未找到 ID 为 {{ route.params.id }} 的 Codeforces 比赛</p>
     </div>
@@ -34,14 +34,13 @@ const displayError = ref(false);
 const { start, end } = useGlobalLoading();
 
 const fetchStanding = async (contest: RouteKey<IContest>) => {
-  start();
-
   const url = new URL(CodeforcesAPIBase + 'contest.standings');
   url.searchParams.append('contestId', '' + contest.id!);
   url.searchParams.append('handles', handles.map(({ h }) => h).join(';'));
   url.searchParams.append('showUnofficial', 'true');
 
   const { result } = await (await fetch(url.toString())).json();
+  let participantNumber = 0;
 
   contest.problems = result.problems as IContestProblem[];
   for (const prob of result.problems) {
@@ -56,6 +55,9 @@ const fetchStanding = async (contest: RouteKey<IContest>) => {
       row.party.participantType !== ParticipantType.PRACTICE
     ) {
       continue;
+    }
+    if (row.party.participantType !== ParticipantType.PRACTICE) {
+      participantNumber++;
     }
 
     const penalty = row.problemResults.reduce((sum: number, result: any) => {
@@ -106,25 +108,60 @@ const fetchStanding = async (contest: RouteKey<IContest>) => {
     });
   }
 
-  end();
+  contest.participantNumber = participantNumber;
+};
+
+const fetchContest = async (id: number) => {
+  const url = new URL(CodeforcesAPIBase + 'contest.list');
+
+  const { result } = await (await fetch(url.toString())).json();
+  for (const contest of result) {
+    if (contest.id === id) {
+      // dep: @cpany/plugin-codeforces contest.ts
+      return {
+        type: 'codeforces',
+        name: contest.name,
+        startTime: contest.startTimeSeconds,
+        duration: contest.durationSeconds,
+        participantNumber: 0,
+        id: contest.id,
+        phase: contest.phase,
+        contestUrl: `https://codeforces.com/contest/${contest.id}`,
+        standingsUrl: `https://codeforces.com/contest/${contest.id}/standings`
+      }
+    }
+  }
+
+  return undefined;
 };
 
 watch(
   () => route.params,
-  (newParams) => {
+  async (newParams) => {
     if (newParams.id) {
+      start();
       const cf = findCodeforces(+newParams.id);
       if (cf !== null) {
         contest.value = cf;
-        fetchStanding(contest.value);
+        await fetchStanding(contest.value);
+        end();
         // Dep: manual update document title
         document.title = `${cf.name} - CPany`;
       } else {
-        displayError.value = true;
-        const returnHome = () => router.replace({ name: 'Home' });
-        const timer = setTimeout(returnHome, 3000);
-        onUnmounted(() => clearTimeout(timer));
+        // dynamic fetch
+        const result = await fetchContest(+newParams.id) as any;
+        if (result) {
+          contest.value = result;
+          fetchStanding(contest.value!);
+          document.title = `${result.name} - CPany`;
+        } else {
+          displayError.value = true;
+          const returnHome = () => router.replace({ name: 'Home' });
+          const timer = setTimeout(returnHome, 3000);
+          onUnmounted(() => clearTimeout(timer));
+        }
       }
+      end();
     }
   },
   { immediate: true }
