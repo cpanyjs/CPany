@@ -1,6 +1,13 @@
 <template>
   <div>
-    <h2 class="mb-4">{{ contest.name }}</h2>
+    <h2 class="mb-4 flex items-center">
+      <span>{{ contest.name }}</span>
+      <IconRefresh
+        v-if="!!dynamic"
+        class="ml-4 h-8 w-8 p-1 border rounded-full cursor-pointer hover:bg-light-700"
+        @click="emit('refresh')"
+      />
+    </h2>
     <div class="info-box border-left">
       <p>
         时间：{{ toDate(contest.startTime).value }} 至
@@ -19,9 +26,11 @@
 
 <script setup lang="ts">
 import type { IContest } from '@cpany/types';
+import IconRefresh from '~icons/mdi/refresh';
 
 import { toDate, toDuration } from '@/utils';
 import ContestStandings from './Standings/ContestStandings.vue';
 
-defineProps<{ contest: IContest }>();
+defineProps<{ contest: IContest; dynamic?: boolean }>();
+const emit = defineEmits<{ (e: 'refresh'): void }>();
 </script>

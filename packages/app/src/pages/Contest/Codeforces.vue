@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="contest && !displayError">
-      <Page :contest="contest" />
+      <Page :contest="contest" :dynamic="isDynamic" @refresh="handleRefresh" />
     </div>
     <div v-else-if="displayError" class="divide-y">
       <h2 class="mb-2">错误</h2>
@@ -31,9 +31,15 @@ const contest = ref<RouteKey<IContest> | null>(null);
 
 const displayError = ref(false);
 
+const isDynamic = ref(false);
+
 const { start, end } = useGlobalLoading();
 
+const isFetchStanding = ref(false);
 const fetchStanding = async (contest: RouteKey<IContest>) => {
+  if (isFetchStanding.value) return;
+  isFetchStanding.value = true;
+
   const url = new URL(CodeforcesAPIBase + 'contest.standings');
   url.searchParams.append('contestId', '' + contest.id!);
   url.searchParams.append('handles', handles.map(({ h }) => h).join(';'));
@@ -109,12 +115,22 @@ const fetchStanding = async (contest: RouteKey<IContest>) => {
   }
 
   contest.participantNumber = participantNumber;
+
+  isFetchStanding.value = false;
 };
 
+// cache contest.list
 const fetchContest = async (id: number) => {
   const url = new URL(CodeforcesAPIBase + 'contest.list');
 
-  const { result } = await (await fetch(url.toString())).json();
+  const key = 'codeforces/contest.list';
+  const { result } = sessionStorage.getItem(key)
+    ? { result: JSON.parse(sessionStorage.getItem(key)!) }
+    : await (await fetch(url.toString())).json();
+  if (!sessionStorage.getItem(key)) {
+    sessionStorage.setItem(key, JSON.stringify(result));
+  }
+
   for (const contest of result) {
     if (contest.id === id) {
       // dep: @cpany/plugin-codeforces contest.ts
@@ -128,11 +144,15 @@ const fetchContest = async (id: number) => {
         phase: contest.phase,
         contestUrl: `https://codeforces.com/contest/${contest.id}`,
         standingsUrl: `https://codeforces.com/contest/${contest.id}/standings`
-      }
+      };
     }
   }
 
   return undefined;
+};
+
+const handleRefresh = () => {
+  fetchStanding(contest.value!);
 };
 
 watch(
@@ -144,15 +164,15 @@ watch(
       if (cf !== null) {
         contest.value = cf;
         await fetchStanding(contest.value);
-        end();
         // Dep: manual update document title
         document.title = `${cf.name} - CPany`;
       } else {
         // dynamic fetch
-        const result = await fetchContest(+newParams.id) as any;
+        const result = (await fetchContest(+newParams.id)) as any;
         if (result) {
+          isDynamic.value = true;
           contest.value = result;
-          fetchStanding(contest.value!);
+          await fetchStanding(contest.value!);
           document.title = `${result.name} - CPany`;
         } else {
           displayError.value = true;
