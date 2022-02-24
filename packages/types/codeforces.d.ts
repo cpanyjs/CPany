@@ -29,12 +29,20 @@ export interface ProblemDTO {
   tags: string[];
 }
 
+export interface ProblemSetDTO {
+  problemsetName: string;
+  index: string;
+  name: string;
+  rating: undefined;
+  tags: string[];
+}
+
 export interface SubmissionDTO {
   id: number;
   contestId: number;
   creationTimeSeconds: number;
   relativeTimeSeconds: number;
-  problem: ProblemDTO;
+  problem: ProblemDTO | ProblemSetDTO;
   author: {
     members: Array<{ handle: string }>;
     participantType: ParticipantType;

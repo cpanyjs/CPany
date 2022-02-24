@@ -70,6 +70,11 @@ export function handleInfoPlugin(
 
           const problemUrl = prefix + `/problem/${submission.problem.index}`;
 
+          const isACMSGURU = 'problemsetName' in submission.problem;
+
+          const problemContestId =
+            'problemsetName' in submission.problem ? 'ACMSGURU' : submission.problem.contestId;
+
           return {
             type: codeforces,
             id: submission.id,
@@ -84,13 +89,15 @@ export function handleInfoPlugin(
             },
             problem: {
               type: codeforces,
-              id: `${submission.problem.contestId}${submission.problem.index}`,
+              id: `${problemContestId}${submission.problem.index}`,
               name: submission.problem.name,
               rating: submission.problem.rating,
               tags: submission.problem.tags,
-              problemUrl
+              problemUrl: !isACMSGURU
+                ? problemUrl
+                : `https://codeforces.com/problemsets/acmsguru/problem/99999/${submission.problem.index}`
             },
-            submissionUrl
+            submissionUrl: !isACMSGURU ? submissionUrl : undefined
           };
         });
       };
