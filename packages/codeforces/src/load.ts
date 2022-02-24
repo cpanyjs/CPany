@@ -34,16 +34,18 @@ export function loadCodeforcesPlugin(): LoadPlugin {
             submission.author.participantType === ParticipantType.OUT_OF_COMPETITION
           ) {
             const contestId = +/^(\d+)/.exec('' + submission.problem.id)![1];
-            const contest = findRound(contestId)!;
+            const contest = findRound(contestId);
 
-            const username = ctx.findUsername(handle.type, handle.handle);
-            if (username) {
-              ctx.addUserContest(username, contest, submission.author);
-            }
+            if (contest) {
+              const username = ctx.findUsername(handle.type, handle.handle);
+              if (username) {
+                ctx.addUserContest(username, contest, submission.author);
+              }
 
-            // Dep: codeforces fix gym startTime
-            if (!contest.startTime) {
-              contest.startTime = submission.author.participantTime;
+              // Dep: codeforces fix gym startTime
+              if (!contest.startTime) {
+                contest.startTime = submission.author.participantTime;
+              }
             }
           }
         }

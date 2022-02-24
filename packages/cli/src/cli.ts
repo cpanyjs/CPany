@@ -253,6 +253,7 @@ async function bootstrap() {
     } else {
       console.error(error);
     }
+    debug('cpany:cli')(error);
     process.exit(1);
   }
 }
