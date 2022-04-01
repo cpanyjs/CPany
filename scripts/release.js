@@ -9,6 +9,7 @@ const packages = [
   './packages/hdu',
   './packages/luogu',
   './packages/atcoder',
+  './packages/nowcoder',
   './packages/utils',
   './packages/core',
   './packages/types',
