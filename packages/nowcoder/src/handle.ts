@@ -75,15 +75,16 @@ async function querySubmission(
       };
       const problemId = parseId(childNodes[1].querySelector('a').getAttribute('href')!);
 
-      const verdictRaw = childNodes[2].querySelector('a').innerText!;
+      const verdictRaw = childNodes[2].innerHTML!;
+      const checkVerdict = (text: string) => verdictRaw.indexOf(text) !== -1;
       const verdict =
-        verdictRaw === '答案正确'
+        checkVerdict('答案正确')
           ? Verdict.OK
-          : verdictRaw === '运行超时'
+          : checkVerdict('运行超时')
           ? Verdict.TIME_LIMIT_EXCEEDED
-          : verdictRaw === '执行出错'
+          : checkVerdict('执行出错')
           ? Verdict.RUNTIME_ERROR
-          : verdictRaw === '段错误'
+          : checkVerdict('段错误')
           ? Verdict.RUNTIME_ERROR
           : Verdict.WRONG_ANSWER;
 
