@@ -30,8 +30,9 @@ async function queryHandle(handle: string): Promise<IHandleWithNowcoder> {
   const { data } = await axios.get(handleUrl);
   const root = parse(data);
   const avatar = root.querySelector('.head-pic img')?.getAttribute('src');
-  const name = root.querySelector('.coder-name.rate-score4').getAttribute('data-title')!;
-  const rating = root.querySelector('.state-num.rate-score4').childNodes[0].innerText;
+  const name = root.querySelector('.coder-name').getAttribute('data-title')!;
+  const rating = root.querySelector('.state-num')?.childNodes[0].innerText;
+
   return {
     type: nowcoder,
     handle,
@@ -40,7 +41,7 @@ async function queryHandle(handle: string): Promise<IHandleWithNowcoder> {
     handleUrl,
     nowcoder: {
       name,
-      rating: rating !== undefined && rating !== null ? +rating : undefined
+      rating: rating !== undefined && rating !== null && rating !== '暂无' ? +rating : undefined
     }
   };
 }
