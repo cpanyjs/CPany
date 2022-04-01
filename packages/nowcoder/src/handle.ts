@@ -28,7 +28,7 @@ export function createHandlePlugin(): QueryPlugin {
 async function queryHandle(handle: string): Promise<IHandleWithNowcoder> {
   const handleUrl = `https://ac.nowcoder.com/acm/contest/profile/${handle}`;
   const { data } = await axios.get(handleUrl);
-  const root = parse(data);
+  const root = parse(/<body>([\s\S]*)<\/body>/.exec(data)![0]);
   const avatar = root.querySelector('.head-pic img')?.getAttribute('src');
   const getName = (text: string) => {
     const match = /data-title="([^"]+)"/.exec(text);
@@ -61,7 +61,7 @@ async function querySubmission(
     const { data } = await axios.get(
       `https://ac.nowcoder.com/acm/contest/profile/${handle}/practice-coding?pageSize=200&orderType=DESC&page=${page}`
     );
-    const root = parse(data);
+    const root = parse(/<body>([\s\S]*)<\/body>/.exec(data)![0]);
     const oldLen = subs.length;
     for (const row of root.querySelectorAll('table.table-hover tbody tr')) {
       const childNodes = row.querySelectorAll('td');
