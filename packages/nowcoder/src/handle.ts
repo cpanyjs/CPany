@@ -77,16 +77,15 @@ async function querySubmission(
 
       const verdictRaw = childNodes[2].innerHTML!;
       const checkVerdict = (text: string) => verdictRaw.indexOf(text) !== -1;
-      const verdict =
-        checkVerdict('答案正确')
-          ? Verdict.OK
-          : checkVerdict('运行超时')
-          ? Verdict.TIME_LIMIT_EXCEEDED
-          : checkVerdict('执行出错')
-          ? Verdict.RUNTIME_ERROR
-          : checkVerdict('段错误')
-          ? Verdict.RUNTIME_ERROR
-          : Verdict.WRONG_ANSWER;
+      const verdict = checkVerdict('答案正确')
+        ? Verdict.OK
+        : checkVerdict('运行超时')
+        ? Verdict.TIME_LIMIT_EXCEEDED
+        : checkVerdict('执行出错')
+        ? Verdict.RUNTIME_ERROR
+        : checkVerdict('段错误')
+        ? Verdict.RUNTIME_ERROR
+        : Verdict.WRONG_ANSWER;
 
       const language = childNodes[7].innerText;
       const time = new Date(childNodes[8].innerText);
