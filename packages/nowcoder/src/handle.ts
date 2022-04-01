@@ -61,7 +61,7 @@ async function querySubmission(
     for (const row of root.querySelectorAll('table.table-hover tbody tr')) {
       const childNodes = row.querySelectorAll('td');
       const id = +childNodes[0].childNodes[0].innerText!;
-      if (ids.has(id)) return false;
+      if (ids.has(id)) continue;
 
       const problemName = childNodes[1].querySelector('a').innerText!;
       const parseId = (text: string) => {
@@ -106,6 +106,7 @@ async function querySubmission(
       });
       ids.add(id);
     }
+    if (subs.length === oldLen) return false;
     logger.info(
       `Fetch: (name: ${name}, id: ${handle}) has fetched ${
         subs.length - oldLen
