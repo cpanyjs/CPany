@@ -136,7 +136,7 @@ export const displayPlatform = (type: string) => {
   if (isCodeforces(wrapper)) {
     return 'Codeforces';
   } else if (isNowCoder(wrapper)) {
-    return '牛客竞赛';
+    return '牛客';
   } else if (isHdu(wrapper)) {
     return 'HDu';
   } else if (isLuogu(wrapper)) {
@@ -160,7 +160,7 @@ export const displayContestType = (contest: IContest) => {
       return 'Codeforces';
     }
   } else if (isNowCoder(contest)) {
-    return '牛客竞赛';
+    return '牛客';
   } else if (isHdu(contest)) {
     return 'HDu';
   } else if (isLuogu(contest)) {

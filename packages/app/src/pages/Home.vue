@@ -10,7 +10,7 @@
               <router-link :to="row.path">{{ row.name }}</router-link>
             </c-table-column>
             <c-table-column label="时间" align="center" width="10em">
-              <span>{{ toDate(row.startTime).value }}</span>
+              <span v-if="row.startTime">{{ toDate(row.startTime).value }}</span>
             </c-table-column>
             <c-table-column label="人数" align="center" width="5em">
               <div class="flex flex-1 items-center justify-center">
