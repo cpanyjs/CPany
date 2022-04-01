@@ -104,6 +104,7 @@ importers:
       '@cpany/plugin-codeforces': workspace:*
       '@cpany/plugin-hdu': workspace:*
       '@cpany/plugin-luogu': workspace:*
+      '@cpany/plugin-nowcoder': workspace:*
       '@cpany/types': workspace:*
       '@cpany/utils': workspace:*
       '@iconify/json': ^1.1.387
@@ -168,6 +169,7 @@ importers:
       '@cpany/plugin-atcoder': link:../atcoder
       '@cpany/plugin-hdu': link:../hdu
       '@cpany/plugin-luogu': link:../luogu
+      '@cpany/plugin-nowcoder': link:../nowcoder
       '@types/debug': 4.1.7
       '@types/js-yaml': 4.0.2
       '@types/node': 16.4.13

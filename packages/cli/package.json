@@ -60,6 +60,7 @@
     "@cpany/plugin-atcoder": "workspace:*",
     "@cpany/plugin-hdu": "workspace:*",
     "@cpany/plugin-luogu": "workspace:*",
+    "@cpany/plugin-nowcoder": "workspace:*",
     "@types/debug": "^4.1.7",
     "@types/js-yaml": "^4.0.2",
     "@types/node": "^16.4.13",

@@ -3,14 +3,18 @@ import type { ICPanyPluginConfig } from '@cpany/types';
 import type { IHandleWithNowcoder } from '@cpany/types/nowcoder';
 
 import { nowcoder } from './constant';
+import { createHandlePlugin } from './handle';
 
 export function nowocderPlugin(_option: ICPanyPluginConfig): CPanyPlugin[] {
+  console.log('ok');
+
   return [
     {
       name: 'cache',
       platform: nowcoder,
       async cache(ctx) {}
     },
+    createHandlePlugin(),
     {
       name: 'load',
       platform: nowcoder,

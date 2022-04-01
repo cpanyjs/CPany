@@ -1,9 +1,10 @@
 import type { IHandle } from './dist/index.d';
 
 export interface INowcoderMeta {
-  atcoder: {
+  nowcoder: {
+    name: string;
     rating?: number;
-    color?: string;
+    rank?: number;
   };
 }
 
