@@ -30,7 +30,11 @@ async function queryHandle(handle: string): Promise<IHandleWithNowcoder> {
   const { data } = await axios.get(handleUrl);
   const root = parse(data);
   const avatar = root.querySelector('.head-pic img')?.getAttribute('src');
-  const name = root.querySelector('.coder-name').getAttribute('data-title')!;
+  const getName = (text: string) => {
+    const match = /data-title="([^"]+)"/.exec(text);
+    return match![1];
+  };
+  const name = getName(root.querySelector('.coder-info-detail').innerHTML);
   const rating = root.querySelector('.state-num')?.childNodes[0].innerText;
 
   return {
