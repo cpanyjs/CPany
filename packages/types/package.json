@@ -17,10 +17,7 @@
   "files": [
     "dist",
     "src",
-    "atcoder.d.ts",
-    "codeforces.d.ts",
-    "hdu.d.ts",
-    "luogu.d.ts"
+    "*.d.ts"
   ],
   "scripts": {
     "build": "pnpx tsup src/index.ts --format cjs,esm --dts"
