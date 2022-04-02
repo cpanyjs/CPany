@@ -38,10 +38,7 @@ export function contestListPlugin(): FetchPlugin {
   };
 }
 
-async function fetchContest(
-  contestId: number,
-  uids: Set<number>
-): Promise<IContest> {
+async function fetchContest(contestId: number, uids: Set<number>): Promise<IContest> {
   if (contestCache.get(contestId)) {
     return contestCache.get(contestId)!;
   }
