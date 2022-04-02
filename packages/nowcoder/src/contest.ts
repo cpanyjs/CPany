@@ -28,8 +28,10 @@ export function contestListPlugin(): FetchPlugin {
     async fetch({ logger }) {
       const uids = new Set(loadUids());
       const contests: IContest[] = [];
+      let i = 0;
       for (const cid of contestIds) {
-        contests.push(await fetchContest(cid, uids, logger));
+        logger.info(`Fetch: Nowcoder Contest ${cid} (${++i}/${contestIds.size})`);
+        contests.push(await fetchContest(cid, uids));
       }
       return JSON.stringify(contests, null, 2);
     }
@@ -38,14 +40,11 @@ export function contestListPlugin(): FetchPlugin {
 
 async function fetchContest(
   contestId: number,
-  uids: Set<number>,
-  logger: Logger
+  uids: Set<number>
 ): Promise<IContest> {
   if (contestCache.get(contestId)) {
     return contestCache.get(contestId)!;
   }
-
-  logger.info(`Fetch: Nowcoder Contest ${contestId}`);
 
   const {
     data: {
@@ -63,7 +62,7 @@ async function fetchContest(
     const {
       data: { data }
     } = await axios.get(
-      `https://ac.nowcoder.com/acm-heavy/acm/contest/real-time-rank-data?id=${contestId}&page=${page}`
+      `https://ac.nowcoder.com/acm-heavy/acm/contest/real-time-rank-data?id=${contestId}&pageSize=200&page=${page}`
     );
     if (page > data.basicInfo.pageCount) break;
 
