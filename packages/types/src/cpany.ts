@@ -176,3 +176,5 @@ export interface IUserOverview {
 }
 
 export type CompressHandleList = Array<{ n: string; h: string; r: number }>;
+
+export type CompressNameHandleList = Array<{ n: string; h: string; hn: string; r: number }>;

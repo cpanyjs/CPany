@@ -16,7 +16,7 @@ const color = computed(() => {
     return _color?.value;
   }
   const rt = rating?.value;
-  if (!isDef(rt)) return null;
+  if (!isDef(rt)) return '#b4b4b4';
   if (rt < 700) return '#b4b4b4';
   if (rt < 1200) return '#c177e7';
   if (rt < 1500) return '#5ea1f4';

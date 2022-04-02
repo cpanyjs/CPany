@@ -12,10 +12,12 @@ import type {
   RouteKey,
   IUser,
   CompressHandleList,
-  FetchLog
+  FetchLog,
+  CompressNameHandleList
 } from '@cpany/types';
 import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
 import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
+import type { IHandleWithNowcoder } from '@cpany/types/nowcoder';
 
 import type { IPluginOption } from '../types';
 import { getRef, now } from '../utils';
@@ -363,11 +365,12 @@ export function createCPanyLoadPlugin(
   const usersPath = normalizePath(path.join(appRoot, 'src', 'cpany', 'users.json'));
   const cfHandlesPath = normalizePath(path.join(appRoot, 'src', 'cpany', 'cfHandles.json'));
   const atHandlesPath = normalizePath(path.join(appRoot, 'src', 'cpany', 'atHandles.json'));
+  const ncHandlesPath = normalizePath(path.join(appRoot, 'src', 'cpany', 'ncHandles.json'));
 
   return {
     name: 'cpany:load',
     enforce: 'pre',
-    transform(code, id) {
+    transform(_code, id) {
       if (id === contestsPath) {
         const otherContests = contests.filter((contest) => !contest.type.startsWith('codeforces'));
         return JSON.stringify(otherContests, null, 2);
@@ -411,6 +414,33 @@ export function createCPanyLoadPlugin(
               }
             }
             return atHandles;
+          })
+        );
+        return JSON.stringify(handles, null, 2);
+      } else if (id === ncHandlesPath) {
+        const handles = ([] as CompressHandleList).concat(
+          ...users.map(({ name, handles }) => {
+            const ncHandles: CompressNameHandleList = [];
+            for (const handle of handles) {
+              if (handle.type.startsWith('nowcoder')) {
+                const ncHandle = handle as Omit<RouteKey<IHandleWithNowcoder>, 'submissions'>;
+                ncHandles.push({
+                  n: name,
+                  h: handle.handle,
+                  hn: ncHandle.nowcoder.name,
+                  r: ncHandle.nowcoder.rating ?? 0
+                });
+                for (const team of ncHandle.nowcoder.teams) {
+                  ncHandles.push({
+                    n: team.name,
+                    h: '' + team.teamId,
+                    hn: team.name,
+                    r: team.rating ?? 0
+                  });
+                }
+              }
+            }
+            return ncHandles;
           })
         );
         return JSON.stringify(handles, null, 2);

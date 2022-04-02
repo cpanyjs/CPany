@@ -15,6 +15,7 @@
             <div>
               <cf-handles v-if="isCfRound" :author="row.author"></cf-handles>
               <at-handles v-else-if="isAtRound" :author="row.author"></at-handles>
+              <nc-handles v-else-if="isNcContest" :author="row.author"></nc-handles>
               <team-name v-else :author="row.author"></team-name>
             </div>
           </div>
@@ -64,6 +65,7 @@ import { isUndef, isDef, toNumDuration } from '@/utils';
 import TeamName from './TeamName.vue';
 import CfHandles from './CfHandles.vue';
 import AtHandles from './AtHandles.vue';
+import NcHandles from './NcHandles.vue';
 
 import StandingResult from './StandingResult.vue';
 
@@ -72,6 +74,7 @@ const { contest } = toRefs(props);
 
 const isCfRound = computed(() => contest.value.type.startsWith('codeforces'));
 const isAtRound = computed(() => contest.value.type.startsWith('atcoder'));
+const isNcContest = computed(() => contest.value.type.startsWith('nowcoder'));
 
 const isOutOfCompetition = (standing: IContestStanding) =>
   standing.author.participantType === ParticipantType.OUT_OF_COMPETITION;
