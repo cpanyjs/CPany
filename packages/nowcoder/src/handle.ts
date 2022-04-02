@@ -1,16 +1,27 @@
 import { Logger, QueryPlugin } from '@cpany/core';
 import { ISubmission, ParticipantType, Verdict } from '@cpany/types';
-import { IHandleWithNowcoder } from '@cpany/types/nowcoder';
+import { IHandleWithNowcoder, INowcoderTeam } from '@cpany/types/nowcoder';
 
 import axios from 'axios';
 import { parse } from 'node-html-parser';
 
 import { nowcoder } from './constant';
 
+const subCache = new Map<string, ISubmission[]>();
+
 const handleCache = new Map<string, IHandleWithNowcoder>();
+
+const teamCache = new Map<number, INowcoderTeam>();
+
+const newHandles = new Map<string, IHandleWithNowcoder>();
 
 export function addToCache(handle: IHandleWithNowcoder) {
   handleCache.set(handle.handle, handle);
+  subCache.set(handle.handle, handle.submissions);
+}
+
+export function loadCache() {
+  return [[...handleCache.values()], [...newHandles.values()]];
 }
 
 export function createHandlePlugin(): QueryPlugin {
@@ -19,7 +30,10 @@ export function createHandlePlugin(): QueryPlugin {
     platform: nowcoder,
     async query(id, { logger }) {
       const handle = await queryHandle(id);
+      handle.nowcoder.teams = await queryTeamList(id, logger);
       handle.submissions = await querySubmission(id, handle.nowcoder.name, logger);
+      mergeTeamSubmissions(handle);
+      newHandles.set(handle.handle, handle);
       return JSON.stringify(handle, null, 2);
     }
   };
@@ -45,7 +59,8 @@ async function queryHandle(handle: string): Promise<IHandleWithNowcoder> {
     handleUrl,
     nowcoder: {
       name,
-      rating: rating !== undefined && rating !== null && rating !== '暂无' ? +rating : undefined
+      rating: rating !== undefined && rating !== null && rating !== '暂无' ? +rating : undefined,
+      teams: []
     }
   };
 }
@@ -53,9 +68,10 @@ async function queryHandle(handle: string): Promise<IHandleWithNowcoder> {
 async function querySubmission(
   handle: string,
   name: string,
-  logger: Logger
+  logger: Logger,
+  team = false
 ): Promise<ISubmission[]> {
-  const subs: ISubmission[] = handleCache.get(handle)?.submissions ?? [];
+  const subs: ISubmission[] = subCache.get(handle) ?? [];
   const ids = new Set(subs.map((s) => s.id));
   const fetchPage = async (page: number) => {
     const { data } = await axios.get(
@@ -113,7 +129,7 @@ async function querySubmission(
     }
     if (subs.length === oldLen) return false;
     logger.info(
-      `Fetch: (name: ${name}, id: ${handle}) has fetched ${
+      `Fetch: (${team ? 'team' : 'name'}: ${name}, id: ${handle}) has fetched ${
         subs.length - oldLen
       } new submissions at page ${page}`
     );
@@ -125,4 +141,64 @@ async function querySubmission(
     }
   }
   return subs;
+}
+
+function mergeTeamSubmissions(handle: IHandleWithNowcoder) {
+  const ids = new Set(handle.submissions.map((s) => s.id));
+  for (const team of handle.nowcoder.teams) {
+    const subs = subCache.get('' + team.teamId) ?? [];
+    for (const sub of subs) {
+      if (!ids.has(sub.id)) {
+        ids.add(sub.id);
+        handle.submissions.push(sub);
+      }
+    }
+  }
+}
+
+async function queryTeamList(handle: string, logger: Logger): Promise<INowcoderTeam[]> {
+  const teams: INowcoderTeam[] = [];
+  const {
+    data: {
+      data: { dataList }
+    }
+  } = await axios.get(
+    `https://ac.nowcoder.com/acm/contest/profile/user-team-list?uid=${handle}&pageSize=100`
+  );
+
+  for (const team of dataList) {
+    const teamId: number = team.teamId;
+
+    if (teamCache.has(teamId)) {
+      teams.push(teamCache.get(teamId)!);
+      continue;
+    }
+
+    const {
+      data: {
+        data: { dataList }
+      }
+    } = await axios.get(`https://ac.nowcoder.com/acm/team/member-list?teamId=${teamId}`);
+
+    const data: INowcoderTeam = {
+      teamId,
+      name: team.name,
+      nickname: team.nickname,
+      members: dataList.map((u: any) => '' + u.uid),
+      avatar: team.logoUrl,
+      teamUrl: `https://ac.nowcoder.com/acm/contest/profile/${team.teamId}`,
+      rating: team.hasRating ? +team.rating.toFixed(0) : undefined,
+      rank: team.hasRank ? team.rank : undefined
+    };
+    teamCache.set(teamId, data);
+    teams.push(data);
+
+    const subs = await querySubmission('' + teamId, data.name, logger, true);
+    for (const sub of subs) {
+      sub.author.members = data.members;
+      sub.author.teamName = data.name;
+    }
+    subCache.set('' + teamId, subs);
+  }
+  return teams;
 }
