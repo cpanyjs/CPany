@@ -1,9 +1,13 @@
 <template>
   <p>
     <span class="font-600">牛客: </span>
-    <a :href="nowcoder.handleUrl" target="_blank" :class="['font-bold']">{{
-      nowcoder.nowcoder.name
-    }}</a>
+    <a :href="nowcoder.handleUrl" target="_blank">
+      <NcRatingColor :rating="nowcoder.nowcoder.rating">{{ nowcoder.nowcoder.name }}</NcRatingColor>
+    </a>
+  </p>
+  <p v-if="!!nowcoder.nowcoder.rating">
+    <span class="font-600">Rating: </span>
+    <NcRatingColor :rating="nowcoder.nowcoder.rating">{{ nowcoder.nowcoder.rating }}</NcRatingColor>
   </p>
   <p>
     <span class="font-600">提交: </span>
@@ -19,6 +23,8 @@
 import type { IHandleWithNowcoder } from '@cpany/types/nowcoder';
 
 import { Verdict } from '@cpany/types';
+
+import { NcRatingColor } from '@/components/nowcoder';
 
 defineProps<{ nowcoder: IHandleWithNowcoder }>();
 </script>
