@@ -1,5 +1,5 @@
 import type { CPanyPlugin } from '@cpany/core';
-import type { IContest, ICPanyPluginConfig } from '@cpany/types';
+import type { IContest, ICPanyPluginConfig, Key } from '@cpany/types';
 import type { IHandleWithNowcoder } from '@cpany/types/nowcoder';
 
 import { nowcoder } from './constant';
@@ -31,7 +31,7 @@ export function nowocderPlugin(_option: ICPanyPluginConfig): CPanyPlugin[] {
       async load(_option, ctx) {
         const handles = await ctx.readJsonDir<IHandleWithNowcoder>('handle');
         const contests: IContest[] = await ctx.readJsonFile('contest.json');
-        const cache = new Map<number | string, IContest>();
+        const cache = new Map<number | string, Key<IContest>>();
         for (const rawContest of contests) {
           const contest = { ...rawContest, key: String(rawContest.id!!) };
           contest.inlinePage = true;
@@ -45,22 +45,39 @@ export function nowocderPlugin(_option: ICPanyPluginConfig): CPanyPlugin[] {
               const contest = cache.get(cid)!;
               for (const standing of contest.standings ?? []) {
                 if (standing.author.members[0] === handle.handle) {
-                  standing.author.members[0] =
-                    ctx.findUsername(nowcoder, handle.handle) ?? handle.handle;
+                  const username = ctx.findUsername(nowcoder, handle.handle);
+                  standing.author.members[0] = username ?? handle.handle;
                   standing.author.teamName = handle.nowcoder.name;
                   standing.author.teamUrl = handle.handleUrl;
-                  contest.participantNumber += 1;
+                  if (username) {
+                    contest.participantNumber += 1;
+                    ctx.addUserContest(
+                      username,
+                      { ...contest, standings: undefined },
+                      standing.author
+                    );
+                  }
                 } else {
                   const team = handle.nowcoder.teams.find(
                     (t) => '' + t.teamId === standing.author.members[0]
                   );
                   if (team) {
-                    standing.author.members = team.members.map(
-                      (t) => ctx.findUsername(nowcoder, t) ?? t
-                    );
+                    standing.author.members = team.members.map((t) => {
+                      const username = ctx.findUsername(nowcoder, t);
+                      if (username) {
+                        contest.participantNumber++;
+                        ctx.addUserContest(
+                          username,
+                          { ...contest, standings: undefined },
+                          standing.author
+                        );
+                        return username;
+                      } else {
+                        return t;
+                      }
+                    });
                     standing.author.teamName = team.name;
                     standing.author.teamUrl = team.teamUrl;
-                    contest.participantNumber += standing.author.members.length;
                   }
                 }
               }
