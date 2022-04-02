@@ -154,12 +154,15 @@ import {
   IHandle,
   isCodeforces,
   isAtCoder,
-  isLuogu
+  isLuogu,
+  isNowCoder,
+  Verdict
 } from '@cpany/types';
 import type { IHandleWithCodeforces } from '@cpany/types/codeforces';
 import type { IHandleWithAtCoder } from '@cpany/types/atcoder';
 import type { IHandleWithLuogu } from '@cpany/types/luogu';
-import { Verdict } from '@cpany/types';
+import type { IHandleWithNowcoder } from '@cpany/types/nowcoder';
+
 import { ref, toRefs, computed } from 'vue';
 
 import IconCheck from '~icons/mdi/check';
@@ -213,10 +216,12 @@ const sortedHandles = computed(() => {
     const base = 100000;
     if (isCodeforces(handle)) {
       return base * 9 + ((handle as IHandleWithCodeforces).codeforces?.rating ?? 0);
+    } else if (isNowCoder(handle)) {
+      return base * 8 + ((handle as IHandleWithNowcoder).nowcoder.rating ?? 0);
     } else if (isAtCoder(handle)) {
-      return base * 8 + ((handle as IHandleWithAtCoder).atcoder.rating ?? 0);
+      return base * 7 + ((handle as IHandleWithAtCoder).atcoder.rating ?? 0);
     } else if (isLuogu(handle)) {
-      return base * 7 + ((handle as IHandleWithLuogu).luogu.ranking ?? 0);
+      return base * 6 + ((handle as IHandleWithLuogu).luogu.ranking ?? 0);
     } else {
       return 0;
     }
