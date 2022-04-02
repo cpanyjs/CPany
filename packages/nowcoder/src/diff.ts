@@ -3,7 +3,7 @@ import { DiffPlugin, diff } from '@cpany/core';
 import { nowcoder } from './constant';
 import { loadCache } from './handle';
 
-export function diffCodeforcesPlugin(): DiffPlugin {
+export function diffNowcoderPlugin(): DiffPlugin {
   return {
     platform: nowcoder,
     name: 'diff',

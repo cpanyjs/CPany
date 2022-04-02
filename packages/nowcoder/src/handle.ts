@@ -6,6 +6,7 @@ import axios from 'axios';
 import { parse } from 'node-html-parser';
 
 import { nowcoder } from './constant';
+import { addContestId } from './contest';
 
 const subCache = new Map<string, ISubmission[]>();
 
@@ -24,6 +25,13 @@ export function loadCache() {
   return [[...handleCache.values()], [...newHandles.values()]];
 }
 
+export function loadUids(): number[] {
+  return [...newHandles.values()].flatMap((h) => [
+    +h.handle,
+    ...h.nowcoder.teams.map((t) => t.teamId)
+  ]);
+}
+
 export function createHandlePlugin(): QueryPlugin {
   return {
     name: 'handle',
@@ -31,6 +39,10 @@ export function createHandlePlugin(): QueryPlugin {
     async query(id, { logger }) {
       const handle = await queryHandle(id);
       handle.nowcoder.teams = await queryTeamList(id, logger);
+      handle.nowcoder.contests = await queryContestHistory(
+        id,
+        ...handle.nowcoder.teams.map((t) => '' + t.teamId)
+      );
       handle.submissions = await querySubmission(id, handle.nowcoder.name, logger);
       mergeTeamSubmissions(handle);
       newHandles.set(handle.handle, handle);
@@ -60,7 +72,8 @@ async function queryHandle(handle: string): Promise<IHandleWithNowcoder> {
     nowcoder: {
       name,
       rating: rating !== undefined && rating !== null && rating !== '暂无' ? +rating : undefined,
-      teams: []
+      teams: [],
+      contests: []
     }
   };
 }
@@ -201,4 +214,26 @@ async function queryTeamList(handle: string, logger: Logger): Promise<INowcoderT
     subCache.set('' + teamId, subs);
   }
   return teams;
+}
+
+async function queryContestHistory(...uids: string[]): Promise<number[]> {
+  const ids = new Set<number>();
+  for (const uid of uids) {
+    for (let page = 1; ; page++) {
+      const {
+        data: {
+          data: { dataList }
+        }
+      } = await axios.get(
+        `https://ac.nowcoder.com/acm-heavy/acm/contest/profile/contest-joined-history?uid=${uid}&page=${page}&onlyJoinedFilter=true&onlyRatingFilter=false&contestEndFilter=true`
+      );
+      let oldLen = ids.size;
+      for (const data of dataList) {
+        ids.add(data.contestId);
+        addContestId(data.contestId);
+      }
+      if (ids.size === oldLen) break;
+    }
+  }
+  return [...ids.values()];
 }

@@ -17,6 +17,7 @@ export interface INowcoderMeta {
     rating?: number;
     rank?: number;
     teams: INowcoderTeam[];
+    contests: number[];
   };
 }
 
