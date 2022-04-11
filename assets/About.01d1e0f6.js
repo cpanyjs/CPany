@@ -1,1 +1,0 @@
-import{_ as r}from"./index.cfd3b5cd.js";import{o as s,b as d,d as o}from"./vendor.5658d620.js";const a={},n=[o("h2",{class:"mb-4"},"关于",-1)];var e=r(a,[["render",function(r,o){return s(),d("div",null,n)}]]);export{e as default};
