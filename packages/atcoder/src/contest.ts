@@ -120,8 +120,8 @@ export function addContestPractice(contestId: string, handle: string, submission
   contestPracticeCache.get(contestId)!.push(standing);
 }
 
-export function createAtCoderContestPlugin(_handleMap: Map<string, string>): FetchPlugin {
-  for (const [key, value] of _handleMap) handleMap.set(key, value);
+export function createAtCoderContestPlugin(handleMap: Map<string, string>): FetchPlugin {
+  for (const [key, value] of handleMap) handleMap.set(key, value);
 
   return {
     name: 'contest',
@@ -278,14 +278,14 @@ function parseStandings(contestId: string, startTime: number, { problems, standi
           submissions
         };
       })
-      .filter((standing) => standing.submissions.length > 0)
+      .filter((standing) => standing && standing.submissions.length > 0)
   };
 }
 
 async function fetchStandings(api: AxiosInstance, contestId: string): Promise<PS> {
   const { data } = await api.get(`/contests/${contestId}/standings/json`);
   const problems = data.TaskInfo;
-  const standings = data.StandingsData.filter(
+  const standings = (data.StandingsData ?? []).filter(
     (row: any) => handleMap.has(row.UserName) || handleMap.has(row.UserScreenName)
   );
   return { problems, standings };
