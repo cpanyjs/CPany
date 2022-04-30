@@ -1,10 +1,8 @@
-import type { FetchPlugin, Logger } from '@cpany/core';
+import type { FetchPlugin } from '@cpany/core';
 import { IContest, IContestProblem, IContestStanding, ParticipantType } from '@cpany/types';
 import { Verdict } from '@cpany/types/dist';
 
-import axios from 'axios';
-
-import { nowcoder } from './constant';
+import { nowcoder, api } from './constant';
 import { loadUids } from './handle';
 
 const contestIds = new Set<number>();
@@ -49,17 +47,15 @@ async function fetchContest(contestId: number, uids: Set<number>): Promise<ICont
         sameContests: [rawContest]
       }
     }
-  } = await axios.get(
-    `https://ac.nowcoder.com/acm/contest/rank/same-contest-list?contestId=${contestId}`
-  );
+  } = await api.get(`/acm/contest/rank/same-contest-list?contestId=${contestId}`);
   const problems: IContestProblem[] = [];
   const standings: IContestStanding[] = [];
 
   for (let page = 1; ; page++) {
     const {
       data: { data }
-    } = await axios.get(
-      `https://ac.nowcoder.com/acm-heavy/acm/contest/real-time-rank-data?id=${contestId}&pageSize=200&page=${page}`
+    } = await api.get(
+      `/acm-heavy/acm/contest/real-time-rank-data?id=${contestId}&pageSize=200&page=${page}`
     );
     if (page > data.basicInfo.pageCount) break;
 

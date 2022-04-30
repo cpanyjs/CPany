@@ -26,6 +26,7 @@
     "@cpany/core": "workspace:*",
     "@cpany/types": "workspace:*",
     "axios": "^0.21.1",
+    "axios-retry": "^3.2.5",
     "node-html-parser": "^4.1.3"
   },
   "devDependencies": {

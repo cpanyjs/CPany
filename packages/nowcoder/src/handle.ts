@@ -2,10 +2,9 @@ import { Logger, QueryPlugin } from '@cpany/core';
 import { ISubmission, ParticipantType, Verdict } from '@cpany/types';
 import { IHandleWithNowcoder, INowcoderTeam } from '@cpany/types/nowcoder';
 
-import axios from 'axios';
 import { parse } from 'node-html-parser';
 
-import { nowcoder } from './constant';
+import { nowcoder, api } from './constant';
 import { addContestId } from './contest';
 
 const subCache = new Map<string, ISubmission[]>();
@@ -53,7 +52,7 @@ export function createHandlePlugin(): QueryPlugin {
 
 async function queryHandle(handle: string): Promise<IHandleWithNowcoder> {
   const handleUrl = `https://ac.nowcoder.com/acm/contest/profile/${handle}`;
-  const { data } = await axios.get(handleUrl);
+  const { data } = await api.get(`/acm/contest/profile/${handle}`);
   const root = parse(/<body>([\s\S]*)<\/body>/.exec(data)![0]);
   const avatar = root.querySelector('.head-pic img')?.getAttribute('src');
   const getName = (text: string) => {
@@ -87,8 +86,8 @@ async function querySubmission(
   const subs: ISubmission[] = subCache.get(handle) ?? [];
   const ids = new Set(subs.map((s) => s.id));
   const fetchPage = async (page: number) => {
-    const { data } = await axios.get(
-      `https://ac.nowcoder.com/acm/contest/profile/${handle}/practice-coding?pageSize=200&orderType=DESC&page=${page}`
+    const { data } = await api.get(
+      `/acm/contest/profile/${handle}/practice-coding?pageSize=200&orderType=DESC&page=${page}`
     );
     const root = parse(/<body>([\s\S]*)<\/body>/.exec(data)![0]);
     const oldLen = subs.length;
@@ -175,9 +174,7 @@ async function queryTeamList(handle: string, logger: Logger): Promise<INowcoderT
     data: {
       data: { dataList }
     }
-  } = await axios.get(
-    `https://ac.nowcoder.com/acm/contest/profile/user-team-list?uid=${handle}&pageSize=100`
-  );
+  } = await api.get(`/acm/contest/profile/user-team-list?uid=${handle}&pageSize=100`);
 
   for (const team of dataList) {
     const teamId: number = team.teamId;
@@ -191,7 +188,7 @@ async function queryTeamList(handle: string, logger: Logger): Promise<INowcoderT
       data: {
         data: { dataList }
       }
-    } = await axios.get(`https://ac.nowcoder.com/acm/team/member-list?teamId=${teamId}`);
+    } = await api.get(`/acm/team/member-list?teamId=${teamId}`);
 
     const data: INowcoderTeam = {
       teamId,
@@ -224,8 +221,8 @@ async function queryContestHistory(...uids: string[]): Promise<number[]> {
         data: {
           data: { dataList }
         }
-      } = await axios.get(
-        `https://ac.nowcoder.com/acm-heavy/acm/contest/profile/contest-joined-history?uid=${uid}&page=${page}&onlyJoinedFilter=true&onlyRatingFilter=false&contestEndFilter=true`
+      } = await api.get(
+        `/acm-heavy/acm/contest/profile/contest-joined-history?uid=${uid}&page=${page}&onlyJoinedFilter=true&onlyRatingFilter=false&contestEndFilter=true`
       );
       let oldLen = ids.size;
       for (const data of dataList) {
