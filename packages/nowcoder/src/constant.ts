@@ -3,6 +3,8 @@ import axiosRetry from 'axios-retry';
 
 export const nowcoder = 'nowcoder';
 
+export const ContestExclude = new Set((process.env.EXCLUDE ?? '').split(',').map((c) => c.trim()));
+
 function getProxy() {
   const proxy = process.env.HTTPS_PROXY || process.env.HTTP_PROXY;
   if (proxy) {

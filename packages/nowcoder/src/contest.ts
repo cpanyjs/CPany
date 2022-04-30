@@ -2,7 +2,7 @@ import type { FetchPlugin } from '@cpany/core';
 import { IContest, IContestProblem, IContestStanding, ParticipantType } from '@cpany/types';
 import { Verdict } from '@cpany/types/dist';
 
-import { nowcoder, api } from './constant';
+import { nowcoder, api, ContestExclude } from './constant';
 import { loadUids } from './handle';
 
 const contestIds = new Set<number>();
@@ -15,7 +15,9 @@ export function addContestId(contestId: number) {
 
 export function addContests(contests: IContest[]) {
   for (const contest of contests) {
-    contestCache.set(contest.id!, contest);
+    if (!ContestExclude.has(contest.id + '')) {
+      contestCache.set(contest.id!, contest);
+    }
   }
 }
 
