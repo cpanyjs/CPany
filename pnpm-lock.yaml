@@ -14,7 +14,7 @@ importers:
       fs-extra: ^10.0.0
       husky: 4.3.7
       lint-staged: ^11.0.0
-      pnpm: ^6.32.4
+      pnpm: ^6.32.11
       prettier: ^2.3.2
       rimraf: ^3.0.2
       tsup: ^4.14.0
@@ -30,7 +30,7 @@ importers:
       fs-extra: 10.0.0
       husky: 4.3.7
       lint-staged: 11.0.0
-      pnpm: 6.32.4
+      pnpm: 6.32.11
       prettier: 2.3.2
       rimraf: 3.0.2
       tsup: 4.14.0_typescript@4.3.5
@@ -2401,8 +2401,8 @@ packages:
       semver-compare: 1.0.0
     dev: true
 
-  /pnpm/6.32.4:
-    resolution: {integrity: sha512-rOG+VpOzs6g/MR5HWc8KTlLAx3ljdRJCMQwSg1DE/hzAaqF/Y2zIHH0u6dZw/XnRb9w1U8rOs9MJT9jMt7e+Qw==}
+  /pnpm/6.32.11:
+    resolution: {integrity: sha512-KIb3ImAEGl03aJNy0pai7J0mWn52GJwRrUllxUZwibhLdUoeOuDjXhNSgRxxW9BH2gR91b3UadxzdAvhehmM8w==}
     engines: {node: '>=12.17'}
     hasBin: true
     dev: true
