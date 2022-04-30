@@ -12,12 +12,27 @@ const subCache = new Map<string, ISubmission[]>();
 const handleCache = new Map<string, IHandleWithNowcoder>();
 
 const teamCache = new Map<number, INowcoderTeam>();
+const teamNameCache = new Map<string, ISubmission[]>();
 
 const newHandles = new Map<string, IHandleWithNowcoder>();
 
 export function addToCache(handle: IHandleWithNowcoder) {
   handleCache.set(handle.handle, handle);
   subCache.set(handle.handle, handle.submissions);
+  const interCache = new Map<string, ISubmission[]>();
+  for (const sub of handle.submissions) {
+    if (sub.author.teamName) {
+      if (!interCache.has(sub.author.teamName)) {
+        interCache.set(sub.author.teamName, []);
+      }
+      interCache.get(sub.author.teamName)!.push(sub);
+    }
+  }
+  for (const [key, subs] of interCache) {
+    if (!teamNameCache.has(key)) {
+      teamNameCache.set(key, subs);
+    }
+  }
 }
 
 export function loadCache() {
@@ -202,6 +217,9 @@ async function queryTeamList(handle: string, logger: Logger): Promise<INowcoderT
     };
     teamCache.set(teamId, data);
     teams.push(data);
+    if (teamNameCache.has(data.name)) {
+      subCache.set('' + teamId, teamNameCache.get(data.name)!);
+    }
 
     const subs = await querySubmission('' + teamId, data.name, logger, true);
     for (const sub of subs) {
