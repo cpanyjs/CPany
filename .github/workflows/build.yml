@@ -30,7 +30,7 @@ jobs:
 
       - run: |
           pnpm run build
-          pnpm link packages/cli
+          pnpm link ./packages/cli
 
       - name: Export CPany Page Image
         run: npx cpany export ./example
@@ -71,7 +71,7 @@ jobs:
         run: |
           pnpm install
           pnpm build
-          pnpm link packages/cli
+          pnpm link ./packages/cli
 
       - uses: actions/checkout@v2
         with:
