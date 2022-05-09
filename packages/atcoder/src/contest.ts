@@ -120,8 +120,8 @@ export function addContestPractice(contestId: string, handle: string, submission
   contestPracticeCache.get(contestId)!.push(standing);
 }
 
-export function createAtCoderContestPlugin(handleMap: Map<string, string>): FetchPlugin {
-  for (const [key, value] of handleMap) handleMap.set(key, value);
+export function createAtCoderContestPlugin(handleUserMap: Map<string, string>): FetchPlugin {
+  for (const [handle, user] of handleUserMap) handleMap.set(handle, user);
 
   return {
     name: 'contest',
