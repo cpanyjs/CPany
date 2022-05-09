@@ -4,9 +4,6 @@ importers:
 
   .:
     specifiers:
-      '@cpany/cli': workspace:*
-      '@cpany/compress': workspace:*
-      '@cpany/types': workspace:*
       '@types/node': ^16.0.1
       '@vercel/ncc': ^0.29.0
       capture-website-cli: ^2.1.0
@@ -19,9 +16,6 @@ importers:
       tsup: ^4.14.0
       typescript: ^4.3.5
     devDependencies:
-      '@cpany/cli': link:packages/cli
-      '@cpany/compress': link:packages/compress
-      '@cpany/types': link:packages/types
       '@types/node': 16.11.33
       '@vercel/ncc': 0.29.2
       capture-website-cli: 2.3.0

@@ -23,9 +23,6 @@
     ]
   },
   "devDependencies": {
-    "@cpany/cli": "workspace:*",
-    "@cpany/compress": "workspace:*",
-    "@cpany/types": "workspace:*",
     "@types/node": "^16.0.1",
     "@vercel/ncc": "^0.29.0",
     "execa": "^5.1.1",
