@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 importers:
 
-  ../../AppData/Local/pnpm/store/v3/tmp/dlx-21716:
+  ../../AppData/Local/pnpm/store/v3/tmp/dlx-26916:
     specifiers:
       tsup: ^4.14.0
     dependencies:
