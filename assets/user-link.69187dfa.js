@@ -1,1 +1,0 @@
-import{e,l as s,o as r,f as t,w as a,n as o,t as n}from"./vendor.5658d620.js";const p=e({props:{name:{type:String,required:!0}},setup:e=>(p,u)=>{const m=s("router-link");return r(),t(m,{to:`/user/${e.name}`},{default:a((()=>[o(n(e.name),1)])),_:1},8,["to"])}});export{p as _};
