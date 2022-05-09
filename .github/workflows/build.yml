@@ -28,10 +28,12 @@ jobs:
 
       - run: pnpm install
 
-      - run: pnpm run build
+      - run: |
+          pnpm run build
+          pnpm link packages/cli
 
       - name: Export CPany Page Image
-        run: pnpx cpany export ./example
+        run: npx cpany export ./example
 
       - name: Upload CPany Page Image
         uses: actions/upload-artifact@v2
@@ -40,7 +42,7 @@ jobs:
           path: screenshot.png
 
       - name: Build
-        run: pnpx cpany build example --base /CPany/
+        run: npx cpany build example --base /CPany/
         env:
           DEBUG: 'cpany:*'
 
@@ -69,6 +71,7 @@ jobs:
         run: |
           pnpm install
           pnpm build
+          pnpm link packages/cli
 
       - uses: actions/checkout@v2
         with:
@@ -76,4 +79,4 @@ jobs:
           path: .cpany
 
       - name: Fetch Data
-        run: pnpx cpany fetch ./.cpany/ --plugin codeforces hdu
+        run: npx cpany fetch ./.cpany/ --plugin codeforces hdu
