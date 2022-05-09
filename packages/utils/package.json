@@ -20,7 +20,10 @@
     "src"
   ],
   "scripts": {
-    "build": "pnpx tsup src/index.ts --format cjs,esm --dts"
+    "build": "tsup src/index.ts --format cjs,esm --dts"
+  },
+  "devDependencies": {
+    "tsup": "^4.14.0"
   },
   "engines": {
     "node": ">=12.0.0"

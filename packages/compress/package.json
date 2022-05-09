@@ -21,10 +21,11 @@
     "index.d.ts"
   ],
   "scripts": {
-    "build": "pnpx tsup src/index.ts src/load.ts --format esm,cjs"
+    "build": "tsup-node src/index.ts src/load.ts --format esm,cjs"
   },
   "devDependencies": {
-    "vite": "^2.5.10"
+    "vite": "^2.5.10",
+    "tsup": "^4.14.0"
   },
   "peerDependencies": {
     "vite": ">=2.5.10"

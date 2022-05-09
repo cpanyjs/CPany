@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "cpany dev example --open",
     "site": "cpany build example --outDir site",
-    "build": "pnpm run build --filter ./packages",
+    "build": "pnpm --filter ./packages/** run build",
     "build:cli": "pnpm -C packages/cli run build",
     "format": "prettier --write packages/**/*.{ts,js,vue} --ignore-path .gitignore",
     "release": "node scripts/release.js",
@@ -32,12 +32,11 @@
     "fs-extra": "^10.0.0",
     "husky": "4.3.7",
     "lint-staged": "^11.0.0",
-    "pnpm": "^6.32.11",
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
     "tsup": "^4.14.0",
     "typescript": "^4.3.5",
     "capture-website-cli": "^2.1.0"
   },
-  "packageManager": "pnpm@6.32.11"
+  "packageManager": "pnpm@7.0.1"
 }
