@@ -15,11 +15,11 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "cpany": "bin/cpany.js"
+    "cpany": "./cpany.mjs"
   },
   "files": [
     "dist",
-    "src"
+    "*.mjs"
   ],
   "scripts": {
     "build": "tsup-node src/cli.ts --format cjs --splitting"
