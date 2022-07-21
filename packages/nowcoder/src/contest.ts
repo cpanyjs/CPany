@@ -1,9 +1,10 @@
 import type { FetchPlugin } from '@cpany/core';
-import { IContest, IContestProblem, IContestStanding, ParticipantType } from '@cpany/types';
-import { Verdict } from '@cpany/types/dist';
+import type { IContest, IContestProblem, IContestStanding } from '@cpany/types';
 
-import { nowcoder, api, ContestExclude } from './constant';
+import { Verdict, ParticipantType } from '@cpany/types';
+
 import { loadUids } from './handle';
+import { nowcoder, api, ContestExclude } from './constant';
 
 const contestIds = new Set<number>();
 

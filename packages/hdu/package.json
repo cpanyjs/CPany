@@ -25,12 +25,12 @@
   "dependencies": {
     "@cpany/core": "workspace:*",
     "@cpany/types": "workspace:*",
-    "axios": "^0.21.1",
+    "axios": "^0.27.2",
     "iconv-lite": "^0.6.3",
-    "node-html-parser": "^4.1.3"
+    "node-html-parser": "^5.3.3"
   },
   "devDependencies": {
-    "tsup": "^4.14.0"
+    "tsup": "^6.1.3"
   },
   "engines": {
     "node": ">=12.0.0"

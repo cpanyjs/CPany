@@ -25,36 +25,30 @@
     "build": "tsup-node src/cli.ts --format cjs --splitting"
   },
   "dependencies": {
-    "@actions/core": "^1.4.0",
-    "@actions/exec": "^1.1.0",
-    "@actions/io": "^1.1.1",
+    "@actions/core": "^1.9.0",
+    "@actions/exec": "^1.1.1",
+    "@actions/io": "^1.1.2",
     "@cpany/app": "workspace:*",
     "@cpany/compress": "workspace:*",
     "@cpany/core": "workspace:*",
     "@cpany/plugin-codeforces": "workspace:*",
     "@cpany/types": "workspace:*",
     "@cpany/utils": "workspace:*",
-    "@iconify/json": "^1.1.387",
-    "@vitejs/plugin-vue": "^1.8.1",
-    "@vue/compiler-sfc": "^3.2.12",
-    "cac": "^6.7.3",
-    "date-fns": "^2.25.0",
-    "date-fns-tz": "^1.1.6",
-    "debug": "^4.3.2",
+    "cac": "^6.7.12",
+    "date-fns": "^2.28.0",
+    "date-fns-tz": "^1.3.6",
+    "debug": "^4.3.4",
     "execa": "^5.1.1",
     "global-dirs": "^3.0.0",
     "is-installed-globally": "^0.4.0",
     "js-yaml": "^4.1.0",
-    "kolorist": "^1.5.0",
-    "open": "^8.2.1",
+    "kolorist": "^1.5.1",
+    "open": "^8.4.0",
     "ora-classic": "^5.4.2",
-    "resolve": "^1.20.0",
+    "resolve": "^1.22.1",
     "resolve-from": "^5.0.0",
     "resolve-global": "^1.0.0",
-    "unplugin-icons": "^0.7.0",
-    "vite": "^2.5.10",
-    "vite-plugin-windicss": "^1.2.7",
-    "windicss": "^3.1.7"
+    "vite": "^2.5.10"
   },
   "devDependencies": {
     "@cpany/plugin-atcoder": "workspace:*",
@@ -62,18 +56,18 @@
     "@cpany/plugin-luogu": "workspace:*",
     "@cpany/plugin-nowcoder": "workspace:*",
     "@types/debug": "^4.1.7",
-    "@types/js-yaml": "^4.0.2",
-    "@types/node": "^16.4.13",
-    "@types/resolve": "^1.20.1",
-    "tsup": "^4.14.0",
-    "vite-plugin-inspect": "^0.3.11"
+    "@types/js-yaml": "^4.0.5",
+    "@types/resolve": "^1.20.2",
+    "tsup": "^6.1.3",
+    "typescript": "^4.7.4",
+    "vite-plugin-inspect": "^0.5.1"
   },
   "peerDependencies": {
     "@cpany/plugin-atcoder": "workspace:*",
     "@cpany/plugin-codeforces": "workspace:*",
     "@cpany/plugin-hdu": "workspace:*",
     "@cpany/plugin-luogu": "workspace:*",
-    "capture-website-cli": "^2.1.0"
+    "capture-website-cli": "^2.3.0"
   },
   "peerDependenciesMeta": {
     "@cpany/plugin-atcoder": {

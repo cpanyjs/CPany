@@ -1,6 +1,7 @@
-const { join } = require('path');
-const { readJSON, writeJSON, writeFile, readFile } = require('fs-extra');
-const execa = require('execa');
+import { join } from 'node:path';
+
+import { execa } from 'execa';
+import { readJSON, writeJSON, writeFile, readFile } from 'fs-extra';
 
 const packages = [
   './packages/app',
@@ -24,7 +25,7 @@ async function check() {
   }
 }
 
-async function run(cmd, ...args) {
+async function run(cmd: string, ...args: string[]) {
   console.log(`$ ${cmd} ${args.join(' ')}`);
   await execa(cmd, args, { stdio: 'inherit' });
   console.log();
@@ -46,8 +47,8 @@ async function boostrap() {
   console.log('Publish @cpany version:', version);
   console.log();
 
-  for (const package of packages) {
-    const path = join(package, 'package.json');
+  for (const pkg of packages) {
+    const path = join(pkg, 'package.json');
     const json = await readJSON(path);
     json.version = version;
     await writeJSON(path, json, { spaces: 2 });
