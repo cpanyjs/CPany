@@ -23,9 +23,13 @@
   },
   "dependencies": {
     "@cpany/types": "workspace:*",
+    "debug": "^4.3.2",
     "kolorist": "^1.5.0"
   },
   "engines": {
     "node": ">=12.0.0"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.7"
   }
 }

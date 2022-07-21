@@ -1,3 +1,6 @@
+import createDebug from 'debug';
+import { lightRed, dim, bold } from 'kolorist';
+
 import {
   IUser,
   IHandle,
@@ -8,9 +11,9 @@ import {
   ISubmission,
   UserDiffLog
 } from '@cpany/types';
-import { lightRed, dim, bold } from 'kolorist';
 
 import type { CreateOptions, CPanyInstance, FSOperations, FSEventType } from './types';
+
 import { DefaultMaxRetry } from './constant';
 import { createLoggerFactory } from './logger';
 import { sleep, random, addExt } from './utils';
@@ -21,6 +24,8 @@ import {
   LoadContext,
   isCachePlugin
 } from './plugin';
+
+const debug = createDebug('cpany:core');
 
 export function createCPany(option: CreateOptions): CPanyInstance {
   const { on, getFSFn } = getFSOperation();
@@ -160,6 +165,7 @@ export function createCPany(option: CreateOptions): CPanyInstance {
             await rawTask();
             return;
           } catch (error: any) {
+            debug(error);
             const msg = error.message;
             if (typeof msg === 'string') {
               logger.error(`${lightRed('Error:')} ${msg}`);
