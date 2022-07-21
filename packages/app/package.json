@@ -27,10 +27,10 @@
     "tippy.js": "^6.3.7",
     "unplugin-icons": "^0.14.7",
     "vite": "^2.5.10",
-    "vite-plugin-windicss": "^1.8.7",
+    "vite-plugin-windicss": "1.2.7",
     "vue": "^3.2.37",
     "vue-router": "^4.1.2",
-    "windicss": "^3.5.6"
+    "windicss": "3.1.7"
   },
   "devDependencies": {
     "typescript": "^4.7.4",

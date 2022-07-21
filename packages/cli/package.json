@@ -51,10 +51,8 @@
     "resolve-global": "^1.0.0",
     "unplugin-icons": "^0.14.7",
     "vite": "^2.5.10",
-    "vite-plugin-windicss": "^1.8.7",
-    "vue": "^3.2.37",
-    "vue-router": "^4.1.2",
-    "windicss": "^3.5.6"
+    "vite-plugin-windicss": "1.2.7",
+    "windicss": "3.1.7"
   },
   "devDependencies": {
     "@cpany/plugin-atcoder": "workspace:*",

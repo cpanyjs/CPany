@@ -191,6 +191,7 @@ cli
       await capture(port, option);
       await server.close();
     } catch (err) {
+      debug('cpany:cli')(err);
       process.exit(1);
     }
   });
