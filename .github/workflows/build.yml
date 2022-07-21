@@ -30,7 +30,8 @@ jobs:
 
       - run: |
           pnpm run build
-          pnpm link ./packages/cli
+          cd ./packages/cli
+          pnpm link -g
 
       - name: Export CPany Page Image
         run: npx cpany export ./example
