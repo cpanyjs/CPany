@@ -71,7 +71,7 @@
     "@cpany/plugin-codeforces": "workspace:*",
     "@cpany/plugin-hdu": "workspace:*",
     "@cpany/plugin-luogu": "workspace:*",
-    "capture-website-cli": "^2.3.0"
+    "capture-website-cli": "^3.0.0"
   },
   "peerDependenciesMeta": {
     "@cpany/plugin-atcoder": {
