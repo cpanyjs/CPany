@@ -69,6 +69,7 @@ export async function run(option: ICliOption) {
   } catch (error: any) {
     const msg = error.message;
     if (typeof msg === 'string') {
+      debugFetch(msg);
       fetcher.logger.error(`Error: ${msg}`);
     } else {
       fetcher.logger.error(`Error: unknown, when process report`);

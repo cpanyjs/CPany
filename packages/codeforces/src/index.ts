@@ -15,7 +15,9 @@ export * from './constant';
 export function codeforcesPlugin(option: ICPanyPluginConfig): CPanyPlugin[] {
   const api = axios.create({
     baseURL: option.baseUrl ?? 'https://codeforces.com/api/',
-    timeout: 30 * 1000
+    timeout: 30 * 1000,
+    maxContentLength: Infinity,
+    maxBodyLength: Infinity
   });
   const oldHandles: IHandleWithCodeforces[] = [];
   const newHandles: IHandleWithCodeforces[] = [];
