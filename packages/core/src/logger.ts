@@ -16,6 +16,8 @@ import {
   lightCyan,
   bold
 } from 'kolorist';
+import createDebug from 'debug';
+
 import { shuffle } from './utils';
 
 type LogFn = (message: string) => void;
@@ -23,7 +25,7 @@ type LogFn = (message: string) => void;
 export type LogLevel = 'warn' | 'error' | 'silent';
 
 export interface Logger {
-  debug: LogFn;
+  debug: (...args: any[]) => void;
   info: LogFn;
   warning: LogFn;
   error: LogFn;
@@ -32,7 +34,7 @@ export interface Logger {
 }
 
 export interface ExtendLogger {
-  debug: LogFn;
+  debug: (...args: any[]) => void;
   info: LogFn;
   warning: LogFn;
   error: LogFn;
@@ -57,6 +59,8 @@ export function createLogger(
     }
   };
 
+  const debug = createDebug('cpany:' + (context ?? 'cli'));
+
   const addPrefix = (message: string) =>
     message
       .replace(/\r?\n/g, '\n')
@@ -68,12 +72,9 @@ export function createLogger(
     setLevel(_logLevel: LogLevel) {
       logLevel = _logLevel;
     },
-    debug(message) {
-      if (logger) {
-        logger.debug(addPrefix(message));
-      } else {
-        console.debug(addPrefix(message));
-      }
+    debug(...args: any[]) {
+      // @ts-ignore
+      debug(...args);
     },
     info(message) {
       if (logger) {

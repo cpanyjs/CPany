@@ -162,6 +162,7 @@ export function createAtCoderContestPlugin(handleUserMap: Map<string, string>): 
               return true;
             } catch (error) {
               logger.error('Error: ' + (error as any).message);
+              logger.debug(error);
               return false;
             }
           });
@@ -206,7 +207,7 @@ async function fecthContest(api: AxiosInstance, contestId: string): Promise<ICon
 
   return {
     type: 'atcoder',
-    name: root.querySelector('h1').innerText,
+    name: root.querySelector('h1')!.innerText,
     startTime,
     duration: endTime - startTime,
     participantNumber: 0,
@@ -284,7 +285,15 @@ function parseStandings(contestId: string, startTime: number, { problems, standi
 
 async function fetchStandings(api: AxiosInstance, contestId: string): Promise<PS> {
   const { data } = await api.get(`/contests/${contestId}/standings/json`);
-  const problems = data.TaskInfo;
+
+  if (
+    (data.TaskInfo === null || data.TaskInfo === undefined) &&
+    (data.StandingsData === null || data.StandingsData === undefined)
+  ) {
+    throw new Error('Maybe your cookie is expired, please update the env variable REVEL_SESSION.');
+  }
+
+  const problems = data.TaskInfo ?? [];
   const standings = (data.StandingsData ?? []).filter(
     (row: any) => handleMap.has(row.UserName) || handleMap.has(row.UserScreenName)
   );

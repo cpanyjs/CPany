@@ -29,7 +29,7 @@ async function fetchUser(api: AxiosInstance, id: string): Promise<IHandleWithAtC
 
   const color = (() => {
     const username = root.querySelector('a.username span');
-    const style = username.getAttribute('style');
+    const style = username!.getAttribute('style');
     if (!style) return undefined;
     const res = /(#[0-9A-F]{6})/.exec(style);
     return res ? res[1] : undefined;
@@ -45,9 +45,9 @@ async function fetchUser(api: AxiosInstance, id: string): Promise<IHandleWithAtC
   const fields = root.querySelectorAll('.col-md-9 .dl-table tr td');
   const rank = 0 < fields.length ? Number.parseInt(fields[0].innerText) : undefined;
   const rating =
-    1 < fields.length ? Number.parseInt(fields[1].querySelector('span').innerText) : undefined;
+    1 < fields.length ? Number.parseInt(fields[1].querySelector('span')!.innerText) : undefined;
   const maxRating =
-    2 < fields.length ? Number.parseInt(fields[2].querySelector('span').innerText) : undefined;
+    2 < fields.length ? Number.parseInt(fields[2].querySelector('span')!.innerText) : undefined;
 
   return {
     type: 'atcoder/handle',
@@ -74,7 +74,7 @@ async function fetchSubmissions(
 
   const contests = root
     .querySelectorAll('tr td.text-left')
-    .map((td) => td.querySelector('a').getAttribute('href')?.split('/')[2]!)
+    .map((td) => td.querySelector('a')!.getAttribute('href')?.split('/')[2]!)
     .filter((contest) => !!contest);
 
   logger.info(`Fetch: ${id} has participated in ${contests.length} contests`);
@@ -101,7 +101,11 @@ async function fetchSubmissions(
         ...root.querySelectorAll('table.table tbody tr').map((tr) => {
           const td = tr.querySelectorAll('td');
 
-          const sid = +td[td.length - 1].querySelector('a').getAttribute('href')?.split('/').pop()!;
+          const sid = +td[td.length - 1]
+            .querySelector('a')!
+            .getAttribute('href')
+            ?.split('/')
+            .pop()!;
           const creationTime = new Date(td[0].innerText).getTime() / 1000;
           const language = decode(td[3].innerText.replace(/\([\s\S]*\)/, '').trim());
           const verdict: Verdict = ((str: string) => {
@@ -123,7 +127,7 @@ async function fetchSubmissions(
           const problemId = ((id) => {
             const [a, b] = id.split('_');
             return a + b.toUpperCase();
-          })(td[1].querySelector('a').getAttribute('href')?.split('/').pop()!);
+          })(td[1].querySelector('a')!.getAttribute('href')?.split('/').pop()!);
           const problemName = decode(/^[\s\S]+ - ([\s\S]+)$/.exec(td[1].innerText)![1]);
 
           return {
@@ -138,12 +142,12 @@ async function fetchSubmissions(
               participantTime: type === ParticipantType.CONTESTANT ? startTime : creationTime
             },
             submissionUrl:
-              'https://atcoder.jp' + td[td.length - 1].querySelector('a').getAttribute('href'),
+              'https://atcoder.jp' + td[td.length - 1].querySelector('a')!.getAttribute('href'),
             problem: {
               type: 'atcoder',
               id: problemId,
               name: problemName,
-              problemUrl: 'https://atcoder.jp' + td[1].querySelector('a').getAttribute('href')
+              problemUrl: 'https://atcoder.jp' + td[1].querySelector('a')!.getAttribute('href')
             }
           };
         })
