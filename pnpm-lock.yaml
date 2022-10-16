@@ -34,7 +34,8 @@ importers:
     specifiers:
       '@cpany/compress': workspace:*
       '@cpany/types': workspace:*
-      '@iconify/json': ^2.1.80
+      '@iconify-json/ic': ^1.1.9
+      '@iconify-json/mdi': ^1.1.34
       '@vitejs/plugin-vue': ^1.8.1
       '@vue/compiler-sfc': ^3.2.37
       date-fns: ^2.29.2
@@ -51,6 +52,8 @@ importers:
     dependencies:
       '@cpany/compress': link:../compress
       '@cpany/types': link:../types
+      '@iconify-json/ic': 1.1.9
+      '@iconify-json/mdi': 1.1.34
       '@vitejs/plugin-vue': 1.10.2_vite@2.9.8
       '@vue/compiler-sfc': 3.2.37
       date-fns: 2.29.2
@@ -60,7 +63,6 @@ importers:
       vue: 3.2.37
       vue-router: 4.1.3_vue@3.2.37
     devDependencies:
-      '@iconify/json': 2.1.80
       typescript: 4.7.4
       unplugin-icons: 0.14.7_h2ouzeg3xn5pjveo2sripdoseq
       vite-plugin-windicss: 1.2.7_vite@2.9.8
@@ -397,12 +399,17 @@ packages:
       get-tsconfig: 4.2.0
     dev: true
 
-  /@iconify/json/2.1.80:
-    resolution: {integrity: sha512-uVZrqT4A4MbbSJRu6R4MCzw5eFR322Wf/HHL6wlWr6dqCtFhIJgdPc6ailCPJ/IJn3fF/ESgMHizjDTsBv4m1Q==}
+  /@iconify-json/ic/1.1.9:
+    resolution: {integrity: sha512-yRHx4AnNNf5kpWVnNMaeXGYnLmaR2tkGsjSc//FaI7LhljUaDkiawUvmnYbjh6M61O78EeEoNk8HgYJVqb+y8A==}
     dependencies:
       '@iconify/types': 1.1.0
-      pathe: 0.3.2
-    dev: true
+    dev: false
+
+  /@iconify-json/mdi/1.1.34:
+    resolution: {integrity: sha512-Jle/BrVmaKMMPVitsO3lbJ8VpXUVCAhfMFAMo0VoxLDX8ZiKiQyVDHXPug9wGaXYb9mrFZE4UWVK63Cjx8L3rQ==}
+    dependencies:
+      '@iconify/types': 1.1.0
+    dev: false
 
   /@iconify/types/1.1.0:
     resolution: {integrity: sha512-Jh0llaK2LRXQoYsorIH8maClebsnzTcve+7U3rQUSnC11X4jtPnFuyatqFLvMxZ8MLG8dB4zfHsbPfuvxluONw==}
@@ -2536,10 +2543,6 @@ packages:
   /path-type/4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
-    dev: true
-
-  /pathe/0.3.2:
-    resolution: {integrity: sha512-qhnmX0TOqlCvdWWTkoM83wh5J8fZ2yhbDEc9MlsnAEtEc+JCwxUKEwmd6pkY9hRe6JR1Uecbc14VcAKX2yFSTA==}
     dev: true
 
   /pend/1.2.0:
