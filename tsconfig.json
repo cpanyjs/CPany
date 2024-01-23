@@ -3,7 +3,7 @@
     "module": "commonjs",
     "baseUrl": ".",
     "noEmit": true,
-    "target": "es2016",
+    "target": "es2021",
     "lib": ["DOM", "ESNext"],
     "strict": true,
     "declaration": true,

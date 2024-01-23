@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { type AxiosInstance } from 'axios';
 import type { ICookie } from './type';
 
 export const luogu = 'luogu';
@@ -17,7 +17,7 @@ function loadCookie(): ICookie {
   return { clientId, uid };
 }
 
-export function getAPI() {
+export function getAPI(): AxiosInstance {
   const cookie = loadCookie();
 
   return axios.create({

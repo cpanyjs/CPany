@@ -10,26 +10,12 @@
     "release": "tsx scripts/release.ts",
     "publish": "pnpm publish -r --access public"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.ts": [
-      "prettier --parser=typescript --write"
-    ],
-    "*.vue": [
-      "prettier --parser=vue --write"
-    ]
-  },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^18.0.6",
     "capture-website-cli": "^3.0.0",
     "execa": "^6.1.0",
     "fs-extra": "^10.1.0",
-    "husky": "4.3.7",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",

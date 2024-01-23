@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { type AxiosInstance } from 'axios';
 
 export const atcoder = 'atcoder';
 
@@ -11,7 +11,7 @@ export function loadCookie(): string {
   return session!;
 }
 
-export function getAPI() {
+export function getAPI(): AxiosInstance {
   const cookie = loadCookie();
 
   return axios.create({
