@@ -12,6 +12,13 @@ import { diffCodeforcesPlugin } from './diff';
 
 export * from './constant';
 
+
+async function delay(ms:number) {
+  return new Promise((resolve)=>{
+    setTimeout(resolve, ms);
+  });
+}
+
 export function codeforcesPlugin(option: ICPanyPluginConfig): CPanyPlugin[] {
   const api = axios.create({
     baseURL: option.baseUrl ?? 'https://codeforces.com/api/',
@@ -19,6 +26,21 @@ export function codeforcesPlugin(option: ICPanyPluginConfig): CPanyPlugin[] {
     maxContentLength: Infinity,
     maxBodyLength: Infinity
   });
+
+  let original_get = api.get;
+  let original_post = api.post;
+  (api as any).get = async function(...args: [any, any]) {
+    let result = await original_get(...args);
+    await delay(800);
+    return result;
+  };
+
+  (api as any).post = async function(...args: [any, any, any]) {
+    let result = await original_post(...args);
+    await delay(800);
+    return result;
+  };
+
   const oldHandles: IHandleWithCodeforces[] = [];
   const newHandles: IHandleWithCodeforces[] = [];
 
