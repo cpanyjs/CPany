@@ -32,11 +32,13 @@ export function codeforcesPlugin(option: ICPanyPluginConfig): CPanyPlugin[] {
   api.get = async function(...args) {
     let result = await original_get(...args);
     await delay(800);
+    return result;
   }
 
   api.post = async function(...args) {
     let result = await original_post(...args);
     await delay(800);
+    return result;
   }
 
   const oldHandles: IHandleWithCodeforces[] = [];
