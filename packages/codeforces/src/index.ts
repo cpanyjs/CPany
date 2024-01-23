@@ -29,13 +29,13 @@ export function codeforcesPlugin(option: ICPanyPluginConfig): CPanyPlugin[] {
 
   let original_get = api.get;
   let original_post = api.post;
-  api.get = async function(...args) {
+  (api as any).get = async function(...args) {
     let result = await original_get(...args);
     await delay(800);
     return result;
   }
 
-  api.post = async function(...args) {
+  (api as any).post = async function(...args) {
     let result = await original_post(...args);
     await delay(800);
     return result;
