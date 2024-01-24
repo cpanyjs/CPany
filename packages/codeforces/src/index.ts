@@ -25,15 +25,13 @@ export function codeforcesPlugin(option: ICPanyPluginConfig): CPanyPlugin[] {
   const originalGet = api.get.bind(api);
   const originalPost = api.post.bind(api);
   api.get = async function (...args: Parameters<typeof originalGet>) {
-    let result = await originalGet(...args);
     await delay(800);
-    return result;
+    return originalGet(...args);
   } as typeof api.get;
 
   api.post = async function (...args: Parameters<typeof originalPost>) {
-    let result = await originalPost(...args);
     await delay(800);
-    return result;
+    return originalPost(...args);
   } as typeof api.post;
 
   const oldHandles: IHandleWithCodeforces[] = [];
