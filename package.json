@@ -13,7 +13,7 @@
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^18.0.6",
-    "capture-website-cli": "^3.0.0",
+    "capture-website-cli": "^4.0.0",
     "execa": "^6.1.0",
     "fs-extra": "^10.1.0",
     "lint-staged": "^13.0.3",
