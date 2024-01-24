@@ -12,12 +12,7 @@ import { diffCodeforcesPlugin } from './diff';
 
 export * from './constant';
 
-
-async function delay(ms:number) {
-  return new Promise((resolve)=>{
-    setTimeout(resolve, ms);
-  });
-}
+const delay = async (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export function codeforcesPlugin(option: ICPanyPluginConfig): CPanyPlugin[] {
   const api = axios.create({
@@ -27,19 +22,19 @@ export function codeforcesPlugin(option: ICPanyPluginConfig): CPanyPlugin[] {
     maxBodyLength: Infinity
   });
 
-  let original_get = api.get;
-  let original_post = api.post;
-  (api as any).get = async function(...args: [any, any]) {
-    let result = await original_get(...args);
+  const originalGet = api.get.bind(api);
+  const originalPost = api.post.bind(api);
+  api.get = async function (...args: Parameters<typeof originalGet>) {
+    let result = await originalGet(...args);
     await delay(800);
     return result;
-  };
+  } as typeof api.get;
 
-  (api as any).post = async function(...args: [any, any, any]) {
-    let result = await original_post(...args);
+  api.post = async function (...args: Parameters<typeof originalPost>) {
+    let result = await originalPost(...args);
     await delay(800);
     return result;
-  };
+  } as typeof api.post;
 
   const oldHandles: IHandleWithCodeforces[] = [];
   const newHandles: IHandleWithCodeforces[] = [];
