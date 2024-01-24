@@ -74,8 +74,8 @@ export async function createLoader(cliOption: IPluginOption) {
     const overview = (user: IUser): IUserOverview => {
       const submissions: IUserOverview['submissions'] = [];
 
-      const solved: Map<string, typeof submissions[number]> = new Map();
-      const solve = (problem: IProblem, sub: typeof submissions[number]) => {
+      const solved: Map<string, (typeof submissions)[number]> = new Map();
+      const solve = (problem: IProblem, sub: (typeof submissions)[number]) => {
         const id = `${problem.type}:${problem.id}`;
         const pre = solved.get(id);
         if (pre === undefined) {
