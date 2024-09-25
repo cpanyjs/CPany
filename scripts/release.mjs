@@ -1,7 +1,8 @@
 import { join } from 'node:path';
+import { readFile, writeFile } from 'node:fs/promises';
 
 import { execa } from 'execa';
-import { readJSON, writeJSON, writeFile, readFile } from 'fs-extra';
+import { readJSON, writeJSON } from 'fs-extra/esm';
 
 const packages = [
   './packages/app',
@@ -25,7 +26,7 @@ async function check() {
   }
 }
 
-async function run(cmd: string, ...args: string[]) {
+async function run(cmd, ...args) {
   console.log(`$ ${cmd} ${args.join(' ')}`);
   await execa(cmd, args, { stdio: 'inherit' });
   console.log();
