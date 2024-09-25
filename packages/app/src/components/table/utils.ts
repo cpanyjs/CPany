@@ -25,7 +25,7 @@ export function usePagination(
   const pageSize = computed(() => Math.max(1, unref(_pageSize) ?? dataLength.value));
 
   const pageLength = computed(() => Math.ceil(dataLength.value / pageSize.value));
-  const current = ref(key ? pageCache.get(key) ?? 0 : 0);
+  const current = ref(key ? (pageCache.get(key) ?? 0) : 0);
   const L = computed(() => current.value * pageSize.value);
   const R = computed(() => Math.min(dataLength.value, L.value + pageSize.value));
 

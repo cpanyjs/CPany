@@ -33,14 +33,14 @@ const colorClass = computed(() =>
   primary?.value
     ? 'is-primary'
     : info?.value
-    ? 'is-info'
-    : success?.value
-    ? 'is-success'
-    : warning?.value
-    ? 'is-warning'
-    : danger?.value
-    ? 'is-danger'
-    : undefined
+      ? 'is-info'
+      : success?.value
+        ? 'is-success'
+        : warning?.value
+          ? 'is-warning'
+          : danger?.value
+            ? 'is-danger'
+            : undefined
 );
 </script>
 

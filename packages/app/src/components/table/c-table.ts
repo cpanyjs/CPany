@@ -68,7 +68,7 @@ export default defineComponent({
     onUnmounted(() => clean());
 
     const realPageSize = computed(() =>
-      !isMobile.value ? pageSize.value : mobilePageSize.value ?? pageSize.value
+      !isMobile.value ? pageSize.value : (mobilePageSize.value ?? pageSize.value)
     );
 
     const cache = !!props.cache ? sortCache.get(props.cache) : undefined;
@@ -175,8 +175,8 @@ export default defineComponent({
             (isDef(column.props?.center) && column.props?.center !== false)
               ? 'justify-center'
               : column.props?.align === 'right'
-              ? 'justify-end'
-              : 'justify-start';
+                ? 'justify-end'
+                : 'justify-start';
 
           const className = [
             'select-none',

@@ -26,8 +26,8 @@ export default defineComponent({
       align.value === 'center' || center.value
         ? 'text-center'
         : align.value === 'right'
-        ? 'text-right'
-        : 'text-left'
+          ? 'text-right'
+          : 'text-left'
     ];
     return () =>
       h(
