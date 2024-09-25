@@ -4,7 +4,10 @@
     "baseUrl": ".",
     "noEmit": true,
     "target": "es2021",
-    "lib": ["DOM", "ESNext"],
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
     "strict": true,
     "declaration": true,
     "esModuleInterop": true,
@@ -19,12 +22,24 @@
       "node"
     ],
     "paths": {
-      "@cpany/core": ["./packages/core/src/index.ts"],
-      "@cpany/core/*": ["./packages/core/*"],
-      "@cpany/types": ["./packages/types/src/index.ts"],
-      "@cpany/types/*": ["./packages/types/*"],
-      "@cpany/utils": ["./packages/utils/src/index.ts"],
-      "@cpany/utils/*": ["./packages/utils/*"]
+      "@cpany/core": [
+        "./packages/core/src/index.ts"
+      ],
+      "@cpany/core/*": [
+        "./packages/core/*"
+      ],
+      "@cpany/types": [
+        "./packages/types/src/index.ts"
+      ],
+      "@cpany/types/*": [
+        "./packages/types/*"
+      ],
+      "@cpany/utils": [
+        "./packages/utils/src/index.ts"
+      ],
+      "@cpany/utils/*": [
+        "./packages/utils/*"
+      ]
     }
   },
   "exclude": [
