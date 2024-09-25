@@ -1,0 +1,1 @@
+import{_ as o,e as s,f as t,o as r}from"./index-Cc-lLLcQ.js";const n={};function a(c,e){return r(),s("div",null,e[0]||(e[0]=[t("h2",{class:"mb-4"},"关于",-1)]))}const l=o(n,[["render",a]]);export{l as default};
