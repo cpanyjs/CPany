@@ -207,11 +207,11 @@ export function createCPanyRoutePlugin(
           ...contests.map((contest) => {
             // In dev server, use relative path
             // In build, use absolute path
-            const path = contestVirtualComponentPath(contest.path, option.dev);
+            const path = contestVirtualComponentPath(contest.path, false);
             return `{ path: \`${contest.path}\`, component: () => import(\`${path}\`), meta: { title: \`${contest.name} - CPany\` } },`;
           }),
           ...users.map((user) => {
-            const path = userVirtualComponentPath(user.name, option.dev);
+            const path = userVirtualComponentPath(user.name, false);
             return `{ path: \`/user/${user.name}\`, component: () => import(\`${path}\`), meta: { title: \`用户 ${user.name} - CPany\` } },`;
           })
         ];

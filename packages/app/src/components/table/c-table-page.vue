@@ -1,3 +1,27 @@
+<script setup lang="ts">
+import { toRefs, computed } from 'vue';
+
+import IconLeft from '~icons/mdi/chevron-left';
+import IconRight from '~icons/mdi/chevron-right';
+
+const props = defineProps<{
+  isMobile?: boolean;
+  pageView?: number;
+  current: number;
+  first: number;
+  last: number;
+  pageSize: number;
+  nextPage: () => void;
+  prePage: () => void;
+  goPage: (page: number) => void;
+}>();
+
+const { isMobile: _isMobile, pageView: _pageView, current, first, last } = toRefs(props);
+
+const pageView = computed(() => _pageView?.value ?? 5);
+const isMobile = computed(() => _isMobile?.value ?? false);
+</script>
+
 <template>
   <div v-if="isMobile" class="mb-2 grid grid-cols-2 gap-2">
     <c-button padding="p-2" @click="prePage" :disable="current <= first"
@@ -77,27 +101,3 @@
     ></c-button>
   </div>
 </template>
-
-<script setup lang="ts">
-import { toRefs, computed } from 'vue';
-
-import IconLeft from '~icons/mdi/chevron-left';
-import IconRight from '~icons/mdi/chevron-right';
-
-const props = defineProps<{
-  isMobile?: boolean;
-  pageView?: number;
-  current: number;
-  first: number;
-  last: number;
-  pageSize: number;
-  nextPage: () => void;
-  prePage: () => void;
-  goPage: (page: number) => void;
-}>();
-
-const { isMobile: _isMobile, pageView: _pageView, current, first, last } = toRefs(props);
-
-const pageView = computed(() => _pageView?.value ?? 5);
-const isMobile = computed(() => _isMobile?.value ?? false);
-</script>
