@@ -1,1 +1,0 @@
-import{_ as e,e as o,o as s,f as t}from"./index-CYbdUtQ1.js";const c={},n=t("h2",{class:"mb-4"},"关于",-1),_=[n];function a(r,d){return s(),o("div",null,_)}const l=e(c,[["render",a]]);export{l as default};
